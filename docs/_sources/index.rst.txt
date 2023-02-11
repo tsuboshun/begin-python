@@ -6,10 +6,20 @@
 プログラミング実習講義１のページへようこそ！
 ===================================================
 
+| サブタイトル:　Pythonで学ぶデータサイエンスの世界
+| 講師:　`大坪舜 <https://www.linkedin.com/in/shun-otsubo/>`_
+
+はじめに
+-----------
+
+ただいま準備中。
 
 .. toctree::
+   :hidden:
    :maxdepth: 1
    :caption: スケジュール:
 
+   ./chap1/lecture01
+   ./chap2/lecture02
    ./chap3/lecture03
 
