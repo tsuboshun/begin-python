@@ -5,7 +5,7 @@
    "id": "52b9c04c",
    "metadata": {},
    "source": [
-    "# 第3回 Pythonの基礎"
+    "# 第3回 はじめてのPython"
    ]
   },
   {
@@ -14,7 +14,7 @@
    "metadata": {},
    "source": [
     "___\n",
-    "[連絡事項・課題（1/26 更新）](./notice.rst)  \n",
+    "[連絡事項・課題（4/* 更新）](./notice.rst)  \n",
     "[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/tsuboshun/begin-python/blob/master/docs/chap3/lecture03.ipynb)\n",
     "\n",
     "___"
@@ -33,7 +33,9 @@
    "id": "49246d72",
    "metadata": {},
    "source": [
-    "以下の内容は、授業準備のための試し書きです。"
+    "この章では、数値や文字列といった基本的なデータの扱い方を学ぶ。\n",
+    "\n",
+    "とにかくPythonを実行できるようになることが目標である。プログラミングは手で覚えるところがあるので、簡単な例も逐一タイピングして、実際に動かしながら学んでほしい。"
    ]
   },
   {
@@ -49,80 +51,1349 @@
    "id": "738ab906",
    "metadata": {},
    "source": [
-    "まずはPythonプログラムを動かしてみよう。  "
+    "まずはPythonプログラムを動かしてみよう。"
    ]
   },
   {
    "cell_type": "code",
    "execution_count": 1,
    "id": "aea710ab",
+   "metadata": {
+    "scrolled": false
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Hello, world!\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(\"Hello, world!\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "208e44b8",
+   "metadata": {},
+   "source": [
+    "ノートブックの文字を入力できる部分を**セル**という。\n",
+    "セルに見本通りに文字を入力して、左の実行ボタンを押すと Hello, world! と表示されるはずだ。\n",
+    "この Hello, world! と表示させるプログラムは、どのプログラミング言語でも最初の一歩として紹介されることが多い。\n",
+    "\n",
+    "このようなコンピューターに対する命令のことを**プログラム**といい、それをPythonなどの言語で記述したものを**ソースコード** （または**コード**）という。\n",
+    "また、左の実行ボタンを押す以外の実行方法として、キーボードで Shift を押しながら Enter と入力する方法がある。便利なので覚えておこう。"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "325d4c44",
+   "metadata": {},
+   "source": [
+    "<div class=\"alert alert-info\">\n",
+    "    半角と全角\n",
+    "    <p>\n",
+    "        上のコードを入力する際に、全角文字を使うとその場所によってはエラーになる。あとで説明するように日本語の文字列データを扱うときや、コメントを書くとき以外は、全角文字を使うことはほぼない。\n",
+    "        常に半角文字になっているか気をつけながら入力する習慣をつけよう。\n",
+    "    </p>\n",
+    "</div>"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "f0955e1f",
+   "metadata": {},
+   "source": [
+    "## 四則演算"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "b53c5520",
+   "metadata": {},
+   "source": [
+    "次に、簡単な数式を計算させてみよう。電卓にやらせていたような計算も、Pythonで行った方がずっと便利なことが多い。\n",
+    "\n",
+    "主な記号（**演算子**という）を次にまとめる。"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "06cc4572",
+   "metadata": {},
+   "source": [
+    "|  演算子  |  意味 |\n",
+    "| ---- | ---- |\n",
+    "|  `+`  |  足し算  |\n",
+    "|  `-`  |  引き算  |\n",
+    "|  `*`  |  かけ算  |\n",
+    "|  `/`  |  割り算  |\n",
+    "|  `//`  |  割り算（少数を切り捨て）  |  \n",
+    "|  `%`  |  割り算の余り  |\n",
+    "|  `**`  |  累乗  |"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "b22e59fb",
+   "metadata": {},
+   "source": [
+    "足し算 `+`、引き算 `-` および割り算 `/` については馴染みのある記号だろう。\n",
+    "かけ算は × ではなく `*` という記号を用いる。  \n",
+    "\n",
+    "`//` および `%` は、小数の出てこない余りつき割り算を行うのに用いられる。例えば5割る3の答えは、商が1余りが2となるが、商は `5//3`、余りは `5%3` によって求めることができる。  \n",
+    "\n",
+    "累乗は `**` で表される。例えば3の5乗（つまり `3*3*3*3*3`）は、`3**5` で求めることができる。"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "054cad1e",
+   "metadata": {},
+   "source": [
+    "以下のコードを、結果を予想しながら実行してみよう。なお、ノートブック環境では `print()` と書かなくても、セルの最終行を評価した値が自動的に表示される。"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "de41a67f",
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "0"
+      ]
+     },
+     "execution_count": 2,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "-2 + 2"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "id": "3532c7fd",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "-4"
+      ]
+     },
+     "execution_count": 3,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "-2 * 2"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "id": "0415b66a",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "3.5"
+      ]
+     },
+     "execution_count": 4,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "7 / 2"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "id": "bfdbde85",
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "3"
+      ]
+     },
+     "execution_count": 5,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "7 // 2"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "id": "4a3fce5f",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "1"
+      ]
+     },
+     "execution_count": 6,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "7 % 2"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "id": "4dfda550",
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "32"
+      ]
+     },
+     "execution_count": 7,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "2 ** 5"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "a99c9f3f",
+   "metadata": {},
+   "source": [
+    "日常の生活でもちょっとした計算をする際に、Pythonをパッと起動して使えると便利である。例えば、家庭教師をしていて遭遇しそうな問題を次に並べてみたが、Pythonを使えば答えを簡単に確かめることができる。"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "f395f010",
+   "metadata": {},
+   "source": [
+    "**練習1**\n",
+    "\n",
+    "（1） 80円のりんごを6個、120円のオレンジを9個買った。合計はいくらか。  \n",
+    "（2） りんごは5%の値引きがあったとする。このとき合計はいくらになるか。"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "2314b658",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "id": "da953a29",
+   "metadata": {},
+   "source": [
+    "**練習2**\n",
+    "\n",
+    "（1） 365を12で割った商と余りを求めよ。  \n",
+    "（2） 2023の2023乗の1の位の数字は何か。 <font color=cornflowerblue>ヒント: 1の位の数字は10で割った余りである。</font>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "eaa15032",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "id": "8387880e",
+   "metadata": {},
+   "source": [
+    "**練習3**\n",
+    "\n",
+    "（1） 10万円を年利率5％で運用したとき、10年後の金額を求めよ。また20年後にはいくらになるか。  \n",
+    "（2） 3の平方根の値を小数で求めよ。 <font color=cornflowerblue>ヒント: 平方根は0.5乗で計算できる。</font>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "ad73709f",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "id": "13dd9b40",
+   "metadata": {},
+   "source": [
+    "### 計算の順番"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "489f7bc3",
+   "metadata": {},
+   "source": [
+    "次のコードの実行結果を予想してみよう。"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "id": "20de594d",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "6.0"
+      ]
+     },
+     "execution_count": 8,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "2 + 3 ** 2 / 4 * 2 ** 2 - 5"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "156428ac",
+   "metadata": {},
+   "source": [
+    "予想は当たっただろうか。ここでは計算の順番に関するルールを学ぶ。\n",
+    "\n",
+    "まず、演算子には優先順位があり、累乗 `**`、掛け算・割り算 `*`, `\\`, `\\\\`, `%`、足し算・引き算 `+`, `-` の順に優先される。また、同じ優先順位の演算子は、前から順に実行される。ただし、普通の数学と同じく `()` を付ければ、その中身の計算が最優先される。\n",
+    "\n",
+    "このルールにしたがうと、上の数式は次のように計算される。  \n",
+    "まず、足し算・引き算より掛け算・割り算・累乗が優先されるので、真ん中の項が先に計算される。`()` を使って明示的に書けば、次の式と同じということである。"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "id": "f5175cab",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "6.0"
+      ]
+     },
+     "execution_count": 9,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "2 + (3 ** 2 / 4 * 2 ** 2) - 5"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "146aefeb",
+   "metadata": {},
+   "source": [
+    "さらに、真ん中の項のうち累乗が優先されるので、次のように `3**2` と `2**2` が先に計算される。"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "id": "385cb784",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "6.0"
+      ]
+     },
+     "execution_count": 10,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "2 + ((3 ** 2) / 4 * (2 ** 2)) - 5"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "50fab19e",
+   "metadata": {},
+   "source": [
+    "累乗を計算したあとの `9 / 4 * 4` は前から順に計算されるので `9 / 4 * 4` = `2.25 * 4` = `9`となる。したがって、最終的な答えは `2 + 9 - 5` = `6` となる。"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "c25c0dac",
+   "metadata": {},
+   "source": [
+    "ところで、最初の式はとてもわかりづらいと感じなかっただろうか。\n",
+    "これは長年プログラミングに触れている人にとっても同じであり、最後の`()`を活用した式の方が見やすい。\n",
+    "間違いを減らすためにも`()`を活用しながら、わかりやすい記述を心がけよう。\n",
+    "さらにコメントすれば `9 / 4 * 4` より `9 * 4 / 4` の順番の方が、計算の順番に安心感がある。\n",
+    "したがって、最初の式は次のように書くとより良い。"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "id": "802d9cae",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "6.0"
+      ]
+     },
+     "execution_count": 11,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "2 + ((3 ** 2) * (2 ** 2) / 4) - 5"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "8618ad1f",
+   "metadata": {},
+   "source": [
+    "## 変数"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "75b1ec72",
+   "metadata": {},
+   "source": [
+    "ここでは、数値などのデータに名前をつける方法について学ぶ。\n",
+    "\n",
+    "先ほどの練習1の答えはそれぞれ次のとおりであった。"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "id": "0d46532c",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "1560"
+      ]
+     },
+     "execution_count": 12,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "80 * 6 + 120 * 9"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "id": "95652793",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "1536.0"
+      ]
+     },
+     "execution_count": 13,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "80 * 0.95 * 6 + 120 * 9"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "81203262",
+   "metadata": {},
+   "source": [
+    "こういう式を書くとき、数値と演算子のみで書くと、目で見て意味がとりづらくなる。 \n",
+    "また繰り返し現れる数値があるが、それぞれ2回タイピングするのは間違いのもとである。\n",
+    "\n",
+    "そんなときは数値に名前をつけると便利である。Pythonでは次のような形式でデータに名前をつけることができる。\n",
+    "<pre>\n",
+    "名前 = 式\n",
+    "</pre>\n",
+    "左辺の名前のことを**変数**という。右辺はあえてデータではなく式と表現した。式の場合はそれを評価した結果の値に名前がつく。\n",
+    "\n",
+    "変数を使うと、練習1の答えは次のように求めることができる。"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "id": "56a3ac36",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "1560"
+      ]
+     },
+     "execution_count": 14,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "apple = 80\n",
+    "orange = 120\n",
+    "\n",
+    "apple * 6 + orange * 9"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 15,
+   "id": "990f7ca0",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "1536.0"
+      ]
+     },
+     "execution_count": 15,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "apple * 0.95 * 6 + orange * 9"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "4e7434f8",
+   "metadata": {},
+   "source": [
+    "先ほどと比べると、式の意味が読み取りやすくなっている。"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "b7701632",
+   "metadata": {},
+   "source": [
+    "さて、先ほど右辺を式と表現したが、例えば次のような定義の仕方もできる。"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 16,
+   "id": "71779f25",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "2"
+      ]
+     },
+     "execution_count": 16,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "x = 1 + 1\n",
+    "x"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "12e33eca",
+   "metadata": {},
+   "source": [
+    "次の結果は、やや驚きかもしれない。"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 17,
+   "id": "89772eee",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "3"
+      ]
+     },
+     "execution_count": 17,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "x = 2\n",
+    "x = x + 1\n",
+    "x"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "6697854f",
+   "metadata": {},
+   "source": [
+    "この実行結果の理由は次のとおりである。`x = x + 1` のコードにおいて、まず右辺の式が評価される。`x` の指す値は `2` であるから、`x + 1` の値は `3` である。\n",
+    "したがって、`x = x + 1` のコードは `x = 3` のコードに読み替えられる。その結果として、`x` は新しい値 `3` の名前として上書きされる。数学とは違い `x = x + 1` は方程式ではないので注意しよう。\n",
+    "\n",
+    "プログラミングでは、このような計算式がよく出てくるので省略記法もある。具体的には、`x = x + 1` は `x += 1` と書くことができる。"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "dfe9630e",
+   "metadata": {},
+   "source": [
+    "以下のコードを、結果を予想しながら実行してみよう。"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 18,
+   "id": "830a0bcf",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "11"
+      ]
+     },
+     "execution_count": 18,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "x = 5\n",
+    "x = 2 * x + 1\n",
+    "x"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 19,
+   "id": "40a9d0b5",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "3.0"
+      ]
+     },
+     "execution_count": 19,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "x = 9\n",
+    "x /= 3\n",
+    "x"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "7cc0e16f",
+   "metadata": {},
+   "source": [
+    "### 変数名の付け方"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "3c20c094",
+   "metadata": {},
+   "source": [
+    "変数の名前は自由につけることができるが、いくつかルールがある。  \n",
+    "\n",
+    "1. 使える文字は **アルファベット**、**数字**、**アンダースコア（ \\_ ）** のみである。  \n",
+    "2. 変数の先頭に数字は使えない。  \n",
+    "3. `for` や `if` などの文法的に意味のある単語（**予約語**）は、そのまま単体では使えない。  "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "106aecd6",
+   "metadata": {},
+   "source": [
+    "例えば、`price_apple` は変数名にできるが、`price-apple` はエラーになる。`a12` は変数名にできるが、`12a` はエラーになる。\n",
+    "また、`if` は使えないが、`value_if_a` のような変数名はOKである。変数名はなるべく英語で表現するのが理想だが、難しければ日本語のローマ字で表現してもよい。\n",
+    "\n",
+    "下のセルを使って、上のルールを確かめてみよう。"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "b02b4fa1",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "id": "a33784d9",
+   "metadata": {},
+   "source": [
+    "## 文字列"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "1dffe079",
+   "metadata": {},
+   "source": [
+    "これまで数値データを見てきたが、文字もデータとして扱うことができる。\n",
+    "\n",
+    "Hello, world!プログラムを思い出そう。Pythonでは両端を **シングルクォーテーション（ ' ）**または **ダブルクォーテーション（ \" ）**で囲うと、文字列データとなる。ただし両端の記号は合わせる必要がある。"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 20,
+   "id": "cf94f268",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'Good morning.'"
+      ]
+     },
+     "execution_count": 20,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "'Good morning.'"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "9f7c19ea",
+   "metadata": {},
+   "source": [
+    "日本語も扱うことができる。"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 21,
+   "id": "a0453ec7",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'太郎'"
+      ]
+     },
+     "execution_count": 21,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "\"太郎\""
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "f8022cc9",
+   "metadata": {},
+   "source": [
+    "先ほど学んだ変数を使ってみよう。"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 22,
+   "id": "04e70188",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'次郎'"
+      ]
+     },
+     "execution_count": 22,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "name = \"次郎\"\n",
+    "name"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "17cf1b0c",
+   "metadata": {},
+   "source": [
+    "文字列においても `+` 演算子を使うことができる。文字列の場合は、連結を表す。"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 23,
+   "id": "0472ea0f",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'おはよう、次郎さん'"
+      ]
+     },
+     "execution_count": 23,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "greeting = \"おはよう、\" + name + \"さん\"\n",
+    "greeting"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "f6a4e6a8",
+   "metadata": {},
+   "source": [
+    "### f文字列"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "cee86d96",
+   "metadata": {},
+   "source": [
+    "上の `greeting` で行ったように、変数と組み合わせて表示用の文字列を加工する操作はよく行われる。\n",
+    "このとき便利なのが **f文字列** である。\n",
+    "これについては実際に使っているところを見せるのが早いだろう。"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 24,
+   "id": "64d0b7ab",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'おはよう、次郎さん'"
+      ]
+     },
+     "execution_count": 24,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "greeting = f\"おはよう、{name}さん\"\n",
+    "greeting"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "75ccb437",
+   "metadata": {},
+   "source": [
+    "普通の文字列との違いは、先頭に `f` がついていることである。このとき波括弧 `{ }` で囲った部分は式と見なされ、評価した結果の値に置き換えられる。例えば変数の場合は、それの指し示すデータに置き換えられる。"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 25,
+   "id": "84283b00",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'おはよう、太郎さん'"
+      ]
+     },
+     "execution_count": 25,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "name = \"太郎\"\n",
+    "greeting = f\"おはよう、{name}さん\"\n",
+    "greeting"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "a0bf3648",
+   "metadata": {},
+   "source": [
+    "数式の場合の例を次に示す。"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 26,
+   "id": "b2dbd9e4",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'7 割る 3 = 2 余り 1'"
+      ]
+     },
+     "execution_count": 26,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "f\"7 割る 3 = {7//3} 余り {7%3}\""
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 27,
+   "id": "9374bd51",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'3の平方根の値は1.7320508075688772である'"
+      ]
+     },
+     "execution_count": 27,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "f\"3の平方根の値は{3**0.5}である\""
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "05738832",
+   "metadata": {},
+   "source": [
+    "小数の表示を第2位までにするには、`{式 : .2f}` と書く。"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 28,
+   "id": "b4c06795",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'3の平方根の値は1.73である'"
+      ]
+     },
+     "execution_count": 28,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "f\"3の平方根の値は{3**0.5:.2f}である\""
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "441334fd",
+   "metadata": {},
+   "source": [
+    "表示の整形のための記法は他にも色々とある。必要となったときに逐一調べると良いだろう。"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "72a74910",
+   "metadata": {},
+   "source": [
+    "## コメント"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "0bb95335",
+   "metadata": {},
+   "source": [
+    "プログラムにはコメントをつけることができる。\n",
+    "\n",
+    "`#` を入力すると、その行のそれ以降の文字はコメントとなり、Pythonの実行対象とならない。"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 29,
+   "id": "77f8a528",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "78.5"
+      ]
+     },
+     "execution_count": 29,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# これはコメントです。\n",
+    "\n",
+    "r = 5\n",
+    "pi = 3.14\n",
+    "pi * r ** 2  # 円の面積の計算"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "5af15d99",
+   "metadata": {},
+   "source": [
+    "下のプログラムにコメントを書き加えてみよう。"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 30,
+   "id": "4b69ab36",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "3.0"
+      ]
+     },
+     "execution_count": 30,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "m = (1 + 2 + 3 + 4 + 5) / 5\n",
+    "m"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "cb451ce9",
+   "metadata": {},
+   "source": [
+    "## エラーと対処法"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "5cb62cdd",
+   "metadata": {},
+   "source": [
+    "これまでプログラムを実行してきて、何度かエラーに遭遇したのではないだろうか。\n",
+    "エラーの原因をつきとめて修正する作業のことを**デバッグ**という。\n",
+    "\n",
+    "ここではよくあるエラーを紹介する。\n",
+    "原因を考えながらエラーメッセージを読んでみよう。"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "941d0aa7",
+   "metadata": {},
+   "source": [
+    "**例1: 誤字**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 31,
+   "id": "303e21fb",
+   "metadata": {},
+   "outputs": [
+    {
+     "ename": "NameError",
+     "evalue": "name 'primt' is not defined",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+      "\u001b[0;31mNameError\u001b[0m                                 Traceback (most recent call last)",
+      "\u001b[0;32m/var/folders/p0/0zrw9jsj03v3vlszs8v3m2p40000gn/T/ipykernel_64125/1762608797.py\u001b[0m in \u001b[0;36m<module>\u001b[0;34m\u001b[0m\n\u001b[0;32m----> 1\u001b[0;31m \u001b[0mprimt\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m\"Hello, world!\"\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m",
+      "\u001b[0;31mNameError\u001b[0m: name 'primt' is not defined"
+     ]
+    }
+   ],
+   "source": [
+    "primt(\"Hello, world!\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "d8d37c3a",
+   "metadata": {},
+   "source": [
+    "エラーメッセージには、primtという変数は定義されていないと書かれている。\n",
+    "このような場合は、タイピングミスをしていないか確認しよう。"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "d97c7804",
+   "metadata": {},
+   "source": [
+    "**例2: 全角**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 32,
+   "id": "f32964e9",
+   "metadata": {},
+   "outputs": [
+    {
+     "ename": "SyntaxError",
+     "evalue": "invalid character '）' (U+FF09) (1922743172.py, line 1)",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[0;36m  File \u001b[0;32m\"/var/folders/p0/0zrw9jsj03v3vlszs8v3m2p40000gn/T/ipykernel_64125/1922743172.py\"\u001b[0;36m, line \u001b[0;32m1\u001b[0m\n\u001b[0;31m    print(\"Hello, world!\"）\u001b[0m\n\u001b[0m                         ^\u001b[0m\n\u001b[0;31mSyntaxError\u001b[0m\u001b[0;31m:\u001b[0m invalid character '）' (U+FF09)\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(\"Hello, world!\"）"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "e608054c",
+   "metadata": {},
+   "source": [
+    "エラーメッセージには、無効な文字 '）' があると書かれている。このような場合は、全角文字を使っていないか確認しよう。\n",
+    "\n",
+    "全角文字にまつわるエラーは、目で見てもよくわからないことがあるので厄介である。\n",
+    "次のエラーの原因がわかるだろうか？"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 33,
+   "id": "5ebd988f",
+   "metadata": {},
+   "outputs": [
+    {
+     "ename": "SyntaxError",
+     "evalue": "invalid non-printable character U+3000 (2817388938.py, line 1)",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[0;36m  File \u001b[0;32m\"/var/folders/p0/0zrw9jsj03v3vlszs8v3m2p40000gn/T/ipykernel_64125/2817388938.py\"\u001b[0;36m, line \u001b[0;32m1\u001b[0m\n\u001b[0;31m    print(\"Hello, world!\")\u001b[0m\n\u001b[0m                          ^\u001b[0m\n\u001b[0;31mSyntaxError\u001b[0m\u001b[0;31m:\u001b[0m invalid non-printable character U+3000\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(\"Hello, world!\")　"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "eb8aebbf",
+   "metadata": {},
+   "source": [
+    "**例3: 文字列の改行**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 34,
+   "id": "f7c3cd5a",
+   "metadata": {},
+   "outputs": [
+    {
+     "ename": "SyntaxError",
+     "evalue": "EOL while scanning string literal (4098129477.py, line 1)",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[0;36m  File \u001b[0;32m\"/var/folders/p0/0zrw9jsj03v3vlszs8v3m2p40000gn/T/ipykernel_64125/4098129477.py\"\u001b[0;36m, line \u001b[0;32m1\u001b[0m\n\u001b[0;31m    message = \"こんにちは。\u001b[0m\n\u001b[0m                     ^\u001b[0m\n\u001b[0;31mSyntaxError\u001b[0m\u001b[0;31m:\u001b[0m EOL while scanning string literal\n"
+     ]
+    }
+   ],
+   "source": [
+    "message = \"こんにちは。\n",
+    "今日の気温は15度です。\""
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "6fb13cfa",
+   "metadata": {},
+   "source": [
+    "エラーメッセージには、文字列をスキャンしている間に行末（End of Line）が来てしまったと書かれている。\n",
+    "\n",
+    "文字列は途中で改行することができない。改行を表現するには**エスケープシーケンス**を用いる。\n",
+    "まずは次の2つを覚えておけばよい。"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "6fa2f62e",
+   "metadata": {},
+   "source": [
+    "|  エスケープシーケンス  |  意味 |\n",
+    "| ---- | ---- |\n",
+    "|  `\\n`  |  改行  |\n",
+    "|  `\\t`  |  タブ  |"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "606cdd45",
+   "metadata": {},
+   "source": [
+    "エスケープシーケンスを用いれば、上の例は次のように修正できる。なお、`print()`を使わないと`\\n`がそのまま表示されてしまうので、ここでは`print()`を用いる。"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 35,
+   "id": "b6529a77",
    "metadata": {},
    "outputs": [
     {
      "name": "stdout",
      "output_type": "stream",
      "text": [
-      "Hello World!\n"
+      "こんにちは。\n",
+      "今日の気温は15度です。\n"
      ]
     }
    ],
    "source": [
-    "print(\"Hello World!\")"
+    "message = \"こんにちは。\\n今日の気温は15度です。\"\n",
+    "print(message)"
    ]
   },
   {
    "cell_type": "markdown",
-   "id": "68246b9c",
+   "id": "d16791c3",
    "metadata": {},
    "source": [
-    "次のようなボックス表現もできる。"
+    "もしくは1行のコードが長くならないように、コードを分割したいのであれば次のようにする。行末に `\\` を書くと、ここでコードを折り返すという意味になる。"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 36,
+   "id": "5497a179",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "こんにちは。今日の気温は15度です。\n"
+     ]
+    }
+   ],
+   "source": [
+    "message = \"こんにちは。\" + \\\n",
+    "    \"今日の気温は15度です。\"\n",
+    "print(message)"
    ]
   },
   {
    "cell_type": "markdown",
-   "id": "2d67c55d",
+   "id": "db64867a",
    "metadata": {},
    "source": [
     "<div class=\"alert alert-info\">\n",
-    "\n",
-    "Note\n",
-    "    \n",
-    "ちょっとした小話などを書く。\n",
-    "\n",
+    "    \\\\ と ¥\n",
+    "    <p>\n",
+    "        MacやLinuxにおいて \\\\ に相当する記号は、Windowsでは ¥ になる。Windowsを使っている方は、適宜 \\\\ を ¥ に読み替えてほしい。例えば、改行を表すエスケープシーケンスは、Windowsでは ¥n である。\n",
+    "    </p>\n",
     "</div>"
    ]
   },
   {
    "cell_type": "markdown",
-   "id": "14d3022c",
+   "id": "30b8aaf3",
    "metadata": {},
    "source": [
-    "プロットや画像の表示も問題ない。"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 2,
-   "id": "6bd00362",
-   "metadata": {},
-   "outputs": [
-    {
-     "data": {
-      "image/png": "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\n",
-      "text/plain": [
-       "<Figure size 432x288 with 1 Axes>"
-      ]
-     },
-     "metadata": {
-      "needs_background": "light"
-     },
-     "output_type": "display_data"
-    }
-   ],
-   "source": [
-    "import matplotlib.pyplot as plt\n",
-    "plt.plot([1, 2, 3], [3, 2, 4])\n",
-    "plt.show()"
+    "<div class=\"alert alert-info\">\n",
+    "    エラーが解決できなかったら？\n",
+    "    <p>\n",
+    "        もし自力で解決できそうにないエラーに遭遇したら、エラーメッセージを検索してみよう。多くの場合、解決のためのヒントが見つかるだろう。\n",
+    "    </p>\n",
+    "</div>"
    ]
   }
  ],
