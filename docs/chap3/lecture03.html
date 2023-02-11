@@ -712,7 +712,7 @@ Hello, world!
 <td><p>割り算</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">//</span></code></p></td>
-<td><p>割り算（少数を切り捨て）</p></td>
+<td><p>割り算（小数を切り捨て）</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">%</span></code></p></td>
 <td><p>割り算の余り</p></td>
@@ -1138,8 +1138,9 @@ Hello, world!
 <li><p>変数の先頭に数字は使えない。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">for</span></code> や <code class="docutils literal notranslate"><span class="pre">if</span></code> などの文法的に意味のある単語（<strong>予約語</strong>）は、そのまま単体では使えない。</p></li>
 </ol>
-<p>例えば、<code class="docutils literal notranslate"><span class="pre">price_apple</span></code> は変数名にできるが、<code class="docutils literal notranslate"><span class="pre">price-apple</span></code> はエラーになる。<code class="docutils literal notranslate"><span class="pre">a1</span></code> は変数名にできるが、<code class="docutils literal notranslate"><span class="pre">1a</span></code> はエラーになる。 また、<code class="docutils literal notranslate"><span class="pre">if</span></code> は使えないが、<code class="docutils literal notranslate"><span class="pre">value_if_a</span></code> のような変数名はOKである。変数名はなるべく英語で表現するのが理想だが、難しければ日本語のローマ字で表現してもよい。</p>
-<p>下のセルを使って、上のルールを確かめてみよう。</p>
+<p>例えば、<code class="docutils literal notranslate"><span class="pre">price_apple</span></code> は変数名にできるが、<code class="docutils literal notranslate"><span class="pre">price-apple</span></code> はエラーになる。<code class="docutils literal notranslate"><span class="pre">a1</span></code> は変数名にできるが、<code class="docutils literal notranslate"><span class="pre">1a</span></code> はエラーになる。 また、<code class="docutils literal notranslate"><span class="pre">if</span></code> は使えないが、<code class="docutils literal notranslate"><span class="pre">value_if_a</span></code> は変数名にできる。</p>
+<p>変数名はなるべく英語で表現するのが理想的だが、難しければ日本語のローマ字で表現してもよい。 例えば、みかんは英語で書くと<code class="docutils literal notranslate"><span class="pre">mandarin</span></code>であるが、日本人にとっては<code class="docutils literal notranslate"><span class="pre">mikan</span></code>の方がわかりやすいだろう。</p>
+<p>下のセルを使って、上のルールを確かめてみよう。例えば <code class="docutils literal notranslate"><span class="pre">1a</span> <span class="pre">=</span> <span class="pre">2</span></code> などと入力してみよう。</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
@@ -1358,7 +1359,7 @@ Hello, world!
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-<span class="ansi-cyan-fg">  File </span><span class="ansi-green-fg">&#34;/var/folders/p0/0zrw9jsj03v3vlszs8v3m2p40000gn/T/ipykernel_64699/4098129477.py&#34;</span><span class="ansi-cyan-fg">, line </span><span class="ansi-green-fg">1</span>
+<span class="ansi-cyan-fg">  File </span><span class="ansi-green-fg">&#34;/var/folders/p0/0zrw9jsj03v3vlszs8v3m2p40000gn/T/ipykernel_67230/4098129477.py&#34;</span><span class="ansi-cyan-fg">, line </span><span class="ansi-green-fg">1</span>
 <span class="ansi-red-fg">    message = &#34;こんにちは。</span>
                      ^
 <span class="ansi-red-fg">SyntaxError</span><span class="ansi-red-fg">:</span> EOL while scanning string literal
@@ -1408,6 +1409,17 @@ Hello, world!
 <p class="admonition-title">\ と ¥</p>
 <p><p>MacやLinuxにおいて \ に相当する記号は、Windowsでは ¥ になる。Windowsを使っている方は、適宜 \ を ¥ に読み替えてほしい。例えば、改行を表すエスケープシーケンスは、Windowsでは ¥n である。</p>
 </p></div>
+<div class="admonition note">
+<p class="admonition-title">コードの改行</p>
+<p><p>コードの1行が長くなると、2行に分けて記述したくなることがある。そんなときは文末に<code class="docutils literal notranslate"><span class="pre">\</span></code>と入力すると、次の行に継続してコードを書くことができる。例えば、</p>
+</p><pre>
+calc = 1 + 2 + \
+    3 + 4 + 5
+message = "The place is " + \
+    "beautiful."</pre><p><p>は次のコードと同じ意味になる。</p>
+</p><pre>
+calc = 1 + 2 + 3 + 4 + 5
+message = "The place is " + "beautiful."</pre></div>
 </section>
 </section>
 <section id="コメント">
@@ -1475,7 +1487,7 @@ Hello, world!
 <div class="highlight"><pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-fg">/var/folders/p0/0zrw9jsj03v3vlszs8v3m2p40000gn/T/ipykernel_64699/1762608797.py</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-fg">/var/folders/p0/0zrw9jsj03v3vlszs8v3m2p40000gn/T/ipykernel_67230/1762608797.py</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
 <span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>primt<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#34;Hello, world!&#34;</span><span class="ansi-blue-fg">)</span>
 
 <span class="ansi-red-fg">NameError</span>: name &#39;primt&#39; is not defined
@@ -1496,7 +1508,7 @@ Hello, world!
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-<span class="ansi-cyan-fg">  File </span><span class="ansi-green-fg">&#34;/var/folders/p0/0zrw9jsj03v3vlszs8v3m2p40000gn/T/ipykernel_64699/1922743172.py&#34;</span><span class="ansi-cyan-fg">, line </span><span class="ansi-green-fg">1</span>
+<span class="ansi-cyan-fg">  File </span><span class="ansi-green-fg">&#34;/var/folders/p0/0zrw9jsj03v3vlszs8v3m2p40000gn/T/ipykernel_67230/1922743172.py&#34;</span><span class="ansi-cyan-fg">, line </span><span class="ansi-green-fg">1</span>
 <span class="ansi-red-fg">    print(&#34;Hello, world!&#34;）</span>
                          ^
 <span class="ansi-red-fg">SyntaxError</span><span class="ansi-red-fg">:</span> invalid character &#39;）&#39; (U+FF09)
@@ -1518,7 +1530,7 @@ Hello, world!
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-<span class="ansi-cyan-fg">  File </span><span class="ansi-green-fg">&#34;/var/folders/p0/0zrw9jsj03v3vlszs8v3m2p40000gn/T/ipykernel_64699/2817388938.py&#34;</span><span class="ansi-cyan-fg">, line </span><span class="ansi-green-fg">1</span>
+<span class="ansi-cyan-fg">  File </span><span class="ansi-green-fg">&#34;/var/folders/p0/0zrw9jsj03v3vlszs8v3m2p40000gn/T/ipykernel_67230/2817388938.py&#34;</span><span class="ansi-cyan-fg">, line </span><span class="ansi-green-fg">1</span>
 <span class="ansi-red-fg">    print(&#34;Hello, world!&#34;)</span>
                           ^
 <span class="ansi-red-fg">SyntaxError</span><span class="ansi-red-fg">:</span> invalid non-printable character U+3000
@@ -1540,7 +1552,7 @@ Hello, world!
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-<span class="ansi-cyan-fg">  File </span><span class="ansi-green-fg">&#34;/var/folders/p0/0zrw9jsj03v3vlszs8v3m2p40000gn/T/ipykernel_64699/869639648.py&#34;</span><span class="ansi-cyan-fg">, line </span><span class="ansi-green-fg">2</span>
+<span class="ansi-cyan-fg">  File </span><span class="ansi-green-fg">&#34;/var/folders/p0/0zrw9jsj03v3vlszs8v3m2p40000gn/T/ipykernel_67230/869639648.py&#34;</span><span class="ansi-cyan-fg">, line </span><span class="ansi-green-fg">2</span>
 <span class="ansi-red-fg">    print(message)</span>
     ^
 <span class="ansi-red-fg">IndentationError</span><span class="ansi-red-fg">:</span> unexpected indent

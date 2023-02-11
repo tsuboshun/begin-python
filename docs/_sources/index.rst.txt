@@ -3,11 +3,12 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-プログラミング実習講義１のページへようこそ！
+プログラミング実習講義１の授業ページ
 ===================================================
 
-| サブタイトル:　Pythonで学ぶデータサイエンスの世界
-| 講師:　`大坪舜 <https://www.linkedin.com/in/shun-otsubo/>`_
+* サブタイトル:  **Pythonで学ぶデータサイエンスの世界**
+* 開催:  東洋大学経営学部経営学科
+* 講師:  大坪舜  （`linkedin <https://www.linkedin.com/in/shun-otsubo/>`_）
 
 はじめに
 -----------
