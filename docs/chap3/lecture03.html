@@ -37,6 +37,7 @@
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
+    <link rel="next" title="第9回 アルゴリズム入門：データの整列" href="../chap9/lecture09.html" />
     <link rel="prev" title="第2回 ITを支えるコンピュータのしくみ" href="../chap2/lecture02.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="ja">
@@ -103,6 +104,16 @@
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    第3回 はじめてのPython
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../chap9/lecture09.html">
+   第9回 アルゴリズム入門：データの整列
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../chap13/lecture13.html">
+   第13回 データの可視化
   </a>
  </li>
 </ul>
@@ -678,7 +689,7 @@ Hello, world!
 </pre></div></div>
 </div>
 <p>ノートブックの文字を入力できる部分を<strong>セル</strong>という。 セルに見本通りに文字を入力して、左の実行ボタンを押すと Hello, world! と表示されるはずだ。 この Hello, world! と表示させるプログラムは、どのプログラミング言語でも最初の一歩として紹介されることが多い。</p>
-<p>このようなコンピューターに対する命令のことを<strong>プログラム</strong>といい、それをPythonなどの言語で記述したものを<strong>ソースコード</strong> （または<strong>コード</strong>）という。 また、左の実行ボタンを押す以外の実行方法として、キーボードで Shift を押しながら Enter と入力する方法がある。便利なので覚えておこう。</p>
+<p>前回の復習になるが、このようなコンピューターに対する命令のことを<strong>プログラム</strong>といい、それをPythonなどの言語で記述したものを<strong>ソースコード</strong> （または<strong>コード</strong>）という。 また、左の実行ボタンを押す以外の実行方法として、キーボードで Shift を押しながら Enter と入力する方法がある。便利なので覚えておこう。</p>
 <div class="admonition note">
 <p class="admonition-title">半角と全角</p>
 <p><p>上のコードを入力する際に、全角文字を使うとその場所によってはエラーになる。あとで説明するように日本語の文字列データを扱うときや、コメントを書くとき以外は、全角文字を使うことはほぼない。 常に半角文字になっているか気をつけながら入力する習慣をつけよう。</p>
@@ -1134,12 +1145,12 @@ Hello, world!
 <h3>変数名の付け方<a class="headerlink" href="#変数名の付け方" title="このヘッドラインへのパーマリンク">#</a></h3>
 <p>変数の名前は自由につけることができるが、いくつかルールがある。</p>
 <ol class="arabic simple">
-<li><p>使える文字は <strong>アルファベット</strong>、<strong>数字</strong>、<strong>アンダースコア（ _ ）</strong> のみである。</p></li>
+<li><p>使える文字はアルファベット、数字、アンダースコア（ _ ） のみである。</p></li>
 <li><p>変数の先頭に数字は使えない。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">for</span></code> や <code class="docutils literal notranslate"><span class="pre">if</span></code> などの文法的に意味のある単語（<strong>予約語</strong>）は、そのまま単体では使えない。</p></li>
 </ol>
 <p>例えば、<code class="docutils literal notranslate"><span class="pre">price_apple</span></code> は変数名にできるが、<code class="docutils literal notranslate"><span class="pre">price-apple</span></code> はエラーになる。<code class="docutils literal notranslate"><span class="pre">a1</span></code> は変数名にできるが、<code class="docutils literal notranslate"><span class="pre">1a</span></code> はエラーになる。 また、<code class="docutils literal notranslate"><span class="pre">if</span></code> は使えないが、<code class="docutils literal notranslate"><span class="pre">value_if_a</span></code> は変数名にできる。</p>
-<p>変数名はなるべく英語で表現するのが理想的だが、難しければ日本語のローマ字で表現してもよい。 例えば、みかんは英語で書くと<code class="docutils literal notranslate"><span class="pre">mandarin</span></code>であるが、日本人にとっては<code class="docutils literal notranslate"><span class="pre">mikan</span></code>の方がわかりやすいだろう。</p>
+<p>変数名はなるべく英語で表現するのが理想的だが、難しければ日本語のローマ字で表現してもよい。 例えば、みかんは英語で書くと <code class="docutils literal notranslate"><span class="pre">mandarin</span></code> であるが、日本人にとっては <code class="docutils literal notranslate"><span class="pre">mikan</span></code> の方がわかりやすいだろう。</p>
 <p>下のセルを使って、上のルールを確かめてみよう。例えば <code class="docutils literal notranslate"><span class="pre">1a</span> <span class="pre">=</span> <span class="pre">2</span></code> などと入力してみよう。</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
@@ -1154,7 +1165,7 @@ Hello, world!
 <section id="文字列">
 <h2>文字列<a class="headerlink" href="#文字列" title="このヘッドラインへのパーマリンク">#</a></h2>
 <p>これまで数値データを見てきたが、文字もデータとして扱うことができる。</p>
-<p>Hello, world!プログラムを思い出そう。Pythonでは両端を <strong>シングルクォーテーション（ ’ ）</strong>または <strong>ダブルクォーテーション（ ” ）</strong>で囲うと、文字列データとなる。ただし両端の記号は合わせる必要がある。</p>
+<p>Hello, world!プログラムを思い出そう。Pythonでは両端をシングルクォーテーション（ ’ ）またはダブルクォーテーション（ ” ）で囲うと、文字列データとなる。ただし両端の記号は合わせる必要がある。</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
 </pre></div>
@@ -1581,6 +1592,13 @@ message = "The place is " + "beautiful."</pre></div>
             <p class="prev-next-subtitle">前へ</p>
             <p class="prev-next-title">第2回 ITを支えるコンピュータのしくみ</p>
         </div>
+    </a>
+    <a class='right-next' id="next-link" href="../chap9/lecture09.html" title="次へ ページ">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">次へ</p>
+        <p class="prev-next-title">第9回 アルゴリズム入門：データの整列</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             </footer>
