@@ -23,5 +23,9 @@
    ./chap1/lecture01
    ./chap2/lecture02
    ./chap3/lecture03
+   ./chap4/lecture04
+   ./chap5/lecture05
    ./chap9/lecture09
+   ./chap10/lecture10
    ./chap13/lecture13
+   ./chap14/lecture14

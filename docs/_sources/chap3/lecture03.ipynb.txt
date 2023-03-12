@@ -567,6 +567,13 @@
     "名前 = 式\n",
     "</pre>\n",
     "左辺の名前のことを**変数**という。右辺はあえてデータではなく式と表現した。式の場合はそれを評価した結果の値に名前がつく。\n",
+    "またこのような操作を**代入**という。\n",
+    "\n",
+    "次の図のように、変数はデータに対する付箋のようなものと考えるとよい。大事なことは変数がデータそのものになるわけではないということである。\n",
+    "\n",
+    "<center>\n",
+    "    <img src = \"./pic/variable.png\" width=\"30%\">\n",
+    "</center>\n",
     "\n",
     "変数を使うと、練習1の答えは次のように求めることができる。"
    ]
@@ -1159,7 +1166,7 @@
      "evalue": "EOL while scanning string literal (4098129477.py, line 1)",
      "output_type": "error",
      "traceback": [
-      "\u001b[0;36m  File \u001b[0;32m\"/var/folders/p0/0zrw9jsj03v3vlszs8v3m2p40000gn/T/ipykernel_67230/4098129477.py\"\u001b[0;36m, line \u001b[0;32m1\u001b[0m\n\u001b[0;31m    message = \"こんにちは。\u001b[0m\n\u001b[0m                     ^\u001b[0m\n\u001b[0;31mSyntaxError\u001b[0m\u001b[0;31m:\u001b[0m EOL while scanning string literal\n"
+      "\u001b[0;36m  File \u001b[0;32m\"/var/folders/p0/0zrw9jsj03v3vlszs8v3m2p40000gn/T/ipykernel_35732/4098129477.py\"\u001b[0;36m, line \u001b[0;32m1\u001b[0m\n\u001b[0;31m    message = \"こんにちは。\u001b[0m\n\u001b[0m                     ^\u001b[0m\n\u001b[0;31mSyntaxError\u001b[0m\u001b[0;31m:\u001b[0m EOL while scanning string literal\n"
      ]
     }
    ],
@@ -1366,7 +1373,7 @@
      "traceback": [
       "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
       "\u001b[0;31mNameError\u001b[0m                                 Traceback (most recent call last)",
-      "\u001b[0;32m/var/folders/p0/0zrw9jsj03v3vlszs8v3m2p40000gn/T/ipykernel_67230/1762608797.py\u001b[0m in \u001b[0;36m<module>\u001b[0;34m\u001b[0m\n\u001b[0;32m----> 1\u001b[0;31m \u001b[0mprimt\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m\"Hello, world!\"\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m",
+      "\u001b[0;32m/var/folders/p0/0zrw9jsj03v3vlszs8v3m2p40000gn/T/ipykernel_35732/1762608797.py\u001b[0m in \u001b[0;36m<module>\u001b[0;34m\u001b[0m\n\u001b[0;32m----> 1\u001b[0;31m \u001b[0mprimt\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m\"Hello, world!\"\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m",
       "\u001b[0;31mNameError\u001b[0m: name 'primt' is not defined"
      ]
     }
@@ -1403,7 +1410,7 @@
      "evalue": "invalid character '）' (U+FF09) (1922743172.py, line 1)",
      "output_type": "error",
      "traceback": [
-      "\u001b[0;36m  File \u001b[0;32m\"/var/folders/p0/0zrw9jsj03v3vlszs8v3m2p40000gn/T/ipykernel_67230/1922743172.py\"\u001b[0;36m, line \u001b[0;32m1\u001b[0m\n\u001b[0;31m    print(\"Hello, world!\"）\u001b[0m\n\u001b[0m                         ^\u001b[0m\n\u001b[0;31mSyntaxError\u001b[0m\u001b[0;31m:\u001b[0m invalid character '）' (U+FF09)\n"
+      "\u001b[0;36m  File \u001b[0;32m\"/var/folders/p0/0zrw9jsj03v3vlszs8v3m2p40000gn/T/ipykernel_35732/1922743172.py\"\u001b[0;36m, line \u001b[0;32m1\u001b[0m\n\u001b[0;31m    print(\"Hello, world!\"）\u001b[0m\n\u001b[0m                         ^\u001b[0m\n\u001b[0;31mSyntaxError\u001b[0m\u001b[0;31m:\u001b[0m invalid character '）' (U+FF09)\n"
      ]
     }
    ],
@@ -1433,7 +1440,7 @@
      "evalue": "invalid non-printable character U+3000 (2817388938.py, line 1)",
      "output_type": "error",
      "traceback": [
-      "\u001b[0;36m  File \u001b[0;32m\"/var/folders/p0/0zrw9jsj03v3vlszs8v3m2p40000gn/T/ipykernel_67230/2817388938.py\"\u001b[0;36m, line \u001b[0;32m1\u001b[0m\n\u001b[0;31m    print(\"Hello, world!\")\u001b[0m\n\u001b[0m                          ^\u001b[0m\n\u001b[0;31mSyntaxError\u001b[0m\u001b[0;31m:\u001b[0m invalid non-printable character U+3000\n"
+      "\u001b[0;36m  File \u001b[0;32m\"/var/folders/p0/0zrw9jsj03v3vlszs8v3m2p40000gn/T/ipykernel_35732/2817388938.py\"\u001b[0;36m, line \u001b[0;32m1\u001b[0m\n\u001b[0;31m    print(\"Hello, world!\")\u001b[0m\n\u001b[0m                          ^\u001b[0m\n\u001b[0;31mSyntaxError\u001b[0m\u001b[0;31m:\u001b[0m invalid non-printable character U+3000\n"
      ]
     }
    ],
@@ -1460,7 +1467,7 @@
      "evalue": "unexpected indent (869639648.py, line 2)",
      "output_type": "error",
      "traceback": [
-      "\u001b[0;36m  File \u001b[0;32m\"/var/folders/p0/0zrw9jsj03v3vlszs8v3m2p40000gn/T/ipykernel_67230/869639648.py\"\u001b[0;36m, line \u001b[0;32m2\u001b[0m\n\u001b[0;31m    print(message)\u001b[0m\n\u001b[0m    ^\u001b[0m\n\u001b[0;31mIndentationError\u001b[0m\u001b[0;31m:\u001b[0m unexpected indent\n"
+      "\u001b[0;36m  File \u001b[0;32m\"/var/folders/p0/0zrw9jsj03v3vlszs8v3m2p40000gn/T/ipykernel_35732/869639648.py\"\u001b[0;36m, line \u001b[0;32m2\u001b[0m\n\u001b[0;31m    print(message)\u001b[0m\n\u001b[0m    ^\u001b[0m\n\u001b[0;31mIndentationError\u001b[0m\u001b[0;31m:\u001b[0m unexpected indent\n"
      ]
     }
    ],
