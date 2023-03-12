@@ -705,7 +705,7 @@ str
 <p>上から順に <code class="docutils literal notranslate"><span class="pre">3</span></code> は整数型、<code class="docutils literal notranslate"><span class="pre">3.14</span></code> は浮動小数点数型、<code class="docutils literal notranslate"><span class="pre">&quot;text&quot;</span></code> は文字列型という結果になった。</p>
 <p>ここで使った <code class="docutils literal notranslate"><span class="pre">type()</span></code> は、データを受け取り、そのデータ型を調べて結果を返した。 このようにデータを受け取って、何らかの処理を行った上で、必要に応じて結果を返すものを<strong>関数</strong>という。 関数は<strong>引数</strong>という変数を通じてデータを受け取り、必要に応じて<strong>戻り値</strong>を返す。 例えば <code class="docutils literal notranslate"><span class="pre">type(&quot;text&quot;)</span></code> というコードでは、<code class="docutils literal notranslate"><span class="pre">type()</span></code> 関数は <code class="docutils literal notranslate"><span class="pre">&quot;text&quot;</span></code> というデータを引数として受け取り、<code class="docutils literal notranslate"><span class="pre">str</span></code> という型を戻り値として返している。</p>
 <p>関数によっては引数を複数持つこともあり、その場合はデータを <code class="docutils literal notranslate"><span class="pre">,</span></code> で区切って渡す。関数の使い方を一般的な形で図に表すと、次のようになる。</p>
-<center><p><img alt="c39c52ae94fe46a19ab4717601b0d028" class="no-scaled-link" src="../_images/func.png" style="width: 40%;" /></p>
+<center><p><img alt="9db9a737536f40e3bfb16a225fef3acb" class="no-scaled-link" src="../_images/func.png" style="width: 40%;" /></p>
 </center><p>実は前回の講義でも説明なしに <code class="docutils literal notranslate"><span class="pre">print()</span></code> という関数を使っていた。<code class="docutils literal notranslate"><span class="pre">print()</span></code> は複数のデータを受け取り、戻り値を返さない関数である。</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
@@ -949,7 +949,7 @@ list
 </pre></div></div>
 </div>
 <p>リストの各要素には<strong>インデックス</strong>と呼ばれる整数を使ってアクセスする。 左から読むか、右から読むかに応じて2種類のアクセス方法がある。 次の図に各要素とインデックスの関係を表す。</p>
-<center><p><img alt="c1adb2e8395b468bade1fb4c753b8477" class="no-scaled-link" src="../_images/index.png" style="width: 80%;" /></p>
+<center><p><img alt="8d4c695c39694b2d9beee9c5314ae9b2" class="no-scaled-link" src="../_images/index.png" style="width: 80%;" /></p>
 </center><p>例えば <code class="docutils literal notranslate"><span class="pre">&quot;four&quot;</span></code> という要素には次のようにアクセスすることができる。</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
@@ -989,7 +989,7 @@ list
 </section>
 <section id="真偽型">
 <h3>真偽型<a class="headerlink" href="#真偽型" title="このヘッドラインへのパーマリンク">#</a></h3>
-<p>真偽型（bool）は <code class="docutils literal notranslate"><span class="pre">True</span></code> もしくは <code class="docutils literal notranslate"><span class="pre">False</span></code> の2種類の値をとり、真か偽かを表すデータ型である。</p>
+<p>真偽型（bool）は <code class="docutils literal notranslate"><span class="pre">True</span></code> もしくは <code class="docutils literal notranslate"><span class="pre">False</span></code> の2種類の値をとり、それぞれ真か偽かを表すデータ型である。</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
 </pre></div>
@@ -1150,7 +1150,7 @@ False
 <section id="オブジェクトとメソッド">
 <h2>オブジェクトとメソッド<a class="headerlink" href="#オブジェクトとメソッド" title="このヘッドラインへのパーマリンク">#</a></h2>
 <p>関数の中には、それぞれのデータ型に専属の関数も存在する。 そのような関数のことを<strong>メソッド</strong>という。 関数とは異なり、メソッドはデータの後ろに <code class="docutils literal notranslate"><span class="pre">.メソッド名()</span></code> とつなげて使用する。 メソッドの使い方を一般的な形で図に表すと、次のようになる。</p>
-<center><p><img alt="bd530261c7494b9aa70c71101a65fc24" class="no-scaled-link" src="../_images/method.png" style="width: 60%;" /></p>
+<center><p><img alt="81846a0a784e4d1a93a056c8c3be4664" class="no-scaled-link" src="../_images/method.png" style="width: 60%;" /></p>
 </center><p>例として、文字列型のメソッドである <code class="docutils literal notranslate"><span class="pre">split()</span></code> を見てみよう。<code class="docutils literal notranslate"><span class="pre">split()</span></code> は引数に渡した区切り文字をもとに、文字列を区切ってリストとして返す。</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
@@ -1285,7 +1285,7 @@ False
 </div>
 <p>さて、データとそれに付随するメソッドを合わせて<strong>オブジェクト</strong>という。 オブジェクトは日本語では物という意味である。 小難しい話になるがPythonに出てくる全ての要素はオブジェクトとして作られており、これまで学んできたデータ型もオブジェクトである。 オブジェクトは<strong>クラス</strong>により設計され、その設計にもとづいて<strong>インスタンス</strong>と呼ばれる実体が作られる。</p>
 <p>ここまで出てきた概念について、理解を深めるために工作の例え話で説明してみよう。 例えば、木材を加工する状況を考える。 一言に木材といっても、重さや手触りなど１つ１つの木材には個性がある。 今、手にしている木材は、木材という概念を具象化したものであり、木材という概念がクラス、具象化したものがインスタンスにあたる。</p>
-<p>木材を加工するときには、例えばノコギリを使って切ることになるだろう。 このノコギリを使って切るという行為は、木材ならば個性に関係なく適用することができるメソッドと捉えることができる。 ガラスなど他の物質はノコギリを使って切ることはできないので、これは基本的に木材に特有の行為である。</p>
+<p>木材を加工するときには、例えばノコギリを使って切ることになるだろう。 このノコギリを使って切るという行為は、木材ならば個性に関係なく適用することができるため、メソッドと捉えることができる。 ガラスなど他の物質はノコギリを使って切ることはできないので、これは基本的に木材に専属の行為である。</p>
 <p>文字列型のデータを例に、今の話をなぞってみよう。文字列 <code class="docutils literal notranslate"><span class="pre">&quot;mikan&quot;</span></code> および <code class="docutils literal notranslate"><span class="pre">&quot;banana&quot;</span></code> は異なる値（個性）を持ち、それぞれ文字列クラスのインスタンスである。どちらも文字列に専属の <code class="docutils literal notranslate"><span class="pre">split()</span></code> メソッドを適用できるが、その結果はそれぞれの値に応じて異なる。</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
@@ -1348,15 +1348,15 @@ False
 <h2>演習<a class="headerlink" href="#演習" title="このヘッドラインへのパーマリンク">#</a></h2>
 <div class="line-block">
 <div class="line"><strong>課題1</strong></div>
-<div class="line">リスト <code class="docutils literal notranslate"><span class="pre">values</span></code> と、その中の要素 <code class="docutils literal notranslate"><span class="pre">x</span></code> を与える。<code class="docutils literal notranslate"><span class="pre">x</span></code> の <code class="docutils literal notranslate"><span class="pre">values</span></code> におけるインデックスを出力するプログラムを作成しなさい。</div>
+<div class="line">リスト <code class="docutils literal notranslate"><span class="pre">values</span></code> と、その中の要素 <code class="docutils literal notranslate"><span class="pre">v</span></code> を与える。<code class="docutils literal notranslate"><span class="pre">v</span></code> の <code class="docutils literal notranslate"><span class="pre">values</span></code> におけるインデックスを出力するプログラムを作成しなさい。</div>
 </div>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 以下は、values と x の一例</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 以下は、values と v の一例</span>
 <span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
-<span class="n">x</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">v</span> <span class="o">=</span> <span class="mi">2</span>
 
 <span class="c1">### 以下を埋めて、ここの部分のみ提出する</span>
 
@@ -1367,14 +1367,14 @@ False
 </div>
 </div>
 <p><strong>課題2</strong></p>
-<p>リスト <code class="docutils literal notranslate"><span class="pre">values</span></code> と、その中の要素 <code class="docutils literal notranslate"><span class="pre">x</span></code> を与える。<code class="docutils literal notranslate"><span class="pre">x</span></code> が <code class="docutils literal notranslate"><span class="pre">values</span></code> の左から何番目の要素かを出力するプログラムを作成しなさい。</p>
+<p>リスト <code class="docutils literal notranslate"><span class="pre">values</span></code> と、その中の要素 <code class="docutils literal notranslate"><span class="pre">v</span></code> を与える。<code class="docutils literal notranslate"><span class="pre">v</span></code> が <code class="docutils literal notranslate"><span class="pre">values</span></code> の左から何番目の要素かを出力するプログラムを作成しなさい。</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 以下は、values と x の一例</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 以下は、values と v の一例</span>
 <span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
-<span class="n">x</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">v</span> <span class="o">=</span> <span class="mi">2</span>
 
 <span class="c1">### 以下を埋めて、ここの部分のみ提出する</span>
 
@@ -1386,15 +1386,15 @@ False
 </div>
 <div class="line-block">
 <div class="line"><strong>課題3</strong></div>
-<div class="line">とある施設の受付の記録として、来場した順に苗字が <code class="docutils literal notranslate"><span class="pre">,</span></code> 区切りで入力された文字列データ <code class="docutils literal notranslate"><span class="pre">visitors</span></code> と、その中の人物 <code class="docutils literal notranslate"><span class="pre">name</span></code> を与える。 この人物が何人目の来場者だったかを調べて出力するプログラムを作成しなさい。</div>
+<div class="line">とある施設の来場者を記録した文字列データ <code class="docutils literal notranslate"><span class="pre">visitors</span></code> があり、お客さんの苗字が来場した順番に<code class="docutils literal notranslate"><span class="pre">,</span></code> 区切りで入力されているとする。 来場者の一人の苗字が <code class="docutils literal notranslate"><span class="pre">name</span></code> として与えられるとき、この人物が何人目の来場者だったかを調べて出力するプログラムを作成しなさい。</div>
 </div>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 以下は、visitors と name の一例</span>
-<span class="n">visitors</span> <span class="o">=</span> <span class="s2">&quot;Smith,Johnson,Brown,Taylor&quot;</span>
-<span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Brown&quot;</span>
+<span class="n">visitors</span> <span class="o">=</span> <span class="s2">&quot;Sato,Tanaka,Suzuki,Yamada,Matsumoto&quot;</span>
+<span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Tanaka&quot;</span>
 
 <span class="c1">### 以下を埋めて、ここの部分のみ提出する</span>
 
@@ -1406,15 +1406,15 @@ False
 </div>
 <div class="line-block">
 <div class="line"><strong>課題4</strong></div>
-<div class="line">課題3と同じ設定において、<code class="docutils literal notranslate"><span class="pre">visitors</span></code> のデータは来場者が自由に記入したものであるため、大文字と小文字の使い方に一貫性がなかったとする。一方で、<code class="docutils literal notranslate"><span class="pre">name</span></code> は頭文字を大文字、その他を小文字の形式で与えられるとする。このとき <code class="docutils literal notranslate"><span class="pre">name</span></code> の人物が何人目の来場者だったかを調べて出力するプログラムを作成しなさい。</div>
+<div class="line">課題3と同じ設定において、<code class="docutils literal notranslate"><span class="pre">visitors</span></code> のデータは来場者が自由に記入したものであるため、大文字と小文字の使い方に一貫性がなかったとする。<code class="docutils literal notranslate"><span class="pre">name</span></code> については全て小文字で与えるとするとき、<code class="docutils literal notranslate"><span class="pre">name</span></code> で指定される人物が何人目の来場者だったかを調べて出力するプログラムを作成しなさい。</div>
 </div>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 以下は、visitors と name の一例</span>
-<span class="n">visitors</span> <span class="o">=</span> <span class="s2">&quot;Smith,Johnson,BROWN,taylor&quot;</span>
-<span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Taylor&quot;</span>
+<span class="n">visitors</span> <span class="o">=</span> <span class="s2">&quot;Sato,tanaka,Suzuki,yamada,Matsumoto&quot;</span>
+<span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;suzuki&quot;</span>
 
 <span class="c1">### 以下を埋めて、ここの部分のみ提出する</span>
 
