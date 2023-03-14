@@ -705,7 +705,7 @@ str
 <p>上から順に <code class="docutils literal notranslate"><span class="pre">3</span></code> は整数型、<code class="docutils literal notranslate"><span class="pre">3.14</span></code> は浮動小数点数型、<code class="docutils literal notranslate"><span class="pre">&quot;text&quot;</span></code> は文字列型という結果になった。</p>
 <p>ここで使った <code class="docutils literal notranslate"><span class="pre">type()</span></code> は、データを受け取り、そのデータ型を調べて結果を返した。 このようにデータを受け取って、何らかの処理を行った上で、必要に応じて結果を返すものを<strong>関数</strong>という。 関数は<strong>引数</strong>という変数を通じてデータを受け取り、必要に応じて<strong>戻り値</strong>を返す。 例えば <code class="docutils literal notranslate"><span class="pre">type(&quot;text&quot;)</span></code> というコードでは、<code class="docutils literal notranslate"><span class="pre">type()</span></code> 関数は <code class="docutils literal notranslate"><span class="pre">&quot;text&quot;</span></code> というデータを引数として受け取り、<code class="docutils literal notranslate"><span class="pre">str</span></code> という型を戻り値として返している。</p>
 <p>関数によっては引数を複数持つこともあり、その場合はデータを <code class="docutils literal notranslate"><span class="pre">,</span></code> で区切って渡す。関数の使い方を一般的な形で図に表すと、次のようになる。</p>
-<center><p><img alt="9db9a737536f40e3bfb16a225fef3acb" class="no-scaled-link" src="../_images/func.png" style="width: 40%;" /></p>
+<center><p><img alt="573c379ca0b146f6b661fcf92fd86024" class="no-scaled-link" src="../_images/func.png" style="width: 40%;" /></p>
 </center><p>実は前回の講義でも説明なしに <code class="docutils literal notranslate"><span class="pre">print()</span></code> という関数を使っていた。<code class="docutils literal notranslate"><span class="pre">print()</span></code> は複数のデータを受け取り、戻り値を返さない関数である。</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
@@ -812,7 +812,7 @@ int
 float
 </pre></div></div>
 </div>
-<p>浮動小数点数が、小数を完璧な精度で表現していないという点は重要である。これは第2回の講義で説明したとおり、小数も内部では2進数で表現されており、例えば <code class="docutils literal notranslate"><span class="pre">1/3</span> <span class="pre">=</span> <span class="pre">0.3333...</span></code>のように無限に桁の続く小数を、有限のビット数では完璧には表現できないためである。 次の結果は驚きかもしれない。</p>
+<p>浮動小数点数が、小数を完璧な精度で表現していないという点は重要である。これは第2回の講義で説明したとおり、小数も内部では2進数で表現されており、例えば <code class="docutils literal notranslate"><span class="pre">1/3</span> <span class="pre">=</span> <span class="pre">0.3333...</span></code>のように無限に桁の続く小数を、有限のビット数では正確には表現できないためである。 次の結果は驚きかもしれない。</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
@@ -949,7 +949,7 @@ list
 </pre></div></div>
 </div>
 <p>リストの各要素には<strong>インデックス</strong>と呼ばれる整数を使ってアクセスする。 左から読むか、右から読むかに応じて2種類のアクセス方法がある。 次の図に各要素とインデックスの関係を表す。</p>
-<center><p><img alt="8d4c695c39694b2d9beee9c5314ae9b2" class="no-scaled-link" src="../_images/index.png" style="width: 80%;" /></p>
+<center><p><img alt="3172b57a7fa6485a90469792159da709" class="no-scaled-link" src="../_images/index.png" style="width: 80%;" /></p>
 </center><p>例えば <code class="docutils literal notranslate"><span class="pre">&quot;four&quot;</span></code> という要素には次のようにアクセスすることができる。</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
@@ -1125,7 +1125,7 @@ True
 False
 </pre></div></div>
 </div>
-<p>最後の結果は、浮動小数点数型のもつ誤差によるものである（<code class="docutils literal notranslate"><span class="pre">0.1</span> <span class="pre">*</span> <span class="pre">3</span></code> が <code class="docutils literal notranslate"><span class="pre">3.0</span></code> と等しいかどうか、誤差も加味して比較を行うにはどうしたら良いだろうか？）</p>
+<p>最後の結果は、浮動小数点数のもつ誤差によるものである（<code class="docutils literal notranslate"><span class="pre">0.1</span> <span class="pre">*</span> <span class="pre">3</span></code> が <code class="docutils literal notranslate"><span class="pre">3.0</span></code> と等しいかどうか、誤差も加味して比較を行うにはどうしたら良いだろうか？）</p>
 <p>もちろん真偽型のデータも、変数に代入することができる。</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
@@ -1150,7 +1150,7 @@ False
 <section id="オブジェクトとメソッド">
 <h2>オブジェクトとメソッド<a class="headerlink" href="#オブジェクトとメソッド" title="このヘッドラインへのパーマリンク">#</a></h2>
 <p>関数の中には、それぞれのデータ型に専属の関数も存在する。 そのような関数のことを<strong>メソッド</strong>という。 関数とは異なり、メソッドはデータの後ろに <code class="docutils literal notranslate"><span class="pre">.メソッド名()</span></code> とつなげて使用する。 メソッドの使い方を一般的な形で図に表すと、次のようになる。</p>
-<center><p><img alt="81846a0a784e4d1a93a056c8c3be4664" class="no-scaled-link" src="../_images/method.png" style="width: 60%;" /></p>
+<center><p><img alt="c91ad7df059e49118ff6295cdea1d88c" class="no-scaled-link" src="../_images/method.png" style="width: 60%;" /></p>
 </center><p>例として、文字列型のメソッドである <code class="docutils literal notranslate"><span class="pre">split()</span></code> を見てみよう。<code class="docutils literal notranslate"><span class="pre">split()</span></code> は引数に渡した区切り文字をもとに、文字列を区切ってリストとして返す。</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
@@ -1284,9 +1284,9 @@ False
 </pre></div></div>
 </div>
 <p>さて、データとそれに付随するメソッドを合わせて<strong>オブジェクト</strong>という。 オブジェクトは日本語では物という意味である。 小難しい話になるがPythonに出てくる全ての要素はオブジェクトとして作られており、これまで学んできたデータ型もオブジェクトである。 オブジェクトは<strong>クラス</strong>により設計され、その設計にもとづいて<strong>インスタンス</strong>と呼ばれる実体が作られる。</p>
-<p>ここまで出てきた概念について、理解を深めるために工作の例え話で説明してみよう。 例えば、木材を加工する状況を考える。 一言に木材といっても、重さや手触りなど１つ１つの木材には個性がある。 今、手にしている木材は、木材という概念を具象化したものであり、木材という概念がクラス、具象化したものがインスタンスにあたる。</p>
-<p>木材を加工するときには、例えばノコギリを使って切ることになるだろう。 このノコギリを使って切るという行為は、木材ならば個性に関係なく適用することができるため、メソッドと捉えることができる。 ガラスなど他の物質はノコギリを使って切ることはできないので、これは基本的に木材に専属の行為である。</p>
-<p>文字列型のデータを例に、今の話をなぞってみよう。文字列 <code class="docutils literal notranslate"><span class="pre">&quot;mikan&quot;</span></code> および <code class="docutils literal notranslate"><span class="pre">&quot;banana&quot;</span></code> は異なる値（個性）を持ち、それぞれ文字列クラスのインスタンスである。どちらも文字列に専属の <code class="docutils literal notranslate"><span class="pre">split()</span></code> メソッドを適用できるが、その結果はそれぞれの値に応じて異なる。</p>
+<p>ここで出てきた概念について、理解を深めるために工作の例え話で説明してみよう。 例えば、木材を加工する状況を考える。 一言に木材といっても、重さや手触りなど１つ１つの木材には個性がある。 今、手にしている木材は、木材という概念を具象化したものであり、木材という概念がクラス、具象化したものがインスタンスにあたる。</p>
+<p>木材を加工するときには、例えばノコギリを使って切ることになるだろう。 このノコギリを使って切るという行為は、木材ならば個性に関係なく適用することができるため、メソッドと捉えることができる。 ガラスなど他の物質はノコギリを使って切ることができないので、これは基本的に木材に専属の行為である。</p>
+<p>文字列型について、今の例え話に沿って説明してみよう。文字列 <code class="docutils literal notranslate"><span class="pre">&quot;mikan&quot;</span></code> および <code class="docutils literal notranslate"><span class="pre">&quot;banana&quot;</span></code> は異なる値（個性）を持ち、それぞれ文字列クラスのインスタンスである。どちらも文字列に専属の <code class="docutils literal notranslate"><span class="pre">split()</span></code> メソッドを適用できるが、その結果は値に応じて異なる。</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
 </pre></div>
@@ -1321,7 +1321,7 @@ False
 [&#39;b&#39;, &#39;n&#39;, &#39;n&#39;, &#39;&#39;]
 </pre></div></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">split()</span></code> 関数は文字列のメソッドであるから、他のクラスのインスタンスには適用できない。</p>
+<p><code class="docutils literal notranslate"><span class="pre">split()</span></code> は文字列のメソッドであるから、他のクラスのインスタンスには適用できない。</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
 </pre></div>
@@ -1342,7 +1342,6 @@ False
 
 </pre></div></div>
 </div>
-<p>データという材料を、関数やメソッドという道具を用いて加工していくことがプログラミングの基本形である。 しばらくは、既に用意されたデータ型（オブジェクト）・メソッドや関数を利用してプログラミングしていく。 新しい関数の作り方は第8回の講義で、新しいオブジェクトの作り方は第12回の講義で学ぶ。</p>
 </section>
 <section id="演習">
 <h2>演習<a class="headerlink" href="#演習" title="このヘッドラインへのパーマリンク">#</a></h2>
