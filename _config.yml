@@ -1,0 +1,32 @@
+# Book settings
+# Learn more at https://jupyterbook.org/customize/config.html
+
+title: 'プログラミング実習講義１'
+author: 大坪 舜 Shun Otsubo
+copyright: '2023（2023年3月30日公開）'
+
+exclude_patterns: [_build, .DS_Store, "**.ipynb_checkpoints", "README.md"]
+
+# Force re-execution of notebooks on each build.
+# See https://jupyterbook.org/content/execute.html
+execute:
+  execute_notebooks: off
+
+# Define the name of the latex output file for PDF builds
+latex:
+  latex_documents:
+    targetname: book.tex
+
+# Information about where the book exists on the web
+repository:
+  url: https://github.com/tsuboshun/begin-python  # Online location of your book
+  path_to_book: docs  # Optional path to your book, relative to the repository root
+  branch: master  # Which branch of the repository should be used when creating links (optional)
+
+# Add GitHub buttons to your book
+# See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
+html:
+  use_issues_button: false
+  use_repository_button: false
+  google_analytics_id: G-VFVQWRM1GN
+

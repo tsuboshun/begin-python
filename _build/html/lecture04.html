@@ -1,0 +1,960 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>第4回 プログラムの材料と道具 &#8212; プログラミング実習講義１</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-VFVQWRM1GN"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-VFVQWRM1GN');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lecture04';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="第5回 条件分岐" href="lecture05.html" />
+    <link rel="prev" title="第3回 はじめてのPython" href="lecture03.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">プログラミング実習講義１</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    プログラミング実習講義１のページ
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="lecture01.html">第1回 ガイダンス</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture02.html">第2回 ITを支えるコンピュータのしくみ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture03.html">第3回 はじめてのPython</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">第4回 プログラムの材料と道具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture05.html">第5回 条件分岐</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture06.html">第6回 繰り返し</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture07.html">第7回 データの入れ物</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture08.html">第8回 関数と再帰</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture09.html">第9回 アルゴリズム入門：データの整列</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture10.html">第10回 アルゴリズム入門：問題の複雑さ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture13.html">第13回 データの可視化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture14.html">第14回 データの読み方</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/lecture04.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>第4回 プログラムの材料と道具</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">この授業で学ぶこと</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">データと関数</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">整数型と浮動小数点数型</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">文字列型</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">リスト型</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">真偽型</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">オブジェクトとメソッド</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">演習</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>第4回 プログラムの材料と道具<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
+<hr class="docutils" />
+<p><a class="reference external" href="https://colab.research.google.com/github/tsuboshun/begin-python/blob/gh-pages/_sources/workbook/lecture04.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+<hr class="docutils" />
+<section id="id2">
+<h2>この授業で学ぶこと<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<p>第3回では、数値や文字列といった基本的なデータの扱い方を学んだ。
+プログラミングを工作に例えると、これらデータは材料にあたる。
+一方で、工作における道具にあたるものが関数やメソッドである。
+今回はデータについてさらに詳しく学び、関数やメソッドについても学ぶ。</p>
+</section>
+<section id="id3">
+<h2>データと関数<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<p>Pythonには数値や文字列の他にもいろいろな種類のデータがある。こうした種類の違いのことをデータの<strong>型</strong>（<strong>type</strong>）と言う。
+データ型には、<strong>整数型</strong>（<strong>int</strong>）、<strong>浮動小数点数型</strong>（<strong>float</strong>）、<strong>文字列型</strong>（<strong>str</strong>）、<strong>リスト型</strong>（<strong>list</strong>）、<strong>真偽型</strong>（<strong>bool</strong>）などがある。</p>
+<p>データ型を調べるには <code class="docutils literal notranslate"><span class="pre">type()</span></code> という関数を使う。関数とは何かについて説明する前に、まずは使ってみよう。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="mf">3.14</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="s2">&quot;text&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>上から順に <code class="docutils literal notranslate"><span class="pre">3</span></code> は整数型、<code class="docutils literal notranslate"><span class="pre">3.14</span></code> は浮動小数点数型、<code class="docutils literal notranslate"><span class="pre">&quot;text&quot;</span></code> は文字列型という結果になった。</p>
+<p>ここで使った <code class="docutils literal notranslate"><span class="pre">type()</span></code> は、データを受け取り、そのデータ型を調べて結果を返した。
+このようにデータを受け取って、何らかの処理を行った上で、必要に応じて結果を返すものを<strong>関数</strong>という。
+関数は<strong>引数</strong>という変数を通じてデータを受け取り、必要に応じて<strong>戻り値</strong>を返す。
+例えば <code class="docutils literal notranslate"><span class="pre">type(&quot;text&quot;)</span></code> というコードでは、<code class="docutils literal notranslate"><span class="pre">type()</span></code> 関数は <code class="docutils literal notranslate"><span class="pre">&quot;text&quot;</span></code> というデータを引数として受け取り、<code class="docutils literal notranslate"><span class="pre">str</span></code> という型を戻り値として返している。</p>
+<p>関数によっては引数を複数持つこともあり、その場合はデータを <code class="docutils literal notranslate"><span class="pre">,</span></code> で区切って渡す。関数の使い方を一般的な形で図に表すと、次のようになる。</p>
+<figure class="align-default" id="func">
+<a class="reference internal image-reference" href="_images/func.png"><img alt="_images/func.png" src="_images/func.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">関数の使い方</span><a class="headerlink" href="#func" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>実は前回の講義でも説明なしに <code class="docutils literal notranslate"><span class="pre">print()</span></code> という関数を使っていた。<code class="docutils literal notranslate"><span class="pre">print()</span></code> は複数のデータを受け取り、戻り値を返さない関数である。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;text1&quot;</span><span class="p">,</span> <span class="s2">&quot;text2&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>複数のデータを渡すと、空白を間に挟んで出力する。
+少し細かい話になるが、この出力は <code class="docutils literal notranslate"><span class="pre">print()</span></code> 関数の戻り値ではなく、出力するという処理を行ったと考えるのが正しい。
+次のコードは、戻り値に関して <code class="docutils literal notranslate"><span class="pre">type()</span></code> 関数と <code class="docutils literal notranslate"><span class="pre">print()</span></code> 関数を比較したものである。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="s2">&quot;text&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;text&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>ノートブック環境ではセルの最終行を評価した値が自動的に表示されるが、<code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">type(&quot;text&quot;)</span></code> のような代入文については評価しても出力されるものはない。
+一方で、<code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">=</span> <span class="pre">print(&quot;text&quot;)</span></code> を実行したときに <code class="docutils literal notranslate"><span class="pre">text</span></code> と表示されたのはノートブックの機能によるものではなく <code class="docutils literal notranslate"><span class="pre">print()</span></code> 関数の処理によるものである。
+また変数 <code class="docutils literal notranslate"><span class="pre">a</span></code> には <code class="docutils literal notranslate"><span class="pre">type()</span></code> 関数の戻り値 <code class="docutils literal notranslate"><span class="pre">str</span></code> が代入され、変数 <code class="docutils literal notranslate"><span class="pre">b</span></code> には値がないことがわかる。</p>
+<section id="id4">
+<h3>整数型と浮動小数点数型<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<p>それでは先ほど紹介したデータ型を順に見ていこう。
+まず整数型（int）は、名前のとおり整数を表すデータ型である。
+一方、浮動小数点数型（float）は、小数を一定の精度で表現したものである。</p>
+<p>例えば、<code class="docutils literal notranslate"><span class="pre">3</span></code> は整数型のデータとして扱われるが、<code class="docutils literal notranslate"><span class="pre">3.0</span></code> は浮動小数点数型のデータとして扱われる。
+以後、例えば整数型のデータのことを単に整数と呼ぶ。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="mf">3.0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>浮動小数点数が、小数を完璧な精度で表現していないという点は重要である。これは第2回の講義で説明したとおり、小数も内部では2進数で表現されており、例えば <code class="docutils literal notranslate"><span class="pre">1/3</span> <span class="pre">=</span> <span class="pre">0.3333...</span></code>のように無限に桁の続く小数を、有限のビット数では正確には表現できないためである。
+次の結果は驚きかもしれない。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mf">0.1</span> <span class="o">*</span> <span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>わずかな差ではあるが、<code class="docutils literal notranslate"><span class="pre">0.1</span> <span class="pre">*</span> <span class="pre">3</span></code> はなんと <code class="docutils literal notranslate"><span class="pre">0.3</span></code> にならない。
+これは内部の小数の表現方法に起因する誤差によるものである。
+このように小数の計算では、わずかな誤差が生じうることを念頭におく必要がある。</p>
+</section>
+<section id="id5">
+<h3>文字列型<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<p>文字列型（str）は、名前のとおり文字を表すデータ型である。前回学んだとおり、両端をシングルクォーテーション（ ‘ ）またはダブルクォーテーション（ ” ）で囲うと、文字列型のデータとして扱われる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="s2">&quot;Hello&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="s2">&quot;2.0&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">&quot;2.0&quot;</span></code> は文字列であり、数値とは明確に区別される。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span> <span class="o">+</span> <span class="s2">&quot;2.0&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>エラーメッセージにある通り、整数と文字列を足すことはできない。
+この計算をエラーなく実行するためには、両者のデータ型を揃えることが必要である。
+文字列を数値に変換するには <code class="docutils literal notranslate"><span class="pre">int()</span></code> または <code class="docutils literal notranslate"><span class="pre">float()</span></code> 関数を、数値を文字列に変換するには <code class="docutils literal notranslate"><span class="pre">str()</span></code> 関数を用いる。
+結果を予想しながら、次のコードを実行してみよう。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span> <span class="o">+</span> <span class="nb">float</span><span class="p">(</span><span class="s2">&quot;2.0&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">str</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;2.0&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id6">
+<h3>リスト型<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
+<p>リスト型（list）は、複数のデータをまとめるためのデータ型である。データを <code class="docutils literal notranslate"><span class="pre">,</span></code> で区切り、両端を <code class="docutils literal notranslate"><span class="pre">[]</span></code> で囲うことで定義する。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;four&quot;</span><span class="p">,</span> <span class="mf">5.6</span><span class="p">]</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>リストの各要素には<strong>インデックス</strong>と呼ばれる整数を使ってアクセスする。
+左から読むか、右から読むかに応じて2種類のアクセス方法がある。
+次の図に各要素とインデックスの関係を表す。</p>
+<figure class="align-default" id="index">
+<a class="reference internal image-reference" href="_images/index.png"><img alt="_images/index.png" src="_images/index.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">インデックス</span><a class="headerlink" href="#index" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>例えば <code class="docutils literal notranslate"><span class="pre">&quot;four&quot;</span></code> という要素には次のようにアクセスすることができる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>基本的には左読みのインデックスが使われる。一方、右端の要素にアクセスするときなど、右から数えるのが自然な場合には右読みのインデックスが使われる。
+左読みのインデックスは、<strong>0始まり</strong>であることに気をつけよう。</p>
+<p>リストの要素数は <code class="docutils literal notranslate"><span class="pre">len()</span></code> 関数により調べることができる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id7">
+<h3>真偽型<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
+<p>真偽型（bool）は <code class="docutils literal notranslate"><span class="pre">True</span></code> もしくは <code class="docutils literal notranslate"><span class="pre">False</span></code> の2種類の値をとり、それぞれ真か偽かを表すデータ型である。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>真偽型は、主に第5回の講義で学ぶ条件分岐のために使われる。例えば、次の<strong>比較演算子</strong>を使うことで数値の大小関係を判定することができるが、その結果は真偽型で表される。</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>比較演算子</p></th>
+<th class="head"><p>意味</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&gt;</span></code></p></td>
+<td><p>（左の値は右の値より）大きい</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&gt;=</span></code></p></td>
+<td><p>以上</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;</span></code></p></td>
+<td><p>未満</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;=</span></code></p></td>
+<td><p>以下</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">==</span></code></p></td>
+<td><p>等しい</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">!=</span></code></p></td>
+<td><p>等しくない</p></td>
+</tr>
+</tbody>
+</table>
+<p>2つの値が等しいかどうかは <code class="docutils literal notranslate"><span class="pre">=</span></code> ではなく <code class="docutils literal notranslate"><span class="pre">==</span></code> という記法を使うことに注意する。
+実際にいくつかの例を見てみよう。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">10</span> <span class="o">&gt;</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">10</span> <span class="o">==</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">10</span> <span class="o">!=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span> <span class="o">==</span> <span class="mf">3.0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mf">0.1</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">==</span> <span class="mf">3.0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>最後の結果は、浮動小数点数のもつ誤差によるものである（<code class="docutils literal notranslate"><span class="pre">0.1</span> <span class="pre">*</span> <span class="pre">3</span></code> が <code class="docutils literal notranslate"><span class="pre">3.0</span></code> と等しいかどうか、誤差も加味して比較を行うにはどうしたら良いだろうか？）</p>
+<p>もちろん真偽型のデータも、変数に代入することができる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">a</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>真偽値の現れる他の例として、<strong>in演算子</strong>がある。これは集合を表すデータ型の要素に、とあるデータが含まれるかどうかを判定する。
+例えば、<code class="docutils literal notranslate"><span class="pre">B</span></code> をリストとして <code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">in</span> <span class="pre">B</span></code> と書くとき、データ <code class="docutils literal notranslate"><span class="pre">A</span></code> が <code class="docutils literal notranslate"><span class="pre">B</span></code> に含まれるかどうかを判定して、真偽値を返す。
+使用例を以下に示す。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">4</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="id8">
+<h2>オブジェクトとメソッド<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h2>
+<p>関数の中には、それぞれのデータ型に専属の関数も存在する。
+そのような関数のことを<strong>メソッド</strong>という。
+関数とは異なり、メソッドはデータの後ろに <code class="docutils literal notranslate"><span class="pre">.メソッド名()</span></code> とつなげて使用する。
+メソッドの使い方を一般的な形で図に表すと、次のようになる。</p>
+<figure class="align-default" id="method">
+<a class="reference internal image-reference" href="_images/method.png"><img alt="_images/method.png" src="_images/method.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">メソッドの使い方</span><a class="headerlink" href="#method" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>例として、文字列型のメソッドである <code class="docutils literal notranslate"><span class="pre">split()</span></code> を見てみよう。<code class="docutils literal notranslate"><span class="pre">split()</span></code> は引数に渡した区切り文字をもとに、文字列を区切ってリストとして返す。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;Hello, world!&quot;</span>
+<span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;Mon Tue Wed Thu Fri Sat Sun&quot;</span>
+<span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>メソッドの場合、データ自身は引数に書かなくても自動的にメソッドに渡される。</p>
+<p>文字列型のメソッドの他の例として <code class="docutils literal notranslate"><span class="pre">upper()</span></code> や <code class="docutils literal notranslate"><span class="pre">lower()</span></code> がある。文字列をそれぞれ大文字と小文字に変換して返すメソッドであり、引数は取らない。引数は取らなくてもデータ自身はメソッドに渡されるため、実質的に引数が1つの関数を実行するようなものである。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;Mon Tue Wed Thu Fri Sat Sun&quot;</span>
+<span class="n">s</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;Mon Tue Wed Thu Fri Sat Sun&quot;</span>
+<span class="n">s</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>リスト型のメソッドの例も挙げておこう。<code class="docutils literal notranslate"><span class="pre">index()</span></code> メソッドは、引数に渡した値がリストに含まれていれば、その（左読みの）インデックスを返す。含まれていないとエラーになる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">x</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>さて、データとそれの持つメソッドをまとめたものを<strong>オブジェクト</strong>という。
+オブジェクトは日本語では物という意味である。
+Pythonに出てくるほとんど全ての要素はオブジェクトとして作られており、これまで学んできたデータも全てオブジェクトである。
+オブジェクトの種類を<strong>クラス</strong>と呼び、クラスに基づいて作られる具体的なオブジェクトを<strong>インスタンス</strong>と呼ぶ。
+オブジェクトとインスタンスは似ているが、前者はより一般的な概念で、後者は特定のクラスを具体化したものを指す。
+またデータ型もクラスの一つである。</p>
+<p>ここまでに出てきた概念について、理解を深めるために工作の例え話で説明してみよう。 例えば、木材を加工する状況を考える。 一言に木材といっても、重さや手触りなど１つ１つの木材には個性がある。 今、手にしている木材は、木材という概念を具体化したものであり、木材という概念がクラス、具体化したものがインスタンスにあたる。</p>
+<p>木材を加工するときには、例えば木材用のノコギリを使って切ることになるだろう。このノコギリを使って切るという行為は、木材ならば個性に関係なく適用することができるため、メソッドと捉えることができる。 これは木材に特化したメソッドであり、ガラスなど他の物質に適用することはできない。</p>
+<p>文字列型について、今の例え話に沿って説明してみよう。文字列 <code class="docutils literal notranslate"><span class="pre">&quot;mikan&quot;</span></code> および <code class="docutils literal notranslate"><span class="pre">&quot;banana&quot;</span></code> は異なる値（個性）を持ち、それぞれ文字列クラスのインスタンスである。どちらも文字列に専属の <code class="docutils literal notranslate"><span class="pre">split()</span></code> メソッドを適用できるが、その結果は値に応じて異なる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;mikan&quot;</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;banana&quot;</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">split()</span></code> は文字列のメソッドであるから、他のクラスのインスタンスには適用できない。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mf">212.</span><span class="n">split</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id9">
+<h2>演習<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h2>
+<p><strong>課題1</strong><br />
+リスト <code class="docutils literal notranslate"><span class="pre">values</span></code> と、その中の要素 <code class="docutils literal notranslate"><span class="pre">v</span></code> を与える。<code class="docutils literal notranslate"><span class="pre">v</span></code> の <code class="docutils literal notranslate"><span class="pre">values</span></code> におけるインデックスを出力するプログラムを作成しなさい。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 以下は、values と v の一例</span>
+<span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">v</span> <span class="o">=</span> <span class="mi">2</span> 
+
+<span class="c1">### 以下を埋めて、ここの部分のみ提出する</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="c1">###</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>課題2</strong></p>
+<p>リスト <code class="docutils literal notranslate"><span class="pre">values</span></code> と、その中の要素 <code class="docutils literal notranslate"><span class="pre">v</span></code> を与える。<code class="docutils literal notranslate"><span class="pre">v</span></code> が <code class="docutils literal notranslate"><span class="pre">values</span></code> の左から何番目の要素かを出力するプログラムを作成しなさい。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 以下は、values と v の一例</span>
+<span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">v</span> <span class="o">=</span> <span class="mi">2</span> 
+
+<span class="c1">### 以下を埋めて、ここの部分のみ提出する</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="c1">###</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>課題3</strong><br />
+とある施設の来場者を記録した文字列データ <code class="docutils literal notranslate"><span class="pre">visitors</span></code> があり、お客さんの苗字が来場した順番に<code class="docutils literal notranslate"><span class="pre">,</span> </code> 区切りで入力されているとする。
+来場者の一人の苗字が <code class="docutils literal notranslate"><span class="pre">name</span></code> として与えられるとき、この人物が何人目の来場者だったかを調べて出力するプログラムを作成しなさい。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 以下は、visitors と name の一例</span>
+<span class="n">visitors</span> <span class="o">=</span> <span class="s2">&quot;Sato,Tanaka,Suzuki,Yamada,Matsumoto&quot;</span>
+<span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Tanaka&quot;</span>
+
+<span class="c1">### 以下を埋めて、ここの部分のみ提出する</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="c1">###</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>課題4</strong><br />
+課題3と同じ設定において、<code class="docutils literal notranslate"><span class="pre">visitors</span></code> のデータは来場者が自由に記入したものであるため、大文字と小文字の使い方に一貫性がなかったとする。<code class="docutils literal notranslate"><span class="pre">name</span></code> については全て小文字で与えるとするとき、<code class="docutils literal notranslate"><span class="pre">name</span></code> で指定される人物が何人目の来場者だったかを調べて出力するプログラムを作成しなさい。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 以下は、visitors と name の一例</span>
+<span class="n">visitors</span> <span class="o">=</span> <span class="s2">&quot;Sato,tanaka,Suzuki,yamada,Matsumoto&quot;</span>
+<span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;suzuki&quot;</span>
+
+<span class="c1">### 以下を埋めて、ここの部分のみ提出する</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="c1">###</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="lecture03.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">第3回 はじめてのPython</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="lecture05.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">第5回 条件分岐</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">この授業で学ぶこと</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">データと関数</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">整数型と浮動小数点数型</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">文字列型</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">リスト型</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">真偽型</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">オブジェクトとメソッド</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">演習</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By 大坪 舜 Shun Otsubo
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023（2023年3月30日公開）.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,6 @@
+.DS_Store
+.buildinfo
+.ipynb_checkpoints
+.doctrees
+_build/.doctrees
+_build/jupyter_execute
