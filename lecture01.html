@@ -53,6 +53,7 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
+    <script src="_static/link_control.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-VFVQWRM1GN"></script>
@@ -168,8 +169,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="lecture08.html">第8回 関数と再帰</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture09.html">第9回 アルゴリズム入門：データの整列</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture10.html">第10回 アルゴリズム入門：問題の複雑さ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture11.html">第11回 アルゴリズム入門：データの探索</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture12.html">第12回 新しいデータ型を作る</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture13.html">第13回 データの可視化</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture14.html">第14回 データの読み方</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture15.html">第15回 探索的データ分析に挑戦！</a></li>
 </ul>
 
     </div>
@@ -316,7 +320,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">この授業で学ぶこと</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">授業の進め方</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-use">テキストの使い方</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grade">成績評価</a></li>
 </ul>
             </nav>
         </div>
@@ -330,9 +336,44 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1>第1回 ガイダンス<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
+<p>授業の進め方や、テキストの使い方、成績評価について説明する。</p>
 <section id="id2">
-<h2>この授業で学ぶこと<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
-<p>準備中。</p>
+<h2>授業の進め方<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>本サイトのテキストに沿って学ぶ。テキストは15章に分かれており、毎回の授業で1章ずつ進めていく。</p></li>
+<li><p>本サイトのテキスト中のコードはGoogle Colabという無料のサービスにより実行できるようになっており、持参したノートPCで実際にコードを打ち込みながら学んでもらう。テキストの使い方については<a class="reference internal" href="#how-to-use"><span class="std std-ref">こちらの節</span></a>で説明する。</p></li>
+<li><p>毎回の授業の後半に課題を出すので、それを提出することをもって授業への出席とみなす。提出物の出来に応じて採点し、ToyoNet-ACEの「成績」から採点結果を閲覧できるようにする。成績評価については<a class="reference internal" href="#grade"><span class="std std-ref">こちらの節</span></a>で説明する。</p></li>
+<li><p>理由があって授業に出席できなかった場合には、テキストを読んで期限までに課題を提出すれば出席したものとする。</p></li>
+</ol>
+</section>
+<section id="how-to-use">
+<span id="id3"></span><h2>テキストの使い方<a class="headerlink" href="#how-to-use" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>第3回以降のテキストには、ページ上部に <a class="reference external" href="https://colab.research.google.com/github/tsuboshun/begin-python/blob/gh-pages/_sources/workbook/sample.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a> というボタンがついているので、それを別のタブもしくはウインドウで開く。開いたページは<strong>ノートブック</strong>と呼ばれる。</p></li>
+<li><p>最初に接続を行う必要がある（これの意味するところは第2回に解説する）。Googleアカウントにログインした後、右上の<a class="reference internal" href="#guidance-connect"><span class="std std-ref">接続ボタン</span></a>から「ホストされているランタイムに接続」をクリックする。</p></li>
+<li><p>ノートブックの文字を入力できる部分を<strong>セル</strong>という。セルにはコードセルとテキストセルの2種類がある。左端に <code class="docutils literal notranslate"><span class="pre">[]</span></code> マークのあるセルがコードセルであり、ここにコードを入力する。コードを実行するには、<code class="docutils literal notranslate"><span class="pre">[]</span></code> マークにカーソルを合わせると現れる実行ボタンを押すか、セルを選択した状態で Shift を押しながら Enter と入力する。</p></li>
+</ol>
+<figure class="align-default" id="guidance-connect">
+<a class="reference internal image-reference" href="_images/guidance-connect.png"><img alt="_images/guidance-connect.png" src="_images/guidance-connect.png" style="width: 400px;" /></a>
+</figure>
+<ol class="arabic simple" start="4">
+<li><p>セルは上から順に実行していく。手を動かしながら学んでもらうため、ノートブックではテキストのコードを一部消している。そのようなセルは、テキストを見ながらコードを打ち込んでから実行すること。</p></li>
+</ol>
+<figure class="align-default" id="guidance-typing">
+<a class="reference internal image-reference" href="_images/guidance-typing.png"><img alt="_images/guidance-typing.png" src="_images/guidance-typing.png" style="width: 400px;" /></a>
+</figure>
+<ol class="arabic simple" start="5">
+<li><p>一通り学習したらノートブックを保存する。左上のメニューバーから「ファイル &gt; ドライブにコピーを保存」をクリックする。Google DriveにColab Notebooksというフォルダが作成され、その下にノートブックが保存されるはずである。</p></li>
+</ol>
+</section>
+<section id="grade">
+<span id="id4"></span><h2>成績評価<a class="headerlink" href="#grade" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>課題を提出することをもって出席とし、課題（15回、各100点満点）の平均点によって評価する。</p></li>
+<li><p>課題が期限までに提出されなかった場合は、その回の授業を欠席したものとみなし、課題の点数を0点とする。</p></li>
+<li><p>課題の提出が3分の2未満、すなわち未提出回数が6回以上の場合、単位を認めない。</p></li>
+<li><p>期末試験は実施しない。</p></li>
+</ul>
 </section>
 </section>
 
@@ -397,7 +438,9 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">この授業で学ぶこと</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">授業の進め方</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-use">テキストの使い方</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grade">成績評価</a></li>
 </ul>
   </nav></div>
 

@@ -53,6 +53,7 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
+    <script src="_static/link_control.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-VFVQWRM1GN"></script>
@@ -168,8 +169,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">第8回 関数と再帰</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture09.html">第9回 アルゴリズム入門：データの整列</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture10.html">第10回 アルゴリズム入門：問題の複雑さ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture11.html">第11回 アルゴリズム入門：データの探索</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture12.html">第12回 新しいデータ型を作る</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture13.html">第13回 データの可視化</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture14.html">第14回 データの読み方</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture15.html">第15回 探索的データ分析に挑戦！</a></li>
 </ul>
 
     </div>
@@ -781,12 +785,12 @@ turtleモジュールの主な関数は以下の通りである。</p>
 <section id="id9">
 <h2>余談: ジェネラティブ・アート<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h2>
 <p>余談として、<strong>ジェネラティブ・アート</strong>について紹介する。
-ジェネラティブ・アートとは、アルゴリズム [1] やルール、自動化されたプロセスを用いて作品を生成するアートの一形態である。
+ジェネラティブ・アートとは、アルゴリズム <a class="footnote-reference brackets" href="#f1" id="id10" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> やルール、自動化されたプロセスを用いて作品を生成するアートの一形態である。
 コンピュータやプログラミング言語を使って、これらのアルゴリズムやプロセスを実行し、視覚的または音響的な要素を生み出す。
 自然界の複雑さや美しさからインスピレーションを得た作品を、それと対極の論理的で機械的なコンピュータを使って表現するところが、このアート形態の面白いところである。
 したがって、多くの場合に乱数の要素が作品に取り入れられており、実行するごとに毎回異なるパターンを楽しむことができる。</p>
 <p>Georg Neesが1968年に発表した <em>Schotter</em> は、最初のジェネラティブ・アート作品だと言われている。
-以下のプログラムは、<em>Schotter</em>  を模倣したコード [2] である。
+以下のプログラムは、<em>Schotter</em>  を模倣したコード <a class="footnote-reference brackets" href="#f2" id="id11" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> である。
 12個の正方形が規則的に並べられた行から始まり、下に行くにつれて徐々に秩序が失われる様子が描かれる。</p>
 <p>プログラムを実行して鑑賞してみよう。
 余力のある人は、どのようなアルゴリズムが使われているか、コードの読解に挑戦してみてほしい。
@@ -825,8 +829,15 @@ turtleモジュールの主な関数は以下の通りである。</p>
 </div>
 </div>
 </div>
-<p>[1] アルゴリズムとは問題を解決するための手順のことである。次回詳しく説明する。</p>
-<p>[2] こちらの<a class="reference external" href="http://www.artsnova.com/Nees_Schotter_Tutorial.html">サイト</a>に掲載されているProcessingプログラムをPythonに書き換え作成した。</p>
+<hr class="footnotes docutils" />
+<aside class="footnote brackets" id="f1" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id10">1</a><span class="fn-bracket">]</span></span>
+<p>アルゴリズムとは問題を解決するための手順のことである。次回詳しく説明する。</p>
+</aside>
+<aside class="footnote brackets" id="f2" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id11">2</a><span class="fn-bracket">]</span></span>
+<p>こちらの<a class="reference external" href="http://www.artsnova.com/Nees_Schotter_Tutorial.html">サイト</a>に掲載されているProcessingプログラムをPythonに書き換え作成した。</p>
+</aside>
 </section>
 </section>
 
