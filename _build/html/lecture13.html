@@ -53,6 +53,7 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
+    <script src="_static/link_control.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-VFVQWRM1GN"></script>
@@ -72,7 +73,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="第14回 データの読み方" href="lecture14.html" />
-    <link rel="prev" title="第10回 アルゴリズム入門：問題の複雑さ" href="lecture10.html" />
+    <link rel="prev" title="第12回 新しいデータ型を作る" href="lecture12.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -168,8 +169,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="lecture08.html">第8回 関数と再帰</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture09.html">第9回 アルゴリズム入門：データの整列</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture10.html">第10回 アルゴリズム入門：問題の複雑さ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture11.html">第11回 アルゴリズム入門：データの探索</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture12.html">第12回 新しいデータ型を作る</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">第13回 データの可視化</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture14.html">第14回 データの読み方</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture15.html">第15回 探索的データ分析に挑戦！</a></li>
 </ul>
 
     </div>
@@ -346,6 +350,13 @@ document.write(`
 <h3>準備<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">japanize_matplotlib</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -520,12 +531,12 @@ document.write(`
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="lecture10.html"
+       href="lecture12.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">第10回 アルゴリズム入門：問題の複雑さ</p>
+        <p class="prev-next-title">第12回 新しいデータ型を作る</p>
       </div>
     </a>
     <a class="right-next"
