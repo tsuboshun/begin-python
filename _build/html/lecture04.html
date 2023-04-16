@@ -325,7 +325,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">整数型と浮動小数点数型</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">文字列型</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">リスト型</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">真偽型</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">ブール型</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">オブジェクトとメソッド</a></li>
@@ -356,7 +356,7 @@ document.write(`
 <section id="id3">
 <h2>データと関数<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
 <p>Pythonには数値や文字列の他にもいろいろな種類のデータがある。こうした種類の違いのことをデータの<strong>型</strong>（<strong>type</strong>）と言う。
-データ型には、<strong>整数型</strong>（<strong>int</strong>）、<strong>浮動小数点数型</strong>（<strong>float</strong>）、<strong>文字列型</strong>（<strong>str</strong>）、<strong>リスト型</strong>（<strong>list</strong>）、<strong>真偽型</strong>（<strong>bool</strong>）などがある。</p>
+データ型には、<strong>整数型</strong>（<strong>int</strong>）、<strong>浮動小数点数型</strong>（<strong>float</strong>）、<strong>文字列型</strong>（<strong>str</strong>）、<strong>リスト型</strong>（<strong>list</strong>）、<strong>ブール型</strong>（<strong>bool</strong>）などがある。</p>
 <p>データ型を調べるには <code class="docutils literal notranslate"><span class="pre">type()</span></code> という関数を使う。関数とは何かについて説明する前に、まずは使ってみよう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -558,8 +558,8 @@ document.write(`
 </div>
 </section>
 <section id="id7">
-<h3>真偽型<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
-<p>真偽型（bool）は <code class="docutils literal notranslate"><span class="pre">True</span></code> もしくは <code class="docutils literal notranslate"><span class="pre">False</span></code> の2種類の値をとり、それぞれ真か偽かを表すデータ型である。</p>
+<h3>ブール型<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
+<p>ブール型（bool）は <code class="docutils literal notranslate"><span class="pre">True</span></code> もしくは <code class="docutils literal notranslate"><span class="pre">False</span></code> の2種類の<strong>真偽値</strong>をとり、それぞれ真か偽かを表すデータ型である。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
@@ -567,7 +567,7 @@ document.write(`
 </div>
 </div>
 </div>
-<p>真偽型は、主に第5回の講義で学ぶ条件分岐のために使われる。例えば、次の<strong>比較演算子</strong>を使うことで数値の大小関係を判定することができるが、その結果は真偽型で表される。</p>
+<p>ブール型は、主に第5回の講義で学ぶ条件分岐のために使われる。例えば、次の<strong>比較演算子</strong>を使うことで数値の大小関係を判定することができるが、その結果はブール型で表される。</p>
 <table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>比較演算子</p></th>
@@ -633,7 +633,7 @@ document.write(`
 </div>
 </div>
 <p>最後の結果は、浮動小数点数のもつ誤差によるものである（<code class="docutils literal notranslate"><span class="pre">0.1</span> <span class="pre">*</span> <span class="pre">3</span></code> が <code class="docutils literal notranslate"><span class="pre">3.0</span></code> と等しいかどうか、誤差も加味して比較を行うにはどうしたら良いだろうか？）</p>
-<p>もちろん真偽型のデータも、変数に代入することができる。</p>
+<p>もちろんブール型のデータも、変数に代入することができる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
@@ -642,7 +642,7 @@ document.write(`
 </div>
 </div>
 </div>
-<p>真偽値の現れる他の例として、<strong>in演算子</strong>がある。これは集合を表すデータ型の要素に、とあるデータが含まれるかどうかを判定する。
+<p>ブール型の現れる他の例として、<strong>in演算子</strong>がある。これは集合を表すデータ型の要素に、とあるデータが含まれるかどうかを判定する。
 例えば、<code class="docutils literal notranslate"><span class="pre">B</span></code> をリストとして <code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">in</span> <span class="pre">B</span></code> と書くとき、データ <code class="docutils literal notranslate"><span class="pre">A</span></code> が <code class="docutils literal notranslate"><span class="pre">B</span></code> に含まれるかどうかを判定して、真偽値を返す。
 使用例を以下に示す。</p>
 <div class="cell docutils container">
@@ -907,7 +907,7 @@ Pythonに出てくるほとんど全ての要素はオブジェクトとして�
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">整数型と浮動小数点数型</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">文字列型</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">リスト型</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">真偽型</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">ブール型</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">オブジェクトとメソッド</a></li>

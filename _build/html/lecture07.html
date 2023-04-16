@@ -328,9 +328,17 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">スライス</a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">辞書型</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">要素の追加と変更</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">要素の削除</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">ループ処理</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">演習</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">タプル型</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">セット型</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">演習</a></li>
 </ul>
             </nav>
         </div>
@@ -349,7 +357,6 @@ document.write(`
 <hr class="docutils" />
 <section id="id2">
 <h2>この授業で学ぶこと<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
-<p>（このノートは準備中）</p>
 <p>第4回の授業で、複数のデータをまとめるためのデータ型としてリスト型を紹介した。
 Pythonにはリスト型の他にも、データの入れ物の役割を果たすデータ型がいくつか存在する。
 今回はそれらの使い方を学ぶ。</p>
@@ -357,7 +364,7 @@ Pythonにはリスト型の他にも、データの入れ物の役割を果た�
 <section id="id3">
 <h2>データの入れ物<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
 <p>リスト型のようにデータの入れ物の役割を果たす組み込み型として、他にも<strong>辞書型</strong>（<strong>dict</strong>）、<strong>タプル型</strong>（<strong>tuple</strong>）、<strong>セット型</strong>（<strong>set</strong>）などがある。
-はじめのうちはリスト型と辞書型を使いこなすことが重要なので、これらに重点的を置きつつ一通り説明する。
+はじめのうちはリスト型と辞書型を使いこなすことが重要なので、これらに重点を置きつつ一通り説明する。
 リスト型は改めての説明になるが、第4回の内容より一歩踏み込んで学ぶ。</p>
 <section id="id4">
 <h3>リスト型<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
@@ -442,10 +449,21 @@ Pythonにはリスト型の他にも、データの入れ物の役割を果た�
 </section>
 <section id="id6">
 <h4>要素の削除<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h4>
-<p>要素を削除するには <code class="docutils literal notranslate"><span class="pre">pop()</span></code> または <code class="docutils literal notranslate"><span class="pre">remove()</span></code> メソッドを用いる。<code class="docutils literal notranslate"><span class="pre">pop()</span></code> メソッドは引数で指定した位置の要素をリストから削除し、その値を戻り値として返す。</p>
+<p>要素を削除するには<strong>del文</strong>、または <code class="docutils literal notranslate"><span class="pre">pop()</span></code> や <code class="docutils literal notranslate"><span class="pre">remove()</span></code> メソッドを用いる。del文は <code class="docutils literal notranslate"><span class="pre">del</span></code> の後ろに指定した要素を削除する。あとで説明するスライスと組み合わせると、複数の要素をまとめて削除することもできる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elem</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">del</span> <span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="k">del</span> <span class="n">x</span><span class="p">[</span><span class="mi">6</span><span class="p">:]</span>  <span class="c1">#スライス</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">pop()</span></code> メソッドは引数で指定したインデックスの要素をリストから削除し、その値を戻り値として返す。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elem</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
@@ -468,11 +486,18 @@ Pythonにはリスト型の他にも、データの入れ物の役割を果た�
 <section id="id7">
 <h4>スライス<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h4>
 <p>リストに入っている要素のうち、連続した複数の要素を取り出すために用いられるのが<strong>スライス</strong>である。
-整数 <code class="docutils literal notranslate"><span class="pre">i</span></code>、<code class="docutils literal notranslate"><span class="pre">j</span></code> を用いてリストに対して <code class="docutils literal notranslate"><span class="pre">[i:j]</span></code> と要素を指定すると、インデックスについて <code class="docutils literal notranslate"><span class="pre">i</span></code> から <code class="docutils literal notranslate"><span class="pre">j-1</span></code> までの要素を切り出すことができる。</p>
+整数 <code class="docutils literal notranslate"><span class="pre">i</span></code>、<code class="docutils literal notranslate"><span class="pre">j</span></code> を用いてリストに対して <code class="docutils literal notranslate"><span class="pre">[i:j]</span></code> と要素を指定すると、インデックスについて <code class="docutils literal notranslate"><span class="pre">i</span></code> から <code class="docutils literal notranslate"><span class="pre">j-1</span></code> までの要素を切り出すことができる。
+<code class="docutils literal notranslate"><span class="pre">i</span></code> の前から <code class="docutils literal notranslate"><span class="pre">j</span></code> の前までと考えると覚えやすい。</p>
+<p><code class="docutils literal notranslate"><span class="pre">i</span></code> または <code class="docutils literal notranslate"><span class="pre">j</span></code> を省略することもできる。
+<code class="docutils literal notranslate"><span class="pre">[:j]</span></code> は、インデックスについて最初から <code class="docutils literal notranslate"><span class="pre">j</span></code> の前までの要素を切り出す。
+<code class="docutils literal notranslate"><span class="pre">[i:]</span></code> は、インデックスについて<code class="docutils literal notranslate"><span class="pre">i</span></code> の前から最後までの要素を切り出す。</p>
+<p>以下にサンプルコードと図を示す。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;four&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">[:</span><span class="mi">4</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
 </pre></div>
 </div>
 </div>
@@ -480,14 +505,302 @@ Pythonにはリスト型の他にも、データの入れ物の役割を果た�
 <figure class="align-default" id="index">
 <a class="reference internal image-reference" href="_images/slice.png"><img alt="_images/slice.png" src="_images/slice.png" style="width: 550px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 12 </span><span class="caption-text">スライス（[1:4]と指定した場合）</span><a class="headerlink" href="#index" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 12 </span><span class="caption-text">スライスとインデックスの関係</span><a class="headerlink" href="#index" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-</section>
+<p><strong>練習1</strong><br />
+整数を要素とするリスト <code class="docutils literal notranslate"><span class="pre">x</span></code> が与えられるとき、そのうち偶数の要素のみを取り出して新たなリストを作成し、出力しなさい。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># xの一例</span>
+<span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>練習2</strong><br />
+リスト <code class="docutils literal notranslate"><span class="pre">x</span></code> と整数 <code class="docutils literal notranslate"><span class="pre">i</span></code> が与えられるとき、リストの要素を <code class="docutils literal notranslate"><span class="pre">i</span></code> 回だけ右に回転させたリスト <code class="docutils literal notranslate"><span class="pre">y</span></code> を作成し、出力しなさい。ただし、<code class="docutils literal notranslate"><span class="pre">i</span></code> は 0以上 <code class="docutils literal notranslate"><span class="pre">len(x)</span></code> 以下とする。
+例: リスト <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">2,</span> <span class="pre">3,</span> <span class="pre">4,</span> <span class="pre">5]</span></code> を 2回回転させると、<code class="docutils literal notranslate"><span class="pre">[4,</span> <span class="pre">5,</span> <span class="pre">1,</span> <span class="pre">2,</span> <span class="pre">3]</span></code> になる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># xの一例</span>
+<span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>練習3</strong><br />
+練習2のコードを、さらに任意の整数 <code class="docutils literal notranslate"><span class="pre">i</span></code> に対して正しく動くように修正しなさい。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># xの一例</span>
+<span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="id8">
-<h2>演習<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h2>
+<h3>辞書型<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
+<p>リストでは0から始まる整数インデックスをもとに要素にアクセスした。
+辞書型は、自由に設定した<strong>キー</strong>（<strong>key</strong>）をもとに要素にアクセスできるようにしたデータ型である。
+辞書型では要素のことを<strong>値</strong>（<strong>value</strong>）と呼ぶ。</p>
+<figure class="align-default" id="id9">
+<a class="reference internal image-reference" href="_images/dict.png"><img alt="_images/dict.png" src="_images/dict.png" style="width: 450px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 13 </span><span class="caption-text">辞書型</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>辞書は、<code class="docutils literal notranslate"><span class="pre">:</span></code> を使ってキーと値のペアを指定し、各ペアを <code class="docutils literal notranslate"><span class="pre">,</span></code> で区切って、両端を <code class="docutils literal notranslate"><span class="pre">{}</span></code> で囲うことで作成できる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;apple&quot;</span><span class="p">:</span> <span class="s2">&quot;りんご&quot;</span><span class="p">,</span> <span class="s2">&quot;grape&quot;</span><span class="p">:</span> <span class="s2">&quot;ぶどう&quot;</span><span class="p">,</span> <span class="s2">&quot;peach&quot;</span><span class="p">:</span> <span class="s2">&quot;もも&quot;</span><span class="p">}</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>リストと同様、値には <code class="docutils literal notranslate"><span class="pre">[]</span></code> を使ってアクセスできる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s2">&quot;apple&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s2">&quot;grape&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>存在しないキーを指定するとエラーになる。
+キーが存在するかは、in演算子により確かめることができる。
+したがって、キーが存在するかわからない場合は、if文で確かめてからアクセスすること。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="s2">&quot;cherry&quot;</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s2">&quot;cherry&quot;</span><span class="p">])</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;cherryは存在しないキーです。&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>値にはどのようなデータ型も使用できる。
+ただし、キーにはイミュータブル（変更不可能）なデータ型しか使用できない。
+これはキーが途中で変わらないことを保証するためである。</p>
+<div class="note admonition">
+<p class="admonition-title">発展的な話題： 変更可能と不可能</p>
+<p>値を変更可能なデータ型を<strong>ミュータブル</strong>、変更不可能なデータ型を<strong>イミュータブル</strong>という。<br />
+リストや辞書はミュータブルなデータ型である。実際、それぞれ <code class="docutils literal notranslate"><span class="pre">[]</span></code> を使った代入文により要素を変更することができる。<br />
+一方で、整数、浮動小数点数、文字列、真偽値はイミュータブルなデータ型である。
+例えば、次のようなコードを実行したとする。</p>
+<pre>
+x = 1
+x = 2</pre>
+<p>このとき <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">2</span></code> は、新しいオブジェクト <code class="docutils literal notranslate"><span class="pre">2</span></code> を作成して変数 <code class="docutils literal notranslate"><span class="pre">x</span></code> に代入しているのであって、元のオブジェクト <code class="docutils literal notranslate"><span class="pre">1</span></code> の値を変更しているわけではない。</p>
+<p>これらの区別は、次のような例で重要になる。<code class="docutils literal notranslate"><span class="pre">y</span> <span class="pre">=</span> <span class="pre">x</span></code> というコードを実行した時点では、どちらのケースでも <code class="docutils literal notranslate"><span class="pre">x</span></code> と <code class="docutils literal notranslate"><span class="pre">y</span></code> は同じオブジェクトを参照している（第3回に説明したように同じオブジェクトに付箋がついているイメージ）。</p>
+<pre>
+# ケース1
+x = 1
+y = x
+x = 2
+print(y)  # 出力は1</pre>
+<p>上の例で <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">2</span></code> は新しいオブジェクトを <code class="docutils literal notranslate"><span class="pre">x</span></code> に代入しているので、変数 <code class="docutils literal notranslate"><span class="pre">y</span></code> に影響はない。</p>
+<pre>
+# ケース2
+x = [1, 2]
+y = x
+x[0] = 3
+print(y)  # 出力は[3, 2]</pre>
+<p>上の例で <code class="docutils literal notranslate"><span class="pre">x[0]</span> <span class="pre">=</span> <span class="pre">3</span></code> はオブジェクトの要素を変更している。したがって、変数 <code class="docutils literal notranslate"><span class="pre">y</span></code> の参照する値も変更される！</p>
+</div>
+<section id="id10">
+<h4>要素の追加と変更<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h4>
+<p>辞書に要素を追加したり変更したりするには、代入文を用いる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">[</span><span class="s2">&quot;cherry&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;さくらんぼ&quot;</span>  <span class="c1"># 追加するときには、存在しないキーを指定してもエラーにならない</span>
+<span class="n">x</span><span class="p">[</span><span class="s2">&quot;grape&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;ブドウ&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id11">
+<h4>要素の削除<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h4>
+<p>辞書から要素を削除するには、del文を用いる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">del</span> <span class="n">x</span><span class="p">[</span><span class="s2">&quot;grape&quot;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id12">
+<h4>ループ処理<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h4>
+<p>リストと同様、辞書の中身を一つずつ取り出して何らかの処理を行う機会は多い。
+辞書型では、for文を使って次のようにループ処理を行う。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>  <span class="c1"># keyにはキーが順に代入される</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">x</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>練習4</strong><br />
+<code class="docutils literal notranslate"><span class="pre">a</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span></code>、<code class="docutils literal notranslate"><span class="pre">c</span></code> から成るリスト <code class="docutils literal notranslate"><span class="pre">data</span></code> が与えられる。辞書を使って <code class="docutils literal notranslate"><span class="pre">a</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span></code>、<code class="docutils literal notranslate"><span class="pre">c</span></code> の出現回数をカウントし、結果を出力しなさい。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># dataの一例</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">]</span>
+<span class="n">count</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>練習5</strong><br />
+小文字のアルファベットから成るリスト <code class="docutils literal notranslate"><span class="pre">data</span></code> が与えられる。辞書を使ってそれぞれの文字の出現回数をカウントし、結果を出力しなさい。
+練習1とは違って、辞書の中身は与えていないので工夫すること。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># dataの一例</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;f&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">]</span>
+<span class="n">count</span> <span class="o">=</span> <span class="p">{}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="id13">
+<h3>タプル型<a class="headerlink" href="#id13" title="Permalink to this heading">#</a></h3>
+<p>タプル型は、リスト型をイミュータブルにしたデータ型である。データを <code class="docutils literal notranslate"><span class="pre">,</span></code> で区切り、両端を <code class="docutils literal notranslate"><span class="pre">()</span></code> で囲うことで作成できる。
+リストと異なる点として、要素数が１つの場合も <code class="docutils literal notranslate"><span class="pre">(2,)</span></code> のように <code class="docutils literal notranslate"><span class="pre">,</span></code> で終わる必要がある。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,)</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="c1">#これは2と同じ</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<p>要素のアクセス方法は、リストと同じである。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>イミュータブルなデータ型なので、値を変更しようとするとエラーになる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;two&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>タプルのリストにない利点として、例えば辞書のキーとして使える点が挙げられる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">{(</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">):</span> <span class="mi">15</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">):</span> <span class="mi">8</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">{[</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">]:</span> <span class="mi">15</span><span class="p">,</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">]:</span> <span class="mi">8</span><span class="p">}</span>  <span class="c1"># リストはミュータブルなので、キーとして使用できない</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id14">
+<h3>セット型<a class="headerlink" href="#id14" title="Permalink to this heading">#</a></h3>
+<p>セット型は、要素の重複なしの集合を表すためのデータ型である。
+データを <code class="docutils literal notranslate"><span class="pre">,</span></code> で区切り、両端を <code class="docutils literal notranslate"><span class="pre">{}</span></code> で囲うことで作成できる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">}</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>セットはリストから作成することが多い。<code class="docutils literal notranslate"><span class="pre">set()</span></code> 関数にリストを渡すと、リストの要素から成るセットを作成できる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="n">x</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>セット型には次のような特徴がある。</p>
+<ol class="arabic simple">
+<li><p>要素の重複が除かれる</p></li>
+<li><p>順序がなく、インデックスでアクセスできない</p></li>
+<li><p>要素はイミュータブルである必要がある</p></li>
+</ol>
+<p>2と3についてはそのままであるので、1のみ確認しておこう。
+例えば、リストをもとにセットを作成すると、要素の重複が除かれることを確かめることができる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="n">x</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>セット型には、集合演算を容易に行えるという利点がある。例えば、和集合や積集合、差集合を次のように求めることができる。
+それぞれの集合演算の意味は、ベン図と見比べるとわかりやすい。例として積集合について、対応する要素に色をつけている。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">set1</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">}</span>
+<span class="n">set2</span> <span class="o">=</span> <span class="p">{</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">set1</span> <span class="o">|</span> <span class="n">set2</span><span class="p">)</span>  <span class="c1"># 和集合</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">set1</span> <span class="o">&amp;</span> <span class="n">set2</span><span class="p">)</span> <span class="c1"># 積集合</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">set1</span> <span class="o">-</span> <span class="n">set2</span><span class="p">)</span>  <span class="c1"># 差集合</span>
+</pre></div>
+</div>
+</div>
+</div>
+<figure class="align-default" id="id15">
+<a class="reference internal image-reference" href="_images/set.png"><img alt="_images/set.png" src="_images/set.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 14 </span><span class="caption-text">集合演算</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><strong>練習6</strong><br />
+2つのリスト <code class="docutils literal notranslate"><span class="pre">x</span></code> と <code class="docutils literal notranslate"><span class="pre">y</span></code> が与えられるとき、どちらのリストにも存在する要素のセットを作り、出力しなさい。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># xとyの一例</span>
+<span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">18</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">18</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="id16">
+<h2>演習<a class="headerlink" href="#id16" title="Permalink to this heading">#</a></h2>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">nltk</span>
@@ -595,9 +908,17 @@ Pythonにはリスト型の他にも、データの入れ物の役割を果た�
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">スライス</a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">辞書型</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">要素の追加と変更</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">要素の削除</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">ループ処理</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">演習</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">タプル型</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">セット型</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">演習</a></li>
 </ul>
   </nav></div>
 
