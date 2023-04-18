@@ -499,11 +499,12 @@ return文がない場合は、ブロックの最後まで実行してからブ�
 <p>上の例では、1行目の変数 <code class="docutils literal notranslate"><span class="pre">a</span></code> はモジュールスコープに属するグローバル変数である。
 一方で3行目の変数 <code class="docutils literal notranslate"><span class="pre">a</span></code> はローカルスコープに属するローカル変数である。
 したがって、<code class="docutils literal notranslate"><span class="pre">func()</span></code> 関数を実行してもグローバル変数の値は変更されず、最後の <code class="docutils literal notranslate"><span class="pre">print(a)</span></code> の出力は1となる。</p>
-<p>ローカルスコープからグローバル変数を参照することはできるが、グローバルスコープからローカル変数を直接参照することはできない。
+<p>ローカルスコープからグローバル変数を参照することはできるが、モジュールスコープからローカル変数を直接参照することはできない。
 ただし、関数の戻り値を使って間接的にローカル変数にアクセスすることは可能である。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="mi">1</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ローカルスコープからグローバル変数は参照できる</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="k">def</span> <span class="nf">func</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
     
@@ -514,10 +515,24 @@ return文がない場合は、ブロックの最後まで実行してからブ�
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">func</span><span class="p">():</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># モジュールスコープからローカル変数は参照できない</span>
+<span class="k">def</span> <span class="nf">func</span><span class="p">():</span>
     <span class="n">c</span> <span class="o">=</span> <span class="mi">1</span>
     
 <span class="n">func</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ローカル変数の値を利用するには、戻り値を経由する必要がある</span>
+<span class="k">def</span> <span class="nf">func</span><span class="p">():</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">c</span>
+    
+<span class="n">c</span> <span class="o">=</span> <span class="n">func</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
 </pre></div>
 </div>
