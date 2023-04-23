@@ -69,6 +69,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'workbook/lecture03';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -335,6 +337,7 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">コメント</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">エラーと対処法</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">演習</a></li>
 </ul>
             </nav>
         </div>
@@ -530,7 +533,7 @@ document.write(`
 <section id="f">
 <h3>f文字列<a class="headerlink" href="#f" title="Permalink to this heading">#</a></h3>
 <p>上の <code class="docutils literal notranslate"><span class="pre">greeting</span></code> で行ったように、変数と組み合わせて表示用の文字列を加工する操作はよく行われる。
-このとき便利なのが <strong>f文字列</strong> である。
+このとき便利なのが<strong>f文字列</strong>である。
 これについては実際に使っているところを見せるのが早いだろう。</p>
 <p>普通の文字列との違いは、先頭に <code class="docutils literal notranslate"><span class="pre">f</span></code> がついていることである。このとき波括弧 <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">}</span></code> で囲った部分は式と見なされ、評価した結果の値に置き換えられる。例えば変数の場合は、それの指し示すデータに置き換えられる。</p>
 <p>数式の場合の例を次に示す。</p>
@@ -665,6 +668,27 @@ Pythonではインデントも文法の一部であり、後々if文や、for文
 <p>もし自力で解決できそうにないエラーに遭遇したら、エラーメッセージを検索してみよう。多くの場合、解決のためのヒントが見つかるだろう。</p>
 </div>
 </section>
+<section id="id11">
+<h2>演習<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h2>
+<p><strong>課題1</strong><br />
+最初の2つは1で、3つ目以降は「前の2つを足したもの」になる数列のことをフィボナッチ数列という。
+初項から順に以下のようになる。</p>
+<pre>
+1, 1, 2, 3, 5, 8, 13, 21, 34, 55, ...</pre>
+<p>さて、フィボナッチ数列の <span class="math notranslate nohighlight">\(n\)</span> 番目の数は、次のように書けることが知られている。</p>
+<div class="math notranslate nohighlight">
+\[
+  F_n = \frac{1}{\sqrt{5}}\left\{\left(\frac{1 + \sqrt{5}}{2}\right)^n - \left(\frac{1 - \sqrt{5}}{2}\right)^n\right\}
+\]</div>
+<p>この公式を用いて30番目の数を求めて、結果の整数を提出しなさい。</p>
+<p>なお式の途中に小数の現れる計算では、小さな誤差が生じることがある。計算結果に小数が含まれると思うが、切り捨てて整数部分を答えればよい。  <font color=cornflowerblue>ヒント: 答えの下2桁は40</font></p>
+<div class="note admonition">
+<p class="admonition-title">テスト</p>
+<p>結果のわかっている場合を例に、プログラムの正しさを確かめることを<strong>テスト</strong>という。
+上の例では、<span class="math notranslate nohighlight">\(n = 10\)</span> までの結果は例として与えられているので、これらを用いてテストできる。
+テストしやすくするためにも <span class="math notranslate nohighlight">\(F_n\)</span> の式は変数 <span class="math notranslate nohighlight">\(n\)</span> を使った形で記述するとよい。</p>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -727,6 +751,7 @@ Pythonではインデントも文法の一部であり、後々if文や、for文
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">コメント</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">エラーと対処法</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">演習</a></li>
 </ul>
   </nav></div>
 
