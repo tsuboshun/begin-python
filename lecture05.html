@@ -324,11 +324,11 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">この授業で学ぶこと</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#if">if文</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">論理演算子</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">論理演算子</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import">モジュールとimport</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">演習</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">演習</a></li>
 </ul>
             </nav>
         </div>
@@ -349,6 +349,7 @@ document.write(`
 <h2>この授業で学ぶこと<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
 <p>この授業では、条件に応じて処理内容を変える方法について学ぶ。
 また、Pythonファイルから関数やクラスを読み込む方法についても学ぶ。</p>
+<p>真偽値（<code class="docutils literal notranslate"><span class="pre">True</span></code>、<code class="docutils literal notranslate"><span class="pre">False</span></code>）をよく使うため、ブール型や比較演算子について<a class="reference internal" href="lecture04.html#label-bool"><span class="std std-ref">復習</span></a>しておこう。</p>
 </section>
 <section id="if">
 <h2>if文<a class="headerlink" href="#if" title="Permalink to this heading">#</a></h2>
@@ -398,12 +399,15 @@ document.write(`
 条件分岐のために使われる構文には <code class="docutils literal notranslate"><span class="pre">if</span></code>、<code class="docutils literal notranslate"><span class="pre">elif</span></code>、<code class="docutils literal notranslate"><span class="pre">else</span></code> の3通りがあり、それぞれ条件式の最後にコロン <code class="docutils literal notranslate"><span class="pre">:</span></code> を置く。
 なお、この授業ではif文という言葉を、<code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">条件式</span></code> という文だけではなく、<code class="docutils literal notranslate"><span class="pre">if</span></code>、<code class="docutils literal notranslate"><span class="pre">elif</span></code>、<code class="docutils literal notranslate"><span class="pre">else</span></code> を含む条件分岐の総称としても用いる。</p>
 <p>条件式に続くブロックは、<strong>インデント</strong>という字下げをすることで表現する。
-インデントは<strong>空白文字4つ</strong>とするのが良いとされている。
+インデントは<strong>空白文字4つ</strong>とするのが良いとされている<a class="footnote-reference brackets" href="#f1" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>。
 ノートブック環境では <code class="docutils literal notranslate"><span class="pre">:</span></code> を入力したあとに改行すると、自動的に空白文字4つのインデントが入れられるはずである。</p>
 <p>if文の処理は、英語読みで理解するとよい。
 <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">条件式</span></code> は「もし条件式が真ならば」という意味である。
 <code class="docutils literal notranslate"><span class="pre">elif</span></code> はelse ifの略であり、<code class="docutils literal notranslate"><span class="pre">elif</span> <span class="pre">条件式</span></code> は「もしここまでのブロックを実行しておらず、条件式が真ならば」という意味である。
 <code class="docutils literal notranslate"><span class="pre">else</span></code> は「もしここまでのブロックを実行していないならば」という意味である。</p>
+<p>BMIの例では、BMIが18.5未満のとき最初の <code class="docutils literal notranslate"><span class="pre">bmi</span> <span class="pre">&lt;</span> <span class="pre">18.5</span></code> が真となるため、if文以下の <code class="docutils literal notranslate"><span class="pre">shape</span> <span class="pre">=</span> <span class="pre">&quot;低体重&quot;</span></code> が実行される。
+BMIが18.5以上25未満のとき次の <code class="docutils literal notranslate"><span class="pre">bmi</span> <span class="pre">&lt;</span> <span class="pre">25</span></code> で初めて真となるため、elif文以下の <code class="docutils literal notranslate"><span class="pre">shape</span> <span class="pre">=</span> <span class="pre">&quot;普通&quot;</span></code> が実行される。
+BMIが25以上のとき <code class="docutils literal notranslate"><span class="pre">bmi</span> <span class="pre">&lt;</span> <span class="pre">18.5</span></code> と <code class="docutils literal notranslate"><span class="pre">bmi</span> <span class="pre">&lt;</span> <span class="pre">25</span></code> のどちらも偽となるため、else文以下の <code class="docutils literal notranslate"><span class="pre">shape</span> <span class="pre">=</span> <span class="pre">&quot;肥満&quot;</span></code> が実行される。</p>
 <p>条件分岐の流れを<strong>フローチャート</strong>で表現すると次のようになる。</p>
 <figure class="align-default" id="flow">
 <a class="reference internal image-reference" href="_images/flow.png"><img alt="_images/flow.png" src="_images/flow.png" style="width: 500px;" /></a>
@@ -460,11 +464,11 @@ elif文は好きなだけ追加できるが、else文は1つまでである。</
 <div class="note admonition">
 <p class="admonition-title">式と文</p>
 <p>Pythonプログラムは主に式と文で構成される。
-式（expression）は、値を生成する構成要素であり、計算や関数の呼び出しを含む。
-一方で文（statement）は、プログラムの実行を制御する構成要素であり、変数への代入や制御構造（if文やfor文など）を含む。</p>
+式（expression）は、値を生成する構成要素であり、計算や関数の呼び出しがそれに当たる。
+一方で文（statement）は、プログラムの実行を制御する構成要素であり、変数への代入や制御構造（if文やfor文など）がそれに当たる。</p>
 </div>
-<section id="id4">
-<h3>論理演算子<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<section id="id5">
+<h3>論理演算子<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
 <p>複数の条件をもとに条件分岐を行いたい場合がある。
 そんなときに用いられるのが<strong>論理演算子</strong>である。
 論理演算子には <code class="docutils literal notranslate"><span class="pre">and</span></code>、<code class="docutils literal notranslate"><span class="pre">or</span></code>、<code class="docutils literal notranslate"><span class="pre">not</span></code> の3種類がある。
@@ -580,6 +584,7 @@ elif文は好きなだけ追加できるが、else文は1つまでである。</
 <li><p><code class="docutils literal notranslate"><span class="pre">fruit</span></code> が <code class="docutils literal notranslate"><span class="pre">basket</span></code> に含まれるなら <code class="docutils literal notranslate"><span class="pre">&quot;カゴにあります&quot;</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">fruit</span></code> が <code class="docutils literal notranslate"><span class="pre">basket</span></code> に含まれないなら <code class="docutils literal notranslate"><span class="pre">&quot;カゴにありません&quot;</span></code></p></li>
 </ul>
+<p><font color=cornflowerblue>ヒント: in演算子を使う</font></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># fruit, basketの一例</span>
@@ -600,7 +605,7 @@ elif文は好きなだけ追加できるが、else文は1つまでである。</
 Pythonのモジュールとは、関数やクラス、変数などをまとめたPythonファイル（.py）のことを指す。
 モジュールは他のPythonプログラムから簡単にインポートして使用することができる。
 これにより、コードの再利用性が向上し、プログラムの構造化が可能になっている。
-さらに特定の機能やタスクを実行するために作成されたモジュールの集合のことを<strong>ライブラリ</strong>という。
+また特定の機能やタスクを実行するために作成されたモジュールの集まりを<strong>ライブラリ</strong>という。
 Pythonには世界中の開発者により豊富なライブラリが用意されており、Pythonが人気な理由の一つになっている。</p>
 <p>さて、モジュールから関数やクラス、変数などを読み込む際に使われるのがimport文である。
 基本的な構文は、<code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">モジュール名</span></code> である。
@@ -624,8 +629,8 @@ Pythonには世界中の開発者により豊富なライブラリが用意さ�
 <p>ライブラリは大きく標準ライブラリと外部ライブラリに分けられる。randomモジュールは標準ライブラリの一つである。外部ライブラリの場合にはインポートする前に、そもそもライブラリのファイル群をコンピュータに<strong>インストール</strong>（ダウンロードし使用可能な状態にすること）する必要がある。よく使われるのは<strong>pip</strong>というパッケージ管理システムである。pipでライブラリをインストールするには、<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">ライブラリ名</span></code> を実行する。</p>
 </div>
 </section>
-<section id="id5">
-<h2>演習<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
+<section id="id6">
+<h2>演習<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
 <p><strong>課題1</strong><br />
 じゃんけんの勝敗を判定したい。
 自分の手 <code class="docutils literal notranslate"><span class="pre">my_choice</span></code>、相手の手 <code class="docutils literal notranslate"><span class="pre">opp_choice</span></code> が与えられるとき、引き分けかどうかを判定して、引き分けのとき <code class="docutils literal notranslate"><span class="pre">&quot;引き分け&quot;</span></code> と出力するプログラムを作成しなさい。
@@ -703,6 +708,11 @@ Pythonには世界中の開発者により豊富なライブラリが用意さ�
 <p class="admonition-title">発展的な話題： 例外</p>
 <p><code class="docutils literal notranslate"><span class="pre">raise</span> <span class="pre">ValueError()</span></code> は故意に<strong>例外</strong>（= エラー）を発生させるための文で<strong>raise文</strong>と言う。<code class="docutils literal notranslate"><span class="pre">ValueError()</span></code> は先頭が大文字になっているが、これは関数ではなく、ValueErrorクラスのインスタンスを作成する式である。今回は値が有効ではないことを意味する <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> を発生させているが、状況ごとに適切な例外のクラスは異なる。はじめのうちは使える必要はないが、このように自分でエラーを発生させる方法もあることは知っておこう。</p>
 </div>
+<hr class="footnotes docutils" />
+<aside class="footnote brackets" id="f1" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">1</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://pep8-ja.readthedocs.io/ja/latest/">PEP8</a>という綺麗なコードを書くための公式コーディング規約にそう書かれている。</p>
+</aside>
 </section>
 </section>
 
@@ -769,11 +779,11 @@ Pythonには世界中の開発者により豊富なライブラリが用意さ�
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">この授業で学ぶこと</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#if">if文</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">論理演算子</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">論理演算子</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import">モジュールとimport</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">演習</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">演習</a></li>
 </ul>
   </nav></div>
 

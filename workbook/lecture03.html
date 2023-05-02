@@ -663,6 +663,19 @@ message = "The place is " + "beautiful."</pre>
 <p>エラーメッセージには、予期せぬインデントがあると書かれている。行頭に空白文字を入れて、字下げを行うことを<strong>インデント</strong>と言う。
 Pythonではインデントも文法の一部であり、後々if文や、for文などブロックを伴う構文を書くときに重要な役割を果たす。
 しばらくはインデントは使わず、左端を揃えてコードを書くようにしよう。</p>
+<p><strong>例4: 文法ミス</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">5</span><span class="p">{</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">((</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">**</span> <span class="mf">0.5</span><span class="p">)}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>上のコードには、文法ミスが3箇所ある。次の数式を表すように、デバッグしてみよう。</p>
+<div class="math notranslate nohighlight">
+\[
+5\left\{1 + 2\left(1 + \sqrt{3}\right)\right\}
+\]</div>
 <div class="tip admonition">
 <p class="admonition-title">エラーが解決できなかったら？</p>
 <p>もし自力で解決できそうにないエラーに遭遇したら、エラーメッセージを検索してみよう。多くの場合、解決のためのヒントが見つかるだろう。</p>
