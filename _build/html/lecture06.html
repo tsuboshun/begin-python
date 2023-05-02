@@ -382,20 +382,22 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]:</span>  <span class="c1"># eはelementの頭文字</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]:</span>  <span class="c1"># vはvalueの頭文字（他にi, x, elem, itemなどがよく使われる）</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>for文に用いる変数名は自由に決めてよいが、例えば文字が代入される場合には、慣例として <code class="docutils literal notranslate"><span class="pre">c</span></code> や <code class="docutils literal notranslate"><span class="pre">char</span></code> が使われることが多い。ただし、慣例は人それぞれ異なるため、最初はそれほど気にする必要はない。</p>
+<p>for文に用いる変数名は自由に決めてよいが、一般的に短くて分かりやすく、リストの内容を表すものが好まれる。
+例えば文字が代入される場合には、慣例として <code class="docutils literal notranslate"><span class="pre">c</span></code> や <code class="docutils literal notranslate"><span class="pre">char</span></code> が使われることが多い。
+ただし、慣例は人それぞれなので、最初はそれほど気にする必要はない。</p>
 <p>例えば、リストの要素の平均値を求めるコードは次のように書ける。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
-<span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
-    <span class="n">total</span> <span class="o">+=</span> <span class="n">e</span>
+<span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+    <span class="n">total</span> <span class="o">+=</span> <span class="n">v</span>
     
 <span class="n">mean</span> <span class="o">=</span> <span class="n">total</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> 
 <span class="nb">print</span><span class="p">(</span><span class="n">mean</span><span class="p">)</span>
@@ -471,7 +473,7 @@ document.write(`
 </div>
 </div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">range(a,</span> <span class="pre">b)</span></code> により生成されるイテラブルオブジェクトは、<code class="docutils literal notranslate"><span class="pre">a</span></code> から <code class="docutils literal notranslate"><span class="pre">b-1</span></code> までの整数を順に生成する。上の例では、変数 <code class="docutils literal notranslate"><span class="pre">i</span></code> には1から4までの整数が順に代入され、変数 <code class="docutils literal notranslate"><span class="pre">j</span></code> には1から3までの整数が順に代入される。したがって、合わせて12回 <code class="docutils literal notranslate"><span class="pre">print()</span></code> が実行される。</p>
+<p><code class="docutils literal notranslate"><span class="pre">range(a,</span> <span class="pre">b)</span></code> により生成されるイテラブルオブジェクトは、<code class="docutils literal notranslate"><span class="pre">a</span></code> から <code class="docutils literal notranslate"><span class="pre">b-1</span></code> までの整数を順に生成する。上の例では、変数 <code class="docutils literal notranslate"><span class="pre">i</span></code> に1から4までの整数が順に代入され、それぞれの場合に変数 <code class="docutils literal notranslate"><span class="pre">j</span></code> に1から3までの整数が順に代入される。したがって、合わせて12回 <code class="docutils literal notranslate"><span class="pre">print()</span></code> が実行される。</p>
 <p><strong>練習2</strong><br />
 二重ループにおいて一番内側のブロックを実行する度に、それが何回目の処理かを出力するプログラムを作成しなさい。</p>
 <div class="cell docutils container">
@@ -483,6 +485,10 @@ document.write(`
 </pre></div>
 </div>
 </div>
+</div>
+<div class="admonition-pass admonition">
+<p class="admonition-title">pass</p>
+<p><code class="docutils literal notranslate"><span class="pre">pass</span></code> は何もしないという意味の文である。構文上、何か書かないとエラーになるが、コードの作成は後回しにしたい箇所に置いておく。テキストでも何度か登場するが、コードを書くときに消してしまって問題ない。</p>
 </div>
 <p><strong>練習3</strong><br />
 for文とif文を組み合わせて、リスト <code class="docutils literal notranslate"><span class="pre">data</span></code> の要素の最大値を求めて出力するプログラムを作成しなさい。</p>
@@ -570,15 +576,15 @@ break文もcontinue文も、ほとんどの場合、if文と組み合わせて�
 </div>
 </div>
 </div>
-<p>二次元リストの全ての要素の合計値は、二重ループを使って次のように求められる。変数 <code class="docutils literal notranslate"><span class="pre">l</span></code>、<code class="docutils literal notranslate"><span class="pre">e</span></code> にどのような値が代入されているか示すため、逐一 <code class="docutils literal notranslate"><span class="pre">print()</span></code> を行っている。</p>
+<p>二次元リストの全ての要素の合計値は、二重ループを使って次のように求められる。変数 <code class="docutils literal notranslate"><span class="pre">l</span></code>、<code class="docutils literal notranslate"><span class="pre">v</span></code> にどのような値が代入されているか示すため、逐一 <code class="docutils literal notranslate"><span class="pre">print()</span></code> を行っている。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;l = </span><span class="si">{</span><span class="n">l</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">l</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;e = </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="n">total</span> <span class="o">+=</span> <span class="n">e</span>
+    <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">l</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;v = </span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">total</span> <span class="o">+=</span> <span class="n">v</span>
         
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;合計値: </span><span class="si">{</span><span class="n">total</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
@@ -586,7 +592,7 @@ break文もcontinue文も、ほとんどの場合、if文と組み合わせて�
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">l</span> <span class="pre">in</span> <span class="pre">data</span></code> により、リストの要素であるリスト <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">2]</span></code>、<code class="docutils literal notranslate"><span class="pre">[3,</span> <span class="pre">4]</span></code>、<code class="docutils literal notranslate"><span class="pre">[5,</span> <span class="pre">6]</span></code> が順に変数 <code class="docutils literal notranslate"><span class="pre">l</span></code> に代入される。
-さらに <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">e</span> <span class="pre">in</span> <span class="pre">l</span></code> により、各リスト <code class="docutils literal notranslate"><span class="pre">l</span></code> から要素である数値が順に変数 <code class="docutils literal notranslate"><span class="pre">e</span></code> に代入される。</p>
+さらに <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">v</span> <span class="pre">in</span> <span class="pre">l</span></code> により、各リスト <code class="docutils literal notranslate"><span class="pre">l</span></code> から要素である数値が順に変数 <code class="docutils literal notranslate"><span class="pre">v</span></code> に代入される。</p>
 <p>同じことを <code class="docutils literal notranslate"><span class="pre">range()</span></code> 関数でインデックスを生成することにより行うこともできる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -622,12 +628,41 @@ data = np.array([[1, 2], [3, 4], [5, 6]])</pre>
 <p>この例では二次元リストを渡して、二次元配列を生成している。基本的な扱い方は、リストと同じである。異なる点としてインデックスによる要素のアクセス方法がある。二次元リストでは、<code class="docutils literal notranslate"><span class="pre">data[i][j]</span></code> というように <code class="docutils literal notranslate"><span class="pre">[]</span></code> を重ねて要素を指定したが、二次元配列では、<code class="docutils literal notranslate"><span class="pre">data[i,j]</span></code> のように <code class="docutils literal notranslate"><span class="pre">,</span></code> 区切りで要素を指定する。</p>
 <pre>
 print(data[2,1])  # 出力は6</pre>
-<p><code class="docutils literal notranslate"><span class="pre">data[i,j]</span></code> の <code class="docutils literal notranslate"><span class="pre">i</span></code> のことを<strong>行</strong>、<code class="docutils literal notranslate"><span class="pre">j</span></code> のことを<strong>列</strong>という。</p>
 </div>
 </section>
 </section>
 <section id="id5">
 <h2>演習<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
+<p><strong>課題1</strong><br />
+for文を使って、1から30までの整数を順番に出力するプログラムを作成しなさい。</p>
+<p><strong>課題2</strong><br />
+for文を使って、1から30までの整数について、3で割り切れる数は <code class="docutils literal notranslate"><span class="pre">&quot;Fizz&quot;</span></code>、5で割り切れる数は <code class="docutils literal notranslate"><span class="pre">&quot;Buzz&quot;</span></code>、15で割り切れる数は <code class="docutils literal notranslate"><span class="pre">&quot;FizzBuzz&quot;</span></code> に置き換えて出力し、それ以外の数はそのまま出力するプログラムを作成しなさい。これは英語圏で有名な言葉遊びである。</p>
+<p><strong>課題3</strong><br />
+1以上の整数 <code class="docutils literal notranslate"><span class="pre">v</span></code> が与えられるとき、以下の手順に沿って整数を変換し、その度に出力するプログラムを作成しなさい。</p>
+<ul class="simple">
+<li><p>数字が偶数の場合、2で割る</p></li>
+<li><p>数字が奇数の場合、3をかけて1を足す</p></li>
+<li><p>数字が1になったら終了する</p></li>
+</ul>
+<p>例えば <code class="docutils literal notranslate"><span class="pre">v</span> <span class="pre">=</span> <span class="pre">12</span></code> の場合、出力は <code class="docutils literal notranslate"><span class="pre">6,</span> <span class="pre">3,</span> <span class="pre">10,</span> <span class="pre">5,</span> <span class="pre">16,</span> <span class="pre">8,</span> <span class="pre">4,</span> <span class="pre">2,</span> <span class="pre">1</span></code> になる。</p>
+<p>ちなみに、どんな整数から始めても必ず1に到達すると予想されているが、証明はまだない（コラッツ予想）。正しいことを証明するか、反例を1つでも見つければ1億円の懸賞金がもらえる（<a class="reference external" href="https://www.asahi.com/articles/ASP937HM6P8ZULBJ00T.html">記事</a>）。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># vの一例</span>
+<span class="n">v</span> <span class="o">=</span> <span class="mi">12</span>
+
+<span class="c1">### 以下を埋めて、ここの部分のみ提出する</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="c1"># ここに変換処理を書く</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>    
+    <span class="c1"># ここに v == 1 のとき break すると書く</span>
+
+<span class="c1">###</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 

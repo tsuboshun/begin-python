@@ -347,6 +347,7 @@ document.write(`
 <h2>この授業で学ぶこと<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
 <p>この授業では、条件に応じて処理内容を変える方法について学ぶ。
 また、Pythonファイルから関数やクラスを読み込む方法についても学ぶ。</p>
+<p>真偽値（<code class="docutils literal notranslate"><span class="pre">True</span></code>、<code class="docutils literal notranslate"><span class="pre">False</span></code>）をよく使うため、ブール型や比較演算子について<a class="reference internal" href="../lecture04.html#label-bool"><span class="std std-ref">復習</span></a>しておこう。</p>
 </section>
 <section id="if">
 <h2>if文<a class="headerlink" href="#if" title="Permalink to this heading">#</a></h2>
@@ -356,7 +357,7 @@ document.write(`
 <p>このように条件をもとに処理内容を変更するときに使われるのが<strong>if文</strong>である。BMIの例は、if文を使うことで次のように実現できる。</p>
 <p>if文の書き方について解説する。上のコードを図で表すと次のようになる。</p>
 <figure class="align-default" id="id3">
-<a class="reference internal image-reference" href="../pic/if.png"><img alt="../pic/if.png" src="../pic/if.png" style="width: 300px;" /></a>
+<a class="reference internal image-reference" href="workbook/pic/if.png"><img alt="workbook/pic/if.png" src="workbook/pic/if.png" style="width: 300px;" /></a>
 <figcaption>
 <p><span class="caption-text">if文の書き方</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -365,17 +366,20 @@ document.write(`
 条件分岐のために使われる構文には <code class="docutils literal notranslate"><span class="pre">if</span></code>、<code class="docutils literal notranslate"><span class="pre">elif</span></code>、<code class="docutils literal notranslate"><span class="pre">else</span></code> の3通りがあり、それぞれ条件式の最後にコロン <code class="docutils literal notranslate"><span class="pre">:</span></code> を置く。
 なお、この授業ではif文という言葉を、<code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">条件式</span></code> という文だけではなく、<code class="docutils literal notranslate"><span class="pre">if</span></code>、<code class="docutils literal notranslate"><span class="pre">elif</span></code>、<code class="docutils literal notranslate"><span class="pre">else</span></code> を含む条件分岐の総称としても用いる。</p>
 <p>条件式に続くブロックは、<strong>インデント</strong>という字下げをすることで表現する。
-インデントは<strong>空白文字4つ</strong>とするのが良いとされている。
+インデントは<strong>空白文字4つ</strong>とするのが良いとされている<a class="footnote-reference brackets" href="#f1" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>。
 ノートブック環境では <code class="docutils literal notranslate"><span class="pre">:</span></code> を入力したあとに改行すると、自動的に空白文字4つのインデントが入れられるはずである。</p>
 <p>if文の処理は、英語読みで理解するとよい。
 <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">条件式</span></code> は「もし条件式が真ならば」という意味である。
 <code class="docutils literal notranslate"><span class="pre">elif</span></code> はelse ifの略であり、<code class="docutils literal notranslate"><span class="pre">elif</span> <span class="pre">条件式</span></code> は「もしここまでのブロックを実行しておらず、条件式が真ならば」という意味である。
 <code class="docutils literal notranslate"><span class="pre">else</span></code> は「もしここまでのブロックを実行していないならば」という意味である。</p>
+<p>BMIの例では、BMIが18.5未満のとき最初の <code class="docutils literal notranslate"><span class="pre">bmi</span> <span class="pre">&lt;</span> <span class="pre">18.5</span></code> が真となるため、if文以下の <code class="docutils literal notranslate"><span class="pre">shape</span> <span class="pre">=</span> <span class="pre">&quot;低体重&quot;</span></code> が実行される。
+BMIが18.5以上25未満のとき次の <code class="docutils literal notranslate"><span class="pre">bmi</span> <span class="pre">&lt;</span> <span class="pre">25</span></code> で初めて真となるため、elif文以下の <code class="docutils literal notranslate"><span class="pre">shape</span> <span class="pre">=</span> <span class="pre">&quot;普通&quot;</span></code> が実行される。
+BMIが25以上のとき <code class="docutils literal notranslate"><span class="pre">bmi</span> <span class="pre">&lt;</span> <span class="pre">18.5</span></code> と <code class="docutils literal notranslate"><span class="pre">bmi</span> <span class="pre">&lt;</span> <span class="pre">25</span></code> のどちらも偽となるため、else文以下の <code class="docutils literal notranslate"><span class="pre">shape</span> <span class="pre">=</span> <span class="pre">&quot;肥満&quot;</span></code> が実行される。</p>
 <p>条件分岐の流れを<strong>フローチャート</strong>で表現すると次のようになる。</p>
-<figure class="align-default" id="id4">
-<a class="reference internal image-reference" href="../pic/flow.png"><img alt="../pic/flow.png" src="../pic/flow.png" style="width: 500px;" /></a>
+<figure class="align-default" id="flow">
+<a class="reference internal image-reference" href="workbook/pic/flow.png"><img alt="workbook/pic/flow.png" src="workbook/pic/flow.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-text">条件分岐の流れ</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-text">条件分岐の流れ</span><a class="headerlink" href="#flow" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>いくつか補足する。まず、if文だけの条件分岐を行うこともよくある。その場合はif文に続くブロックを実行するかどうかを、条件式により決定する。
@@ -385,14 +389,7 @@ elif文は好きなだけ追加できるが、else文は1つまでである。</
 例えば先ほどのBMIの例は、次のように書くこともできる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">bmi</span> <span class="o">&lt;</span> <span class="mf">18.5</span><span class="p">:</span>
-    <span class="n">shape</span> <span class="o">=</span> <span class="s2">&quot;低体重&quot;</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">bmi</span> <span class="o">&lt;</span> <span class="mi">25</span><span class="p">:</span>
-        <span class="n">shape</span> <span class="o">=</span> <span class="s2">&quot;普通体重&quot;</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">shape</span> <span class="o">=</span> <span class="s2">&quot;肥満&quot;</span>
-    
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>    
 <span class="n">message</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;あなたのBMIは</span><span class="si">{</span><span class="n">bmi</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">です。これは「</span><span class="si">{</span><span class="n">shape</span><span class="si">}</span><span class="s2">」に当たります。&quot;</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
 </pre></div>
@@ -427,8 +424,8 @@ elif文は好きなだけ追加できるが、else文は1つまでである。</
 <div class="note admonition">
 <p class="admonition-title">式と文</p>
 <p>Pythonプログラムは主に式と文で構成される。
-式（expression）は、値を生成する構成要素であり、計算や関数の呼び出しを含む。
-一方で文（statement）は、プログラムの実行を制御する構成要素であり、変数への代入や制御構造（if文やfor文など）を含む。</p>
+式（expression）は、値を生成する構成要素であり、計算や関数の呼び出しがそれに当たる。
+一方で文（statement）は、プログラムの実行を制御する構成要素であり、変数への代入や制御構造（if文やfor文など）がそれに当たる。</p>
 </div>
 <section id="id5">
 <h3>論理演算子<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
@@ -534,6 +531,7 @@ elif文は好きなだけ追加できるが、else文は1つまでである。</
 <li><p><code class="docutils literal notranslate"><span class="pre">fruit</span></code> が <code class="docutils literal notranslate"><span class="pre">basket</span></code> に含まれるなら <code class="docutils literal notranslate"><span class="pre">&quot;カゴにあります&quot;</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">fruit</span></code> が <code class="docutils literal notranslate"><span class="pre">basket</span></code> に含まれないなら <code class="docutils literal notranslate"><span class="pre">&quot;カゴにありません&quot;</span></code></p></li>
 </ul>
+<p><font color=cornflowerblue>ヒント: in演算子を使う</font></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># fruit, basketの一例</span>
@@ -554,7 +552,7 @@ elif文は好きなだけ追加できるが、else文は1つまでである。</
 Pythonのモジュールとは、関数やクラス、変数などをまとめたPythonファイル（.py）のことを指す。
 モジュールは他のPythonプログラムから簡単にインポートして使用することができる。
 これにより、コードの再利用性が向上し、プログラムの構造化が可能になっている。
-さらに特定の機能やタスクを実行するために作成されたモジュールの集合のことを<strong>ライブラリ</strong>という。
+また特定の機能やタスクを実行するために作成されたモジュールの集まりを<strong>ライブラリ</strong>という。
 Pythonには世界中の開発者により豊富なライブラリが用意されており、Pythonが人気な理由の一つになっている。</p>
 <p>さて、モジュールから関数やクラス、変数などを読み込む際に使われるのがimport文である。
 基本的な構文は、<code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">モジュール名</span></code> である。
@@ -647,6 +645,11 @@ Pythonには世界中の開発者により豊富なライブラリが用意さ�
 <p class="admonition-title">発展的な話題： 例外</p>
 <p><code class="docutils literal notranslate"><span class="pre">raise</span> <span class="pre">ValueError()</span></code> は故意に<strong>例外</strong>（= エラー）を発生させるための文で<strong>raise文</strong>と言う。<code class="docutils literal notranslate"><span class="pre">ValueError()</span></code> は先頭が大文字になっているが、これは関数ではなく、ValueErrorクラスのインスタンスを作成する式である。今回は値が有効ではないことを意味する <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> を発生させているが、状況ごとに適切な例外のクラスは異なる。はじめのうちは使える必要はないが、このように自分でエラーを発生させる方法もあることは知っておこう。</p>
 </div>
+<hr class="footnotes docutils" />
+<aside class="footnote brackets" id="f1" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">1</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://pep8-ja.readthedocs.io/ja/latest/">PEP8</a>という綺麗なコードを書くための公式コーディング規約にそう書かれている。</p>
+</aside>
 </section>
 </section>
 
