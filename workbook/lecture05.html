@@ -399,6 +399,25 @@ elif文は好きなだけ追加できるが、else文は1つまでである。</
 <p>ブロックの内側にブロックを作るときは、インデントを2回行う。
 ただしブロックの階層が深くなるにつれてコードが読みづらくなるので、BMIの例では最初のようにelif文を使う方がよい。</p>
 <p><strong>練習1</strong><br />
+(1) 数値データ <code class="docutils literal notranslate"><span class="pre">x</span></code> が与えられる。 <code class="docutils literal notranslate"><span class="pre">x</span></code> が正の値のとき <code class="docutils literal notranslate"><span class="pre">&quot;正の値&quot;</span></code> と出力するプログラムを書きなさい。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># x の一例</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>(2) 数値データ <code class="docutils literal notranslate"><span class="pre">x</span></code> が与えられる。 <code class="docutils literal notranslate"><span class="pre">x</span></code> が正の値のとき <code class="docutils literal notranslate"><span class="pre">&quot;正の値&quot;</span></code> 、そうでないとき <code class="docutils literal notranslate"><span class="pre">&quot;0以下の値&quot;</span></code> と出力するプログラムを書きなさい。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># x の一例</span>
+<span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>練習2</strong><br />
 2つの数値 <code class="docutils literal notranslate"><span class="pre">a</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span></code> の最大値を求めて出力するプログラムを、if文を使って作成しなさい。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -409,7 +428,7 @@ elif文は好きなだけ追加できるが、else文は1つまでである。</
 </div>
 </div>
 </div>
-<p><strong>練習2</strong><br />
+<p><strong>練習3</strong><br />
 3つの数値 <code class="docutils literal notranslate"><span class="pre">a</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span></code>、<code class="docutils literal notranslate"><span class="pre">c</span></code> の最大値を求めて出力するプログラムを、if文を使って作成しなさい。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -509,7 +528,7 @@ elif文は好きなだけ追加できるが、else文は1つまでである。</
 <p>条件式の <code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">rain</span> <span class="pre">or</span> <span class="pre">umbrella</span></code> は <code class="docutils literal notranslate"><span class="pre">(not</span> <span class="pre">rain)</span> <span class="pre">or</span> <span class="pre">umbrella</span></code> と <code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">(rain</span> <span class="pre">or</span> <span class="pre">umbrella)</span></code> のどちらの意味だろうか。
 上の実行結果をもとに考えてみよう。
 このように論理演算子の実行順序がわかりにくい場合には、<code class="docutils literal notranslate"><span class="pre">()</span></code>をつけてわかりやすい記述を心がけた方がよい。</p>
-<p><strong>練習3</strong><br />
+<p><strong>練習4</strong><br />
 文字列 <code class="docutils literal notranslate"><span class="pre">weather</span></code> と 整数 <code class="docutils literal notranslate"><span class="pre">temp</span></code> が与えられるとき、以下の条件にもとづいて適切なメッセージを出力するプログラムを作成しなさい。</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">weather</span></code> が <code class="docutils literal notranslate"><span class="pre">&quot;晴れ&quot;</span></code> かつ <code class="docutils literal notranslate"><span class="pre">temp</span></code> が25以上なら <code class="docutils literal notranslate"><span class="pre">&quot;暑い日ですね&quot;</span></code></p></li>
@@ -525,10 +544,9 @@ elif文は好きなだけ追加できるが、else文は1つまでである。</
 </div>
 </div>
 </div>
-<p><strong>練習4</strong><br />
+<p><strong>練習5</strong><br />
 文字列 <code class="docutils literal notranslate"><span class="pre">fruit</span></code> と リスト <code class="docutils literal notranslate"><span class="pre">basket</span></code> が与えられるとき、以下の条件にもとづいて適切なメッセージを出力するプログラムを作成しなさい。</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">fruit</span></code> が <code class="docutils literal notranslate"><span class="pre">basket</span></code> に含まれるなら <code class="docutils literal notranslate"><span class="pre">&quot;カゴにあります&quot;</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">fruit</span></code> が <code class="docutils literal notranslate"><span class="pre">basket</span></code> に含まれないなら <code class="docutils literal notranslate"><span class="pre">&quot;カゴにありません&quot;</span></code></p></li>
 </ul>
 <p><font color=cornflowerblue>ヒント: in演算子を使う</font></p>
@@ -648,7 +666,7 @@ Pythonには世界中の開発者により豊富なライブラリが用意さ�
 <hr class="footnotes docutils" />
 <aside class="footnote brackets" id="f1" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">1</a><span class="fn-bracket">]</span></span>
-<p><a class="reference external" href="https://pep8-ja.readthedocs.io/ja/latest/">PEP8</a>という綺麗なコードを書くための公式コーディング規約にそう書かれている。</p>
+<p><a class="reference external" href="https://pep8-ja.readthedocs.io/ja/latest/">PEP8</a>という綺麗なコードを書くための公式のガイドラインに定められている。</p>
 </aside>
 </section>
 </section>

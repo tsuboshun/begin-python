@@ -324,7 +324,9 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">準備</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">挿入ソート</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">ソートとは</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">挿入ソート</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">クイックソート</a></li>
 </ul>
             </nav>
         </div>
@@ -343,7 +345,12 @@ document.write(`
 <hr class="docutils" />
 <section id="id2">
 <h2>この授業で学ぶこと<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
-<p>準備中</p>
+<p>今回から第11回にかけて、アルゴリズムの基礎について学ぶ。
+アルゴリズムとは、問題を解決するための手順のことを言う。アルゴリズムの主な目的は、問題を正確かつ効率的に解くことである。</p>
+<p>実はこれまでのテキストでも、練習問題や課題を通じて、アルゴリズムと言えるような手順をプログラムに起こす経験を積んできている。
+特に、どのような入力に対しても正しい答えを出力するようなプログラムを多く書いたと思うが、これがまさに問題を正確に解くということである。</p>
+<p>一方で、問題を効率的に解くことについては、これまであまり考えてこなかった。
+今回の授業では、データの整列を題材にいくつかの解法を紹介し、それらの実行速度に差があることを見る。</p>
 <section id="id3">
 <h3>準備<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
 <div class="cell tag_hide-output docutils container">
@@ -378,7 +385,28 @@ document.write(`
 </section>
 </section>
 <section id="id4">
-<h2>挿入ソート<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
+<h2>ソートとは<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
+<p>データをとある規則にもとづいて順番に並び替えることを<strong>ソート</strong>という。
+例えば、整数のリスト</p>
+<pre>[8, 4, 5, 1, 2]</pre>
+<p>について、これを小さい順（<strong>昇順</strong>）にソートすると</p>
+<pre>[1, 2, 4, 5, 8]</pre>
+<p>となる。また大きい順（<strong>降順</strong>）にソートすると</p>
+<pre>[8, 5, 4, 2, 1]</pre>
+<p>となる。</p>
+<p>文字列データを辞書順にソートする操作もよく行われる。
+例えば、英単語のリスト</p>
+<pre>["carrot", "onion", "eggplant", "beet"]</pre>
+<p>を辞書順にソートすると</p>
+<pre>["beet", "carrot", "eggplant", "onion"]</pre>
+<p>となる。</p>
+<p>今回は簡単のため数値データについては昇順、文字列データについては辞書順に並べることのみを考える。</p>
+<p>ソートは利用頻度の高い基本的な操作なので、数多くのアルゴリズムが考案されている。
+今回はその中から<strong>挿入ソート</strong>と<strong>クイックソート</strong>を紹介する。</p>
+</section>
+<section id="id5">
+<h2>挿入ソート<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
+<p>挿入ソートは、簡単に言えば左から順に揃える方法である。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">insert_sort</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
@@ -403,6 +431,47 @@ document.write(`
 
 <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 <span class="n">insert_sort</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;実行時間: </span><span class="si">{</span><span class="n">end</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">秒&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id6">
+<h2>クイックソート<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">quick_sort</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">x</span>
+    
+    <span class="c1"># 右端を pivot とする</span>
+    <span class="n">pivot</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    
+    <span class="c1"># pivot未満のデータを左から詰めていくため、indexを0で初期化</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span> 
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">pivot</span><span class="p">:</span>
+            <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span> <span class="c1"># i 番目より左は常にpivot未満のデータが入っていることに注意</span>
+            
+    <span class="c1"># pivotの値をi番目と交換することで、 xの中身は[pivot未満のデータ], pivot, [pivot以上のデータ] という順になる</span>
+    <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> 
+    
+    <span class="n">quick_sort</span><span class="p">(</span><span class="n">x</span><span class="p">[:</span><span class="n">i</span><span class="p">])</span>
+    <span class="n">quick_sort</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">:])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:</span><span class="mi">10</span><span class="o">**</span><span class="mi">4</span><span class="p">]</span>
+
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">quick_sort</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 <span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;実行時間: </span><span class="si">{</span><span class="n">end</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">秒&quot;</span><span class="p">)</span>
@@ -478,7 +547,9 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">準備</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">挿入ソート</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">ソートとは</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">挿入ソート</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">クイックソート</a></li>
 </ul>
   </nav></div>
 
