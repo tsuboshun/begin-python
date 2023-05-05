@@ -326,8 +326,12 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">準備</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">計算量</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">巡回セールスマン問題</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">計算量</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">計算量とは</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">オーダー記法について</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">巡回セールスマン問題</a></li>
 </ul>
             </nav>
         </div>
@@ -347,6 +351,7 @@ document.write(`
 <section id="id2">
 <h2>この授業で学ぶこと<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
 <p>前回の授業で挿入ソートとクイックソートを紹介し、それらの実行速度に差があることを見た。特にデータ数を増やしたときの実行時間の増え方に大きな差があることを見た。今回は、アルゴリズムの実行時間を見積もるための考え方である計算量について学び、先週の結果について理解を深める。また、それをもとにP・NPという問題の難しさを表す分類について学ぶ。</p>
+<p>これらの話題をきちんと学ぶためには数理的な議論が必要になるが、このテキストではなるべく数理的な話には立ち入らず直感的な説明を心がけている。より詳しく学びたい学生は、他の文献を当たってみてほしい。</p>
 <section id="id3">
 <h3>準備<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
@@ -362,9 +367,11 @@ document.write(`
 </section>
 <section id="id4">
 <h2>計算量<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
-<p><strong>計算量</strong>とは、計算ステップ数がデータ数 <span class="math notranslate nohighlight">\(N\)</span> に対してどのように増えるかを表す指標である。
+<section id="id5">
+<h3>計算量とは<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<p><strong>計算量</strong>（computational complexity）とは、計算ステップ数がデータ数 <span class="math notranslate nohighlight">\(N\)</span> に対してどのように増えるかを表す指標である。
 計算量はアルゴリズムの実行時間を見積もるために使われる。</p>
-<p>例として、次の2つのプログラムの計算時間を考える。</p>
+<p>例として、次の2つのプログラムの実行時間を考える。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">single_loop</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
@@ -388,7 +395,7 @@ document.write(`
 </div>
 </div>
 </div>
-<p>ループ回数を引数 <code class="docutils literal notranslate"><span class="pre">N</span></code> で受け取り、<code class="docutils literal notranslate"><span class="pre">simple_loop()</span></code> は一重ループ、<code class="docutils literal notranslate"><span class="pre">double_loop()</span></code> は二重ループで単純な足し算を実行する。
+<p>引数 <code class="docutils literal notranslate"><span class="pre">N</span></code> でループ回数を受け取り、<code class="docutils literal notranslate"><span class="pre">simple_loop()</span></code> は一重ループ、<code class="docutils literal notranslate"><span class="pre">double_loop()</span></code> は二重ループで単純な足し算を実行する。
 これらの関数の実行時間を次の <code class="docutils literal notranslate"><span class="pre">exec_time()</span></code> で測定してみよう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -403,7 +410,7 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="mi">3</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">**</span> <span class="mi">3</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;single_loopの実行時間： </span><span class="si">{</span><span class="n">exec_time</span><span class="p">(</span><span class="n">single_loop</span><span class="p">,</span><span class="w"> </span><span class="n">N</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;double_loopの実行時間: </span><span class="si">{</span><span class="n">exec_time</span><span class="p">(</span><span class="n">double_loop</span><span class="p">,</span><span class="w"> </span><span class="n">N</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
@@ -411,13 +418,13 @@ document.write(`
 </div>
 </div>
 <div class="note admonition">
-<p class="admonition-title">発展的な話題： 関数もオブジェクト</p>
-<p>第4回の授業で「Pythonに出てくるほとんど全ての要素はオブジェクトとして作られている」と説明したが、実は関数もオブジェクトである。したがって、普通のデータと同じく変数に代入することができる。</p>
+<p class="admonition-title">関数もオブジェクト</p>
+<p>第4回の授業で「Pythonに出てくるほとんど全ての要素はオブジェクトとして作られている」と説明したが、関数も例外ではない。関数もオブジェクトであり、一種のデータとして扱うことができる。したがって、その他のデータと同じく変数に代入することもできる。</p>
 <pre>func = single_loop
 func(10**2)  # これはsingle_loop(10**2)と同じ！</pre>
-<p><code class="docutils literal notranslate"><span class="pre">exec_time()</span></code> では引数 <code class="docutils literal notranslate"><span class="pre">func</span></code> で関数を受け取り、内部で <code class="docutils literal notranslate"><span class="pre">func(N)</span></code> と実行している。このようなことが可能なのも、関数がオブジェクトだからである。</p>
+<p><code class="docutils literal notranslate"><span class="pre">exec_time()</span></code> では引数 <code class="docutils literal notranslate"><span class="pre">func</span></code> で関数を受け取り、<code class="docutils literal notranslate"><span class="pre">exec_time()</span></code> の内部で <code class="docutils literal notranslate"><span class="pre">func(N)</span></code> と実行している。このようなことが可能なのも、関数がオブジェクトだからである。</p>
 </div>
-<p>データ数と実行時間の関係を調べてみると、私の環境（Google Colab）では次のようになった。</p>
+<p>さて、データ数と実行時間の関係を調べてみると、私の環境（Google Colab）では次のようになった。</p>
 <table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p><code class="docutils literal notranslate"><span class="pre">N</span></code></p></th>
@@ -446,11 +453,25 @@ func(10**2)  # これはsingle_loop(10**2)と同じ！</pre>
 </table>
 <p><span class="math notranslate nohighlight">\(N\)</span> が10倍になると、<code class="docutils literal notranslate"><span class="pre">single_loop(N)</span></code> の実行時間はおよそ10倍、<code class="docutils literal notranslate"><span class="pre">double_loop(N)</span></code> の実行時間はおよそ100倍に増えていることがわかる。</p>
 <p>これは次のように理解できる。<code class="docutils literal notranslate"><span class="pre">single_loop(N)</span></code> では <code class="docutils literal notranslate"><span class="pre">count</span> <span class="pre">=</span> <span class="pre">0</span></code> を1回実行し、<code class="docutils literal notranslate"><span class="pre">count</span> <span class="pre">+=</span> <span class="pre">1</span></code> を <span class="math notranslate nohighlight">\(N\)</span> 回実行している。<span class="math notranslate nohighlight">\(N\)</span> が十分大きいとき、全体の計算ステップ数はほぼ <span class="math notranslate nohighlight">\(N\)</span> に比例するので、<span class="math notranslate nohighlight">\(N\)</span> が10倍になると実行時間もおよそ10倍になる。一方で、<code class="docutils literal notranslate"><span class="pre">double_loop(N)</span></code> では <code class="docutils literal notranslate"><span class="pre">count</span> <span class="pre">=</span> <span class="pre">0</span></code> を1回実行し、<code class="docutils literal notranslate"><span class="pre">count</span> <span class="pre">+=</span> <span class="pre">1</span></code> を <span class="math notranslate nohighlight">\(N^2\)</span> 回実行している。<span class="math notranslate nohighlight">\(N\)</span> が十分大きいとき、全体の計算ステップ数はほぼ <span class="math notranslate nohighlight">\(N^2\)</span> に比例するので、<span class="math notranslate nohighlight">\(N\)</span> が10倍になると実行時間はおよそ100倍になる。</p>
-<p>このことを <code class="docutils literal notranslate"><span class="pre">single_loop(N)</span></code> の計算量は <span class="math notranslate nohighlight">\(O(N)\)</span> （読み方：オーダー<span class="math notranslate nohighlight">\(N\)</span>）、<code class="docutils literal notranslate"><span class="pre">double_loop(N)</span></code> の計算量は <span class="math notranslate nohighlight">\(O(N^2)\)</span> であると言う。</p>
-<p>計算量がわかると、大まかな計算時間の見積もりができる。例えば、<code class="docutils literal notranslate"><span class="pre">double_loop(N)</span></code> は <span class="math notranslate nohighlight">\(N = 10^5\)</span> のとき6分くらいなので、<span class="math notranslate nohighlight">\(N = 10^6\)</span> のとき600分（つまり10時間！）くらいかかるだろうと見積もることができる。</p>
+<p>このようなデータ数と計算ステップ数の関係について、 <code class="docutils literal notranslate"><span class="pre">single_loop(N)</span></code> の計算量は <span class="math notranslate nohighlight">\(O(N)\)</span> （読み方：オーダー<span class="math notranslate nohighlight">\(N\)</span>）、<code class="docutils literal notranslate"><span class="pre">double_loop(N)</span></code> の計算量は <span class="math notranslate nohighlight">\(O(N^2)\)</span> であると言う。</p>
+<p>計算量がわかると、大まかな実行時間の見積もりができる。例えば、<code class="docutils literal notranslate"><span class="pre">double_loop(N)</span></code> は <span class="math notranslate nohighlight">\(N = 10^5\)</span> のとき <span class="math notranslate nohighlight">\(6\)</span> 分くらいかかっているので、その <span class="math notranslate nohighlight">\(10\)</span> 倍の <span class="math notranslate nohighlight">\(N = 10^6\)</span> のとき <span class="math notranslate nohighlight">\(6\times 10^2 = 600\)</span> 分（つまり <span class="math notranslate nohighlight">\(10\)</span> 時間！）くらいかかるだろうと見積もることができる。表の結果を踏まえると、一般的には計算ステップ数 <span class="math notranslate nohighlight">\(10^7\sim10^8\)</span> につき <span class="math notranslate nohighlight">\(1\)</span> 秒程度かかると見積もると良いと思われる。もちろんこれはプログラムの内容やアルゴリズム、実行環境にも依るので、あくまで一つの目安として捉えてほしい。</p>
 </section>
-<section id="id5">
-<h2>巡回セールスマン問題<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
+<section id="id6">
+<h3>オーダー記法について<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
+<p>さて、計算量のオーダー記法について次の2点を補足する。</p>
+<ol class="arabic simple">
+<li><p>オーダー記法では定数倍の寄与は考えない</p></li>
+<li><p>オーダー記法では低次の項の寄与は考えない</p></li>
+</ol>
+<p>1つ目については、例えば計算ステップ数が <span class="math notranslate nohighlight">\(2N\)</span> であったとしたとしても、オーダー記法としては <span class="math notranslate nohighlight">\(O(N)\)</span> と書くということである。
+これは定数倍があったとしても、データ数 <span class="math notranslate nohighlight">\(N\)</span> が増えたときの計算量の増え方には関係がないからである。つまり、データ数が <span class="math notranslate nohighlight">\(N'\)</span> に増えたとして、計算ステップ数の比を考えると <span class="math notranslate nohighlight">\((cN') / (cN) = N' / N\)</span> というように定数倍 <span class="math notranslate nohighlight">\(c\)</span> はあってもなくても変わらない。</p>
+<p>2つ目については、例えば計算ステップ数が <span class="math notranslate nohighlight">\(N^2 + N\)</span> であったとしても、オーダー記法としては <span class="math notranslate nohighlight">\(O(N^2)\)</span> と書くということである。
+これは実行時間が問題になるような <span class="math notranslate nohighlight">\(N\)</span> の大きい領域では、低次の <span class="math notranslate nohighlight">\(O(N)\)</span> の寄与はほとんど無視できるからである。
+例えば、<code class="docutils literal notranslate"><span class="pre">single_loop(N)</span></code> と <code class="docutils literal notranslate"><span class="pre">double_loop(N)</span></code> の実行時間を比較した表で両者を足したとしても、 <code class="docutils literal notranslate"><span class="pre">single_loop(N)</span></code> の実行時間が無視できるほど小さいため <code class="docutils literal notranslate"><span class="pre">double_loop(N)</span></code> の値とほとんど変わらない。</p>
+</section>
+</section>
+<section id="id7">
+<h2>巡回セールスマン問題<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">generate_distances</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
@@ -574,8 +595,12 @@ func(10**2)  # これはsingle_loop(10**2)と同じ！</pre>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">準備</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">計算量</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">巡回セールスマン問題</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">計算量</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">計算量とは</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">オーダー記法について</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">巡回セールスマン問題</a></li>
 </ul>
   </nav></div>
 
