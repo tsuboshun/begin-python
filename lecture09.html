@@ -320,13 +320,12 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">この授業で学ぶこと</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">準備</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">ソートとは</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">挿入ソート</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">クイックソート</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">この授業で学ぶこと</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">ソートとは</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">挿入ソート</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">クイックソート</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">実行時間の比較</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">演習</a></li>
 </ul>
             </nav>
         </div>
@@ -350,43 +349,11 @@ document.write(`
 <p>実はこれまでのテキストでも、練習問題や課題を通じて、アルゴリズムと言えるような手順をプログラムに起こす経験を積んできている。
 特に、どのような入力に対しても正しい答えを出力するようなプログラムを多く書いたと思うが、これがまさに問題を正確に解くということである。</p>
 <p>一方で、問題を効率的に解くことについては、これまであまり考えてこなかった。
-今回の授業では、データの整列を題材にいくつかの解法を紹介し、それらの実行速度に差があることを見る。</p>
+今回の授業では、データの整列を題材にいくつかのアルゴリズムを紹介し、それらの実行速度に差があることを見る。</p>
+</section>
 <section id="id3">
-<h3>準備<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
-<div class="cell tag_hide-output docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">faker</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">import</span> <span class="nn">random</span>
-<span class="kn">import</span> <span class="nn">itertools</span>
-<span class="kn">from</span> <span class="nn">faker</span> <span class="kn">import</span> <span class="n">Faker</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fake</span> <span class="o">=</span> <span class="n">Faker</span><span class="p">()</span>
-
-<span class="n">N</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="mi">5</span>
-<span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
-    <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fake</span><span class="o">.</span><span class="n">name</span><span class="p">())</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-</section>
-<section id="id4">
-<h2>ソートとは<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
-<p>データをとある規則にもとづいて順番に並び替えることを<strong>ソート</strong>という。
+<h2>ソートとは<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<p>データをとある規則にもとづいて順番に並び替えることを<strong>ソート</strong>（整列）という。
 例えば、整数のリスト</p>
 <pre>[8, 4, 5, 1, 2]</pre>
 <p>について、これを小さい順（<strong>昇順</strong>）にソートすると</p>
@@ -394,87 +361,255 @@ document.write(`
 <p>となる。また大きい順（<strong>降順</strong>）にソートすると</p>
 <pre>[8, 5, 4, 2, 1]</pre>
 <p>となる。</p>
-<p>文字列データを辞書順にソートする操作もよく行われる。
-例えば、英単語のリスト</p>
-<pre>["carrot", "onion", "eggplant", "beet"]</pre>
+<p>文字列を辞書順にソートする操作もよく行われる。
+例えば、文字列のリスト</p>
+<pre>["carrot", "onion", "eggplant", "beet", "cabbage"]</pre>
 <p>を辞書順にソートすると</p>
-<pre>["beet", "carrot", "eggplant", "onion"]</pre>
+<pre>["beet", "cabbage", "carrot", "eggplant", "onion"]</pre>
 <p>となる。</p>
-<p>今回は簡単のため数値データについては昇順、文字列データについては辞書順に並べることのみを考える。</p>
-<p>ソートは利用頻度の高い基本的な操作なので、数多くのアルゴリズムが考案されている。
-今回はその中から<strong>挿入ソート</strong>と<strong>クイックソート</strong>を紹介する。</p>
+<p>今回は簡単のためリストデータのみを考え、さらに数値については昇順、文字列については辞書順に並べることに限定して考える。</p>
+<p>ソートは使用頻度の高い基本的な操作なので、数多くのアルゴリズムが考案されている。
+今回はその中から代表的な<strong>挿入ソート</strong>と<strong>クイックソート</strong>を紹介する。</p>
+<div class="note admonition">
+<p class="admonition-title">リストの要素の交換</p>
+<p>ソートアルゴリズムの実装では、リストの要素の交換をよく行う。
+例えば、<code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">[2,</span> <span class="pre">3]</span></code> というリストがあったとして、これの1番目の要素と2番目の要素を入れ替えたいとする。</p>
+<p>次のコードは意図した結果にならない（実行して確認してみよう）。</p>
+<pre>x[0] = x[1]
+x[1] = x[0]</pre>
+<p>上記の方法では上手くいかないので、変数の値を一時的に保存する <code class="docutils literal notranslate"><span class="pre">tmp</span></code> 変数を用意して次のように書くのが一般的な方法である。</p>
+<pre>tmp = x[0]
+x[0] = x[1]
+x[1] = tmp</pre>
+<p>Pythonでは、次のように簡潔な記法でも値を交換することができる。特に理由がなければ、以下の方法を使おう。</p>
+<pre>x[0], x[1] = x[1], x[0]
+</pre>
+</div>
 </section>
-<section id="id5">
-<h2>挿入ソート<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
-<p>挿入ソートは、簡単に言えば左から順に揃える方法である。</p>
+<section id="id4">
+<h2>挿入ソート<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
+<p>挿入ソートは、簡単に言えば左から順に整列する方法である。
+挿入ソートが数字を昇順に並び替える様子を、次の図に示す。</p>
+<figure class="align-default" id="insert-sort">
+<a class="reference internal image-reference" href="_images/insert_sort.png"><img alt="_images/insert_sort.png" src="_images/insert_sort.png" style="width: 300px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 18 </span><span class="caption-text">挿入ソート：ループごとの整列の様子</span><a class="headerlink" href="#insert-sort" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>あとで挿入ソートを <code class="docutils literal notranslate"><span class="pre">insert_sort()</span></code> 関数として実装するが、その内部でfor文を使用している。
+上図では、上から順にループ1回あたりの操作を示している。</p>
+<p>要素数が7のとき全部で6回のループ処理が行われるが、各ループで行っていることを言葉にすると次の通りである。</p>
+<ul class="simple">
+<li><p>1回目のループでは、左から2番目までの要素を昇順に並んだ状態にする。</p></li>
+<li><p>2回目のループでは、左から3番目までの要素を昇順に並んだ状態にする。<br />
+…</p></li>
+<li><p>6回目のループでは、左から7番目までの要素を昇順に並んだ状態にする。</p></li>
+</ul>
+<p>トランプなどのカードゲームにおいて、カードを並び替えるときに挿入ソートに近い方法を取る人は多いのではないだろうか。それくらい直感的でわかりやすい方法である。</p>
+<p>それでは、挿入ソートを実装してみよう。
+以下に未完成の <code class="docutils literal notranslate"><span class="pre">insert_sort()</span></code> 関数を用意した。
+<code class="docutils literal notranslate"><span class="pre">#ここに何か書く</span></code> とある位置に一行のコードを追加することで、プログラムを完成させてみてほしい。</p>
+<p>なお <code class="docutils literal notranslate"><span class="pre">verbose</span></code> というデフォルト引数により、オプションとして途中経過を出力できるようにしている。
+デフォルト値は <code class="docutils literal notranslate"><span class="pre">False</span></code> なので、単に <code class="docutils literal notranslate"><span class="pre">insert_sort(x)</span></code> と呼び出せば何も出力されない。
+一方で、<code class="docutils literal notranslate"><span class="pre">insert_sort(x,</span> <span class="pre">True)</span></code> や <code class="docutils literal notranslate"><span class="pre">insert_sort(x,</span> <span class="pre">verbose=True)</span></code> と呼び出すと途中経過を確認することができる。
+また関数に戻り値はなく、引数に渡した <code class="docutils literal notranslate"><span class="pre">x</span></code> を直接書き換えるコードとなっていることに注意する。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">insert_sort</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">insert_sort</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>  <span class="c1"># verboseは詳細の意味</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)):</span>
-        <span class="c1"># ソートされていない要素を取り出す</span>
-        <span class="n">key</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-        <span class="c1"># ソート済みの部分から、挿入する場所を探す</span>
+        <span class="n">key</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>  <span class="c1"># 矢印の要素</span>
         <span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span>
         <span class="k">while</span> <span class="n">j</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">key</span><span class="p">:</span>
-            <span class="n">x</span><span class="p">[</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+            <span class="c1"># ここに何か書く</span>
             <span class="n">j</span> <span class="o">-=</span> <span class="mi">1</span>
-        <span class="c1"># 見つかった場所に要素を挿入する</span>
-        <span class="n">x</span><span class="p">[</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">key</span>
-    <span class="k">return</span> <span class="n">x</span>
+            
+        <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">回目のループ終了時： </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:</span><span class="mi">10</span><span class="o">**</span><span class="mi">4</span><span class="p">]</span>
-
-<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-<span class="n">insert_sort</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;実行時間: </span><span class="si">{</span><span class="n">end</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">秒&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="n">insert_sort</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id5">
+<h2>クイックソート<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
+<p>クイックソートは、リストを部分に分割し、それぞれに対して再帰的に整列を行うことで全体を整列する方法である。
+クイックソートが数字を昇順に並べる様子を、次の図に示す。</p>
+<figure class="align-default" id="quick-sort1">
+<a class="reference internal image-reference" href="_images/quick_sort1.png"><img alt="_images/quick_sort1.png" src="_images/quick_sort1.png" style="width: 300px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 19 </span><span class="caption-text">クイックソート：再帰呼び出しごとの整列の様子</span><a class="headerlink" href="#quick-sort1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>あとでクイックソートを <code class="docutils literal notranslate"><span class="pre">quick_sort()</span></code> 関数として実装するが、その内部で再帰呼び出しを行っている。
+上図では、上から順に再帰呼び出しごとの操作を表しており、青の領域ごとに <code class="docutils literal notranslate"><span class="pre">quick_sort()</span></code> 関数を適用していることを表している。</p>
+<p>それぞれの段で行っていることを言葉にすると次の通りである。</p>
+<ul class="simple">
+<li><p>1段目ではリスト全体に対して <code class="docutils literal notranslate"><span class="pre">quick_sort()</span></code> を適用する。右端の要素を<strong>ピボット</strong>とし、ピボットより小さい要素を左に寄せ、ピボット以上の要素を右に寄せ、それらの間にピボットを置く。</p></li>
+<li><p>2段目では（1段目の）ピボットの両側について、それぞれに <code class="docutils literal notranslate"><span class="pre">quick_sort()</span></code> を適用する。それぞれのリストの右端の要素をピボットとし、それぞれのリスト内で先ほどと同様の処理を行う。</p></li>
+<li><p>3段目では（2段目の）各ピボットの両側について、それぞれに <code class="docutils literal notranslate"><span class="pre">quick_sort()</span></code> を適用する。今回はどれも要素数1なので、並び替えは行われない。</p></li>
+</ul>
+<p>1段目の操作の詳細を図示したものが、次の図である。</p>
+<figure class="align-default" id="quick-sort2">
+<a class="reference internal image-reference" href="_images/quick_sort2.png"><img alt="_images/quick_sort2.png" src="_images/quick_sort2.png" style="width: 300px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 20 </span><span class="caption-text">クイックソート： <em>Fig.19</em> 1段目の操作の詳細</span><a class="headerlink" href="#quick-sort2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>左端から順にピボットより小さい要素を埋めていく。左に位置する青矢印は次に埋めるべき位置を表している。
+青矢印と灰矢印を次のように動かしていく。</p>
+<ol class="arabic simple">
+<li><p>青矢印と灰矢印を1番目の要素からスタートさせる</p></li>
+<li><p>灰矢印を1つずつ右へ進めていってピボットより小さい要素を探す</p></li>
+<li><p>ピボットより小さい要素が見つかったら、両矢印の要素を交換し、青矢印を右へ1つ進めて2に戻る</p></li>
+</ol>
+<ul class="simple">
+<li><p>（青矢印と灰矢印が同じ位置の場合は、交換しても何も起こらない）</p></li>
+</ul>
+<ol class="arabic simple" start="4">
+<li><p>ピボットより小さい要素が見つからなかったら、そこで処理を終了し、最後に青矢印の要素とピボットを交換する。</p></li>
+</ol>
+<p>上記手順を終えると、[ピボットより小さい要素] [ピボット] [ピボット以上の要素] の順に要素が並んだ状態になる。
+あとはピボットの両側の要素に対して再帰的に <code class="docutils literal notranslate"><span class="pre">quick_sort()</span></code> 関数を適用すれば、全体が整列した状態にすることができる。</p>
+<p>挿入ソートに比べるとあまり直感的な方法ではないと感じるかもしれないが、実はプログラミングの世界では典型的と言えるような問題の解き方をしている。
+このように問題を部分に分割して再帰的に解き、それらを合わせて全体の問題を解く方法を<strong>分割統治法</strong>（divide-and-conquer）という。</p>
+<p>それでは、クイックソートを実装してみよう。
+以下に未完成の <code class="docutils literal notranslate"><span class="pre">quick_sort()</span></code> 関数を用意した。
+<code class="docutils literal notranslate"><span class="pre">コードを書く</span></code>というコメントのある2箇所に1, 2行のコードを追加することで、プログラムを完成させてみてほしい。</p>
+<p>なお <code class="docutils literal notranslate"><span class="pre">insert_sort()</span></code> 関数とは異なり、<code class="docutils literal notranslate"><span class="pre">quick_sort()</span></code> 関数はソートする範囲を <code class="docutils literal notranslate"><span class="pre">left</span></code> と <code class="docutils literal notranslate"><span class="pre">right</span></code> という引数で指定できるようにしている。
+<code class="docutils literal notranslate"><span class="pre">left</span></code> は左端のインデックス、<code class="docutils literal notranslate"><span class="pre">right</span></code> は右端のインデックスを表す。これらの引数は、リストの一部分を再帰的にソートする際に必要になる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">quick_sort</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">right</span> <span class="o">-</span> <span class="n">left</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span>
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;quick_sort(x, </span><span class="si">{</span><span class="n">left</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">right</span><span class="si">}</span><span class="s2">) 呼び出し時: </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    
+    <span class="n">pivot</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">right</span><span class="p">]</span> <span class="c1"># 右端をpivotとする</span>
+    
+    <span class="n">i</span> <span class="o">=</span> <span class="n">left</span> <span class="c1"># i: 青矢印</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">):</span> <span class="c1"># j: 灰矢印</span>
+        <span class="k">if</span> <span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">pivot</span><span class="p">:</span>
+            <span class="k">pass</span> <span class="c1"># ここに両矢印の要素を交換し、iを右に1つ進めるコードを書く</span>
+            
+    <span class="c1"># pivotの値をi番目と交換することで、 xの中身は[pivot未満のデータ], pivot, [pivot以上のデータ] という順になる</span>
+    <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="n">right</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">right</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;再帰呼び出し前： </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+        
+    <span class="c1"># ここに再帰呼び出しのコードを書く</span>
+    <span class="k">return</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="n">quick_sort</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="id6">
-<h2>クイックソート<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
+<h2>実行時間の比較<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
+<p>挿入ソートとクイックソートの大きな違いとして、データ数が増えたときの実行時間の増え方が挙げられる。
+実験して確かめてみよう。</p>
+<p>まず実行時間の測定方法について説明する。<br />
+<code class="docutils literal notranslate"><span class="pre">exec_time()</span></code> 関数は、<code class="docutils literal notranslate"><span class="pre">algo</span></code> で指定したソートの実行時間を測定し戻り値として返す。
+timeモジュールの <code class="docutils literal notranslate"><span class="pre">time.time()</span></code> 関数を利用しているが、これはUNIX時間（1970年1月1日午前0時0分0秒からの経過秒数）を返す関数である。
+<code class="docutils literal notranslate"><span class="pre">exec_time()</span></code> では、ソートの実行前後のUNIX時間の差から、ソートの実行時間を求めている。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">quick_sort</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">x</span>
-    
-    <span class="c1"># 右端を pivot とする</span>
-    <span class="n">pivot</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-    
-    <span class="c1"># pivot未満のデータを左から詰めていくため、indexを0で初期化</span>
-    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span> 
-    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">pivot</span><span class="p">:</span>
-            <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-            <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span> <span class="c1"># i 番目より左は常にpivot未満のデータが入っていることに注意</span>
-            
-    <span class="c1"># pivotの値をi番目と交換することで、 xの中身は[pivot未満のデータ], pivot, [pivot以上のデータ] という順になる</span>
-    <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> 
-    
-    <span class="n">quick_sort</span><span class="p">(</span><span class="n">x</span><span class="p">[:</span><span class="n">i</span><span class="p">])</span>
-    <span class="n">quick_sort</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">:])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:</span><span class="mi">10</span><span class="o">**</span><span class="mi">4</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">exec_time</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">algo</span><span class="p">):</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">algo</span> <span class="o">==</span> <span class="s2">&quot;insert&quot;</span><span class="p">:</span>
+        <span class="n">insert_sort</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">quick_sort</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">end</span> <span class="o">-</span> <span class="n">start</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>以下の <code class="docutils literal notranslate"><span class="pre">generate_data()</span></code> 関数は、ランダムな0以上1未満の浮動小数点数を要素とするサイズ <code class="docutils literal notranslate"><span class="pre">N</span></code> のリストを生成する。
+生成されたリストを使って、ソートにかかる時間を測定してみよう。
+<code class="docutils literal notranslate"><span class="pre">N</span> <span class="pre">=</span> <span class="pre">100</span></code> くらいまでは挿入ソートとクイックソートの間に大きな差はないが、<code class="docutils literal notranslate"><span class="pre">N</span> <span class="pre">=</span> <span class="pre">10**4</span></code> くらいになるとクイックソートの方が明らかに速いことが確かめられる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">generate_data</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+        <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">())</span>  <span class="c1"># random.random()は0以上1未満の小数を返す</span>
+    <span class="k">return</span> <span class="n">data</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">x1</span> <span class="o">=</span> <span class="n">generate_data</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+<span class="n">x2</span> <span class="o">=</span> <span class="n">x1</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>  <span class="c1"># 同じデータを使用するためにコピーする</span>
 
-<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-<span class="n">quick_sort</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;挿入ソートの実行時間: </span><span class="si">{</span><span class="n">exec_time</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;insert&#39;</span><span class="p">)</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;クイックソートの実行時間: </span><span class="si">{</span><span class="n">exec_time</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;quick&#39;</span><span class="p">)</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id7">
+<h2>演習<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h2>
+<p><strong>課題</strong><br />
+以下は、リスト <code class="docutils literal notranslate"><span class="pre">n</span></code> と <code class="docutils literal notranslate"><span class="pre">t</span></code> の数値データをもとに折れ線グラフを描画するプログラムである。
+今は <code class="docutils literal notranslate"><span class="pre">n</span></code> と <code class="docutils literal notranslate"><span class="pre">t</span></code> に同じ値が追加されているため、直線が描画される。</p>
+<p><code class="docutils literal notranslate"><span class="pre">t</span></code> に追加する値を「挿入ソートで、サイズ <code class="docutils literal notranslate"><span class="pre">size</span></code> のリストデータをソートするのにかかる時間」に変更することで、横軸をサイズ、縦軸を実行時間とする折れ線グラフを描画しなさい。なお、プロットには<strong>Matplotlibライブラリ</strong>を使用しているが、これの使い方は第13回の講義で詳しく学ぶ。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">t</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">size</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">*</span> <span class="mi">10</span><span class="o">**</span><span class="mi">3</span>
+    <span class="n">n</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">size</span><span class="p">)</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">size</span><span class="p">)</span>  <span class="c1"># ここを書き換える</span>
+    
+<span class="c1"># プロットの入れ物の用意</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;実行時間: </span><span class="si">{</span><span class="n">end</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">秒&quot;</span><span class="p">)</span>
+<span class="c1"># プロット</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+
+<span class="c1"># 軸ラベルなどの設定</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;size&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;time[s]&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+
+<span class="c1"># 表示</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -543,13 +678,12 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">この授業で学ぶこと</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">準備</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">ソートとは</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">挿入ソート</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">クイックソート</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">この授業で学ぶこと</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">ソートとは</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">挿入ソート</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">クイックソート</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">実行時間の比較</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">演習</a></li>
 </ul>
   </nav></div>
 

@@ -69,6 +69,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'lecture10';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -324,7 +326,8 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">準備</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">巡回セールスマン問題</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">計算量</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">巡回セールスマン問題</a></li>
 </ul>
             </nav>
         </div>
@@ -368,7 +371,23 @@ document.write(`
 </section>
 </section>
 <section id="id4">
-<h2>巡回セールスマン問題<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
+<h2>計算量<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
+<p>データ数を <span class="math notranslate nohighlight">\(N\)</span> と書くとき、計算ステップ数が <span class="math notranslate nohighlight">\(N\)</span> に対してどのように増えるかを表すのが<strong>計算量</strong>である。</p>
+<p>例として、次のプログラムの計算時間を考える。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">simple_sum</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">count</span> <span class="o">+=</span> <span class="n">i</span>
+    <span class="k">return</span> <span class="n">count</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id5">
+<h2>巡回セールスマン問題<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">generate_distances</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
@@ -492,7 +511,8 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">準備</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">巡回セールスマン問題</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">計算量</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">巡回セールスマン問題</a></li>
 </ul>
   </nav></div>
 

@@ -499,8 +499,7 @@ return文がない場合は、ブロックの最後まで実行してからブ�
 <p>上の例では、1行目の変数 <code class="docutils literal notranslate"><span class="pre">a</span></code> はモジュールスコープに属するグローバル変数である。
 一方で3行目の変数 <code class="docutils literal notranslate"><span class="pre">a</span></code> はローカルスコープに属するローカル変数である。
 したがって、<code class="docutils literal notranslate"><span class="pre">func()</span></code> 関数を実行してもグローバル変数の値は変更されず、最後の <code class="docutils literal notranslate"><span class="pre">print(a)</span></code> の出力は1となる。</p>
-<p>ローカルスコープからグローバル変数を参照することはできるが、モジュールスコープからローカル変数を直接参照することはできない。
-ローカル変数の値を利用するには、戻り値を経由する必要がある。</p>
+<p>ローカルスコープからグローバル変数を参照することはできるが、モジュールスコープからローカル変数を直接参照することはできない。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ローカルスコープからグローバル変数は参照できる</span>
@@ -525,15 +524,41 @@ return文がない場合は、ブロックの最後まで実行してからブ�
 </div>
 </div>
 </div>
+<p>モジュールスコープからローカル変数の値を利用するには、戻り値か引数を経由する必要がある。引数を経由する方法は、引数がミュータブルなオブジェクトのときのみ可能であることに注意する。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ローカル変数の値を利用するには、戻り値を経由する必要がある</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 戻り値を経由する例</span>
 <span class="k">def</span> <span class="nf">func</span><span class="p">():</span>
     <span class="n">c</span> <span class="o">=</span> <span class="mi">1</span>
     <span class="k">return</span> <span class="n">c</span>
     
 <span class="n">c</span> <span class="o">=</span> <span class="n">func</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 引数を経由する例</span>
+
+<span class="c1">## 引数がミュータブルなオブジェクトの場合</span>
+<span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">c</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">func</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c1"># [1]になる</span>
+
+<span class="c1">## 引数がイミュータブルなオブジェクトの場合</span>
+<span class="k">def</span> <span class="nf">func2</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">c</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">func2</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="c1"># 0のまま</span>
 </pre></div>
 </div>
 </div>
@@ -798,12 +823,12 @@ turtleモジュールの主な関数は以下の通りである。</p>
 <section id="id9">
 <h2>余談: ジェネラティブ・アート<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h2>
 <p>余談として、<strong>ジェネラティブ・アート</strong>について紹介する。
-ジェネラティブ・アートとは、アルゴリズム <a class="footnote-reference brackets" href="#f1" id="id10" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> やルール、自動化されたプロセスを用いて作品を生成するアートの一形態である。
+ジェネラティブ・アートとは、アルゴリズム<a class="footnote-reference brackets" href="#f1" id="id10" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>やルール、自動化されたプロセスを用いて作品を生成するアートの一形態である。
 コンピュータやプログラミング言語を使って、これらのアルゴリズムやプロセスを実行し、視覚的または音響的な要素を生み出す。
 自然界の複雑さや美しさからインスピレーションを得た作品を、それとは対極の論理的で機械的なコンピュータを使って表現するところが、このアート形態の面白いところである。
 したがって、多くの場合に乱数の要素が作品に取り入れられており、実行するごとに毎回異なるパターンを楽しむことができる。</p>
 <p>Georg Neesが1968年に発表した <em>Schotter</em> は、最初のジェネラティブ・アート作品だと言われている。
-以下のプログラムは、<em>Schotter</em>  を模倣したコード <a class="footnote-reference brackets" href="#f2" id="id11" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> である。
+以下のプログラムは、<em>Schotter</em>  を模倣したコード<a class="footnote-reference brackets" href="#f2" id="id11" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>である。
 12個の正方形が規則的に並べられた行から始まり、下に行くにつれて徐々に秩序が失われる様子が描かれる。</p>
 <p>プログラムを実行して鑑賞してみよう。
 余力のある人は、どのようなアルゴリズムが使われているか、コードの読解に挑戦してみてほしい。
