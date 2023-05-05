@@ -346,7 +346,7 @@ document.write(`
 <hr class="docutils" />
 <section id="id2">
 <h2>この授業で学ぶこと<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
-<p>前回の授業で挿入ソートとクイックソートを紹介し、それらの実行速度に差があることを見た。特にデータ数を増やしたときの計算時間の増え方に大きな違いがあることを見た。今回は、アルゴリズムの計算時間を見積もるための考え方である計算量について学ぶ。また、それをもとにP・NPという問題の難しさを表す分類について学ぶ。</p>
+<p>前回の授業で挿入ソートとクイックソートを紹介し、それらの実行速度に差があることを見た。特にデータ数を増やしたときの実行時間の増え方に大きな違いがあることを見た。今回は、アルゴリズムの実行時間を見積もるための考え方である計算量について学ぶ。また、それをもとにP・NPという問題の難しさを表す分類について学ぶ。</p>
 <section id="id3">
 <h3>準備<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
@@ -354,6 +354,7 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">import</span> <span class="nn">random</span>
 <span class="kn">import</span> <span class="nn">itertools</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 </pre></div>
 </div>
 </div>
@@ -372,15 +373,74 @@ document.write(`
 </section>
 <section id="id4">
 <h2>計算量<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
-<p>データ数を <span class="math notranslate nohighlight">\(N\)</span> と書くとき、計算ステップ数が <span class="math notranslate nohighlight">\(N\)</span> に対してどのように増えるかを表すのが<strong>計算量</strong>である。</p>
-<p>例として、次のプログラムの計算時間を考える。</p>
+<p><strong>計算量</strong>とは、データ数を <span class="math notranslate nohighlight">\(N\)</span> と書くとき、計算ステップ数が <span class="math notranslate nohighlight">\(N\)</span> に対してどのように増えるかを表す指標である。</p>
+<p>例として、次の2つのプログラムの計算時間を考える。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">simple_sum</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
     <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
-        <span class="n">count</span> <span class="o">+=</span> <span class="n">i</span>
+        <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
     <span class="k">return</span> <span class="n">count</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">simple_sum2</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+            <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">count</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">simple_sum()</span></code> は一重ループ、<code class="docutils literal notranslate"><span class="pre">simple_sum2()</span></code> は二重ループで、単純な足し算を実行する関数である。各ループ回数を引数 <code class="docutils literal notranslate"><span class="pre">N</span></code> で指定する。
+これらの関数の実行時間を次の <code class="docutils literal notranslate"><span class="pre">exec_time()</span></code> で測定する。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">exec_time</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">N</span><span class="p">):</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="n">func</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">end</span> <span class="o">-</span> <span class="n">start</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">exec_time()</span></code> について補足する。前回とは違い、今回は引数として関数を渡している！
+第4回の授業で、「Pythonに出てくるほとんど全ての要素はオブジェクトとして作られている」という意味ありげな説明をしたが、実は関数もオブジェクトである。
+したがって、データと同様に引数に渡すということも可能になっている。</p>
+<p>さて、データ数に対するそれぞれの関数の実行時間は次のようになる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">t1</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">t2</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">size</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">*</span> <span class="mi">10</span><span class="o">**</span><span class="mi">3</span>
+    <span class="n">n</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">size</span><span class="p">)</span>
+    <span class="n">t1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">exec_time</span><span class="p">(</span><span class="n">simple_sum</span><span class="p">,</span> <span class="n">size</span><span class="p">))</span>
+    <span class="n">t2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">exec_time</span><span class="p">(</span><span class="n">simple_sum2</span><span class="p">,</span> <span class="n">size</span><span class="p">))</span>
+    
+<span class="c1"># プロットの入れ物の用意</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+
+<span class="c1"># プロット</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">t1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;simple_sum()&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">t2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;simple_sum2()&quot;</span><span class="p">)</span>
+
+<span class="c1"># 軸ラベルなどの設定</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;size&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;time[s]&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+
+<span class="c1"># 表示</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>

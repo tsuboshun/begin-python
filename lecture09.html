@@ -555,9 +555,9 @@ timeモジュールの <code class="docutils literal notranslate"><span class="p
 </div>
 </div>
 </div>
-<p>以下の <code class="docutils literal notranslate"><span class="pre">generate_data()</span></code> 関数は、ランダムな0以上1未満の浮動小数点数を要素とするサイズ <code class="docutils literal notranslate"><span class="pre">N</span></code> のリストを生成する。
+<p>以下の <code class="docutils literal notranslate"><span class="pre">generate_data()</span></code> 関数は、ランダムな0以上1未満の小数を要素とするサイズ <code class="docutils literal notranslate"><span class="pre">N</span></code> のリストを生成する。
 生成されたリストを使って、ソートにかかる時間を測定してみよう。
-<code class="docutils literal notranslate"><span class="pre">N</span> <span class="pre">=</span> <span class="pre">100</span></code> くらいまでは挿入ソートとクイックソートの間に大きな差はないが、<code class="docutils literal notranslate"><span class="pre">N</span> <span class="pre">=</span> <span class="pre">10**4</span></code> くらいになるとクイックソートの方が明らかに速いことが確かめられる。</p>
+<code class="docutils literal notranslate"><span class="pre">N</span> <span class="pre">=</span> <span class="pre">10**2</span></code> くらいまでは挿入ソートとクイックソートの間に大きな差はないが、<code class="docutils literal notranslate"><span class="pre">N</span> <span class="pre">=</span> <span class="pre">10**4</span></code> くらいになるとクイックソートの方が明らかに速いことが確かめられる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">generate_data</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
@@ -571,7 +571,7 @@ timeモジュールの <code class="docutils literal notranslate"><span class="p
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="mi">2</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">**</span> <span class="mi">2</span>
 <span class="n">x1</span> <span class="o">=</span> <span class="n">generate_data</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
 <span class="n">x2</span> <span class="o">=</span> <span class="n">x1</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>  <span class="c1"># 同じデータを使用するためにコピーする</span>
 
@@ -584,7 +584,7 @@ timeモジュールの <code class="docutils literal notranslate"><span class="p
 </section>
 <section id="id7">
 <h2>演習<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h2>
-<p><strong>課題</strong><br />
+<p><strong>課題1</strong><br />
 以下は、リスト <code class="docutils literal notranslate"><span class="pre">n</span></code> と <code class="docutils literal notranslate"><span class="pre">t</span></code> の数値データをもとに折れ線グラフを描画するプログラムである。
 今は <code class="docutils literal notranslate"><span class="pre">n</span></code> と <code class="docutils literal notranslate"><span class="pre">t</span></code> に同じ値が追加されているため、直線が描画される。</p>
 <p><code class="docutils literal notranslate"><span class="pre">t</span></code> に追加する値を「挿入ソートで、サイズ <code class="docutils literal notranslate"><span class="pre">size</span></code> のリストデータをソートするのにかかる時間」に変更することで、横軸をサイズ、縦軸を実行時間とする折れ線グラフを描画しなさい。なお、プロットには<strong>Matplotlibライブラリ</strong>を使用しているが、これの使い方は第13回の講義で詳しく学ぶ。</p>

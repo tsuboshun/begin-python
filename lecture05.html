@@ -349,7 +349,7 @@ document.write(`
 <h2>この授業で学ぶこと<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
 <p>この授業では、条件に応じて処理内容を変える方法について学ぶ。
 また、Pythonファイルから関数やクラスを読み込む方法についても学ぶ。</p>
-<p>真偽値（<code class="docutils literal notranslate"><span class="pre">True</span></code>、<code class="docutils literal notranslate"><span class="pre">False</span></code>）をよく使うため、ブール型や比較演算子について<a class="reference internal" href="lecture04.html#label-bool"><span class="std std-ref">復習</span></a>しておこう。</p>
+<p>真偽値（<code class="docutils literal notranslate"><span class="pre">True</span></code>、<code class="docutils literal notranslate"><span class="pre">False</span></code>）をよく使うため、ブール型や比較演算子について<a class="reference internal" href="lecture04.html#label-bool"><span class="std std-ref">復習</span></a>しておこう（<code class="docutils literal notranslate"><span class="pre">=</span></code> と <code class="docutils literal notranslate"><span class="pre">==</span></code> の違いについて覚えているだろうか？）。</p>
 </section>
 <section id="if">
 <h2>if文<a class="headerlink" href="#if" title="Permalink to this heading">#</a></h2>
@@ -656,7 +656,7 @@ Pythonには世界中の開発者により豊富なライブラリが用意さ�
 じゃんけんの手は、<code class="docutils literal notranslate"><span class="pre">&quot;グー&quot;</span></code>、<code class="docutils literal notranslate"><span class="pre">&quot;チョキ&quot;</span></code>、<code class="docutils literal notranslate"><span class="pre">&quot;パー&quot;</span></code> の3つである。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 以下は、my_choice と opp_choiceの一例</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 以下は、my_choice と opp_choiceの一例 （この例では何も出力しないのが正しい）</span>
 <span class="n">my_choice</span> <span class="o">=</span> <span class="s2">&quot;グー&quot;</span>
 <span class="n">opp_choice</span> <span class="o">=</span> <span class="s2">&quot;チョキ&quot;</span>
 
@@ -672,7 +672,7 @@ Pythonには世界中の開発者により豊富なライブラリが用意さ�
 自分の手 <code class="docutils literal notranslate"><span class="pre">my_choice</span></code>、相手の手 <code class="docutils literal notranslate"><span class="pre">opp_choice</span></code> が与えられるとき、自分の勝ちかどうかを判定して、勝ちであれば <code class="docutils literal notranslate"><span class="pre">&quot;勝ち&quot;</span></code> と出力するプログラムを作成しなさい。それ以外のときは何も出力しなくてよい。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 以下は、my_choice と opp_choiceの一例（この例では&quot;勝ち&quot;と出力するのが正しい）</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 以下は、my_choice と opp_choiceの一例 （この例では&quot;勝ち&quot;と出力するのが正しい）</span>
 <span class="n">my_choice</span> <span class="o">=</span> <span class="s2">&quot;グー&quot;</span>
 <span class="n">opp_choice</span> <span class="o">=</span> <span class="s2">&quot;チョキ&quot;</span>
 
@@ -700,22 +700,17 @@ Pythonには世界中の開発者により豊富なライブラリが用意さ�
 </div>
 </div>
 </div>
-<p><strong>課題4</strong><br />
-コンピュータと対戦できるようにしてみよう。
-そのために、<code class="docutils literal notranslate"><span class="pre">my_choice</span></code> は <code class="docutils literal notranslate"><span class="pre">input()</span></code> 関数によりユーザーからの入力を受け取るように、<code class="docutils literal notranslate"><span class="pre">opp_choice</span></code> は <code class="docutils literal notranslate"><span class="pre">random.choice()</span></code> 関数により <code class="docutils literal notranslate"><span class="pre">&quot;グー&quot;</span></code>、<code class="docutils literal notranslate"><span class="pre">&quot;チョキ&quot;</span></code>、<code class="docutils literal notranslate"><span class="pre">&quot;パー&quot;</span></code> からランダムに選ばれるように変更する。
-このときプログラムが正しく動くように、ユーザーの入力が有効かどうかを判定して、無効だった場合にエラーを出力するコードを追加しなさい。
-つまり、ユーザーの入力が <code class="docutils literal notranslate"><span class="pre">&quot;グー&quot;</span></code>、<code class="docutils literal notranslate"><span class="pre">&quot;チョキ&quot;</span></code>、<code class="docutils literal notranslate"><span class="pre">&quot;パー&quot;</span></code> のいずれかであることを確認して、そうでない場合にエラーを出力すること。</p>
+<p><strong>おまけ</strong><br />
+課題3まで出来た人は、作成したプログラムを次のプログラムの末尾にコピー&amp;ペースとして動かしてみよう。
+<code class="docutils literal notranslate"><span class="pre">my_choice</span></code> は <code class="docutils literal notranslate"><span class="pre">input()</span></code> 関数によりユーザーからの入力を受け取るように、<code class="docutils literal notranslate"><span class="pre">opp_choice</span></code> は <code class="docutils literal notranslate"><span class="pre">random.choice()</span></code> 関数により <code class="docutils literal notranslate"><span class="pre">&quot;グー&quot;</span></code>、<code class="docutils literal notranslate"><span class="pre">&quot;チョキ&quot;</span></code>、<code class="docutils literal notranslate"><span class="pre">&quot;パー&quot;</span></code> からランダムに選ばれるように変更している。また <code class="docutils literal notranslate"><span class="pre">my_choice</span></code> が <code class="docutils literal notranslate"><span class="pre">&quot;グー&quot;</span></code>、<code class="docutils literal notranslate"><span class="pre">&quot;チョキ&quot;</span></code>、<code class="docutils literal notranslate"><span class="pre">&quot;パー&quot;</span></code>のいずれかであることを確認して、そうでない場合にエラーを出力するコードを追加している。</p>
 <div class="cell tag_remove-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_choice</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;あなたの選択: &quot;</span><span class="p">)</span>
 <span class="n">opp_choice</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s2">&quot;グー&quot;</span><span class="p">,</span> <span class="s2">&quot;チョキ&quot;</span><span class="p">,</span> <span class="s2">&quot;パー&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;コンピュータの選択: </span><span class="si">{</span><span class="n">opp_choice</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-<span class="c1">### 以下のTrueを書き換えて、ここの部分のみ提出する</span>
-
-<span class="k">if</span> <span class="kc">True</span><span class="p">:</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">my_choice</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;グー&quot;</span><span class="p">,</span> <span class="s2">&quot;チョキ&quot;</span><span class="p">,</span> <span class="s2">&quot;パー&quot;</span><span class="p">]:</span>
     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;グー、チョキ、パーのいずれかの手を入力してください。&quot;</span><span class="p">)</span> <span class="c1"># エラーを出力</span>
-
-<span class="c1">###</span>
 
 <span class="c1"># 課題3の答えを以下にコピー&amp;ペーストする</span>
 </pre></div>
