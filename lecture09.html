@@ -373,9 +373,9 @@ document.write(`
 <div class="note admonition">
 <p class="admonition-title">リストの要素の交換</p>
 <p>ソートアルゴリズムの実装では、リストの要素の交換をよく行う。
-例えば、<code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">[2,</span> <span class="pre">3]</span></code> というリストがあったとして、これの1番目の要素と2番目の要素を入れ替えたいとする。</p>
-<p>次のコードは意図した結果にならない（実行して確認してみよう）。</p>
-<pre>x[0] = x[1]
+例えば、<code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">[2,</span> <span class="pre">3]</span></code> というリストがあったとして、これの1番目と2番目の要素を入れ替えたいとする。</p>
+<p>次のコードは意図した結果にならない。</p>
+<pre>x[0] = x[1]  # この時点で x = [3,3] になる
 x[1] = x[0]</pre>
 <p>上記の方法では上手くいかないので、変数の値を一時的に保存する <code class="docutils literal notranslate"><span class="pre">tmp</span></code> 変数を用意して次のように書くのが一般的な方法である。</p>
 <pre>tmp = x[0]
@@ -462,7 +462,7 @@ x[1] = tmp</pre>
 <figure class="align-default" id="quick-sort2">
 <a class="reference internal image-reference" href="_images/quick_sort2.png"><img alt="_images/quick_sort2.png" src="_images/quick_sort2.png" style="width: 300px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 20 </span><span class="caption-text">クイックソート： <em>Fig.19</em> 1段目の操作の詳細</span><a class="headerlink" href="#quick-sort2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 20 </span><span class="caption-text">クイックソート： <a class="reference internal" href="#quick-sort1"><span class="std std-numref">Fig. 19</span></a> 1段目の操作の詳細</span><a class="headerlink" href="#quick-sort2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>左端から順にピボットより小さい要素を埋めていく。左に位置する青矢印は次に埋めるべき位置を表している。
@@ -535,15 +535,8 @@ timeモジュールの <code class="docutils literal notranslate"><span class="p
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">import</span> <span class="nn">random</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">exec_time</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">algo</span><span class="p">):</span>
+
+<span class="k">def</span> <span class="nf">exec_time</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">algo</span><span class="p">):</span>
     <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
     <span class="k">if</span> <span class="n">algo</span> <span class="o">==</span> <span class="s2">&quot;insert&quot;</span><span class="p">:</span>
         <span class="n">insert_sort</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
@@ -560,7 +553,9 @@ timeモジュールの <code class="docutils literal notranslate"><span class="p
 <code class="docutils literal notranslate"><span class="pre">N</span> <span class="pre">=</span> <span class="pre">10**2</span></code> くらいまでは挿入ソートとクイックソートの間に大きな差はないが、<code class="docutils literal notranslate"><span class="pre">N</span> <span class="pre">=</span> <span class="pre">10**4</span></code> くらいになるとクイックソートの方が明らかに速いことが確かめられる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">generate_data</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+
+<span class="k">def</span> <span class="nf">generate_data</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
     <span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
         <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">())</span>  <span class="c1"># random.random()は0以上1未満の小数を返す</span>
@@ -587,7 +582,14 @@ timeモジュールの <code class="docutils literal notranslate"><span class="p
 <p><strong>課題1</strong><br />
 以下は、リスト <code class="docutils literal notranslate"><span class="pre">n</span></code> と <code class="docutils literal notranslate"><span class="pre">t</span></code> の数値データをもとに、<code class="docutils literal notranslate"><span class="pre">n</span></code> の値を横軸に、<code class="docutils literal notranslate"><span class="pre">t</span></code> の値を縦軸にとった折れ線グラフを描画するプログラムである。
 今は <code class="docutils literal notranslate"><span class="pre">n</span></code> と <code class="docutils literal notranslate"><span class="pre">t</span></code> に同じ値が追加されているため、直線が描画される。</p>
-<p><code class="docutils literal notranslate"><span class="pre">t</span></code> に追加する値を「挿入ソートで、サイズ <code class="docutils literal notranslate"><span class="pre">size</span></code> のリストデータをソートするのにかかる時間」に変更することで、横軸をサイズ、縦軸を実行時間とする折れ線グラフを描画しなさい。なお、プロットにはMatplotlibというライブラリを使用しているが、これの使い方は第13回の講義で詳しく学ぶので、今はなんとなくの理解でよい。</p>
+<p><code class="docutils literal notranslate"><span class="pre">t</span></code> に追加する値を「挿入ソートで、サイズ <code class="docutils literal notranslate"><span class="pre">size</span></code> のリストデータをソートするのにかかる時間」に変更することで、横軸をサイズ、縦軸を実行時間とする折れ線グラフを描画しなさい。なお、プロットにはMatplotlibというライブラリを使用しているが、これの使い方は第13回の講義で詳しく学ぶので、今はコードの流れをなんとなく追えればよい。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="p">[]</span>
