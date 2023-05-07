@@ -375,8 +375,8 @@ document.write(`
 <p>ソートアルゴリズムの実装では、リストの要素の交換をよく行う。
 例えば、<code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">[2,</span> <span class="pre">3]</span></code> というリストがあったとして、これの1番目と2番目の要素を入れ替えたいとする。</p>
 <p>次のコードは意図した結果にならない。</p>
-<pre>x[0] = x[1]  # この時点で x = [3,3] になる
-x[1] = x[0]</pre>
+<pre>x[0] = x[1]  # この時点で x = [3, 3] になる
+x[1] = x[0] # x = [3, 3]</pre>
 <p>上記の方法では上手くいかないので、変数の値を一時的に保存する <code class="docutils literal notranslate"><span class="pre">tmp</span></code> 変数を用意して次のように書くのが一般的な方法である。</p>
 <pre>tmp = x[0]
 x[0] = x[1]
