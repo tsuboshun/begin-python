@@ -69,6 +69,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'lecture10';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -320,12 +322,15 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">この授業で学ぶこと</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">準備</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">この授業で学ぶこと</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">計算量</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">計算量とは</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">オーダー記法について</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">関数の比較</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">ソートアルゴリズムの計算量</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">クイックソート</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">巡回セールスマン問題</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">問題の難しさ</a></li>
 </ul>
             </nav>
         </div>
@@ -344,128 +349,184 @@ document.write(`
 <hr class="docutils" />
 <section id="id2">
 <h2>この授業で学ぶこと<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
-<p>準備中</p>
+<p>前回の授業で挿入ソートとクイックソートを紹介し、それらの実行速度に差があることを見た。特にデータ数を増やしたときの実行時間の増え方に大きな差があることを見た。今回は、アルゴリズムの実行時間を見積もるための考え方である計算量について学び、前回の結果について理解を深める。また、それをもとにP・NPという問題の難しさを表す分類について学ぶ。</p>
+</section>
 <section id="id3">
-<h3>準備<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<h2>計算量<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<section id="id4">
+<h3>計算量とは<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<p><strong>計算量</strong>（computational complexity）とは、計算ステップ数がデータ数 <span class="math notranslate nohighlight">\(N\)</span> に対してどのように増えるかを表す指標である。
+計算量はアルゴリズムの実行時間を見積もるために使われる。</p>
+<p>例として、次の2つのプログラムの実行時間を考える。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">single_loop</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+        <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">count</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">double_loop</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+            <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">count</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>引数 <code class="docutils literal notranslate"><span class="pre">N</span></code> でループ回数を受け取り、<code class="docutils literal notranslate"><span class="pre">simple_loop()</span></code> は一重ループ、<code class="docutils literal notranslate"><span class="pre">double_loop()</span></code> は二重ループで単純な足し算を実行する。
+これらの関数の実行時間を次の <code class="docutils literal notranslate"><span class="pre">exec_time()</span></code> で測定してみよう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">import</span> <span class="nn">random</span>
-<span class="kn">import</span> <span class="nn">itertools</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="mi">6</span>
-<span class="n">nums</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
-    <span class="n">nums</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">())</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-</section>
-<section id="id4">
-<h2>クイックソート<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">quick_sort</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">x</span>
-    
-    <span class="c1"># 右端を pivot とする</span>
-    <span class="n">pivot</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-    
-    <span class="c1"># pivot未満のデータを左から詰めていくため、indexを0で初期化</span>
-    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span> 
-    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">pivot</span><span class="p">:</span>
-            <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-            <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span> <span class="c1"># i 番目より左は常にpivot未満のデータが入っていることに注意</span>
-            
-    <span class="c1"># pivotの値をi番目と交換することで、 xの中身は[pivot未満のデータ], pivot, [pivot以上のデータ] という順になる</span>
-    <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> 
-    
-    <span class="n">quick_sort</span><span class="p">(</span><span class="n">x</span><span class="p">[:</span><span class="n">i</span><span class="p">])</span>
-    <span class="n">quick_sort</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">:])</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">nums</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 
-<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-<span class="n">quick_sort</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;実行時間: </span><span class="si">{</span><span class="n">end</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">秒&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">exec_time</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">N</span><span class="p">):</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="n">func</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">end</span> <span class="o">-</span> <span class="n">start</span>
 </pre></div>
 </div>
 </div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">**</span> <span class="mi">3</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;single_loopの実行時間： </span><span class="si">{</span><span class="n">exec_time</span><span class="p">(</span><span class="n">single_loop</span><span class="p">,</span><span class="w"> </span><span class="n">N</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;double_loopの実行時間: </span><span class="si">{</span><span class="n">exec_time</span><span class="p">(</span><span class="n">double_loop</span><span class="p">,</span><span class="w"> </span><span class="n">N</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>データ数と実行時間の関係を調べてみると、Google Colabの環境では次のようになった（合計の列は後の説明で使う）。</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><code class="docutils literal notranslate"><span class="pre">N</span></code></p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">single_loop(N)</span></code> の実行時間（秒）</p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">double_loop(N)</span></code> の実行時間（秒）</p></th>
+<th class="head"><p>合計</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>100</p></td>
+<td><p>0.00000429</p></td>
+<td><p>0.000491</p></td>
+<td><p>0.000495</p></td>
+</tr>
+<tr class="row-odd"><td><p>1000</p></td>
+<td><p>0.0000438</p></td>
+<td><p>0.0296</p></td>
+<td><p>0.0296</p></td>
+</tr>
+<tr class="row-even"><td><p>10000</p></td>
+<td><p>0.000513</p></td>
+<td><p>4.00</p></td>
+<td><p>4.00</p></td>
+</tr>
+<tr class="row-odd"><td><p>100000</p></td>
+<td><p>0.00373</p></td>
+<td><p>344</p></td>
+<td><p>344</p></td>
+</tr>
+</tbody>
+</table>
+<p><span class="math notranslate nohighlight">\(N\)</span> が10倍になると、<code class="docutils literal notranslate"><span class="pre">single_loop(N)</span></code> の実行時間はおよそ10倍、<code class="docutils literal notranslate"><span class="pre">double_loop(N)</span></code> の実行時間はおよそ100倍に増えていることがわかる。</p>
+<p>これは次のように理解できる。<code class="docutils literal notranslate"><span class="pre">single_loop(N)</span></code> では <code class="docutils literal notranslate"><span class="pre">count</span> <span class="pre">=</span> <span class="pre">0</span></code> を1回実行し、<code class="docutils literal notranslate"><span class="pre">count</span> <span class="pre">+=</span> <span class="pre">1</span></code> を <span class="math notranslate nohighlight">\(N\)</span> 回実行している。<span class="math notranslate nohighlight">\(N\)</span> が十分大きいとき、全体の計算ステップ数はほぼ <span class="math notranslate nohighlight">\(N\)</span> に比例するので、<span class="math notranslate nohighlight">\(N\)</span> が10倍になると実行時間もおよそ10倍になる。一方で、<code class="docutils literal notranslate"><span class="pre">double_loop(N)</span></code> では <code class="docutils literal notranslate"><span class="pre">count</span> <span class="pre">=</span> <span class="pre">0</span></code> を1回実行し、<code class="docutils literal notranslate"><span class="pre">count</span> <span class="pre">+=</span> <span class="pre">1</span></code> を <span class="math notranslate nohighlight">\(N^2\)</span> 回実行している。<span class="math notranslate nohighlight">\(N\)</span> が十分大きいとき、全体の計算ステップ数はほぼ <span class="math notranslate nohighlight">\(N^2\)</span> に比例するので、<span class="math notranslate nohighlight">\(N\)</span> が10倍になると実行時間はおよそ100倍になる。</p>
+<p>このようなデータ数と計算ステップ数の関係について、 <code class="docutils literal notranslate"><span class="pre">single_loop(N)</span></code> の計算量は <span class="math notranslate nohighlight">\(O(N)\)</span>、<code class="docutils literal notranslate"><span class="pre">double_loop(N)</span></code> の計算量は <span class="math notranslate nohighlight">\(O(N^2)\)</span> であると言う。この記法はランダウ（Landau）のオーダー記法と呼ばれており、例えば <span class="math notranslate nohighlight">\(O(N)\)</span> はオーダー<span class="math notranslate nohighlight">\(N\)</span>と読む。</p>
+<p>計算量がわかると、大まかな実行時間の見積もりができる。例えば、<code class="docutils literal notranslate"><span class="pre">double_loop(N)</span></code> は <span class="math notranslate nohighlight">\(N = 10^5\)</span> のとき <span class="math notranslate nohighlight">\(6\)</span> 分くらいかかっているので、その <span class="math notranslate nohighlight">\(10\)</span> 倍の <span class="math notranslate nohighlight">\(N = 10^6\)</span> のとき <span class="math notranslate nohighlight">\(6\times 10^2 = 600\)</span> 分（つまり <span class="math notranslate nohighlight">\(10\)</span> 時間！）くらいかかるだろうと見積もることができる。一般的には、表の結果を踏まえると、計算ステップ数 <span class="math notranslate nohighlight">\(10^7\sim10^8\)</span> につき <span class="math notranslate nohighlight">\(1\)</span> 秒程度かかると見積もることができる。もちろんこれはプログラムの内容やアルゴリズム、実行環境にも依るので、大まかな見積もりではあるが、実際にプログラムを書く前に実行時間のあたりをつけるのに役立つ。</p>
+<div class="note admonition">
+<p class="admonition-title">発展的な話題： 関数もオブジェクト</p>
+<p>第4回の授業で「Pythonに出てくるほとんど全ての要素はオブジェクトとして作られている」と説明したが、関数も例外ではない。関数もオブジェクトであり、一種のデータとして扱うことができる。したがって、その他のデータと同じく変数に代入することもできる。</p>
+<pre>func = single_loop
+func(10**2)  # これはsingle_loop(10**2)と同じ！</pre>
+<p><code class="docutils literal notranslate"><span class="pre">exec_time()</span></code> では引数 <code class="docutils literal notranslate"><span class="pre">func</span></code> で関数を受け取り、<code class="docutils literal notranslate"><span class="pre">exec_time()</span></code> の内部で <code class="docutils literal notranslate"><span class="pre">func(N)</span></code> と実行している。このようなことが可能なのも、関数がオブジェクトとして作られているからである。</p>
 </div>
 </section>
 <section id="id5">
-<h2>巡回セールスマン問題<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
+<h3>オーダー記法について<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<p>さて、計算量のオーダー記法について次の2点を補足する。</p>
+<ol class="arabic simple">
+<li><p>オーダー記法では定数倍の寄与は考えない</p></li>
+<li><p>オーダー記法では低次の項の寄与は考えない</p></li>
+</ol>
+<p>1つ目については、例えば計算ステップ数が <span class="math notranslate nohighlight">\(2N\)</span> であったとしたとしても、オーダー記法としては <span class="math notranslate nohighlight">\(O(N)\)</span> と書くということである。
+これは定数倍があったとしても、データ数 <span class="math notranslate nohighlight">\(N\)</span> が増えたときの計算量の増え方には関係がないからである。つまり、データ数が <span class="math notranslate nohighlight">\(N'\)</span> に増えたとして、計算ステップ数の比を考えると <span class="math notranslate nohighlight">\((cN') / (cN) = N' / N\)</span> というように定数倍 <span class="math notranslate nohighlight">\(c\)</span> はあってもなくても変わらない。</p>
+<p>2つ目については、例えば計算ステップ数が <span class="math notranslate nohighlight">\(N^2 + N\)</span> であったとしても、オーダー記法としては <span class="math notranslate nohighlight">\(O(N^2)\)</span> と書くということである。
+これは実行時間が問題になるような <span class="math notranslate nohighlight">\(N\)</span> の大きい領域では、低次の <span class="math notranslate nohighlight">\(O(N)\)</span> の寄与はほとんど無視できるからである。
+例えば、<code class="docutils literal notranslate"><span class="pre">single_loop(N)</span></code> と <code class="docutils literal notranslate"><span class="pre">double_loop(N)</span></code> の両方を実行するプログラムを考えると、計算ステップ数はおよそ <span class="math notranslate nohighlight">\(N^2 + N\)</span> になる。
+このプログラムの実行時間は <code class="docutils literal notranslate"><span class="pre">single_loop(N)</span></code> と <code class="docutils literal notranslate"><span class="pre">double_loop(N)</span></code> の実行時間の和になるが、先ほどの表を参照すると、これは <code class="docutils literal notranslate"><span class="pre">double_loop(N)</span></code> の実行時間とほとんど変わらない。</p>
+</section>
+<section id="id6">
+<h3>関数の比較<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">generate_distances</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
-    <span class="n">ret</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">N</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">)]</span>  <span class="c1"># N * N の 2次元リストの用意</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
-        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
-            <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">j</span><span class="p">:</span>
-                <span class="n">d</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>  <span class="c1"># 1以上10以下の整数をランダムに生成</span>
-                <span class="n">ret</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">d</span>
-                <span class="n">ret</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">d</span>
-    <span class="k">return</span> <span class="n">ret</span>
-
-
-<span class="k">def</span> <span class="nf">solve_tsp</span><span class="p">(</span><span class="n">distances</span><span class="p">):</span>
-    <span class="c1"># 都市を回る順番について、全ての組み合わせを生成する</span>
-    <span class="n">city_combinations</span> <span class="o">=</span> <span class="n">itertools</span><span class="o">.</span><span class="n">permutations</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">distances</span><span class="p">)))</span>
-
-    <span class="c1"># 最短の経路と距離を初期化する</span>
-    <span class="n">shortest_distance</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="mi">8</span>  <span class="c1"># 十分に大きい値であれば何でも良い</span>
-    <span class="n">shortest_path</span> <span class="o">=</span> <span class="kc">None</span>
-
-    <span class="c1"># 全ての経路を試す</span>
-    <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">city_combinations</span><span class="p">:</span>
-        <span class="n">total_distance</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">path</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
-            <span class="n">total_distance</span> <span class="o">+=</span> <span class="n">distances</span><span class="p">[</span><span class="n">path</span><span class="p">[</span><span class="n">i</span><span class="p">]][</span><span class="n">path</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]]</span>
-        <span class="c1"># 最短経路を更新する</span>
-        <span class="k">if</span> <span class="n">total_distance</span> <span class="o">&lt;</span> <span class="n">shortest_distance</span><span class="p">:</span>
-            <span class="n">shortest_distance</span> <span class="o">=</span> <span class="n">total_distance</span>
-            <span class="n">shortest_path</span> <span class="o">=</span> <span class="n">path</span>
-
-    <span class="c1"># 結果を出力する</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;最短距離:&quot;</span><span class="p">,</span> <span class="n">shortest_distance</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;最短経路:&quot;</span><span class="p">,</span> <span class="n">shortest_path</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO: log関数の説明など</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">8</span>
-
-<span class="c1"># 都市間の距離を表す2次元リスト</span>
-<span class="n">distances</span> <span class="o">=</span> <span class="n">generate_distances</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
-
-<span class="c1"># 最短経路の探索</span>
-<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-<span class="n">solve_tsp</span><span class="p">(</span><span class="n">distances</span><span class="p">)</span>
-<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;実行時間: </span><span class="si">{</span><span class="n">end</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">秒&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
+</section>
+<section id="id7">
+<h3>ソートアルゴリズムの計算量<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
+<p>それでは、挿入ソートとクイックソートについて計算量を確認してみよう。これらのアルゴリズムでは、<code class="docutils literal notranslate"><span class="pre">single_loop()</span></code> や <code class="docutils literal notranslate"><span class="pre">double_loop()</span></code> と違って、入力データの並び順によって計算ステップ数が大きく変わりうる。そこで最悪なケースにおける計算量を <strong>最悪計算量</strong>、平均的なケースにおける計算量を <strong>平均計算量</strong> として区別して考える。</p>
+<p>挿入ソートとクイックソートの計算量は以下の通りである。</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>挿入ソート</p></th>
+<th class="head"><p>クイックソート</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>最悪計算量</p></td>
+<td><p><span class="math notranslate nohighlight">\(O(N^2)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(O(N^2)\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>平均計算量</p></td>
+<td><p><span class="math notranslate nohighlight">\(O(N^2)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(O(N\log N)\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p><span class="math notranslate nohighlight">\(N\)</span> が十分大きいとき、<span class="math notranslate nohighlight">\(\log N &lt; N\)</span> の大小関係が成り立つ。したがって、平均計算量についてはクイックソートの方が小さい。
+前回の授業で、クイックソートの方が挿入ソートより高速に動作することを見たが、平均計算量の違いが実行時間の差につながっていたわけである。</p>
+<p>例えば、これらの計算量から平均的なケースにおいて、挿入ソートは <span class="math notranslate nohighlight">\(N = 10^4\)</span> で数秒かかり、クイックソートは <span class="math notranslate nohighlight">\(N = 10^6\)</span> で数秒かかると予想できる。なぜなら、先ほど「計算ステップ数 <span class="math notranslate nohighlight">\(10^7\sim10^8\)</span> につき <span class="math notranslate nohighlight">\(1\)</span> 秒程度かかる」と書いたが、<span class="math notranslate nohighlight">\(N = 10^4\)</span> で <span class="math notranslate nohighlight">\(N^2 = 10^8\)</span> となり、<span class="math notranslate nohighlight">\(N = 10^6\)</span> で <span class="math notranslate nohighlight">\(N\log N = 2\times 10^7\)</span> となるからである<a class="footnote-reference brackets" href="#f1" id="id8" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>。これらは大まかな見積もりではあるが、前回のノートブック上で実際に測定してみると、大体当たっていることが確かめられる。</p>
+<p>挿入ソートの計算量の求め方を説明する。
+<code class="docutils literal notranslate"><span class="pre">insert_sort()</span></code> 関数のfor文に着目する。変数 <code class="docutils literal notranslate"><span class="pre">i</span></code> は1からN-1までを動くが、それぞれの <code class="docutils literal notranslate"><span class="pre">i</span></code> の値に対して内側のwhile文は、最悪のケースで <code class="docutils literal notranslate"><span class="pre">i</span></code> 回実行される（<a class="reference internal" href="lecture09.html#insert-sort"><span class="std std-numref">Fig. 18</span></a>の3段目の状況）。したがって、全体の計算ステップ数は</p>
+<div class="math notranslate nohighlight">
+\[
+1 + 2 + ... + N-1 = \frac{N(N-1)}{2}
+\]</div>
+<p>により <span class="math notranslate nohighlight">\(N(N-1)/2\)</span> 回と求められる<a class="footnote-reference brackets" href="#f2" id="id9" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>。よって、定数倍や低次項を落としてオーダー表記に直すことで、最悪計算量は <span class="math notranslate nohighlight">\(O(N^2)\)</span> となる。</p>
+<p>平均計算量の求め方もほぼ同様である。最悪の場合は、各 <code class="docutils literal notranslate"><span class="pre">i</span></code> につき内側のwhile文が <code class="docutils literal notranslate"><span class="pre">i</span></code> 回実行されると説明したが、平均的にはその半分の回数実行されると考えられる。したがって、全体の平均的な計算ステップ数は、先ほどの結果を2で割った <span class="math notranslate nohighlight">\(N(N-1)/4\)</span> 回と求められる。よって、平均計算量は <span class="math notranslate nohighlight">\(O(N^2)\)</span> となる。</p>
+<p>次にクイックソートの計算量の求め方を説明する。きちんと説明しようとすると少し複雑な数式が出てくるので、ここではざっくりとした直感的な説明を行う。
+<code class="docutils literal notranslate"><span class="pre">quick_sort()</span></code> 関数のfor文に着目すると、これは <code class="docutils literal notranslate"><span class="pre">right</span> <span class="pre">-</span> <span class="pre">left</span> <span class="pre">+</span> <span class="pre">1</span></code> 回、つまり <a class="reference internal" href="lecture09.html#quick-sort1"><span class="std std-numref">Fig. 19</span></a> の青の領域の長さ分だけ実行される。
+したがって、<a class="reference internal" href="lecture09.html#quick-sort1"><span class="std std-numref">Fig. 19</span></a> の各段の計算ステップ数は、多めに見積もって <span class="math notranslate nohighlight">\(O(N)\)</span> である。
+あとは <a class="reference internal" href="lecture09.html#quick-sort1"><span class="std std-numref">Fig. 19</span></a> の段数を見積もって掛け算すればよい。</p>
+<p>各段における <code class="docutils literal notranslate"><span class="pre">quick_sort()</span></code> の適用範囲の長さの最大値は、最悪のケースでは再帰1回につき1つずつしか減らない（どのような入力データでそうなるだろうか？）。したがって、最も多いケースで <a class="reference internal" href="lecture09.html#quick-sort1"><span class="std std-numref">Fig. 19</span></a> の段数は <span class="math notranslate nohighlight">\(O(N)\)</span> である。
+よって、全体の最悪計算量は <span class="math notranslate nohighlight">\(O(N^2)\)</span> となる。</p>
+<p>各段における <code class="docutils literal notranslate"><span class="pre">quick_sort()</span></code> の適用範囲の長さの最大値は、最良のケースでは再帰1回につき半分になるので、最も少ないケースではおよそ <span class="math notranslate nohighlight">\(O(\log N)\)</span> 段になる。実は平均的なケースでも <span class="math notranslate nohighlight">\(O(\log N)\)</span> 段であることを示すことができる。
+よって、全体の平均計算量は <span class="math notranslate nohighlight">\(O(N\log N)\)</span> となる。</p>
+</section>
+</section>
+<section id="id10">
+<h2>問題の難しさ<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h2>
+<hr class="footnotes docutils" />
+<aside class="footnote brackets" id="f1" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id8">1</a><span class="fn-bracket">]</span></span>
+<p>対数の底は2として計算した。対数の底に何をとっても定数倍の違いでしかないので、オーダー記法の観点からは底の違いは無視できる。実際、<span class="math notranslate nohighlight">\(\log_a N / \log_b N = \log_a b\)</span> より両者の比は <span class="math notranslate nohighlight">\(N\)</span> に依らない定数である。</p>
+</aside>
+<aside class="footnote brackets" id="f2" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id9">2</a><span class="fn-bracket">]</span></span>
+<p><code class="docutils literal notranslate"><span class="pre">single_loop()</span></code> や <code class="docutils literal notranslate"><span class="pre">double_loop()</span></code> のときとは異なり、ここではループ1回を1ステップとして計算ステップ数を求めている。代入などの演算単位で数えたとしても定数倍の違いでしかないので、計算量を求める上ではこれで問題ない。</p>
+</aside>
 </section>
 </section>
 
@@ -530,12 +591,15 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">この授業で学ぶこと</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">準備</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">この授業で学ぶこと</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">計算量</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">計算量とは</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">オーダー記法について</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">関数の比較</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">ソートアルゴリズムの計算量</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">クイックソート</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">巡回セールスマン問題</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">問題の難しさ</a></li>
 </ul>
   </nav></div>
 

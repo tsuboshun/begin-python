@@ -599,7 +599,7 @@ Pythonに出てくるほとんど全ての要素はオブジェクトとして�
 リスト <code class="docutils literal notranslate"><span class="pre">values</span></code> と、その中の要素 <code class="docutils literal notranslate"><span class="pre">v</span></code> を与える。<code class="docutils literal notranslate"><span class="pre">v</span></code> の <code class="docutils literal notranslate"><span class="pre">values</span></code> におけるインデックスを出力するプログラムを作成しなさい。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 以下は、values と v の一例</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 以下は、values と v の一例 （この例では3と出力するのが正しい）</span>
 <span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
 <span class="n">v</span> <span class="o">=</span> <span class="mi">2</span> 
 
@@ -615,12 +615,13 @@ Pythonに出てくるほとんど全ての要素はオブジェクトとして�
 <div class="note admonition">
 <p class="admonition-title">問題の趣旨</p>
 <p>上の問題は、<strong>どのような</strong> <code class="docutils literal notranslate"><span class="pre">values</span></code> と <code class="docutils literal notranslate"><span class="pre">v</span></code> の組み合わせに対しても、正しいインデックスを出力するプログラムを作成しなさいという意味である。例えば、<code class="docutils literal notranslate"><span class="pre">values</span> <span class="pre">=</span> <span class="pre">[5,</span> <span class="pre">4,</span> <span class="pre">3,</span> <span class="pre">2,</span> <span class="pre">1]</span></code>、<code class="docutils literal notranslate"><span class="pre">v=2</span></code> の組み合わせに限れば <code class="docutils literal notranslate"><span class="pre">print(3)</span></code> は正しい出力になるが、これは問題の答えとしては正しくない。</p>
+<p>こちらで用意した複数の <code class="docutils literal notranslate"><span class="pre">values</span></code> と <code class="docutils literal notranslate"><span class="pre">v</span></code> の組み合わせ全てに対して、提出されたコード（###で囲まれた領域）が正しい出力をするかを、プログラムで自動判定して採点する。したがって、課題1であれば <code class="docutils literal notranslate"><span class="pre">values</span></code> と <code class="docutils literal notranslate"><span class="pre">v</span></code> という変数を利用したコードにすること。</p>
 </div>
 <p><strong>課題2</strong></p>
 <p>リスト <code class="docutils literal notranslate"><span class="pre">values</span></code> と、その中の要素 <code class="docutils literal notranslate"><span class="pre">v</span></code> を与える。<code class="docutils literal notranslate"><span class="pre">v</span></code> が <code class="docutils literal notranslate"><span class="pre">values</span></code> の左から何番目の要素かを出力するプログラムを作成しなさい。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 以下は、values と v の一例</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 以下は、values と v の一例 （この例では4と出力するのが正しい）</span>
 <span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
 <span class="n">v</span> <span class="o">=</span> <span class="mi">2</span> 
 
@@ -638,7 +639,7 @@ Pythonに出てくるほとんど全ての要素はオブジェクトとして�
 来場者の一人の苗字が <code class="docutils literal notranslate"><span class="pre">name</span></code> として与えられるとき、この人物が何人目の来場者だったかを調べて出力するプログラムを作成しなさい。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 以下は、visitors と name の一例</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 以下は、visitors と name の一例 （この例では2と出力するのが正しい）</span>
 <span class="n">visitors</span> <span class="o">=</span> <span class="s2">&quot;Sato,Tanaka,Suzuki,Yamada,Matsumoto&quot;</span>
 <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Tanaka&quot;</span>
 
@@ -655,7 +656,7 @@ Pythonに出てくるほとんど全ての要素はオブジェクトとして�
 課題3と同じ設定において、<code class="docutils literal notranslate"><span class="pre">visitors</span></code> のデータは来場者が自由に記入したものであるため、大文字と小文字の使い方に一貫性がなかったとする。<code class="docutils literal notranslate"><span class="pre">name</span></code> については全て小文字で与えるとするとき、<code class="docutils literal notranslate"><span class="pre">name</span></code> で指定される人物が何人目の来場者だったかを調べて出力するプログラムを作成しなさい。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 以下は、visitors と name の一例</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 以下は、visitors と name の一例 （この例では3と出力するのが正しい）</span>
 <span class="n">visitors</span> <span class="o">=</span> <span class="s2">&quot;Sato,tanaka,Suzuki,yamada,Matsumoto&quot;</span>
 <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;suzuki&quot;</span>
 
