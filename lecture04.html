@@ -782,6 +782,19 @@ Pythonに出てくるほとんど全ての要素はオブジェクトとして�
 </div>
 </div>
 </div>
+<p><strong>5/10 授業後追記</strong></p>
+<p>問題の意図を汲みとるのが少し難しそうだったので、課題1については模範解を示すことにします。
+こちらを提出すれば出席と見なします。課題2以降は、出来る範囲で取り組んでみてください。</p>
+<pre>
+result = values.index(v)
+print(result)</pre>
+<p>上記のように書くと、<code class="docutils literal notranslate"><span class="pre">values</span></code> と <code class="docutils literal notranslate"><span class="pre">v</span></code> にどのような値を与えても、<code class="docutils literal notranslate"><span class="pre">v</span></code> の <code class="docutils literal notranslate"><span class="pre">values</span></code> リストにおけるインデックスを出力してくれます。
+例えば、以下のように動作します。</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">values</span> <span class="pre">=</span> <span class="pre">[4,</span> <span class="pre">5,</span> <span class="pre">6]</span></code>、<code class="docutils literal notranslate"><span class="pre">v</span> <span class="pre">=</span> <span class="pre">4</span></code> とすると、<code class="docutils literal notranslate"><span class="pre">0</span></code> と出力</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">values</span> <span class="pre">=</span> <span class="pre">[6,</span> <span class="pre">5,</span> <span class="pre">4]</span></code>、<code class="docutils literal notranslate"><span class="pre">v</span> <span class="pre">=</span> <span class="pre">4</span></code> とすると、<code class="docutils literal notranslate"><span class="pre">2</span></code> と出力</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">values</span> <span class="pre">=</span> <span class="pre">[4,</span> <span class="pre">5,</span> <span class="pre">6]</span></code>、<code class="docutils literal notranslate"><span class="pre">v</span> <span class="pre">=</span> <span class="pre">5</span></code> とすると、<code class="docutils literal notranslate"><span class="pre">1</span></code> と出力</p></li>
+</ul>
 <div class="note admonition">
 <p class="admonition-title">問題の趣旨</p>
 <p>上の問題は、<strong>どのような</strong> <code class="docutils literal notranslate"><span class="pre">values</span></code> と <code class="docutils literal notranslate"><span class="pre">v</span></code> の組み合わせに対しても、正しいインデックスを出力するプログラムを作成しなさいという意味である。例えば、<code class="docutils literal notranslate"><span class="pre">values</span> <span class="pre">=</span> <span class="pre">[5,</span> <span class="pre">4,</span> <span class="pre">3,</span> <span class="pre">2,</span> <span class="pre">1]</span></code>、<code class="docutils literal notranslate"><span class="pre">v=2</span></code> の組み合わせに限れば <code class="docutils literal notranslate"><span class="pre">print(3)</span></code> は正しい出力になるが、これは問題の答えとしては正しくない。</p>
