@@ -1058,7 +1058,8 @@ print(result)</pre></p>
 <li><p><code class="docutils literal notranslate"><span class="pre">visitors</span> <span class="pre">=</span> <span class="pre">&quot;Sato,Tanaka,Suzuki,Yamada,Matsumoto&quot;</span></code>、<code class="docutils literal notranslate"><span class="pre">name</span> <span class="pre">=</span> <span class="pre">&quot;Tanaka&quot;</span></code> とすると、<code class="docutils literal notranslate"><span class="pre">2</span></code> と出力</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">visitors</span> <span class="pre">=</span> <span class="pre">&quot;Sato,Tanaka,Suzuki,Yamada,Matsumoto&quot;</span></code>、<code class="docutils literal notranslate"><span class="pre">name</span> <span class="pre">=</span> <span class="pre">&quot;Yamada&quot;</span></code> とすると、<code class="docutils literal notranslate"><span class="pre">4</span></code> と出力</p></li>
 </ul>
-<p>課題3は重要な要素が詰まっているので、上の解答例について実行の流れを丁寧に解説する。</p>
+<p>課題3の答えを理解できれば他の課題の答えも理解できると思うので、
+上の解答例について一歩踏み込んで、実行の流れを丁寧に解説しよう。</p>
 <p>具体的に <code class="docutils literal notranslate"><span class="pre">visitors</span> <span class="pre">=</span> <span class="pre">&quot;Sato,Tanaka,Suzuki,Yamada,Matsumoto&quot;</span></code>、<code class="docutils literal notranslate"><span class="pre">name</span> <span class="pre">=</span> <span class="pre">&quot;Tanaka&quot;</span></code> と与えられたときの実行の流れを説明する。
 Pythonプログラムは、以下のように上から順に実行される。</p>
 <p><em>ステップ1： 1行目を実行</em></p>
@@ -1089,9 +1090,8 @@ Pythonプログラムは、以下のように上から順に実行される。</
 b = a.index(name)
 c = b + 1
 print(c)</pre>
-<p>はじめのうちは適当な変数名でもよい。
-また小刻みにデータを変形して、その度に新しい変数に代入しても全く問題ない。
-もちろん、次のように同じ変数を使い回してもよい。</p>
+<p>はじめのうちは <code class="docutils literal notranslate"><span class="pre">a</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span></code>、<code class="docutils literal notranslate"><span class="pre">c</span></code> といった適当な変数名でもよい。
+また小刻みにデータを変換するとき、その度に新しい変数に代入してもよいし、次のように同じ変数を使い回してもよい。</p>
 <pre>a = visitors.split(',')
 a = a.index(name)
 a = a + 1
@@ -1111,7 +1111,7 @@ print(result)</pre>
 <pre>result = "Sato,Tanaka,Suzuki,Yamada,Matsumoto".index("Tanaka") + 1</pre>
 <p>ここまでのテキストで扱っていないが、文字列も <code class="docutils literal notranslate"><span class="pre">index()</span></code> メソッドを持ち、この場合は <code class="docutils literal notranslate"><span class="pre">&quot;Tanaka&quot;</span></code> までの文字数である <code class="docutils literal notranslate"><span class="pre">5</span></code> が返される。
 しかし、この値は何人目かを調べるのに役立たないので、以降はどう頑張っても正しい出力を得られない。</p>
-<p>まとめると問題は、最初の <code class="docutils literal notranslate"><span class="pre">visitors.split(',')</span></code> の結果を以降のコードで利用できていない点にある。
+<p>まとめると、一番の問題は最初の <code class="docutils literal notranslate"><span class="pre">visitors.split(',')</span></code> の結果を以降のコードで利用できていない点にある。
 <strong>あとで利用したいデータは、必ず変数に代入（=保存）しておく必要がある</strong>。</p>
 </div>
 <p><strong>課題4</strong><br />
