@@ -53,7 +53,7 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
-    <script src="_static/link_control.js"></script>
+    <script src="_static/custom.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-VFVQWRM1GN"></script>
@@ -370,6 +370,11 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello, world!
+</pre></div>
+</div>
+</div>
 </div>
 <p>ノートブックの文字を入力できる部分を<strong>セル</strong>という。
 セルに見本通りに文字を入力して、左の実行ボタンを押すと Hello, world! と表示されるはずだ。
@@ -426,10 +431,20 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="mi">2</span> <span class="o">*</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-4
 </pre></div>
 </div>
 </div>
@@ -440,10 +455,20 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.5
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">7</span> <span class="o">//</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
 </pre></div>
 </div>
 </div>
@@ -454,10 +479,20 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span> <span class="o">**</span> <span class="mi">5</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>32
 </pre></div>
 </div>
 </div>
@@ -466,18 +501,43 @@ document.write(`
 <p><strong>練習1</strong></p>
 <p>（1） 80円のりんごを6個、120円のオレンジを9個買った。合計はいくらか。<br />
 （2） りんごは5%の値引きがあったとする。このとき合計はいくらになるか。</p>
+<div class="toggle docutils container">
+<pre>
+80 * 6 + 120 * 9</pre>
+<pre>
+80 * 0.95 * 6 + 120 * 9</pre>
+</div>
 <p><strong>練習2</strong></p>
 <p>（1） 365を12で割った商と余りを求めよ。<br />
 （2） 2023の2023乗の1の位の数字は何か。 <font color=cornflowerblue>ヒント: 1の位の数字は10で割った余りである。</font></p>
+<div class="toggle docutils container">
+<pre>
+print(365 // 12)  # 商
+print(365 % 12) # 余り</pre>
+<pre>
+2023**2023 % 10</pre>
+</div>
 <p><strong>練習3</strong></p>
 <p>（1） 10万円を年利率5％で運用したとき、10年後の金額を求めよ。また20年後にはいくらになるか。<br />
 （2） 3の平方根の値を小数で求めよ。 <font color=cornflowerblue>ヒント: 平方根は0.5乗で計算できる。</font></p>
+<div class="toggle docutils container">
+<pre>
+print(10 * (1.05**10))
+print(10 * (1.05**20))</pre>
+<pre>
+3**0.5</pre>
+</div>
 <section id="id4">
 <h3>計算の順番<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
 <p>次のコードの実行結果を予想してみよう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">/</span> <span class="mi">4</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">5</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6.0
 </pre></div>
 </div>
 </div>
@@ -492,11 +552,21 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6.0
+</pre></div>
+</div>
+</div>
 </div>
 <p>さらに、真ん中の項のうち累乗が優先されるので、次のように <code class="docutils literal notranslate"><span class="pre">3**2</span></code> と <code class="docutils literal notranslate"><span class="pre">2**2</span></code> が先に計算される。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span> <span class="o">+</span> <span class="p">((</span><span class="mi">3</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="mi">4</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span> <span class="o">-</span> <span class="mi">5</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6.0
 </pre></div>
 </div>
 </div>
@@ -513,6 +583,11 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6.0
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 </section>
@@ -526,10 +601,20 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1560
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">80</span> <span class="o">*</span> <span class="mf">0.95</span> <span class="o">*</span> <span class="mi">6</span> <span class="o">+</span> <span class="mi">120</span> <span class="o">*</span> <span class="mi">9</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1536.0
 </pre></div>
 </div>
 </div>
@@ -559,10 +644,20 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1560
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">apple</span> <span class="o">*</span> <span class="mf">0.95</span> <span class="o">*</span> <span class="mi">6</span> <span class="o">+</span> <span class="n">orange</span> <span class="o">*</span> <span class="mi">9</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1536.0
 </pre></div>
 </div>
 </div>
@@ -576,12 +671,22 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1680
+</pre></div>
+</div>
+</div>
 </div>
 <p>さて、先ほど右辺を式と表現したが、例えば次のような定義の仕方もできる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span>
 <span class="n">x</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
 </pre></div>
 </div>
 </div>
@@ -592,6 +697,11 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
 <span class="n">x</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
 </pre></div>
 </div>
 </div>
@@ -608,12 +718,22 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>11
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">9</span>
 <span class="n">x</span> <span class="o">/=</span> <span class="mi">3</span>
 <span class="n">x</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.0
 </pre></div>
 </div>
 </div>
@@ -643,6 +763,11 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Good morning.&#39;
+</pre></div>
+</div>
+</div>
 </div>
 <p>文字列の中で ‘ または ” を使う場合は、両端の記号をそれとは違うものにする。</p>
 <div class="cell docutils container">
@@ -651,11 +776,21 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;She said, &quot;Good morning.&quot; &#39;
+</pre></div>
+</div>
+</div>
 </div>
 <p>日本語も扱うことができる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;太郎&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;太郎&#39;
 </pre></div>
 </div>
 </div>
@@ -668,12 +803,22 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;次郎&#39;
+</pre></div>
+</div>
+</div>
 </div>
 <p>文字列においても <code class="docutils literal notranslate"><span class="pre">+</span></code> 演算子を使うことができる。文字列の場合は、連結を表す。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">greeting</span> <span class="o">=</span> <span class="s2">&quot;おはよう、&quot;</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s2">&quot;さん&quot;</span>
 <span class="n">greeting</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;おはよう、次郎さん&#39;
 </pre></div>
 </div>
 </div>
@@ -690,6 +835,11 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;おはよう、次郎さん&#39;
+</pre></div>
+</div>
+</div>
 </div>
 <p>普通の文字列との違いは、先頭に <code class="docutils literal notranslate"><span class="pre">f</span></code> がついていることである。このとき波括弧 <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">}</span></code> で囲った部分は式と見なされ、評価した結果の値に置き換えられる。例えば変数の場合は、それの指し示すデータに置き換えられる。</p>
 <div class="cell docutils container">
@@ -697,6 +847,11 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;太郎&quot;</span>
 <span class="n">greeting</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;おはよう、</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">さん&quot;</span>
 <span class="n">greeting</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;おはよう、太郎さん&#39;
 </pre></div>
 </div>
 </div>
@@ -708,10 +863,20 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;7 割る 3 = 2 余り 1&#39;
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sa">f</span><span class="s2">&quot;3の平方根の値は</span><span class="si">{</span><span class="mi">3</span><span class="o">**</span><span class="mf">0.5</span><span class="si">}</span><span class="s2">である&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;3の平方根の値は1.7320508075688772である&#39;
 </pre></div>
 </div>
 </div>
@@ -720,6 +885,11 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sa">f</span><span class="s2">&quot;3の平方根の値は</span><span class="si">{</span><span class="mi">3</span><span class="o">**</span><span class="mf">0.5</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">である&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;3の平方根の値は1.73である&#39;
 </pre></div>
 </div>
 </div>
@@ -738,6 +908,14 @@ Google Colab以外の環境ではPythonのバージョンが3.6未満のこと�
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>message = &quot;こんにちは。
 今日の気温は15度です。&quot;
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;/var/folders/p0/0zrw9jsj03v3vlszs8v3m2p40000gn/T/ipykernel_74739/4098129477.py&quot;</span><span class="gt">, line </span><span class="mi">1</span>
+    <span class="n">message</span> <span class="o">=</span> <span class="s2">&quot;こんにちは。</span>
+                     <span class="o">^</span>
+<span class="ne">SyntaxError</span>: EOL while scanning string literal
 </pre></div>
 </div>
 </div>
@@ -763,6 +941,12 @@ Google Colab以外の環境ではPythonのバージョンが3.6未満のこと�
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">message</span> <span class="o">=</span> <span class="s2">&quot;こんにちは。</span><span class="se">\n</span><span class="s2">今日の気温は15度です。&quot;</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>こんにちは。
+今日の気温は15度です。
 </pre></div>
 </div>
 </div>
@@ -800,12 +984,22 @@ message = "The place is " + "beautiful."</pre>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>78.5
+</pre></div>
+</div>
+</div>
 </div>
 <p>下のプログラムにコメントを書き加えてみよう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">4</span> <span class="o">+</span> <span class="mi">5</span><span class="p">)</span> <span class="o">/</span> <span class="mi">5</span>
 <span class="n">m</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.0
 </pre></div>
 </div>
 </div>
@@ -824,6 +1018,16 @@ message = "The place is " + "beautiful."</pre>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">p0</span><span class="o">/</span><span class="mi">0</span><span class="n">zrw9jsj03v3vlszs8v3m2p40000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_74739</span><span class="o">/</span><span class="mf">1762608797.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">primt</span><span class="p">(</span><span class="s2">&quot;Hello, world!&quot;</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;primt&#39; is not defined
+</pre></div>
+</div>
+</div>
 </div>
 <p>エラーメッセージには、primtという変数は定義されていないと書かれている。
 このような場合は、タイピングミスをしていないか確認しよう。</p>
@@ -831,6 +1035,14 @@ message = "The place is " + "beautiful."</pre>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(&quot;Hello, world!&quot;）
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  File &quot;/var/folders/p0/0zrw9jsj03v3vlszs8v3m2p40000gn/T/ipykernel_74739/1922743172.py&quot;, line 1
+    print(&quot;Hello, world!&quot;）
+                         ^
+SyntaxError: invalid character &#39;）&#39; (U+FF09)
 </pre></div>
 </div>
 </div>
@@ -844,12 +1056,28 @@ message = "The place is " + "beautiful."</pre>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;/var/folders/p0/0zrw9jsj03v3vlszs8v3m2p40000gn/T/ipykernel_74739/2817388938.py&quot;</span><span class="gt">, line </span><span class="mi">1</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello, world!&quot;</span><span class="p">)</span>
+                          <span class="o">^</span>
+<span class="ne">SyntaxError</span>: invalid non-printable character U+3000
+</pre></div>
+</div>
+</div>
 </div>
 <p><strong>例3: インデント</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span> <span class="n">message</span> <span class="o">=</span> <span class="s2">&quot;Hello, world!&quot;</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;/var/folders/p0/0zrw9jsj03v3vlszs8v3m2p40000gn/T/ipykernel_74739/869639648.py&quot;</span><span class="gt">, line </span><span class="mi">2</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+    <span class="o">^</span>
+<span class="ne">IndentationError</span>: unexpected indent
 </pre></div>
 </div>
 </div>
@@ -864,12 +1092,29 @@ Pythonではインデントも文法の一部であり、後々if文や、for文
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;/var/folders/p0/0zrw9jsj03v3vlszs8v3m2p40000gn/T/ipykernel_74739/2823837591.py&quot;</span><span class="gt">, line </span><span class="mi">1</span>
+<span class="g g-Whitespace">    </span><span class="mi">5</span><span class="p">{</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">((</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">**</span> <span class="mf">0.5</span><span class="p">)}</span>
+     <span class="o">^</span>
+<span class="ne">SyntaxError</span>: invalid syntax
+</pre></div>
+</div>
+</div>
 </div>
 <p>上のコードには、文法ミスが3箇所ある。次の数式を表すように、デバッグしてみよう。</p>
 <div class="math notranslate nohighlight">
 \[
 5\left\{1 + 2\left(1 + \sqrt{3}\right)\right\}
 \]</div>
+<div class="toggle docutils container">
+<ul class="simple">
+<li><p>ミス1: 左かっこ <code class="docutils literal notranslate"><span class="pre">(</span></code> と右かっこ <code class="docutils literal notranslate"><span class="pre">)</span></code> の数が合っていない</p></li>
+<li><p>ミス2: <code class="docutils literal notranslate"><span class="pre">*</span></code> が抜けている</p></li>
+<li><p>ミス3: <code class="docutils literal notranslate"><span class="pre">()</span></code> 以外のかっこが使われている（<code class="docutils literal notranslate"><span class="pre">{}</span></code> は別の意味になる）</p></li>
+</ul>
+<pre>
+5 * (1 + 2 * (1 + 3 ** 0.5))</pre>
+</div>
 <div class="tip admonition">
 <p class="admonition-title">エラーが解決できなかったら？</p>
 <p>もし自力で解決できそうにないエラーに遭遇したら、エラーメッセージを検索してみよう。多くの場合、解決のためのヒントが見つかるだろう。</p>
@@ -889,6 +1134,31 @@ Pythonではインデントも文法の一部であり、後々if文や、for文
 \]</div>
 <p>この公式を用いて30番目の数を求めて、結果の整数を提出しなさい。</p>
 <p>なお式の途中に小数の現れる計算では、小さな誤差が生じることがある。計算結果にわずかな小数が含まれると思うが、四捨五入して整数部分を答えればよい。  <font color=cornflowerblue>ヒント: 答えの下2桁は40</font></p>
+<div class="toggle docutils container">
+<p>解答例1： <span class="math notranslate nohighlight">\(F_n\)</span> の式を直接コードに直すと次のようになる。</p>
+<pre>
+n = 30
+
+result = (1/5**0.5) * (((1 + 5**0.5)/2)**n - ((1 - 5**0.5)/2)**n)
+
+print(result)
+</pre>
+<p>解答例2： 少し工夫した例がこちら。</p>
+<ul class="simple">
+<li><p>変数を利用することで式の見た目をスッキリさせている。</p></li>
+<li><p><span class="math notranslate nohighlight">\(1/\sqrt{5}\)</span>を割り算に言い換えることで、式を少し簡単にしている。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">int()</span></code> 関数により小数第1位を四捨五入している（関数については第4回で説明する）。</p></li>
+</ul>
+<pre>
+n = 30
+
+left = (1 + 5**0.5)/2
+right = (1 - 5**0.5)/2
+result = (left**n - right**n) / (5**0.5)
+
+print(int(result))
+</pre>
+</div>
 <div class="note admonition">
 <p class="admonition-title">テスト</p>
 <p>結果のわかっている場合を例に、プログラムの正しさを確かめることを<strong>テスト</strong>という。

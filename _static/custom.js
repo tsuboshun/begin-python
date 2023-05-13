@@ -8,7 +8,7 @@ window.addEventListener("load", func=()=>{
 
 let text_close = "解答はこちら";
 let text_open = "閉じる";
-
+let color = '#f0f8ff';
 document.addEventListener('DOMContentLoaded', (event) => {
     const detailsElements = document.querySelectorAll('.toggle-details');
     
@@ -17,6 +17,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
         
         if (detailsElement.hasAttribute('open')) {
             summaryElement.innerText = text_open;
+            detailsElement.style.backgroundColor = color;
+            detailsElement.style.padding = '10px';
         } else {
             summaryElement.innerText = text_close;
         }
@@ -25,8 +27,12 @@ document.addEventListener('DOMContentLoaded', (event) => {
             setTimeout(() => {
                 if (detailsElement.hasAttribute('open')) {
                     summaryElement.innerText = text_open;
+                    detailsElement.style.backgroundColor = color;
+                    detailsElement.style.padding = '10px';
                 } else {
                     summaryElement.innerText = text_close;
+                    detailsElement.style.backgroundColor = ''
+                    detailsElement.style.padding = '';
                 }
             }, 0);
         });
