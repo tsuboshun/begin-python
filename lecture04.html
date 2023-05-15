@@ -1049,7 +1049,7 @@ print(result)</pre>
 </div>
 <p>課題3については丁寧な解説を書いている：</p>
 <div class="toggle docutils container">
-<p><strong>解答例：</strong><pre>visitors_list = visitors.split(‘,’)
+<p><strong>解答例</strong><pre>visitors_list = visitors.split(‘,’)
 result = visitors_list.index(name) + 1
 print(result)</pre></p>
 <p>上記のように書くと、<code class="docutils literal notranslate"><span class="pre">visitors</span></code> と <code class="docutils literal notranslate"><span class="pre">name</span></code> にどのような値を与えても正しい出力が得られる。
@@ -1085,18 +1085,30 @@ Pythonプログラムは、以下のように上から順に実行される。</
 <p>結果として2と出力される。
 <code class="docutils literal notranslate"><span class="pre">visitors</span> <span class="pre">=</span> <span class="pre">&quot;Sato,Tanaka,Suzuki,Yamada,Matsumoto&quot;</span></code> のとき、たしかに <code class="docutils literal notranslate"><span class="pre">&quot;Tanaka&quot;</span></code> は2人目の来場者であるから、これは正しい出力である。
 重要なのは、<code class="docutils literal notranslate"><span class="pre">visitors</span></code> と <code class="docutils literal notranslate"><span class="pre">v</span></code> を変更すると、それに合わせて出力も適切なものに変更されるということである。</p>
-<p><strong>その他の解答例：</strong></p>
+<p><strong>その他の解答例</strong></p>
 <pre>a = visitors.split(',')
 b = a.index(name)
 c = b + 1
 print(c)</pre>
-<p>はじめのうちは <code class="docutils literal notranslate"><span class="pre">a</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span></code>、<code class="docutils literal notranslate"><span class="pre">c</span></code> といった適当な変数名でもよい。
+<p>はじめのうちは <code class="docutils literal notranslate"><span class="pre">a</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span></code>、<code class="docutils literal notranslate"><span class="pre">c</span></code> といった適当な変数名を使うのでもよい。
 また小刻みにデータを変換するとき、その度に新しい変数に代入してもよいし、次のように同じ変数を使い回してもよい。</p>
 <pre>a = visitors.split(',')
 a = a.index(name)
 a = a + 1
 print(a)</pre>
-<p><strong>よく見かけた誤答例：</strong></p>
+<p><strong>print()のススメ</strong><br />
+複数行のコードを書いていると、各行で変数にどのような値が代入されているのか調べたくなることがある。
+そのようなときは逐一 <code class="docutils literal notranslate"><span class="pre">print()</span></code> で変数の値を出力しよう。
+例えば、次のような具合である。</p>
+<pre>a = visitors.split(',')
+print(a)
+a = a.index(name)
+print(a)
+a = a + 1
+print(a)</pre>
+<p>このように書くことで、各行で自分の想定通りに処理が進んでいるか確認することができる。
+ただし、これはあくまで確認用なので、提出前に忘れずに消すようにしよう。</p>
+<p><strong>よく見かけた誤答例</strong></p>
 <pre>visitors.split(',')
 result = visitors.index(name) + 1
 print(result)</pre>
@@ -1105,7 +1117,7 @@ print(result)</pre>
 <p>まずステップ1として、1行目が実行される。
 その結果として <code class="docutils literal notranslate"><span class="pre">visitors.split(',')</span></code> が評価されて <code class="docutils literal notranslate"><span class="pre">[&quot;Sato&quot;,</span> <span class="pre">&quot;Tanaka&quot;,</span> <span class="pre">&quot;Suzuki&quot;,</span> <span class="pre">&quot;Yamada&quot;,</span> <span class="pre">&quot;Matsumoto&quot;]</span></code> というデータに置き換わる。
 ただし変数に代入していないので、2行目に移ったタイミングでこのデータは捨てられる。
-また <code class="docutils literal notranslate"><span class="pre">visitors</span></code> という変数も、元の <code class="docutils literal notranslate"><span class="pre">&quot;Sato,Tanaka,Suzuki,Yamada,Matsumoto&quot;</span></code> のままである。</p>
+また <code class="docutils literal notranslate"><span class="pre">visitors</span></code> という変数も、元の <code class="docutils literal notranslate"><span class="pre">&quot;Sato,Tanaka,Suzuki,Yamada,Matsumoto&quot;</span></code> のままである [<font color=cornflowerblue>※</font>]。</p>
 <p>次にステップ2として、2行目が実行される。
 変数を値に置き換えると</p>
 <pre>result = "Sato,Tanaka,Suzuki,Yamada,Matsumoto".index("Tanaka") + 1</pre>
@@ -1113,6 +1125,8 @@ print(result)</pre>
 しかし、この値は何人目かを調べるのに役立たないので、以降はどう頑張っても正しい出力を得られない。</p>
 <p>まとめると、一番の問題は最初の <code class="docutils literal notranslate"><span class="pre">visitors.split(',')</span></code> の結果を以降のコードで利用できていない点にある。
 <strong>あとで利用したいデータは、必ず変数に代入（=保存）しておく必要がある</strong>。</p>
+<p>[<font color=cornflowerblue>※</font>] <code class="docutils literal notranslate"><span class="pre">split()</span></code> メソッドはデータ自身を変更せずに、新しいデータを作成して戻り値として返すため、このような挙動になる。
+第4回で紹介したメソッドは、いずれもそうである。ただし、データ自身を変更するようなメソッドも存在する（第7回で学ぶ <code class="docutils literal notranslate"><span class="pre">append()</span></code> など）。</p>
 </div>
 <p><strong>課題4</strong><br />
 課題3と同じ設定において、<code class="docutils literal notranslate"><span class="pre">visitors</span></code> のデータは来場者が自由に記入したものであるため、大文字と小文字の使い方に一貫性がなかったとする。<code class="docutils literal notranslate"><span class="pre">name</span></code> については全て小文字で与えるとするとき、<code class="docutils literal notranslate"><span class="pre">name</span></code> で指定される人物が何人目の来場者だったかを調べて出力するプログラムを作成しなさい。</p>
