@@ -628,14 +628,14 @@ func(10**2)  # これはsingle_loop(10**2)と同じ！</pre>
 </table>
 <p>平均計算量についてはクイックソートの方が小さいことがわかる。
 前回の授業で、クイックソートの方が挿入ソートより高速に動作することを見たが、平均計算量の違いが実行時間の差につながっていたわけである。</p>
-<p>例えば、これらの計算量から平均的なケースにおいて、挿入ソートは <span class="math notranslate nohighlight">\(N = 10^4\)</span> で数秒かかり、クイックソートは <span class="math notranslate nohighlight">\(N = 10^6\)</span> で数秒かかると予想できる。なぜなら、先ほど「計算ステップ数 <span class="math notranslate nohighlight">\(10^7\sim10^8\)</span> につき <span class="math notranslate nohighlight">\(1\)</span> 秒程度かかる」と書いたが、<span class="math notranslate nohighlight">\(N = 10^4\)</span> で <span class="math notranslate nohighlight">\(N^2 = 10^8\)</span> となり、<span class="math notranslate nohighlight">\(N = 10^6\)</span> で <span class="math notranslate nohighlight">\(N\log N = 2\times 10^7\)</span> となるからである<a class="footnote-reference brackets" href="#f1" id="id7" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>。これらは大まかな見積もりではあるが、前回のノートブック上で実際に測定してみると、大体当たっていることが確かめられる。</p>
+<p>例えば、これらの計算量から平均的なケースにおいて、挿入ソートは <span class="math notranslate nohighlight">\(N = 10^4\)</span> で数秒かかり、クイックソートは <span class="math notranslate nohighlight">\(N = 10^6\)</span> で数秒かかると予想できる。なぜなら、先ほど「計算ステップ数 <span class="math notranslate nohighlight">\(10^7\sim10^8\)</span> につき <span class="math notranslate nohighlight">\(1\)</span> 秒程度かかる」と書いたが、<span class="math notranslate nohighlight">\(N = 10^4\)</span> で <span class="math notranslate nohighlight">\(N^2 = 10^8\)</span> となり、<span class="math notranslate nohighlight">\(N = 10^6\)</span> で <span class="math notranslate nohighlight">\(N\log N = 2\times 10^7\)</span> となるからである。これらは大まかな見積もりではあるが、前回のノートブック上で実際に測定してみると、大体当たっていることが確かめられる。</p>
 <p>挿入ソートの計算量の求め方を説明する。
 <code class="docutils literal notranslate"><span class="pre">insert_sort()</span></code> 関数のfor文に着目する。変数 <code class="docutils literal notranslate"><span class="pre">i</span></code> は1からN-1までを動くが、それぞれの <code class="docutils literal notranslate"><span class="pre">i</span></code> の値に対して内側のwhile文は、最悪のケースで <code class="docutils literal notranslate"><span class="pre">i</span></code> 回実行される（<a class="reference internal" href="lecture09.html#insert-sort"><span class="std std-numref">Fig. 18</span></a>の3段目の状況）。したがって、全体の計算ステップ数は</p>
 <div class="math notranslate nohighlight">
 \[
 1 + 2 + ... + N-1 = \frac{N(N-1)}{2}
 \]</div>
-<p>により <span class="math notranslate nohighlight">\(N(N-1)/2\)</span> 回と求められる<a class="footnote-reference brackets" href="#f2" id="id8" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>。よって、定数倍や低次項を落としてオーダー表記に直すと、最悪計算量は <span class="math notranslate nohighlight">\(O(N^2)\)</span> となる。</p>
+<p>により <span class="math notranslate nohighlight">\(N(N-1)/2\)</span> 回と求められる<a class="footnote-reference brackets" href="#f2" id="id7" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>。よって、定数倍や低次項を落としてオーダー表記に直すと、最悪計算量は <span class="math notranslate nohighlight">\(O(N^2)\)</span> となる。</p>
 <p>平均計算量の求め方もほぼ同様である。最悪の場合は、各 <code class="docutils literal notranslate"><span class="pre">i</span></code> につき内側のwhile文が <code class="docutils literal notranslate"><span class="pre">i</span></code> 回実行されると説明したが、平均的にはその半分の回数実行されると考えられる。したがって、全体の平均的な計算ステップ数は、先ほどの結果を2で割った <span class="math notranslate nohighlight">\(N(N-1)/4\)</span> 回と求められる。よって、平均計算量は <span class="math notranslate nohighlight">\(O(N^2)\)</span> となる。</p>
 <p>次にクイックソートの計算量の求め方を説明する。きちんと説明しようとすると少し複雑な数式が出てくるので、ここではざっくりとした直感的な説明を行う。
 <code class="docutils literal notranslate"><span class="pre">quick_sort()</span></code> 関数のfor文に着目すると、これは <code class="docutils literal notranslate"><span class="pre">right</span> <span class="pre">-</span> <span class="pre">left</span> <span class="pre">+</span> <span class="pre">1</span></code> 回、つまり <a class="reference internal" href="lecture09.html#quick-sort1"><span class="std std-numref">Fig. 19</span></a> の青の領域の長さ分だけ実行される。
@@ -647,12 +647,8 @@ func(10**2)  # これはsingle_loop(10**2)と同じ！</pre>
 よって、全体の平均計算量は <span class="math notranslate nohighlight">\(O(N\log N)\)</span> となる。</p>
 <p>TODO: アルゴリズムを評価するその他の観点</p>
 <hr class="footnotes docutils" />
-<aside class="footnote brackets" id="f1" role="note">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id7">1</a><span class="fn-bracket">]</span></span>
-<p>対数の底は2として計算した。対数の底に何をとっても定数倍の違いでしかないので、オーダー記法の観点からは底の違いは無視できる。実際、<span class="math notranslate nohighlight">\(\log_a N / \log_b N = \log_a b\)</span> より両者の比は <span class="math notranslate nohighlight">\(N\)</span> に依らない定数である。</p>
-</aside>
 <aside class="footnote brackets" id="f2" role="note">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id8">2</a><span class="fn-bracket">]</span></span>
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id7">1</a><span class="fn-bracket">]</span></span>
 <p><code class="docutils literal notranslate"><span class="pre">single_loop()</span></code> や <code class="docutils literal notranslate"><span class="pre">double_loop()</span></code> のときとは異なり、ここではループ1回を1ステップとして計算ステップ数を求めている。代入などの演算単位で数えたとしても定数倍の違いでしかないので、計算量を求める上ではこれで問題ない。</p>
 </aside>
 </section>
