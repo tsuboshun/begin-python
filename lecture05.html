@@ -324,11 +324,11 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">この授業で学ぶこと</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#if">if文</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">論理演算子</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">論理演算子</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import">モジュールとimport</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">演習</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">演習</a></li>
 </ul>
             </nav>
         </div>
@@ -404,9 +404,7 @@ document.write(`
 <p>条件を表す式のことを<strong>条件式</strong>と言う。if文では、条件式が真（<code class="docutils literal notranslate"><span class="pre">True</span></code>）か偽（<code class="docutils literal notranslate"><span class="pre">False</span></code>）かに基づいて、それに続く<strong>ブロック</strong>を実行するかどうかを決定する。
 条件分岐のために使われる構文には <code class="docutils literal notranslate"><span class="pre">if</span></code>、<code class="docutils literal notranslate"><span class="pre">elif</span></code>、<code class="docutils literal notranslate"><span class="pre">else</span></code> の3通りがあり、それぞれ条件式の最後にコロン <code class="docutils literal notranslate"><span class="pre">:</span></code> を置く。
 なお、この授業ではif文という言葉を、<code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">条件式</span></code> という文だけではなく、<code class="docutils literal notranslate"><span class="pre">if</span></code>、<code class="docutils literal notranslate"><span class="pre">elif</span></code>、<code class="docutils literal notranslate"><span class="pre">else</span></code> を含む条件分岐の総称としても用いる。</p>
-<p>条件式に続くブロックは、<strong>インデント</strong>という字下げをすることで表現する。
-インデントは<strong>空白文字4つ</strong>とするのが良いとされている<a class="footnote-reference brackets" href="#f1" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>。
-ノートブック環境では <code class="docutils literal notranslate"><span class="pre">:</span></code> を入力したあとに改行すると、自動的に空白文字4つのインデントが入れられるはずである。</p>
+<p>条件式に続くブロックは、<strong>インデント</strong>という空白文字による字下げをすることで表現する。空白文字の数はいくつでもよいが、ブロック中はインデントの大きさを揃える必要がある。基本的に、インデントは<strong>空白文字4つ</strong>とするのが良いとされている<a class="footnote-reference brackets" href="#f1" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>。ノートブック環境では <code class="docutils literal notranslate"><span class="pre">:</span></code> を入力したあとに改行すると、自動的に空白文字4つのインデントが入れられるはずである<a class="footnote-reference brackets" href="#f2" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>。</p>
 <p>if文の処理は、英語読みで理解するとよい。
 <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">条件式</span></code> は「もし条件式が真ならば」という意味である。
 <code class="docutils literal notranslate"><span class="pre">elif</span></code> はelse ifの略であり、<code class="docutils literal notranslate"><span class="pre">elif</span> <span class="pre">条件式</span></code> は「もしここまでのブロックを実行しておらず、条件式が真ならば」という意味である。
@@ -497,8 +495,8 @@ elif文は好きなだけ追加できるが、else文は1つまでである。</
 式（expression）は、値を生成する構成要素であり、計算や関数の呼び出しがそれに当たる。
 一方で文（statement）は、プログラムの実行を制御する構成要素であり、変数への代入や制御構造（if文やfor文など）がそれに当たる。</p>
 </div>
-<section id="id5">
-<h3>論理演算子<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<section id="id6">
+<h3>論理演算子<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
 <p>複数の条件をもとに条件分岐を行いたい場合がある。
 そんなときに用いられるのが<strong>論理演算子</strong>である。
 論理演算子には <code class="docutils literal notranslate"><span class="pre">and</span></code>、<code class="docutils literal notranslate"><span class="pre">or</span></code>、<code class="docutils literal notranslate"><span class="pre">not</span></code> の3種類がある。
@@ -663,8 +661,8 @@ Pythonには世界中の開発者により豊富なライブラリが用意さ�
 <p>ライブラリは大きく標準ライブラリと外部ライブラリに分けられる。randomモジュールは標準ライブラリの一つである。外部ライブラリの場合にはインポートする前に、そもそもライブラリのファイル群をコンピュータに<strong>インストール</strong>（ダウンロードし使用可能な状態にすること）する必要がある。よく使われるのは<strong>pip</strong>というパッケージ管理システムである。pipでライブラリをインストールするには、<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">ライブラリ名</span></code> を実行する。</p>
 </div>
 </section>
-<section id="id6">
-<h2>演習<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
+<section id="id7">
+<h2>演習<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h2>
 <p><strong>課題1</strong><br />
 じゃんけんの勝敗を判定したい。
 自分の手 <code class="docutils literal notranslate"><span class="pre">my_choice</span></code>、相手の手 <code class="docutils literal notranslate"><span class="pre">opp_choice</span></code> が与えられるとき、引き分けかどうかを判定して、引き分けのとき <code class="docutils literal notranslate"><span class="pre">&quot;引き分け&quot;</span></code> と出力するプログラムを作成しなさい。
@@ -732,6 +730,10 @@ Pythonには世界中の開発者により豊富なライブラリが用意さ�
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">1</a><span class="fn-bracket">]</span></span>
 <p><a class="reference external" href="https://pep8-ja.readthedocs.io/ja/latest/">PEP8</a>という綺麗なコードを書くための公式のガイドラインに定められている。</p>
 </aside>
+<aside class="footnote brackets" id="f2" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">2</a><span class="fn-bracket">]</span></span>
+<p>（追記）WindowsからGoogle Colabを利用すると、インデントの大きさは空白文字2つになるようである。その場合はそれに合わせればよい。</p>
+</aside>
 </section>
 </section>
 
@@ -798,11 +800,11 @@ Pythonには世界中の開発者により豊富なライブラリが用意さ�
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">この授業で学ぶこと</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#if">if文</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">論理演算子</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">論理演算子</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import">モジュールとimport</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">演習</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">演習</a></li>
 </ul>
   </nav></div>
 

@@ -328,7 +328,7 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">計算量の比較</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">ソートアルゴリズムの計算量</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">ソートアルゴリズムの計算量</a></li>
 </ul>
             </nav>
         </div>
@@ -598,7 +598,8 @@ func(10**2)  # これはsingle_loop(10**2)と同じ！</pre>
 <li><p><span class="math notranslate nohighlight">\(N^2\)</span> はこれらより明らかに増加スピードが速いが、<span class="math notranslate nohighlight">\(2^N\)</span> や <span class="math notranslate nohighlight">\(N!\)</span> ほどではない</p></li>
 <li><p><span class="math notranslate nohighlight">\(N!\)</span> は <span class="math notranslate nohighlight">\(2^N\)</span> 以上に増加スピードが速い</p></li>
 </ul>
-<p>TODO: 計算時間の表を書く、ndarrayの扱いについて</p>
+<p>関数値を計算ステップ数とみなすとき、計算時間に換算するとどれくらいの値になるだろうか。
+1秒あたり <span class="math notranslate nohighlight">\(10^8\)</span> の計算ステップをこなせるとして、各関数値を計算時間（秒単位）に換算したものが次の表である（参考までに <span class="math notranslate nohighlight">\(\log N\)</span>、<span class="math notranslate nohighlight">\(N^4\)</span> の場合も載せている）。</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -613,17 +614,20 @@ func(10**2)  # これはsingle_loop(10**2)と同じ！</pre>
 
 <span class="n">speed</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="mi">8</span>  <span class="c1"># 1秒あたり計算ステップ数</span>
 <span class="n">n</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">10000</span><span class="p">])</span>
+<span class="n">n_col</span> <span class="o">=</span> <span class="n">n</span> <span class="o">/</span> <span class="n">speed</span>
 <span class="n">logn</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">/</span> <span class="n">speed</span>
 <span class="n">nlogn</span> <span class="o">=</span> <span class="n">n</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">/</span> <span class="n">speed</span>
 <span class="n">n_squared</span> <span class="o">=</span> <span class="n">n</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">/</span> <span class="n">speed</span>
+<span class="n">n_fourth</span> <span class="o">=</span> <span class="n">n</span> <span class="o">**</span> <span class="mi">4</span> <span class="o">/</span> <span class="n">speed</span>
 <span class="n">power_of_two</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">Decimal</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">**</span> <span class="n">i</span> <span class="o">/</span> <span class="n">speed</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">n</span><span class="p">])</span> <span class="c1"># 2**nと書くと桁あふれを起こす</span>
 <span class="n">n_factorial</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">special</span><span class="o">.</span><span class="n">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">/</span> <span class="n">speed</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;ind&#39;</span><span class="p">:</span> <span class="n">n</span><span class="p">,</span> <span class="s1">&#39;\log N&#39;</span><span class="p">:</span> <span class="n">logn</span><span class="p">,</span> <span class="s1">&#39;N&#39;</span><span class="p">:</span> <span class="n">n</span><span class="p">,</span> <span class="s1">&#39;N\log N&#39;</span><span class="p">:</span> <span class="n">nlogn</span><span class="p">,</span> <span class="s1">&#39;N^2&#39;</span><span class="p">:</span> <span class="n">n_squared</span><span class="p">,</span> <span class="s1">&#39;2^N&#39;</span><span class="p">:</span> <span class="n">power_of_two</span><span class="p">,</span> <span class="s1">&#39;N!&#39;</span><span class="p">:</span> <span class="n">n_factorial</span><span class="p">})</span>
 
-<span class="n">day</span> <span class="o">=</span> <span class="mi">24</span> <span class="o">*</span> <span class="mi">3600</span>
-<span class="n">universe_age</span> <span class="o">=</span> <span class="mi">138</span> <span class="o">*</span> <span class="mi">10</span><span class="o">**</span><span class="mi">8</span> <span class="o">*</span> <span class="mi">365</span> <span class="o">*</span> <span class="n">day</span> <span class="c1">#宇宙年齢: 138億年</span>
+<span class="c1"># pandasのデータフレーム（第13回で学ぶ）</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;ind&#39;</span><span class="p">:</span> <span class="n">n</span><span class="p">,</span> <span class="s1">&#39;\log N&#39;</span><span class="p">:</span> <span class="n">logn</span><span class="p">,</span> <span class="s1">&#39;N&#39;</span><span class="p">:</span> <span class="n">n_col</span><span class="p">,</span> <span class="s1">&#39;N\log N&#39;</span><span class="p">:</span> <span class="n">nlogn</span><span class="p">,</span> <span class="s1">&#39;N^2&#39;</span><span class="p">:</span> <span class="n">n_squared</span><span class="p">,</span> <span class="s1">&#39;N^4&#39;</span><span class="p">:</span> <span class="n">n_fourth</span><span class="p">,</span> <span class="s1">&#39;2^N&#39;</span><span class="p">:</span> <span class="n">power_of_two</span><span class="p">,</span> <span class="s1">&#39;N!&#39;</span><span class="p">:</span> <span class="n">n_factorial</span><span class="p">})</span>
 
 <span class="k">def</span> <span class="nf">highlight</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="n">day</span> <span class="o">=</span> <span class="mi">24</span> <span class="o">*</span> <span class="mi">3600</span>
+    <span class="n">universe_age</span> <span class="o">=</span> <span class="mi">138</span> <span class="o">*</span> <span class="mi">10</span><span class="o">**</span><span class="mi">8</span> <span class="o">*</span> <span class="mi">365</span> <span class="o">*</span> <span class="n">day</span> <span class="c1">#宇宙年齢: 138億年</span>
     <span class="k">return</span> <span class="p">[</span><span class="s1">&#39;background-color: gray&#39;</span> <span class="k">if</span> <span class="p">(</span><span class="n">e</span> <span class="o">&gt;</span> <span class="n">universe_age</span><span class="p">)</span> <span class="k">else</span> <span class="p">(</span><span class="s1">&#39;background-color: gold&#39;</span> <span class="k">if</span> <span class="n">e</span> <span class="o">&gt;</span> <span class="n">day</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">s</span><span class="p">]</span>
 
 <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Nの大きさ&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;&lt;span class=&quot;math notranslate nohighlight&quot;&gt;\(&#39;</span><span class="o">+</span><span class="n">col</span><span class="o">+</span><span class="s1">&#39;\)&lt;/span&gt;&#39;</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">1</span><span class="p">:]]</span>
@@ -638,14 +642,14 @@ func(10**2)  # これはsingle_loop(10**2)と同じ！</pre>
 </details>
 <div class="cell_output docutils container">
 <div class="output text_html"><style type="text/css">
-#T_f6395_row1_col5, #T_f6395_row4_col4 {
+#T_381f4_row1_col6, #T_381f4_row4_col5, #T_381f4_row7_col4 {
   background-color: gold;
 }
-#T_f6395_row2_col5, #T_f6395_row3_col5, #T_f6395_row4_col5, #T_f6395_row5_col4, #T_f6395_row5_col5, #T_f6395_row6_col4, #T_f6395_row6_col5, #T_f6395_row7_col4, #T_f6395_row7_col5 {
+#T_381f4_row2_col6, #T_381f4_row3_col6, #T_381f4_row4_col6, #T_381f4_row5_col5, #T_381f4_row5_col6, #T_381f4_row6_col5, #T_381f4_row6_col6, #T_381f4_row7_col5, #T_381f4_row7_col6 {
   background-color: gray;
 }
 </style>
-<table id="T_f6395_" style="font-size: 14px">
+<table id="T_381f4_" style="font-size: 14px">
   <thead>
     <tr>
       <th class="blank level0" >&nbsp;</th>
@@ -653,8 +657,9 @@ func(10**2)  # これはsingle_loop(10**2)と同じ！</pre>
       <th class="col_heading level0 col1" ><span class="math notranslate nohighlight">\(N\)</span></th>
       <th class="col_heading level0 col2" ><span class="math notranslate nohighlight">\(N\log N\)</span></th>
       <th class="col_heading level0 col3" ><span class="math notranslate nohighlight">\(N^2\)</span></th>
-      <th class="col_heading level0 col4" ><span class="math notranslate nohighlight">\(2^N\)</span></th>
-      <th class="col_heading level0 col5" ><span class="math notranslate nohighlight">\(N!\)</span></th>
+      <th class="col_heading level0 col4" ><span class="math notranslate nohighlight">\(N^4\)</span></th>
+      <th class="col_heading level0 col5" ><span class="math notranslate nohighlight">\(2^N\)</span></th>
+      <th class="col_heading level0 col6" ><span class="math notranslate nohighlight">\(N!\)</span></th>
     </tr>
     <tr>
       <th class="index_name level0" >Nの大きさ</th>
@@ -664,93 +669,108 @@ func(10**2)  # これはsingle_loop(10**2)と同じ！</pre>
       <th class="blank col3" >&nbsp;</th>
       <th class="blank col4" >&nbsp;</th>
       <th class="blank col5" >&nbsp;</th>
+      <th class="blank col6" >&nbsp;</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th id="T_f6395_level0_row0" class="row_heading level0 row0" >10</th>
-      <td id="T_f6395_row0_col0" class="data row0 col0" >3.3e-08</td>
-      <td id="T_f6395_row0_col1" class="data row0 col1" >1.0e+01</td>
-      <td id="T_f6395_row0_col2" class="data row0 col2" >3.3e-07</td>
-      <td id="T_f6395_row0_col3" class="data row0 col3" >1.0e-06</td>
-      <td id="T_f6395_row0_col4" class="data row0 col4" >1.0e-5</td>
-      <td id="T_f6395_row0_col5" class="data row0 col5" >3.6e-02</td>
+      <th id="T_381f4_level0_row0" class="row_heading level0 row0" >10</th>
+      <td id="T_381f4_row0_col0" class="data row0 col0" >3.3e-08</td>
+      <td id="T_381f4_row0_col1" class="data row0 col1" >1.0e-07</td>
+      <td id="T_381f4_row0_col2" class="data row0 col2" >3.3e-07</td>
+      <td id="T_381f4_row0_col3" class="data row0 col3" >1.0e-06</td>
+      <td id="T_381f4_row0_col4" class="data row0 col4" >1.0e-04</td>
+      <td id="T_381f4_row0_col5" class="data row0 col5" >1.0e-5</td>
+      <td id="T_381f4_row0_col6" class="data row0 col6" >3.6e-02</td>
     </tr>
     <tr>
-      <th id="T_f6395_level0_row1" class="row_heading level0 row1" >20</th>
-      <td id="T_f6395_row1_col0" class="data row1 col0" >4.3e-08</td>
-      <td id="T_f6395_row1_col1" class="data row1 col1" >2.0e+01</td>
-      <td id="T_f6395_row1_col2" class="data row1 col2" >8.6e-07</td>
-      <td id="T_f6395_row1_col3" class="data row1 col3" >4.0e-06</td>
-      <td id="T_f6395_row1_col4" class="data row1 col4" >1.0e-2</td>
-      <td id="T_f6395_row1_col5" class="data row1 col5" >2.4e+10</td>
+      <th id="T_381f4_level0_row1" class="row_heading level0 row1" >20</th>
+      <td id="T_381f4_row1_col0" class="data row1 col0" >4.3e-08</td>
+      <td id="T_381f4_row1_col1" class="data row1 col1" >2.0e-07</td>
+      <td id="T_381f4_row1_col2" class="data row1 col2" >8.6e-07</td>
+      <td id="T_381f4_row1_col3" class="data row1 col3" >4.0e-06</td>
+      <td id="T_381f4_row1_col4" class="data row1 col4" >1.6e-03</td>
+      <td id="T_381f4_row1_col5" class="data row1 col5" >1.0e-2</td>
+      <td id="T_381f4_row1_col6" class="data row1 col6" >2.4e+10</td>
     </tr>
     <tr>
-      <th id="T_f6395_level0_row2" class="row_heading level0 row2" >30</th>
-      <td id="T_f6395_row2_col0" class="data row2 col0" >4.9e-08</td>
-      <td id="T_f6395_row2_col1" class="data row2 col1" >3.0e+01</td>
-      <td id="T_f6395_row2_col2" class="data row2 col2" >1.5e-06</td>
-      <td id="T_f6395_row2_col3" class="data row2 col3" >9.0e-06</td>
-      <td id="T_f6395_row2_col4" class="data row2 col4" >1.1e+1</td>
-      <td id="T_f6395_row2_col5" class="data row2 col5" >2.7e+24</td>
+      <th id="T_381f4_level0_row2" class="row_heading level0 row2" >30</th>
+      <td id="T_381f4_row2_col0" class="data row2 col0" >4.9e-08</td>
+      <td id="T_381f4_row2_col1" class="data row2 col1" >3.0e-07</td>
+      <td id="T_381f4_row2_col2" class="data row2 col2" >1.5e-06</td>
+      <td id="T_381f4_row2_col3" class="data row2 col3" >9.0e-06</td>
+      <td id="T_381f4_row2_col4" class="data row2 col4" >8.1e-03</td>
+      <td id="T_381f4_row2_col5" class="data row2 col5" >1.1e+1</td>
+      <td id="T_381f4_row2_col6" class="data row2 col6" >2.7e+24</td>
     </tr>
     <tr>
-      <th id="T_f6395_level0_row3" class="row_heading level0 row3" >40</th>
-      <td id="T_f6395_row3_col0" class="data row3 col0" >5.3e-08</td>
-      <td id="T_f6395_row3_col1" class="data row3 col1" >4.0e+01</td>
-      <td id="T_f6395_row3_col2" class="data row3 col2" >2.1e-06</td>
-      <td id="T_f6395_row3_col3" class="data row3 col3" >1.6e-05</td>
-      <td id="T_f6395_row3_col4" class="data row3 col4" >1.1e+4</td>
-      <td id="T_f6395_row3_col5" class="data row3 col5" >8.2e+39</td>
+      <th id="T_381f4_level0_row3" class="row_heading level0 row3" >40</th>
+      <td id="T_381f4_row3_col0" class="data row3 col0" >5.3e-08</td>
+      <td id="T_381f4_row3_col1" class="data row3 col1" >4.0e-07</td>
+      <td id="T_381f4_row3_col2" class="data row3 col2" >2.1e-06</td>
+      <td id="T_381f4_row3_col3" class="data row3 col3" >1.6e-05</td>
+      <td id="T_381f4_row3_col4" class="data row3 col4" >2.6e-02</td>
+      <td id="T_381f4_row3_col5" class="data row3 col5" >1.1e+4</td>
+      <td id="T_381f4_row3_col6" class="data row3 col6" >8.2e+39</td>
     </tr>
     <tr>
-      <th id="T_f6395_level0_row4" class="row_heading level0 row4" >50</th>
-      <td id="T_f6395_row4_col0" class="data row4 col0" >5.6e-08</td>
-      <td id="T_f6395_row4_col1" class="data row4 col1" >5.0e+01</td>
-      <td id="T_f6395_row4_col2" class="data row4 col2" >2.8e-06</td>
-      <td id="T_f6395_row4_col3" class="data row4 col3" >2.5e-05</td>
-      <td id="T_f6395_row4_col4" class="data row4 col4" >1.1e+7</td>
-      <td id="T_f6395_row4_col5" class="data row4 col5" >3.0e+56</td>
+      <th id="T_381f4_level0_row4" class="row_heading level0 row4" >50</th>
+      <td id="T_381f4_row4_col0" class="data row4 col0" >5.6e-08</td>
+      <td id="T_381f4_row4_col1" class="data row4 col1" >5.0e-07</td>
+      <td id="T_381f4_row4_col2" class="data row4 col2" >2.8e-06</td>
+      <td id="T_381f4_row4_col3" class="data row4 col3" >2.5e-05</td>
+      <td id="T_381f4_row4_col4" class="data row4 col4" >6.2e-02</td>
+      <td id="T_381f4_row4_col5" class="data row4 col5" >1.1e+7</td>
+      <td id="T_381f4_row4_col6" class="data row4 col6" >3.0e+56</td>
     </tr>
     <tr>
-      <th id="T_f6395_level0_row5" class="row_heading level0 row5" >100</th>
-      <td id="T_f6395_row5_col0" class="data row5 col0" >6.6e-08</td>
-      <td id="T_f6395_row5_col1" class="data row5 col1" >1.0e+02</td>
-      <td id="T_f6395_row5_col2" class="data row5 col2" >6.6e-06</td>
-      <td id="T_f6395_row5_col3" class="data row5 col3" >1.0e-04</td>
-      <td id="T_f6395_row5_col4" class="data row5 col4" >1.3e+22</td>
-      <td id="T_f6395_row5_col5" class="data row5 col5" >9.3e+149</td>
+      <th id="T_381f4_level0_row5" class="row_heading level0 row5" >100</th>
+      <td id="T_381f4_row5_col0" class="data row5 col0" >6.6e-08</td>
+      <td id="T_381f4_row5_col1" class="data row5 col1" >1.0e-06</td>
+      <td id="T_381f4_row5_col2" class="data row5 col2" >6.6e-06</td>
+      <td id="T_381f4_row5_col3" class="data row5 col3" >1.0e-04</td>
+      <td id="T_381f4_row5_col4" class="data row5 col4" >1.0e+00</td>
+      <td id="T_381f4_row5_col5" class="data row5 col5" >1.3e+22</td>
+      <td id="T_381f4_row5_col6" class="data row5 col6" >9.3e+149</td>
     </tr>
     <tr>
-      <th id="T_f6395_level0_row6" class="row_heading level0 row6" >1000</th>
-      <td id="T_f6395_row6_col0" class="data row6 col0" >1.0e-07</td>
-      <td id="T_f6395_row6_col1" class="data row6 col1" >1.0e+03</td>
-      <td id="T_f6395_row6_col2" class="data row6 col2" >1.0e-04</td>
-      <td id="T_f6395_row6_col3" class="data row6 col3" >1.0e-02</td>
-      <td id="T_f6395_row6_col4" class="data row6 col4" >1.1e+293</td>
-      <td id="T_f6395_row6_col5" class="data row6 col5" >inf</td>
+      <th id="T_381f4_level0_row6" class="row_heading level0 row6" >1000</th>
+      <td id="T_381f4_row6_col0" class="data row6 col0" >1.0e-07</td>
+      <td id="T_381f4_row6_col1" class="data row6 col1" >1.0e-05</td>
+      <td id="T_381f4_row6_col2" class="data row6 col2" >1.0e-04</td>
+      <td id="T_381f4_row6_col3" class="data row6 col3" >1.0e-02</td>
+      <td id="T_381f4_row6_col4" class="data row6 col4" >1.0e+04</td>
+      <td id="T_381f4_row6_col5" class="data row6 col5" >1.1e+293</td>
+      <td id="T_381f4_row6_col6" class="data row6 col6" >inf</td>
     </tr>
     <tr>
-      <th id="T_f6395_level0_row7" class="row_heading level0 row7" >10000</th>
-      <td id="T_f6395_row7_col0" class="data row7 col0" >1.3e-07</td>
-      <td id="T_f6395_row7_col1" class="data row7 col1" >1.0e+04</td>
-      <td id="T_f6395_row7_col2" class="data row7 col2" >1.3e-03</td>
-      <td id="T_f6395_row7_col3" class="data row7 col3" >1.0e+00</td>
-      <td id="T_f6395_row7_col4" class="data row7 col4" >2.0e+3002</td>
-      <td id="T_f6395_row7_col5" class="data row7 col5" >inf</td>
+      <th id="T_381f4_level0_row7" class="row_heading level0 row7" >10000</th>
+      <td id="T_381f4_row7_col0" class="data row7 col0" >1.3e-07</td>
+      <td id="T_381f4_row7_col1" class="data row7 col1" >1.0e-04</td>
+      <td id="T_381f4_row7_col2" class="data row7 col2" >1.3e-03</td>
+      <td id="T_381f4_row7_col3" class="data row7 col3" >1.0e+00</td>
+      <td id="T_381f4_row7_col4" class="data row7 col4" >1.0e+08</td>
+      <td id="T_381f4_row7_col5" class="data row7 col5" >2.0e+3002</td>
+      <td id="T_381f4_row7_col6" class="data row7 col6" >inf</td>
     </tr>
   </tbody>
 </table>
 </div></div>
 </div>
-<p><span class="math notranslate nohighlight">\(2^N\)</span> や <span class="math notranslate nohighlight">\(N!\)</span> の増加速度は他と一線を画するので、計算量の世界ではこれらは他と区別される。アルゴリズムの計算量が <span class="math notranslate nohighlight">\(O(2^N)\)</span> や <span class="math notranslate nohighlight">\(O(N!)\)</span> のように（増加速度に関して）指数関数以上のとき <strong>指数時間</strong>、そうではなく <span class="math notranslate nohighlight">\(N\)</span>、<span class="math notranslate nohighlight">\(N\log N\)</span>、<span class="math notranslate nohighlight">\(N^2\)</span> のように多項式関数以下のとき <strong>多項式時間</strong> であるという。</p>
+<p>数値は指数表示で表現している。例えば、<code class="docutils literal notranslate"><span class="pre">3.6e-2</span></code> は <span class="math notranslate nohighlight">\(3.6\times10^{-2} = 0.036\)</span> という意味であり、<code class="docutils literal notranslate"><span class="pre">2.0e+01</span></code> は <span class="math notranslate nohighlight">\(2.0\times 10^1 = 20\)</span>、<code class="docutils literal notranslate"><span class="pre">1.0e+00</span></code> は <span class="math notranslate nohighlight">\(1.0\times 10^0 = 1\)</span> という意味である。<span class="math notranslate nohighlight">\(N!\)</span> の最後の2マスについては、あまりに桁が大きいため <code class="docutils literal notranslate"><span class="pre">inf</span></code> （無限）と表示されている。</p>
+<p>わかりやすさのため計算時間が1日を超えているマスを黄色、さらに宇宙年齢（138億年）を超えているマスを灰色で色付けした。
+なんと<span class="math notranslate nohighlight">\(2^N\)</span> と <span class="math notranslate nohighlight">\(N!\)</span> の値は一瞬にして宇宙年齢相当を超えている。
+計算量が <span class="math notranslate nohighlight">\(O(2^N)\)</span> や <span class="math notranslate nohighlight">\(O(N!)\)</span> のアルゴリズムは、比較的小さいサイズの問題でも現実的な時間で解を得られなくなるということである。</p>
+<p>このように <span class="math notranslate nohighlight">\(2^N\)</span> や <span class="math notranslate nohighlight">\(N!\)</span> の増加速度は他と一線を画するので、計算量の世界ではこれらは他と区別される。アルゴリズムの計算量が <span class="math notranslate nohighlight">\(O(2^N)\)</span> や <span class="math notranslate nohighlight">\(O(N!)\)</span> のように（増加速度に関して）指数関数以上のとき <strong>指数時間</strong>、そうではなく <span class="math notranslate nohighlight">\(N\)</span>、<span class="math notranslate nohighlight">\(N\log N\)</span>、<span class="math notranslate nohighlight">\(N^2\)</span> のように多項式関数以下のとき <strong>多項式時間</strong> であるという。</p>
 <div class="note admonition">
 <p class="admonition-title">指数時間の現れる例</p>
-<p>TODO</p>
+<p>コンピュータを宇宙誕生の瞬間から動かし続けても解けない問題・アルゴリズムの組み合わせなどあり得るのかと不思議に思うかもしれない。しかし、さらに一歩踏み込んで、指数時間のアルゴリズムしか見つからないだろうと予想されている問題が数多く存在する。</p>
+<p>その有名な例が、<strong>巡回セールスマン問題</strong>と呼ばれる問題である。これは簡単に言えば、営業マンが担当する <span class="math notranslate nohighlight">\(N\)</span> 人の顧客のもとを回って営業所に戻ってくることを考えたときに、顧客のもとをどの順番で回れば最短経路になるのかという問題である。この問題は基本的に全ての巡回方法をしらみつぶしに調べるか、それに近い方法を取らないと解を求めることができない。結果として、指数時間のアルゴリズムしか見つからないだろうと予想されている。したがって実践的には、厳密な最適解を求めるのはあきらめて、最適解に近い解を求めようとするアプローチがしばしば取られる。</p>
+<p>このように指数時間のアルゴリズムしか見つかっていない問題は、「全ての可能性をしらみつぶしに調べないと解けない問題」であることが多い。一方で、多項式時間のアルゴリズムの存在する問題は「簡単に解くコツの存在する問題」と表現できるだろう。数学的には、これらの説明とは一見異なる（が、意図するところは近い）問題の分類方法が考えられており、その分類において前者にあたるものを<strong>NP問題</strong>、後者にあたるものを<strong>P問題</strong>という<a class="footnote-reference brackets" href="#f1" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>。</p>
 </div>
 </section>
-<section id="id6">
-<h2>ソートアルゴリズムの計算量<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
+<section id="id7">
+<h2>ソートアルゴリズムの計算量<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h2>
 <p>それでは、先週学んだ挿入ソートとクイックソートについて計算量を確認してみよう。これらのアルゴリズムでは、<code class="docutils literal notranslate"><span class="pre">single_loop()</span></code> や <code class="docutils literal notranslate"><span class="pre">double_loop()</span></code> と違って、入力データの並び順によって計算ステップ数が大きく変わりうる。そこで最悪なケースにおける計算量を <strong>最悪計算量</strong>、平均的なケースにおける計算量を <strong>平均計算量</strong> として区別して考える。</p>
 <p>挿入ソートとクイックソートの計算量は以下の通りである。</p>
 <table class="table">
@@ -773,14 +793,14 @@ func(10**2)  # これはsingle_loop(10**2)と同じ！</pre>
 </table>
 <p>平均計算量についてはクイックソートの方が小さいことがわかる。
 前回の授業で、クイックソートの方が挿入ソートより高速に動作することを見たが、平均計算量の違いが実行時間の差につながっていたわけである。</p>
-<p>例えば、これらの計算量から平均的なケースにおいて、挿入ソートは <span class="math notranslate nohighlight">\(N = 10^4\)</span> で数秒かかり、クイックソートは <span class="math notranslate nohighlight">\(N = 10^6\)</span> で数秒かかると予想できる。なぜなら、先ほど「計算ステップ数 <span class="math notranslate nohighlight">\(10^7\sim10^8\)</span> につき <span class="math notranslate nohighlight">\(1\)</span> 秒程度かかる」と書いたが、<span class="math notranslate nohighlight">\(N = 10^4\)</span> で <span class="math notranslate nohighlight">\(N^2 = 10^8\)</span> となり、<span class="math notranslate nohighlight">\(N = 10^6\)</span> で <span class="math notranslate nohighlight">\(N\log N = 2\times 10^7\)</span> となるからである。これらは大まかな見積もりではあるが、前回のノートブック上で実際に測定してみると、大体当たっていることが確かめられる。</p>
+<p>例えば、これらの計算量から平均的なケースにおいて、挿入ソートは <span class="math notranslate nohighlight">\(N = 10^4\)</span> で数秒かかり、クイックソートは <span class="math notranslate nohighlight">\(N = 10^6\)</span> で数秒かかると予想できる。なぜなら、先ほど「計算ステップ数 <span class="math notranslate nohighlight">\(10^7\sim10^8\)</span> につき <span class="math notranslate nohighlight">\(1\)</span> 秒程度かかる」と書いたが、<span class="math notranslate nohighlight">\(N = 10^4\)</span> で <span class="math notranslate nohighlight">\(N^2 = 10^8\)</span> となり、<span class="math notranslate nohighlight">\(N = 10^6\)</span> で <span class="math notranslate nohighlight">\(N\log N = 2\times 10^7\)</span> となるからである。もちろん計算量は定数倍の違いや低次項の寄与を考えていないので、計算ステップ数とはそれなりに差がある。それでも、前回のノートブック上で実際に測定してみると、大体当たっていることが確かめられる。</p>
 <p>挿入ソートの計算量の求め方を説明する。
 <code class="docutils literal notranslate"><span class="pre">insert_sort()</span></code> 関数のfor文に着目する。変数 <code class="docutils literal notranslate"><span class="pre">i</span></code> は1からN-1までを動くが、それぞれの <code class="docutils literal notranslate"><span class="pre">i</span></code> の値に対して内側のwhile文は、最悪のケースで <code class="docutils literal notranslate"><span class="pre">i</span></code> 回実行される（<a class="reference internal" href="lecture09.html#insert-sort"><span class="std std-numref">Fig. 18</span></a>の3段目の状況）。したがって、全体の計算ステップ数は</p>
 <div class="math notranslate nohighlight">
 \[
 1 + 2 + ... + N-1 = \frac{N(N-1)}{2}
 \]</div>
-<p>により <span class="math notranslate nohighlight">\(N(N-1)/2\)</span> 回と求められる<a class="footnote-reference brackets" href="#f2" id="id7" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>。よって、定数倍や低次項を落としてオーダー表記に直すと、最悪計算量は <span class="math notranslate nohighlight">\(O(N^2)\)</span> となる。</p>
+<p>により <span class="math notranslate nohighlight">\(N(N-1)/2\)</span> 回と求められる<a class="footnote-reference brackets" href="#f2" id="id8" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>。よって、定数倍や低次項を落としてオーダー表記に直すと、最悪計算量は <span class="math notranslate nohighlight">\(O(N^2)\)</span> となる。</p>
 <p>平均計算量の求め方もほぼ同様である。最悪の場合は、各 <code class="docutils literal notranslate"><span class="pre">i</span></code> につき内側のwhile文が <code class="docutils literal notranslate"><span class="pre">i</span></code> 回実行されると説明したが、平均的にはその半分の回数実行されると考えられる。したがって、全体の平均的な計算ステップ数は、先ほどの結果を2で割った <span class="math notranslate nohighlight">\(N(N-1)/4\)</span> 回と求められる。よって、平均計算量は <span class="math notranslate nohighlight">\(O(N^2)\)</span> となる。</p>
 <p>次にクイックソートの計算量の求め方を説明する。きちんと説明しようとすると少し複雑な数式が出てくるので、ここではざっくりとした直感的な説明を行う。
 <code class="docutils literal notranslate"><span class="pre">quick_sort()</span></code> 関数のfor文に着目すると、これは <code class="docutils literal notranslate"><span class="pre">right</span> <span class="pre">-</span> <span class="pre">left</span> <span class="pre">+</span> <span class="pre">1</span></code> 回、つまり <a class="reference internal" href="lecture09.html#quick-sort1"><span class="std std-numref">Fig. 19</span></a> の青の領域の長さ分だけ実行される。
@@ -792,8 +812,12 @@ func(10**2)  # これはsingle_loop(10**2)と同じ！</pre>
 よって、全体の平均計算量は <span class="math notranslate nohighlight">\(O(N\log N)\)</span> となる。</p>
 <p>TODO: アルゴリズムを評価するその他の観点</p>
 <hr class="footnotes docutils" />
+<aside class="footnote brackets" id="f1" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">1</a><span class="fn-bracket">]</span></span>
+<p>本当はこの話を授業のメインにしようと考えて、シラバス作成時に「問題の複雑さ」というタイトルをつけたが、テキストを書き始めてから時間が足りないことに気がついた。より詳しく学びたい人には<a class="reference external" href="https://qiita.com/drken/items/5187e49082f7437349c2">こちら</a>の解説記事がお勧めである。</p>
+</aside>
 <aside class="footnote brackets" id="f2" role="note">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id7">1</a><span class="fn-bracket">]</span></span>
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id8">2</a><span class="fn-bracket">]</span></span>
 <p><code class="docutils literal notranslate"><span class="pre">single_loop()</span></code> や <code class="docutils literal notranslate"><span class="pre">double_loop()</span></code> のときとは異なり、ここではループ1回を1ステップとして計算ステップ数を求めている。代入などの演算単位で数えたとしても定数倍の違いでしかないので、計算量を求める上ではこれで問題ない。</p>
 </aside>
 </section>
@@ -866,7 +890,7 @@ func(10**2)  # これはsingle_loop(10**2)と同じ！</pre>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">計算量の比較</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">ソートアルゴリズムの計算量</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">ソートアルゴリズムの計算量</a></li>
 </ul>
   </nav></div>
 
