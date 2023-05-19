@@ -1117,7 +1117,7 @@ print(result)</pre>
 <p>まずステップ1として、1行目が実行される。
 その結果として <code class="docutils literal notranslate"><span class="pre">visitors.split(',')</span></code> が評価されて <code class="docutils literal notranslate"><span class="pre">[&quot;Sato&quot;,</span> <span class="pre">&quot;Tanaka&quot;,</span> <span class="pre">&quot;Suzuki&quot;,</span> <span class="pre">&quot;Yamada&quot;,</span> <span class="pre">&quot;Matsumoto&quot;]</span></code> というデータに置き換わる。
 ただし変数に代入していないので、2行目に移ったタイミングでこのデータは捨てられる。
-また <code class="docutils literal notranslate"><span class="pre">visitors</span></code> という変数も、元の <code class="docutils literal notranslate"><span class="pre">&quot;Sato,Tanaka,Suzuki,Yamada,Matsumoto&quot;</span></code> のままである [<font color=cornflowerblue>※</font>]。</p>
+また <code class="docutils literal notranslate"><span class="pre">visitors</span></code> という変数も、元の <code class="docutils literal notranslate"><span class="pre">&quot;Sato,Tanaka,Suzuki,Yamada,Matsumoto&quot;</span></code> のままである<font color=cornflowerblue>※</font>。</p>
 <p>次にステップ2として、2行目が実行される。
 変数を値に置き換えると</p>
 <pre>result = "Sato,Tanaka,Suzuki,Yamada,Matsumoto".index("Tanaka") + 1</pre>
@@ -1125,7 +1125,7 @@ print(result)</pre>
 しかし、この値は何人目かを調べるのに役立たないので、以降はどう頑張っても正しい出力を得られない。</p>
 <p>まとめると、一番の問題は最初の <code class="docutils literal notranslate"><span class="pre">visitors.split(',')</span></code> の結果を以降のコードで利用できていない点にある。
 <strong>あとで利用したいデータは、必ず変数に代入（=保存）しておく必要がある</strong>。</p>
-<p>[<font color=cornflowerblue>※</font>] <code class="docutils literal notranslate"><span class="pre">split()</span></code> メソッドはデータ自身を変更せずに、新しいデータを作成して戻り値として返すため、このような挙動になる。
+<p><font color=cornflowerblue>※</font> <code class="docutils literal notranslate"><span class="pre">split()</span></code> メソッドはデータ自身を変更せずに、新しいデータを作成して戻り値として返すため、このような挙動になる。
 第4回で紹介したメソッドは、いずれもそうである。ただし、データ自身を変更するようなメソッドも存在する（第7回で学ぶ <code class="docutils literal notranslate"><span class="pre">append()</span></code> など）。</p>
 </div>
 <p><strong>課題4</strong><br />

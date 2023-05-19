@@ -592,14 +592,14 @@ func(10**2)  # これはsingle_loop(10**2)と同じ！</pre>
 <img alt="_images/11093bb2f35b459f320696b46300a190d4e83b15545b09181f191fa6dfbd4355.png" src="_images/11093bb2f35b459f320696b46300a190d4e83b15545b09181f191fa6dfbd4355.png" />
 </div>
 </div>
-<p>次のような点が読み取れるだろう。</p>
+<p>プロットから次のような点が読み取れるだろう。</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(N\)</span> と <span class="math notranslate nohighlight">\(N\log N\)</span> の増え方はあまり変わらない</p></li>
 <li><p><span class="math notranslate nohighlight">\(N^2\)</span> はこれらより明らかに増加スピードが速いが、<span class="math notranslate nohighlight">\(2^N\)</span> や <span class="math notranslate nohighlight">\(N!\)</span> ほどではない</p></li>
 <li><p><span class="math notranslate nohighlight">\(N!\)</span> は <span class="math notranslate nohighlight">\(2^N\)</span> 以上に増加スピードが速い</p></li>
 </ul>
 <p>関数値を計算ステップ数とみなすとき、計算時間に換算するとどれくらいの値になるだろうか。
-1秒あたり <span class="math notranslate nohighlight">\(10^8\)</span> の計算ステップをこなせるとして、各関数値を計算時間（秒単位）に換算したものが次の表である（参考までに <span class="math notranslate nohighlight">\(\log N\)</span>、<span class="math notranslate nohighlight">\(N^4\)</span> の場合も載せている）。</p>
+1秒あたり <span class="math notranslate nohighlight">\(10^8\)</span> の計算ステップをこなせるとして、各関数値を計算時間（秒単位）に換算したのが次の表である（参考までに <span class="math notranslate nohighlight">\(\log N\)</span>、<span class="math notranslate nohighlight">\(N^4\)</span> の場合も載せている）。</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -759,14 +759,14 @@ func(10**2)  # これはsingle_loop(10**2)と同じ！</pre>
 </div>
 <p>数値は指数表示で表現している。例えば、<code class="docutils literal notranslate"><span class="pre">3.6e-2</span></code> は <span class="math notranslate nohighlight">\(3.6\times10^{-2} = 0.036\)</span> という意味であり、<code class="docutils literal notranslate"><span class="pre">2.0e+01</span></code> は <span class="math notranslate nohighlight">\(2.0\times 10^1 = 20\)</span>、<code class="docutils literal notranslate"><span class="pre">1.0e+00</span></code> は <span class="math notranslate nohighlight">\(1.0\times 10^0 = 1\)</span> という意味である。<span class="math notranslate nohighlight">\(N!\)</span> の最後の2マスについては、あまりに桁が大きいため <code class="docutils literal notranslate"><span class="pre">inf</span></code> （無限）と表示されている。</p>
 <p>わかりやすさのため計算時間が1日を超えているマスを黄色、さらに宇宙年齢（138億年）を超えているマスを灰色で色付けした。
-なんと<span class="math notranslate nohighlight">\(2^N\)</span> と <span class="math notranslate nohighlight">\(N!\)</span> の値は一瞬にして宇宙年齢相当を超えている。
+なんと<span class="math notranslate nohighlight">\(2^N\)</span> と <span class="math notranslate nohighlight">\(N!\)</span> の値は一瞬にして宇宙年齢相当を超えることがわかる！
 計算量が <span class="math notranslate nohighlight">\(O(2^N)\)</span> や <span class="math notranslate nohighlight">\(O(N!)\)</span> のアルゴリズムは、比較的小さいサイズの問題でも現実的な時間で解を得られなくなるということである。</p>
 <p>このように <span class="math notranslate nohighlight">\(2^N\)</span> や <span class="math notranslate nohighlight">\(N!\)</span> の増加速度は他と一線を画するので、計算量の世界ではこれらは他と区別される。アルゴリズムの計算量が <span class="math notranslate nohighlight">\(O(2^N)\)</span> や <span class="math notranslate nohighlight">\(O(N!)\)</span> のように（増加速度に関して）指数関数以上のとき <strong>指数時間</strong>、そうではなく <span class="math notranslate nohighlight">\(N\)</span>、<span class="math notranslate nohighlight">\(N\log N\)</span>、<span class="math notranslate nohighlight">\(N^2\)</span> のように多項式関数以下のとき <strong>多項式時間</strong> であるという。</p>
 <div class="note admonition">
 <p class="admonition-title">指数時間の現れる例</p>
-<p>コンピュータを宇宙誕生の瞬間から動かし続けても解けない問題・アルゴリズムの組み合わせなどあり得るのかと不思議に思うかもしれない。しかし、さらに一歩踏み込んで、指数時間のアルゴリズムしか見つからないだろうと予想されている問題が数多く存在する。</p>
-<p>その有名な例が、<strong>巡回セールスマン問題</strong>と呼ばれる問題である。これは簡単に言えば、営業マンが担当する <span class="math notranslate nohighlight">\(N\)</span> 人の顧客のもとを回って営業所に戻ってくることを考えたときに、顧客のもとをどの順番で回れば最短経路になるのかという問題である。この問題は基本的に全ての巡回方法をしらみつぶしに調べるか、それに近い方法を取らないと解を求めることができない。結果として、指数時間のアルゴリズムしか見つからないだろうと予想されている。したがって実践的には、厳密な最適解を求めるのはあきらめて、最適解に近い解を求めようとするアプローチがしばしば取られる。</p>
-<p>このように指数時間のアルゴリズムしか見つかっていない問題は、「全ての可能性をしらみつぶしに調べないと解けない問題」であることが多い。一方で、多項式時間のアルゴリズムの存在する問題は「簡単に解くコツの存在する問題」と表現できるだろう。数学的には、これらの説明とは一見異なる（が、意図するところは近い）問題の分類方法が考えられており、その分類において前者にあたるものを<strong>NP問題</strong>、後者にあたるものを<strong>P問題</strong>という<a class="footnote-reference brackets" href="#f1" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>。</p>
+<p>コンピュータを宇宙誕生の瞬間から動かし続けても解けない問題・アルゴリズムの組み合わせなどあり得るのかと不思議に思うかもしれない。しかし実際には、さらに一歩踏み込んで、指数時間のアルゴリズムしか見つからないだろうと予想されている問題が数多く存在する。</p>
+<p>その有名な例が、<strong>巡回セールスマン問題</strong>と呼ばれる問題である。これは簡単に言えば、営業マンが担当する <span class="math notranslate nohighlight">\(N\)</span> 人の顧客のもとを1回ずつ訪れて出発点に戻ることを考えたときに、顧客のもとをどの順番で回れば最短経路になるのかという問題である。この問題は基本的に全ての巡回方法をしらみつぶしに調べるか、それに近い方法を取らないと解を求めることができないと考えられている。結果として、指数時間のアルゴリズムしか見つかっていない。したがって実践的には、厳密な最適解を求めるのはあきらめて、最適解に近い解を求めようとするアプローチがしばしば取られる。</p>
+<p>このように指数時間のアルゴリズムしか見つかっていない問題は、「全ての可能性をしらみつぶしに調べないと解けない問題」であることが多い。一方で、多項式時間のアルゴリズムの存在する問題は、簡単には「効率的に解くコツの存在する問題」ということができる<a class="footnote-reference brackets" href="#f1" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>。</p>
 </div>
 </section>
 <section id="id7">
@@ -814,7 +814,7 @@ func(10**2)  # これはsingle_loop(10**2)と同じ！</pre>
 <hr class="footnotes docutils" />
 <aside class="footnote brackets" id="f1" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">1</a><span class="fn-bracket">]</span></span>
-<p>本当はこの話を授業のメインにしようと考えて、シラバス作成時に「問題の複雑さ」というタイトルをつけたが、テキストを書き始めてから時間が足りないことに気がついた。より詳しく学びたい人には<a class="reference external" href="https://qiita.com/drken/items/5187e49082f7437349c2">こちら</a>の解説記事がお勧めである。</p>
+<p>これら2種類の問題を数学的にきちんと区別するために、P・NPといった分類が定義されている。本当はこの分類の話を授業のメインにしようと考えて、シラバス作成時に「問題の複雑さ」というタイトルをつけたが、計算量の話だけでも十分なボリュームになったので、これ以上踏み込まないことにする。より詳しく学びたい人には<a class="reference external" href="https://qiita.com/drken/items/5187e49082f7437349c2">こちら</a>の解説記事がお勧めである。</p>
 </aside>
 <aside class="footnote brackets" id="f2" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id8">2</a><span class="fn-bracket">]</span></span>
