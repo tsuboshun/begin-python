@@ -376,6 +376,11 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>25.50404037692287
+</pre></div>
+</div>
+</div>
 </div>
 <p>BMIは18.5未満のとき「低体重」、18.5以上25未満のとき「普通体重」、25以上のとき「肥満」とされる。BMIの値に応じて、これらの情報も添えてメッセージを出力するにはどうしたら良いだろうか？</p>
 <p>このように条件をもとに処理内容を変更するときに使われるのが<strong>if文</strong>である。BMIの例は、if文を使うことで次のように実現できる。</p>
@@ -390,6 +395,11 @@ document.write(`
     
 <span class="n">message</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;あなたのBMIは</span><span class="si">{</span><span class="n">bmi</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">です。これは「</span><span class="si">{</span><span class="n">shape</span><span class="si">}</span><span class="s2">」に当たります。&quot;</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>あなたのBMIは25.50です。これは「肥満」に当たります。
 </pre></div>
 </div>
 </div>
@@ -439,6 +449,11 @@ elif文は好きなだけ追加できるが、else文は1つまでである。</
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>あなたのBMIは25.50です。これは「肥満」に当たります。
+</pre></div>
+</div>
+</div>
 </div>
 <p>ブロックの内側にブロックを作るときは、インデントを2回行う。
 ただしブロックの階層が深くなるにつれてコードが読みづらくなるので、BMIの例では最初のようにelif文を使う方がよい。</p>
@@ -457,6 +472,35 @@ elif文は好きなだけ追加できるが、else文は1つまでである。</
 </div>
 </div>
 </div>
+<div class="toggle docutils container">
+<p><strong>解答例</strong></p>
+<pre style={"white-space": "pre"}>
+if x > 0:
+    print("正の値")</pre>
+<p>例えば、以下のように動作する。</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">-1</span></code> のとき、何も出力しない</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">0</span></code> のとき、何も出力しない</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">1</span></code> のとき、<code class="docutils literal notranslate"><span class="pre">&quot;正の値&quot;</span></code> と出力する</p></li>
+</ul>
+<p><strong>誤答例</strong></p>
+<pre style={"white-space": "pre"}>
+if x > 0:
+    ans = "正の値"
+print(ans)</pre>
+<p>上の例は、<code class="docutils literal notranslate"><span class="pre">x</span></code> の値によってはエラーとなるため正しくない（明示的に説明していなかったので、採点上は正解とした）。例えば <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">-1</span></code> のとき、if文のブロックは実行されずにいきなり <code class="docutils literal notranslate"><span class="pre">print(ans)</span></code> が実行される。このとき <code class="docutils literal notranslate"><span class="pre">ans</span></code> という変数は未定義なので、エラーが発生する。</p>
+<p>次のように書けば問題ない。</p>
+<pre style={"white-space": "pre"}>
+if x > 0:
+    ans = "正の値"
+    print(ans)</pre>
+<p>また次のようなコードを書いた人もいた。今回は甘めに採点して正解としたが、問題の指示通りではないので本来は誤答である。また、<code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">0</span></code> のとき <code class="docutils literal notranslate"><span class="pre">&quot;負の値&quot;</span></code> と出力されてしまうので、その意味でも正しくない。</p>
+<pre style={"white-space": "pre"}>
+if x > 0:
+    print("正の値")
+else:
+    print("負の値")</pre>
+</div>
 <p>(2) 数値データ <code class="docutils literal notranslate"><span class="pre">x</span></code> が与えられる。 <code class="docutils literal notranslate"><span class="pre">x</span></code> が正の値のとき <code class="docutils literal notranslate"><span class="pre">&quot;正の値&quot;</span></code> 、そうでないとき <code class="docutils literal notranslate"><span class="pre">&quot;0以下の値&quot;</span></code> と出力するプログラムを書きなさい。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -465,6 +509,20 @@ elif文は好きなだけ追加できるが、else文は1つまでである。</
 </pre></div>
 </div>
 </div>
+</div>
+<div class="toggle docutils container">
+<p>解答例：</p>
+<pre style={"white-space": "pre"}>
+if x > 0:
+    print("正の値")
+else:
+    print("0以下の値")</pre>
+<p>例えば、以下のように動作する。</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">-1</span></code> のとき、<code class="docutils literal notranslate"><span class="pre">&quot;0以下の値&quot;</span></code> と出力する</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">0</span></code> のとき、<code class="docutils literal notranslate"><span class="pre">&quot;0以下の値&quot;</span></code> と出力する</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">1</span></code> のとき、<code class="docutils literal notranslate"><span class="pre">&quot;正の値&quot;</span></code> と出力する</p></li>
+</ul>
 </div>
 <p><strong>練習2</strong><br />
 2つの数値 <code class="docutils literal notranslate"><span class="pre">a</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span></code> の最大値を求めて出力するプログラムを、if文を使って作成しなさい。</p>
@@ -477,6 +535,22 @@ elif文は好きなだけ追加できるが、else文は1つまでである。</
 </div>
 </div>
 </div>
+<div class="toggle docutils container">
+<p>解答例：</p>
+<pre style={"white-space": "pre"}>
+if a > b:
+    m = a
+else:
+    m = b
+    
+print(m)
+</pre>
+<p>例えば、以下のように動作する。</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">3</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">=</span> <span class="pre">7</span></code>のとき、<code class="docutils literal notranslate"><span class="pre">7</span></code> と出力する</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">8</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">=</span> <span class="pre">7</span></code>のとき、<code class="docutils literal notranslate"><span class="pre">8</span></code> と出力する</p></li>
+</ul>
+</div>
 <p><strong>練習3</strong><br />
 3つの数値 <code class="docutils literal notranslate"><span class="pre">a</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span></code>、<code class="docutils literal notranslate"><span class="pre">c</span></code> の最大値を求めて出力するプログラムを、if文を使って作成しなさい。</p>
 <div class="cell docutils container">
@@ -488,6 +562,25 @@ elif文は好きなだけ追加できるが、else文は1つまでである。</
 </pre></div>
 </div>
 </div>
+</div>
+<div class="toggle docutils container">
+<p>解答例：</p>
+<pre style={"white-space": "pre"}>
+if a > b:
+    m = a
+else:
+    m = b
+    
+if m < c:
+    m = c
+
+print(m)</pre>
+<p>例えば、以下のように動作する。</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">3</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">=</span> <span class="pre">7</span></code>、 <code class="docutils literal notranslate"><span class="pre">c</span> <span class="pre">=</span> <span class="pre">2</span></code> のとき、<code class="docutils literal notranslate"><span class="pre">7</span></code> と出力する</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">8</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">=</span> <span class="pre">7</span></code>、 <code class="docutils literal notranslate"><span class="pre">c</span> <span class="pre">=</span> <span class="pre">2</span></code> のとき、<code class="docutils literal notranslate"><span class="pre">8</span></code> と出力する</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">3</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">=</span> <span class="pre">7</span></code>、 <code class="docutils literal notranslate"><span class="pre">c</span> <span class="pre">=</span> <span class="pre">10</span></code> のとき、<code class="docutils literal notranslate"><span class="pre">10</span></code> と出力する</p></li>
+</ul>
 </div>
 <div class="note admonition">
 <p class="admonition-title">式と文</p>
@@ -586,6 +679,11 @@ elif文は好きなだけ追加できるが、else文は1つまでである。</
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>雨に濡れません
+</pre></div>
+</div>
+</div>
 </div>
 <p>条件式の <code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">rain</span> <span class="pre">or</span> <span class="pre">umbrella</span></code> は <code class="docutils literal notranslate"><span class="pre">(not</span> <span class="pre">rain)</span> <span class="pre">or</span> <span class="pre">umbrella</span></code> と <code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">(rain</span> <span class="pre">or</span> <span class="pre">umbrella)</span></code> のどちらの意味だろうか。
 上の実行結果をもとに考えてみよう。
@@ -611,6 +709,18 @@ elif文は好きなだけ追加できるが、else文は1つまでである。</
 </div>
 </div>
 </div>
+<div class="toggle docutils container">
+<p>解答例：</p>
+<pre style={"white-space": "pre"}>
+if weather == "晴れ" and temp >= 25:
+    print("暑い日ですね")
+elif weather == "晴れ" and temp < 25:
+    print("快適な日ですね")
+elif weather == "雨":
+    print("傘を持っていきましょう")
+    
+
+</div>
 <p><strong>練習5</strong><br />
 文字列 <code class="docutils literal notranslate"><span class="pre">fruit</span></code> と リスト <code class="docutils literal notranslate"><span class="pre">basket</span></code> が与えられるとき、以下の条件にもとづいて適切なメッセージを出力するプログラムを作成しなさい。</p>
 <ul class="simple">
@@ -625,6 +735,17 @@ elif文は好きなだけ追加できるが、else文は1つまでである。</
 </pre></div>
 </div>
 </div>
+</div>
+<div class="toggle docutils container">
+<p>解答例：</p>
+<pre style={"white-space": "pre"}>
+if not fruit in basket:
+    print("カゴにありません")</pre>
+<p>例えば、以下のように動作する。</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fruit</span> <span class="pre">=</span> <span class="pre">&quot;みかん&quot;</span></code>、<code class="docutils literal notranslate"><span class="pre">basket</span> <span class="pre">=</span> <span class="pre">[&quot;りんご&quot;,</span> <span class="pre">&quot;キウイ&quot;,</span> <span class="pre">&quot;バナナ&quot;]</span></code> のとき、<code class="docutils literal notranslate"><span class="pre">&quot;カゴにありません&quot;</span></code> と出力する</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fruit</span> <span class="pre">=</span> <span class="pre">&quot;バナナ&quot;</span></code>、<code class="docutils literal notranslate"><span class="pre">basket</span> <span class="pre">=</span> <span class="pre">[&quot;りんご&quot;,</span> <span class="pre">&quot;キウイ&quot;,</span> <span class="pre">&quot;バナナ&quot;]</span></code> のとき、何も出力しない</p></li>
+</ul>
 </div>
 </section>
 </section>
@@ -648,6 +769,11 @@ Pythonには世界中の開発者により豊富なライブラリが用意さ�
 
 <span class="n">cand</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;りんご&quot;</span><span class="p">,</span> <span class="s2">&quot;キウイ&quot;</span><span class="p">,</span> <span class="s2">&quot;バナナ&quot;</span><span class="p">]</span>
 <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">cand</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;バナナ&#39;
 </pre></div>
 </div>
 </div>
@@ -682,6 +808,28 @@ Pythonには世界中の開発者により豊富なライブラリが用意さ�
 </div>
 </div>
 </div>
+<div class="toggle docutils container">
+<p><strong>解答例</strong></p>
+<pre style={"white-space": "pre"}>
+if my_choice == opp_choice:
+    print("引き分け")
+</pre>
+<p><strong>別解</strong><br />
+次のようなコードを書いた人もいた。</p>
+<pre style={"white-space": "pre"}>
+if my_choice == "グー" and opp_choice == "グー":
+    print("引き分け")
+elif my_choice == "チョキ" and opp_choice == "チョキ":
+    print("引き分け")
+elif my_choice == "パー" and opp_choice == "パー":
+    print("引き分け")
+</pre>
+<p>これも正しいプログラムである。ただし、最初の解答例の方が次の2点でより良い。</p>
+<ul class="simple">
+<li><p>簡潔で読みやすい</p></li>
+<li><p>評価する条件式が少ないため、実行時間も短い</p></li>
+</ul>
+</div>
 <p><strong>課題2</strong><br />
 自分の手 <code class="docutils literal notranslate"><span class="pre">my_choice</span></code>、相手の手 <code class="docutils literal notranslate"><span class="pre">opp_choice</span></code> が与えられるとき、自分の勝ちかどうかを判定して、勝ちであれば <code class="docutils literal notranslate"><span class="pre">&quot;勝ち&quot;</span></code> と出力するプログラムを作成しなさい。それ以外のときは何も出力しなくてよい。</p>
 <div class="cell docutils container">
@@ -693,6 +841,42 @@ Pythonには世界中の開発者により豊富なライブラリが用意さ�
 </div>
 </div>
 </div>
+<div class="toggle docutils container">
+<p><strong>解答例</strong></p>
+<pre style={"white-space": "pre"}>
+if (my_choice == "グー" and opp_choice == "チョキ") or (my_choice == "チョキ" and opp_choice == "パー") or (my_choice == "パー" and opp_choice == "グー"):
+    print("勝ち")
+</pre>
+<p>コードとしては同じであるが、1行が長くなるときは次のように折り返して書いたほうがよい。
+<code class="docutils literal notranslate"><span class="pre">\</span></code> （Windowsでは <code class="docutils literal notranslate"><span class="pre">¥</span></code>）については第3回の講義ノート参照。</p>
+<pre style={"white-space": "pre"}>
+if (my_choice == "グー" and opp_choice == "チョキ") or \
+   (my_choice == "チョキ" and opp_choice == "パー") or \
+   (my_choice == "パー" and opp_choice == "グー"):
+    print("勝ち")
+</pre>
+<p><strong>別解1</strong></p>
+<pre style={"white-space": "pre"}>
+if my_choice == "グー" and opp_choice == "チョキ":
+    print("勝ち")
+elif my_choice == "チョキ" and opp_choice == "パー":
+    print("勝ち")
+elif my_choice == "パー" and opp_choice == "グー":
+    print("勝ち")
+</pre>
+<p>（授業中）このように書いている人もいた。これも見やすくて良いコードである。</p>
+<p><strong>別解2</strong></p>
+<pre style={"white-space": "pre"}>
+if [my_choice, opp_choice] in [["グー", "チョキ"], ["チョキ", "パー"], ["パー", "グー"]]:
+    print("勝ち")
+</pre>
+<p>リストとin演算子を使うと、このように簡潔に書くこともできる。</p>
+<p>ほぼ同じコードであるが、第7回で習うタプルを使って次のように書くこともできる。</p>
+<pre style={"white-space": "pre"}>
+if (my_choice, opp_choice) in [("グー", "チョキ"), ("チョキ", "パー"), ("パー", "グー")]:
+    print("勝ち")
+</pre>
+</div>
 <p><strong>課題3</strong><br />
 自分の手 <code class="docutils literal notranslate"><span class="pre">my_choice</span></code>、相手の手 <code class="docutils literal notranslate"><span class="pre">opp_choice</span></code> が与えられるとき、if文、elif文、else文を使って、勝敗に応じて <code class="docutils literal notranslate"><span class="pre">&quot;勝ち&quot;</span></code>、<code class="docutils literal notranslate"><span class="pre">&quot;負け&quot;</span></code>、<code class="docutils literal notranslate"><span class="pre">&quot;引き分け&quot;</span></code> と出力するプログラムを作成しなさい。</p>
 <div class="cell docutils container">
@@ -703,6 +887,19 @@ Pythonには世界中の開発者により豊富なライブラリが用意さ�
 </pre></div>
 </div>
 </div>
+</div>
+<div class="toggle docutils container">
+<p><strong>解答例</strong></p>
+<pre style={"white-space": "pre"}>
+if my_choice == opp_choice:
+    print("引き分け")
+elif (my_choice == "グー" and opp_choice == "チョキ") or \
+   (my_choice == "チョキ" and opp_choice == "パー") or \
+   (my_choice == "パー" and opp_choice == "グー"):
+    print("勝ち")
+else:
+    print("負け")
+</pre>
 </div>
 <p><strong>おまけ</strong><br />
 課題3まで出来た人は、作成したプログラムを次のプログラムの末尾にコピー&amp;ペースとして動かしてみよう。
