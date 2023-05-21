@@ -1,0 +1,7 @@
+/*.toggle-details__summary-text:before {
+    content: "解答を表示";
+}
+
+.toggle-details__summary-text:before {
+    content: "解答を非表示";
+}*/

@@ -53,7 +53,7 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
-    <script src="_static/link_control.js"></script>
+    <script src="_static/custom.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-VFVQWRM1GN"></script>
@@ -324,11 +324,11 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">この授業で学ぶこと</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#if">if文</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">論理演算子</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">論理演算子</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import">モジュールとimport</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">演習</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">演習</a></li>
 </ul>
             </nav>
         </div>
@@ -350,6 +350,12 @@ document.write(`
 <p>この授業では、条件に応じて処理内容を変える方法について学ぶ。
 また、Pythonファイルから関数やクラスを読み込む方法についても学ぶ。</p>
 <p>真偽値（<code class="docutils literal notranslate"><span class="pre">True</span></code>、<code class="docutils literal notranslate"><span class="pre">False</span></code>）をよく使うため、ブール型や比較演算子について<a class="reference internal" href="lecture04.html#label-bool"><span class="std std-ref">復習</span></a>しておこう（<code class="docutils literal notranslate"><span class="pre">=</span></code> と <code class="docutils literal notranslate"><span class="pre">==</span></code> の違いについて覚えているだろうか？）。</p>
+<div class="dropdown tip admonition">
+<p class="admonition-title">授業中によく見かけたエラー</p>
+<p>試行錯誤するうちに、誤って <code class="docutils literal notranslate"><span class="pre">print</span> <span class="pre">=</span> </code> という代入文を途中で実行してしまうケースをよく見かけた。
+そうすると <code class="docutils literal notranslate"><span class="pre">print</span></code> は本来の意味ではなくなってしまうので、その先 <code class="docutils literal notranslate"><span class="pre">print()</span></code> を使用するたびにエラーが発生する。
+これを直すには、ノートブック上方のメニューバーから「ランタイム」 &gt; 「ランタイムを再起動」を選択して、設定を初期化する必要がある。</p>
+</div>
 </section>
 <section id="if">
 <h2>if文<a class="headerlink" href="#if" title="Permalink to this heading">#</a></h2>
@@ -370,6 +376,11 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>25.50404037692287
+</pre></div>
+</div>
+</div>
 </div>
 <p>BMIは18.5未満のとき「低体重」、18.5以上25未満のとき「普通体重」、25以上のとき「肥満」とされる。BMIの値に応じて、これらの情報も添えてメッセージを出力するにはどうしたら良いだろうか？</p>
 <p>このように条件をもとに処理内容を変更するときに使われるのが<strong>if文</strong>である。BMIの例は、if文を使うことで次のように実現できる。</p>
@@ -387,6 +398,11 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>あなたのBMIは25.50です。これは「肥満」に当たります。
+</pre></div>
+</div>
+</div>
 </div>
 <p>if文の書き方について解説する。上のコードを図で表すと次のようになる。</p>
 <figure class="align-default" id="id3">
@@ -398,9 +414,7 @@ document.write(`
 <p>条件を表す式のことを<strong>条件式</strong>と言う。if文では、条件式が真（<code class="docutils literal notranslate"><span class="pre">True</span></code>）か偽（<code class="docutils literal notranslate"><span class="pre">False</span></code>）かに基づいて、それに続く<strong>ブロック</strong>を実行するかどうかを決定する。
 条件分岐のために使われる構文には <code class="docutils literal notranslate"><span class="pre">if</span></code>、<code class="docutils literal notranslate"><span class="pre">elif</span></code>、<code class="docutils literal notranslate"><span class="pre">else</span></code> の3通りがあり、それぞれ条件式の最後にコロン <code class="docutils literal notranslate"><span class="pre">:</span></code> を置く。
 なお、この授業ではif文という言葉を、<code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">条件式</span></code> という文だけではなく、<code class="docutils literal notranslate"><span class="pre">if</span></code>、<code class="docutils literal notranslate"><span class="pre">elif</span></code>、<code class="docutils literal notranslate"><span class="pre">else</span></code> を含む条件分岐の総称としても用いる。</p>
-<p>条件式に続くブロックは、<strong>インデント</strong>という字下げをすることで表現する。
-インデントは<strong>空白文字4つ</strong>とするのが良いとされている<a class="footnote-reference brackets" href="#f1" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>。
-ノートブック環境では <code class="docutils literal notranslate"><span class="pre">:</span></code> を入力したあとに改行すると、自動的に空白文字4つのインデントが入れられるはずである。</p>
+<p>条件式に続くブロックは、<strong>インデント</strong>という空白文字による字下げをすることで表現する。空白文字の数はいくつでもよいが、ブロック中はインデントの大きさを揃える必要がある。基本的に、インデントは<strong>空白文字4つ</strong>とするのが良いとされている<a class="footnote-reference brackets" href="#f1" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>。ノートブック環境では <code class="docutils literal notranslate"><span class="pre">:</span></code> を入力したあとに改行すると、自動的に空白文字4つのインデントが入れられるはずである<a class="footnote-reference brackets" href="#f2" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>。</p>
 <p>if文の処理は、英語読みで理解するとよい。
 <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">条件式</span></code> は「もし条件式が真ならば」という意味である。
 <code class="docutils literal notranslate"><span class="pre">elif</span></code> はelse ifの略であり、<code class="docutils literal notranslate"><span class="pre">elif</span> <span class="pre">条件式</span></code> は「もしここまでのブロックを実行しておらず、条件式が真ならば」という意味である。
@@ -435,6 +449,11 @@ elif文は好きなだけ追加できるが、else文は1つまでである。</
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>あなたのBMIは25.50です。これは「肥満」に当たります。
+</pre></div>
+</div>
+</div>
 </div>
 <p>ブロックの内側にブロックを作るときは、インデントを2回行う。
 ただしブロックの階層が深くなるにつれてコードが読みづらくなるので、BMIの例では最初のようにelif文を使う方がよい。</p>
@@ -444,9 +463,44 @@ elif文は好きなだけ追加できるが、else文は1つまでである。</
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># x の一例 </span>
 <span class="n">x</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="c1">### （出席課題）以下を埋めて、ここの部分のみ提出する。出力にはprint()関数を使うこと。</span>
+
+
+<span class="c1">###</span>
 </pre></div>
 </div>
 </div>
+</div>
+<div class="toggle docutils container">
+<p><strong>解答例</strong></p>
+<pre style={"white-space": "pre"}>
+if x > 0:
+    print("正の値")</pre>
+<p>例えば、以下のように動作する。</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">-1</span></code> のとき、何も出力しない</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">0</span></code> のとき、何も出力しない</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">1</span></code> のとき、<code class="docutils literal notranslate"><span class="pre">&quot;正の値&quot;</span></code> と出力する</p></li>
+</ul>
+<p><strong>誤答例</strong></p>
+<pre style={"white-space": "pre"}>
+if x > 0:
+    ans = "正の値"
+print(ans)</pre>
+<p>上の例は、<code class="docutils literal notranslate"><span class="pre">x</span></code> の値によってはエラーとなるため正しくない（明示的に説明していなかったので、採点上は正解とした）。例えば <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">-1</span></code> のとき、if文のブロックは実行されずにいきなり <code class="docutils literal notranslate"><span class="pre">print(ans)</span></code> が実行される。このとき <code class="docutils literal notranslate"><span class="pre">ans</span></code> という変数は未定義なので、エラーが発生する。</p>
+<p>次のように書けば問題ない。</p>
+<pre style={"white-space": "pre"}>
+if x > 0:
+    ans = "正の値"
+    print(ans)</pre>
+<p>また次のようなコードを書いた人もいた。今回は甘めに採点して正解としたが、問題の指示通りではないので本来は誤答である。また、<code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">0</span></code> のとき <code class="docutils literal notranslate"><span class="pre">&quot;負の値&quot;</span></code> と出力されてしまうので、その意味でも正しくない。</p>
+<pre style={"white-space": "pre"}>
+if x > 0:
+    print("正の値")
+else:
+    print("負の値")</pre>
+<p>まとめると、<strong>問題に書かれていない処理を追加してはいけない。またどのようなケースでもエラーにならないコードを書くこと。</strong></p>
 </div>
 <p>(2) 数値データ <code class="docutils literal notranslate"><span class="pre">x</span></code> が与えられる。 <code class="docutils literal notranslate"><span class="pre">x</span></code> が正の値のとき <code class="docutils literal notranslate"><span class="pre">&quot;正の値&quot;</span></code> 、そうでないとき <code class="docutils literal notranslate"><span class="pre">&quot;0以下の値&quot;</span></code> と出力するプログラムを書きなさい。</p>
 <div class="cell docutils container">
@@ -456,6 +510,20 @@ elif文は好きなだけ追加できるが、else文は1つまでである。</
 </pre></div>
 </div>
 </div>
+</div>
+<div class="toggle docutils container">
+<p>解答例：</p>
+<pre style={"white-space": "pre"}>
+if x > 0:
+    print("正の値")
+else:
+    print("0以下の値")</pre>
+<p>例えば、以下のように動作する。</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">-1</span></code> のとき、<code class="docutils literal notranslate"><span class="pre">&quot;0以下の値&quot;</span></code> と出力する</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">0</span></code> のとき、<code class="docutils literal notranslate"><span class="pre">&quot;0以下の値&quot;</span></code> と出力する</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">1</span></code> のとき、<code class="docutils literal notranslate"><span class="pre">&quot;正の値&quot;</span></code> と出力する</p></li>
+</ul>
 </div>
 <p><strong>練習2</strong><br />
 2つの数値 <code class="docutils literal notranslate"><span class="pre">a</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span></code> の最大値を求めて出力するプログラムを、if文を使って作成しなさい。</p>
@@ -467,6 +535,22 @@ elif文は好きなだけ追加できるが、else文は1つまでである。</
 </pre></div>
 </div>
 </div>
+</div>
+<div class="toggle docutils container">
+<p>解答例：</p>
+<pre style={"white-space": "pre"}>
+if a > b:
+    m = a
+else:
+    m = b
+    
+print(m)
+</pre>
+<p>例えば、以下のように動作する。</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">3</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">=</span> <span class="pre">7</span></code>のとき、<code class="docutils literal notranslate"><span class="pre">7</span></code> と出力する</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">8</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">=</span> <span class="pre">7</span></code>のとき、<code class="docutils literal notranslate"><span class="pre">8</span></code> と出力する</p></li>
+</ul>
 </div>
 <p><strong>練習3</strong><br />
 3つの数値 <code class="docutils literal notranslate"><span class="pre">a</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span></code>、<code class="docutils literal notranslate"><span class="pre">c</span></code> の最大値を求めて出力するプログラムを、if文を使って作成しなさい。</p>
@@ -480,14 +564,33 @@ elif文は好きなだけ追加できるが、else文は1つまでである。</
 </div>
 </div>
 </div>
+<div class="toggle docutils container">
+<p>解答例：</p>
+<pre style={"white-space": "pre"}>
+if a > b:
+    m = a
+else:
+    m = b
+    
+if m < c:
+    m = c
+
+print(m)</pre>
+<p>例えば、以下のように動作する。</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">3</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">=</span> <span class="pre">7</span></code>、 <code class="docutils literal notranslate"><span class="pre">c</span> <span class="pre">=</span> <span class="pre">2</span></code> のとき、<code class="docutils literal notranslate"><span class="pre">7</span></code> と出力する</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">8</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">=</span> <span class="pre">7</span></code>、 <code class="docutils literal notranslate"><span class="pre">c</span> <span class="pre">=</span> <span class="pre">2</span></code> のとき、<code class="docutils literal notranslate"><span class="pre">8</span></code> と出力する</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">3</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">=</span> <span class="pre">7</span></code>、 <code class="docutils literal notranslate"><span class="pre">c</span> <span class="pre">=</span> <span class="pre">10</span></code> のとき、<code class="docutils literal notranslate"><span class="pre">10</span></code> と出力する</p></li>
+</ul>
+</div>
 <div class="note admonition">
 <p class="admonition-title">式と文</p>
 <p>Pythonプログラムは主に式と文で構成される。
 式（expression）は、値を生成する構成要素であり、計算や関数の呼び出しがそれに当たる。
 一方で文（statement）は、プログラムの実行を制御する構成要素であり、変数への代入や制御構造（if文やfor文など）がそれに当たる。</p>
 </div>
-<section id="id5">
-<h3>論理演算子<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<section id="id6">
+<h3>論理演算子<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
 <p>複数の条件をもとに条件分岐を行いたい場合がある。
 そんなときに用いられるのが<strong>論理演算子</strong>である。
 論理演算子には <code class="docutils literal notranslate"><span class="pre">and</span></code>、<code class="docutils literal notranslate"><span class="pre">or</span></code>、<code class="docutils literal notranslate"><span class="pre">not</span></code> の3種類がある。
@@ -577,6 +680,11 @@ elif文は好きなだけ追加できるが、else文は1つまでである。</
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>雨に濡れません
+</pre></div>
+</div>
+</div>
 </div>
 <p>条件式の <code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">rain</span> <span class="pre">or</span> <span class="pre">umbrella</span></code> は <code class="docutils literal notranslate"><span class="pre">(not</span> <span class="pre">rain)</span> <span class="pre">or</span> <span class="pre">umbrella</span></code> と <code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">(rain</span> <span class="pre">or</span> <span class="pre">umbrella)</span></code> のどちらの意味だろうか。
 上の実行結果をもとに考えてみよう。
@@ -593,9 +701,24 @@ elif文は好きなだけ追加できるが、else文は1つまでである。</
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># weather, tempの一例</span>
 <span class="n">weather</span> <span class="o">=</span> <span class="s2">&quot;晴れ&quot;</span>
 <span class="n">temp</span> <span class="o">=</span> <span class="mi">17</span>
+
+<span class="c1">### （出席課題）以下を埋めて、ここの部分のみ提出する。出力にはprint()関数を使うこと。</span>
+
+
+<span class="c1">###</span>
 </pre></div>
 </div>
 </div>
+</div>
+<div class="toggle docutils container">
+<p>解答例：</p>
+<pre style={"white-space": "pre"}>
+if weather == "晴れ" and temp >= 25:
+    print("暑い日ですね")
+elif weather == "晴れ" and temp < 25:
+    print("快適な日ですね")
+elif weather == "雨":
+    print("傘を持っていきましょう")
 </div>
 <p><strong>練習5</strong><br />
 文字列 <code class="docutils literal notranslate"><span class="pre">fruit</span></code> と リスト <code class="docutils literal notranslate"><span class="pre">basket</span></code> が与えられるとき、以下の条件にもとづいて適切なメッセージを出力するプログラムを作成しなさい。</p>
@@ -611,6 +734,17 @@ elif文は好きなだけ追加できるが、else文は1つまでである。</
 </pre></div>
 </div>
 </div>
+</div>
+<div class="toggle docutils container">
+<p>解答例：</p>
+<pre style={"white-space": "pre"}>
+if not fruit in basket:
+    print("カゴにありません")</pre>
+<p>例えば、以下のように動作する。</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fruit</span> <span class="pre">=</span> <span class="pre">&quot;みかん&quot;</span></code>、<code class="docutils literal notranslate"><span class="pre">basket</span> <span class="pre">=</span> <span class="pre">[&quot;りんご&quot;,</span> <span class="pre">&quot;キウイ&quot;,</span> <span class="pre">&quot;バナナ&quot;]</span></code> のとき、<code class="docutils literal notranslate"><span class="pre">&quot;カゴにありません&quot;</span></code> と出力する</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fruit</span> <span class="pre">=</span> <span class="pre">&quot;バナナ&quot;</span></code>、<code class="docutils literal notranslate"><span class="pre">basket</span> <span class="pre">=</span> <span class="pre">[&quot;りんご&quot;,</span> <span class="pre">&quot;キウイ&quot;,</span> <span class="pre">&quot;バナナ&quot;]</span></code> のとき、何も出力しない</p></li>
+</ul>
 </div>
 </section>
 </section>
@@ -637,6 +771,11 @@ Pythonには世界中の開発者により豊富なライブラリが用意さ�
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;バナナ&#39;
+</pre></div>
+</div>
+</div>
 </div>
 <p>randomモジュールの中の <code class="docutils literal notranslate"><span class="pre">choice()</span></code> 関数は、インポート後に <code class="docutils literal notranslate"><span class="pre">random.choice()</span></code> とすることで使用することができる。
 これはリストを引数として受け取り、その要素をランダムに1つ返す関数である。
@@ -647,8 +786,8 @@ Pythonには世界中の開発者により豊富なライブラリが用意さ�
 <p>ライブラリは大きく標準ライブラリと外部ライブラリに分けられる。randomモジュールは標準ライブラリの一つである。外部ライブラリの場合にはインポートする前に、そもそもライブラリのファイル群をコンピュータに<strong>インストール</strong>（ダウンロードし使用可能な状態にすること）する必要がある。よく使われるのは<strong>pip</strong>というパッケージ管理システムである。pipでライブラリをインストールするには、<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">ライブラリ名</span></code> を実行する。</p>
 </div>
 </section>
-<section id="id6">
-<h2>演習<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
+<section id="id7">
+<h2>演習<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h2>
 <p><strong>課題1</strong><br />
 じゃんけんの勝敗を判定したい。
 自分の手 <code class="docutils literal notranslate"><span class="pre">my_choice</span></code>、相手の手 <code class="docutils literal notranslate"><span class="pre">opp_choice</span></code> が与えられるとき、引き分けかどうかを判定して、引き分けのとき <code class="docutils literal notranslate"><span class="pre">&quot;引き分け&quot;</span></code> と出力するプログラムを作成しなさい。
@@ -660,13 +799,35 @@ Pythonには世界中の開発者により豊富なライブラリが用意さ�
 <span class="n">my_choice</span> <span class="o">=</span> <span class="s2">&quot;グー&quot;</span>
 <span class="n">opp_choice</span> <span class="o">=</span> <span class="s2">&quot;チョキ&quot;</span>
 
-<span class="c1">### 以下を埋めて、ここの部分のみ提出する</span>
+<span class="c1">### （出席課題）以下を埋めて、ここの部分のみ提出する。出力にはprint()関数を使うこと。</span>
 
 
 <span class="c1">###</span>
 </pre></div>
 </div>
 </div>
+</div>
+<div class="toggle docutils container">
+<p><strong>解答例</strong></p>
+<pre style={"white-space": "pre"}>
+if my_choice == opp_choice:
+    print("引き分け")
+</pre>
+<p><strong>別解</strong><br />
+次のようなコードを書いた人もいた。</p>
+<pre style={"white-space": "pre"}>
+if my_choice == "グー" and opp_choice == "グー":
+    print("引き分け")
+elif my_choice == "チョキ" and opp_choice == "チョキ":
+    print("引き分け")
+elif my_choice == "パー" and opp_choice == "パー":
+    print("引き分け")
+</pre>
+<p>これも正しいプログラムである。ただし、最初の解答例の方が次の2点でより良い。</p>
+<ul class="simple">
+<li><p>簡潔で読みやすい</p></li>
+<li><p>評価する条件式が少ないため、実行時間も短い</p></li>
+</ul>
 </div>
 <p><strong>課題2</strong><br />
 自分の手 <code class="docutils literal notranslate"><span class="pre">my_choice</span></code>、相手の手 <code class="docutils literal notranslate"><span class="pre">opp_choice</span></code> が与えられるとき、自分の勝ちかどうかを判定して、勝ちであれば <code class="docutils literal notranslate"><span class="pre">&quot;勝ち&quot;</span></code> と出力するプログラムを作成しなさい。それ以外のときは何も出力しなくてよい。</p>
@@ -675,14 +836,45 @@ Pythonには世界中の開発者により豊富なライブラリが用意さ�
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 以下は、my_choice と opp_choiceの一例 （この例では&quot;勝ち&quot;と出力するのが正しい）</span>
 <span class="n">my_choice</span> <span class="o">=</span> <span class="s2">&quot;グー&quot;</span>
 <span class="n">opp_choice</span> <span class="o">=</span> <span class="s2">&quot;チョキ&quot;</span>
-
-<span class="c1">### 以下を埋めて、ここの部分のみ提出する</span>
-
-
-<span class="c1">###</span>
 </pre></div>
 </div>
 </div>
+</div>
+<div class="toggle docutils container">
+<p><strong>解答例</strong></p>
+<pre style={"white-space": "pre"}>
+if (my_choice == "グー" and opp_choice == "チョキ") or (my_choice == "チョキ" and opp_choice == "パー") or (my_choice == "パー" and opp_choice == "グー"):
+    print("勝ち")
+</pre>
+<p>コードとしては同じであるが、1行が長くなるときは次のように折り返して書いたほうがよい。
+<code class="docutils literal notranslate"><span class="pre">\</span></code> （Windowsでは <code class="docutils literal notranslate"><span class="pre">¥</span></code>）については第3回の講義ノート参照。</p>
+<pre style={"white-space": "pre"}>
+if (my_choice == "グー" and opp_choice == "チョキ") or \
+   (my_choice == "チョキ" and opp_choice == "パー") or \
+   (my_choice == "パー" and opp_choice == "グー"):
+    print("勝ち")
+</pre>
+<p><strong>別解1</strong></p>
+<pre style={"white-space": "pre"}>
+if my_choice == "グー" and opp_choice == "チョキ":
+    print("勝ち")
+elif my_choice == "チョキ" and opp_choice == "パー":
+    print("勝ち")
+elif my_choice == "パー" and opp_choice == "グー":
+    print("勝ち")
+</pre>
+<p>（授業中）このように書いている人もいた。これも見やすくて良いコードである。</p>
+<p><strong>別解2</strong></p>
+<pre style={"white-space": "pre"}>
+if [my_choice, opp_choice] in [["グー", "チョキ"], ["チョキ", "パー"], ["パー", "グー"]]:
+    print("勝ち")
+</pre>
+<p>リストとin演算子を使うと、このように簡潔に書くこともできる。</p>
+<p>ほぼ同じコードであるが、第7回で習うタプルを使って次のように書くこともできる。</p>
+<pre style={"white-space": "pre"}>
+if (my_choice, opp_choice) in [("グー", "チョキ"), ("チョキ", "パー"), ("パー", "グー")]:
+    print("勝ち")
+</pre>
 </div>
 <p><strong>課題3</strong><br />
 自分の手 <code class="docutils literal notranslate"><span class="pre">my_choice</span></code>、相手の手 <code class="docutils literal notranslate"><span class="pre">opp_choice</span></code> が与えられるとき、if文、elif文、else文を使って、勝敗に応じて <code class="docutils literal notranslate"><span class="pre">&quot;勝ち&quot;</span></code>、<code class="docutils literal notranslate"><span class="pre">&quot;負け&quot;</span></code>、<code class="docutils literal notranslate"><span class="pre">&quot;引き分け&quot;</span></code> と出力するプログラムを作成しなさい。</p>
@@ -691,14 +883,22 @@ Pythonには世界中の開発者により豊富なライブラリが用意さ�
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 以下は、my_choice と opp_choiceの一例 （この例では&quot;勝ち&quot;と出力するのが正しい）</span>
 <span class="n">my_choice</span> <span class="o">=</span> <span class="s2">&quot;グー&quot;</span>
 <span class="n">opp_choice</span> <span class="o">=</span> <span class="s2">&quot;チョキ&quot;</span>
-
-<span class="c1">### 以下を埋めて、ここの部分のみ提出する</span>
-
-
-<span class="c1">###</span>
 </pre></div>
 </div>
 </div>
+</div>
+<div class="toggle docutils container">
+<p><strong>解答例</strong></p>
+<pre style={"white-space": "pre"}>
+if my_choice == opp_choice:
+    print("引き分け")
+elif (my_choice == "グー" and opp_choice == "チョキ") or \
+   (my_choice == "チョキ" and opp_choice == "パー") or \
+   (my_choice == "パー" and opp_choice == "グー"):
+    print("勝ち")
+else:
+    print("負け")
+</pre>
 </div>
 <p><strong>おまけ</strong><br />
 課題3まで出来た人は、作成したプログラムを次のプログラムの末尾にコピー&amp;ペースとして動かしてみよう。
@@ -725,6 +925,10 @@ Pythonには世界中の開発者により豊富なライブラリが用意さ�
 <aside class="footnote brackets" id="f1" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">1</a><span class="fn-bracket">]</span></span>
 <p><a class="reference external" href="https://pep8-ja.readthedocs.io/ja/latest/">PEP8</a>という綺麗なコードを書くための公式のガイドラインに定められている。</p>
+</aside>
+<aside class="footnote brackets" id="f2" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">2</a><span class="fn-bracket">]</span></span>
+<p>（追記）WindowsからGoogle Colabを利用すると、インデントの大きさは空白文字2つになるようである。その場合はそれに合わせればよい。</p>
 </aside>
 </section>
 </section>
@@ -792,11 +996,11 @@ Pythonには世界中の開発者により豊富なライブラリが用意さ�
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">この授業で学ぶこと</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#if">if文</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">論理演算子</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">論理演算子</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import">モジュールとimport</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">演習</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">演習</a></li>
 </ul>
   </nav></div>
 
