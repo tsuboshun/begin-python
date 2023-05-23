@@ -489,14 +489,15 @@ break文もcontinue文も、ほとんどの場合、if文と組み合わせて�
 <section id="id4">
 <h3>二次元リスト<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
 <p>リストを要素に持たないリストのことを一次元リストという。
-すべての要素が一次元リストであるリストのことを<strong>二次元リスト</strong>という。</p>
-<p>二次元リストの例を次に示す。二次元リストの場合は2つのインデックスを使って要素にアクセスする。</p>
+すべての要素が一次元リストであるリストのことを<strong>二次元リスト</strong>という。
+この授業で二次元リストと言ったときは、要素の一次元リストのサイズは揃っているものとする。</p>
+<p>二次元リストの例を次に示す。二次元リストの場合は2つのインデックスを使って（一番内側の）要素にアクセスする。</p>
 <p>二次元リストの全ての要素の合計値は、二重ループを使って次のように求められる。変数 <code class="docutils literal notranslate"><span class="pre">l</span></code>、<code class="docutils literal notranslate"><span class="pre">v</span></code> にどのような値が代入されているか示すため、逐一 <code class="docutils literal notranslate"><span class="pre">print()</span></code> を行っている。</p>
 <p><code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">l</span> <span class="pre">in</span> <span class="pre">data</span></code> により、リストの要素であるリスト <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">2]</span></code>、<code class="docutils literal notranslate"><span class="pre">[3,</span> <span class="pre">4]</span></code>、<code class="docutils literal notranslate"><span class="pre">[5,</span> <span class="pre">6]</span></code> が順に変数 <code class="docutils literal notranslate"><span class="pre">l</span></code> に代入される。
 さらに <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">v</span> <span class="pre">in</span> <span class="pre">l</span></code> により、各リスト <code class="docutils literal notranslate"><span class="pre">l</span></code> から要素である数値が順に変数 <code class="docutils literal notranslate"><span class="pre">v</span></code> に代入される。</p>
 <p>同じことを <code class="docutils literal notranslate"><span class="pre">range()</span></code> 関数でインデックスを生成することにより行うこともできる。</p>
 <p><strong>練習3</strong><br />
-二次元リスト <code class="docutils literal notranslate"><span class="pre">data</span></code> の全ての要素の平均値を求めて出力するプログラムを作成しなさい。</p>
+要素が数値の二次元リスト <code class="docutils literal notranslate"><span class="pre">data</span></code> を与える。<code class="docutils literal notranslate"><span class="pre">data</span></code> の全ての要素の平均値を求めて出力するプログラムを作成しなさい。ただし、<code class="docutils literal notranslate"><span class="pre">data</span></code> は少なくとも1つ数値を含むとしてよい(つまり <code class="docutils literal notranslate"><span class="pre">data</span> <span class="pre">=</span> <span class="pre">[[]]</span></code> というケースはない）。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># dataの一例 （この例では5と出力するのが正しい）</span>

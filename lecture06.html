@@ -566,8 +566,9 @@ break文もcontinue文も、ほとんどの場合、if文と組み合わせて�
 <section id="id4">
 <h3>二次元リスト<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
 <p>リストを要素に持たないリストのことを一次元リストという。
-すべての要素が一次元リストであるリストのことを<strong>二次元リスト</strong>という。</p>
-<p>二次元リストの例を次に示す。二次元リストの場合は2つのインデックスを使って要素にアクセスする。</p>
+すべての要素が一次元リストであるリストのことを<strong>二次元リスト</strong>という。
+この授業で二次元リストと言ったときは、要素の一次元リストのサイズは揃っているものとする。</p>
+<p>二次元リストの例を次に示す。二次元リストの場合は2つのインデックスを使って（一番内側の）要素にアクセスする。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># インデックスと要素の関係</span>
@@ -590,7 +591,7 @@ break文もcontinue文も、ほとんどの場合、if文と組み合わせて�
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;v = </span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="n">total</span> <span class="o">+=</span> <span class="n">v</span>
         
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;合計値: </span><span class="si">{</span><span class="n">total</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">total</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -605,13 +606,13 @@ break文もcontinue文も、ほとんどの場合、if文と組み合わせて�
     <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">])):</span>
         <span class="n">total</span> <span class="o">+=</span> <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
         
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;合計値: </span><span class="si">{</span><span class="n">total</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">total</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <p><strong>練習3</strong><br />
-二次元リスト <code class="docutils literal notranslate"><span class="pre">data</span></code> の全ての要素の平均値を求めて出力するプログラムを作成しなさい。</p>
+要素が数値の二次元リスト <code class="docutils literal notranslate"><span class="pre">data</span></code> を与える。<code class="docutils literal notranslate"><span class="pre">data</span></code> の全ての要素の平均値を求めて出力するプログラムを作成しなさい。ただし、<code class="docutils literal notranslate"><span class="pre">data</span></code> は少なくとも1つ数値を含むとしてよい（つまり <code class="docutils literal notranslate"><span class="pre">data</span> <span class="pre">=</span> <span class="pre">[[]]</span></code> というケースはない）。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># dataの一例 （この例では5と出力するのが正しい）</span>
