@@ -349,7 +349,7 @@ document.write(`
 <section id="id3">
 <h2>探索とは<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
 <p>データの集合の中から、特定の条件に適合する要素を見つけることを <strong>探索</strong> という。
-このテキストでは、次の問題に限定して考える： 整数のリストと整数のキーが与えられるとき、リストの中にキーと一致する要素が存在するかを判定し、存在するときはそのインデックスを1つ求める。</p>
+このテキストでは、次の問題に限定して考える： 数値のリストと数値のキーが与えられるとき、リストの中にキーと一致する要素が存在するかを判定し、存在するときはそのインデックスを1つ求める。</p>
 <p>このアルゴリズムを関数として実装しよう。
 リストとキーを引数として受け取り、リストの中にキーが存在すればそのインデックスを返し、存在しなければ <code class="docutils literal notranslate"><span class="pre">None</span></code> を返す関数を作成する。</p>
 <p>例えば、次のリストとキーのペアに対しては、インデックスの3を返す。</p>
@@ -430,6 +430,20 @@ key = 4
 </section>
 <section id="id5">
 <h2>二分探索<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
+<p>二分探索は、リストがソートされているという前提のもとで、より効率的な探索を実現する。</p>
+<p>リストがソートされているとき、要素とキーの大小関係を調べることにより、キーがあるとしたら要素より右か左かが判明する。
+二分探索ではこの性質を利用し、さらに大小関係を調べる要素を探索範囲の真ん中付近から選ぶことで、なるべく少ないステップで探索範囲を絞り込んでいく。</p>
+<p>二分探索が探索範囲を絞り込んでいく様子を、次の図に示す。</p>
+<figure class="align-default" id="binary-search">
+<a class="reference internal image-reference" href="_images/binary_search.png"><img alt="_images/binary_search.png" src="_images/binary_search.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 21 </span><span class="caption-text">キーが7のときの二分探索の様子</span><a class="headerlink" href="#binary-search" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>両端の灰矢印が、探索範囲を表している。これらの真ん中付近の青矢印が、大小関係を調べる要素である。
+1行目の比較では、青矢印の13よりキーの7の方が小さいので、キーがあるとしたらこれより左側にあると判断できる。
+したがって、右端の灰矢印を青矢印の1つ左に移動させて、次の行に移る。</p>
+<p>2行目も同様にして、左端の灰矢印を青矢印の1つ右に移動させる。3行目までくると、探索範囲は2つ（7, 11）に絞り込めている。このように探索範囲のサイズが偶数のときは、ちょうど真ん中にあたる要素はないので、真ん中の左隣の要素を比較対象に選ぶ（右隣としてもよい）。このとき青矢印の要素はキーと一致するので、青矢印のインデックスを返して探索を終了する。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">binary_search</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
