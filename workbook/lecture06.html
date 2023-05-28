@@ -322,10 +322,11 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#forwhile">for文とwhile文</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">文のネスト</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#breakcontinue">break文とcontinue文</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">二次元リスト</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">インデントとブロックの関係</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">二次元リスト</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">演習</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">演習</a></li>
 </ul>
             </nav>
         </div>
@@ -487,7 +488,49 @@ break文もcontinue文も、ほとんどの場合、if文と組み合わせて�
 </figure>
 </section>
 <section id="id4">
-<h3>二次元リスト<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<h3>インデントとブロックの関係<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<p>次の3つのコードは、末尾2行のインデントの大きさが異なる。
+それぞれの場合に、末尾2行のコードはどのタイミングで実行されるかわかるだろうか。</p>
+<figure class="align-default" id="block">
+<a class="reference internal image-reference" href="workbook/pic/block.png"><img alt="workbook/pic/block.png" src="workbook/pic/block.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-text">インデントの違い</span><a class="headerlink" href="#block" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>答えを書くと一番左の例では、末尾2行のコードはどのブロックにも属さないため、while文を抜けたあとに実行される。
+真ん中の例では、末尾2行のコードはwhile文のブロックに属するため、while文のループごとに実行される。
+一番右の例では、末尾2行のコードはif文のブロックに属する。そのため実行されるとしたらwhile文のループ中 <code class="docutils literal notranslate"><span class="pre">i</span> <span class="pre">==</span> <span class="pre">3</span></code> のときのみであるが、if文のブロックにあるbreak文でwhile文を抜けてしまうため、末尾2行のコードが実行されることはない。</p>
+<p>それぞれのコードにおいて、while文のブロックを黄色、if文のブロックを青色のハイライトで可視化すると次の図のようになる。</p>
+<figure class="align-default" id="id5">
+<a class="reference internal image-reference" href="workbook/pic/block_vis.png"><img alt="workbook/pic/block_vis.png" src="workbook/pic/block_vis.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-text">インデントとブロックの関係</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>このように同じインデントレベルの行は、同じブロックを形成する。
+インデントが深くなると新しいブロックが開始する。
+そしてインデントが元に戻ると現在のブロックが終了し、元のブロックが再開される。</p>
+<p>一番左のコードを例に、実際にこのコードをタイピングで入力する自然な方法を説明しよう。
+上から順にタイピングしていき <code class="docutils literal notranslate"><span class="pre">while</span> <span class="pre">i</span> <span class="pre">&lt;</span> <span class="pre">5:</span></code> と打ってEnterを押すと、（Google Colabでは）インデントが自動で入力される。
+また <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">i</span> <span class="pre">==</span> <span class="pre">3:</span></code> と打ってEnterを押すと、さらに深いインデントが自動で入力される。
+それ以外の行では、同じレベルのインデントが自動で入力される。
+このように <code class="docutils literal notranslate"><span class="pre">break</span></code> まではインデントを手で入力する必要はない。
+<code class="docutils literal notranslate"><span class="pre">print(&quot;処理2&quot;)</span></code> と入力するときには、BackSpaceキーを２回押してインデントを除いてからコードを入力する。</p>
+<p>ついでにインデントに関して、いくつか補足する。
+まず、よく見かけたif文のインデントミスについて紹介しよう。
+教室を見て回っていると、左のように <code class="docutils literal notranslate"><span class="pre">elif</span></code>、<code class="docutils literal notranslate"><span class="pre">else</span></code> にかけてインデントが深くなってしまっている人をよく見かけた。
+正しくは、右のように <code class="docutils literal notranslate"><span class="pre">if</span></code>、<code class="docutils literal notranslate"><span class="pre">elif</span></code>、<code class="docutils literal notranslate"><span class="pre">else</span></code> のインデントレベルを揃えて書く。</p>
+<figure class="align-default" id="if-indent">
+<a class="reference internal image-reference" href="workbook/pic/if_indent.png"><img alt="workbook/pic/if_indent.png" src="workbook/pic/if_indent.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-text">よく見かけるif文のインデントミス</span><a class="headerlink" href="#if-indent" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>またインデントを手で入力する場合は、前回説明したように空白文字を4つ（Windows環境のGoogle Colabでは2つ）入力してもよいが、Tabキー1回で入力することもできる（<font color="gray">Tabキーの方が簡単なので、第5回の講義ノートでも触れるべきでした。後出しになりすみません。</font>）
+同様に、Shift + Tabでもインデントを1つ戻すことができる。</p>
+</section>
+<section id="id6">
+<h3>二次元リスト<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
 <p>リストを要素に持たないリストのことを一次元リストという。
 すべての要素が一次元リストであるリストのことを<strong>二次元リスト</strong>という。
 この授業で二次元リストと言ったときは、要素の一次元リストのサイズは揃っているものとする。</p>
@@ -540,8 +583,8 @@ print(data + 1)  # リストではエラー
 </div>
 </section>
 </section>
-<section id="id5">
-<h2>演習<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
+<section id="id7">
+<h2>演習<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h2>
 <p><strong>課題1</strong><br />
 for文を使って、1から30までの整数について、3で割り切れる数は <code class="docutils literal notranslate"><span class="pre">&quot;Fizz&quot;</span></code>、5で割り切れる数は <code class="docutils literal notranslate"><span class="pre">&quot;Buzz&quot;</span></code>、15で割り切れる数は <code class="docutils literal notranslate"><span class="pre">&quot;FizzBuzz&quot;</span></code> に置き換えて出力し、それ以外の数はそのまま出力するプログラムを作成しなさい。これは英語圏で有名な言葉遊びである。</p>
 <p><font color=cornflowerblue>ヒント: 3で割り切れるは、3で割った余りが0ということ（if文と%演算子を使う）</font></p>
@@ -633,10 +676,11 @@ for文を使って、1から30までの整数について、3で割り切れる�
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#forwhile">for文とwhile文</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">文のネスト</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#breakcontinue">break文とcontinue文</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">二次元リスト</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">インデントとブロックの関係</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">二次元リスト</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">演習</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">演習</a></li>
 </ul>
   </nav></div>
 

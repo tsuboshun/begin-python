@@ -326,6 +326,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">探索とは</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">線形探索</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">二分探索</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">ファイルの入出力</a></li>
 </ul>
             </nav>
         </div>
@@ -401,7 +402,7 @@ key = 4
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">linear_search</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)):</span>
-            <span class="k">pass</span>   <span class="c1"># ここを書き換える</span>
+        <span class="k">pass</span>   <span class="c1"># ここを書き換える</span>
     <span class="k">return</span> <span class="kc">None</span>
 </pre></div>
 </div>
@@ -420,7 +421,7 @@ key = 4
 </div>
 </div>
 </div>
-<p>線形探索の計算量は、リストの要素数を <span class="math notranslate nohighlight">\(N\)</span> として、最悪も平均も <span class="math notranslate nohighlight">\(O(N)\)</span> である。
+<p>線形探索の計算量は、リストの要素数を <span class="math notranslate nohighlight">\(N\)</span> として最悪も平均も <span class="math notranslate nohighlight">\(O(N)\)</span> である。
 最悪の場合は、キーと一致する要素がリストの最後にあるか、存在しない場合である。
 このときfor文の処理を <span class="math notranslate nohighlight">\(N\)</span> 回繰り返すことになるので、最悪計算量は <span class="math notranslate nohighlight">\(O(N)\)</span> となる。
 平均的な場合は、for文の処理を <span class="math notranslate nohighlight">\(N/2\)</span> 回繰り返すことになる。
@@ -430,20 +431,24 @@ key = 4
 </section>
 <section id="id5">
 <h2>二分探索<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
-<p>二分探索は、リストがソートされているという前提のもとで、より効率的な探索を実現する。</p>
+<p>二分探索は、リストがソートされているという前提のもとで、より効率的な探索を実現するアルゴリズムである。</p>
 <p>リストがソートされているとき、要素とキーの大小関係を調べることにより、キーがあるとしたら要素より右か左かが判明する。
-二分探索ではこの性質を利用し、さらに大小関係を調べる要素を探索範囲の真ん中付近から選ぶことで、なるべく少ないステップで探索範囲を絞り込んでいく。</p>
-<p>二分探索が探索範囲を絞り込んでいく様子を、次の図に示す。</p>
+二分探索ではこの性質を利用し、さらに大小関係を調べる要素を探索範囲の中央から選ぶことで、なるべく少ないステップで探索範囲を絞り込んでいく。</p>
+<p>例としてキーが7のとき、二分探索が探索範囲を絞り込んでいく様子を次の図に示す。</p>
 <figure class="align-default" id="binary-search">
 <a class="reference internal image-reference" href="_images/binary_search.png"><img alt="_images/binary_search.png" src="_images/binary_search.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 21 </span><span class="caption-text">キーが7のときの二分探索の様子</span><a class="headerlink" href="#binary-search" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 24 </span><span class="caption-text">キーが7のときの二分探索の様子</span><a class="headerlink" href="#binary-search" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>両端の灰矢印が、探索範囲を表している。これらの真ん中付近の青矢印が、大小関係を調べる要素である。
+<p>両端の灰矢印が、探索範囲を表している。これらの中央の青矢印が、大小関係を調べる要素である。
 1行目の比較では、青矢印の13よりキーの7の方が小さいので、キーがあるとしたらこれより左側にあると判断できる。
-したがって、右端の灰矢印を青矢印の1つ左に移動させて、次の行に移る。</p>
-<p>2行目も同様にして、左端の灰矢印を青矢印の1つ右に移動させる。3行目までくると、探索範囲は2つ（7, 11）に絞り込めている。このように探索範囲のサイズが偶数のときは、ちょうど真ん中にあたる要素はないので、真ん中の左隣の要素を比較対象に選ぶ（右隣としてもよい）。このとき青矢印の要素はキーと一致するので、青矢印のインデックスを返して探索を終了する。</p>
+したがって、右の灰矢印を青矢印の1つ左に移動させて、次の行に移る。</p>
+<p>2行目も同様にして、青矢印の5とキーの7を比較する。今度はキーの方が大きいので、左の灰矢印を青矢印の1つ右に移動させる。3行目までくると、探索範囲は2つ（7と11）に絞り込めている。このように探索範囲のサイズが偶数のときは、ちょうど中央の位置に要素はないので、中央の左隣か右隣の要素を比較対象に選ぶ（ここでは左隣を選択している）。このとき青矢印の要素はキーと一致するので、青矢印のインデックスを返して探索を終了する。</p>
+<p>キーに一致する要素がない場合は、上記操作をくり返すと、いずれ灰矢印の位置が逆転する。このとき <code class="docutils literal notranslate"><span class="pre">None</span></code> を返して探索を終了する。</p>
+<p>以下に、未完成の <code class="docutils literal notranslate"><span class="pre">binary_search()</span></code> 関数を用意した。
+左の灰矢印に相当するのが <code class="docutils literal notranslate"><span class="pre">left</span></code>、右の灰矢印に相当するのが <code class="docutils literal notranslate"><span class="pre">right</span></code>、真ん中の青矢印に相当するのが <code class="docutils literal notranslate"><span class="pre">mid</span></code> である。
+上の説明を参考に、プログラムを完成させてみてほしい。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">binary_search</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
@@ -452,16 +457,36 @@ key = 4
     <span class="k">while</span> <span class="n">left</span> <span class="o">&lt;=</span> <span class="n">right</span><span class="p">:</span>
         <span class="n">mid</span> <span class="o">=</span> <span class="p">(</span><span class="n">left</span> <span class="o">+</span> <span class="n">right</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
         <span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="n">mid</span><span class="p">]</span> <span class="o">==</span> <span class="n">key</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">mid</span>
+            <span class="k">pass</span> <span class="c1"># ここを書き換える</span>
         <span class="k">elif</span> <span class="n">data</span><span class="p">[</span><span class="n">mid</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">key</span><span class="p">:</span>
-            <span class="n">right</span> <span class="o">=</span> <span class="n">mid</span><span class="o">-</span><span class="mi">1</span>
+            <span class="k">pass</span> <span class="c1"># ここを書き換える</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">left</span> <span class="o">=</span> <span class="n">mid</span><span class="o">+</span><span class="mi">1</span>
+            <span class="k">pass</span> <span class="c1"># ここを書き換える</span>
     <span class="k">return</span> <span class="kc">None</span>
 </pre></div>
 </div>
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">key</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">binary_search</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">key</span><span class="p">))</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">key</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">binary_search</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">key</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>二分探索の計算量は、リストの要素数を <span class="math notranslate nohighlight">\(N\)</span> として最悪も平均も <span class="math notranslate nohighlight">\(O(\log N)\)</span> である。
+二分探索ではキーと要素を比較するたびに探索範囲が約半分になる。
+例えば、上図の例では探索範囲は<span class="math notranslate nohighlight">\(11\rightarrow 5\rightarrow 2\)</span>と移り変わっている。
+最悪の場合は、探索範囲が1となるまでキーと一致する要素が見つからない場合であるが、この場合でも約 <span class="math notranslate nohighlight">\(\log N\)</span> のステップ数で処理を終えることができる（前回のテキストから引き続き対数の底は2とする）。よって、最悪計算量は <span class="math notranslate nohighlight">\(O(\log N)\)</span> になる。
+平均的な場合においても、毎回のステップで探索範囲が約半分になるという性質は変わらないため、<span class="math notranslate nohighlight">\(O(\log N)\)</span> であることを示すことができる。</p>
+<p>ここまでに紹介した3つの探索方法について、実際に計算時間を比較してみよう。
+ここでは自明な例ではあるが、<span class="math notranslate nohighlight">\(0\)</span> から <span class="math notranslate nohighlight">\(N-1\)</span> まで整数が順に並んだリスト <code class="docutils literal notranslate"><span class="pre">data</span></code> を <code class="docutils literal notranslate"><span class="pre">list(range(N))</span></code> により作成し、それに対して探索を実行している。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
@@ -475,6 +500,22 @@ key = 4
 </div>
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="mi">7</span>
+<span class="n">data</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">))</span>
+<span class="n">key</span> <span class="o">=</span> <span class="n">N</span> <span class="o">//</span> <span class="mi">3</span>  <span class="c1"># 適当な要素</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">exec_time</span><span class="p">(</span><span class="n">search</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">key</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">exec_time</span><span class="p">(</span><span class="n">linear_search</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">key</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">exec_time</span><span class="p">(</span><span class="n">binary_search</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">key</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id6">
+<h2>ファイルの入出力<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
 </section>
 </section>
 
@@ -543,6 +584,7 @@ key = 4
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">探索とは</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">線形探索</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">二分探索</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">ファイルの入出力</a></li>
 </ul>
   </nav></div>
 
