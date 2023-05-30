@@ -321,6 +321,11 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">この授業で学ぶこと</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">クラス</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">初期化メソッド</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">メソッド</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -340,6 +345,110 @@ document.write(`
 <section id="id2">
 <h2>この授業で学ぶこと<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
 <p>準備中</p>
+</section>
+<section id="id3">
+<h2>クラス<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<p>第4回で学んだメソッドやオブジェクト、クラス、インスタンスといった概念について、簡単に復習しておこう。
+まず、データ型に専属の関数のことをメソッドと言う。
+そして、データとメソッドを合わせてオブジェクトと言い、オブジェクトの種類をクラス、クラスに基づいて作られる具体的なオブジェクトのことをインスタンスと言うのであった。</p>
+<p>新しいデータ型は、クラスを定義することで作ることができる。クラスは次の図のような形で定義する。</p>
+<figure class="align-default" id="if">
+<a class="reference internal image-reference" href="_images/class.png"><img alt="_images/class.png" src="_images/class.png" style="width: 300px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 25 </span><span class="caption-text">classの書き方</span><a class="headerlink" href="#if" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>if文やfor文のように、ブロックのコードはインデントを1つ分入れてから書き始める。あとで見るようにブロックにはメソッドを定義していく。</p>
+<p>まずは最も簡単なクラスを定義してみよう。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Apple</span><span class="p">:</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>このクラスのインスタンスは次のようにして作成する。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">Apple</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>このインスタンスにデータを持たせよう。例えば、栄養を表す <code class="docutils literal notranslate"><span class="pre">nutrition</span></code> というデータを次のように付与することができる。
+このデータのことを<strong>属性</strong>（<strong>アトリビュート</strong>）という。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">.</span><span class="n">nutrition</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">nutrition</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>この属性は <code class="docutils literal notranslate"><span class="pre">a</span></code> というインスタンスに特有のものである。クラスが同じであっても、各インスタンスの持つ属性は別々に管理される。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="n">Apple</span><span class="p">()</span>
+<span class="n">b</span><span class="o">.</span><span class="n">nutrition</span> <span class="c1"># こちらのインスタンスには属性は定義されていない</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="id4">
+<h3>初期化メソッド<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<p>インスタンス1つ1つに属性を設定していくのは大変なので、インスタンスの生成時に最初から属性を持たせられると便利である。
+これを実現するのが<strong>初期化メソッド</strong>である。
+初期化メソッドは、classのブロック中に <code class="docutils literal notranslate"><span class="pre">__init__</span></code> という名前の関数として定義する。
+ただし普通の関数とは異なり、第一引数に必ず <code class="docutils literal notranslate"><span class="pre">self</span></code> という変数を設定する。
+これはインスタンス自身を表す変数である。
+そして初期化メソッド内では、<code class="docutils literal notranslate"><span class="pre">self.属性名</span> <span class="pre">=</span> <span class="pre">値</span></code> という式で、属性名とその値を設定する。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Apple</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nutrition</span> <span class="o">=</span> <span class="mi">10</span>
+        
+<span class="n">a</span> <span class="o">=</span> <span class="n">Apple</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">nutrition</span><span class="p">)</span>  <span class="c1"># 初期化の時点で10という値が設定されている。</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>初期化メソッドに引数を追加することで、<code class="docutils literal notranslate"><span class="pre">nutrition</span></code> の値を外から設定できるようにすることもできる。
+このとき <code class="docutils literal notranslate"><span class="pre">__init__</span></code> に設定した第二引数以降が、<code class="docutils literal notranslate"><span class="pre">クラス名()</span></code> と呼び出すときの引数に対応する。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Apple</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nutrition</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nutrition</span> <span class="o">=</span> <span class="n">nutrition</span>
+        
+<span class="n">a</span> <span class="o">=</span> <span class="n">Apple</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">nutrition</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id5">
+<h3>メソッド<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Apple</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nutrition</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">day</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nutrition</span> <span class="o">=</span> <span class="n">nutrition</span>
+        
+    <span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">day</span> <span class="o">&lt;</span> <span class="mi">14</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nutrition</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nutrition</span> <span class="o">-=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 </section>
 
@@ -405,6 +514,11 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">この授業で学ぶこと</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">クラス</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">初期化メソッド</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">メソッド</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
