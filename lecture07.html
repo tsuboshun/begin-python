@@ -360,7 +360,6 @@ document.write(`
 <p>第4回の授業で、複数のデータをまとめるためのデータ型としてリスト型を紹介した。
 Pythonにはリスト型の他にも、データの入れ物の役割を果たすデータ型がいくつか存在する。
 今回はそれらの使い方を学ぶ。</p>
-<p>連絡事項： 前回の講義ノートを加筆したので、<a class="reference internal" href="lecture06.html#label-indent"><span class="std std-ref">こちら</span></a>を一読してからこの回に進んでください。</p>
 </section>
 <section id="id3">
 <h2>データの入れ物<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
@@ -601,7 +600,7 @@ for i in range(n):
     y.append(i+1)
 
 print(y)</pre>
-<p><strong>別解</strong></p>
+<p><strong>別解例</strong></p>
 <pre style={"white-space": "pre"}>
 y = []
 for i in range(1, n+1):
@@ -626,7 +625,7 @@ print(y)</pre>
 </div>
 </div>
 <div class="toggle docutils container">
-<p>解答例:</p>
+<p><strong>解答例</strong></p>
 <pre style={"white-space": "pre"}>
 y = []
 for v in x:
@@ -654,14 +653,14 @@ print(y)</pre>
 </div>
 </div>
 <div class="toggle docutils container">
-<p>解答例:</p>
+<p><strong>解答例</strong></p>
 <pre style={"white-space": "pre"}>
 left = x[-i:]
 right = x[:-i]
 y = left + right
 print(y)
 </pre>
-<p>右からi番目以降の要素を左に持っていきたいため、上のような書き方になる。
+<p>右からi番目以降の要素を <code class="docutils literal notranslate"><span class="pre">left</span></code> に、右からi番目より前の要素を <code class="docutils literal notranslate"><span class="pre">right</span></code> に代入する。
 右から数えるときは右読みのインデックス（負の値）を使うと簡単である。</p>
 </div>
 </section>
@@ -817,7 +816,7 @@ cherry: さくらんぼ
 </div>
 </div>
 <div class="toggle docutils container">
-<p>解答例:</p>
+<p><strong>解答例</strong></p>
 <pre style={"white-space": "pre"}>
 x['a'] += 1
 x['b'] += 1
@@ -845,7 +844,7 @@ x['c'] += 1
 </div>
 </div>
 <div class="toggle docutils container">
-<p>解答例:</p>
+<p><strong>解答例</strong></p>
 <pre style={"white-space": "pre"}>
 count = {'a': 0, 'b': 0, 'c': 0}
 for c in data:
@@ -853,7 +852,7 @@ for c in data:
     
 print(count)
 </pre>
-<p><code class="docutils literal notranslate"><span class="pre">c</span></code> には <code class="docutils literal notranslate"><span class="pre">data</span></code> の要素（’a’ または ‘b’ または ‘c’）が順に代入される。
+<p><code class="docutils literal notranslate"><span class="pre">c</span></code> には <code class="docutils literal notranslate"><span class="pre">data</span></code> の要素（<code class="docutils literal notranslate"><span class="pre">'a'</span></code> または <code class="docutils literal notranslate"><span class="pre">'b'</span></code> または <code class="docutils literal notranslate"><span class="pre">'c'</span></code>）が順に代入される。
 その度に、辞書 <code class="docutils literal notranslate"><span class="pre">count</span></code> の <code class="docutils literal notranslate"><span class="pre">c</span></code> の値を1増やせばよい。</p>
 </div>
 <p><strong>練習6</strong><br />
@@ -874,7 +873,7 @@ print(count)
 </div>
 </div>
 <div class="toggle docutils container">
-<p>解答例:</p>
+<p><strong>解答例</strong></p>
 <pre style={"white-space": "pre"}>
 count = {}
 for c in data:
@@ -885,8 +884,8 @@ for c in data:
     
 print(count)
 </pre>
-<p>基本的に練習5と同じであるが、今回は <code class="docutils literal notranslate"><span class="pre">count</span></code> にキーが設定されていないので、初めて出てきたキーについて <code class="docutils literal notranslate"><span class="pre">+=</span> <span class="pre">1</span></code> を実行しようとするとエラーになる。
-そこで <code class="docutils literal notranslate"><span class="pre">count</span></code> に未登録のキーについては <code class="docutils literal notranslate"><span class="pre">=1</span></code> によりキーと値を初期設定する。</p>
+<p>基本的に練習5と同じであるが、今回は <code class="docutils literal notranslate"><span class="pre">count</span></code> が空なので、初めて出てきた文字について <code class="docutils literal notranslate"><span class="pre">+=</span> <span class="pre">1</span></code> を実行しようとするとエラーになる。
+そこでin演算子により <code class="docutils literal notranslate"><span class="pre">count</span></code> にキーが存在するかを確認し、存在する場合は <code class="docutils literal notranslate"><span class="pre">+=1</span></code> を実行し、存在しない場合は初めて出てきた文字であることがわかるので <code class="docutils literal notranslate"><span class="pre">=1</span></code> によりキーと値を初期設定する。</p>
 </div>
 </section>
 </section>
@@ -1072,7 +1071,7 @@ print(count)
 </div>
 </div>
 <div class="toggle docutils container">
-<p>解答例:</p>
+<p><strong>解答例</strong></p>
 <pre style={"white-space": "pre"}>
 z = set(x) & set(y)
 print(z)
@@ -1143,7 +1142,7 @@ print(z)
 </div>
 </div>
 <div class="toggle docutils container">
-<p>解答例:</p>
+<p><strong>解答例</strong></p>
 <pre style={"white-space": "pre"}>
 count = 0
 for word in alice:
@@ -1152,9 +1151,9 @@ for word in alice:
     
 print(count)
 </pre>
-<p><code class="docutils literal notranslate"><span class="pre">alice</span></code> のリストの単語を前から順に読んでいって、<code class="docutils literal notranslate"><span class="pre">&quot;Alice&quot;</span></code> と一致するときだけ <code class="docutils literal notranslate"><span class="pre">count</span></code> を1増やしている。
+<p>リスト <code class="docutils literal notranslate"><span class="pre">alice</span></code> の単語を前から順に読んでいって、<code class="docutils literal notranslate"><span class="pre">&quot;Alice&quot;</span></code> と一致するときだけ <code class="docutils literal notranslate"><span class="pre">count</span></code> を1増やしている。
 これにより <code class="docutils literal notranslate"><span class="pre">&quot;Alice&quot;</span></code> の出現回数を求めることができる。</p>
-<p>この問題で <code class="docutils literal notranslate"><span class="pre">count[word]</span></code> というようなコードを書いて、手が止まっている人をよく見かけた。
+<p>この問題で <code class="docutils literal notranslate"><span class="pre">count[word]</span></code> というコードを書いて、手が止まっている人をよく見かけた。
 ここでは変数 <code class="docutils literal notranslate"><span class="pre">count</span></code> は整数型のデータなので、辞書のような使い方はできない。
 変数に代入されているデータの型は何か常に意識する習慣をつけよう。</p>
 </div>
@@ -1177,7 +1176,7 @@ print(count)
 </div>
 </div>
 <div class="toggle docutils container">
-<p>解答例:</p>
+<p><strong>解答例</strong></p>
 <pre style={"white-space": "pre"}>
 count = 0
 for word in alice:
@@ -1213,7 +1212,7 @@ print(count)
 </div>
 </div>
 <div class="toggle docutils container">
-<p>解答例:</p>
+<p><strong>解答例</strong></p>
 <pre style={"white-space": "pre"}>
 dic = {}
 for word in alice:
@@ -1232,8 +1231,8 @@ sorted_keys = sorted(dic, key=dic.get, reverse=True)[:10]
 
 # 上位10個のキーを表示
 print(sorted_keys)</pre>
-<p>空の <code class="docutils literal notranslate"><span class="pre">dic</span></code> を使うので、練習6と同じような書き方をする。
-この書き方は辞書の典型的な使い方なので、パターンとして覚えておくとよい。</p>
+<p>空の <code class="docutils literal notranslate"><span class="pre">dic</span></code> を使うので練習6と同様の書き方をする。
+これは辞書の典型的な使い方なので、パターンとして覚えておくとよい。</p>
 </div>
 </section>
 </section>
