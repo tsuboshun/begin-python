@@ -371,14 +371,14 @@ document.write(`
 <p>ソートは使用頻度の高い基本的な操作なので、数多くのアルゴリズムが考案されている。
 今回はその中から代表的な<strong>挿入ソート</strong>と<strong>クイックソート</strong>を紹介する。</p>
 <p>なお、実用上はリストの <code class="docutils literal notranslate"><span class="pre">sort()</span></code> メソッドや、組み込み関数の <code class="docutils literal notranslate"><span class="pre">sorted()</span></code> を使えばよい。
-ここではアルゴリズムの学習のため、これらのメソッド・関数には頼らずに、1からプログラムを作成することを考える。</p>
+ここではアルゴリズムの学習のため、これらのメソッド・関数には頼らずに1からプログラムを作成することを考える。</p>
 <div class="note admonition">
 <p class="admonition-title">リストの要素の交換</p>
 <p>ソートアルゴリズムの実装では、リストの要素の交換をよく行う。
 例えば、<code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">[2,</span> <span class="pre">3]</span></code> というリストがあったとして、これの1番目と2番目の要素を入れ替えたいとする。</p>
 <p>次のコードは意図した結果にならない。</p>
 <pre>x[0] = x[1]  # この時点で x = [3, 3] になる
-x[1] = x[0] # x = [3, 3]</pre>
+x[1] = x[0]  # x = [3, 3]</pre>
 <p>上記の方法では上手くいかないので、変数の値を一時的に保存する <code class="docutils literal notranslate"><span class="pre">tmp</span></code> 変数を用意して次のように書くのが一般的な方法である。</p>
 <pre>tmp = x[0]
 x[0] = x[1]
@@ -486,7 +486,7 @@ x[1] = tmp</pre>
 このように問題を部分に分割して再帰的に解き、それらを合わせて全体の問題を解く方法を<strong>分割統治法</strong>（divide-and-conquer）という。</p>
 <p>それでは、クイックソートを実装してみよう。
 以下に未完成の <code class="docutils literal notranslate"><span class="pre">quick_sort()</span></code> 関数を用意した。
-<code class="docutils literal notranslate"><span class="pre">コードを書く</span></code>というコメントのある2箇所に1, 2行のコードを追加することで、プログラムを完成させてみてほしい。</p>
+<code class="docutils literal notranslate"><span class="pre">return</span></code> の手前に2行のコードを追加することで、プログラムを完成させてみてほしい。</p>
 <p>なお <code class="docutils literal notranslate"><span class="pre">insert_sort()</span></code> 関数とは異なり、<code class="docutils literal notranslate"><span class="pre">quick_sort()</span></code> 関数はソートする範囲を <code class="docutils literal notranslate"><span class="pre">left</span></code> と <code class="docutils literal notranslate"><span class="pre">right</span></code> という引数で指定できるようにしている。
 <code class="docutils literal notranslate"><span class="pre">left</span></code> は左端のインデックス、<code class="docutils literal notranslate"><span class="pre">right</span></code> は右端のインデックスを表す。これらの引数は、リストの一部分を再帰的にソートする際に必要になる。</p>
 <div class="cell docutils container">
@@ -502,7 +502,8 @@ x[1] = tmp</pre>
     <span class="n">i</span> <span class="o">=</span> <span class="n">left</span> <span class="c1"># i: 青矢印</span>
     <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">):</span> <span class="c1"># j: 灰矢印</span>
         <span class="k">if</span> <span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">pivot</span><span class="p">:</span>
-            <span class="k">pass</span> <span class="c1"># ここに両矢印の要素を交換し、iを右に1つ進めるコードを書く</span>
+            <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
             
     <span class="c1"># pivotの値をi番目と交換することで、 xの中身は[pivot未満のデータ], pivot, [pivot以上のデータ] という順になる</span>
     <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="n">right</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">right</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
@@ -581,39 +582,52 @@ timeモジュールの <code class="docutils literal notranslate"><span class="p
 </section>
 <section id="id7">
 <h2>演習<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h2>
+<p>以下は、第8回までの内容の復習問題である。</p>
 <p><strong>課題1</strong><br />
-以下は、リスト <code class="docutils literal notranslate"><span class="pre">n</span></code> と <code class="docutils literal notranslate"><span class="pre">t</span></code> の数値データをもとに、<code class="docutils literal notranslate"><span class="pre">n</span></code> の値を横軸に、<code class="docutils literal notranslate"><span class="pre">t</span></code> の値を縦軸にとった折れ線グラフを描画するプログラムである。
-今は <code class="docutils literal notranslate"><span class="pre">n</span></code> と <code class="docutils literal notranslate"><span class="pre">t</span></code> に同じ値が追加されているため、直線が描画される。</p>
-<p><code class="docutils literal notranslate"><span class="pre">t</span></code> に追加する値を「挿入ソートで、サイズ <code class="docutils literal notranslate"><span class="pre">size</span></code> のリストデータをソートするのにかかる時間」に変更することで、横軸をサイズ、縦軸を実行時間とする折れ線グラフを描画しなさい。なお、プロットにはMatplotlibというライブラリを使用しているが、これの使い方は第13回の講義で詳しく学ぶので、今はコードの流れをなんとなく追えればよい。</p>
+整数 <code class="docutils literal notranslate"><span class="pre">x</span></code> が与えられる。 <code class="docutils literal notranslate"><span class="pre">x</span></code> が偶数のとき <code class="docutils literal notranslate"><span class="pre">&quot;偶数&quot;</span></code>、そうでないとき <code class="docutils literal notranslate"><span class="pre">&quot;奇数&quot;</span></code> と出力するプログラムを書きなさい。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># x の一例 </span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="c1">### （出席課題）以下を埋めて、ここの部分のみ提出する。出力にはprint()関数を使うこと。</span>
+
+
+<span class="c1">###</span>
 </pre></div>
 </div>
 </div>
 </div>
+<p><strong>課題2</strong><br />
+引数として整数 <code class="docutils literal notranslate"><span class="pre">x</span></code> を受け取り、x が偶数のとき <code class="docutils literal notranslate"><span class="pre">True</span></code>、そうでないとき <code class="docutils literal notranslate"><span class="pre">False</span></code> を戻り値として返す関数 <code class="docutils literal notranslate"><span class="pre">is_even()</span></code>を作成しなさい。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">t</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">):</span>
-    <span class="n">size</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">*</span> <span class="mi">10</span><span class="o">**</span><span class="mi">3</span>
-    <span class="n">n</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">size</span><span class="p">)</span>
-    <span class="n">t</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">size</span><span class="p">)</span>  <span class="c1"># ここを書き換える</span>
-    
-<span class="c1"># プロットの入れ物の用意</span>
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### （出席課題）コード全体を提出する。</span>
 
-<span class="c1"># プロット</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">is_even</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">pass</span>  <span class="c1"># ここに適切なコードを書く</span>
 
-<span class="c1"># 軸ラベルなどの設定</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;size&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;time[s]&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="c1">###</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>課題3</strong><br />
+整数からなるリスト <code class="docutils literal notranslate"><span class="pre">data</span></code> が与えられる。リストの要素について偶数の要素の数を求めて出力するプログラムを作成しなさい。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># dataの一例 （この例では3と出力するのが正しい）</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
 
-<span class="c1"># 表示</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="c1">### （出席課題） 以下を埋めて、ここの部分のみ提出する。出力にはprint()関数を使うこと。</span>
+
+<span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+    <span class="k">pass</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
+
+<span class="c1">### </span>
 </pre></div>
 </div>
 </div>

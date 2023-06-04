@@ -384,11 +384,22 @@ Pythonにはリスト型の他にも、データの入れ物の役割を果た�
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;four&#39;
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5
+5
 </pre></div>
 </div>
 </div>
@@ -405,6 +416,11 @@ Pythonにはリスト型の他にも、データの入れ物の役割を果た�
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, 3, &#39;four&#39;, 5, 6]
+</pre></div>
+</div>
+</div>
 </div>
 <p>要素を特定の位置に挿入するには <code class="docutils literal notranslate"><span class="pre">insert()</span></code> メソッドを用いる。<code class="docutils literal notranslate"><span class="pre">insert()</span></code> は、第一引数にインデックス、第二引数にデータを受け取る。</p>
 <div class="cell docutils container">
@@ -416,12 +432,23 @@ Pythonにはリスト型の他にも、データの入れ物の役割を果た�
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;zero&#39;, 1, 2, 3, &#39;four&#39;, 5, 6]
+[&#39;zero&#39;, 1, &#39;1/2&#39;, 2, 3, &#39;four&#39;, 5, 6]
+</pre></div>
 </div>
-<p>末尾に他のリストを連結するには <code class="docutils literal notranslate"><span class="pre">extend()</span></code> メソッドを用いる。 <code class="docutils literal notranslate"><span class="pre">extend()</span></code>は、引数に渡されたリストを自身の末尾に連結する。</p>
+</div>
+</div>
+<p>末尾に他のリストを連結するには <code class="docutils literal notranslate"><span class="pre">extend()</span></code> メソッドを用いる。 <code class="docutils literal notranslate"><span class="pre">extend()</span></code> は、引数に渡されたリストを自身の末尾に連結する。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">])</span>
 <span class="n">x</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;zero&#39;, 1, &#39;1/2&#39;, 2, 3, &#39;four&#39;, 5, 6, 7, 8]
 </pre></div>
 </div>
 </div>
@@ -435,6 +462,12 @@ Pythonにはリスト型の他にも、データの入れ物の役割を果た�
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;zero&#39;, 1, &#39;1/2&#39;, 2, 3, &#39;four&#39;, 5, 6, 7, 8, 9, 10]
+[&#39;zero&#39;, 1, &#39;1/2&#39;, 2, 3, &#39;four&#39;, 5, 6, 7, 8]
+</pre></div>
+</div>
+</div>
 </div>
 <p>代入文により要素を変更することもできる。</p>
 <div class="cell docutils container">
@@ -443,6 +476,12 @@ Pythonにはリスト型の他にも、データの入れ物の役割を果た�
 <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 <span class="n">x</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;2&#39;</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 1, &#39;1/2&#39;, 2, 3, &#39;four&#39;, 5, 6, 7, 8]
+[0, 1, &#39;1/2&#39;, &#39;2&#39;, 3, &#39;four&#39;, 5, 6, 7, 8]
 </pre></div>
 </div>
 </div>
@@ -460,6 +499,12 @@ Pythonにはリスト型の他にも、データの入れ物の役割を果た�
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 1, &#39;2&#39;, 3, &#39;four&#39;, 5, 6, 7, 8]
+[0, 1, &#39;2&#39;, 3, &#39;four&#39;, 5]
+</pre></div>
+</div>
+</div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">pop()</span></code> メソッドは引数で指定したインデックスの要素をリストから削除し、その値を戻り値として返す。</p>
 <div class="cell docutils container">
@@ -467,6 +512,12 @@ Pythonにはリスト型の他にも、データの入れ物の役割を果た�
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elem</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
+[0, 1, 3, &#39;four&#39;, 5]
 </pre></div>
 </div>
 </div>
@@ -479,6 +530,13 @@ Pythonにはリスト型の他にも、データの入れ物の役割を果た�
 <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 <span class="n">x</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">&quot;four&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 1, 3, &#39;four&#39;, 5]
+[0, 1, 3, &#39;four&#39;, 5, &#39;four&#39;]
+[0, 1, 3, 5, &#39;four&#39;]
 </pre></div>
 </div>
 </div>
@@ -498,6 +556,13 @@ Pythonにはリスト型の他にも、データの入れ物の役割を果た�
 <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">[:</span><span class="mi">4</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2, 3, &#39;four&#39;]
+[1, 2, 3, &#39;four&#39;]
+[2, 3, &#39;four&#39;, 5]
 </pre></div>
 </div>
 </div>
@@ -528,6 +593,22 @@ Pythonにはリスト型の他にも、データの入れ物の役割を果た�
 </div>
 </div>
 </div>
+<div class="toggle docutils container">
+<p><strong>解答例</strong></p>
+<pre style={"white-space": "pre"}>
+y = []
+for i in range(n):
+    y.append(i+1)
+
+print(y)</pre>
+<p><strong>別解</strong></p>
+<pre style={"white-space": "pre"}>
+y = []
+for i in range(1, n+1):
+    y.append(i)
+
+print(y)</pre>
+</div>
 <p><strong>練習2</strong><br />
 整数を要素とするリスト <code class="docutils literal notranslate"><span class="pre">x</span></code> が与えられるとき、そのうち値が偶数の要素のみを取り出して新たなリストを作成し、出力しなさい。</p>
 <div class="cell docutils container">
@@ -543,6 +624,16 @@ Pythonにはリスト型の他にも、データの入れ物の役割を果た�
 </pre></div>
 </div>
 </div>
+</div>
+<div class="toggle docutils container">
+<p>解答例:</p>
+<pre style={"white-space": "pre"}>
+y = []
+for v in x:
+    if v % 2 == 0:
+        y.append(v)
+        
+print(y)</pre>
 </div>
 <p><strong>練習3</strong><br />
 リスト <code class="docutils literal notranslate"><span class="pre">x</span></code> と整数 <code class="docutils literal notranslate"><span class="pre">i</span></code> が与えられるとき、リストの要素を <code class="docutils literal notranslate"><span class="pre">i</span></code> 回だけ右に回転させたリスト <code class="docutils literal notranslate"><span class="pre">y</span></code> を作成し、出力しなさい。ただし、<code class="docutils literal notranslate"><span class="pre">i</span></code> は0以上 <code class="docutils literal notranslate"><span class="pre">len(x)</span></code> 以下とする。
@@ -561,6 +652,17 @@ Pythonにはリスト型の他にも、データの入れ物の役割を果た�
 </pre></div>
 </div>
 </div>
+</div>
+<div class="toggle docutils container">
+<p>解答例:</p>
+<pre style={"white-space": "pre"}>
+left = x[-i:]
+right = x[:-i]
+y = left + right
+print(y)
+</pre>
+<p>右からi番目以降の要素を左に持っていきたいため、上のような書き方になる。
+右から数えるときは右読みのインデックス（負の値）を使うと簡単である。</p>
 </div>
 </section>
 </section>
@@ -583,12 +685,23 @@ Pythonにはリスト型の他にも、データの入れ物の役割を果た�
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict
+</pre></div>
+</div>
+</div>
 </div>
 <p>リストと同様、値には <code class="docutils literal notranslate"><span class="pre">[]</span></code> を使ってアクセスできる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s2">&quot;apple&quot;</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s2">&quot;grape&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>りんご
+ぶどう
 </pre></div>
 </div>
 </div>
@@ -602,6 +715,11 @@ Pythonにはリスト型の他にも、データの入れ物の役割を果た�
     <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s2">&quot;cherry&quot;</span><span class="p">])</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;cherryは存在しないキーです。&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>cherryは存在しないキーです。
 </pre></div>
 </div>
 </div>
@@ -646,6 +764,11 @@ print(y)  # 出力は[3, 2]</pre>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;apple&#39;: &#39;りんご&#39;, &#39;grape&#39;: &#39;ブドウ&#39;, &#39;peach&#39;: &#39;もも&#39;, &#39;cherry&#39;: &#39;さくらんぼ&#39;}
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="id11">
@@ -655,6 +778,11 @@ print(y)  # 出力は[3, 2]</pre>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">del</span> <span class="n">x</span><span class="p">[</span><span class="s2">&quot;grape&quot;</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;apple&#39;: &#39;りんご&#39;, &#39;peach&#39;: &#39;もも&#39;, &#39;cherry&#39;: &#39;さくらんぼ&#39;}
 </pre></div>
 </div>
 </div>
@@ -671,8 +799,15 @@ print(y)  # 出力は[3, 2]</pre>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>apple: りんご
+peach: もも
+cherry: さくらんぼ
+</pre></div>
 </div>
-<p><strong>練習4</strong> <font color="gray">（練習5の準備）</font><br />
+</div>
+</div>
+<p><strong>練習4</strong><br />
 以下の辞書 <code class="docutils literal notranslate"><span class="pre">x</span></code> について、全ての値を1増やすコードを作成しなさい。具体的に <code class="docutils literal notranslate"><span class="pre">x['a']</span></code> などとアクセスしてよい。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -680,6 +815,14 @@ print(y)  # 出力は[3, 2]</pre>
 </pre></div>
 </div>
 </div>
+</div>
+<div class="toggle docutils container">
+<p>解答例:</p>
+<pre style={"white-space": "pre"}>
+x['a'] += 1
+x['b'] += 1
+x['c'] += 1
+</pre>
 </div>
 <p><strong>練習5</strong><br />
 <code class="docutils literal notranslate"><span class="pre">'a'</span></code>、<code class="docutils literal notranslate"><span class="pre">'b'</span></code>、<code class="docutils literal notranslate"><span class="pre">'c'</span></code> から成るリスト <code class="docutils literal notranslate"><span class="pre">data</span></code> が与えられる。辞書を使って <code class="docutils literal notranslate"><span class="pre">'a'</span></code>、<code class="docutils literal notranslate"><span class="pre">'b'</span></code>、<code class="docutils literal notranslate"><span class="pre">'c'</span></code> の出現回数をカウントし、結果を出力しなさい。</p>
@@ -701,6 +844,18 @@ print(y)  # 出力は[3, 2]</pre>
 </div>
 </div>
 </div>
+<div class="toggle docutils container">
+<p>解答例:</p>
+<pre style={"white-space": "pre"}>
+count = {'a': 0, 'b': 0, 'c': 0}
+for c in data:
+    count[c] += 1
+    
+print(count)
+</pre>
+<p><code class="docutils literal notranslate"><span class="pre">c</span></code> には <code class="docutils literal notranslate"><span class="pre">data</span></code> の要素（’a’ または ‘b’ または ‘c’）が順に代入される。
+その度に、辞書 <code class="docutils literal notranslate"><span class="pre">count</span></code> の <code class="docutils literal notranslate"><span class="pre">c</span></code> の値を1増やせばよい。</p>
+</div>
 <p><strong>練習6</strong><br />
 小文字のアルファベットから成るリスト <code class="docutils literal notranslate"><span class="pre">data</span></code> が与えられる。辞書を使ってそれぞれの文字の出現回数をカウントし、結果を出力しなさい。
 練習1とは違って、辞書の中身は与えていないので工夫すること。</p>
@@ -718,6 +873,21 @@ print(y)  # 出力は[3, 2]</pre>
 </div>
 </div>
 </div>
+<div class="toggle docutils container">
+<p>解答例:</p>
+<pre style={"white-space": "pre"}>
+count = {}
+for c in data:
+    if c in count:
+        count[c] += 1
+    else:
+        count[c] = 1
+    
+print(count)
+</pre>
+<p>基本的に練習5と同じであるが、今回は <code class="docutils literal notranslate"><span class="pre">count</span></code> にキーが設定されていないので、初めて出てきたキーについて <code class="docutils literal notranslate"><span class="pre">+=</span> <span class="pre">1</span></code> を実行しようとするとエラーになる。
+そこで <code class="docutils literal notranslate"><span class="pre">count</span></code> に未登録のキーについては <code class="docutils literal notranslate"><span class="pre">=1</span></code> によりキーと値を初期設定する。</p>
+</div>
 </section>
 </section>
 <section id="id13">
@@ -732,11 +902,21 @@ print(y)  # 出力は[3, 2]</pre>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tuple
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="c1">#これは2と同じ</span>
 <span class="nb">type</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>int
 </pre></div>
 </div>
 </div>
@@ -750,11 +930,28 @@ print(y)  # 出力は[3, 2]</pre>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
+5
+5
+</pre></div>
+</div>
+</div>
 </div>
 <p>イミュータブルなデータ型なので、値を変更しようとするとエラーになる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;two&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">p0</span><span class="o">/</span><span class="mi">0</span><span class="n">zrw9jsj03v3vlszs8v3m2p40000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_27880</span><span class="o">/</span><span class="mf">1129163381.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;two&quot;</span>
+
+<span class="ne">TypeError</span>: &#39;tuple&#39; object does not support item assignment
 </pre></div>
 </div>
 </div>
@@ -773,6 +970,16 @@ print(y)  # 出力は[3, 2]</pre>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">p0</span><span class="o">/</span><span class="mi">0</span><span class="n">zrw9jsj03v3vlszs8v3m2p40000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_27880</span><span class="o">/</span><span class="mf">3156722867.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">x</span> <span class="o">=</span> <span class="p">{[</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">]:</span> <span class="mi">15</span><span class="p">,</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">]:</span> <span class="mi">8</span><span class="p">}</span>  <span class="c1"># リストはミュータブルなので、キーとして使用できない</span>
+
+<span class="ne">TypeError</span>: unhashable type: &#39;list&#39;
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="id14">
@@ -786,12 +993,22 @@ print(y)  # 出力は[3, 2]</pre>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>set
+</pre></div>
+</div>
+</div>
 </div>
 <p>セットはリストから作成することが多い。<code class="docutils literal notranslate"><span class="pre">set()</span></code> 関数にリストを渡すと、リストの要素から成るセットを作成できる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
 <span class="n">x</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{1, 2, 3, 4, 5}
 </pre></div>
 </div>
 </div>
@@ -811,6 +1028,11 @@ print(y)  # 出力は[3, 2]</pre>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{1, 2, 3}
+</pre></div>
+</div>
+</div>
 </div>
 <p>セット型には、集合演算を容易に行えるという利点がある。例えば、和集合や積集合、差集合を次のように求めることができる。
 それぞれの集合演算の意味は、ベン図と見比べるとわかりやすい。例として積集合について、対応する要素に色をつけている。</p>
@@ -821,6 +1043,13 @@ print(y)  # 出力は[3, 2]</pre>
 <span class="nb">print</span><span class="p">(</span><span class="n">set1</span> <span class="o">|</span> <span class="n">set2</span><span class="p">)</span>  <span class="c1"># 和集合</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">set1</span> <span class="o">&amp;</span> <span class="n">set2</span><span class="p">)</span> <span class="c1"># 積集合</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">set1</span> <span class="o">-</span> <span class="n">set2</span><span class="p">)</span>  <span class="c1"># 差集合</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{1, 2, 3, 4, 5, 6}
+{3, 4}
+{1, 2}
 </pre></div>
 </div>
 </div>
@@ -841,6 +1070,13 @@ print(y)  # 出力は[3, 2]</pre>
 </pre></div>
 </div>
 </div>
+</div>
+<div class="toggle docutils container">
+<p>解答例:</p>
+<pre style={"white-space": "pre"}>
+z = set(x) & set(y)
+print(z)
+</pre>
 </div>
 </section>
 </section>
@@ -864,6 +1100,30 @@ print(y)  # 出力は[3, 2]</pre>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;[&#39;,
+ &#39;Alice&#39;,
+ &quot;&#39;&quot;,
+ &#39;s&#39;,
+ &#39;Adventures&#39;,
+ &#39;in&#39;,
+ &#39;Wonderland&#39;,
+ &#39;by&#39;,
+ &#39;Lewis&#39;,
+ &#39;Carroll&#39;,
+ &#39;1865&#39;,
+ &#39;]&#39;,
+ &#39;CHAPTER&#39;,
+ &#39;I&#39;,
+ &#39;.&#39;,
+ &#39;Down&#39;,
+ &#39;the&#39;,
+ &#39;Rabbit&#39;,
+ &#39;-&#39;,
+ &#39;Hole&#39;]
+</pre></div>
+</div>
+</div>
 </div>
 <p><strong>課題1</strong><br />
 <code class="docutils literal notranslate"><span class="pre">alice</span></code> のリストにおける <code class="docutils literal notranslate"><span class="pre">&quot;Alice&quot;</span></code> の出現回数を調べて出力するプログラムを作成しなさい。この課題では、大文字と小文字を区別すること。</p>
@@ -882,6 +1142,22 @@ print(y)  # 出力は[3, 2]</pre>
 </div>
 </div>
 </div>
+<div class="toggle docutils container">
+<p>解答例:</p>
+<pre style={"white-space": "pre"}>
+count = 0
+for word in alice:
+    if word == "Alice":
+        count += 1
+    
+print(count)
+</pre>
+<p><code class="docutils literal notranslate"><span class="pre">alice</span></code> のリストの単語を前から順に読んでいって、<code class="docutils literal notranslate"><span class="pre">&quot;Alice&quot;</span></code> と一致するときだけ <code class="docutils literal notranslate"><span class="pre">count</span></code> を1増やしている。
+これにより <code class="docutils literal notranslate"><span class="pre">&quot;Alice&quot;</span></code> の出現回数を求めることができる。</p>
+<p>この問題で <code class="docutils literal notranslate"><span class="pre">count[word]</span></code> というようなコードを書いて、手が止まっている人をよく見かけた。
+ここでは変数 <code class="docutils literal notranslate"><span class="pre">count</span></code> は整数型のデータなので、辞書のような使い方はできない。
+変数に代入されているデータの型は何か常に意識する習慣をつけよう。</p>
+</div>
 <p><strong>課題2</strong><br />
 小文字のアルファベット <code class="docutils literal notranslate"><span class="pre">char</span></code> が与えられるとき、<code class="docutils literal notranslate"><span class="pre">alice</span></code> の全単語における <code class="docutils literal notranslate"><span class="pre">char</span></code> の出現回数を調べて出力するプログラムを作成しなさい。ただし、大文字と小文字は区別せずに数えること。</p>
 <div class="cell docutils container">
@@ -899,6 +1175,19 @@ print(y)  # 出力は[3, 2]</pre>
 </pre></div>
 </div>
 </div>
+</div>
+<div class="toggle docutils container">
+<p>解答例:</p>
+<pre style={"white-space": "pre"}>
+count = 0
+for word in alice:
+    for c in word:
+        c = c.lower() # 大文字は小文字に直しておく
+        if c == char:
+            count += 1
+    
+print(count)
+</pre>
 </div>
 <p><strong>課題3</strong><br />
 <code class="docutils literal notranslate"><span class="pre">alice</span></code> の全単語における各アルファベットの出現回数を調べて、出現回数の多い上位10個を出力するプログラムを作成しなさい。ただし、大文字と小文字は区別せずに数えること。以下のコード中に、アルファベットをキー、出現回数を値とする辞書 <code class="docutils literal notranslate"><span class="pre">dic</span></code> を作成するコードを追加することで、題意のプログラムが完成する。</p>
@@ -922,6 +1211,29 @@ print(y)  # 出力は[3, 2]</pre>
 </pre></div>
 </div>
 </div>
+</div>
+<div class="toggle docutils container">
+<p>解答例:</p>
+<pre style={"white-space": "pre"}>
+dic = {}
+for word in alice:
+    for c in word:
+        c = c.lower() # 大文字は小文字に直しておく
+        if not ('a' <= c and c <= 'z'):  # cがアルファベット以外の場合はスキップする
+            continue
+            
+        if c in dic:
+            dic[c] += 1
+        else:
+            dic[c] = 1
+        
+# 辞書の値に基づいてキーを並び替え、上位10個を取得
+sorted_keys = sorted(dic, key=dic.get, reverse=True)[:10]
+
+# 上位10個のキーを表示
+print(sorted_keys)</pre>
+<p>空の <code class="docutils literal notranslate"><span class="pre">dic</span></code> を使うので、練習6と同じような書き方をする。
+この書き方は辞書の典型的な使い方なので、パターンとして覚えておくとよい。</p>
 </div>
 </section>
 </section>

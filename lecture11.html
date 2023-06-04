@@ -326,7 +326,13 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">探索とは</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">線形探索</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">二分探索</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">ファイルの入出力</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">ファイルの入出力</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#google">Googleドライブのマウント</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">ファイルの読み込み</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">ファイルの書き込み</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">演習</a></li>
 </ul>
             </nav>
         </div>
@@ -345,7 +351,7 @@ document.write(`
 <hr class="docutils" />
 <section id="id2">
 <h2>この授業で学ぶこと<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
-<p>準備中</p>
+<p>アルゴリズム入門の最後として、探索アルゴリズムについて学ぶ。またファイルの読み書きの方法を学ぶ。</p>
 </section>
 <section id="id3">
 <h2>探索とは<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
@@ -366,7 +372,7 @@ key = 4
 <p>探索は使用頻度の高い基本的な操作なので、数多くのアルゴリズムが考案されている。
 今回はその中から代表的な線形探索と二分探索を紹介する。</p>
 <p>なお、探索プログラムはリストの <code class="docutils literal notranslate"><span class="pre">index()</span></code> メソッドを使えば、次のように実装することができる。
-ここではアルゴリズムの学習のため、<code class="docutils literal notranslate"><span class="pre">index()</span></code> メソッドには頼らずに、1からプログラムを作成することを考える。</p>
+ここではアルゴリズムの学習のため、<code class="docutils literal notranslate"><span class="pre">index()</span></code> メソッドには頼らずに1からプログラムを作成することを考える。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">search</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
@@ -516,6 +522,131 @@ key = 4
 </section>
 <section id="id6">
 <h2>ファイルの入出力<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
+<p>探索アルゴリズムから話題を変えて、ここではファイルの入出力について学ぶ。
+これまではPythonプログラムの中で閉じた話がほとんどであったが、ファイルの入出力を学ぶことで、パソコン上のファイルに対して自由な処理を行えたり、プログラムの実行結果を永続的に保存できたりするなど出来ることの幅がぐんと広がる。</p>
+<section id="google">
+<h3>Googleドライブのマウント<a class="headerlink" href="#google" title="Permalink to this heading">#</a></h3>
+<p>Google Colab上でファイルを扱うために、最初にGoogleドライブに接続する必要がある（<strong>マウント</strong>という）。
+ここではマウントの手順を説明する。</p>
+<p>サイドメニューから以下の順番でアイコンをクリックする。</p>
+<figure class="align-default" id="drive1">
+<a class="reference internal image-reference" href="_images/drive1.png"><img alt="_images/drive1.png" src="_images/drive1.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 25 </span><span class="caption-text">Googleドライブのマウント</span><a class="headerlink" href="#drive1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>そうすると以下のようなコードがノートブック上に現れるので、これを実行する。
+実行するとアカウントのログイン画面が表示され、その後Googleドライブのマウントを許可するか聞かれるので、許可するを選択する。</p>
+<figure class="align-default" id="drive2">
+<a class="reference internal image-reference" href="_images/drive2.png"><img alt="_images/drive2.png" src="_images/drive2.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 26 </span><span class="caption-text">Googleドライブのマウント</span><a class="headerlink" href="#drive2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>マウントしたあと左のウィンドウ上で <code class="docutils literal notranslate"><span class="pre">/content/drive/MyDrive</span></code> を見に行くと、Googleドライブ上のファイル・フォルダが確認できるはずである。</p>
+<figure class="align-default" id="drive3">
+<a class="reference internal image-reference" href="_images/drive3.png"><img alt="_images/drive3.png" src="_images/drive3.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 27 </span><span class="caption-text">Googleドライブのマウント</span><a class="headerlink" href="#drive3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id7">
+<h3>ファイルの読み込み<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
+<p>練習用のファイルとして次のデータが書かれたsample.txtを用意し（ToyoNet-ACEでも配布する予定）、Googleドライブのマイドライブ直下に置く。それ以外の場所に置いた場合は以降のコードの <code class="docutils literal notranslate"><span class="pre">path</span></code> を適宜変更する。</p>
+<pre>8 7 9 6 9
+4 5 8 7 6
+9 9 9 8 9
+6 7 9 7 8</pre>
+<p>このファイルの中身は組み込み関数の <code class="docutils literal notranslate"><span class="pre">open()</span></code> を使って、次のように読み込むことができる。
+<code class="docutils literal notranslate"><span class="pre">open()</span></code> 関数は、第一引数にファイルの存在する場所（<strong>パス</strong>という）、第二引数にモードを渡す。
+ここで渡している <code class="docutils literal notranslate"><span class="pre">'r'</span></code> は読み込みモードを表す。
+開いたファイルオブジェクト <code class="docutils literal notranslate"><span class="pre">f</span></code> は、使い終わったら必ず <code class="docutils literal notranslate"><span class="pre">f.close()</span></code> により閉じる必要がある。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;/content/drive/MyDrive/sample.txt&quot;</span>
+<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+
+<span class="n">content</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+
+<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">read()</span></code> はファイル全体を文字列として読み込むが、for文により一行ずつ読み込むこともできる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+
+<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>さて <code class="docutils literal notranslate"><span class="pre">sample.txt</span></code> の中身は各行が一人一人の学生、各列が何かしらのスコアを表していたとしよう（つまり学生4人・スコア5つ）。このときデータを2次元リストとして保持できると、分析の際に便利である。次のコードにより、ファイルの中身を2次元リストとして読み込むことができる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>ここで各行の文字列 <code class="docutils literal notranslate"><span class="pre">line</span></code> について、まず <code class="docutils literal notranslate"><span class="pre">strip()</span></code> メソッドにより改行文字 <code class="docutils literal notranslate"><span class="pre">\n</span></code> を取り除き、次に <code class="docutils literal notranslate"><span class="pre">split('</span> <span class="pre">')</span></code> メソッドにより空白文字で区切ってリストに変換している。注意点としてファイルを読み込むと、その内容は文字列として取得される。したがって、分析の前に整数型または浮動小数点数型にデータを変換しておく。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">])):</span>
+        <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">])</span>  <span class="c1"># 小数を含むならfloat()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id8">
+<h3>ファイルの書き込み<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
+<p>読み込んだデータをもとに各生徒の平均スコアを求めて、ファイルに出力してみよう。</p>
+<p>まず出力用のパスを入力とは別に設定する。
+<code class="docutils literal notranslate"><span class="pre">open()</span></code> 関数を書き込みモード（<code class="docutils literal notranslate"><span class="pre">'w'</span></code>） で呼び出し、書き込み用のファイルオブジェクト <code class="docutils literal notranslate"><span class="pre">f</span></code> を取得する。
+平均値の計算は、ここでは簡単に <code class="docutils literal notranslate"><span class="pre">sum()</span></code> 関数と <code class="docutils literal notranslate"><span class="pre">len()</span></code> 関数を使用して行っている。
+そして結果を <code class="docutils literal notranslate"><span class="pre">f.write()</span></code> によりファイルに書き込んでいる。
+入力と同じように1行1学生となるように、最後に改行 <code class="docutils literal notranslate"><span class="pre">\n</span></code> を入れている。</p>
+<p>ファイルへの書き込みを終えたら、<code class="docutils literal notranslate"><span class="pre">f.flush()</span></code>、<code class="docutils literal notranslate"><span class="pre">f.close()</span></code> を順に呼び出してファイルを閉じる。
+実は <code class="docutils literal notranslate"><span class="pre">f.write()</span></code> を呼び出した時点では、ファイルへの書き込みを予約した状態に過ぎず、OSの状態によっては実際の書き込みは後回しにされてしまう。
+そこで <code class="docutils literal notranslate"><span class="pre">f.flush()</span></code> を呼び出すことで、ファイルへの書き込みを確実に完了させるようにしている。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">output_path</span> <span class="o">=</span> <span class="s2">&quot;/content/drive/MyDrive/sample_result.txt&quot;</span>
+<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">output_path</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">lst</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+    <span class="n">mean</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">lst</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">lst</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">mean</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">f</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
+<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>ここで紹介した書き込み方法では、毎回ファイルの内容が上書きされる。
+そうではなく、ファイルの末尾に追記したい場合には追記モード（<code class="docutils literal notranslate"><span class="pre">'a'</span></code>） を指定する。
+ファイルオブジェクトの使い方は書き込みモード（<code class="docutils literal notranslate"><span class="pre">'w'</span></code>）の場合と全く同じである。</p>
+</section>
+</section>
+<section id="id9">
+<h2>演習<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h2>
 </section>
 </section>
 
@@ -584,7 +715,13 @@ key = 4
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">探索とは</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">線形探索</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">二分探索</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">ファイルの入出力</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">ファイルの入出力</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#google">Googleドライブのマウント</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">ファイルの読み込み</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">ファイルの書き込み</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">演習</a></li>
 </ul>
   </nav></div>
 
