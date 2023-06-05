@@ -358,6 +358,7 @@ document.write(`
 <p>第4回の授業で、複数のデータをまとめるためのデータ型としてリスト型を紹介した。
 Pythonにはリスト型の他にも、データの入れ物の役割を果たすデータ型がいくつか存在する。
 今回はそれらの使い方を学ぶ。</p>
+<p>連絡事項： 前回の講義ノートを加筆したので、<a class="reference internal" href="../lecture06.html#label-indent"><span class="std std-ref">こちら</span></a>を一読してからこの回に進んでください。</p>
 </section>
 <section id="id3">
 <h2>データの入れ物<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
@@ -463,6 +464,26 @@ Pythonにはリスト型の他にも、データの入れ物の役割を果た�
 </figcaption>
 </figure>
 <p><strong>練習1</strong><br />
+正の整数 <code class="docutils literal notranslate"><span class="pre">n</span></code> が与えられるとき、for文と <code class="docutils literal notranslate"><span class="pre">append()</span></code> メソッドを使って1から順に <code class="docutils literal notranslate"><span class="pre">n</span></code> までの整数を含むリストを作成し、出力しなさい。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># nの一例 （この例では [1, 2, 3, 4] と出力するのが正しい）</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">4</span>
+
+<span class="c1">### （出席課題） 以下のコードを完成させて、ここの部分のみ提出する。</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">pass</span>  <span class="c1"># 適切なコードを書く</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+<span class="c1">###</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>練習2</strong><br />
 整数を要素とするリスト <code class="docutils literal notranslate"><span class="pre">x</span></code> が与えられるとき、そのうち値が偶数の要素のみを取り出して新たなリストを作成し、出力しなさい。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -471,33 +492,27 @@ Pythonにはリスト型の他にも、データの入れ物の役割を果た�
 
 <span class="n">y</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>
-    <span class="k">pass</span> <span class="c1"># 適切なコードを書く</span>
+    <span class="k">pass</span>  <span class="c1"># 適切なコードを書く</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p><strong>練習2</strong><br />
+<p><strong>練習3</strong><br />
 リスト <code class="docutils literal notranslate"><span class="pre">x</span></code> と整数 <code class="docutils literal notranslate"><span class="pre">i</span></code> が与えられるとき、リストの要素を <code class="docutils literal notranslate"><span class="pre">i</span></code> 回だけ右に回転させたリスト <code class="docutils literal notranslate"><span class="pre">y</span></code> を作成し、出力しなさい。ただし、<code class="docutils literal notranslate"><span class="pre">i</span></code> は0以上 <code class="docutils literal notranslate"><span class="pre">len(x)</span></code> 以下とする。
 例: リスト <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">2,</span> <span class="pre">3,</span> <span class="pre">4,</span> <span class="pre">5]</span></code> を2回回転させると、<code class="docutils literal notranslate"><span class="pre">[4,</span> <span class="pre">5,</span> <span class="pre">1,</span> <span class="pre">2,</span> <span class="pre">3]</span></code> になる。</p>
-<p><font color=cornflowerblue>ヒント: スライスを使ってリストを2つ作り、それらを連結する</font></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># xとiの一例 （この例では[4, 5, 1, 2, 3]と出力するのが正しい）</span>
 <span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
 <span class="n">i</span> <span class="o">=</span> <span class="mi">2</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>練習3</strong><br />
-練習2のコードを、さらに任意の整数 <code class="docutils literal notranslate"><span class="pre">i</span></code> に対して正しく動くように修正しなさい。</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># xとiの一例 （この例では[5, 1, 2, 3, 4]と出力するのが正しい）</span>
-<span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
-<span class="n">i</span> <span class="o">=</span> <span class="mi">6</span>
+
+<span class="n">left</span> <span class="o">=</span> <span class="n">x</span><span class="p">[:]</span>  <span class="c1"># この2行について、スライスの内容を書き換える</span>
+<span class="n">right</span> <span class="o">=</span> <span class="n">x</span><span class="p">[:]</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="n">left</span> <span class="o">+</span> <span class="n">right</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -570,30 +585,47 @@ print(y)  # 出力は[3, 2]</pre>
 <p>リストと同様、辞書の中身を一つずつ取り出して何らかの処理を行う機会は多い。
 辞書型では、for文を使って次のようにループ処理を行う。</p>
 <p><strong>練習4</strong><br />
-<code class="docutils literal notranslate"><span class="pre">a</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span></code>、<code class="docutils literal notranslate"><span class="pre">c</span></code> から成るリスト <code class="docutils literal notranslate"><span class="pre">data</span></code> が与えられる。辞書を使って <code class="docutils literal notranslate"><span class="pre">a</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span></code>、<code class="docutils literal notranslate"><span class="pre">c</span></code> の出現回数をカウントし、結果を出力しなさい。</p>
+以下の辞書 <code class="docutils literal notranslate"><span class="pre">x</span></code> について、全ての値を1増やすコードを作成しなさい。具体的に <code class="docutils literal notranslate"><span class="pre">x['a']</span></code> などとアクセスしてよい。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># dataの一例 （この例では{&#39;a&#39;: 3, &#39;b&#39;: 2, &#39;c&#39;: 1}と出力するのが正しい）</span>
-<span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">]</span>
-<span class="n">count</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
-
-<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
-    <span class="k">pass</span> <span class="c1"># 適切なコードを書く</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
 </pre></div>
 </div>
 </div>
 </div>
 <p><strong>練習5</strong><br />
+<code class="docutils literal notranslate"><span class="pre">'a'</span></code>、<code class="docutils literal notranslate"><span class="pre">'b'</span></code>、<code class="docutils literal notranslate"><span class="pre">'c'</span></code> から成るリスト <code class="docutils literal notranslate"><span class="pre">data</span></code> が与えられる。辞書を使って <code class="docutils literal notranslate"><span class="pre">'a'</span></code>、<code class="docutils literal notranslate"><span class="pre">'b'</span></code>、<code class="docutils literal notranslate"><span class="pre">'c'</span></code> の出現回数をカウントし、結果を出力しなさい。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># dataの一例 （この例では{&#39;a&#39;: 3, &#39;b&#39;: 2, &#39;c&#39;: 1}と出力するのが正しい）</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">]</span>
+
+<span class="c1">### （出席課題） 以下のコードを完成させて、ここの部分のみ提出する。</span>
+
+<span class="n">count</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+    <span class="k">pass</span> <span class="c1"># 適切なコードを書く</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
+
+<span class="c1">###</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>練習6</strong><br />
 小文字のアルファベットから成るリスト <code class="docutils literal notranslate"><span class="pre">data</span></code> が与えられる。辞書を使ってそれぞれの文字の出現回数をカウントし、結果を出力しなさい。
 練習1とは違って、辞書の中身は与えていないので工夫すること。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># dataの一例 （この例では{&#39;a&#39;: 3, &#39;e&#39;: 2, &#39;f&#39;: 1}と出力するのが正しい）</span>
 <span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;f&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">]</span>
-<span class="n">count</span> <span class="o">=</span> <span class="p">{}</span>
 
+<span class="n">count</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
     <span class="k">pass</span> <span class="c1"># 適切なコードを書く</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -674,7 +706,7 @@ print(y)  # 出力は[3, 2]</pre>
 <p><span class="caption-text">集合演算（積集合）</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p><strong>練習6</strong><br />
+<p><strong>練習7</strong><br />
 2つのリスト <code class="docutils literal notranslate"><span class="pre">x</span></code> と <code class="docutils literal notranslate"><span class="pre">y</span></code> が与えられるとき、どちらのリストにも存在する要素のセットを作り、出力しなさい。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -712,11 +744,15 @@ print(y)  # 出力は[3, 2]</pre>
 <code class="docutils literal notranslate"><span class="pre">alice</span></code> のリストにおける <code class="docutils literal notranslate"><span class="pre">&quot;Alice&quot;</span></code> の出現回数を調べて出力するプログラムを作成しなさい。この課題では、大文字と小文字を区別すること。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### （出席課題） 答えの出現回数を提出しなさい。</span>
+
+<span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">alice</span><span class="p">:</span>
     <span class="k">pass</span> <span class="c1"># 適切なコードを書く</span>
     
 <span class="nb">print</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
+
+<span class="c1">###</span>
 </pre></div>
 </div>
 </div>
@@ -728,7 +764,6 @@ print(y)  # 出力は[3, 2]</pre>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># charの一例</span>
 <span class="n">char</span> <span class="o">=</span> <span class="s2">&quot;a&quot;</span>
 
-<span class="c1">### 以下を埋めて、ここの部分のみ提出する</span>
 <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">alice</span><span class="p">:</span>
     <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">word</span><span class="p">:</span>
@@ -736,7 +771,6 @@ print(y)  # 出力は[3, 2]</pre>
         <span class="k">pass</span> <span class="c1"># 適切なコードを書く</span>
     
 <span class="nb">print</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
-<span class="c1">### </span>
 </pre></div>
 </div>
 </div>

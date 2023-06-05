@@ -322,10 +322,11 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#forwhile">for文とwhile文</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">文のネスト</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#breakcontinue">break文とcontinue文</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">二次元リスト</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">インデントとブロックの関係</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">二次元リスト</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">演習</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">演習</a></li>
 </ul>
             </nav>
         </div>
@@ -361,7 +362,7 @@ document.write(`
 <p><code class="docutils literal notranslate"><span class="pre">range()</span></code> 関数はイテラブルオブジェクトを生成する関数であり、<code class="docutils literal notranslate"><span class="pre">range(n)</span></code> により生成されるオブジェクトは <code class="docutils literal notranslate"><span class="pre">0</span></code> から <code class="docutils literal notranslate"><span class="pre">n-1</span></code> までの <code class="docutils literal notranslate"><span class="pre">n</span></code> 個の整数を順に生成する。
 <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">i</span> <span class="pre">in</span> <span class="pre">range(n)</span></code> という構文により、これらの整数が順に変数 <code class="docutils literal notranslate"><span class="pre">i</span></code> に代入され、代入される度にブロックのコードが実行される。</p>
 <p>文字列やリストもイテラブルオブジェクトである。文字列の場合は1文字ずつ、リストの場合は1要素ずつ変数に代入される。</p>
-<p>for文に用いる変数名は自由に決めてよいが、一般的に短くて分かりやすく、リストの内容を表すものが好まれる。
+<p>for文に用いる変数名は自由に決めてよいが、一般的に短くて分かりやすく、代入されるデータを端的に表すものが好まれる。
 例えば文字が代入される場合には、慣例として <code class="docutils literal notranslate"><span class="pre">c</span></code> や <code class="docutils literal notranslate"><span class="pre">char</span></code> が使われることが多い。
 ただし、慣例は人それぞれなので、最初はそれほど気にする必要はない。</p>
 <p>例えば、リストの要素の平均値を求めるコードは次のように書ける。</p>
@@ -372,6 +373,11 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># dataの一例</span>
 <span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;l&#39;</span><span class="p">,</span> <span class="s1">&#39;l&#39;</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">]</span>
+
+<span class="c1">### （出席課題） 以下を埋めて、ここの部分のみ提出する。どのようなdataが与えられても正しく動くように書くこと。</span>
+
+
+<span class="c1">### </span>
 </pre></div>
 </div>
 </div>
@@ -421,19 +427,6 @@ document.write(`
 <div class="admonition-pass admonition">
 <p class="admonition-title">pass</p>
 <p><code class="docutils literal notranslate"><span class="pre">pass</span></code> は何もしないという意味の文である。構文上、何か書かないとエラーになるが、コードの作成は後回しにしたい箇所に置いておく。テキストでも何度か登場するが、コードを書くときに消してしまって問題ない。</p>
-</div>
-<p><strong>練習3</strong><br />
-for文とif文を組み合わせて、リスト <code class="docutils literal notranslate"><span class="pre">data</span></code> の要素の最大値を求めて出力するプログラムを作成しなさい。</p>
-<p><font color=cornflowerblue>ヒント: dataの要素を前から順に見ていき、max_valueより大きい値があれば、その都度max_valueにその値を代入する</font></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># dataの一例 （この例では11と出力するのが正しい）</span>
-<span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
-
-<span class="n">max_value</span> <span class="o">=</span> <span class="o">-</span><span class="mi">10</span><span class="o">**</span><span class="mi">6</span>  <span class="c1"># 初期値は十分小さな値であれば何でもよい</span>
-</pre></div>
-</div>
-</div>
 </div>
 <section id="breakcontinue">
 <h3>break文とcontinue文<a class="headerlink" href="#breakcontinue" title="Permalink to this heading">#</a></h3>
@@ -495,20 +488,70 @@ break文もcontinue文も、ほとんどの場合、if文と組み合わせて�
 </figure>
 </section>
 <section id="id4">
-<h3>二次元リスト<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<h3>インデントとブロックの関係<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<p>次の3つのコードは、末尾2行のインデントの大きさが異なる。
+それぞれの場合に、末尾2行のコードはどのタイミングで実行されるかわかるだろうか。</p>
+<figure class="align-default" id="block">
+<a class="reference internal image-reference" href="workbook/pic/block.png"><img alt="workbook/pic/block.png" src="workbook/pic/block.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-text">インデントの違い</span><a class="headerlink" href="#block" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>答えを書くと一番左の例では、末尾2行のコードはどのブロックにも属さないため、while文を抜けたあとに実行される。
+真ん中の例では、末尾2行のコードはwhile文のブロックに属するため、while文のループごとに実行される。
+一番右の例では、末尾2行のコードはif文のブロックに属する。そのため実行されるとしたらwhile文のループ中 <code class="docutils literal notranslate"><span class="pre">i</span> <span class="pre">==</span> <span class="pre">3</span></code> のときのみであるが、if文のブロックにあるbreak文でwhile文を抜けてしまうため、末尾2行のコードが実行されることはない。</p>
+<p>それぞれのコードにおいて、while文のブロックを黄色、if文のブロックを青色のハイライトで可視化すると次の図のようになる。</p>
+<figure class="align-default" id="id5">
+<a class="reference internal image-reference" href="workbook/pic/block_vis.png"><img alt="workbook/pic/block_vis.png" src="workbook/pic/block_vis.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-text">インデントとブロックの関係</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>このように同じインデントレベルの行は、同じブロックを形成する。
+インデントが深くなると新しいブロックが開始する。
+そしてインデントが元に戻ると現在のブロックが終了し、元のブロックが再開される。</p>
+<p>一番左のコードを例に、実際にこのコードをタイピングで入力する流れを説明しよう。
+上から順にタイピングしていき <code class="docutils literal notranslate"><span class="pre">while</span> <span class="pre">i</span> <span class="pre">&lt;</span> <span class="pre">5:</span></code> と打ってEnterを押すと、（Google Colabでは）インデントが自動で入力される。
+また <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">i</span> <span class="pre">==</span> <span class="pre">3:</span></code> と打ってEnterを押すと、さらに深いインデントが自動で入力される。
+それ以外の行では、同じレベルのインデントが自動で入力される。
+この調子で入力していくと、 <code class="docutils literal notranslate"><span class="pre">break</span></code> まではインデントを手で入力する必要はない。
+<code class="docutils literal notranslate"><span class="pre">print(&quot;処理2&quot;)</span></code> と入力するときには、BackSpaceキーを２回押してインデントを除いてからコードを入力する。</p>
+<p>インデントに関して、いくつか補足する。
+まず、授業中によく見かけたif文のインデントミスについて紹介しよう。
+教室を見て回っていると、左のように <code class="docutils literal notranslate"><span class="pre">elif</span></code>、<code class="docutils literal notranslate"><span class="pre">else</span></code> にかけてインデントが深くなってしまっている人をよく見かけた。
+正しくは、右のように <code class="docutils literal notranslate"><span class="pre">if</span></code>、<code class="docutils literal notranslate"><span class="pre">elif</span></code>、<code class="docutils literal notranslate"><span class="pre">else</span></code> のインデントレベルを揃えて書く。</p>
+<figure class="align-default" id="if-indent">
+<a class="reference internal image-reference" href="workbook/pic/if_indent.png"><img alt="workbook/pic/if_indent.png" src="workbook/pic/if_indent.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-text">よく見かけたif文のインデントミス</span><a class="headerlink" href="#if-indent" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>またインデントを手で入力する場合は、前回説明したように空白文字を4つ（Windows環境のGoogle Colabでは2つ）入力してもよいが、Tabキー1回で入力することもできる（<font color="gray">Tabキーの方が簡単なので、第5回の講義ノートでも触れるべきでした。後出しになりすみません。</font>）
+同様に、Shift + Tabでインデントを1つ戻すことができる。</p>
+</section>
+<section id="id6">
+<h3>二次元リスト<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
 <p>リストを要素に持たないリストのことを一次元リストという。
-すべての要素が一次元リストであるリストのことを<strong>二次元リスト</strong>という。</p>
-<p>二次元リストの例を次に示す。二次元リストの場合は2つのインデックスを使って要素にアクセスする。</p>
+すべての要素が一次元リストであるリストのことを<strong>二次元リスト</strong>という。
+この授業で二次元リストと言ったときは、要素の一次元リストのサイズは揃っているものとする。</p>
+<p>二次元リストの例を次に示す。二次元リストの場合は2つのインデックスを使って（一番内側の）要素にアクセスする。</p>
 <p>二次元リストの全ての要素の合計値は、二重ループを使って次のように求められる。変数 <code class="docutils literal notranslate"><span class="pre">l</span></code>、<code class="docutils literal notranslate"><span class="pre">v</span></code> にどのような値が代入されているか示すため、逐一 <code class="docutils literal notranslate"><span class="pre">print()</span></code> を行っている。</p>
 <p><code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">l</span> <span class="pre">in</span> <span class="pre">data</span></code> により、リストの要素であるリスト <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">2]</span></code>、<code class="docutils literal notranslate"><span class="pre">[3,</span> <span class="pre">4]</span></code>、<code class="docutils literal notranslate"><span class="pre">[5,</span> <span class="pre">6]</span></code> が順に変数 <code class="docutils literal notranslate"><span class="pre">l</span></code> に代入される。
 さらに <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">v</span> <span class="pre">in</span> <span class="pre">l</span></code> により、各リスト <code class="docutils literal notranslate"><span class="pre">l</span></code> から要素である数値が順に変数 <code class="docutils literal notranslate"><span class="pre">v</span></code> に代入される。</p>
 <p>同じことを <code class="docutils literal notranslate"><span class="pre">range()</span></code> 関数でインデックスを生成することにより行うこともできる。</p>
-<p><strong>練習4</strong><br />
-二次元リスト <code class="docutils literal notranslate"><span class="pre">data</span></code> の全ての要素の平均値を求めて出力するプログラムを作成しなさい。</p>
+<p><strong>練習3</strong><br />
+要素が数値の二次元リスト <code class="docutils literal notranslate"><span class="pre">data</span></code> を与える。<code class="docutils literal notranslate"><span class="pre">data</span></code> の全ての要素の平均値を求めて出力するプログラムを作成しなさい。ただし、<code class="docutils literal notranslate"><span class="pre">data</span></code> は少なくとも1つ数値を含むとしてよい(つまり <code class="docutils literal notranslate"><span class="pre">data</span> <span class="pre">=</span> <span class="pre">[[]]</span></code> というケースはない）。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># dataの一例 （この例では3.5と出力するのが正しい）</span>
-<span class="n">data</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># dataの一例 （この例では5と出力するのが正しい）</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]]</span>
+
+<span class="c1">### （出席課題） 以下を埋めて、ここの部分のみ提出する。</span>
+<span class="c1"># どのようなdataが与えられても正しく動くように書くこと。またprint()関数を使うこと。</span>
+
+
+
+<span class="c1">### </span>
 </pre></div>
 </div>
 </div>
@@ -540,14 +583,24 @@ print(data + 1)  # リストではエラー
 </div>
 </section>
 </section>
-<section id="id5">
-<h2>演習<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
+<section id="id7">
+<h2>演習<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h2>
 <p><strong>課題1</strong><br />
-for文を使って、1から30までの整数を順番に出力するプログラムを作成しなさい。</p>
-<p><strong>課題2</strong><br />
 for文を使って、1から30までの整数について、3で割り切れる数は <code class="docutils literal notranslate"><span class="pre">&quot;Fizz&quot;</span></code>、5で割り切れる数は <code class="docutils literal notranslate"><span class="pre">&quot;Buzz&quot;</span></code>、15で割り切れる数は <code class="docutils literal notranslate"><span class="pre">&quot;FizzBuzz&quot;</span></code> に置き換えて出力し、それ以外の数はそのまま出力するプログラムを作成しなさい。これは英語圏で有名な言葉遊びである。</p>
 <p><font color=cornflowerblue>ヒント: 3で割り切れるは、3で割った余りが0ということ（if文と%演算子を使う）</font></p>
-<p><strong>課題3</strong><br />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### （出席課題） コード全体を提出する</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">31</span><span class="p">):</span>
+    <span class="k">pass</span> <span class="c1"># ここに適切なコードを書く</span>
+
+<span class="c1">### </span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>課題2</strong><br />
 1以上の整数 <code class="docutils literal notranslate"><span class="pre">v</span></code> が与えられるとき、以下の手順に沿って整数を変換し、その度に出力するプログラムを作成しなさい。</p>
 <ul class="simple">
 <li><p>数字が偶数の場合、2で割る</p></li>
@@ -623,10 +676,11 @@ for文を使って、1から30までの整数について、3で割り切れる�
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#forwhile">for文とwhile文</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">文のネスト</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#breakcontinue">break文とcontinue文</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">二次元リスト</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">インデントとブロックの関係</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">二次元リスト</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">演習</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">演習</a></li>
 </ul>
   </nav></div>
 

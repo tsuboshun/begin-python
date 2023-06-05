@@ -321,6 +321,13 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">この授業で学ぶこと</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">クラス</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">初期化メソッド</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">メソッド</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">オブジェクト指向プログラミング</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">演習</a></li>
 </ul>
             </nav>
         </div>
@@ -339,7 +346,268 @@ document.write(`
 <hr class="docutils" />
 <section id="id2">
 <h2>この授業で学ぶこと<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
-<p>準備中</p>
+<p>これまで組み込み型のデータを利用してプログラムを書いてきたが、ここでは新しいデータ型を作成する方法を学ぶ。</p>
+</section>
+<section id="id3">
+<h2>クラス<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<p>第4回で学んだメソッドやオブジェクト、クラス、インスタンスといった概念について、簡単に復習しておこう。
+まず、データ型に専属の関数のことをメソッドと言う。
+そして、データとメソッドを合わせてオブジェクトと言い、オブジェクトの種類をクラス、クラスに基づいて作られる具体的なオブジェクトのことをインスタンスと言うのであった。</p>
+<p>新しいデータ型は、クラスを定義することで作ることができる。クラスは次の図のような形で定義する。</p>
+<figure class="align-default" id="if">
+<a class="reference internal image-reference" href="_images/class.png"><img alt="_images/class.png" src="_images/class.png" style="width: 300px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 28 </span><span class="caption-text">classの書き方</span><a class="headerlink" href="#if" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>if文やfor文のように、ブロックのコードはインデントを入れてから書き始める。あとで見るようにブロックにはメソッドを定義していく。</p>
+<p>まずは最も簡単なクラスを定義してみよう。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Apple</span><span class="p">:</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>クラス名は自由に設定することができるが、1文字目のみを大文字にするという慣例がある。一方でメソッド名や関数名は全て小文字で書くのが慣例となっている。</p>
+<p>このクラスのインスタンスは次のようにして作成する。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">Apple</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>このインスタンスにデータを持たせよう。例えば、栄養を表す <code class="docutils literal notranslate"><span class="pre">nutrition</span></code> というデータを次のように付与することができる。
+このデータのことを<strong>属性</strong>（<strong>アトリビュート</strong>）という。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">.</span><span class="n">nutrition</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">nutrition</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>この属性は <code class="docutils literal notranslate"><span class="pre">a</span></code> というインスタンスに固有のものである。クラスが同じであっても、各インスタンスの持つ属性は別々に管理される。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="n">Apple</span><span class="p">()</span>
+<span class="n">b</span><span class="o">.</span><span class="n">nutrition</span> <span class="c1"># こちらのインスタンスには属性は定義されていない</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="id4">
+<h3>初期化メソッド<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<p>インスタンス１つ１つに属性を設定していくのは大変なので、インスタンスの生成時に最初から属性を持たせたくなる。
+これを実現するのが<strong>初期化メソッド</strong>である。
+初期化メソッドは、classのブロック中に <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> という名前の関数として定義する。
+ただし普通の関数とは異なり、第一引数に必ず <code class="docutils literal notranslate"><span class="pre">self</span></code> という変数を設定する。
+これはインスタンス自身を渡すための変数である。
+そして初期化メソッド内では、<code class="docutils literal notranslate"><span class="pre">self.属性名</span> <span class="pre">=</span> <span class="pre">値</span></code> という代入文で、属性名とその値を設定する。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Apple</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nutrition</span> <span class="o">=</span> <span class="mi">10</span>
+        
+<span class="n">a</span> <span class="o">=</span> <span class="n">Apple</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">nutrition</span><span class="p">)</span>  <span class="c1"># 初期化の時点で10という値が設定されている。</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>初期化メソッドに引数を追加することで、<code class="docutils literal notranslate"><span class="pre">nutrition</span></code> の値を外から設定できるようにすることもできる。
+このとき <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> に設定した第二引数以降が、<code class="docutils literal notranslate"><span class="pre">クラス名()</span></code> と呼び出すときの引数に対応する。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Apple</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nutrition</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nutrition</span> <span class="o">=</span> <span class="n">nutrition</span>
+        
+<span class="n">a</span> <span class="o">=</span> <span class="n">Apple</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">nutrition</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>初期化メソッドのようにメソッド名の両端にアンダースコア2つ <code class="docutils literal notranslate"><span class="pre">__</span></code> をつけたメソッドのことを <strong>特殊メソッド</strong> という。
+特殊メソッドは、普通のメソッドのように <code class="docutils literal notranslate"><span class="pre">データ.メソッド名()</span></code> という呼び出し方をしないという意味で特殊である。</p>
+</section>
+<section id="id5">
+<h3>メソッド<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<p>普通のメソッドの定義の仕方は、初期化メソッドと同様である。
+ここでは日にちを1日経過させるメソッドとして <code class="docutils literal notranslate"><span class="pre">step()</span></code> を定義してみよう。
+まずは初期化メソッドの中で、日にちを管理する属性として <code class="docutils literal notranslate"><span class="pre">day</span></code> を定義しておく。
+次にclassブロック中に <code class="docutils literal notranslate"><span class="pre">step()</span></code> という関数を追加する。
+ここでもやはり、第一引数に <code class="docutils literal notranslate"><span class="pre">self</span></code> を設定することに注意する。</p>
+<p><code class="docutils literal notranslate"><span class="pre">step()</span></code> 関数の中で <code class="docutils literal notranslate"><span class="pre">self.属性名</span></code> と書くことで、そのメソッドを呼び出したインスタンスの属性値にアクセスすることができる。
+<code class="docutils literal notranslate"><span class="pre">step()</span></code> では日にちを1日経過させ、それに合わせて栄養価を変化させてみよう。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Apple</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nutrition</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">day</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nutrition</span> <span class="o">=</span> <span class="n">nutrition</span>
+        
+    <span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">day</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">day</span> <span class="o">&lt;</span> <span class="mi">14</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nutrition</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nutrition</span> <span class="o">-=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">Apple</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">nutrition</span><span class="p">)</span>
+
+<span class="n">a</span><span class="o">.</span><span class="n">step</span><span class="p">()</span> <span class="c1"># 1日経過</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">nutrition</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>練習1</strong><br />
+<code class="docutils literal notranslate"><span class="pre">Apple</span></code> クラスを真似して <code class="docutils literal notranslate"><span class="pre">Banana</span></code> クラスを作成しなさい。<code class="docutils literal notranslate"><span class="pre">Banana</span></code> の <code class="docutils literal notranslate"><span class="pre">step()</span></code> の内容は、経過日数が7日未満のとき栄養価が1上がり、7日以上のとき栄養価が1下がるとすること。</p>
+</section>
+<section id="id6">
+<h3>オブジェクト指向プログラミング<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
+<p>作成した <code class="docutils literal notranslate"><span class="pre">Apple()</span></code> と <code class="docutils literal notranslate"><span class="pre">Banana()</span></code> を用いて、栄養価のシミュレーションを行ってみよう。
+手元にりんごが2つ、バナナが2つあり、それぞれの栄養価の初期値は10であったとする。
+このとき例えば経過日数ごとの栄養価の合計は次のように求められる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">basket</span> <span class="o">=</span> <span class="p">[</span><span class="n">Apple</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="n">Apple</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="n">Banana</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="n">Banana</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
+
+<span class="k">for</span> <span class="n">day</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">21</span><span class="p">):</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">fruit</span> <span class="ow">in</span> <span class="n">basket</span><span class="p">:</span>
+        <span class="n">fruit</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+        <span class="n">total</span> <span class="o">+=</span> <span class="n">fruit</span><span class="o">.</span><span class="n">nutrition</span>
+        
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">day</span><span class="si">}</span><span class="s2">日目: </span><span class="si">{</span><span class="n">total</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>このプログラムは、処理としてはそれなりに複雑なことをしているが、コードとしてはとてもシンプルである。
+特に一度 <code class="docutils literal notranslate"><span class="pre">Apple()</span></code> と <code class="docutils literal notranslate"><span class="pre">Banana()</span></code> を定義したあとでは、経過日数ごとの栄養価の変化のルールを忘れてしまい、単に <code class="docutils literal notranslate"><span class="pre">step()</span></code> メソッドを呼び出すだけでよくなっている。
+これと同じようなプログラムをクラスを使わずに実現しようとすると、<code class="docutils literal notranslate"><span class="pre">day</span></code> の値と <code class="docutils literal notranslate"><span class="pre">fruit</span></code> の種類ごとに栄養価を変化させる処理をfor文の中で書くことになり、コードが複雑化する。</p>
+<p>このようにクラスを利用して、データとそれに付随する操作をオブジェクトにまとめて隠してしまうことで、コードの見通しと再利用性を向上させることができる。オブジェクトを利用したプログラミングスタイルのことを<strong>オブジェクト指向</strong>と言うが、これがオブジェクト指向の利点の1つである。
+オブジェクト指向は、規模の大きいプログラムを書く際に重宝する。</p>
+</section>
+</section>
+<section id="id7">
+<h2>演習<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h2>
+<p>第4回の授業で、浮動小数点数は小数を完璧な精度で表現しないという話をした。
+ここでは分数を表すクラスを作成し、それにより <code class="docutils literal notranslate"><span class="pre">0.1</span> <span class="pre">*</span> <span class="pre">3</span></code> のような計算を正確に行えるようにしよう。</p>
+<p>雛形のクラスを以下に用意した。
+クラス名は <code class="docutils literal notranslate"><span class="pre">Fraction</span></code> とし、初期化メソッドで分子（numeratorを略して <code class="docutils literal notranslate"><span class="pre">n</span></code>）と分母（denominatorを略して <code class="docutils literal notranslate"><span class="pre">d</span></code>）を設定できるようにしている。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Fraction</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">d</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">=</span> <span class="n">n</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">d</span> <span class="o">=</span> <span class="n">d</span>
+        
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">d</span><span class="si">}</span><span class="s1">&#39;</span>
+    
+    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">*</span> <span class="n">other</span><span class="o">.</span><span class="n">d</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">n</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">d</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">d</span> <span class="o">*</span> <span class="n">other</span><span class="o">.</span><span class="n">d</span>
+        <span class="k">return</span> <span class="n">Fraction</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">__str__()</span></code> は <code class="docutils literal notranslate"><span class="pre">print()</span></code> 関数に渡されたときの表示を定める特殊メソッドである。
+上のように定義すると、以下のように動作する。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">Fraction</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">add()</span></code> は分数の足し算を行うメソッドである。<code class="docutils literal notranslate"><span class="pre">Apple</span></code> クラスにおける <code class="docutils literal notranslate"><span class="pre">step()</span></code> メソッドとは異なり、<code class="docutils literal notranslate"><span class="pre">add()</span></code> メソッドは戻り値を持ち、計算結果の <code class="docutils literal notranslate"><span class="pre">Fraction</span></code> インスタンスを返していることに気をつけよう。</p>
+<p>例えば以下のように動作する。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">Fraction</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">Fraction</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>課題1</strong><br />
+足し算の定義を真似して、掛け算を行うメソッド <code class="docutils literal notranslate"><span class="pre">mul()</span></code> を定義しなさい。</p>
+<p><strong>課題2</strong><br />
+<code class="docutils literal notranslate"><span class="pre">Fraction</span></code> クラスのインスタンスが必ず既約分数（分母と分子に1以外の公約数がなくて、それ以上に約分できない分数のこと）を表すように <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> の処理を変更しなさい。そのためには引数に渡される <code class="docutils literal notranslate"><span class="pre">n</span></code> と <code class="docutils literal notranslate"><span class="pre">d</span></code> を最大公約数で割ったものを、<code class="docutils literal notranslate"><span class="pre">self.n</span></code> と <code class="docutils literal notranslate"><span class="pre">self.d</span></code> に設定すればよい。割り算の結果が <code class="docutils literal notranslate"><span class="pre">int</span></code> 型となるように、割り算には <code class="docutils literal notranslate"><span class="pre">/</span></code> ではなく <code class="docutils literal notranslate"><span class="pre">//</span></code> を使うこと。また最大公約数は <code class="docutils literal notranslate"><span class="pre">math</span></code> モジュールの <code class="docutils literal notranslate"><span class="pre">math.gcd()</span></code> 関数で求めることができる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">gcd</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>  <span class="c1"># math.gcdの使い方（12と8の最大公約数を求めている）</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">gcd</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>  <span class="c1"># math.gcdの使い方（4と3の最大公約数を求めている）</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Fraction</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">d</span><span class="p">):</span> <span class="c1"># 課題2: 以下を書き換える</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">=</span> <span class="n">n</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">d</span> <span class="o">=</span> <span class="n">d</span>
+        
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">d</span><span class="si">}</span><span class="s1">&#39;</span>
+    
+    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">*</span> <span class="n">other</span><span class="o">.</span><span class="n">d</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">n</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">d</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">d</span> <span class="o">*</span> <span class="n">other</span><span class="o">.</span><span class="n">d</span>
+        <span class="k">return</span> <span class="n">Fraction</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+    
+    <span class="k">def</span> <span class="nf">mul</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">pass</span> <span class="c1"># 課題1: ここに適切なコードを書く</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>コードが完成したら以下を実行してみよう。正しく実装できていれば、<code class="docutils literal notranslate"><span class="pre">2/5</span></code> と表示されるはずである。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">Fraction</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">Fraction</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>おまけ</strong><br />
+特殊メソッドの <code class="docutils literal notranslate"><span class="pre">__add__()</span></code> と <code class="docutils literal notranslate"><span class="pre">__mul__()</span></code> を使うと、それぞれ <code class="docutils literal notranslate"><span class="pre">+</span></code> 演算子、<code class="docutils literal notranslate"><span class="pre">*</span></code> 演算子を使用したときの動作を定義することができる。
+上で作成した <code class="docutils literal notranslate"><span class="pre">Fraction</span></code> クラスの <code class="docutils literal notranslate"><span class="pre">add()</span></code> と <code class="docutils literal notranslate"><span class="pre">mul()</span></code> の名前を <code class="docutils literal notranslate"><span class="pre">__add__()</span></code> と <code class="docutils literal notranslate"><span class="pre">__mul__()</span></code> に変更して実行した上で、次のコードを実行してみよう。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">Fraction</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">+</span> <span class="n">Fraction</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">Fraction</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="n">Fraction</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 
@@ -405,6 +673,13 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">この授業で学ぶこと</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">クラス</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">初期化メソッド</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">メソッド</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">オブジェクト指向プログラミング</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">演習</a></li>
 </ul>
   </nav></div>
 

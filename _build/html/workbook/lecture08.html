@@ -597,8 +597,12 @@ turtleモジュールの主な関数は以下の通りである。</p>
 ただし <code class="docutils literal notranslate"><span class="pre">turtle.pendown()</span></code> から始め、<code class="docutils literal notranslate"><span class="pre">turtle.penup()</span></code> で終わること。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">draw_square</span><span class="p">(</span><span class="n">size</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### （出席課題） 関数のみ提出する</span>
+
+<span class="k">def</span> <span class="nf">draw_square</span><span class="p">(</span><span class="n">size</span><span class="p">):</span>
     <span class="k">pass</span>
+
+<span class="c1">###</span>
 </pre></div>
 </div>
 </div>
@@ -647,19 +651,6 @@ turtleモジュールの主な関数は以下の通りである。</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 作成したら描画してみる</span>
 <span class="n">turtle</span><span class="o">.</span><span class="n">initializeTurtle</span><span class="p">(</span><span class="n">initial_window_size</span><span class="o">=</span><span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="mi">400</span><span class="p">))</span>
 <span class="n">daw_polygon</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>練習4</strong><br />
-<code class="docutils literal notranslate"><span class="pre">draw_square()</span></code> 関数を活用して、5 * 5のマス目を描画しなさい。1マスの1辺の長さは40とする。二重ループのfor文を用いること。</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">turtle</span><span class="o">.</span><span class="n">initializeTurtle</span><span class="p">(</span><span class="n">initial_window_size</span><span class="o">=</span><span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="mi">400</span><span class="p">))</span>
-
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
-    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
-        <span class="k">pass</span>
 </pre></div>
 </div>
 </div>
@@ -727,8 +718,12 @@ turtleモジュールの主な関数は以下の通りである。</p>
 </figure>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">draw_star</span><span class="p">(</span><span class="n">size</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### （出席課題）関数のみ提出する</span>
+
+<span class="k">def</span> <span class="nf">draw_star</span><span class="p">(</span><span class="n">size</span><span class="p">):</span>
     <span class="k">pass</span>
+
+<span class="c1">###</span>
 </pre></div>
 </div>
 </div>
@@ -747,7 +742,8 @@ turtleモジュールの主な関数は以下の通りである。</p>
 より自然な木の形状を再現するために、再帰呼び出しの度に、枝の長さが0.8倍になるように <code class="docutils literal notranslate"><span class="pre">draw_branch()</span></code> を修正しなさい。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### 以下を修正して、ここの部分のみ提出する</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### （出席課題）以下を修正して、関数のみ提出する</span>
+
 <span class="k">def</span> <span class="nf">draw_branch</span><span class="p">(</span><span class="n">length</span><span class="p">,</span> <span class="n">depth</span><span class="p">):</span>
     <span class="n">turtle</span><span class="o">.</span><span class="n">pendown</span><span class="p">()</span>
     <span class="k">if</span> <span class="n">depth</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
@@ -761,8 +757,9 @@ turtleモジュールの主な関数は以下の通りである。</p>
         <span class="n">turtle</span><span class="o">.</span><span class="n">left</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
     <span class="n">turtle</span><span class="o">.</span><span class="n">backward</span><span class="p">(</span><span class="n">length</span><span class="p">)</span>
     <span class="n">turtle</span><span class="o">.</span><span class="n">penup</span><span class="p">()</span>
+    
 <span class="c1">### </span>
-        
+
 <span class="n">turtle</span><span class="o">.</span><span class="n">initializeTurtle</span><span class="p">(</span><span class="n">initial_window_size</span><span class="o">=</span><span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="mi">400</span><span class="p">),</span> <span class="n">initial_speed</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>  <span class="c1"># 描画のスピードを1~13 の間で指定できる</span>
 <span class="n">turtle</span><span class="o">.</span><span class="n">penup</span><span class="p">()</span>
 <span class="n">turtle</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">350</span><span class="p">)</span>
