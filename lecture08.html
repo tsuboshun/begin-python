@@ -549,8 +549,8 @@ return文がない場合は、ブロックの最後まで実行してからブ�
 <h2>turtleによるグラフィック描画<a class="headerlink" href="#turtle" title="Permalink to this heading">#</a></h2>
 <p>ここからはturtleというプログラミング学習用のグラフィックライブラリを用いて、関数作成の練習をしてみよう。
 このライブラリではペン先を表すカメを操作することで、線を描画する。
-turtleモジュールは、外部ライブラリなのでpipによるインストールとimportが必要である。
-以下のコードを実行することで、使用可能な状態になる。</p>
+turtleモジュールは外部ライブラリなので、最初にpipによるインストールとimportが必要である。
+以下のコードを実行することで、turtleモジュールが使用可能な状態になる。</p>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">ColabTurtle</span>
@@ -754,7 +754,7 @@ turtleモジュールは、外部ライブラリなのでpipによるインス�
 <h2>演習<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h2>
 <p><strong>課題1</strong><br />
 1辺（例えば線分AB）の長さ <code class="docutils literal notranslate"><span class="pre">size</span></code> を引数とし、星形を描画する関数 <code class="docutils literal notranslate"><span class="pre">draw_star()</span></code> を作成しなさい。
-ただし <code class="docutils literal notranslate"><span class="pre">turtle.pendown()</span></code> から始め、<code class="docutils literal notranslate"><span class="pre">turtle.penup()</span></code> で終わること。</p>
+ただし <code class="docutils literal notranslate"><span class="pre">turtle.pendown()</span></code> から始め、<code class="docutils literal notranslate"><span class="pre">turtle.penup()</span></code> で終わること。星形は図の状態から傾いていてもよい。</p>
 <figure class="align-default" id="star">
 <a class="reference internal image-reference" href="_images/star.png"><img alt="_images/star.png" src="_images/star.png" style="width: 200px;" /></a>
 <figcaption>
