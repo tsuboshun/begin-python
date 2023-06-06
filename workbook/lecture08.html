@@ -350,7 +350,7 @@ document.write(`
 <section id="id2">
 <h2>この授業で学ぶこと<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
 <p>これまでPythonに既に用意された関数を利用してきたが、今回は新しく関数を定義する方法を学ぶ。
-また関数を反復的に呼び出すことで、繰り返し処理を行う手法である再帰についても学ぶ。</p>
+また関数を反復的に呼び出すことで、繰り返し処理を行う手法である再帰について学ぶ。</p>
 <section id="id3">
 <h3>準備<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
 <div class="cell tag_hide-output docutils container">
@@ -377,22 +377,25 @@ document.write(`
 <h2>関数<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
 <section id="id5">
 <h3>関数の定義<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
-<p>第5回で作成したBMIの計算プログラムを例に、関数を作成してみよう。</p>
-<p><strong>def文</strong>の書き方について解説する。上のコードを図で表すと次のようになる。</p>
+<p>第5回で作成したBMIの計算プログラムを例に、関数を作成してみよう。関数は<strong>def文</strong>により定義することができる。</p>
+<p>def文の書き方について解説する。上のコードを図で表すと次のようになる。</p>
 <figure class="align-default" id="def">
 <a class="reference internal image-reference" href="workbook/pic/def.png"><img alt="workbook/pic/def.png" src="workbook/pic/def.png" style="width: 350px;" /></a>
 <figcaption>
 <p><span class="caption-text">def文の書き方</span><a class="headerlink" href="#def" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p><code class="docutils literal notranslate"><span class="pre">def</span></code> と書いたあとに空白を開けて関数名を書き、<code class="docutils literal notranslate"><span class="pre">()</span></code> の中に引数を書く。引数が複数ある場合は <code class="docutils literal notranslate"><span class="pre">,</span></code> で区切って並べる。
-def文の最後にコロン <code class="docutils literal notranslate"><span class="pre">:</span></code> を置いてブロックを作るのはif文やfor文と同じである。
-def文に特徴的なのは、最後に<strong>return文</strong>を書くことである。
+<p><code class="docutils literal notranslate"><span class="pre">def</span></code> と書いたあとに空白を開けて関数名を書き、<code class="docutils literal notranslate"><span class="pre">()</span></code> の中に引数を表す変数名を書く。引数が複数ある場合は <code class="docutils literal notranslate"><span class="pre">,</span></code> で区切って並べる。
+def文の最後にコロン <code class="docutils literal notranslate"><span class="pre">:</span></code> を置いて、次の行からインデントを入れてブロックを作るのはif文やfor文と同じである。
+ブロックの中に関数が行う処理を書いていく。</p>
+<p>def文に特徴的なのは、ブロックの最後に<strong>return文</strong>を書くことである。
 return文は <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">戻り値</span></code> という形式で記述する。
 処理がreturn文に到達すると、関数の処理はそこで終了となり、戻り値を返してブロックを抜ける。</p>
 <p>関数を使用する際には、基本的に引数の順番通りに値を渡す必要がある。
-ただし、引数を直接指定する<strong>キーワード引数</strong>を利用する場合は、順番を気にしなくて良い。
-キーワード引数は、関数の使用時に次のように <code class="docutils literal notranslate"><span class="pre">引数名</span> <span class="pre">=</span> <span class="pre">値</span></code> という形式で記述する。</p>
+例えば上の例で <code class="docutils literal notranslate"><span class="pre">bmi(193,</span> <span class="pre">95)</span></code> と呼び出すと、引数に <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">193</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">=</span> <span class="pre">95</span></code> が代入されてブロックの処理が行われる。
+したがって、<code class="docutils literal notranslate"><span class="pre">10000</span> <span class="pre">*</span> <span class="pre">95</span> <span class="pre">/</span> <span class="pre">193</span> <span class="pre">**</span> <span class="pre">2</span></code> を計算した結果が戻り値として返される。</p>
+<p>ただし、引数を直接指定する<strong>キーワード引数</strong>という呼び出し方をする場合は、順番を気にしなくて良い。
+キーワード引数は、関数の使用時に次のように <code class="docutils literal notranslate"><span class="pre">引数名</span> <span class="pre">=</span> <span class="pre">値</span></code> という形式で書く。</p>
 <p>また関数を利用する際には、基本的に引数に値を渡す必要がある。ただし、<strong>デフォルト引数</strong>を利用すると、あらかじめ引数に値を設定しておくことができ、関数呼び出し時にその引数を省略することが可能になる。デフォルト引数は、関数の定義時に次のように <code class="docutils literal notranslate"><span class="pre">引数名</span> <span class="pre">=</span> <span class="pre">デフォルト値</span></code> という形式で記述する。</p>
 <p>引数やreturn文のない関数もよく使われる。
 return文がない場合は、ブロックの最後まで実行してからブロックを抜ける。
