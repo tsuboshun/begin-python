@@ -318,19 +318,16 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">この授業で学ぶこと</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">準備</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">関数</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">関数の定義</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">スコープ</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">この授業で学ぶこと</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">関数</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">関数の定義</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">スコープ</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turtle">turtleによるグラフィック描画</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">再帰</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">演習</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">余談: ジェネラティブ・アート</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">再帰</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">演習</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">余談: ジェネラティブ・アート</a></li>
 </ul>
             </nav>
         </div>
@@ -351,32 +348,11 @@ document.write(`
 <h2>この授業で学ぶこと<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
 <p>これまでPythonに既に用意された関数を利用してきたが、今回は新しく関数を定義する方法を学ぶ。
 また関数を反復的に呼び出すことで、繰り返し処理を行う手法である再帰について学ぶ。</p>
+</section>
 <section id="id3">
-<h3>準備<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
-<div class="cell tag_hide-output docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">ColabTurtle</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
-<span class="kn">import</span> <span class="nn">ColabTurtle.Turtle</span> <span class="k">as</span> <span class="nn">turtle</span>  <span class="c1"># Google Colab用のturtleライブラリ</span>
-
-<span class="n">turtle</span><span class="o">.</span><span class="n">DEFAULT_PEN_COLOR</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span>
-<span class="n">turtle</span><span class="o">.</span><span class="n">DEFAULT_BACKGROUND_COLOR</span> <span class="o">=</span> <span class="s1">&#39;white&#39;</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-</section>
+<h2>関数<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
 <section id="id4">
-<h2>関数<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
-<section id="id5">
-<h3>関数の定義<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<h3>関数の定義<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
 <p>第5回で作成したBMIの計算プログラムを例に、関数を作成してみよう。関数は<strong>def文</strong>により定義することができる。</p>
 <p>def文の書き方について解説する。上のコードを図で表すと次のようになる。</p>
 <figure class="align-default" id="def">
@@ -388,7 +364,7 @@ document.write(`
 <p><code class="docutils literal notranslate"><span class="pre">def</span></code> と書いたあとに空白を開けて関数名を書き、<code class="docutils literal notranslate"><span class="pre">()</span></code> の中に引数を表す変数名を書く。引数が複数ある場合は <code class="docutils literal notranslate"><span class="pre">,</span></code> で区切って並べる。
 def文の最後にコロン <code class="docutils literal notranslate"><span class="pre">:</span></code> を置いて、次の行からインデントを入れてブロックを作るのはif文やfor文と同じである。
 ブロックの中に関数が行う処理を書いていく。</p>
-<p>def文に特徴的なのは、ブロックの最後に<strong>return文</strong>を書くことである。
+<p>def文に特徴的なのは、基本的にブロックの最後に<strong>return文</strong>を書くことである。
 return文は <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">戻り値</span></code> という形式で記述する。
 処理がreturn文に到達すると、関数の処理はそこで終了となり、戻り値を返してブロックを抜ける。</p>
 <p>関数を使用する際には、基本的に引数の順番通りに値を渡す必要がある。
@@ -396,7 +372,7 @@ return文は <code class="docutils literal notranslate"><span class="pre">return
 したがって、<code class="docutils literal notranslate"><span class="pre">10000</span> <span class="pre">*</span> <span class="pre">95</span> <span class="pre">/</span> <span class="pre">193</span> <span class="pre">**</span> <span class="pre">2</span></code> を計算した結果が戻り値として返される。</p>
 <p>ただし、引数を直接指定する<strong>キーワード引数</strong>という呼び出し方をする場合は、順番を気にしなくて良い。
 キーワード引数は、関数の使用時に次のように <code class="docutils literal notranslate"><span class="pre">引数名</span> <span class="pre">=</span> <span class="pre">値</span></code> という形式で書く。</p>
-<p>また関数を利用する際には、基本的に引数に値を渡す必要がある。ただし、<strong>デフォルト引数</strong>を利用すると、あらかじめ引数に値を設定しておくことができ、関数呼び出し時にその引数を省略することが可能になる。デフォルト引数は、関数の定義時に次のように <code class="docutils literal notranslate"><span class="pre">引数名</span> <span class="pre">=</span> <span class="pre">デフォルト値</span></code> という形式で記述する。</p>
+<p>また関数を使用する際には、基本的に引数に値を渡す必要がある。ただし、<strong>デフォルト引数</strong>という方法を利用すると、あらかじめ引数に値を設定しておくことができ、関数の呼び出し時にその引数を省略することが可能になる。デフォルト引数は、関数の定義時に次のように <code class="docutils literal notranslate"><span class="pre">引数名</span> <span class="pre">=</span> <span class="pre">デフォルト値</span></code> という形式で記述する。</p>
 <p>引数やreturn文のない関数もよく使われる。
 return文がない場合は、ブロックの最後まで実行してからブロックを抜ける。
 このとき戻り値がないことを表す <code class="docutils literal notranslate"><span class="pre">None</span></code> という値が返される。</p>
@@ -431,8 +407,8 @@ return文がない場合は、ブロックの最後まで実行してからブ�
 </div>
 </div>
 </section>
-<section id="id6">
-<h3>スコープ<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
+<section id="id5">
+<h3>スコープ<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
 <p>次のプログラムを結果を予想しながら実行してみよう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -454,7 +430,7 @@ return文がない場合は、ブロックの最後まで実行してからブ�
 ただし関数内だけは別で、関数内はローカルスコープという独自のスコープを持つ。
 モジュールスコープに属する変数を<strong>グローバル変数</strong>、ローカルスコープに属する変数を<strong>ローカル変数</strong>という。</p>
 <p>上の例では、1行目の変数 <code class="docutils literal notranslate"><span class="pre">a</span></code> はモジュールスコープに属するグローバル変数である。
-一方で3行目の変数 <code class="docutils literal notranslate"><span class="pre">a</span></code> はローカルスコープに属するローカル変数である。
+一方で3行目の変数 <code class="docutils literal notranslate"><span class="pre">a</span></code> はローカルスコープに属するローカル変数であり、1行目の変数とは別物とみなされる。
 したがって、<code class="docutils literal notranslate"><span class="pre">func()</span></code> 関数を実行してもグローバル変数の値は変更されず、最後の <code class="docutils literal notranslate"><span class="pre">print(a)</span></code> の出力は1となる。</p>
 <p>ローカルスコープからグローバル変数を参照することはできるが、モジュールスコープからローカル変数を直接参照することはできない。</p>
 <div class="cell docutils container">
@@ -527,7 +503,27 @@ return文がない場合は、ブロックの最後まで実行してからブ�
 <h2>turtleによるグラフィック描画<a class="headerlink" href="#turtle" title="Permalink to this heading">#</a></h2>
 <p>ここからはturtleというプログラミング学習用のグラフィックライブラリを用いて、関数作成の練習をしてみよう。
 このライブラリではペン先を表すカメを操作することで、線を描画する。
-turtleモジュールの主な関数は以下の通りである。</p>
+turtleモジュールは、外部ライブラリなのでpipによるインストールとimportが必要である。
+以下のコードを実行することで、使用可能な状態になる。</p>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">ColabTurtle</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">ColabTurtle.Turtle</span> <span class="k">as</span> <span class="nn">turtle</span>  <span class="c1"># Google Colab用のturtleライブラリ</span>
+
+<span class="n">turtle</span><span class="o">.</span><span class="n">DEFAULT_PEN_COLOR</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span>
+<span class="n">turtle</span><span class="o">.</span><span class="n">DEFAULT_BACKGROUND_COLOR</span> <span class="o">=</span> <span class="s1">&#39;white&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>turtleモジュールの主な関数は以下の通りである。</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">turtle.penup()</span></code></p>
 <ul>
@@ -659,8 +655,8 @@ turtleモジュールの主な関数は以下の通りである。</p>
 </div>
 </div>
 </section>
-<section id="id7">
-<h2>再帰<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h2>
+<section id="id6">
+<h2>再帰<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
 <p>以下のコードを実行すると木の枝のような模様が描かれる。どのような処理が行われているか理解できるだろうか。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -708,8 +704,8 @@ turtleモジュールの主な関数は以下の通りである。</p>
 木の例では、枝の深さに制限をつけるため <code class="docutils literal notranslate"><span class="pre">depth</span></code> という引数を使用し、再帰呼び出しの度に1ずつ減らしている。
 そして <code class="docutils literal notranslate"><span class="pre">depth</span> <span class="pre">==</span> <span class="pre">0</span></code> となったときに再帰呼び出しを行わず、枝を１本描くだけでreturnしている。</p>
 </section>
-<section id="id8">
-<h2>演習<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h2>
+<section id="id7">
+<h2>演習<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h2>
 <p><strong>課題1</strong><br />
 1辺（例えば線分AB）の長さ <code class="docutils literal notranslate"><span class="pre">size</span></code> を引数とし、星形を描画する関数 <code class="docutils literal notranslate"><span class="pre">draw_star()</span></code> を作成しなさい。
 ただし <code class="docutils literal notranslate"><span class="pre">turtle.pendown()</span></code> から始め、<code class="docutils literal notranslate"><span class="pre">turtle.penup()</span></code> で終わること。</p>
@@ -774,15 +770,15 @@ turtleモジュールの主な関数は以下の通りである。</p>
 </div>
 </div>
 </section>
-<section id="id9">
-<h2>余談: ジェネラティブ・アート<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h2>
+<section id="id8">
+<h2>余談: ジェネラティブ・アート<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h2>
 <p>余談として、<strong>ジェネラティブ・アート</strong>について紹介する。
-ジェネラティブ・アートとは、アルゴリズム<a class="footnote-reference brackets" href="#f1" id="id10" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>やルール、自動化されたプロセスを用いて作品を生成するアートの一形態である。
+ジェネラティブ・アートとは、アルゴリズム<a class="footnote-reference brackets" href="#f1" id="id9" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>やルール、自動化されたプロセスを用いて作品を生成するアートの一形態である。
 コンピュータやプログラミング言語を使って、これらのアルゴリズムやプロセスを実行し、視覚的または音響的な要素を生み出す。
 自然界の複雑さや美しさからインスピレーションを得た作品を、それとは対極の論理的で機械的なコンピュータを使って表現するところが、このアート形態の面白いところである。
 したがって、多くの場合に乱数の要素が作品に取り入れられており、実行するごとに毎回異なるパターンを楽しむことができる。</p>
 <p>Georg Neesが1968年に発表した <em>Schotter</em> は、最初のジェネラティブ・アート作品だと言われている。
-以下のプログラムは、<em>Schotter</em>  を模倣したコード<a class="footnote-reference brackets" href="#f2" id="id11" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>である。
+以下のプログラムは、<em>Schotter</em>  を模倣したコード<a class="footnote-reference brackets" href="#f2" id="id10" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>である。
 12個の正方形が規則的に並べられた行から始まり、下に行くにつれて徐々に秩序が失われる様子が描かれる。</p>
 <p>プログラムを実行して鑑賞してみよう。
 余力のある人は、どのようなアルゴリズムが使われているか、コードの読解に挑戦してみてほしい。
@@ -823,11 +819,11 @@ turtleモジュールの主な関数は以下の通りである。</p>
 </div>
 <hr class="footnotes docutils" />
 <aside class="footnote brackets" id="f1" role="note">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id10">1</a><span class="fn-bracket">]</span></span>
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id9">1</a><span class="fn-bracket">]</span></span>
 <p>アルゴリズムとは問題を解決するための手順のことである。次回詳しく説明する。</p>
 </aside>
 <aside class="footnote brackets" id="f2" role="note">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id11">2</a><span class="fn-bracket">]</span></span>
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id10">2</a><span class="fn-bracket">]</span></span>
 <p>こちらの<a class="reference external" href="http://www.artsnova.com/Nees_Schotter_Tutorial.html">サイト</a>に掲載されているProcessingプログラムをPythonに書き換え作成した。</p>
 </aside>
 </section>
@@ -876,19 +872,16 @@ turtleモジュールの主な関数は以下の通りである。</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">この授業で学ぶこと</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">準備</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">関数</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">関数の定義</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">スコープ</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">この授業で学ぶこと</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">関数</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">関数の定義</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">スコープ</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turtle">turtleによるグラフィック描画</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">再帰</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">演習</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">余談: ジェネラティブ・アート</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">再帰</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">演習</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">余談: ジェネラティブ・アート</a></li>
 </ul>
   </nav></div>
 
