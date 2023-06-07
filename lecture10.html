@@ -828,11 +828,26 @@ func(10**2)  # これはsingle_loop(10**2)と同じ！</pre>
 </div>
 </div>
 <p><strong>課題2</strong><br />
-引数として辞書型のデータ <code class="docutils literal notranslate"><span class="pre">ages</span></code> と名前 <code class="docutils literal notranslate"><span class="pre">name</span></code> を受け取り、その人物の年齢を返す関数 <code class="docutils literal notranslate"><span class="pre">get_age()</span></code> を作成しなさい。ただし、もしその人物の情報が辞書に存在しない場合は、<code class="docutils literal notranslate"><span class="pre">&quot;情報がありません&quot;</span></code> という文字列を返すようにしなさい。</p>
+名前をキー、年齢を値とする辞書型のデータ <code class="docutils literal notranslate"><span class="pre">ages</span></code> と名前 <code class="docutils literal notranslate"><span class="pre">name</span></code> を引数として受け取り、その人物の年齢を返す関数 <code class="docutils literal notranslate"><span class="pre">get_age()</span></code> を作成しなさい。ただし、もしその人物の情報が辞書に存在しない場合は、<code class="docutils literal notranslate"><span class="pre">&quot;情報がありません&quot;</span></code> という文字列を返すようにしなさい。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_age</span><span class="p">(</span><span class="n">ages</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
     <span class="k">pass</span> <span class="c1"># ここに適切なコードを書く</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>課題3</strong><br />
+名前をキー、年齢を値とする辞書型のデータ <code class="docutils literal notranslate"><span class="pre">ages</span></code> を引数として受け取り、<code class="docutils literal notranslate"><span class="pre">ages</span></code> の中の最高齢の人物名を返す関数 <code class="docutils literal notranslate"><span class="pre">get_oldest()</span></code> を作成しなさい。ただし <code class="docutils literal notranslate"><span class="pre">ages</span></code> には一人以上登録されているとしてよい。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_oldest</span><span class="p">(</span><span class="n">ages</span><span class="p">):</span>
+    <span class="n">max_age</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="n">ret</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">ages</span><span class="p">:</span>
+        <span class="k">pass</span> <span class="c1"># ヒント： max_ageより上の年齢が見つかったら max_age をその値に更新し、その人物を変数 ret に記録することを繰り返す</span>
+    
+    <span class="k">return</span> <span class="n">ret</span>
 </pre></div>
 </div>
 </div>
