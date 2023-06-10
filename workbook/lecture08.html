@@ -639,7 +639,7 @@ turtleモジュールは外部ライブラリなので、最初にpipによる�
 整数 <code class="docutils literal notranslate"><span class="pre">n</span></code> および1辺の長さ <code class="docutils literal notranslate"><span class="pre">size</span></code> を引数とし、正 <code class="docutils literal notranslate"><span class="pre">n</span></code> 角形を描画する関数 <code class="docutils literal notranslate"><span class="pre">draw_polygon()</span></code> を作成しなさい。ただし <code class="docutils literal notranslate"><span class="pre">turtle.pendown()</span></code> から始め、<code class="docutils literal notranslate"><span class="pre">turtle.penup()</span></code> で終わること。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">daw_polygon</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">size</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">draw_polygon</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">size</span><span class="p">):</span>
     <span class="k">pass</span>
 </pre></div>
 </div>
@@ -649,7 +649,7 @@ turtleモジュールは外部ライブラリなので、最初にpipによる�
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 作成したら描画してみる</span>
 <span class="n">turtle</span><span class="o">.</span><span class="n">initializeTurtle</span><span class="p">(</span><span class="n">initial_window_size</span><span class="o">=</span><span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="mi">400</span><span class="p">))</span>
-<span class="n">daw_polygon</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">draw_polygon</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -708,7 +708,7 @@ turtleモジュールは外部ライブラリなので、最初にpipによる�
 <h2>演習<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h2>
 <p><strong>課題1</strong><br />
 1辺（例えば線分AB）の長さ <code class="docutils literal notranslate"><span class="pre">size</span></code> を引数とし、星形を描画する関数 <code class="docutils literal notranslate"><span class="pre">draw_star()</span></code> を作成しなさい。
-ただし <code class="docutils literal notranslate"><span class="pre">turtle.pendown()</span></code> から始め、<code class="docutils literal notranslate"><span class="pre">turtle.penup()</span></code> で終わること。</p>
+ただし <code class="docutils literal notranslate"><span class="pre">turtle.pendown()</span></code> から始め、<code class="docutils literal notranslate"><span class="pre">turtle.penup()</span></code> で終わること。星形は図の状態から傾いていてもよい。</p>
 <figure class="align-default" id="star">
 <a class="reference internal image-reference" href="workbook/pic/star.png"><img alt="workbook/pic/star.png" src="workbook/pic/star.png" style="width: 200px;" /></a>
 <figcaption>
