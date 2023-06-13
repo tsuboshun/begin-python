@@ -821,7 +821,7 @@ print(total / count)
 <p>上記のように書くと、<code class="docutils literal notranslate"><span class="pre">total</span></code> には全ての要素の合計値が、<code class="docutils literal notranslate"><span class="pre">count</span></code> には要素数が入った状態になる。
 よって、<code class="docutils literal notranslate"><span class="pre">total</span> <span class="pre">/</span> <span class="pre">count</span></code>　により平均値が求まる。</p>
 </div>
-<div class="note admonition">
+<div class="note admonition" id="label-numpy">
 <p class="admonition-title">NumPy</p>
 <p><strong>NumPy</strong>は、数値計算を効率的に行うためのライブラリである。
 講義の後半で<strong>Matplotlib</strong>や<strong>Pandas</strong>といったライブラリを学ぶ際に利用することになるので、ここで簡単に紹介しておく。
@@ -832,7 +832,7 @@ import numpy as np
 data = np.array([[1, 2], [3, 4], [5, 6]])</pre>
 <p>この例では二次元リストを渡して、二次元配列を生成している。基本的な扱い方は、リストと同じである。
 異なる点を2つ紹介する。
-1つ目として、インデックスによる要素のアクセス方法がある。二次元リストでは、<code class="docutils literal notranslate"><span class="pre">data[i][j]</span></code> というように <code class="docutils literal notranslate"><span class="pre">[]</span></code> を重ねて要素を指定したが、二次元配列では、<code class="docutils literal notranslate"><span class="pre">data[i,j]</span></code> のように <code class="docutils literal notranslate"><span class="pre">,</span></code> 区切りで要素を指定する。</p>
+1つ目として、インデックスによる要素のアクセス方法がある。二次元リストでは、<code class="docutils literal notranslate"><span class="pre">data[i][j]</span></code> というように <code class="docutils literal notranslate"><span class="pre">[]</span></code> を重ねて要素を指定したが、二次元配列では、<code class="docutils literal notranslate"><span class="pre">data[i,j]</span></code> のように <code class="docutils literal notranslate"><span class="pre">,</span></code> 区切りで要素を指定する。<code class="docutils literal notranslate"><span class="pre">data[i,j]</span></code> と指定するときの <code class="docutils literal notranslate"><span class="pre">i</span></code> を<strong>行</strong>、<code class="docutils literal notranslate"><span class="pre">j</span></code> を<strong>列</strong>という。</p>
 <pre>
 print(data[2,1])  # 出力は6</pre>
 <p>2つ目として、配列には各種演算が定義されており、要素ごとの演算を一括で行える点がある。</p>
