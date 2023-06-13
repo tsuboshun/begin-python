@@ -402,7 +402,7 @@ document.write(`
 </div>
 </div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">np.random.normal()</span></code> 関数は上のように呼び出すと、平均が0で標準偏差が1の正規分布に従う乱数の配列（長さ <code class="docutils literal notranslate"><span class="pre">len(sample_x)</span></code>）を生成する。代入先の <code class="docutils literal notranslate"><span class="pre">eps</span></code> はデータに加えるノイズとして使用する。</p>
+<p><code class="docutils literal notranslate"><span class="pre">np.random.normal()</span></code> 関数は上のように呼び出すと、平均が0で標準偏差が1の正規分布に従う乱数の配列（長さ <code class="docutils literal notranslate"><span class="pre">len(sample_x)</span></code>）を生成する。代入先の <code class="docutils literal notranslate"><span class="pre">eps</span></code> はデータに加えるノイズとして使用する。正規分布に従うノイズを<strong>ガウスノイズ</strong>という。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eps</span>
@@ -516,7 +516,7 @@ document.write(`
 </div>
 </div>
 </div>
-<p>上のコード例では、ノイズの大きさを変えた2つのデータをプロットしている。
+<p>上のコード例では、ノイズの大きさ（標準偏差）を変えた2つのデータをプロットしている。
 先ほど説明したように複数列の場合 <code class="docutils literal notranslate"><span class="pre">plt.subplots()</span></code> の戻り値の2つ目の要素はAxesの配列となるので、慣例により変数名も合わせて複数形の <code class="docutils literal notranslate"><span class="pre">axes</span></code> にしている。左のAxesは <code class="docutils literal notranslate"><span class="pre">axes[0]</span></code> により、右のAxesは <code class="docutils literal notranslate"><span class="pre">axes[1]</span></code> によりアクセスできる。</p>
 <p>今回は1行のみなので <code class="docutils literal notranslate"><span class="pre">axes</span></code> は1次元配列となっているが、複数行・複数列のとき <code class="docutils literal notranslate"><span class="pre">axes</span></code> は2次元配列となる。
 その場合は <code class="docutils literal notranslate"><span class="pre">axes[i,</span> <span class="pre">j]</span></code> という形でAxesにアクセスする。</p>
@@ -526,7 +526,7 @@ document.write(`
 <p>サンプルデータに対して線形回帰を行い、その結果を<strong>折れ線グラフ</strong>として可視化してみよう。</p>
 <p>まずは線形回帰について概要を説明する。係数の求め方など詳しい解説はしないので、詳しくは他のテキストを当たってほしい。
 今 <code class="docutils literal notranslate"><span class="pre">sample_x</span></code> と <code class="docutils literal notranslate"><span class="pre">sample_y</span></code> は実験により得られたデータであるとし、<span class="math notranslate nohighlight">\(x\)</span> と <span class="math notranslate nohighlight">\(y\)</span> の関係について詳しくはわからないという状況を考える（<span class="math notranslate nohighlight">\(y = 2x + \varepsilon\)</span> という式により生成したことは忘れる）。
-このとき <span class="math notranslate nohighlight">\(x\)</span> と <span class="math notranslate nohighlight">\(y\)</span> について例えば <span class="math notranslate nohighlight">\(y = ax + b + \varepsilon\)</span> という一次関数にノイズが乗った関係を仮定して、データだけから尤もらしい係数 <span class="math notranslate nohighlight">\(a\)</span>、切片 <span class="math notranslate nohighlight">\(b\)</span> を推定するのが線形回帰である。もちろん <span class="math notranslate nohighlight">\(a = 2\)</span>、<span class="math notranslate nohighlight">\(b = 0\)</span> が正解であるが、データだけから推定するので多少の誤差が生じる。仮定した式 <span class="math notranslate nohighlight">\(y = ax + b + \varepsilon\)</span> のことを<strong>モデル</strong>、<span class="math notranslate nohighlight">\(x\)</span> のことを<strong>説明変数</strong>、<span class="math notranslate nohighlight">\(y\)</span> のことを<strong>目的変数</strong>という。</p>
+このとき <span class="math notranslate nohighlight">\(x\)</span> と <span class="math notranslate nohighlight">\(y\)</span> について例えば <span class="math notranslate nohighlight">\(y = ax + b + \eta\)</span> という一次関数に大きさ不明のガウスノイズ <span class="math notranslate nohighlight">\(\eta\)</span> が乗った関係を仮定して、データだけから尤もらしい係数 <span class="math notranslate nohighlight">\(a\)</span>、切片 <span class="math notranslate nohighlight">\(b\)</span> を推定するのが線形回帰である。もちろん <span class="math notranslate nohighlight">\(a = 2\)</span>、<span class="math notranslate nohighlight">\(b = 0\)</span> が正解であるが、データだけから推定するので多少の誤差が生じる。仮定した式 <span class="math notranslate nohighlight">\(y = ax + b + \eta\)</span> のことを<strong>モデル</strong>、<span class="math notranslate nohighlight">\(x\)</span> のことを<strong>説明変数</strong>、<span class="math notranslate nohighlight">\(y\)</span> のことを<strong>目的変数</strong>という。</p>
 <p>係数 <span class="math notranslate nohighlight">\(a\)</span>、切片 <span class="math notranslate nohighlight">\(b\)</span> の求め方はさておき、Pythonで線形回帰を行ってみよう。<code class="docutils literal notranslate"><span class="pre">sklearn</span></code> というライブラリの <code class="docutils literal notranslate"><span class="pre">linear_model</span></code> というモジュールから <code class="docutils literal notranslate"><span class="pre">LinearRegression</span></code> クラスをインポートする。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
