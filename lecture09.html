@@ -432,6 +432,22 @@ x[1] = tmp</pre>
 </div>
 </div>
 </div>
+<div class="toggle docutils container">
+<p><strong>解答例</strong></p>
+<pre style={"white-space": "pre"}>
+def insert_sort(x, verbose=False):  # verboseは詳細の意味
+    for i in range(1, len(x)):
+        key = x[i]  # 矢印の要素
+        j = i - 1
+        while j >= 0 and x[j] > key:
+            x[j], x[j+1] = x[j+1], x[j]
+            j -= 1
+            
+        if verbose:
+            print(f"{i}回目のループ終了時： {x}")
+    return
+</pre>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
@@ -516,6 +532,35 @@ x[1] = tmp</pre>
 </pre></div>
 </div>
 </div>
+</div>
+<div class="toggle docutils container">
+<p><strong>解答例</strong></p>
+<pre style={"white-space": "pre"}>
+def quick_sort(x, left, right, verbose=False):
+    if right - left <= 0:
+        return
+    if verbose:
+        print(f"quick_sort(x, {left}, {right}) 呼び出し時: {x}")
+    
+    pivot = x[right] # 右端をpivotとする
+    
+    i = left # i: 青矢印
+    for j in range(left, right): # j: 灰矢印
+        if x[j] < pivot:
+            x[i], x[j] = x[j], x[i]
+            i += 1
+            
+    # pivotの値をi番目と交換することで、 xの中身は[pivot未満のデータ], pivot, [pivot以上のデータ] という順になる
+    x[i], x[right] = x[right], x[i]
+    
+    if verbose:
+        print(f"再帰呼び出し前： {x}\n")
+        
+    # ここに再帰呼び出しのコードを書く
+    quick_sort(x, left, i-1, verbose)
+    quick_sort(x, i+1, right, verbose)
+    return
+</pre>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
