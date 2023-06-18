@@ -329,8 +329,19 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">折れ線グラフ</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas">pandas入門</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">ヒストグラム</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas">pandas入門</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">データフレーム</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">シリーズ</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">テーブル操作</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">ソート</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">フィルタリング</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">列の演算</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">ヒストグラム</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">演習</a></li>
 </ul>
             </nav>
         </div>
@@ -349,7 +360,11 @@ document.write(`
 <hr class="docutils" />
 <section id="id2">
 <h2>この授業で学ぶこと<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
-<p>準備中</p>
+<p>今回から第15回にかけてデータサイエンスの入門講義を行う。
+今回はデータの可視化をテーマに、matplotlibというライブラリの使い方を一通り解説する。またテーブルデータを扱うためのライブラリであるpandasについても解説する。</p>
+<p>この授業で紹介するコードは何も見ないで書けるようになる必要はなく、これらを雛形にして使えるようになればよい。
+matplotlibを使うと綺麗なグラフを作成できるようになるので、ぜひ他の授業のレポートなどでも活用してみてほしい。
+また今回から課題を解くのにChatGPTを活用してもよいことにする。</p>
 </section>
 <section id="matplotlib">
 <h2>matplotlib入門<a class="headerlink" href="#matplotlib" title="Permalink to this heading">#</a></h2>
@@ -494,16 +509,19 @@ document.write(`
 </section>
 <section id="id8">
 <h3>折れ線グラフ<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
+<p>散布図と並んでよく使われるのが<strong>折れ線グラフ</strong>である。横軸に <span class="math notranslate nohighlight">\(x\)</span>、縦軸に <span class="math notranslate nohighlight">\(y\)</span> の値をとって各データを点として打つところは散布図と同じであるが、折れ線グラフではこれらの点を線で結ぶ。これにより <span class="math notranslate nohighlight">\(x\)</span> の値が増えたときの、<span class="math notranslate nohighlight">\(y\)</span> の値の連続的な変化を表現する。</p>
+<p>折れ線グラフのプロット例を以下に示す。
+ノイズのない <span class="math notranslate nohighlight">\(y = 2x\)</span> の関係を満たす2次元データ <span class="math notranslate nohighlight">\((x, y)\)</span> を <code class="docutils literal notranslate"><span class="pre">sample_x</span></code>、<code class="docutils literal notranslate"><span class="pre">sample_y3</span></code> に用意し、その折れ線グラフを最初の散布図に重ねてプロットしている。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># プロットの入れ物の用意</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 
-<span class="n">sample_y2</span> <span class="o">=</span> <span class="n">sample_x</span> <span class="o">*</span> <span class="mi">2</span>
+<span class="n">sample_y3</span> <span class="o">=</span> <span class="n">sample_x</span> <span class="o">*</span> <span class="mi">2</span>
 
 <span class="c1"># 散布図、折れ線グラフのプロット</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">sample_x</span><span class="p">,</span> <span class="n">sample_y</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sample_x</span><span class="p">,</span> <span class="n">sample_y2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;orange&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sample_x</span><span class="p">,</span> <span class="n">sample_y3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;orange&quot;</span><span class="p">)</span>
 
 <span class="c1"># 表示</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -515,6 +533,9 @@ document.write(`
 </section>
 <section id="pandas">
 <h2>pandas入門<a class="headerlink" href="#pandas" title="Permalink to this heading">#</a></h2>
+<p>Pythonでテーブルデータを扱うのに<strong>pandas</strong>というライブラリがよく用いられる。この節ではpandasについて、今後の授業で使いうる機能に限定して説明する。</p>
+<p>pandasを使うには、pandasモジュールをimportする。
+ここでは説明のため、seabornというライブラリにサンプルとして用意されている <code class="docutils literal notranslate"><span class="pre">'diamonds'</span></code> というテーブルデータを使用する（データの説明は<a class="reference external" href="https://ggplot2.tidyverse.org/reference/diamonds.html">こちら</a>）。<code class="docutils literal notranslate"><span class="pre">load_dataset()</span></code> 関数によりサンプルのテーブルデータを取得できる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -524,6 +545,11 @@ document.write(`
 </div>
 </div>
 </div>
+<section id="id9">
+<h3>データフレーム<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h3>
+<p>pandasにおいてテーブルデータのことを<strong>データフレーム</strong>（<strong>DataFrame</strong>）という。
+データフレームの持つ <code class="docutils literal notranslate"><span class="pre">head()</span></code> メソッドにより、先頭から5件のデータを表示することができる。
+<code class="docutils literal notranslate"><span class="pre">head(10)</span></code> のように引数に整数を渡すことで、その件数だけデータを表示することもできる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -531,9 +557,159 @@ document.write(`
 </div>
 </div>
 </div>
+<p>データフレームは、2次元配列の行方向と列方向にラベルがついたものと理解することができる。行方向のラベルのことを<strong>index</strong>、列方向のラベルのことを<strong>columns</strong>という。indexとcolumnsの値を指定して、要素にアクセスするには <code class="docutils literal notranslate"><span class="pre">loc</span></code> を使って次のように書く。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;carat&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>データフレームは2次元配列と相互に変換することができる。データフレームから2次元配列を取得するには、<code class="docutils literal notranslate"><span class="pre">values</span></code> 属性にアクセスすればよい。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">array</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">values</span>
+<span class="n">array</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>2次元配列からデータフレームを作成するには次のように書く。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
+<span class="n">df2</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>columnsのデフォルト値は0始まりの整数である。データフレームの作成時にcolumnsを設定するには、次のように書く。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+<span class="n">df2</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
-<section id="id9">
-<h2>ヒストグラム<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h2>
+<section id="id10">
+<h3>シリーズ<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h3>
+<p>データフレームは2次元配列に行ラベル・列ラベルをつけたものであった。
+pandasには、1次元配列に行ラベルをつけたデータ型も用意されており、<strong>シリーズ</strong>（<strong>Series</strong>）という。</p>
+<p>データフレームに対してcolumnsの値を <code class="docutils literal notranslate"><span class="pre">[]</span></code> で指定すると、その列のデータをシリーズとして取得できる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;carat&quot;</span><span class="p">]</span>
+<span class="n">s</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>indexの値を指定して、要素にアクセスするには <code class="docutils literal notranslate"><span class="pre">loc</span></code> を使って次のように書く。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>シリーズは1次元配列と相互に変換することができる。シリーズから1次元配列を取得するには、<code class="docutils literal notranslate"><span class="pre">values</span></code> 属性にアクセスすればよい。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">array</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">values</span>
+<span class="n">array</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>1次元配列からシリーズを作成するには次のように書く。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
+<span class="n">s2</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id11">
+<h3>テーブル操作<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h3>
+<p>データフレームを使うと、テーブルデータでよく行われる操作を簡単に実現することができる。データフレーム上でテーブルデータを加工し、加工したテーブルデータの値を配列として取得して、matplotlibなど他のライブラリに渡すというのがよくある使い方である。以下にいくつかの操作を紹介する。</p>
+<section id="id12">
+<h4>ソート<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">sort_values()</span></code> メソッドにより、引数に渡した列を基準にソートすることができる。デフォルトでは昇順にソートする。ソートした結果のデータフレームが戻り値として返されるので、以下のコードではそれを変数 <code class="docutils literal notranslate"><span class="pre">df</span></code> に再代入している。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;price&quot;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>降順にソートしたい場合は、引数に <code class="docutils literal notranslate"><span class="pre">ascending=False</span></code> を指定する。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;price&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id13">
+<h4>フィルタリング<a class="headerlink" href="#id13" title="Permalink to this heading">#</a></h4>
+<p>テーブルデータの中から特定の条件を満たす行を抽出することを<strong>フィルタリング</strong>という。</p>
+<p>フィルタリングを行うには、どのindexの行を抽出するかをブール型で表したシリーズを <code class="docutils literal notranslate"><span class="pre">loc</span></code> で指定する。
+例えば、<code class="docutils literal notranslate"><span class="pre">cut</span></code> の種類が <code class="docutils literal notranslate"><span class="pre">Premium</span></code> の行を抽出したいとしよう。
+このとき <code class="docutils literal notranslate"><span class="pre">cut</span></code> の種類が <code class="docutils literal notranslate"><span class="pre">Premium</span></code> かどうかを表すシリーズを次のように作成できる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;cut&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Premium&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>このシリーズを <code class="docutils literal notranslate"><span class="pre">loc</span></code>で指定することで、データフレームから <code class="docutils literal notranslate"><span class="pre">cut</span></code> の種類が <code class="docutils literal notranslate"><span class="pre">Premium</span></code> の行のみ抽出することができる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_premium</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;cut&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Premium&#39;</span><span class="p">]</span>
+<span class="n">df_premium</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id14">
+<h4>列の演算<a class="headerlink" href="#id14" title="Permalink to this heading">#</a></h4>
+<p>シリーズは、配列と同様に各種演算を行うことができる。またデータフレームの列の追加や更新は代入文により行うことができる。
+例えば、<code class="docutils literal notranslate"><span class="pre">x</span></code>、<code class="docutils literal notranslate"><span class="pre">y</span></code>、<code class="docutils literal notranslate"><span class="pre">z</span></code> の総和を求めて、その結果を <code class="docutils literal notranslate"><span class="pre">sum</span></code> という列として保持するには、以下のように書く。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;sum&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;z&#39;</span><span class="p">]</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>例えば、<code class="docutils literal notranslate"><span class="pre">price</span></code> の対数を計算して <code class="docutils literal notranslate"><span class="pre">price_log</span></code> という列として保持するには、以下のように書く。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;price_log&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">])</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="id15">
+<h2>ヒストグラム<a class="headerlink" href="#id15" title="Permalink to this heading">#</a></h2>
+<p>データの可視化の最後の例として<strong>ヒストグラム</strong>を学ぶ。
+ヒストグラムはデータをいくつかの階級に分割し、階級ごとのデータ数を可視化する。階級のことを<strong>ビン</strong>という。
+ヒストグラムによりデータの<strong>分布</strong>を確認することができる。</p>
+<p>ヒストグラムのプロット例を以下に示す。先ほどの <code class="docutils literal notranslate"><span class="pre">diamonds</span></code> データにおける <code class="docutils literal notranslate"><span class="pre">&quot;price&quot;</span></code> の値を1次元配列として取得し、そのヒストグラムをプロットしている。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># プロットの入れ物の用意</span>
@@ -543,7 +719,11 @@ document.write(`
 <span class="n">x</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;price&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
 
 <span class="c1"># ヒストグラムのプロット</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># 軸ラベルの設定</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;価格&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;カウント&quot;</span><span class="p">)</span>
 
 <span class="c1"># 表示</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -551,6 +731,12 @@ document.write(`
 </div>
 </div>
 </div>
+<p>Axesの <code class="docutils literal notranslate"><span class="pre">hist()</span></code> メソッドに1次元配列を渡すことで、ヒストグラムを作成できる。キーワード引数で <code class="docutils literal notranslate"><span class="pre">bins</span></code> を指定すると、横軸の分割数を指定できる（<strong>ビン数</strong>という）。ビン数を大きくすると、より細かい粒度で分布の形を確認できる。
+このヒストグラムにより、例えば価格の低いダイヤモンドにデータ数が偏っていることが確認できる。</p>
+<p>上の例では価格という1つの軸をもとにデータを分割したが、2つの軸をもとにデータを分割して度数を確認することもできる。
+そのようなヒストグラムを<strong>2次元ヒストグラム</strong>という。</p>
+<p>2次元ヒストグラムのプロット例を以下に示す。
+横軸に <code class="docutils literal notranslate"><span class="pre">&quot;carat&quot;</span></code> の対数の値を、縦軸に <code class="docutils literal notranslate"><span class="pre">&quot;price&quot;</span></code> の対数の値をとり、それ上のデータ数を<strong>カラープロット</strong>により表現している。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># プロットの入れ物の用意</span>
@@ -573,6 +759,12 @@ document.write(`
 </div>
 </div>
 </div>
+<p>ヒストグラムの階級を作るにあたって平面を六角形で分割している。このようなビンを<strong>Hexbin</strong>という。
+色とデータ数の対応関係を表すのが、右横の<strong>カラーバー</strong>である。
+カラーバーは　<code class="docutils literal notranslate"><span class="pre">#カラーバーのプロット</span></code> 以下の2行によりプロットできる。</p>
+</section>
+<section id="id16">
+<h2>演習<a class="headerlink" href="#id16" title="Permalink to this heading">#</a></h2>
 <hr class="footnotes docutils" />
 <aside class="footnote brackets" id="f1" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">1</a><span class="fn-bracket">]</span></span>
@@ -657,8 +849,19 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">折れ線グラフ</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas">pandas入門</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">ヒストグラム</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas">pandas入門</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">データフレーム</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">シリーズ</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">テーブル操作</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">ソート</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">フィルタリング</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">列の演算</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">ヒストグラム</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">演習</a></li>
 </ul>
   </nav></div>
 

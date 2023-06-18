@@ -643,6 +643,17 @@ timeモジュールの <code class="docutils literal notranslate"><span class="p
 </div>
 </div>
 </div>
+<div class="toggle docutils container">
+<p><strong>解答例</strong></p>
+<pre style={"white-space": "pre"}>
+if x % 2 == 0:
+    print("偶数")
+else:
+    print("奇数")
+</pre>
+<p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">%</span> <span class="pre">2</span></code> を評価すると、<code class="docutils literal notranslate"><span class="pre">x</span></code> を2で割った余りが求まる。
+よって、<code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">%</span> <span class="pre">2</span> <span class="pre">==</span> <span class="pre">0</span></code> により偶数かどうかを判定することができる。</p>
+</div>
 <p><strong>課題2</strong><br />
 引数として整数 <code class="docutils literal notranslate"><span class="pre">x</span></code> を受け取り、<code class="docutils literal notranslate"><span class="pre">x</span></code> が偶数のとき <code class="docutils literal notranslate"><span class="pre">True</span></code>、そうでないとき <code class="docutils literal notranslate"><span class="pre">False</span></code> を戻り値として返す関数 <code class="docutils literal notranslate"><span class="pre">is_even()</span></code>を作成しなさい。</p>
 <div class="cell docutils container">
@@ -656,6 +667,25 @@ timeモジュールの <code class="docutils literal notranslate"><span class="p
 </pre></div>
 </div>
 </div>
+</div>
+<div class="toggle docutils container">
+<p><strong>解答例</strong></p>
+<pre style={"white-space": "pre"}>
+def is_even(x):
+    if x % 2 == 0:
+        return True
+    else:
+        return False
+</pre>
+<p>上のように書くのが発想としては自然だが、次のように書くこともできる。</p>
+<p><strong>別解例</strong></p>
+<pre style={"white-space": "pre"}>
+def is_even(x):
+    return x % 2 == 0
+</pre>
+<p><strong>コメント</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">(True)</span></code> と書いている人が一定数いたが、returnは関数ではないので <code class="docutils literal notranslate"><span class="pre">()</span></code> は必要ない。ただし <code class="docutils literal notranslate"><span class="pre">()</span></code> をつけても、演算順序を決める <code class="docutils literal notranslate"><span class="pre">()</span></code> と解釈されて <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">True</span></code> と同じになるので動作上は問題ない。</p>
+<p>インデントを忘れている人も一定数いた。<code class="docutils literal notranslate"><span class="pre">:</span></code> を書いたときは、次の行はインデントを1つ深くする必要があるので、改めて気をつけてほしい。</p>
 </div>
 <p><strong>課題3</strong><br />
 整数からなるリスト <code class="docutils literal notranslate"><span class="pre">data</span></code> が与えられる。リストの要素について偶数の要素の数を求めて出力するプログラムを作成しなさい。</p>
@@ -676,6 +706,17 @@ timeモジュールの <code class="docutils literal notranslate"><span class="p
 </pre></div>
 </div>
 </div>
+</div>
+<div class="toggle docutils container">
+<p><strong>解答例</strong></p>
+<pre style={"white-space": "pre"}>
+count = 0
+for v in data:
+    if v % 2 == 0:
+        count += 1
+        
+print(count)
+</pre>
 </div>
 </section>
 </section>
