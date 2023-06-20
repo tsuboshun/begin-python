@@ -550,7 +550,7 @@ document.write(`
 <p><strong>課題1</strong><br />
 足し算の定義を真似して、掛け算を行うメソッド <code class="docutils literal notranslate"><span class="pre">mul()</span></code> を定義しなさい。</p>
 <p><strong>課題2</strong><br />
-<code class="docutils literal notranslate"><span class="pre">Fraction</span></code> クラスのインスタンスが必ず既約分数（分母と分子に1以外の公約数がなくて、それ以上に約分できない分数のこと）を表すように <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> の処理を変更しなさい。そのためには引数に渡される <code class="docutils literal notranslate"><span class="pre">n</span></code> と <code class="docutils literal notranslate"><span class="pre">d</span></code> を最大公約数で割ったものを、<code class="docutils literal notranslate"><span class="pre">self.n</span></code> と <code class="docutils literal notranslate"><span class="pre">self.d</span></code> に設定すればよい。割り算の結果が <code class="docutils literal notranslate"><span class="pre">int</span></code> 型となるように、割り算には <code class="docutils literal notranslate"><span class="pre">/</span></code> ではなく <code class="docutils literal notranslate"><span class="pre">//</span></code> を使うこと。また最大公約数は <code class="docutils literal notranslate"><span class="pre">math</span></code> モジュールの <code class="docutils literal notranslate"><span class="pre">math.gcd()</span></code> 関数で求めることができる。</p>
+<code class="docutils literal notranslate"><span class="pre">Fraction</span></code> クラスのインスタンスが必ず既約分数（分母と分子に1以外の公約数がなくて、それ以上に約分できない分数のこと）を表すように <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> の処理を変更しなさい。そのためには引数に渡される <code class="docutils literal notranslate"><span class="pre">n</span></code> と <code class="docutils literal notranslate"><span class="pre">d</span></code> を最大公約数で割ったものを、<code class="docutils literal notranslate"><span class="pre">self.n</span></code> と <code class="docutils literal notranslate"><span class="pre">self.d</span></code> に設定すればよい。<code class="docutils literal notranslate"><span class="pre">self.n</span></code> と <code class="docutils literal notranslate"><span class="pre">self.d</span></code> は <code class="docutils literal notranslate"><span class="pre">int</span></code> 型としたいので、割り算の結果が <code class="docutils literal notranslate"><span class="pre">int</span></code> 型となるように割り算には <code class="docutils literal notranslate"><span class="pre">/</span></code> ではなく <code class="docutils literal notranslate"><span class="pre">//</span></code> を使うこと。また最大公約数は <code class="docutils literal notranslate"><span class="pre">math</span></code> モジュールの <code class="docutils literal notranslate"><span class="pre">math.gcd()</span></code> 関数で求めることができる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
@@ -582,19 +582,23 @@ document.write(`
 </div>
 </div>
 </div>
-<p>コードが完成したら以下を実行してみよう。正しく実装できていれば、<code class="docutils literal notranslate"><span class="pre">2/5</span></code> と表示されるはずである。</p>
+<p>コードが完成したら以下を実行してみよう。正しく実装できていれば、<code class="docutils literal notranslate"><span class="pre">2/5</span></code> 、<code class="docutils literal notranslate"><span class="pre">3/10</span></code> と表示されるはずである。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">Fraction</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">Fraction</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+
+<span class="n">x</span> <span class="o">=</span>  <span class="n">Fraction</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">Fraction</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>  <span class="c1"># 0.1 * 3</span>
 </pre></div>
 </div>
 </div>
 </div>
 <p><strong>おまけ</strong><br />
 特殊メソッドの <code class="docutils literal notranslate"><span class="pre">__add__()</span></code> と <code class="docutils literal notranslate"><span class="pre">__mul__()</span></code> を使うと、それぞれ <code class="docutils literal notranslate"><span class="pre">+</span></code> 演算子、<code class="docutils literal notranslate"><span class="pre">*</span></code> 演算子を使用したときの動作を定義することができる。
-上で作成した <code class="docutils literal notranslate"><span class="pre">Fraction</span></code> クラスの <code class="docutils literal notranslate"><span class="pre">add()</span></code> と <code class="docutils literal notranslate"><span class="pre">mul()</span></code> の名前を <code class="docutils literal notranslate"><span class="pre">__add__()</span></code> と <code class="docutils literal notranslate"><span class="pre">__mul__()</span></code> に変更して実行した上で、次のコードを実行してみよう。</p>
+上で作成した <code class="docutils literal notranslate"><span class="pre">Fraction</span></code> クラスの <code class="docutils literal notranslate"><span class="pre">add()</span></code> と <code class="docutils literal notranslate"><span class="pre">mul()</span></code> の名前を <code class="docutils literal notranslate"><span class="pre">__add__()</span></code> と <code class="docutils literal notranslate"><span class="pre">__mul__()</span></code> に変更して、クラス定義のコードを実行した上で、次のコードを実行してみよう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">Fraction</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">+</span> <span class="n">Fraction</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
