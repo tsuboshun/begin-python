@@ -564,12 +564,6 @@ key = 4
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;/content/drive/MyDrive/sample.txt&quot;</span>
-<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
-
-<span class="n">content</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
-
-<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -580,18 +574,6 @@ key = 4
 <p><code class="docutils literal notranslate"><span class="pre">open()</span></code> 関数の返すファイルオブジェクト <code class="docutils literal notranslate"><span class="pre">f</span></code> に対して、<code class="docutils literal notranslate"><span class="pre">read()</span></code> メソッドを呼び出すと、ファイルの中身を文字列として取得できる。
 最後に、開いたファイルオブジェクトを <code class="docutils literal notranslate"><span class="pre">f.close()</span></code> により閉じている。</p>
 <p><code class="docutils literal notranslate"><span class="pre">read()</span></code> メソッドはファイル全体を文字列として読み込むが、for文により一行ずつ読み込むこともできる。</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
-
-<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
-
-<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
 <p>さて <code class="docutils literal notranslate"><span class="pre">sample.txt</span></code> の中身は各行が一人一人の学生、各列が何かしらのスコアを表していたとしよう（つまり学生4人・スコア5つ）。このときデータを2次元リストとして読み込めると、分析の際に便利である。次のコードにより、ファイルの中身を2次元リストとして読み込むことができる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -607,7 +589,7 @@ key = 4
 </div>
 </div>
 </div>
-<p>ここで各行の文字列 <code class="docutils literal notranslate"><span class="pre">line</span></code> について、まず <code class="docutils literal notranslate"><span class="pre">strip()</span></code> メソッドにより改行文字 <code class="docutils literal notranslate"><span class="pre">\n</span></code> を取り除き、次に <code class="docutils literal notranslate"><span class="pre">split('</span> <span class="pre">')</span></code> メソッドにより空白文字で区切ってリストに変換している。例として、for文のループの1回目に <code class="docutils literal notranslate"><span class="pre">line</span></code> にファイルの1行目 <code class="docutils literal notranslate"><span class="pre">&quot;8</span> <span class="pre">7</span> <span class="pre">9</span> <span class="pre">6</span> <span class="pre">9\n&quot;</span></code> が代入されたときの処理の流れを、以下に示す。</p>
+<p>ここで各行の文字列 <code class="docutils literal notranslate"><span class="pre">line</span></code> について、まず <code class="docutils literal notranslate"><span class="pre">strip()</span></code> メソッドにより改行文字 <code class="docutils literal notranslate"><span class="pre">\n</span></code> を取り除き、次に <code class="docutils literal notranslate"><span class="pre">split('</span> <span class="pre">')</span></code> メソッドにより空白文字で区切ってリストに変換している。例として、<code class="docutils literal notranslate"><span class="pre">line</span></code> にファイルの1行目 <code class="docutils literal notranslate"><span class="pre">&quot;8</span> <span class="pre">7</span> <span class="pre">9</span> <span class="pre">6</span> <span class="pre">9\n&quot;</span></code> が代入されたときの処理の流れを、以下に示す。</p>
 <pre>
 line.strip().split(' ')
 </pre>
@@ -621,13 +603,22 @@ line.strip().split(' ')
 </pre>
 <p>↓ <code class="docutils literal notranslate"><span class="pre">split()</span></code> メソッドの適用</p>
 <pre>
-["8", "7", "9", "6", "9"]
-</pre><p>注意点として、この時点では <code class="docutils literal notranslate"><span class="pre">data</span></code> の各要素は文字列型となっている。そこで分析前に整数型または浮動小数点数型に変換しておく。</p>
+['8', '7', '9', '6', '9']
+</pre>
+<p>よって、<code class="docutils literal notranslate"><span class="pre">data.append(line.strip().split('</span> <span class="pre">'))</span></code> は <code class="docutils literal notranslate"><span class="pre">data.append(['8',</span> <span class="pre">'7',</span> <span class="pre">'9',</span> <span class="pre">'6',</span> <span class="pre">'9'])</span></code> と同じことであり、これにより2次元リスト <code class="docutils literal notranslate"><span class="pre">data</span></code> の末尾に1次元リスト <code class="docutils literal notranslate"><span class="pre">['8',</span> <span class="pre">'7',</span> <span class="pre">'9',</span> <span class="pre">'6',</span> <span class="pre">'9']</span></code> が追加される。</p>
+<p>注意点として、この時点では <code class="docutils literal notranslate"><span class="pre">data</span></code> の各要素は文字列型となっている。そこで分析前に整数型または浮動小数点数型に変換しておく。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)):</span>
     <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">])):</span>
         <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">])</span>  <span class="c1"># 小数を含むならfloat()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span>
 </pre></div>
 </div>
 </div>
@@ -647,14 +638,6 @@ line.strip().split(' ')
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">output_path</span> <span class="o">=</span> <span class="s2">&quot;/content/drive/MyDrive/sample_mean.txt&quot;</span>
-<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">output_path</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
-
-<span class="k">for</span> <span class="n">lst</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
-    <span class="n">mean</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">lst</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">lst</span><span class="p">)</span>
-    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">mean</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-
-<span class="n">f</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
-<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -669,7 +652,7 @@ line.strip().split(' ')
 <p><strong>課題</strong><br />
 上の節では、各学生の平均スコアを求めてファイルに出力した。これを参考に、平均スコアの代わりにスコアの標準偏差を求めてファイルに出力し、作成したファイルを提出しなさい。ファイル名は <code class="docutils literal notranslate"><span class="pre">sample_std.txt</span></code> とすること。これは必須ではないが、可能なら小数は第3位を四捨五入して第2位までを求めなさい（<a class="reference internal" href="../lecture03.html#label-round"><span class="std std-ref">参考</span></a>）。</p>
 <p>ヒント1:  第6回で紹介したNumPyを利用すると、標準偏差は簡単に求められる。<code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">numpy</span> <span class="pre">as</span> <span class="pre">np</span></code> によりNumPyを読み込んだあと、<code class="docutils literal notranslate"><span class="pre">np.std()</span></code> 関数を使って、<code class="docutils literal notranslate"><span class="pre">np.std(lst)</span></code> によりリスト <code class="docutils literal notranslate"><span class="pre">lst</span></code> の標準偏差を求めることができる。<br />
-ヒント2:  学生は4人いるので、標準偏差も4つ求まることになる。<code class="docutils literal notranslate"><span class="pre">sample_std.txt</span></code> は次のような見た目になる。ヒントとして1行目のみ答えを示す。<code class="docutils literal notranslate"><span class="pre">data</span></code> の1行目 <code class="docutils literal notranslate"><span class="pre">[8,</span> <span class="pre">7,</span> <span class="pre">9,</span> <span class="pre">6,</span> <span class="pre">9]</span></code> の標準偏差を求めて小数第3位を四捨五入すると <code class="docutils literal notranslate"><span class="pre">1.17</span></code> になる（四捨五入せずに1.16619…という解答でも正解とする）。</p>
+ヒント2:  学生は4人いるので、標準偏差も4つ求まることになる。<code class="docutils literal notranslate"><span class="pre">sample_std.txt</span></code> は次のような見た目になる。ヒントとして1行目のみ答えを示す。つまり、<code class="docutils literal notranslate"><span class="pre">data</span></code> の1行目 <code class="docutils literal notranslate"><span class="pre">[8,</span> <span class="pre">7,</span> <span class="pre">9,</span> <span class="pre">6,</span> <span class="pre">9]</span></code> の標準偏差を求めて小数第3位を四捨五入すると <code class="docutils literal notranslate"><span class="pre">1.17</span></code> になる（四捨五入せずに1.16619…という解答でも正解とする）。</p>
 <pre>1.17
 *
 *
