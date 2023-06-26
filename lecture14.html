@@ -402,7 +402,7 @@ document.write(`
 <h2>データの分布と代表値<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
 <section id="id5">
 <h3>分布の可視化<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
-<p>データの分布を確認すると、データの全体的なパターンや構造、傾向を理解することができる。そのためデータ分析の最初の一歩として、データの分布を確認することが多い。この節ではデータの分布を確認するための方法をいくつか学ぶ。</p>
+<p>データの分布を確認すると、データの全体的な構造や傾向を理解することができる。そのためデータ分析の最初の一歩として、データの分布を確認することが多い。この節ではデータの分布を調べ、そこから有用な情報を得るための方法をいくつか学ぶ。</p>
 <p>この節で利用するライブラリのimportを行う。前回も利用した <code class="docutils literal notranslate"><span class="pre">'diamonds'</span></code> というテーブルデータを利用する。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -499,7 +499,9 @@ Name: cut, dtype: int64
 </div>
 </div>
 </div>
-<p>データの分布を確認する代わりに、分布を要約するような統計量（<strong>代表値</strong>）を調べることもよく行われる。代表値の例としては、平均値（または平均）、標準偏差、中央値などがある。とくにデータが正規分布にしたがうときは、平均と標準偏差だけで分布を再現することができるので、分布の情報はこれで尽きている。</p>
+<p>データの分布を確認する代わりに、分布を要約するような統計量を調べることもよく行われる。
+このような統計量のことを<strong>代表値</strong>という。
+代表値の例としては、平均値（または平均）、標準偏差、中央値などがある。とくにデータが正規分布にしたがうときは、平均と標準偏差だけで分布を再現することができるので、これらは分布についての十分な情報を持つ。</p>
 <p>正規分布にしたがうデータについて、平均と標準偏差を求めて分布と照らし合わせてみよう。
 以下では、<code class="docutils literal notranslate"><span class="pre">np.random.normal()</span></code> 関数により平均10、標準偏差2の正規分布にしたがうデータを1000個生成し、そのヒストグラムを作成している。</p>
 <div class="cell docutils container">
@@ -529,7 +531,7 @@ Name: cut, dtype: int64
 <img alt="_images/b011b3f34fe84b92dc7be1cda391d9695eea1f7478b4342bef5165ce4656e381.png" src="_images/b011b3f34fe84b92dc7be1cda391d9695eea1f7478b4342bef5165ce4656e381.png" />
 </div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">sample_data</span></code> から求まる平均を <span class="math notranslate nohighlight">\(\mu\)</span>、標準偏差を <span class="math notranslate nohighlight">\(\sigma\)</span> と書くとき、<span class="math notranslate nohighlight">\(\mu-\sigma\)</span>、<span class="math notranslate nohighlight">\(\mu\)</span>、<span class="math notranslate nohighlight">\(\mu+\sigma\)</span> の位置を <code class="docutils literal notranslate"><span class="pre">axvline()</span></code> メソッドによりそれぞれ縦の点線として表示している。データが正規分布にしたがうとき、平均は分布のちょうど真ん中あたりに来る。また <span class="math notranslate nohighlight">\(\sigma\)</span> の大きさが、データの平均的な（平均値周りの）バラつきの大きさを表していることも確認できる。</p>
+<p><code class="docutils literal notranslate"><span class="pre">sample_data</span></code> から求まる平均を <span class="math notranslate nohighlight">\(\mu\)</span>、標準偏差を <span class="math notranslate nohighlight">\(\sigma\)</span> と書くとき、<span class="math notranslate nohighlight">\(\mu-\sigma\)</span>、<span class="math notranslate nohighlight">\(\mu\)</span>、<span class="math notranslate nohighlight">\(\mu+\sigma\)</span> の位置を <code class="docutils literal notranslate"><span class="pre">axvline()</span></code> メソッドによりそれぞれ縦の点線として表示している。データが正規分布にしたがうとき、平均は分布のちょうど真ん中あたりに来る。また <span class="math notranslate nohighlight">\(\sigma\)</span> の大きさが、データの平均的な（平均値からの）バラつきの大きさを表していることも確認できる。</p>
 <p>注意したいのが、「<strong>平均は必ずしも普通を表さない</strong>」ということである。例えば、先ほどのダイヤモンドの価格の例で、平均の位置を縦の点線で表示すると次のようになる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -558,15 +560,15 @@ Name: cut, dtype: int64
 <img alt="_images/2f85e8ba0e3f1c3160927640a63a0c44bd06de238e757b7405e7d0d223fc6226.png" src="_images/2f85e8ba0e3f1c3160927640a63a0c44bd06de238e757b7405e7d0d223fc6226.png" />
 </div>
 </div>
-<p>データ数のピークが左の方にある中で、平均値を普通を捉えるのは正確な表現とは言えない。この例のように分布の裾が長く、歪んだ形をしているとき、平均値はあまり良い代表値とは言えなくなる。また、このテーブルデータにたった1個1億ドルのダイヤモンドのデータを追加するだけで、平均値は右に1850ドル近くシフトする。このような<strong>外れ値</strong>に引っ張られるというのも、平均値の欠点の1つである。</p>
+<p>データ数のピークが左の方にある中で、赤の点線の位置を普通と捉えるのは疑問である。この例のように分布の裾が長く、歪んだ形をしているとき、平均値はあまり良い代表値とは言えなくなる。また例えば、このテーブルデータにたった1個1億ドルのダイヤモンドのデータを追加するだけで、平均値は右に1850ドル近くシフトする。このような<strong>外れ値</strong>に引っ張られるというのも、平均値の欠点の1つである。</p>
 </section>
 <section id="id6">
 <h3>変数変換<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
 <p>価格のような比例尺度は、対数をとると分布の形が綺麗になることが多い。</p>
-<p>その理由は、価格の場合、差は比率で考える方が（社会の慣習として）より自然なためである。
+<p>その理由は、価格の場合、差は比率で考える方が、社会的な慣習としてより自然なためである。
 例えば、10ドルの商品を11ドルに値上げするのと、1000ドルの商品を1001ドルに値上げするのとでは、前者の方が大きな値上げに感じると思う。
 これは私たちが価格の差を比率で捉えることに慣れていることに起因する。</p>
-<p>価格についてそのままヒストグラムを作成すると、例えばビンの幅を1ドルとして、10ドル 〜 11ドルのデータ数を1000ドル 〜 1001ドルのデータ数と比較することになる。しかし、高価格帯における1ドルの重みは低価格帯と比べて低いので、このような分割を行うと高価格帯ほどデータ数の少ない裾の長い分布が得られやすい。一方で、価格について対数をとってからヒストグラムを作成すると、例えば10ドル 〜 11ドルのデータ数は1000ドル 〜 1100ドルのデータ数と比較されることになる。これは、<span class="math notranslate nohighlight">\(\log a - \log b = \log\frac{a}{b}\)</span> より <span class="math notranslate nohighlight">\(\log\)</span> のスケールで一定間隔をとることは、元のスケールで一定比率でビンを作るのと等しくなるためである。そして、価格においては対数をとることでデータの分布は釣鐘型に近くなることが多い。</p>
+<p>価格についてそのままヒストグラムを作成すると、例えばビンの幅を1ドルとして、10ドル 〜 11ドルのデータ数を1000ドル 〜 1001ドルのデータ数と比較することになる。しかし、高価格帯における1ドルの重みは低価格帯と比べて低いので、このような分割を行うと高価格帯ほどデータ数の少ない裾の長い分布が得られやすい。一方で、価格について対数をとってからヒストグラムを作成すると、例えば10ドル 〜 11ドルのデータ数は1000ドル 〜 1100ドルのデータ数と比較されることになる。これは <span class="math notranslate nohighlight">\(\log a - \log b = \log\frac{a}{b}\)</span> より <span class="math notranslate nohighlight">\(\log\)</span> のスケールで一定間隔をとることは、元のスケールで一定比率でビンを作るのと等しいためである。そして、価格においては対数をとることでデータの分布は釣鐘型に近くなることが多い。</p>
 <p>価格について対数をとってから、ヒストグラムを作成する例を以下に示す。平均を赤の点線で示している。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
