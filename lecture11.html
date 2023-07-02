@@ -431,6 +431,16 @@ key = 4
 </div>
 </div>
 </div>
+<div class="toggle docutils container">
+<p><strong>解答例</strong></p>
+<pre style={"white-space": "pre"}>
+def linear_search(data, key):
+    for i in range(len(data)):
+        if data[i] == key:
+            return i
+    return None
+</pre>
+</div>
 <p>線形探索の計算量は、リストの要素数を <span class="math notranslate nohighlight">\(N\)</span> として最悪も平均も <span class="math notranslate nohighlight">\(O(N)\)</span> である。
 最悪の場合は、キーと一致する要素がリストの最後にあるか、存在しない場合である。
 このときfor文の処理を <span class="math notranslate nohighlight">\(N\)</span> 回繰り返すことになるので、最悪計算量は <span class="math notranslate nohighlight">\(O(N)\)</span> となる。
@@ -479,16 +489,33 @@ key = 4
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
 <span class="n">key</span> <span class="o">=</span> <span class="mi">7</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">binary_search</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">key</span><span class="p">))</span> <span class="c1"># 2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">binary_search</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">key</span><span class="p">))</span> <span class="c1"># 3</span>
 
-<span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">]</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
 <span class="n">key</span> <span class="o">=</span> <span class="mi">4</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">binary_search</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">key</span><span class="p">))</span> <span class="c1"># None</span>
 </pre></div>
 </div>
 </div>
+</div>
+<div class="toggle docutils container">
+<p><strong>解答例</strong></p>
+<pre style={"white-space": "pre"}>
+def binary_search(data, key):
+    left = 0
+    right = len(data) - 1
+    while left <= right:
+        mid = (left + right) // 2
+        if data[mid] == key:
+            return mid
+        elif data[mid] > key:
+            right = mid - 1
+        else:
+            left = mid + 1
+    return None
+</pre>
 </div>
 <p>二分探索の計算量は、リストの要素数を <span class="math notranslate nohighlight">\(N\)</span> として最悪も平均も <span class="math notranslate nohighlight">\(O(\log N)\)</span> である。
 二分探索ではキーと要素を比較するたびに探索範囲が約半分になる。
@@ -699,6 +726,22 @@ line.strip().split(' ')
 </pre></div>
 </div>
 </div>
+</div>
+<div class="toggle docutils container">
+<p><strong>解答例</strong></p>
+<pre style={"white-space": "pre"}>
+import numpy as np # NumPyの読み込み
+
+output_path = "/content/drive/MyDrive/sample_std.txt"
+f = open(output_path, mode='w')
+
+for lst in data:
+    std = np.std(lst)
+    f.write(f"{std:.2f}\n")
+
+f.flush()
+f.close()
+</pre>
 </div>
 </section>
 </section>
