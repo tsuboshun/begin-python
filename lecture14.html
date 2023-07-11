@@ -326,11 +326,12 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">データの種類</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">データの分布と代表値</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">分布の可視化</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">変数変換</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">層別分析</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">代表値</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">変数変換</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">層別分析</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">相関と因果</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">相関と因果</a></li>
 </ul>
             </nav>
         </div>
@@ -392,75 +393,20 @@ document.write(`
 <p>名義尺度の例として、性別が挙げられる。性別は人間に男性または女性というラベルを割り当てたものであって、これらのラベルの順番に意味はないし、間隔というものを考えることもできない。</p>
 <p>順序尺度の例として、5段階評価が挙げられる。
 例えば顧客の満足度を1から5の整数で表してデータを集計したとして、これらの数値の順番には意味があるが、間隔には意味がない。
-評価5は大満足、評価4は満足を表すのであって、大満足と満足の差を数値で表すことはできない。</p>
+評価5は大満足、評価4は満足を表すのであって、評価5と評価4の差が、評価2と評価1の差と同じ程度のものかはわからない。</p>
 <p>間隔尺度の例として、温度（℃）が挙げられる。
 温度は順番にも間隔にも意味がある。しかし、0℃は人間が適当に決めた基準であって、それ以下がないという意味の絶対的な0度ではない。したがって、30℃は15℃の2倍という主張にあまり意味がない。実際、華氏（℉）に直すと30℃は86℉、15℃は59℉であり、0度の基準が異なれば、先ほどの主張が成立しなくなる。</p>
 <p>比例尺度の例として、金額が挙げられる。金額は順番・間隔・比率に意味がある。例えば、100円玉を5枚集めると500円になるので、500円は100円の5倍という主張は正しい。</p>
 </section>
 <section id="id4">
 <h2>データの分布と代表値<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
-<p>ヒストグラムはデータの値をいくつかの階級に分割し、階級ごとのデータ数を集計して可視化する。
-ヒストグラムによりデータの<strong>分布</strong>を確認することができる。</p>
-<p>ヒストグラムのプロット例を以下に示す。先ほどの <code class="docutils literal notranslate"><span class="pre">diamonds</span></code> データセットにおける <code class="docutils literal notranslate"><span class="pre">&quot;price&quot;</span></code> の値を1次元配列として取得し、そのヒストグラムをプロットしている。</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># プロットの入れ物の用意</span>
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
-
-<span class="c1"># データの用意</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;price&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
-
-<span class="c1"># ヒストグラムのプロット</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-
-<span class="c1"># 軸ラベルの設定</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;価格&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;カウント&quot;</span><span class="p">)</span>
-
-<span class="c1"># 表示</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Axesの <code class="docutils literal notranslate"><span class="pre">hist()</span></code> メソッドに1次元配列を渡すことで、ヒストグラムを作成できる。キーワード引数で <code class="docutils literal notranslate"><span class="pre">bins</span></code> を指定すると、横軸の分割数を指定できる（<strong>ビン数</strong>という）。ビン数を大きくすると、より細かい粒度で分布の形を確認できる。
-上のヒストグラムからは、例えば価格の低いダイヤモンドにデータ数が偏っていることが確認できる。</p>
-<p>上の例では価格という1つの軸をもとにデータを分割したが、2つの軸をもとにデータを分割してデータ数を確認することもできる。
-そのようなヒストグラムを<strong>2次元ヒストグラム</strong>という。</p>
-<p>2次元ヒストグラムのプロット例を以下に示す。
-横軸に <code class="docutils literal notranslate"><span class="pre">&quot;carat&quot;</span></code> の対数の値を、縦軸に <code class="docutils literal notranslate"><span class="pre">&quot;price&quot;</span></code> の対数の値をとり、それ上のデータ数を<strong>カラープロット</strong>により表現している。</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># プロットの入れ物の用意</span>
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
-
-<span class="c1"># データの用意</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;carat&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;price&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
-
-<span class="c1"># 2次元ヒストグラムのプロット</span>
-<span class="n">hb</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">hexbin</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">gridsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-
-<span class="c1"># カラーバーのプロット</span>
-<span class="n">cb</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">hb</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
-<span class="n">cb</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s1">&#39;カウント&#39;</span><span class="p">)</span>
-
-<span class="c1"># 表示</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>ヒストグラムの階級を作るにあたって平面を六角形で分割している。このような区分を<strong>Hexbin</strong>という。
-色とデータ数の対応関係を表すのが、右横の<strong>カラーバー</strong>である。
-カラーバーは　<code class="docutils literal notranslate"><span class="pre">#カラーバーのプロット</span></code> 以下の2行によりプロットできる。</p>
 <section id="id5">
 <h3>分布の可視化<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
-<p>データの分布を確認すると、データの全体的な構造や傾向を理解することができる。そのためデータ分析の最初の一歩として、データの分布を確認することが多い。この節ではデータの分布を調べ、そこから有用な情報を得るための方法をいくつか学ぶ。</p>
+<p>データの<strong>分布</strong>とは、データの値が全体にどのように散らばっているか、または集中しているかを示すものである。データの分布を確認すると、データの全体的な構造や傾向を理解することができる。そのためデータ分析の最初の一歩として、データの分布を確認することが多い。この節ではデータの分布を調べ、そこから有用な情報を得るための方法をいくつか学ぶ。</p>
 <p>この節で利用するライブラリのimportを行う。前回も利用した <code class="docutils literal notranslate"><span class="pre">'diamonds'</span></code> というテーブルデータを利用する。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">japanize_matplotlib</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#pip install japanize_matplotlib</span>
 </pre></div>
 </div>
 </div>
@@ -484,33 +430,8 @@ document.write(`
 </div>
 </div>
 </div>
-<p>の場合はヒストグラムを描くことで、データの分布を把握することができる。
-前回の復習となるが、ダイヤモンドの価格についてヒストグラムをプロットする例を以下に示す。</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># プロットの入れ物の用意</span>
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
-
-<span class="c1"># データの用意</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">df_diamond</span><span class="p">[</span><span class="s2">&quot;price&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
-
-<span class="c1"># ヒストグラムのプロット</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-
-<span class="c1"># 軸ラベルの設定</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;価格&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;カウント&quot;</span><span class="p">)</span>
-
-<span class="c1"># 表示</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/f0a1bc3f25b5a97cb4f98a7bb857839dcbe138ac6505258fbc11e3a0f0fa1ad4.png" src="_images/f0a1bc3f25b5a97cb4f98a7bb857839dcbe138ac6505258fbc11e3a0f0fa1ad4.png" />
-</div>
-</div>
-<p>の場合は棒グラフを描くことで、データの分布を把握することができる。質的変数の取る値の種類を<strong>カテゴリ</strong>というが、カテゴリごとのデータ数を集計して棒グラフとしてプロットする例を以下に示す。</p>
+<p>データの分布を確認するための可視化手法に<strong>棒グラフ</strong>と<strong>ヒストグラム</strong>がある。</p>
+<p>質的変数などの取りうる値の種類が少ないデータに対しては、棒グラフを描くことが有効である。質的変数の取る値の種類を<strong>カテゴリ</strong>というが、カテゴリごとのデータ数を集計して棒グラフとしてプロットする例を以下に示す。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># プロットの入れ物の用意</span>
@@ -553,6 +474,70 @@ Name: cut, dtype: int64
 </div>
 </div>
 </div>
+<p>量的変数などの取りうる値の種類が多いデータに対しては、ヒストグラムが有効である。</p>
+<p>ヒストグラムはデータの値をいくつかの階級に分割し、階級ごとのデータ数を集計して可視化する。
+ヒストグラムのプロット例を以下に示す。<code class="docutils literal notranslate"><span class="pre">diamonds</span></code> データセットにおける <code class="docutils literal notranslate"><span class="pre">&quot;price&quot;</span></code> の値を1次元配列として取得し、そのヒストグラムをプロットしている。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># プロットの入れ物の用意</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="c1"># データの用意</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">df_diamond</span><span class="p">[</span><span class="s2">&quot;price&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+
+<span class="c1"># ヒストグラムのプロット</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># 軸ラベルの設定</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;価格&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;カウント&quot;</span><span class="p">)</span>
+
+<span class="c1"># 表示</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/adbfe9e8bd6bbe471a863649dd6e8bab8214d50236b316781c26f52c46f9dd9f.png" src="_images/adbfe9e8bd6bbe471a863649dd6e8bab8214d50236b316781c26f52c46f9dd9f.png" />
+</div>
+</div>
+<p>Axesの <code class="docutils literal notranslate"><span class="pre">hist()</span></code> メソッドに1次元配列を渡すことで、ヒストグラムを作成できる。キーワード引数で <code class="docutils literal notranslate"><span class="pre">bins</span></code> を指定すると、横軸の分割数を指定できる（<strong>ビン数</strong>という）。ビン数を大きくすると、より細かい粒度で分布の形を確認できる。
+上のヒストグラムからは、例えば価格の低いダイヤモンドにデータ数が偏っていることが確認できる。</p>
+<p>上の例では価格という1つの軸をもとにデータを分割したが、2つの軸をもとにデータを分割してデータ数を確認することもできる。
+そのようなヒストグラムを<strong>2次元ヒストグラム</strong>という。</p>
+<p>2次元ヒストグラムのプロット例を以下に示す。
+横軸に <code class="docutils literal notranslate"><span class="pre">&quot;carat&quot;</span></code> の対数の値を、縦軸に <code class="docutils literal notranslate"><span class="pre">&quot;price&quot;</span></code> の対数の値をとり、それ上のデータ数を<strong>カラープロット</strong>により表現している。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># プロットの入れ物の用意</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="c1"># データの用意</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">df_diamond</span><span class="p">[</span><span class="s2">&quot;carat&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">df_diamond</span><span class="p">[</span><span class="s2">&quot;price&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+
+<span class="c1"># 2次元ヒストグラムのプロット</span>
+<span class="n">hb</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">hexbin</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">gridsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># カラーバーのプロット</span>
+<span class="n">cb</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">hb</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+<span class="n">cb</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s1">&#39;カウント&#39;</span><span class="p">)</span>
+
+<span class="c1"># 表示</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/102268f8de27f6c700e87c5a47afecd4244019a13ff013bec5ab8a2782ff274d.png" src="_images/102268f8de27f6c700e87c5a47afecd4244019a13ff013bec5ab8a2782ff274d.png" />
+</div>
+</div>
+<p>ヒストグラムの階級を作るにあたって平面を六角形で分割している。このような区分を<strong>Hexbin</strong>という。
+色とデータ数の対応関係を表すのが、右横の<strong>カラーバー</strong>である。
+カラーバーは　<code class="docutils literal notranslate"><span class="pre">#カラーバーのプロット</span></code> 以下の2行によりプロットできる。</p>
+</section>
+<section id="id6">
+<h3>代表値<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
 <p>データの分布を確認する代わりに、分布を要約するような統計量を調べることもよく行われる。
 このような統計量のことを<strong>代表値</strong>という。
 代表値の例としては、平均値（または平均）、標準偏差、中央値などがある。とくにデータが正規分布にしたがうときは、平均と標準偏差だけで分布を再現することができるので、これらは分布についての十分な情報を持つ。</p>
@@ -582,10 +567,13 @@ Name: cut, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b011b3f34fe84b92dc7be1cda391d9695eea1f7478b4342bef5165ce4656e381.png" src="_images/b011b3f34fe84b92dc7be1cda391d9695eea1f7478b4342bef5165ce4656e381.png" />
+<img alt="_images/4a238bd03ee1ac4a2f7cdf58056bd7558b1d4e6023f2c27bece5a9212d3f7daa.png" src="_images/4a238bd03ee1ac4a2f7cdf58056bd7558b1d4e6023f2c27bece5a9212d3f7daa.png" />
 </div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">sample_data</span></code> から求まる平均を <span class="math notranslate nohighlight">\(\mu\)</span>、標準偏差を <span class="math notranslate nohighlight">\(\sigma\)</span> と書くとき、<span class="math notranslate nohighlight">\(\mu-\sigma\)</span>、<span class="math notranslate nohighlight">\(\mu\)</span>、<span class="math notranslate nohighlight">\(\mu+\sigma\)</span> の位置を <code class="docutils literal notranslate"><span class="pre">axvline()</span></code> メソッドによりそれぞれ縦の点線として表示している。データが正規分布にしたがうとき、平均は分布のちょうど真ん中あたりに来る。また <span class="math notranslate nohighlight">\(\sigma\)</span> の大きさが、データの平均的な（平均値からの）バラつきの大きさを表していることも確認できる。</p>
+<p><code class="docutils literal notranslate"><span class="pre">sample_data</span></code> から求まる平均を <span class="math notranslate nohighlight">\(\hat{\mu}\)</span>、標準偏差を <span class="math notranslate nohighlight">\(\hat{\sigma}\)</span> と書くとき、<span class="math notranslate nohighlight">\(\hat{\mu}-\hat{\sigma}\)</span>、<span class="math notranslate nohighlight">\(\hat{\mu}\)</span>、<span class="math notranslate nohighlight">\(\hat{\mu}+\hat{\sigma}\)</span> の位置を <code class="docutils literal notranslate"><span class="pre">axvline()</span></code> メソッドによりそれぞれ縦の点線として表示している。
+データが正規分布にしたがうとき、平均は分布のちょうど真ん中あたりに来る。また <span class="math notranslate nohighlight">\(\hat{\sigma}\)</span> の大きさが、データの平均的な（平均値からの）バラつきの大きさを表していることも確認できる。</p>
+<p>平均と標準偏差の記号にハットがついているのは、これらはデータを生成するのに指定した平均と標準偏差から一般にズレた値になるからである。
+後者を母平均、母標準偏差といい、これらの値を <span class="math notranslate nohighlight">\(\mu\)</span>、<span class="math notranslate nohighlight">\(\sigma\)</span> で表す（ここでは <span class="math notranslate nohighlight">\(\mu = 10\)</span>、<span class="math notranslate nohighlight">\(\sigma = 2\)</span>）。</p>
 <p>注意したいのが、「<strong>平均は必ずしも普通を表さない</strong>」ということである。例えば、先ほどのダイヤモンドの価格の例で、平均の位置を縦の点線で表示すると次のようになる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -616,8 +604,8 @@ Name: cut, dtype: int64
 </div>
 <p>データ数のピークが左の方にある中で、赤の点線の位置を普通と捉えるのは疑問である。この例のように分布の裾が長く、歪んだ形をしているとき、平均値はあまり良い代表値とは言えなくなる。また例えば、このテーブルデータにたった1個1億ドルのダイヤモンドのデータを追加するだけで、平均値は右に1850ドル近くシフトする。このような<strong>外れ値</strong>に引っ張られるというのも、平均値の欠点の1つである。</p>
 </section>
-<section id="id6">
-<h3>変数変換<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
+<section id="id7">
+<h3>変数変換<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
 <p>価格のような比例尺度は、対数をとると分布の形が綺麗になることが多い。</p>
 <p>その理由は、価格の場合、差は比率で考える方が、社会的な慣習としてより自然なためである。
 例えば、10ドルの商品を11ドルに値上げするのと、1000ドルの商品を1001ドルに値上げするのとでは、前者の方が大きな値上げに感じると思う。
@@ -653,8 +641,8 @@ Name: cut, dtype: int64
 </div>
 <p>適切な変数変換を行うと、変換前には見えなかった特徴を見つけられることがある。この例ではピークが2つあるように見える。</p>
 </section>
-<section id="id7">
-<h3>層別分析<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
+<section id="id8">
+<h3>層別分析<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 上の例でdf.loc[]を使った、層別分析の導入. その後、以下（分量次第ではトル）.</span>
@@ -688,13 +676,13 @@ Name: cut, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/4e75ec79f7e96daa34fb88493bb2ad688368e668afef9d62a6606f9f01881b3c.png" src="_images/4e75ec79f7e96daa34fb88493bb2ad688368e668afef9d62a6606f9f01881b3c.png" />
+<img alt="_images/c80edef6caacd476765968a6437be2981d45713ff4f564a8b7d7a7508688e675.png" src="_images/c80edef6caacd476765968a6437be2981d45713ff4f564a8b7d7a7508688e675.png" />
 </div>
 </div>
 </section>
 </section>
-<section id="id8">
-<h2>相関と因果<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h2>
+<section id="id9">
+<h2>相関と因果<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 相関の説明</span>
@@ -723,6 +711,9 @@ Name: cut, dtype: int64
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/564d4547bfc55c5969f87ef358342d3bd0e48128d750be0cf305476a4141ed76.png" src="_images/564d4547bfc55c5969f87ef358342d3bd0e48128d750be0cf305476a4141ed76.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -748,6 +739,9 @@ Name: cut, dtype: int64
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/7b4303ee789ee5fb635e26b69e4c916289ea8c9e200e8a13608ee58756c132a2.png" src="_images/7b4303ee789ee5fb635e26b69e4c916289ea8c9e200e8a13608ee58756c132a2.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -765,6 +759,9 @@ Name: cut, dtype: int64
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/f444a42a9543ea285e335f358043f3949e41f0faa462c26b36cc6260f1e4dfaa.png" src="_images/f444a42a9543ea285e335f358043f3949e41f0faa462c26b36cc6260f1e4dfaa.png" />
 </div>
 </div>
 </section>
@@ -835,11 +832,12 @@ Name: cut, dtype: int64
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">データの種類</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">データの分布と代表値</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">分布の可視化</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">変数変換</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">層別分析</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">代表値</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">変数変換</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">層別分析</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">相関と因果</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">相関と因果</a></li>
 </ul>
   </nav></div>
 
