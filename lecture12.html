@@ -651,8 +651,9 @@ class Banana:
 <pre style={"white-space": "pre"}>
 class Fraction:
     def __init__(self, n, d):
-        self.n = n // math.gcd(n, d)
-        self.d = d // math.gcd(n, d)
+        k = math.gcd(n, d)
+        self.n = n // k
+        self.d = d // k
         
     def __str__(self):
         return f'{self.n}/{self.d}'
