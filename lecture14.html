@@ -523,13 +523,17 @@ Name: cut, dtype: int64
 <span class="n">cb</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">hb</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
 <span class="n">cb</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s1">&#39;カウント&#39;</span><span class="p">)</span>
 
+<span class="c1"># 軸ラベルの設定</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;カラット&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;価格&quot;</span><span class="p">)</span>
+
 <span class="c1"># 表示</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/102268f8de27f6c700e87c5a47afecd4244019a13ff013bec5ab8a2782ff274d.png" src="_images/102268f8de27f6c700e87c5a47afecd4244019a13ff013bec5ab8a2782ff274d.png" />
+<img alt="_images/7afafcc190dfdbcbac4bae640ccf6780c96fbfe0fb59009ce670542140dd5e22.png" src="_images/7afafcc190dfdbcbac4bae640ccf6780c96fbfe0fb59009ce670542140dd5e22.png" />
 </div>
 </div>
 <p>ヒストグラムの階級を作るにあたって平面を六角形で分割している。このような区分を<strong>Hexbin</strong>という。
@@ -567,7 +571,7 @@ Name: cut, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/4a238bd03ee1ac4a2f7cdf58056bd7558b1d4e6023f2c27bece5a9212d3f7daa.png" src="_images/4a238bd03ee1ac4a2f7cdf58056bd7558b1d4e6023f2c27bece5a9212d3f7daa.png" />
+<img alt="_images/3bf067d3812183592228f1c13054fe59e89ad04162e231df0a7952d588ea1250.png" src="_images/3bf067d3812183592228f1c13054fe59e89ad04162e231df0a7952d588ea1250.png" />
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">sample_data</span></code> から求まる平均を <span class="math notranslate nohighlight">\(\hat{\mu}\)</span>、標準偏差を <span class="math notranslate nohighlight">\(\hat{\sigma}\)</span> と書くとき、<span class="math notranslate nohighlight">\(\hat{\mu}-\hat{\sigma}\)</span>、<span class="math notranslate nohighlight">\(\hat{\mu}\)</span>、<span class="math notranslate nohighlight">\(\hat{\mu}+\hat{\sigma}\)</span> の位置を <code class="docutils literal notranslate"><span class="pre">axvline()</span></code> メソッドによりそれぞれ縦の点線として表示している。
@@ -643,40 +647,154 @@ Name: cut, dtype: int64
 </section>
 <section id="id8">
 <h3>層別分析<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">diamonds</span></code> データセットのように複数の要素からなるデータに対しては、とある基準でデータをグループ分けしたあとで、グループごとに分析すると有効なことが多い。このような分析を<strong>層別分析</strong>という。</p>
+<p>例として、カラットについて <span class="math notranslate nohighlight">\((0, 0.5], (0.5, 1], (1, 1.5], (1.5, 2], (2, 6]\)</span> の5つの範囲でグループ分けをして、それぞれのグループで価格の分布を調べてみよう。ここで <span class="math notranslate nohighlight">\((a, b]\)</span> という記号は <span class="math notranslate nohighlight">\(a &lt; x \leq b\)</span> という不等式で表される区間を表す。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 上の例でdf.loc[]を使った、層別分析の導入. その後、以下（分量次第ではトル）.</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="n">df_diamond</span><span class="p">[</span><span class="s1">&#39;carat_bin&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">df_diamond</span><span class="p">[</span><span class="s1">&#39;carat&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_titanic</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s1">&#39;titanic&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_diamond</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>carat</th>
+      <th>cut</th>
+      <th>color</th>
+      <th>clarity</th>
+      <th>depth</th>
+      <th>table</th>
+      <th>price</th>
+      <th>x</th>
+      <th>y</th>
+      <th>z</th>
+      <th>carat_bin</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.23</td>
+      <td>Ideal</td>
+      <td>E</td>
+      <td>SI2</td>
+      <td>61.5</td>
+      <td>55.0</td>
+      <td>326</td>
+      <td>3.95</td>
+      <td>3.98</td>
+      <td>2.43</td>
+      <td>(0.0, 0.5]</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.21</td>
+      <td>Premium</td>
+      <td>E</td>
+      <td>SI1</td>
+      <td>59.8</td>
+      <td>61.0</td>
+      <td>326</td>
+      <td>3.89</td>
+      <td>3.84</td>
+      <td>2.31</td>
+      <td>(0.0, 0.5]</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.23</td>
+      <td>Good</td>
+      <td>E</td>
+      <td>VS1</td>
+      <td>56.9</td>
+      <td>65.0</td>
+      <td>327</td>
+      <td>4.05</td>
+      <td>4.07</td>
+      <td>2.31</td>
+      <td>(0.0, 0.5]</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.29</td>
+      <td>Premium</td>
+      <td>I</td>
+      <td>VS2</td>
+      <td>62.4</td>
+      <td>58.0</td>
+      <td>334</td>
+      <td>4.20</td>
+      <td>4.23</td>
+      <td>2.63</td>
+      <td>(0.0, 0.5]</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.31</td>
+      <td>Good</td>
+      <td>J</td>
+      <td>SI2</td>
+      <td>63.3</td>
+      <td>58.0</td>
+      <td>335</td>
+      <td>4.34</td>
+      <td>4.35</td>
+      <td>2.75</td>
+      <td>(0.0, 0.5]</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># プロットの入れ物の用意</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 
-<span class="c1"># データの用意</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">df_titanic</span><span class="p">[</span><span class="s2">&quot;sex&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">df_titanic</span><span class="p">[</span><span class="s2">&quot;survived&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
-<span class="n">hue</span> <span class="o">=</span> <span class="n">df_titanic</span><span class="p">[</span><span class="s2">&quot;pclass&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="c1"># ヒストグラムのプロット</span>
+<span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">df_diamond</span><span class="p">[</span><span class="s1">&#39;carat_bin&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">():</span>
+    <span class="n">subset</span> <span class="o">=</span> <span class="n">df_diamond</span><span class="p">[</span><span class="n">df_diamond</span><span class="p">[</span><span class="s1">&#39;carat_bin&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">value</span><span class="p">]</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">subset</span><span class="p">[</span><span class="s2">&quot;price&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>
+    
+<span class="c1"># 軸の範囲を設定</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
 
-<span class="c1"># 棒グラフのプロット</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="n">hue</span><span class="p">,</span> <span class="n">hue_order</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
-
+<span class="c1"># 軸ラベルの設定</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;価格&quot;</span><span class="p">)</span>
+    
 <span class="c1"># 表示</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/c80edef6caacd476765968a6437be2981d45713ff4f564a8b7d7a7508688e675.png" src="_images/c80edef6caacd476765968a6437be2981d45713ff4f564a8b7d7a7508688e675.png" />
+<img alt="_images/a2b801fcc47900688af1d74ac935ba908b45a72c503e0ed704225da4249eb158.png" src="_images/a2b801fcc47900688af1d74ac935ba908b45a72c503e0ed704225da4249eb158.png" />
 </div>
 </div>
 </section>
@@ -740,7 +858,7 @@ Name: cut, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/7b4303ee789ee5fb635e26b69e4c916289ea8c9e200e8a13608ee58756c132a2.png" src="_images/7b4303ee789ee5fb635e26b69e4c916289ea8c9e200e8a13608ee58756c132a2.png" />
+<img alt="_images/64b349810546351f2655d8075be370e2736e369f338b1706f838fd9051a3304b.png" src="_images/64b349810546351f2655d8075be370e2736e369f338b1706f838fd9051a3304b.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -761,7 +879,7 @@ Name: cut, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/f444a42a9543ea285e335f358043f3949e41f0faa462c26b36cc6260f1e4dfaa.png" src="_images/f444a42a9543ea285e335f358043f3949e41f0faa462c26b36cc6260f1e4dfaa.png" />
+<img alt="_images/8ba0379746cd9c411a5d7d70ec94fd2d3318610aba152cdf5be3658c38e10fea.png" src="_images/8ba0379746cd9c411a5d7d70ec94fd2d3318610aba152cdf5be3658c38e10fea.png" />
 </div>
 </div>
 </section>
