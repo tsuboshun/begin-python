@@ -565,7 +565,7 @@ matplotlibを使うと綺麗なグラフを作成できるようになるので�
 <h2>pandas入門<a class="headerlink" href="#pandas" title="Permalink to this heading">#</a></h2>
 <p>Pythonで表形式のデータ（テーブルデータ）を扱うのに<strong>pandas</strong>というライブラリがよく用いられる。この節ではpandasについて、今後の授業で使いうる機能に限定して説明する。</p>
 <p>pandasを使うには、pandasモジュールをimportする。
-ここでは説明のため、seabornというライブラリにサンプルとして用意されている <code class="docutils literal notranslate"><span class="pre">'diamonds'</span></code> というテーブルデータを使用する（データの説明は<a class="reference external" href="https://ggplot2.tidyverse.org/reference/diamonds.html">こちら</a>）。<code class="docutils literal notranslate"><span class="pre">load_dataset()</span></code> 関数によりサンプルのテーブルデータを取得できる。このようなデータの集まりのことを <strong>データセット</strong> ともいう。</p>
+ここでは説明のため、seabornというライブラリにサンプルとして用意されている <code class="docutils literal notranslate"><span class="pre">'diamonds'</span></code> というテーブルデータを使用する（データの説明は<a class="reference external" href="https://ggplot2.tidyverse.org/reference/diamonds.html">こちら</a>）。<code class="docutils literal notranslate"><span class="pre">load_dataset()</span></code> 関数によりサンプルのテーブルデータを取得できる。このようなデータの集まりのことを<strong>データセット</strong>ともいう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -640,7 +640,7 @@ pandasには、1次元配列に行ラベルをつけたデータ型も用意さ�
 <p><code class="docutils literal notranslate"><span class="pre">sort_values()</span></code> メソッドにより、引数に渡した列を基準にソートすることができる。デフォルトでは昇順にソートする。ソートした結果のデータフレームが戻り値として返されるので、以下のコードではそれを変数 <code class="docutils literal notranslate"><span class="pre">df</span></code> に再代入している。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;price&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;carat&quot;</span><span class="p">)</span>
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -649,7 +649,7 @@ pandasには、1次元配列に行ラベルをつけたデータ型も用意さ�
 <p>降順にソートしたい場合は、引数に <code class="docutils literal notranslate"><span class="pre">ascending=False</span></code> を指定する。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;price&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;carat&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
