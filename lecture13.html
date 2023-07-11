@@ -365,7 +365,7 @@ document.write(`
 <p>今回の授業で紹介するコードは何も見ないで書けるようになる必要はなく、これらを雛形にして使えるようになればよい。
 matplotlibを使うと綺麗なグラフを作成できるようになるので、ぜひ他の授業のレポートなどでも活用してみてほしい。</p>
 <p>また講義の終了後を見据えて、今回から課題を解くのに<a class="reference external" href="https://chat.openai.com/">ChatGPT</a>を活用してもよいことにする。
-これまでヒントをもらうことでなんとかコードを書いていた人も多いと思うが、そのような人でもChatGPTを先生代わりにすることで、一人でコードを書けるようになると期待する。もちろん自力でコードを書いた方が力になるので、まずは自力で課題に取り組むこと。またChatGPTを使う場合でも、出力を鵜呑みにするのではなく、その正しさを自分で判断することが重要である。</p>
+これまでヒントをもらうことでなんとかコードを書いていた人も多いと思うが、そのような人でもChatGPTを先生代わりにすることで、一人でコードを書けるようになると期待する。もちろん自力でコードを書いた方が力になるので、まずは自力で課題に取り組むこと。またChatGPTを使う場合でも、出力を鵜呑みにするのではなく、その正しさを自分で判断し、出力を適宜修正しながら利用することが重要である。</p>
 </section>
 <section id="matplotlib">
 <h2>matplotlib入門<a class="headerlink" href="#matplotlib" title="Permalink to this heading">#</a></h2>
@@ -574,7 +574,7 @@ matplotlibを使うと綺麗なグラフを作成できるようになるので�
 <h2>pandas入門<a class="headerlink" href="#pandas" title="Permalink to this heading">#</a></h2>
 <p>Pythonで表形式のデータ（テーブルデータ）を扱うのに<strong>pandas</strong>というライブラリがよく用いられる。この節ではpandasについて、今後の授業で使いうる機能に限定して説明する。</p>
 <p>pandasを使うには、pandasモジュールをimportする。
-ここでは説明のため、seabornというライブラリにサンプルとして用意されている <code class="docutils literal notranslate"><span class="pre">'diamonds'</span></code> というテーブルデータを使用する（データの説明は<a class="reference external" href="https://ggplot2.tidyverse.org/reference/diamonds.html">こちら</a>）。<code class="docutils literal notranslate"><span class="pre">load_dataset()</span></code> 関数によりサンプルのテーブルデータを取得できる。</p>
+ここでは説明のため、seabornというライブラリにサンプルとして用意されている <code class="docutils literal notranslate"><span class="pre">'diamonds'</span></code> というテーブルデータを使用する（データの説明は<a class="reference external" href="https://ggplot2.tidyverse.org/reference/diamonds.html">こちら</a>）。<code class="docutils literal notranslate"><span class="pre">load_dataset()</span></code> 関数によりサンプルのテーブルデータを取得できる。このようなデータの集まりのことを <strong>データセット</strong> ともいう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -749,7 +749,7 @@ pandasには、1次元配列に行ラベルをつけたデータ型も用意さ�
 <p>データの可視化の最後の例として<strong>ヒストグラム</strong>を紹介する。
 ヒストグラムはデータの値をいくつかの階級に分割し、階級ごとのデータ数を集計して可視化する。
 ヒストグラムによりデータの<strong>分布</strong>を確認することができる。</p>
-<p>ヒストグラムのプロット例を以下に示す。先ほどの <code class="docutils literal notranslate"><span class="pre">diamonds</span></code> データにおける <code class="docutils literal notranslate"><span class="pre">&quot;price&quot;</span></code> の値を1次元配列として取得し、そのヒストグラムをプロットしている。</p>
+<p>ヒストグラムのプロット例を以下に示す。先ほどの <code class="docutils literal notranslate"><span class="pre">diamonds</span></code> データセットにおける <code class="docutils literal notranslate"><span class="pre">&quot;price&quot;</span></code> の値を1次元配列として取得し、そのヒストグラムをプロットしている。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># プロットの入れ物の用意</span>
@@ -803,12 +803,12 @@ pandasには、1次元配列に行ラベルをつけたデータ型も用意さ�
 色とデータ数の対応関係を表すのが、右横の<strong>カラーバー</strong>である。
 カラーバーは　<code class="docutils literal notranslate"><span class="pre">#カラーバーのプロット</span></code> 以下の2行によりプロットできる。</p>
 <p><strong>練習2</strong><br />
-<code class="docutils literal notranslate"><span class="pre">diamonds</span></code> データにおいて全データの価格の平均は <code class="docutils literal notranslate"><span class="pre">np.mean(df[&quot;price&quot;].values)</span></code> により求めることができる。フィルタリングと組み合わせることにより、カット <code class="docutils literal notranslate"><span class="pre">&quot;cut&quot;</span></code> の種類が <code class="docutils literal notranslate"><span class="pre">&quot;Premium&quot;</span></code> のデータに限定したときの価格の平均を求めよ。</p>
+<code class="docutils literal notranslate"><span class="pre">diamonds</span></code> データセットにおいて全データの価格の平均は <code class="docutils literal notranslate"><span class="pre">np.mean(df[&quot;price&quot;].values)</span></code> により求めることができる。フィルタリングと組み合わせることにより、カット <code class="docutils literal notranslate"><span class="pre">&quot;cut&quot;</span></code> の種類が <code class="docutils literal notranslate"><span class="pre">&quot;Premium&quot;</span></code> のデータに限定したときの価格の平均を求めよ。</p>
 </section>
 <section id="id16">
 <h2>演習<a class="headerlink" href="#id16" title="Permalink to this heading">#</a></h2>
 <p><strong>課題</strong><br />
-<code class="docutils literal notranslate"><span class="pre">diamonds</span></code> データからカット <code class="docutils literal notranslate"><span class="pre">&quot;cut&quot;</span></code> の種類が <code class="docutils literal notranslate"><span class="pre">&quot;Premium&quot;</span></code> のデータを抽出して、価格を横軸とするヒストグラムをプロットしなさい。
+<code class="docutils literal notranslate"><span class="pre">diamonds</span></code> データセットからカット <code class="docutils literal notranslate"><span class="pre">&quot;cut&quot;</span></code> の種類が <code class="docutils literal notranslate"><span class="pre">&quot;Premium&quot;</span></code> のデータを抽出して、価格を横軸とするヒストグラムを作成しなさい。
 ビン数は10とし、横軸には <code class="docutils literal notranslate"><span class="pre">&quot;カラット&quot;</span></code>、縦軸には <code class="docutils literal notranslate"><span class="pre">&quot;価格&quot;</span></code> という軸ラベルをつけること。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
