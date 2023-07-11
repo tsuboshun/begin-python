@@ -374,7 +374,7 @@ matplotlibを使うと綺麗なグラフを作成できるようになるので�
 またグラフのラベルに日本語を使えるようにするためにjapanize_matplotlibというモジュールをimportする。japanize_matplotlibはpipによるインストールが必要である<a class="footnote-reference brackets" href="#f1" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#pip install japanize_matplotlib</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">japanize_matplotlib</span>
 </pre></div>
 </div>
 </div>
@@ -549,9 +549,21 @@ matplotlibを使うと綺麗なグラフを作成できるようになるので�
 
 <span class="c1"># ここに適切なコードを書く</span>
 
-<span class="c1"># 表示</span>
+
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span> <span class="c1"># 凡例の表示</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> 
+
+<span class="c1"># ファイルとして保存</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;練習1.png&quot;</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<p>プロットしたら以下のコードを実行することにより、画像をダウンロードできる。これを提出しなさい。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">files</span>
+<span class="n">files</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s2">&quot;練習1.png&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -791,13 +803,37 @@ pandasには、1次元配列に行ラベルをつけたデータ型も用意さ�
 色とデータ数の対応関係を表すのが、右横の<strong>カラーバー</strong>である。
 カラーバーは　<code class="docutils literal notranslate"><span class="pre">#カラーバーのプロット</span></code> 以下の2行によりプロットできる。</p>
 <p><strong>練習2</strong><br />
-全データの価格の平均は <code class="docutils literal notranslate"><span class="pre">np.mean(df[&quot;price&quot;].values)</span></code> により求めることができる。フィルタリングと組み合わせることにより、カット <code class="docutils literal notranslate"><span class="pre">&quot;cut&quot;</span></code> の種類が <code class="docutils literal notranslate"><span class="pre">&quot;Premium&quot;</span></code> のデータの価格の平均を求めよ。</p>
+<code class="docutils literal notranslate"><span class="pre">diamonds</span></code> データにおいて全データの価格の平均は <code class="docutils literal notranslate"><span class="pre">np.mean(df[&quot;price&quot;].values)</span></code> により求めることができる。フィルタリングと組み合わせることにより、カット <code class="docutils literal notranslate"><span class="pre">&quot;cut&quot;</span></code> の種類が <code class="docutils literal notranslate"><span class="pre">&quot;Premium&quot;</span></code> のデータに限定したときの価格の平均を求めよ。</p>
 </section>
 <section id="id16">
 <h2>演習<a class="headerlink" href="#id16" title="Permalink to this heading">#</a></h2>
 <p><strong>課題</strong><br />
-カット <code class="docutils literal notranslate"><span class="pre">&quot;cut&quot;</span></code> の種類が <code class="docutils literal notranslate"><span class="pre">&quot;Premium&quot;</span></code> のデータについて、価格を横軸とするヒストグラムをプロットしなさい。
+<code class="docutils literal notranslate"><span class="pre">diamonds</span></code> データからカット <code class="docutils literal notranslate"><span class="pre">&quot;cut&quot;</span></code> の種類が <code class="docutils literal notranslate"><span class="pre">&quot;Premium&quot;</span></code> のデータを抽出して、価格を横軸とするヒストグラムをプロットしなさい。
 ビン数は10とし、横軸には <code class="docutils literal notranslate"><span class="pre">&quot;カラット&quot;</span></code>、縦軸には <code class="docutils literal notranslate"><span class="pre">&quot;価格&quot;</span></code> という軸ラベルをつけること。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># プロットの入れ物の用意</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="c1"># ここに適切なコードを書く</span>
+
+
+<span class="c1"># ファイルとして保存</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;課題1.png&quot;</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<p>プロットしたら以下のコードを実行することにより、画像をダウンロードできる。これを提出しなさい。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">files</span>
+<span class="n">files</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s2">&quot;課題1.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 <hr class="footnotes docutils" />
 <aside class="footnote brackets" id="f1" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">1</a><span class="fn-bracket">]</span></span>
