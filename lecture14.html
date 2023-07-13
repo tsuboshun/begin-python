@@ -425,7 +425,7 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_diamond</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s1">&#39;diamonds&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s1">&#39;diamonds&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -438,7 +438,7 @@ document.write(`
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 
 <span class="c1"># データの用意</span>
-<span class="n">cut_counts</span> <span class="o">=</span> <span class="n">df_diamond</span><span class="p">[</span><span class="s2">&quot;cut&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="n">cut_counts</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;cut&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
 
 <span class="c1"># 棒グラフのプロット</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">cut_counts</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">cut_counts</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
@@ -483,7 +483,7 @@ Name: cut, dtype: int64
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 
 <span class="c1"># データの用意</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">df_diamond</span><span class="p">[</span><span class="s2">&quot;price&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;price&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
 
 <span class="c1"># ヒストグラムのプロット</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
@@ -513,8 +513,8 @@ Name: cut, dtype: int64
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 
 <span class="c1"># データの用意</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">df_diamond</span><span class="p">[</span><span class="s2">&quot;carat&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">df_diamond</span><span class="p">[</span><span class="s2">&quot;price&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;carat&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;price&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
 
 <span class="c1"># 2次元ヒストグラムのプロット</span>
 <span class="n">hb</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">hexbin</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">gridsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
@@ -571,7 +571,7 @@ Name: cut, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/3bf067d3812183592228f1c13054fe59e89ad04162e231df0a7952d588ea1250.png" src="_images/3bf067d3812183592228f1c13054fe59e89ad04162e231df0a7952d588ea1250.png" />
+<img alt="_images/23fd9651efea0f302c7fe1b3c5db8f2708dfe0271007d0ced27b88ab03ad65c1.png" src="_images/23fd9651efea0f302c7fe1b3c5db8f2708dfe0271007d0ced27b88ab03ad65c1.png" />
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">sample_data</span></code> から求まる平均を <span class="math notranslate nohighlight">\(\hat{\mu}\)</span>、標準偏差を <span class="math notranslate nohighlight">\(\hat{\sigma}\)</span> と書くとき、<span class="math notranslate nohighlight">\(\hat{\mu}-\hat{\sigma}\)</span>、<span class="math notranslate nohighlight">\(\hat{\mu}\)</span>、<span class="math notranslate nohighlight">\(\hat{\mu}+\hat{\sigma}\)</span> の位置を <code class="docutils literal notranslate"><span class="pre">axvline()</span></code> メソッドによりそれぞれ縦の点線として表示している。
@@ -585,7 +585,7 @@ Name: cut, dtype: int64
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 
 <span class="c1"># データの用意</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">df_diamond</span><span class="p">[</span><span class="s2">&quot;price&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;price&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
 
 <span class="c1"># ヒストグラムのプロット</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
@@ -622,7 +622,7 @@ Name: cut, dtype: int64
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 
 <span class="c1"># データの用意</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">df_diamond</span><span class="p">[</span><span class="s2">&quot;price&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;price&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
 
 <span class="c1"># ヒストグラムのプロット</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
@@ -652,14 +652,14 @@ Name: cut, dtype: int64
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
-<span class="n">df_diamond</span><span class="p">[</span><span class="s1">&#39;carat_bin&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">df_diamond</span><span class="p">[</span><span class="s1">&#39;carat&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;carat_bin&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;carat&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_diamond</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -776,9 +776,9 @@ Name: cut, dtype: int64
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 
 <span class="c1"># ヒストグラムのプロット</span>
-<span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">df_diamond</span><span class="p">[</span><span class="s1">&#39;carat_bin&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">():</span>
-    <span class="n">subset</span> <span class="o">=</span> <span class="n">df_diamond</span><span class="p">[</span><span class="n">df_diamond</span><span class="p">[</span><span class="s1">&#39;carat_bin&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">value</span><span class="p">]</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">subset</span><span class="p">[</span><span class="s2">&quot;price&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;carat_bin&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">():</span>
+    <span class="n">df_subset</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;carat_bin&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">value</span><span class="p">]</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">df_subset</span><span class="p">[</span><span class="s2">&quot;price&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>
     
 <span class="c1"># 軸の範囲を設定</span>
@@ -814,8 +814,8 @@ Name: cut, dtype: int64
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
 
 <span class="c1"># データの用意</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">df_diamond</span><span class="p">[</span><span class="s2">&quot;carat&quot;</span><span class="p">]</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">df_diamond</span><span class="p">[</span><span class="s2">&quot;price&quot;</span><span class="p">]</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;carat&quot;</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;price&quot;</span><span class="p">]</span>
 
 <span class="c1"># 散布図</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
@@ -846,8 +846,8 @@ Name: cut, dtype: int64
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 
 <span class="c1"># データの用意</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">df_diamond</span><span class="p">[</span><span class="s2">&quot;cut&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">df_diamond</span><span class="p">[</span><span class="s2">&quot;carat&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;cut&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;carat&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
 
 <span class="c1"># 棒グラフのプロット</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Fair&quot;</span><span class="p">,</span> <span class="s2">&quot;Good&quot;</span><span class="p">,</span> <span class="s2">&quot;Very Good&quot;</span><span class="p">,</span> <span class="s2">&quot;Premium&quot;</span><span class="p">,</span> <span class="s2">&quot;Ideal&quot;</span><span class="p">],</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
@@ -858,7 +858,7 @@ Name: cut, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/64b349810546351f2655d8075be370e2736e369f338b1706f838fd9051a3304b.png" src="_images/64b349810546351f2655d8075be370e2736e369f338b1706f838fd9051a3304b.png" />
+<img alt="_images/0ab78b6b2c479aeb5635d2645cf93da395c80e82062b8c0e60e0776968f63690.png" src="_images/0ab78b6b2c479aeb5635d2645cf93da395c80e82062b8c0e60e0776968f63690.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -867,8 +867,8 @@ Name: cut, dtype: int64
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 
 <span class="c1"># データの用意</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">df_diamond</span><span class="p">[</span><span class="s2">&quot;cut&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">df_diamond</span><span class="p">[</span><span class="s2">&quot;price&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;cut&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;price&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
 
 <span class="c1"># 棒グラフのプロット</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Fair&quot;</span><span class="p">,</span> <span class="s2">&quot;Good&quot;</span><span class="p">,</span> <span class="s2">&quot;Very Good&quot;</span><span class="p">,</span> <span class="s2">&quot;Premium&quot;</span><span class="p">,</span> <span class="s2">&quot;Ideal&quot;</span><span class="p">],</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
@@ -879,7 +879,7 @@ Name: cut, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/8ba0379746cd9c411a5d7d70ec94fd2d3318610aba152cdf5be3658c38e10fea.png" src="_images/8ba0379746cd9c411a5d7d70ec94fd2d3318610aba152cdf5be3658c38e10fea.png" />
+<img alt="_images/cb2f62c6c37e6383a7eb6ce9ae85f9d386148023a4d182642b87418e947b83e5.png" src="_images/cb2f62c6c37e6383a7eb6ce9ae85f9d386148023a4d182642b87418e947b83e5.png" />
 </div>
 </div>
 </section>
