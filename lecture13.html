@@ -567,6 +567,23 @@ matplotlibを使うと綺麗なグラフを作成できるようになるので�
 </div>
 </div>
 </div>
+<div class="toggle docutils container">
+<p><strong>解答例</strong></p>
+<pre style={"white-space": "pre"}>
+# プロットの入れ物の用意
+fig, ax = plt.subplots(figsize=(5, 4))
+
+# ここに適切なコードを書く
+ax.plot(x, y_sin, label="sin関数")
+ax.plot(x, y_cos, label="cos関数")
+
+plt.legend() # 凡例の表示
+
+# ファイルとして保存
+plt.tight_layout()
+plt.savefig("練習1.png") 
+</pre>
+</div>
 </section>
 </section>
 <section id="pandas">
@@ -742,8 +759,24 @@ pandasには、1次元配列に行ラベルをつけたデータ型も用意さ�
 </div>
 <p><strong>練習2</strong><br />
 <code class="docutils literal notranslate"><span class="pre">diamonds</span></code> データセットにおいて全データの価格の平均は <code class="docutils literal notranslate"><span class="pre">np.mean(df[&quot;price&quot;].values)</span></code> 、カラットの平均は <code class="docutils literal notranslate"><span class="pre">np.mean(df[&quot;carat&quot;].values)</span></code> により求めることができる。フィルタリングを行うことにより、カット <code class="docutils literal notranslate"><span class="pre">&quot;cut&quot;</span></code> の種類が <code class="docutils literal notranslate"><span class="pre">&quot;Ideal&quot;</span></code> のデータにおける価格の平均、カラットの平均を求めなさい。<code class="docutils literal notranslate"><span class="pre">&quot;Ideal&quot;</span></code> はカットの種類の中では一番良いカテゴリだが、価格の平均が全データでの平均より小さくなるのはなぜだろうか。</p>
+<div class="toggle docutils container">
+<p><strong>解答例</strong></p>
+<pre style={"white-space": "pre"}>
+df_ideal = df.loc[df["cut"] == "Ideal"]
+print(np.mean(df_ideal["price"].values))
+print(np.mean(df_ideal["carat"].values))
+</pre>
+</div>
 <p><strong>練習3</strong><br />
 <code class="docutils literal notranslate"><span class="pre">diamonds</span></code> データセットにおいて価格上位5件、下位5件のデータを表示しなさい。</p>
+<div class="toggle docutils container">
+<p><strong>解答例</strong></p>
+<pre style={"white-space": "pre"}>
+df.sort_values("price", ascending=False).head()  # 上位5件
+
+df.sort_values("price").head()  # 下位5件（上とは別のセルで実行する）
+</pre>
+</div>
 </section>
 </section>
 </section>
@@ -784,6 +817,27 @@ pandasには、1次元配列に行ラベルをつけたデータ型も用意さ�
 <li><p>最初から一通りのセルを実行していないと、上のコードを実行する準備が整わないことがあるので気を付ける。よくわからないエラーが出る場合は、ノートブック最初の2つのセル、pandas入門という節の最初のセルを改めて実行してから取り組むこと。</p></li>
 <li><p>ファイルとして保存する場合は、<code class="docutils literal notranslate"><span class="pre">plt.show()</span></code> は実行しない。これを実行してしまうと白紙の画像ファイルがダウンロードされる。</p></li>
 </ul>
+<div class="toggle docutils container">
+<p><strong>解答例</strong></p>
+<pre style={"white-space": "pre"}>
+# プロットの入れ物の用意
+fig, ax = plt.subplots(figsize=(5, 4))
+
+# データの用意
+x = df["carat"].values
+y = df["price"].values
+
+# ここに適切なコードを書く
+ax.scatter(x, y)
+
+ax.set_xlabel("カラット")
+ax.set_ylabel("価格")
+
+# ファイルとして保存
+plt.tight_layout()
+plt.savefig("課題1.png") 
+</pre>
+</div>
 <hr class="footnotes docutils" />
 <aside class="footnote brackets" id="f1" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">1</a><span class="fn-bracket">]</span></span>
