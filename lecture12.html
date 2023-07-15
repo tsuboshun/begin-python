@@ -388,12 +388,28 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10
+</pre></div>
+</div>
+</div>
 </div>
 <p>この属性は <code class="docutils literal notranslate"><span class="pre">a</span></code> というインスタンスに固有のものである。クラスが同じであっても、各インスタンスの持つ属性は別々に管理される。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="n">Apple</span><span class="p">()</span>
 <span class="n">b</span><span class="o">.</span><span class="n">nutrition</span> <span class="c1"># こちらのインスタンスには属性は定義されていない</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">p0</span><span class="o">/</span><span class="mi">0</span><span class="n">zrw9jsj03v3vlszs8v3m2p40000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_9205</span><span class="o">/</span><span class="mf">1585116261.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">b</span> <span class="o">=</span> <span class="n">Apple</span><span class="p">()</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">b</span><span class="o">.</span><span class="n">nutrition</span> <span class="c1"># こちらのインスタンスには属性は定義されていない</span>
+
+<span class="ne">AttributeError</span>: &#39;Apple&#39; object has no attribute &#39;nutrition&#39;
 </pre></div>
 </div>
 </div>
@@ -417,6 +433,11 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10
+</pre></div>
+</div>
+</div>
 </div>
 <p>初期化メソッドに引数を追加することで、<code class="docutils literal notranslate"><span class="pre">nutrition</span></code> の値を外から設定できるようにすることもできる。
 このとき <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> に設定した第二引数以降が、<code class="docutils literal notranslate"><span class="pre">クラス名()</span></code> と呼び出すときの引数に対応する。</p>
@@ -428,6 +449,11 @@ document.write(`
         
 <span class="n">a</span> <span class="o">=</span> <span class="n">Apple</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">nutrition</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>15
 </pre></div>
 </div>
 </div>
@@ -469,6 +495,12 @@ document.write(`
 
 <span class="n">a</span><span class="o">.</span><span class="n">step</span><span class="p">()</span> <span class="c1"># 1日経過</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">nutrition</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>15
+16
 </pre></div>
 </div>
 </div>
@@ -538,6 +570,30 @@ class Banana:
         <span class="n">total</span> <span class="o">+=</span> <span class="n">fruit</span><span class="o">.</span><span class="n">nutrition</span>
         
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">day</span><span class="si">}</span><span class="s2">日目: </span><span class="si">{</span><span class="n">total</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1日目: 44
+2日目: 48
+3日目: 52
+4日目: 56
+5日目: 60
+6日目: 64
+7日目: 64
+8日目: 64
+9日目: 64
+10日目: 64
+11日目: 64
+12日目: 64
+13日目: 64
+14日目: 60
+15日目: 56
+16日目: 52
+17日目: 48
+18日目: 44
+19日目: 40
+20日目: 36
 </pre></div>
 </div>
 </div>

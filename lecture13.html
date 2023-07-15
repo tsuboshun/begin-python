@@ -409,10 +409,27 @@ matplotlibを使うと綺麗なグラフを作成できるようになるので�
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0. , 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1. , 1.1, 1.2,
+       1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2. , 2.1, 2.2, 2.3, 2.4, 2.5,
+       2.6, 2.7, 2.8, 2.9, 3. , 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8,
+       3.9, 4. , 4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 4.7, 4.8, 4.9, 5. , 5.1,
+       5.2, 5.3, 5.4, 5.5, 5.6, 5.7, 5.8, 5.9, 6. , 6.1, 6.2, 6.3, 6.4,
+       6.5, 6.6, 6.7, 6.8, 6.9, 7. , 7.1, 7.2, 7.3, 7.4, 7.5, 7.6, 7.7,
+       7.8, 7.9, 8. , 8.1, 8.2, 8.3, 8.4, 8.5, 8.6, 8.7, 8.8, 8.9, 9. ,
+       9.1, 9.2, 9.3, 9.4, 9.5, 9.6, 9.7, 9.8, 9.9])
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">sample_x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100
 </pre></div>
 </div>
 </div>
@@ -421,6 +438,30 @@ matplotlibを使うと綺麗なグラフを作成できるようになるので�
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eps</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-1.24361582,  0.77055443, -1.77389982,  1.78842983,  0.59702357,
+        1.12472951, -0.00649613,  0.47246369,  0.37140968,  1.02840965,
+       -0.12924494, -0.35966077,  0.80745209,  0.07744079, -0.07997511,
+       -0.80314083,  1.24640422,  0.64528247,  0.99318952,  1.43098804,
+        0.08547546, -0.10587505, -0.33921682,  0.75713745,  0.41841202,
+       -0.51608197, -0.47863649,  0.05523357, -1.36956335, -1.0737363 ,
+       -0.96371593,  0.30839593,  0.70675185,  0.98589148, -1.02669823,
+       -0.69482968,  0.66576123, -0.30098694, -0.63520471,  0.8674969 ,
+       -0.76532868,  0.14785377, -0.55683054, -0.22501306,  0.38726633,
+       -0.84100015,  0.32614122, -1.9988606 , -0.37726841,  1.64376603,
+       -0.28915979,  0.23500223, -1.24517606, -0.44874376, -0.48226263,
+       -0.95022631,  0.8842136 ,  0.47969404, -0.23020598,  0.86010436,
+        0.26464737,  0.28403982,  0.76150434, -0.21082207, -0.23606015,
+       -0.84907788, -0.77231094,  0.18520571, -1.75292268,  1.44663028,
+       -0.58503143, -0.91905296, -0.21480587,  0.6774732 ,  1.06817192,
+       -0.23639933,  1.37291716, -0.81219317,  0.66971974, -0.72855362,
+       -1.35165092, -1.17822083, -1.31491094, -0.25240287,  0.83356746,
+       -0.89566016, -1.16724646, -0.65721982,  0.7204336 , -1.5740129 ,
+        0.56577219, -0.73649455, -0.33659789, -1.27543862, -1.88150029,
+       -0.85618245,  1.56442768,  1.20592909,  1.3441056 , -0.18157305])
 </pre></div>
 </div>
 </div>
@@ -443,6 +484,9 @@ matplotlibを使うと綺麗なグラフを作成できるようになるので�
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/f7a8113cf7100e04acb5980dfb47051041091132b4ac12f3ad2c2814c090de22.png" src="_images/f7a8113cf7100e04acb5980dfb47051041091132b4ac12f3ad2c2814c090de22.png" />
 </div>
 </div>
 <p>1行目では <code class="docutils literal notranslate"><span class="pre">plt.subplots()</span></code> 関数によりFigureオブジェクトとAxesオブジェクトを生成して、変数 <code class="docutils literal notranslate"><span class="pre">fig</span></code> と <code class="docutils literal notranslate"><span class="pre">ax</span></code> に代入している<a class="footnote-reference brackets" href="#f2" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a><a class="footnote-reference brackets" href="#f3" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>。</p>
@@ -479,6 +523,9 @@ matplotlibを使うと綺麗なグラフを作成できるようになるので�
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/37d4291e704daf8516618236ebc9a158750bb30b9da1d9e4737ce788c3150290.png" src="_images/37d4291e704daf8516618236ebc9a158750bb30b9da1d9e4737ce788c3150290.png" />
+</div>
 </div>
 <p>このように同一のAxesオブジェクトの <code class="docutils literal notranslate"><span class="pre">scatter()</span></code> メソッドを複数回呼び出すことで、1つのグラフに複数の散布図をプロットすることができる。</p>
 <p>プロットの色は自動的に設定されるが、自分で指定することもできる。
@@ -502,6 +549,9 @@ matplotlibを使うと綺麗なグラフを作成できるようになるので�
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/963179bbb91657d509c8a826e4e0cad1b021281fb5fdeb0fc3a4bffdaeca383d.png" src="_images/963179bbb91657d509c8a826e4e0cad1b021281fb5fdeb0fc3a4bffdaeca383d.png" />
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">ax.scatter()</span></code> メソッドのキーワード引数を使って、<code class="docutils literal notranslate"><span class="pre">color</span></code> を設定すると色を変更できる（<code class="docutils literal notranslate"><span class="pre">color</span></code> で指定できる色の名前の一覧は<a class="reference external" href="https://matplotlib.org/stable/gallery/color/named_colors.html">こちら</a>）。<code class="docutils literal notranslate"><span class="pre">marker</span></code> を設定するとマーカーの種類を変更できる（<code class="docutils literal notranslate"><span class="pre">marker</span></code> で指定できる値の一覧は<a class="reference external" href="https://matplotlib.org/stable/api/markers_api.html">こちら</a>）。<code class="docutils literal notranslate"><span class="pre">label</span></code> を設定すると凡例の表示を設定できる。凡例を表示するには、最後に <code class="docutils literal notranslate"><span class="pre">plt.legend()</span></code> を呼び出す。</p>
@@ -528,6 +578,9 @@ matplotlibを使うと綺麗なグラフを作成できるようになるので�
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/8ad2172537432f381ddadde646f065422d1e3be89fef56bc49323cde1b35f684.png" src="_images/8ad2172537432f381ddadde646f065422d1e3be89fef56bc49323cde1b35f684.png" />
 </div>
 </div>
 <p><strong>練習1</strong><br />
@@ -611,11 +664,116 @@ plt.savefig("練習1.png")
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>carat</th>
+      <th>cut</th>
+      <th>color</th>
+      <th>clarity</th>
+      <th>depth</th>
+      <th>table</th>
+      <th>price</th>
+      <th>x</th>
+      <th>y</th>
+      <th>z</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.23</td>
+      <td>Ideal</td>
+      <td>E</td>
+      <td>SI2</td>
+      <td>61.5</td>
+      <td>55.0</td>
+      <td>326</td>
+      <td>3.95</td>
+      <td>3.98</td>
+      <td>2.43</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.21</td>
+      <td>Premium</td>
+      <td>E</td>
+      <td>SI1</td>
+      <td>59.8</td>
+      <td>61.0</td>
+      <td>326</td>
+      <td>3.89</td>
+      <td>3.84</td>
+      <td>2.31</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.23</td>
+      <td>Good</td>
+      <td>E</td>
+      <td>VS1</td>
+      <td>56.9</td>
+      <td>65.0</td>
+      <td>327</td>
+      <td>4.05</td>
+      <td>4.07</td>
+      <td>2.31</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.29</td>
+      <td>Premium</td>
+      <td>I</td>
+      <td>VS2</td>
+      <td>62.4</td>
+      <td>58.0</td>
+      <td>334</td>
+      <td>4.20</td>
+      <td>4.23</td>
+      <td>2.63</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.31</td>
+      <td>Good</td>
+      <td>J</td>
+      <td>SI2</td>
+      <td>63.3</td>
+      <td>58.0</td>
+      <td>335</td>
+      <td>4.34</td>
+      <td>4.35</td>
+      <td>2.75</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>データフレームは、2次元配列の行方向と列方向にラベルがついたものと理解することができる。行方向のラベルのことを<strong>index</strong>、列方向のラベルのことを<strong>columns</strong>という。indexとcolumnsの値を指定して、要素にアクセスするには <code class="docutils literal notranslate"><span class="pre">loc</span></code> を使って次のように書く。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;carat&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.23
 </pre></div>
 </div>
 </div>
@@ -628,6 +786,17 @@ plt.savefig("練習1.png")
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.23, &#39;Ideal&#39;, &#39;E&#39;, ..., 3.95, 3.98, 2.43],
+       [0.21, &#39;Premium&#39;, &#39;E&#39;, ..., 3.89, 3.84, 2.31],
+       [0.23, &#39;Good&#39;, &#39;E&#39;, ..., 4.05, 4.07, 2.31],
+       ...,
+       [0.7, &#39;Very Good&#39;, &#39;D&#39;, ..., 5.66, 5.68, 3.56],
+       [0.86, &#39;Premium&#39;, &#39;H&#39;, ..., 6.15, 6.12, 3.74],
+       [0.75, &#39;Ideal&#39;, &#39;D&#39;, ..., 5.83, 5.87, 3.64]], dtype=object)
+</pre></div>
+</div>
+</div>
 </div>
 <p>2次元配列からデータフレームを作成するには次のように書く。</p>
 <div class="cell docutils container">
@@ -637,6 +806,106 @@ plt.savefig("練習1.png")
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+      <th>8</th>
+      <th>9</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.23</td>
+      <td>Ideal</td>
+      <td>E</td>
+      <td>SI2</td>
+      <td>61.5</td>
+      <td>55.0</td>
+      <td>326</td>
+      <td>3.95</td>
+      <td>3.98</td>
+      <td>2.43</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.21</td>
+      <td>Premium</td>
+      <td>E</td>
+      <td>SI1</td>
+      <td>59.8</td>
+      <td>61.0</td>
+      <td>326</td>
+      <td>3.89</td>
+      <td>3.84</td>
+      <td>2.31</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.23</td>
+      <td>Good</td>
+      <td>E</td>
+      <td>VS1</td>
+      <td>56.9</td>
+      <td>65.0</td>
+      <td>327</td>
+      <td>4.05</td>
+      <td>4.07</td>
+      <td>2.31</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.29</td>
+      <td>Premium</td>
+      <td>I</td>
+      <td>VS2</td>
+      <td>62.4</td>
+      <td>58.0</td>
+      <td>334</td>
+      <td>4.2</td>
+      <td>4.23</td>
+      <td>2.63</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.31</td>
+      <td>Good</td>
+      <td>J</td>
+      <td>SI2</td>
+      <td>63.3</td>
+      <td>58.0</td>
+      <td>335</td>
+      <td>4.34</td>
+      <td>4.35</td>
+      <td>2.75</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>columnsのデフォルト値は0始まりの整数である。データフレームの作成時にcolumnsを設定するには、次のように書く。</p>
 <div class="cell docutils container">
@@ -646,6 +915,106 @@ plt.savefig("練習1.png")
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>carat</th>
+      <th>cut</th>
+      <th>color</th>
+      <th>clarity</th>
+      <th>depth</th>
+      <th>table</th>
+      <th>price</th>
+      <th>x</th>
+      <th>y</th>
+      <th>z</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.23</td>
+      <td>Ideal</td>
+      <td>E</td>
+      <td>SI2</td>
+      <td>61.5</td>
+      <td>55.0</td>
+      <td>326</td>
+      <td>3.95</td>
+      <td>3.98</td>
+      <td>2.43</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.21</td>
+      <td>Premium</td>
+      <td>E</td>
+      <td>SI1</td>
+      <td>59.8</td>
+      <td>61.0</td>
+      <td>326</td>
+      <td>3.89</td>
+      <td>3.84</td>
+      <td>2.31</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.23</td>
+      <td>Good</td>
+      <td>E</td>
+      <td>VS1</td>
+      <td>56.9</td>
+      <td>65.0</td>
+      <td>327</td>
+      <td>4.05</td>
+      <td>4.07</td>
+      <td>2.31</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.29</td>
+      <td>Premium</td>
+      <td>I</td>
+      <td>VS2</td>
+      <td>62.4</td>
+      <td>58.0</td>
+      <td>334</td>
+      <td>4.2</td>
+      <td>4.23</td>
+      <td>2.63</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.31</td>
+      <td>Good</td>
+      <td>J</td>
+      <td>SI2</td>
+      <td>63.3</td>
+      <td>58.0</td>
+      <td>335</td>
+      <td>4.34</td>
+      <td>4.35</td>
+      <td>2.75</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 </section>
 <section id="id10">
@@ -660,11 +1029,26 @@ pandasには、1次元配列に行ラベルをつけたデータ型も用意さ�
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    0.23
+1    0.21
+2    0.23
+3    0.29
+4    0.31
+Name: carat, dtype: float64
+</pre></div>
+</div>
+</div>
 </div>
 <p>indexの値を指定して、要素にアクセスするには <code class="docutils literal notranslate"><span class="pre">loc</span></code> を使って次のように書く。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.23
 </pre></div>
 </div>
 </div>
@@ -677,12 +1061,27 @@ pandasには、1次元配列に行ラベルをつけたデータ型も用意さ�
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.23, 0.21, 0.23, ..., 0.7 , 0.86, 0.75])
+</pre></div>
+</div>
+</div>
 </div>
 <p>1次元配列からシリーズを作成するには次のように書く。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
 <span class="n">s2</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    0.23
+1    0.21
+2    0.23
+3    0.29
+4    0.31
+dtype: float64
 </pre></div>
 </div>
 </div>
@@ -701,6 +1100,106 @@ pandasには、1次元配列に行ラベルをつけたデータ型も用意さ�
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>carat</th>
+      <th>cut</th>
+      <th>color</th>
+      <th>clarity</th>
+      <th>depth</th>
+      <th>table</th>
+      <th>price</th>
+      <th>x</th>
+      <th>y</th>
+      <th>z</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>31593</th>
+      <td>0.2</td>
+      <td>Premium</td>
+      <td>E</td>
+      <td>VS2</td>
+      <td>61.1</td>
+      <td>59.0</td>
+      <td>367</td>
+      <td>3.81</td>
+      <td>3.78</td>
+      <td>2.32</td>
+    </tr>
+    <tr>
+      <th>31597</th>
+      <td>0.2</td>
+      <td>Ideal</td>
+      <td>D</td>
+      <td>VS2</td>
+      <td>61.5</td>
+      <td>57.0</td>
+      <td>367</td>
+      <td>3.81</td>
+      <td>3.77</td>
+      <td>2.33</td>
+    </tr>
+    <tr>
+      <th>31596</th>
+      <td>0.2</td>
+      <td>Premium</td>
+      <td>F</td>
+      <td>VS2</td>
+      <td>62.6</td>
+      <td>59.0</td>
+      <td>367</td>
+      <td>3.73</td>
+      <td>3.71</td>
+      <td>2.33</td>
+    </tr>
+    <tr>
+      <th>31595</th>
+      <td>0.2</td>
+      <td>Ideal</td>
+      <td>E</td>
+      <td>VS2</td>
+      <td>59.7</td>
+      <td>55.0</td>
+      <td>367</td>
+      <td>3.86</td>
+      <td>3.84</td>
+      <td>2.30</td>
+    </tr>
+    <tr>
+      <th>31594</th>
+      <td>0.2</td>
+      <td>Premium</td>
+      <td>E</td>
+      <td>VS2</td>
+      <td>59.7</td>
+      <td>62.0</td>
+      <td>367</td>
+      <td>3.84</td>
+      <td>3.80</td>
+      <td>2.28</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>降順にソートしたい場合は、引数に <code class="docutils literal notranslate"><span class="pre">ascending=False</span></code> を指定する。</p>
 <div class="cell docutils container">
@@ -710,6 +1209,106 @@ pandasには、1次元配列に行ラベルをつけたデータ型も用意さ�
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>carat</th>
+      <th>cut</th>
+      <th>color</th>
+      <th>clarity</th>
+      <th>depth</th>
+      <th>table</th>
+      <th>price</th>
+      <th>x</th>
+      <th>y</th>
+      <th>z</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>27415</th>
+      <td>5.01</td>
+      <td>Fair</td>
+      <td>J</td>
+      <td>I1</td>
+      <td>65.5</td>
+      <td>59.0</td>
+      <td>18018</td>
+      <td>10.74</td>
+      <td>10.54</td>
+      <td>6.98</td>
+    </tr>
+    <tr>
+      <th>27630</th>
+      <td>4.50</td>
+      <td>Fair</td>
+      <td>J</td>
+      <td>I1</td>
+      <td>65.8</td>
+      <td>58.0</td>
+      <td>18531</td>
+      <td>10.23</td>
+      <td>10.16</td>
+      <td>6.72</td>
+    </tr>
+    <tr>
+      <th>27130</th>
+      <td>4.13</td>
+      <td>Fair</td>
+      <td>H</td>
+      <td>I1</td>
+      <td>64.8</td>
+      <td>61.0</td>
+      <td>17329</td>
+      <td>10.00</td>
+      <td>9.85</td>
+      <td>6.43</td>
+    </tr>
+    <tr>
+      <th>25998</th>
+      <td>4.01</td>
+      <td>Premium</td>
+      <td>I</td>
+      <td>I1</td>
+      <td>61.0</td>
+      <td>61.0</td>
+      <td>15223</td>
+      <td>10.14</td>
+      <td>10.10</td>
+      <td>6.17</td>
+    </tr>
+    <tr>
+      <th>25999</th>
+      <td>4.01</td>
+      <td>Premium</td>
+      <td>J</td>
+      <td>I1</td>
+      <td>62.5</td>
+      <td>62.0</td>
+      <td>15223</td>
+      <td>10.02</td>
+      <td>9.94</td>
+      <td>6.24</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 </section>
 <section id="id13">
@@ -724,6 +1323,22 @@ pandasには、1次元配列に行ラベルをつけたデータ型も用意さ�
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>27415    False
+27630    False
+27130    False
+25998     True
+25999     True
+         ...  
+31601     True
+31598    False
+14        True
+31599    False
+31593     True
+Name: cut, Length: 53940, dtype: bool
+</pre></div>
+</div>
+</div>
 </div>
 <p>このシリーズを <code class="docutils literal notranslate"><span class="pre">loc</span></code>で指定することで、データフレームから <code class="docutils literal notranslate"><span class="pre">cut</span></code> の種類が <code class="docutils literal notranslate"><span class="pre">Premium</span></code> の行のみ抽出することができる。</p>
 <div class="cell docutils container">
@@ -733,6 +1348,106 @@ pandasには、1次元配列に行ラベルをつけたデータ型も用意さ�
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>carat</th>
+      <th>cut</th>
+      <th>color</th>
+      <th>clarity</th>
+      <th>depth</th>
+      <th>table</th>
+      <th>price</th>
+      <th>x</th>
+      <th>y</th>
+      <th>z</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>25998</th>
+      <td>4.01</td>
+      <td>Premium</td>
+      <td>I</td>
+      <td>I1</td>
+      <td>61.0</td>
+      <td>61.0</td>
+      <td>15223</td>
+      <td>10.14</td>
+      <td>10.10</td>
+      <td>6.17</td>
+    </tr>
+    <tr>
+      <th>25999</th>
+      <td>4.01</td>
+      <td>Premium</td>
+      <td>J</td>
+      <td>I1</td>
+      <td>62.5</td>
+      <td>62.0</td>
+      <td>15223</td>
+      <td>10.02</td>
+      <td>9.94</td>
+      <td>6.24</td>
+    </tr>
+    <tr>
+      <th>26534</th>
+      <td>3.67</td>
+      <td>Premium</td>
+      <td>I</td>
+      <td>I1</td>
+      <td>62.4</td>
+      <td>56.0</td>
+      <td>16193</td>
+      <td>9.86</td>
+      <td>9.81</td>
+      <td>6.13</td>
+    </tr>
+    <tr>
+      <th>27679</th>
+      <td>3.51</td>
+      <td>Premium</td>
+      <td>J</td>
+      <td>VS2</td>
+      <td>62.5</td>
+      <td>59.0</td>
+      <td>18701</td>
+      <td>9.66</td>
+      <td>9.63</td>
+      <td>6.03</td>
+    </tr>
+    <tr>
+      <th>24131</th>
+      <td>3.24</td>
+      <td>Premium</td>
+      <td>H</td>
+      <td>I1</td>
+      <td>62.1</td>
+      <td>58.0</td>
+      <td>12300</td>
+      <td>9.44</td>
+      <td>9.40</td>
+      <td>5.85</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 </section>
 <section id="id14">
@@ -746,6 +1461,112 @@ pandasには、1次元配列に行ラベルをつけたデータ型も用意さ�
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>carat</th>
+      <th>cut</th>
+      <th>color</th>
+      <th>clarity</th>
+      <th>depth</th>
+      <th>table</th>
+      <th>price</th>
+      <th>x</th>
+      <th>y</th>
+      <th>z</th>
+      <th>sum</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>27415</th>
+      <td>5.01</td>
+      <td>Fair</td>
+      <td>J</td>
+      <td>I1</td>
+      <td>65.5</td>
+      <td>59.0</td>
+      <td>18018</td>
+      <td>10.74</td>
+      <td>10.54</td>
+      <td>6.98</td>
+      <td>28.26</td>
+    </tr>
+    <tr>
+      <th>27630</th>
+      <td>4.50</td>
+      <td>Fair</td>
+      <td>J</td>
+      <td>I1</td>
+      <td>65.8</td>
+      <td>58.0</td>
+      <td>18531</td>
+      <td>10.23</td>
+      <td>10.16</td>
+      <td>6.72</td>
+      <td>27.11</td>
+    </tr>
+    <tr>
+      <th>27130</th>
+      <td>4.13</td>
+      <td>Fair</td>
+      <td>H</td>
+      <td>I1</td>
+      <td>64.8</td>
+      <td>61.0</td>
+      <td>17329</td>
+      <td>10.00</td>
+      <td>9.85</td>
+      <td>6.43</td>
+      <td>26.28</td>
+    </tr>
+    <tr>
+      <th>25998</th>
+      <td>4.01</td>
+      <td>Premium</td>
+      <td>I</td>
+      <td>I1</td>
+      <td>61.0</td>
+      <td>61.0</td>
+      <td>15223</td>
+      <td>10.14</td>
+      <td>10.10</td>
+      <td>6.17</td>
+      <td>26.41</td>
+    </tr>
+    <tr>
+      <th>25999</th>
+      <td>4.01</td>
+      <td>Premium</td>
+      <td>J</td>
+      <td>I1</td>
+      <td>62.5</td>
+      <td>62.0</td>
+      <td>15223</td>
+      <td>10.02</td>
+      <td>9.94</td>
+      <td>6.24</td>
+      <td>26.20</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>例えば、<code class="docutils literal notranslate"><span class="pre">price</span></code> の対数を計算して <code class="docutils literal notranslate"><span class="pre">price_log</span></code> という列として保持するには、以下のように書く。
 このようにデータが数値の列に対して、NumPyの関数を適用することも可能である。</p>
@@ -756,6 +1577,118 @@ pandasには、1次元配列に行ラベルをつけたデータ型も用意さ�
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>carat</th>
+      <th>cut</th>
+      <th>color</th>
+      <th>clarity</th>
+      <th>depth</th>
+      <th>table</th>
+      <th>price</th>
+      <th>x</th>
+      <th>y</th>
+      <th>z</th>
+      <th>sum</th>
+      <th>price_log</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>27415</th>
+      <td>5.01</td>
+      <td>Fair</td>
+      <td>J</td>
+      <td>I1</td>
+      <td>65.5</td>
+      <td>59.0</td>
+      <td>18018</td>
+      <td>10.74</td>
+      <td>10.54</td>
+      <td>6.98</td>
+      <td>28.26</td>
+      <td>9.799127</td>
+    </tr>
+    <tr>
+      <th>27630</th>
+      <td>4.50</td>
+      <td>Fair</td>
+      <td>J</td>
+      <td>I1</td>
+      <td>65.8</td>
+      <td>58.0</td>
+      <td>18531</td>
+      <td>10.23</td>
+      <td>10.16</td>
+      <td>6.72</td>
+      <td>27.11</td>
+      <td>9.827200</td>
+    </tr>
+    <tr>
+      <th>27130</th>
+      <td>4.13</td>
+      <td>Fair</td>
+      <td>H</td>
+      <td>I1</td>
+      <td>64.8</td>
+      <td>61.0</td>
+      <td>17329</td>
+      <td>10.00</td>
+      <td>9.85</td>
+      <td>6.43</td>
+      <td>26.28</td>
+      <td>9.760137</td>
+    </tr>
+    <tr>
+      <th>25998</th>
+      <td>4.01</td>
+      <td>Premium</td>
+      <td>I</td>
+      <td>I1</td>
+      <td>61.0</td>
+      <td>61.0</td>
+      <td>15223</td>
+      <td>10.14</td>
+      <td>10.10</td>
+      <td>6.17</td>
+      <td>26.41</td>
+      <td>9.630563</td>
+    </tr>
+    <tr>
+      <th>25999</th>
+      <td>4.01</td>
+      <td>Premium</td>
+      <td>J</td>
+      <td>I1</td>
+      <td>62.5</td>
+      <td>62.0</td>
+      <td>15223</td>
+      <td>10.02</td>
+      <td>9.94</td>
+      <td>6.24</td>
+      <td>26.20</td>
+      <td>9.630563</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p><strong>練習2</strong><br />
 <code class="docutils literal notranslate"><span class="pre">diamonds</span></code> データセットにおいて全データの価格の平均は <code class="docutils literal notranslate"><span class="pre">np.mean(df[&quot;price&quot;].values)</span></code> 、カラットの平均は <code class="docutils literal notranslate"><span class="pre">np.mean(df[&quot;carat&quot;].values)</span></code> により求めることができる。フィルタリングを行うことにより、カット <code class="docutils literal notranslate"><span class="pre">&quot;cut&quot;</span></code> の種類が <code class="docutils literal notranslate"><span class="pre">&quot;Ideal&quot;</span></code> のデータにおける価格の平均、カラットの平均を求めなさい。<code class="docutils literal notranslate"><span class="pre">&quot;Ideal&quot;</span></code> はカットの種類の中では一番良いカテゴリだが、価格の平均が全データでの平均より小さくなるのはなぜだろうか。</p>
