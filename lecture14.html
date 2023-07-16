@@ -410,7 +410,7 @@ document.write(`
 <p>この節で利用するライブラリのimportを行う。前回も利用した <code class="docutils literal notranslate"><span class="pre">'diamonds'</span></code> というテーブルデータを利用する。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#pip install japanize_matplotlib</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">japanize_matplotlib</span>
 </pre></div>
 </div>
 </div>
@@ -683,7 +683,7 @@ document.write(`
 <h2>相関と因果<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h2>
 <p>データ分析の主な目標として、複数の要素の間の関係を明らかにするという点が挙げられる。
 ここでは2つの要素の関係を表す概念である相関と因果について解説する。</p>
-<p><strong>相関</strong>（correlation）とは「データの見かけ上、一方の値が増えるときにもう一方の値が増える（または減る）」という関係のことをいう。一方の値が増えるときに、もう一方の値が増えるとき正の相関があるといい、もう一方の値が減るとき負の相関があるという。もう一方の値が増えるとも減るとも言えないとき、無相関であるという。</p>
+<p><strong>相関</strong>とは「データの見かけ上、一方の値が増えるときにもう一方の値が増える（または減る）」という関係のことをいう。一方の値が増えるときに、もう一方の値が増えるとき正の相関があるといい、もう一方の値が減るとき負の相関があるという。もう一方の値が増えるとも減るとも言えないとき、無相関であるという。</p>
 <p>相関を調べるには、散布図をプロットするのが有効である。
 例として、カラットと価格の間の関係を散布図により可視化してみよう。</p>
 <div class="cell docutils container">
@@ -735,15 +735,13 @@ document.write(`
 </div>
 </div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">df.groupby('cut')['price'].mean()</span></code> を実行すると、カットをindexとし、カットごとの価格の平均を値とするシリーズを取得できる。このコードは複雑に見えるかもしれないが、今はおまじないとして理解しておけばよい。</p>
-<p>棒グラフを作成するにあたって、横軸の値をカットの質の低い順に並べたい。<code class="docutils literal notranslate"><span class="pre">mean_price</span> <span class="pre">=</span> <span class="pre">mean_price.loc[order]</span></code> によりシリーズのindexの順を <code class="docutils literal notranslate"><span class="pre">order</span></code> の順に設定することで、これを実現している。そして <code class="docutils literal notranslate"><span class="pre">mean_price</span></code> のindexと値を、<code class="docutils literal notranslate"><span class="pre">ax.bar()</span></code> メソッドに渡すことにより棒グラフをプロットしている。</p>
-<p>これを見ると、Premiumは例外的だが、大まかにはカットの質が上がるほど平均価格が下がるという負の相関があるように見える。
+<p><code class="docutils literal notranslate"><span class="pre">df.groupby('cut')['price'].mean()</span></code> を実行すると、カットをindexとし、カットごとの価格の平均を値とするシリーズを取得できる。このコードは複雑に見えるかもしれないが、今はおまじないとして理解しておけばよい。また <code class="docutils literal notranslate"><span class="pre">mean_price</span> <span class="pre">=</span> <span class="pre">mean_price.loc[order]</span></code> によりシリーズのindexの順を <code class="docutils literal notranslate"><span class="pre">order</span></code> の順に設定することで、棒グラフの横軸の値がカットの質の低い順となるようにしている。そして <code class="docutils literal notranslate"><span class="pre">mean_price</span></code> のindexと値を、<code class="docutils literal notranslate"><span class="pre">ax.bar()</span></code> メソッドに渡すことにより棒グラフをプロットしている。</p>
+<p>プロットを見ると、Premiumは例外的だが、大まかにはカットの質が上がるほど平均価格が下がるという負の相関があるように見える。
 しかし、これは常識的に考えておかしな関係である。</p>
-<p>この現象を理解するためには、相関と因果の違いを理解することが重要である。ここで<strong>因果</strong>（causality）とは「他の条件を固定した上で、実際に操作して一方の値を増やしたときにもう一方の値が増える（または減る）」という関係のことをいう。要するに原因と結果の関係である。このとき「<strong>相関は必ずしも因果を意味しない</strong>」という点に気を付ける必要がある。</p>
-<p>例えば、先ほどのカラットと価格の間の正の相関は、因果関係を反映したものであると推測することができる。なぜなら常識的に考えて、他の条件を固定してカラットを大きくすれば、原価の分、価格も合わせて高くなるはずだからである。一方で、カットと価格の間の相関は、実際の因果関係を表していないと考えられる。なぜなら常識的に考えて、他の条件を固定してカットの質を上げれば、手間隙のかかる分、価格も高くなるはずだからである。</p>
-<p>後者のように因果とは異なる見かけ上の相関のことを<strong>擬似相関</strong>という。擬似相関は、2つの要素のほかに<strong>交絡因子</strong>という第3の要素が存在する場合に起こる。
-カットと価格の間の相関は、カラットを交絡因子として以下のように理解できる。</p>
-<p>まず、カットとカラットの間の相関を棒グラフにより可視化してみる。以下のコードでは、カットごとの平均カラットの値をプロットしている。</p>
+<p>この分析結果を理解するためには、「<strong>相関は必ずしも因果を意味しない</strong>」という点を理解することが重要である。ここで<strong>因果</strong>とは「他の条件を固定した上で、実際に操作して一方の値を変化させたときにもう一方の値が変化する」という関係のことをいう。要するに原因と結果の関係である。</p>
+<p>例えば、先ほどのカラットと価格の間の正の相関は、実際の因果関係を反映したものであると推測することができる。なぜなら常識的に考えて、他の条件を固定してカラットを大きくすれば、原価の分、価格も合わせて高くなるはずだからである。一方で、カットと価格の間の負の相関は、実際の因果関係を表していないと考えられる。なぜなら常識的に考えて、他の条件を固定してカットの質を上げれば、手間隙のかかる分、価格も高くなるはずだからである。</p>
+<p>後者のように実際の因果関係とは異なる見かけ上の相関のことを<strong>擬似相関</strong>という。擬似相関は多くの場合、2つの要素のほかに<strong>交絡因子</strong>という第三の要素が存在することにより起こる。カットと価格の間の負の相関は、カラットを交絡因子として以下のように理解できる。</p>
+<p>まず、カットとカラットの間の相関を棒グラフにより可視化してみる。以下のコードでは、カットごとの平均カラットの値を棒グラフとしてプロットしている。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># プロットの入れ物の用意</span>
@@ -767,10 +765,10 @@ document.write(`
 </div>
 </div>
 </div>
-<p>これを見ると、カットとカラットの間には大まかに負の相関があることがわかる。この相関が、実際の因果関係を反映したものか考えてみよう。カラットがカットに合わせて変わるということはあり得ないので、因果としてあり得るとしたらカットがカラットに合わせて変わるということである。これはあり得る話である。例えばカラットの小さいダイヤモンドを売るために、より質の高いカットを行う必要があるのかもしれない。一方で、カラットの大きいダイヤモンドは、カットの質によらず商品として成立するのかもしれない。</p>
-<p>以上の考察により、小さいカラットほど質の高いカットが求められるという因果が成り立つという仮説を立てることができる。
-一方で、カラットと価格の間には、これもまた因果と解釈できる正の相関が成り立つのであった。
-これらを踏まえると、カットと価格の間には、データ上の擬似相関として負の相関が見られたのではないかという仮説を立てることができる。</p>
+<p>これを見ると、カットとカラットの間には大まかに負の相関があることがわかる。この相関が、実際の因果関係を反映したものか考えてみよう。カラットがカットに合わせて変わるということはあり得ないので、因果としてあり得るとしたらカットがカラットに合わせて変わるということである。これはあり得る話である。例えばカラットの小さいダイヤモンドを売るために、より質の高いカットを行う必要があるのかもしれない。一方で、カラットの大きいダイヤモンドは、カットの質によらず商品として成立するために、質の低いカットを採用することも多々あるのかもしれない。</p>
+<p>以上の考察により、小さいカラットほど質の高いカットが採用されやすいという因果関係があるという仮説を立てることができる。
+一方で、カラットと価格の間には、これもまた因果関係と解釈できる正の相関があるのであった。
+これらを踏まえると、カットと価格の間の負の相関は、カラットという第三の要素の影響を強く受けた結果、擬似相関が見えているのではないかという仮説を立てることができる。</p>
 </section>
 <section id="id10">
 <h2>演習<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h2>
@@ -788,7 +786,7 @@ document.write(`
 </div>
 </div>
 </div>
-<p>プロットしたら以下のコードを実行することにより、画像をダウンロードできる。これを提出しなさい。上のコード内で <code class="docutils literal notranslate"><span class="pre">plt.show()</span></code> は実行しないようにすること（実行すると以下のコードが上手く機能しない）。</p>
+<p>プロットしたら以下のコードを実行することにより、画像をダウンロードできる。これを提出しなさい。注意として、上のコード内で <code class="docutils literal notranslate"><span class="pre">plt.show()</span></code> を実行しないように気を付けること（その場合、白紙のデータがダウンロードされる）。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">files</span>
