@@ -1,0 +1,785 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>第11回 アルゴリズム入門：データの探索 &#8212; プログラミング実習講義１</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/custom.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-VFVQWRM1GN"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-VFVQWRM1GN');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'workbook/lecture11';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">プログラミング実習講義１</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    プログラミング実習講義１のページ
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../lecture01.html">第1回 ガイダンス</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lecture02.html">第2回 ITを支えるコンピュータのしくみ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lecture03.html">第3回 はじめてのPython</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lecture04.html">第4回 プログラムの材料と道具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lecture05.html">第5回 条件分岐</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lecture06.html">第6回 繰り返し</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lecture07.html">第7回 データの入れ物</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lecture08.html">第8回 関数と再帰</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lecture09.html">第9回 アルゴリズム入門：データの整列</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lecture10.html">第10回 アルゴリズム入門：問題の複雑さ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lecture11.html">第11回 アルゴリズム入門：データの探索</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lecture12.html">第12回 新しいデータ型を作る</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lecture13.html">第13回 データの可視化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lecture14.html">第14回 データの読み方</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lecture15.html">第15回 探索的データ分析に挑戦！</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/workbook/lecture11.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>第11回 アルゴリズム入門：データの探索</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">この授業で学ぶこと</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">探索とは</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">線形探索</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">二分探索</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">ファイルの入出力</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#google">Googleドライブのマウント</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">ファイルの読み込み</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">ファイルの書き込み</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">演習</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>第11回 アルゴリズム入門：データの探索<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
+<hr class="docutils" />
+<p><a class="reference external" href="https://colab.research.google.com/github/tsuboshun/begin-python/blob/gh-pages/_sources/workbook/lecture11.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+<hr class="docutils" />
+<section id="id2">
+<h2>この授業で学ぶこと<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<p>アルゴリズム入門の最後の話題として、探索アルゴリズムについて学ぶ。またファイルの読み書きの方法についても学ぶ。</p>
+</section>
+<section id="id3">
+<h2>探索とは<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<p>複数のデータの中から、特定の条件に適合するデータを見つけることを<strong>探索</strong>という。
+このテキストでは、次の問題設定に限定して考える： 数値のリストと数値のキーが与えられるとき、リストの中にキーと一致する要素が存在するかを判定し、存在するときはそのインデックスを1つ求める。</p>
+<p>このアルゴリズムを関数として実装しよう。
+リストとキーを引数として受け取り、リストの中にキーが存在すればそのインデックスを返し、存在しなければ <code class="docutils literal notranslate"><span class="pre">None</span></code> を返す関数を作成する。</p>
+<p>例えば、次のリストとキーのペアに対しては、インデックスの3を返す。</p>
+<pre>
+data = [5, 1, 3, 7, 2]
+key = 7
+</pre>
+<p>次のリストとキーのペアに対しては、<code class="docutils literal notranslate"><span class="pre">None</span></code> を返す。</p>
+<pre>
+data = [5, 1, 3, 7, 2]
+key = 4
+</pre>
+<p>探索は使用頻度の高い基本的な操作なので、数多くのアルゴリズムが考案されている。
+今回はその中から代表的な<strong>線形探索</strong>と<strong>二分探索</strong>を紹介する。</p>
+<p>なお、探索プログラムはリストの <code class="docutils literal notranslate"><span class="pre">index()</span></code> メソッドを使えば、次のように実装することができる。
+ここではアルゴリズムの学習のため、<code class="docutils literal notranslate"><span class="pre">index()</span></code> メソッドには頼らずに1からプログラムを作成することを考える。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">search</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">key</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">search</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">key</span><span class="p">))</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">key</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">search</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">key</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id4">
+<h2>線形探索<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
+<p>線形探索は、前から順に探すという単純なアルゴリズムである。
+実装としては、for文により前から要素を1つずつ調べていき、キーに一致する要素を見つけたところでそのインデックスをreturn文で返す。
+最後までキーに一致する要素が見つからなかった場合は、<code class="docutils literal notranslate"><span class="pre">None</span></code> をreturn文で返す。</p>
+<p>以下に、未完成の <code class="docutils literal notranslate"><span class="pre">linear_search()</span></code> 関数を用意した。練習として、プログラムを完成させてみてほしい。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### （出席課題）関数全体を提出する。</span>
+
+<span class="k">def</span> <span class="nf">linear_search</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)):</span>
+        <span class="k">pass</span>   <span class="c1"># ここを書き換える</span>
+    <span class="k">return</span> <span class="kc">None</span>
+
+<span class="c1">###</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">key</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">linear_search</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">key</span><span class="p">))</span> <span class="c1"># 3</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">key</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">linear_search</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">key</span><span class="p">))</span> <span class="c1"># None</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>線形探索の計算量は、リストの要素数を <span class="math notranslate nohighlight">\(N\)</span> として最悪も平均も <span class="math notranslate nohighlight">\(O(N)\)</span> である。
+最悪の場合は、キーと一致する要素がリストの最後にあるか、存在しない場合である。
+このときfor文の処理を <span class="math notranslate nohighlight">\(N\)</span> 回繰り返すことになるので、最悪計算量は <span class="math notranslate nohighlight">\(O(N)\)</span> となる。
+平均的な場合は、for文の処理を <span class="math notranslate nohighlight">\(N/2\)</span> 回繰り返すことになる。
+計算量を表す際には、定数は無視されるため、平均計算量も <span class="math notranslate nohighlight">\(O(N)\)</span> となる。</p>
+<p><span class="math notranslate nohighlight">\(O(N)\)</span> は計算量として十分小さいので、実用上はこれで十分なことが多い。
+ちなみに、リストの <code class="docutils literal notranslate"><span class="pre">index()</span></code> メソッドも線形探索を実装したものとなっている。</p>
+</section>
+<section id="id5">
+<h2>二分探索<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
+<p>二分探索は、リストがソートされているという前提のもとで、より効率的な探索を実現するアルゴリズムである。</p>
+<p>リストがソートされているとき、要素とキーの大小関係を調べることにより、キーがあるとしたら要素より右か左かが判明する。
+二分探索ではこの性質を利用し、さらに大小関係を調べる要素を探索範囲の中央から選ぶことで、なるべく少ないステップで探索範囲を絞り込んでいく。</p>
+<p>例としてキーが7のとき、二分探索が探索範囲を絞り込んでいく様子を次の図に示す。</p>
+<figure class="align-default" id="binary-search">
+<a class="reference internal image-reference" href="workbook/pic/binary_search.png"><img alt="workbook/pic/binary_search.png" src="workbook/pic/binary_search.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-text">キーが7のときの二分探索の様子</span><a class="headerlink" href="#binary-search" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>両端の灰矢印が、探索範囲を表している。これらの中央の青矢印が、大小関係を調べる要素である。
+1行目の比較では、青矢印の13よりキーの7の方が小さいので、キーがあるとしたらこれより左側にあると判断できる。
+したがって、右の灰矢印を青矢印の1つ左に移動させて、次の行に移る。</p>
+<p>2行目も同様にして、青矢印の5とキーの7を比較する。今度はキーの方が大きいので、左の灰矢印を青矢印の1つ右に移動させる。3行目までくると、探索範囲は2つ（7と11）に絞り込めている。このように探索範囲のサイズが偶数のときは、ちょうど中央の位置に要素はないので、中央の左隣か右隣の要素を比較対象に選ぶ（ここでは左隣を選択している）。このとき青矢印の要素はキーと一致するので、青矢印のインデックスを返して探索を終了する。</p>
+<p>キーに一致する要素がない場合は、上記操作をくり返すと、いずれ灰矢印の位置が逆転する。このとき <code class="docutils literal notranslate"><span class="pre">None</span></code> を返して探索を終了する。</p>
+<p>以下に、未完成の <code class="docutils literal notranslate"><span class="pre">binary_search()</span></code> 関数を用意した。
+左の灰矢印に相当するのが <code class="docutils literal notranslate"><span class="pre">left</span></code>、右の灰矢印に相当するのが <code class="docutils literal notranslate"><span class="pre">right</span></code>、真ん中の青矢印に相当するのが <code class="docutils literal notranslate"><span class="pre">mid</span></code> である。
+上の説明を参考に、プログラムを完成させてみてほしい。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">binary_search</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+    <span class="n">left</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">right</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="n">left</span> <span class="o">&lt;=</span> <span class="n">right</span><span class="p">:</span>
+        <span class="n">mid</span> <span class="o">=</span> <span class="p">(</span><span class="n">left</span> <span class="o">+</span> <span class="n">right</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+        <span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="n">mid</span><span class="p">]</span> <span class="o">==</span> <span class="n">key</span><span class="p">:</span>
+            <span class="k">pass</span> <span class="c1"># ここを書き換える</span>
+        <span class="k">elif</span> <span class="n">data</span><span class="p">[</span><span class="n">mid</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">key</span><span class="p">:</span>
+            <span class="k">pass</span> <span class="c1"># ここを書き換える</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">pass</span> <span class="c1"># ここを書き換える</span>
+    <span class="k">return</span> <span class="kc">None</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
+<span class="n">key</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">binary_search</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">key</span><span class="p">))</span> <span class="c1"># 3</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
+<span class="n">key</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">binary_search</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">key</span><span class="p">))</span> <span class="c1"># None</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>二分探索の計算量は、リストの要素数を <span class="math notranslate nohighlight">\(N\)</span> として最悪も平均も <span class="math notranslate nohighlight">\(O(\log N)\)</span> である。
+二分探索ではキーと要素を比較するたびに探索範囲が約半分になる。
+例えば、上図の例では探索範囲は<span class="math notranslate nohighlight">\(11\rightarrow 5\rightarrow 2\)</span>と移り変わっている。
+最悪の場合は、探索範囲が1となるまでキーと一致する要素が見つからない場合であるが、この場合でも約 <span class="math notranslate nohighlight">\(\log N\)</span> のステップ数で処理を終えることができる（前回のテキストから引き続き対数の底は2とする）。よって、最悪計算量は <span class="math notranslate nohighlight">\(O(\log N)\)</span> になる。
+平均的な場合においても、毎回のステップで探索範囲が約半分になるという性質は変わらないため、<span class="math notranslate nohighlight">\(O(\log N)\)</span> であることを示すことができる。</p>
+<p>ここまでに紹介した3つの探索方法について、実際に計算時間を比較してみよう。
+ここでは自明な例ではあるが、<span class="math notranslate nohighlight">\(0\)</span> から <span class="math notranslate nohighlight">\(N-1\)</span> まで整数が順に並んだリスト <code class="docutils literal notranslate"><span class="pre">data</span></code> を <code class="docutils literal notranslate"><span class="pre">list(range(N))</span></code> により作成し、それに対して探索を実行している。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+
+<span class="k">def</span> <span class="nf">exec_time</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="n">func</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+    <span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">end</span> <span class="o">-</span> <span class="n">start</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="mi">7</span>
+<span class="n">data</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">))</span>
+<span class="n">key</span> <span class="o">=</span> <span class="n">N</span> <span class="o">//</span> <span class="mi">3</span>  <span class="c1"># 適当な要素</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">exec_time</span><span class="p">(</span><span class="n">search</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">key</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">exec_time</span><span class="p">(</span><span class="n">linear_search</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">key</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">exec_time</span><span class="p">(</span><span class="n">binary_search</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">key</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id6">
+<h2>ファイルの入出力<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
+<p>探索アルゴリズムから話題を変えて、この節ではファイルの入出力について学ぶ。
+これまではPythonプログラムの中で閉じた話がほとんどであったが、ファイルの入出力を学ぶことで、パソコン上のファイルに対して自由な処理を行えるようになったり、プログラムの実行結果を永続的に保存できるようになったりするなど出来ることの幅がぐんと広がる。</p>
+<section id="google">
+<h3>Googleドライブのマウント<a class="headerlink" href="#google" title="Permalink to this heading">#</a></h3>
+<p>Google Colab上でファイルを扱うために、最初にGoogleドライブに接続する必要がある（<strong>マウント</strong>という）。
+ここではマウントの手順を説明する。</p>
+<p>サイドメニューから以下の順番でアイコンをクリックする。</p>
+<figure class="align-default" id="drive1">
+<a class="reference internal image-reference" href="workbook/pic/drive1.png"><img alt="workbook/pic/drive1.png" src="workbook/pic/drive1.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-text">Googleドライブのマウント</span><a class="headerlink" href="#drive1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>そうすると以下のようなコードがノートブック上に現れるので、これを実行する。
+実行するとアカウントのログイン画面が表示され、その後Googleドライブのマウントを許可するか聞かれるので、許可するを選択する。</p>
+<figure class="align-default" id="drive2">
+<a class="reference internal image-reference" href="workbook/pic/drive2.png"><img alt="workbook/pic/drive2.png" src="workbook/pic/drive2.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-text">Googleドライブのマウント</span><a class="headerlink" href="#drive2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>マウントしたあと左のウィンドウ上で <code class="docutils literal notranslate"><span class="pre">/content/drive/MyDrive</span></code> を見に行くと、Googleドライブ上のファイル・フォルダが確認できるはずである。</p>
+<figure class="align-default" id="drive3">
+<a class="reference internal image-reference" href="workbook/pic/drive3.png"><img alt="workbook/pic/drive3.png" src="workbook/pic/drive3.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-text">Googleドライブのマウント</span><a class="headerlink" href="#drive3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id7">
+<h3>ファイルの読み込み<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
+<p>練習用のファイルとして次のデータが書かれたsample.txtを用意し（ToyoNet-ACEでも配布する予定）、Googleドライブのマイドライブ直下に置く。それ以外の場所に置いた場合は以降のコードの <code class="docutils literal notranslate"><span class="pre">path</span></code> を適宜変更する。</p>
+<pre>8 7 9 6 9
+4 5 8 7 6
+9 9 9 8 9
+6 7 9 7 8</pre>
+<p>このファイルの中身は組み込み関数の <code class="docutils literal notranslate"><span class="pre">open()</span></code> を使って、次のように読み込むことができる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;/content/drive/MyDrive/sample.txt&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">open()</span></code> 関数は、第一引数にファイルの存在する場所（<strong>パス</strong>という）、第二引数にモードを渡す。
+パスは文字列で表し、フォルダを1つ下るごとに <code class="docutils literal notranslate"><span class="pre">/</span></code> で区切って <code class="docutils literal notranslate"><span class="pre">content</span></code> フォルダからの位置関係を表現する。
+第二引数に渡している <code class="docutils literal notranslate"><span class="pre">'r'</span></code> は読み込みモードを表す。</p>
+<p><code class="docutils literal notranslate"><span class="pre">open()</span></code> 関数の返すファイルオブジェクト <code class="docutils literal notranslate"><span class="pre">f</span></code> に対して、<code class="docutils literal notranslate"><span class="pre">read()</span></code> メソッドを呼び出すと、ファイルの中身を文字列として取得できる。
+最後に、開いたファイルオブジェクトを <code class="docutils literal notranslate"><span class="pre">f.close()</span></code> により閉じている。</p>
+<p><code class="docutils literal notranslate"><span class="pre">read()</span></code> メソッドはファイル全体を文字列として読み込むが、for文により一行ずつ読み込むこともできる。</p>
+<p>さて <code class="docutils literal notranslate"><span class="pre">sample.txt</span></code> の中身は各行が一人一人の学生、各列が何かしらのスコアを表していたとしよう（つまり学生4人・スコア5つ）。このときデータを2次元リストとして読み込めると、分析の際に便利である。次のコードにより、ファイルの中身を2次元リストとして読み込むことができる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>ここで各行の文字列 <code class="docutils literal notranslate"><span class="pre">line</span></code> について、まず <code class="docutils literal notranslate"><span class="pre">strip()</span></code> メソッドにより改行文字 <code class="docutils literal notranslate"><span class="pre">\n</span></code> を取り除き、次に <code class="docutils literal notranslate"><span class="pre">split('</span> <span class="pre">')</span></code> メソッドにより空白文字で区切ってリストに変換している。例として、<code class="docutils literal notranslate"><span class="pre">line</span></code> にファイルの1行目 <code class="docutils literal notranslate"><span class="pre">&quot;8</span> <span class="pre">7</span> <span class="pre">9</span> <span class="pre">6</span> <span class="pre">9\n&quot;</span></code> が代入されたときの処理の流れを、以下に示す。</p>
+<pre>
+line.strip().split(' ')
+</pre>
+<p>↓ <code class="docutils literal notranslate"><span class="pre">line</span></code> の指す値に置き換え</p>
+<pre>
+"8 7 9 6 9\n".strip().split(' ')
+</pre>
+<p>↓ <code class="docutils literal notranslate"><span class="pre">strip()</span></code> メソッドの適用</p>
+<pre>
+"8 7 9 6 9".split(' ')
+</pre>
+<p>↓ <code class="docutils literal notranslate"><span class="pre">split()</span></code> メソッドの適用</p>
+<pre>
+['8', '7', '9', '6', '9']
+</pre>
+<p>よって、<code class="docutils literal notranslate"><span class="pre">data.append(line.strip().split('</span> <span class="pre">'))</span></code> は <code class="docutils literal notranslate"><span class="pre">data.append(['8',</span> <span class="pre">'7',</span> <span class="pre">'9',</span> <span class="pre">'6',</span> <span class="pre">'9'])</span></code> と同じことであり、これにより2次元リスト <code class="docutils literal notranslate"><span class="pre">data</span></code> の末尾に1次元リスト <code class="docutils literal notranslate"><span class="pre">['8',</span> <span class="pre">'7',</span> <span class="pre">'9',</span> <span class="pre">'6',</span> <span class="pre">'9']</span></code> が追加される。</p>
+<p>注意点として、この時点では <code class="docutils literal notranslate"><span class="pre">data</span></code> の各要素は文字列型となっている。そこで分析前に整数型または浮動小数点数型に変換しておく。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">])):</span>
+        <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">])</span>  <span class="c1"># 小数を含むならfloat()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id8">
+<h3>ファイルの書き込み<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
+<p>読み込んだデータをもとに各生徒の平均スコアを求めて、ファイルに出力してみよう。</p>
+<p>まず出力用のパスを入力とは別に設定する。
+<code class="docutils literal notranslate"><span class="pre">open()</span></code> 関数を書き込みモード（<code class="docutils literal notranslate"><span class="pre">'w'</span></code>） で呼び出し、書き込み用のファイルオブジェクト <code class="docutils literal notranslate"><span class="pre">f</span></code> を取得する。
+平均値の計算は、ここでは簡単に総和を求める <code class="docutils literal notranslate"><span class="pre">sum()</span></code> 関数と <code class="docutils literal notranslate"><span class="pre">len()</span></code> 関数を使用して行っている。
+そして結果を <code class="docutils literal notranslate"><span class="pre">f.write()</span></code> によりファイルに書き込んでいる。
+入力と同じように1行1学生となるように、最後に改行 <code class="docutils literal notranslate"><span class="pre">\n</span></code> を入れている。</p>
+<p>ファイルへの書き込みを終えたら、<code class="docutils literal notranslate"><span class="pre">f.flush()</span></code>、<code class="docutils literal notranslate"><span class="pre">f.close()</span></code> を順に呼び出してファイルを閉じる。
+実は <code class="docutils literal notranslate"><span class="pre">f.write()</span></code> を呼び出した時点では、ファイルへの書き込みを予約した状態に過ぎず、OSの状態によっては実際の書き込みは後回しにされてしまう。
+<code class="docutils literal notranslate"><span class="pre">f.flush()</span></code> は、ファイルへの書き込みを確実に完了させる働きを持つ。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">output_path</span> <span class="o">=</span> <span class="s2">&quot;/content/drive/MyDrive/sample_mean.txt&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>ここで紹介した書き込み方法では、毎回ファイルの内容が上書きされる。
+そうではなく、ファイルの末尾に追記したい場合には追記モード（<code class="docutils literal notranslate"><span class="pre">'a'</span></code>） を指定する。
+ファイルオブジェクトの使い方は書き込みモード（<code class="docutils literal notranslate"><span class="pre">'w'</span></code>）の場合と全く同じである。</p>
+</section>
+</section>
+<section id="id9">
+<h2>演習<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h2>
+<p><strong>課題</strong><br />
+上の節では、各学生の平均スコアを求めてファイルに出力した。これを参考に、平均スコアの代わりにスコアの標準偏差を求めてファイルに出力し、作成したファイルを提出しなさい。ファイル名は <code class="docutils literal notranslate"><span class="pre">sample_std.txt</span></code> とすること。これは必須ではないが、可能なら小数は第3位を四捨五入して第2位までを求めなさい（<a class="reference internal" href="../lecture03.html#label-round"><span class="std std-ref">参考</span></a>）。</p>
+<p>ヒント1:  第6回で紹介したNumPyを利用すると、標準偏差は簡単に求められる。<code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">numpy</span> <span class="pre">as</span> <span class="pre">np</span></code> によりNumPyを読み込んだあと、<code class="docutils literal notranslate"><span class="pre">np.std()</span></code> 関数を使って、<code class="docutils literal notranslate"><span class="pre">np.std(lst)</span></code> によりリスト <code class="docutils literal notranslate"><span class="pre">lst</span></code> の標準偏差を求めることができる。<br />
+ヒント2:  学生は4人いるので、標準偏差も4つ求まることになる。<code class="docutils literal notranslate"><span class="pre">sample_std.txt</span></code> は次のような見た目になる。ヒントとして1行目のみ答えを示す。つまり、<code class="docutils literal notranslate"><span class="pre">data</span></code> の1行目 <code class="docutils literal notranslate"><span class="pre">[8,</span> <span class="pre">7,</span> <span class="pre">9,</span> <span class="pre">6,</span> <span class="pre">9]</span></code> の標準偏差を求めて小数第3位を四捨五入すると <code class="docutils literal notranslate"><span class="pre">1.17</span></code> になる（四捨五入せずに1.16619…という解答でも正解とする）。</p>
+<pre>1.17
+*
+*
+*</pre><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span> <span class="c1"># NumPyの読み込み</span>
+
+<span class="n">output_path</span> <span class="o">=</span> <span class="s2">&quot;/content/drive/MyDrive/sample_std.txt&quot;</span>
+<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">output_path</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">lst</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+    <span class="k">pass</span> <span class="c1"># ここに適切なコードを書く</span>
+
+<span class="n">f</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
+<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./workbook"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">この授業で学ぶこと</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">探索とは</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">線形探索</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">二分探索</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">ファイルの入出力</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#google">Googleドライブのマウント</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">ファイルの読み込み</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">ファイルの書き込み</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">演習</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By 大坪 舜 Shun Otsubo
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023（2023年3月30日公開）.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
