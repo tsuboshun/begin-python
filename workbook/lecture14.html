@@ -765,7 +765,7 @@ document.write(`
 これらを踏まえると、カットと価格の間の負の相関は、カラットという第三の要素の影響を強く受けた結果、擬似相関が見えているのではないかという仮説を立てることができる。つまり、カットと価格の間の負の相関はデータの見かけ上の話であって、実際にカットの質を上げたときの価格の変化を表しているわけではないと考えられる。</p>
 <p>相関と因果の違いについて、もう一つ有名な例を挙げて説明しよう。各日のアイスクリームの売上と水難事故の件数をデータとして取得し、散布図をプロットすると、両者に明確な正の相関があることが知られている。しかし、これは明らかに擬似相関であって因果関係ではない。例えば、アイスクリームの販売をやめたところで水難事故の件数が減るわけではないし、逆も然りである。この例では気温を交絡因子として以下のように理解できる。気温が上がるとアイスクリームの売上が上がり、気温が上がると水難事故の件数が上がるという因果関係がある。このときアイスクリームの売上と、水難事故の件数は気温に合わせて変動するため、両者の間に擬似相関が発生する。</p>
 <p>2つの例における因果関係を原因から結果の方向に矢印をつけたグラフで表現すると、次の図のようになる（これを<strong>因果グラフ</strong>という）。
-左の例ではカットから価格に矢印が伸びているが、カラットの影響により、相関の正負が実際の因果関係とは逆転しているという意味での擬似相関が発生しているのであった。一方で右の例では、そもそも因果関係のない2つの要素の間に擬似相関が発生するという例になっている。ただし、これらのグラフはあくまで仮説であって、実際の因果関係を表しているとは限らないことに注意する。</p>
+左の例ではカットから価格に矢印が伸びているが、カラットの影響により、相関の正負が実際の因果関係とは反対になるという擬似相関が発生する例になっている。一方で右の例は、そもそも因果関係のない2つの要素の間に擬似相関が発生する例になっている。ただし、これらの因果グラフはあくまで尤もらしい仮説であって、正しくない可能性もあることに注意する。</p>
 <figure class="align-default" id="dag">
 <a class="reference internal image-reference" href="workbook/pic/DAG.png"><img alt="workbook/pic/DAG.png" src="workbook/pic/DAG.png" style="width: 600px;" /></a>
 <figcaption>
@@ -776,7 +776,7 @@ document.write(`
 <section id="id10">
 <h2>演習<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h2>
 <p><strong>課題1</strong><br />
-カラットを横軸とするヒストグラムを作成しなさい。ビン数や軸ラベルなどの細かい設定は、各自の判断で決めてよい。</p>
+カラットについて、対数関数により値を変換した上で、ヒストグラムを作成しなさい。ビン数や軸ラベルなどの細かい設定は、各自の判断で決めてよい。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ここに適切なコードを書く</span>
@@ -789,7 +789,7 @@ document.write(`
 </div>
 </div>
 </div>
-<p>プロットしたら以下のコードを実行することにより、画像をダウンロードできる。これを提出しなさい。注意として、上のコード内で <code class="docutils literal notranslate"><span class="pre">plt.show()</span></code> を実行しないように気を付けること（その場合、白紙の画像がダウンロードされる）。</p>
+<p>プロットしたら以下のコードを実行することにより、画像をダウンロードできる。これを提出しなさい。注意として、上のコード内で <code class="docutils literal notranslate"><span class="pre">plt.show()</span></code> を実行しないようにすること（その場合、白紙の画像がダウンロードされる）。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">files</span>
