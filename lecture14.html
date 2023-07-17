@@ -353,7 +353,7 @@ document.write(`
 <h2>この授業で学ぶこと<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
 <p>前回はデータの可視化をテーマに、matplotlibとpandasの使い方について学んだ。
 今回はこれらのライブラリを活用しながら、データ分析の手法・考え方について代表的なものを学ぶ。</p>
-<p>データサイエンスにおいてデータ分析は中心的な役割を持つ。データサイエンスにおいてよくある一連のプロセスは以下の通りである：データ収集、データクリーニング、データ分析、モデル作成、予測と解釈。ここで言うモデルとは世間的にはAIと呼ばれるもので、例えば過去のデータをもとに将来の施策に対する効果を予測するのに用いられる。データ分析はその前段階にあたるプロセスで、データについての理解を深め、データからどのような知見を引き出すことができるか、ひいてはどのような予測モデルを構築できそうか当たりをつけるために行う。決められた手順があるわけではないので、<strong>探索的データ分析</strong>（EDA; exploratory data analysis）などと言うこともある。</p>
+<p>データサイエンスにおいてデータ分析は中心的な役割を持つ。データサイエンスにおいてよくある一連のプロセスは以下の通りである：データ収集、データクリーニング、データ分析、モデル作成、予測と解釈。ここで言うモデルとは世間的にはAIと呼ばれるもので、例えば過去のデータをもとに将来の施策に対する効果を予測するのに用いられる。データ分析はその前段階にあたるプロセスで、データについての理解を深め、データからどのような知見を引き出すことができるか、ひいてはどのような予測モデルを構築できそうか当たりをつけるために行う。決められた手順があるわけではないので、<strong>探索的データ分析</strong>（exploratory data analysis, EDA）などと言うこともある。</p>
 <p>今回はデータ分析の手法・考え方について学びながら、データ分析の雰囲気を体験してもらおうと思っている。最終回の次回は、分析内容も自分で考えながら、実際に手を動かしてデータ分析を行ってもらう。</p>
 </section>
 <section id="id3">
@@ -529,9 +529,8 @@ document.write(`
 <h3>代表値<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
 <p>データの分布を確認する代わりに、分布を要約するような統計量を調べることもよく行われる。
 このような統計量のことを<strong>代表値</strong>という。
-代表値の例としては、平均値（または平均）、標準偏差、中央値などがある。とくにデータが正規分布にしたがうときは、平均と標準偏差だけで分布を再現することができるので、これらは分布についての十分な情報を持つ。</p>
-<p>正規分布にしたがうデータについて、平均と標準偏差を求めて分布と照らし合わせてみよう。
-以下では、<code class="docutils literal notranslate"><span class="pre">np.random.normal()</span></code> 関数により平均10、標準偏差2の正規分布にしたがうデータを1000個生成し、そのヒストグラムを作成している。</p>
+代表値の例としては、平均値（または平均）、標準偏差、中央値などがある。</p>
+<p>データが正規分布にしたがうときは、平均と標準偏差だけで分布を再現することができるので、これらは分布についての十分な情報を持つ。正規分布にしたがうデータについて、平均と標準偏差を求めて分布と照らし合わせてみよう。以下では、<code class="docutils literal notranslate"><span class="pre">np.random.normal()</span></code> 関数により平均10、標準偏差2の正規分布にしたがうデータを1000個生成し、そのヒストグラムを作成している。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># プロットの入れ物の用意</span>
@@ -557,10 +556,10 @@ document.write(`
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">sample_data</span></code> から求まる平均を <span class="math notranslate nohighlight">\(\hat{\mu}\)</span>、標準偏差を <span class="math notranslate nohighlight">\(\hat{\sigma}\)</span> と書くとき、<span class="math notranslate nohighlight">\(\hat{\mu}-\hat{\sigma}\)</span>、<span class="math notranslate nohighlight">\(\hat{\mu}\)</span>、<span class="math notranslate nohighlight">\(\hat{\mu}+\hat{\sigma}\)</span> の位置を <code class="docutils literal notranslate"><span class="pre">axvline()</span></code> メソッドによりそれぞれ縦の点線として表示している。
-データが正規分布にしたがうとき、平均は分布のちょうど真ん中あたりに来る。また <span class="math notranslate nohighlight">\(\hat{\sigma}\)</span> の大きさが、データの平均周りのバラつきの大きさの目安となることも確認できる。</p>
+データが正規分布にしたがうとき、平均は分布のちょうど真ん中あたりに来る。また <span class="math notranslate nohighlight">\(\hat{\sigma}\)</span> の大きさが、データの平均周りのバラつきの目安となる大きさであることも確認できる。</p>
 <p>平均と標準偏差の記号にハットをつけたのは、これらはデータを生成するのに指定した平均と標準偏差から一般にズレた値になるからである。
 後者を母平均、母標準偏差といい、これらの値を <span class="math notranslate nohighlight">\(\mu\)</span>、<span class="math notranslate nohighlight">\(\sigma\)</span> で表す（ここでは <span class="math notranslate nohighlight">\(\mu = 10\)</span>、<span class="math notranslate nohighlight">\(\sigma = 2\)</span>）。</p>
-<p>注意したいのが、「<strong>平均は必ずしも普通を表さない</strong>」ということである。例えば、先ほどのダイヤモンドの価格の例で、平均の位置を縦の点線で表示すると次のようになる。</p>
+<p>注意したいのが「<strong>平均は必ずしも普通を表さない</strong>」ということである。例えば、先ほどのダイヤモンドの価格の例で、平均の位置を縦の点線で表示すると次のようになる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># プロットの入れ物の用意</span>
@@ -586,15 +585,17 @@ document.write(`
 </div>
 </div>
 <p>データ数のピークが左の方にある中で、赤の点線の位置を普通と捉えるのは疑問である。この例のように分布の裾が長く、歪んだ形をしているとき、平均値はあまり良い代表値とは言えなくなる。また例えば、このテーブルデータにたった1個1億ドルのダイヤモンドのデータを追加するだけで、平均値は右に1850ドル近くシフトする。このような<strong>外れ値</strong>に引っ張られるというのも、平均値の欠点の1つである。</p>
+<p>また「中央値も必ずしも普通を表さない」。例えば同じサイズの釣鐘型の分布を2つ並べたような分布を考えると、中央値はちょうどそれらの中間に来るが、このとき中央値はどちらのピークも適切に表現しない。一方で、中央値は外れ値の影響を受けにくいという平均値にない長所を持つ。したがって、外れ値の多いデータにおいては平均値よりも中央値の方が代表値として適切な場合がある。</p>
+<p>このように代表値を使うときにも、データの分布や外れ値の存在を把握して、適切な統計量を選択することが重要である。</p>
 </section>
 <section id="id7">
 <h3>変数変換<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
 <p>価格のような比例尺度は、対数をとると分布の形が綺麗になることが多い。</p>
-<p>その理由は、価格の場合、差は比率で考える方が、社会的な慣習としてより自然なためである。
+<p>その理由は、価格の場合、差は比率で考える方が社会的な慣習としてより自然なためである。
 例えば、10ドルの商品を11ドルに値上げするのと、1000ドルの商品を1001ドルに値上げするのとでは、前者の方が大きな値上げに感じると思う。
 これは私たちが価格の差を比率で捉えることに慣れていることに起因する。</p>
 <p>価格についてそのままヒストグラムを作成すると、例えばビンの幅を1ドルとして、10ドル 〜 11ドルのデータ数を1000ドル 〜 1001ドルのデータ数と比較することになる。しかし、高価格帯における1ドルの重みは低価格帯と比べて低いので、このような分割を行うと高価格帯ほどデータ数の少ない裾の長い分布が得られやすい。一方で、価格について対数をとってからヒストグラムを作成すると、例えば10ドル 〜 11ドルのデータ数は1000ドル 〜 1100ドルのデータ数と比較されることになる。これは <span class="math notranslate nohighlight">\(\log a - \log b = \log\frac{a}{b}\)</span> より <span class="math notranslate nohighlight">\(\log\)</span> のスケールで一定間隔をとることは、元のスケールで一定比率でビンを作るのと等しいためである。そして、価格においては対数をとることでデータの分布は釣鐘型に近くなることが多い。</p>
-<p>価格について対数をとってから、ヒストグラムを作成する例を以下に示す。平均を赤の点線で示している。</p>
+<p>価格について対数をとってから、ヒストグラムを作成する例を以下に示す。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># プロットの入れ物の用意</span>
@@ -605,9 +606,6 @@ document.write(`
 
 <span class="c1"># ヒストグラムのプロット</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-
-<span class="c1"># 平均の可視化</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
 
 <span class="c1"># 軸ラベルの設定</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;価格&quot;</span><span class="p">)</span>
@@ -658,7 +656,7 @@ document.write(`
 
 <span class="c1"># ヒストグラムのプロット</span>
 <span class="k">for</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;carat_bin&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">():</span>
-    <span class="n">df_subset</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;carat_bin&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">group</span><span class="p">]</span>
+    <span class="n">df_subset</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;carat_bin&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">group</span><span class="p">]</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">df_subset</span><span class="p">[</span><span class="s2">&quot;price&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">group</span><span class="p">))</span>   <span class="c1"># alphaは透明度を表す</span>
     
@@ -709,7 +707,7 @@ document.write(`
 </div>
 </div>
 <p>前回の課題でもカラットと価格の間の散布図をプロットしてもらったが、ここでは両者の値の対数をとってからプロットしている。
-これを見ると、カラットと価格の間には直線に近い綺麗な正の相関があることが確かめられる。</p>
+これを見ると、対数をとった後では、カラットと価格の間に直線に近い綺麗な正の相関があることが確かめられる。</p>
 <p>上の例では量的変数の間の相関をみたが、質的変数と量的変数の間、質的変数と質的変数の間にも相関を考えることができる。
 例として、カットと価格の相関を棒グラフにより可視化してみよう。</p>
 <div class="cell docutils container">
@@ -738,7 +736,7 @@ document.write(`
 <p><code class="docutils literal notranslate"><span class="pre">df.groupby('cut')['price'].mean()</span></code> を実行すると、カットをindexとし、カットごとの価格の平均を値とするシリーズを取得できる。このコードは複雑に見えるかもしれないが、今はおまじないとして理解しておけばよい。また <code class="docutils literal notranslate"><span class="pre">mean_price</span> <span class="pre">=</span> <span class="pre">mean_price.loc[order]</span></code> によりシリーズのindexの順を <code class="docutils literal notranslate"><span class="pre">order</span></code> の順に設定することで、棒グラフの横軸の値がカットの質の低い順となるようにしている。そして <code class="docutils literal notranslate"><span class="pre">mean_price</span></code> のindexと値を、<code class="docutils literal notranslate"><span class="pre">ax.bar()</span></code> メソッドに渡すことにより棒グラフをプロットしている。</p>
 <p>プロットを見ると、Premiumは例外的だが、大まかにはカットの質が上がるほど平均価格が下がるという負の相関があるように見える。
 しかし、これは常識的に考えておかしな関係である。</p>
-<p>この分析結果を理解するためには、「<strong>相関は必ずしも因果を意味しない</strong>」という点を理解することが重要である。ここで<strong>因果</strong>とは「他の条件を固定した上で、実際に操作して一方の値を変化させたときにもう一方の値が変化する」という関係のことをいう。要するに原因と結果の関係である。</p>
+<p>この分析結果を理解するためには、「<strong>相関は必ずしも因果を意味しない</strong>」という点を理解することが重要である。ここで<strong>因果</strong>とは「一方の値を操作して変化させたときにもう一方の値が変化する」という関係のことをいう。要するに原因と結果の関係である。</p>
 <p>例えば、先ほどのカラットと価格の間の正の相関は、実際の因果関係を反映したものであると推測することができる。なぜなら常識的に考えて、他の条件を固定してカラットを大きくすれば、原価の分、価格も合わせて高くなるはずだからである。一方で、カットと価格の間の負の相関は、実際の因果関係を表していないと考えられる。なぜなら常識的に考えて、他の条件を固定してカットの質を上げれば、手間隙のかかる分、価格も高くなるはずだからである。</p>
 <p>後者のように実際の因果関係とは異なる見かけ上の相関のことを<strong>擬似相関</strong>という。擬似相関は多くの場合、2つの要素のほかに<strong>交絡因子</strong>という第三の要素が存在することにより起こる。カットと価格の間の負の相関は、カラットを交絡因子として以下のように理解できる。</p>
 <p>まず、カットとカラットの間の相関を棒グラフにより可視化してみる。以下のコードでは、カットごとの平均カラットの値を棒グラフとしてプロットしている。</p>
@@ -768,7 +766,16 @@ document.write(`
 <p>これを見ると、カットとカラットの間には大まかに負の相関があることがわかる。この相関が、実際の因果関係を反映したものか考えてみよう。カラットがカットに合わせて変わるということはあり得ないので、因果としてあり得るとしたらカットがカラットに合わせて変わるということである。これはあり得る話である。例えばカラットの小さいダイヤモンドを売るために、より質の高いカットを行う必要があるのかもしれない。一方で、カラットの大きいダイヤモンドは、カットの質によらず商品として成立するために、質の低いカットを採用することも多々あるのかもしれない。</p>
 <p>以上の考察により、小さいカラットほど質の高いカットが採用されやすいという因果関係があるという仮説を立てることができる。
 一方で、カラットと価格の間には、これもまた因果関係と解釈できる正の相関があるのであった。
-これらを踏まえると、カットと価格の間の負の相関は、カラットという第三の要素の影響を強く受けた結果、擬似相関が見えているのではないかという仮説を立てることができる。</p>
+これらを踏まえると、カットと価格の間の負の相関は、カラットという第三の要素の影響を強く受けた結果、擬似相関が見えているのではないかという仮説を立てることができる。つまり、カットと価格の間の負の相関はデータの見かけ上の話であって、実際にカットの質を上げたときの価格の変化を表しているわけではないと考えられる。</p>
+<p>相関と因果の違いについて、もう一つ有名な例を挙げて説明しよう。各日のアイスクリームの売上と水難事故の件数をデータとして取得し、散布図をプロットすると、両者に明確な正の相関があることが知られている。しかし、これは明らかに擬似相関であって因果関係ではない。例えば、アイスクリームの販売をやめたところで水難事故の件数が減るわけではないし、逆も然りである。この例では気温を交絡因子として以下のように理解できる。気温が上がるとアイスクリームの売上が上がり、気温が上がると水難事故の件数が上がるという因果関係がある。このときアイスクリームの売上と、水難事故の件数は気温に合わせて変動するため、両者の間に擬似相関が発生する。</p>
+<p>2つの例における因果関係を原因から結果の方向に矢印をつけたグラフで表現すると、次の図のようになる（これを<strong>因果グラフ</strong>という）。
+左の例ではカットから価格に矢印が伸びているが、カラットの影響により、相関の正負が実際の因果関係とは逆転しているという意味での擬似相関が発生しているのであった。一方で右の例では、そもそも因果関係のない2つの要素の間に擬似相関が発生するという例になっている。ただし、これらのグラフはあくまで仮説であって、実際の因果関係を表しているとは限らないことに注意する。</p>
+<figure class="align-default" id="dag">
+<a class="reference internal image-reference" href="_images/DAG.png"><img alt="_images/DAG.png" src="_images/DAG.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 30 </span><span class="caption-text">2つの例の因果グラフ</span><a class="headerlink" href="#dag" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 <section id="id10">
 <h2>演習<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h2>
@@ -786,7 +793,7 @@ document.write(`
 </div>
 </div>
 </div>
-<p>プロットしたら以下のコードを実行することにより、画像をダウンロードできる。これを提出しなさい。注意として、上のコード内で <code class="docutils literal notranslate"><span class="pre">plt.show()</span></code> を実行しないように気を付けること（その場合、白紙のデータがダウンロードされる）。</p>
+<p>プロットしたら以下のコードを実行することにより、画像をダウンロードできる。これを提出しなさい。注意として、上のコード内で <code class="docutils literal notranslate"><span class="pre">plt.show()</span></code> を実行しないように気を付けること（その場合、白紙の画像がダウンロードされる）。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">files</span>
