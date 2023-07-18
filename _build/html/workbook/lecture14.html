@@ -488,39 +488,6 @@ document.write(`
 </div>
 </div>
 <p>Axesの <code class="docutils literal notranslate"><span class="pre">hist()</span></code> メソッドに1次元配列を渡すことで、ヒストグラムを作成できる。キーワード引数で <code class="docutils literal notranslate"><span class="pre">bins</span></code> を指定すると、横軸の分割数を指定できる（<strong>ビン数</strong>という）。ビン数を大きくすると、より細かい粒度で分布の形を確認できる。上のヒストグラムからは、例えば価格の低いダイヤモンドにデータ数が偏っていることが確認できる。</p>
-<p>上の例では価格という1つの軸をもとにデータを分割したが、2つの軸をもとにデータを分割してデータ数を確認することもできる。
-そのようなヒストグラムを<strong>2次元ヒストグラム</strong>という。</p>
-<p>2次元ヒストグラムのプロット例を以下に示す。
-横軸に <code class="docutils literal notranslate"><span class="pre">&quot;carat&quot;</span></code> の対数の値を、縦軸に <code class="docutils literal notranslate"><span class="pre">&quot;price&quot;</span></code> の対数の値をとり、それ上のデータ数を<strong>カラープロット</strong>により表現している。
-なお対数をとっているのは、分布の形を綺麗にしてカラープロットを見やすくするためであるが、その理屈については後で解説する。</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># プロットの入れ物の用意</span>
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
-
-<span class="c1"># データの用意</span>
-
-
-<span class="c1"># 2次元ヒストグラムのプロット</span>
-
-
-<span class="c1"># カラーバーのプロット</span>
-<span class="n">cb</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">hb</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
-<span class="n">cb</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s1">&#39;カウント&#39;</span><span class="p">)</span>
-
-<span class="c1"># 軸ラベルの設定</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;カラット&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;価格&quot;</span><span class="p">)</span>
-
-<span class="c1"># 表示</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>ヒストグラムの階級を作るにあたって平面を六角形で分割している。このような区分を<strong>Hexbin</strong>という。
-色とデータ数の対応関係を表すのが、右横の<strong>カラーバー</strong>である。
-カラーバーは　<code class="docutils literal notranslate"><span class="pre">#カラーバーのプロット</span></code> 以下の2行により表示できる。</p>
 </section>
 <section id="id6">
 <h3>代表値<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
@@ -769,14 +736,15 @@ document.write(`
 <figure class="align-default" id="dag">
 <a class="reference internal image-reference" href="workbook/pic/DAG.png"><img alt="workbook/pic/DAG.png" src="workbook/pic/DAG.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-text">2つの例の因果グラフ</span><a class="headerlink" href="#dag" title="Permalink to this image">#</a></p>
+<p><span class="caption-text">因果グラフ</span><a class="headerlink" href="#dag" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
+<p>この節の要点をまとめると、データをもとに2つの要素の関係を調べるときには相関を見ることになるが、そこから何か結論を得る際には「相関は必ずしも因果を意味しない」ということに留意して、慎重な姿勢で分析することが重要である。</p>
 </section>
 <section id="id10">
 <h2>演習<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h2>
 <p><strong>課題1</strong><br />
-カラットについて、対数関数により値を変換した上で、ヒストグラムを作成しなさい。ビン数や軸ラベルなどの細かい設定は、各自の判断で決めてよい。</p>
+カラットについて、対数関数により値を変換した上でヒストグラムを作成しなさい。ビン数や軸ラベルなどの細かい設定は、各自の判断で決めてよい。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ここに適切なコードを書く</span>

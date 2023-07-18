@@ -333,10 +333,9 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">タプル型</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">セット型</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">演習</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">演習</a></li>
 </ul>
             </nav>
         </div>
@@ -669,58 +668,9 @@ print(y)  # 出力は[3, 2]</pre>
 </div>
 </div>
 </section>
+</section>
 <section id="id14">
-<h3>セット型<a class="headerlink" href="#id14" title="Permalink to this heading">#</a></h3>
-<p>セット型は、要素の重複なしの集合を表すためのデータ型である。
-データを <code class="docutils literal notranslate"><span class="pre">,</span></code> で区切り、両端を <code class="docutils literal notranslate"><span class="pre">{}</span></code> で囲うことで作成できる。</p>
-<p>セットはリストから作成することが多い。<code class="docutils literal notranslate"><span class="pre">set()</span></code> 関数にリストを渡すと、リストの要素から成るセットを作成できる。</p>
-<p>セット型には次のような特徴がある。</p>
-<ol class="arabic simple">
-<li><p>要素の重複が除かれる</p></li>
-<li><p>順序がなく、インデックスでアクセスできない</p></li>
-<li><p>要素はイミュータブルである必要がある</p></li>
-</ol>
-<p>2と3についてはそのままであるので、1のみ確認しておこう。
-例えば、リストをもとにセットを作成すると、要素の重複が除かれることを確かめることができる。</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
-<span class="n">x</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>セット型には、集合演算を容易に行えるという利点がある。例えば、和集合や積集合、差集合を次のように求めることができる。
-それぞれの集合演算の意味は、ベン図と見比べるとわかりやすい。例として積集合について、対応する要素に色をつけている。</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">set1</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">}</span>
-<span class="n">set2</span> <span class="o">=</span> <span class="p">{</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">}</span>
-</pre></div>
-</div>
-</div>
-</div>
-<figure class="align-default" id="id15">
-<a class="reference internal image-reference" href="workbook/pic/set.png"><img alt="workbook/pic/set.png" src="workbook/pic/set.png" style="width: 400px;" /></a>
-<figcaption>
-<p><span class="caption-text">集合演算（積集合）</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<p><strong>練習7</strong><br />
-2つのリスト <code class="docutils literal notranslate"><span class="pre">x</span></code> と <code class="docutils literal notranslate"><span class="pre">y</span></code> が与えられるとき、どちらのリストにも存在する要素のセットを作り、出力しなさい。</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># xとyの一例 （この例では{6, 12, 18}と出力するのが正しい）</span>
-<span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">18</span><span class="p">]</span>
-<span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">18</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-</section>
-<section id="id16">
-<h2>演習<a class="headerlink" href="#id16" title="Permalink to this heading">#</a></h2>
+<h2>演習<a class="headerlink" href="#id14" title="Permalink to this heading">#</a></h2>
 <p>『不思議の国のアリス』のテキストを使って、アルファベットの出現頻度を調べてみよう。
 以下のコードを実行することで、文章を単語ごとに分割して作成されたリストが <code class="docutils literal notranslate"><span class="pre">alice</span></code> に代入される。</p>
 <div class="cell docutils container">
@@ -859,10 +809,9 @@ print(y)  # 出力は[3, 2]</pre>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">タプル型</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">セット型</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">演習</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">演習</a></li>
 </ul>
   </nav></div>
 
