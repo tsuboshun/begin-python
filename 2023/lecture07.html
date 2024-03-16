@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>第7回 データの入れ物 &#8212; プログラミング実習講義１</title>
   
@@ -19,43 +18,41 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
-    <script src="_static/custom.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-VFVQWRM1GN"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -63,13 +60,18 @@
                 gtag('js', new Date());
                 gtag('config', 'G-VFVQWRM1GN');
             </script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-VFVQWRM1GN');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'lecture07';</script>
+    <script src="_static/custom.js?v=7ed3f353"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="第8回 関数と再帰" href="lecture08.html" />
@@ -83,7 +85,15 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -118,11 +128,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -137,6 +150,7 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="intro.html">
@@ -145,10 +159,22 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+  
     <p class="title logo__title">プログラミング実習講義１</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -280,20 +306,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -347,26 +375,26 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>第7回 データの入れ物<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
+<h1>第7回 データの入れ物<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <hr class="docutils" />
-<p><a class="reference external" href="https://colab.research.google.com/github/tsuboshun/begin-python/blob/gh-pages/_sources/workbook/lecture07.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+<p><a class="reference external" href="https://colab.research.google.com/github/tsuboshun/begin-python/blob/gh-pages/2023/_sources/workbook/lecture07.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
 <hr class="docutils" />
 <section id="id2">
-<h2>この授業で学ぶこと<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<h2>この授業で学ぶこと<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <p>第4回の授業で、複数のデータをまとめるためのデータ型としてリスト型を紹介した。
 Pythonにはリスト型の他にも、データの入れ物の役割を果たすデータ型がいくつか存在する。
 今回はそれらの使い方を学ぶ。</p>
 </section>
 <section id="id3">
-<h2>データの入れ物<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<h2>データの入れ物<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
 <p>リスト型のようにデータの入れ物の役割を果たす組み込み型として、他にも<strong>辞書型</strong>（<strong>dict</strong>）、<strong>タプル型</strong>（<strong>tuple</strong>）などがある。
 はじめのうちはリスト型と辞書型を使いこなすことが重要なので、これらに重点を置きつつ一通り説明する。
 リスト型は改めての説明になるが、第4回の内容より一歩踏み込んで学ぶ。</p>
 <section id="id4">
-<h3>リスト型<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<h3>リスト型<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
 <p>第4回で学んだ通り、リストはデータを <code class="docutils literal notranslate"><span class="pre">,</span></code> で区切り、両端を <code class="docutils literal notranslate"><span class="pre">[]</span></code> で囲うことで作成できる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -403,7 +431,7 @@ Pythonにはリスト型の他にも、データの入れ物の役割を果た�
 </div>
 </div>
 <section id="id5">
-<h4>要素の追加と変更<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h4>
+<h4>要素の追加と変更<a class="headerlink" href="#id5" title="Link to this heading">#</a></h4>
 <p>今回新たに要素の追加方法を学ぶ。
 よく使われるのが要素を末尾に追加する方法で、<code class="docutils literal notranslate"><span class="pre">append()</span></code> メソッドを用いる。
 <code class="docutils literal notranslate"><span class="pre">append()</span></code> は、引数に渡されたデータをリストの末尾に追加する。</p>
@@ -486,7 +514,7 @@ Pythonにはリスト型の他にも、データの入れ物の役割を果た�
 </div>
 </section>
 <section id="id6">
-<h4>要素の削除<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h4>
+<h4>要素の削除<a class="headerlink" href="#id6" title="Link to this heading">#</a></h4>
 <p>要素を削除するには<strong>del文</strong>、または <code class="docutils literal notranslate"><span class="pre">pop()</span></code> や <code class="docutils literal notranslate"><span class="pre">remove()</span></code> メソッドを用いる。del文は <code class="docutils literal notranslate"><span class="pre">del</span></code> の後ろに指定した要素を削除する。あとで説明するスライスと組み合わせると、複数の要素をまとめて削除することもできる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -541,7 +569,7 @@ Pythonにはリスト型の他にも、データの入れ物の役割を果た�
 </div>
 </section>
 <section id="id7">
-<h4>スライス<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h4>
+<h4>スライス<a class="headerlink" href="#id7" title="Link to this heading">#</a></h4>
 <p>リストに入っている要素のうち、連続した複数の要素を取り出すために用いられるのが<strong>スライス</strong>である。
 整数 <code class="docutils literal notranslate"><span class="pre">i</span></code>、<code class="docutils literal notranslate"><span class="pre">j</span></code> を用いてリストに対して <code class="docutils literal notranslate"><span class="pre">[i:j]</span></code> と要素を指定すると、インデックスについて <code class="docutils literal notranslate"><span class="pre">i</span></code> から <code class="docutils literal notranslate"><span class="pre">j-1</span></code> までの要素を切り出すことができる。</p>
 <p><code class="docutils literal notranslate"><span class="pre">i</span></code> または <code class="docutils literal notranslate"><span class="pre">j</span></code> を省略することもできる。
@@ -568,7 +596,7 @@ Pythonにはリスト型の他にも、データの入れ物の役割を果た�
 <figure class="align-default" id="index">
 <a class="reference internal image-reference" href="_images/slice.png"><img alt="_images/slice.png" src="_images/slice.png" style="width: 550px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 14 </span><span class="caption-text">スライスとインデックスの関係</span><a class="headerlink" href="#index" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 14 </span><span class="caption-text">スライスとインデックスの関係</span><a class="headerlink" href="#index" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p><strong>練習1</strong><br />
@@ -591,22 +619,6 @@ Pythonにはリスト型の他にも、データの入れ物の役割を果た�
 </div>
 </div>
 </div>
-<div class="toggle docutils container">
-<p><strong>解答例</strong></p>
-<pre style={"white-space": "pre"}>
-y = []
-for i in range(n):
-    y.append(i+1)
-
-print(y)</pre>
-<p><strong>別解例</strong></p>
-<pre style={"white-space": "pre"}>
-y = []
-for i in range(1, n+1):
-    y.append(i)
-
-print(y)</pre>
-</div>
 <p><strong>練習2</strong><br />
 整数を要素とするリスト <code class="docutils literal notranslate"><span class="pre">x</span></code> が与えられるとき、そのうち値が偶数の要素のみを取り出して新たなリストを作成し、出力しなさい。</p>
 <div class="cell docutils container">
@@ -622,16 +634,6 @@ print(y)</pre>
 </pre></div>
 </div>
 </div>
-</div>
-<div class="toggle docutils container">
-<p><strong>解答例</strong></p>
-<pre style={"white-space": "pre"}>
-y = []
-for v in x:
-    if v % 2 == 0:
-        y.append(v)
-        
-print(y)</pre>
 </div>
 <p><strong>練習3</strong><br />
 リスト <code class="docutils literal notranslate"><span class="pre">x</span></code> と整数 <code class="docutils literal notranslate"><span class="pre">i</span></code> が与えられるとき、リストの要素を <code class="docutils literal notranslate"><span class="pre">i</span></code> 回だけ右に回転させたリスト <code class="docutils literal notranslate"><span class="pre">y</span></code> を作成し、出力しなさい。ただし、<code class="docutils literal notranslate"><span class="pre">i</span></code> は0以上 <code class="docutils literal notranslate"><span class="pre">len(x)</span></code> 以下とする。
@@ -651,28 +653,17 @@ print(y)</pre>
 </div>
 </div>
 </div>
-<div class="toggle docutils container">
-<p><strong>解答例</strong></p>
-<pre style={"white-space": "pre"}>
-left = x[-i:]
-right = x[:-i]
-y = left + right
-print(y)
-</pre>
-<p>右からi番目以降の要素を <code class="docutils literal notranslate"><span class="pre">left</span></code> に、右からi番目より前の要素を <code class="docutils literal notranslate"><span class="pre">right</span></code> に代入する。
-右から数えるときは右読みのインデックス（負の値）を使うと簡単である。</p>
-</div>
 </section>
 </section>
 <section id="id8">
-<h3>辞書型<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
+<h3>辞書型<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
 <p>リストでは0から始まる整数インデックスをもとに要素にアクセスした。
 辞書型は、自由に設定した<strong>キー</strong>（<strong>key</strong>）をもとに要素にアクセスできるようにしたデータ型である。
 辞書型では要素のことを<strong>値</strong>（<strong>value</strong>）と呼ぶ。</p>
 <figure class="align-default" id="id9">
 <a class="reference internal image-reference" href="_images/dict.png"><img alt="_images/dict.png" src="_images/dict.png" style="width: 450px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 15 </span><span class="caption-text">辞書型</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 15 </span><span class="caption-text">辞書型</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>辞書は、<code class="docutils literal notranslate"><span class="pre">:</span></code> を使ってキーと値のペアを指定し、各ペアを <code class="docutils literal notranslate"><span class="pre">,</span></code> で区切って、両端を <code class="docutils literal notranslate"><span class="pre">{}</span></code> で囲うことで作成できる。</p>
@@ -752,7 +743,7 @@ print(y)  # 出力は[3, 2]</pre>
 <p>上の例で <code class="docutils literal notranslate"><span class="pre">x[0]</span> <span class="pre">=</span> <span class="pre">3</span></code> はオブジェクトの要素を変更している。したがって、変数 <code class="docutils literal notranslate"><span class="pre">y</span></code> の参照する値も変更される！</p>
 </div>
 <section id="id10">
-<h4>要素の追加と変更<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h4>
+<h4>要素の追加と変更<a class="headerlink" href="#id10" title="Link to this heading">#</a></h4>
 <p>辞書に要素を追加したり変更したりするには、代入文を用いる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -770,7 +761,7 @@ print(y)  # 出力は[3, 2]</pre>
 </div>
 </section>
 <section id="id11">
-<h4>要素の削除<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h4>
+<h4>要素の削除<a class="headerlink" href="#id11" title="Link to this heading">#</a></h4>
 <p>辞書から要素を削除するには、del文を用いる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -787,7 +778,7 @@ print(y)  # 出力は[3, 2]</pre>
 </div>
 </section>
 <section id="id12">
-<h4>ループ処理<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h4>
+<h4>ループ処理<a class="headerlink" href="#id12" title="Link to this heading">#</a></h4>
 <p>リストと同様、辞書の中身を一つずつ取り出して何らかの処理を行う機会は多い。
 辞書型では、for文を使って次のようにループ処理を行う。</p>
 <div class="cell docutils container">
@@ -814,14 +805,6 @@ cherry: さくらんぼ
 </div>
 </div>
 </div>
-<div class="toggle docutils container">
-<p><strong>解答例</strong></p>
-<pre style={"white-space": "pre"}>
-x['a'] += 1
-x['b'] += 1
-x['c'] += 1
-</pre>
-</div>
 <p><strong>練習5</strong><br />
 <code class="docutils literal notranslate"><span class="pre">'a'</span></code>、<code class="docutils literal notranslate"><span class="pre">'b'</span></code>、<code class="docutils literal notranslate"><span class="pre">'c'</span></code> から成るリスト <code class="docutils literal notranslate"><span class="pre">data</span></code> が与えられる。辞書を使って <code class="docutils literal notranslate"><span class="pre">'a'</span></code>、<code class="docutils literal notranslate"><span class="pre">'b'</span></code>、<code class="docutils literal notranslate"><span class="pre">'c'</span></code> の出現回数をカウントし、結果を出力しなさい。</p>
 <div class="cell docutils container">
@@ -842,18 +825,6 @@ x['c'] += 1
 </div>
 </div>
 </div>
-<div class="toggle docutils container">
-<p><strong>解答例</strong></p>
-<pre style={"white-space": "pre"}>
-count = {'a': 0, 'b': 0, 'c': 0}
-for c in data:
-    count[c] += 1
-    
-print(count)
-</pre>
-<p><code class="docutils literal notranslate"><span class="pre">c</span></code> には <code class="docutils literal notranslate"><span class="pre">data</span></code> の要素（<code class="docutils literal notranslate"><span class="pre">'a'</span></code> または <code class="docutils literal notranslate"><span class="pre">'b'</span></code> または <code class="docutils literal notranslate"><span class="pre">'c'</span></code>）が順に代入される。
-その度に、辞書 <code class="docutils literal notranslate"><span class="pre">count</span></code> の <code class="docutils literal notranslate"><span class="pre">c</span></code> の値を1増やせばよい。</p>
-</div>
 <p><strong>練習6</strong><br />
 小文字のアルファベットから成るリスト <code class="docutils literal notranslate"><span class="pre">data</span></code> が与えられる。辞書を使ってそれぞれの文字の出現回数をカウントし、結果を出力しなさい。
 練習1とは違って、辞書の中身は与えていないので工夫すること。</p>
@@ -871,25 +842,10 @@ print(count)
 </div>
 </div>
 </div>
-<div class="toggle docutils container">
-<p><strong>解答例</strong></p>
-<pre style={"white-space": "pre"}>
-count = {}
-for c in data:
-    if c in count:
-        count[c] += 1
-    else:
-        count[c] = 1
-    
-print(count)
-</pre>
-<p>基本的に練習5と同じであるが、今回は <code class="docutils literal notranslate"><span class="pre">count</span></code> が空なので、初めて出てきた文字について <code class="docutils literal notranslate"><span class="pre">+=</span> <span class="pre">1</span></code> を実行しようとするとエラーになる。
-そこでin演算子により <code class="docutils literal notranslate"><span class="pre">count</span></code> にキーが存在するかを確認し、存在する場合は <code class="docutils literal notranslate"><span class="pre">+=1</span></code> を実行し、存在しない場合は初めて出てきた文字であることがわかるので <code class="docutils literal notranslate"><span class="pre">=1</span></code> によりキーと値を初期設定する。</p>
-</div>
 </section>
 </section>
 <section id="id13">
-<h3>タプル型<a class="headerlink" href="#id13" title="Permalink to this heading">#</a></h3>
+<h3>タプル型<a class="headerlink" href="#id13" title="Link to this heading">#</a></h3>
 <p>タプル型は、リスト型をイミュータブルにしたデータ型である。データを <code class="docutils literal notranslate"><span class="pre">,</span></code> で区切り、両端を <code class="docutils literal notranslate"><span class="pre">()</span></code> で囲うことで作成できる。
 リストと異なる点として、要素数が１つの場合も <code class="docutils literal notranslate"><span class="pre">(2,)</span></code> のように <code class="docutils literal notranslate"><span class="pre">,</span></code> で終わる必要がある。</p>
 <div class="cell docutils container">
@@ -982,7 +938,7 @@ print(count)
 </section>
 </section>
 <section id="id14">
-<h2>演習<a class="headerlink" href="#id14" title="Permalink to this heading">#</a></h2>
+<h2>演習<a class="headerlink" href="#id14" title="Link to this heading">#</a></h2>
 <p>『不思議の国のアリス』のテキストを使って、アルファベットの出現頻度を調べてみよう。
 以下のコードを実行することで、文章を単語ごとに分割して作成されたリストが <code class="docutils literal notranslate"><span class="pre">alice</span></code> に代入される。</p>
 <div class="cell docutils container">
@@ -1043,22 +999,6 @@ print(count)
 </div>
 </div>
 </div>
-<div class="toggle docutils container">
-<p><strong>解答例</strong></p>
-<pre style={"white-space": "pre"}>
-count = 0
-for word in alice:
-    if word == "Alice":
-        count += 1
-    
-print(count)
-</pre>
-<p>リスト <code class="docutils literal notranslate"><span class="pre">alice</span></code> の単語を前から順に読んでいって、<code class="docutils literal notranslate"><span class="pre">&quot;Alice&quot;</span></code> と一致するときだけ <code class="docutils literal notranslate"><span class="pre">count</span></code> を1増やしている。
-これにより <code class="docutils literal notranslate"><span class="pre">&quot;Alice&quot;</span></code> の出現回数を求めることができる。</p>
-<p>この問題で <code class="docutils literal notranslate"><span class="pre">count[word]</span></code> というコードを書いて、手が止まっている人をよく見かけた。
-ここでは変数 <code class="docutils literal notranslate"><span class="pre">count</span></code> は整数型のデータなので、辞書のような使い方はできない。
-変数に代入されているデータの型は何か常に意識する習慣をつけよう。</p>
-</div>
 <p><strong>課題2</strong><br />
 小文字のアルファベット <code class="docutils literal notranslate"><span class="pre">char</span></code> が与えられるとき、<code class="docutils literal notranslate"><span class="pre">alice</span></code> の全単語における <code class="docutils literal notranslate"><span class="pre">char</span></code> の出現回数を調べて出力するプログラムを作成しなさい。ただし、大文字と小文字は区別せずに数えること。</p>
 <div class="cell docutils container">
@@ -1076,19 +1016,6 @@ print(count)
 </pre></div>
 </div>
 </div>
-</div>
-<div class="toggle docutils container">
-<p><strong>解答例</strong></p>
-<pre style={"white-space": "pre"}>
-count = 0
-for word in alice:
-    for c in word:
-        c = c.lower() # 大文字は小文字に直しておく
-        if c == char:
-            count += 1
-    
-print(count)
-</pre>
 </div>
 <p><strong>課題3</strong><br />
 <code class="docutils literal notranslate"><span class="pre">alice</span></code> の全単語における各アルファベットの出現回数を調べて、出現回数の多い上位10個を出力するプログラムを作成しなさい。ただし、大文字と小文字は区別せずに数えること。以下のコード中に、アルファベットをキー、出現回数を値とする辞書 <code class="docutils literal notranslate"><span class="pre">dic</span></code> を作成するコードを追加することで、題意のプログラムが完成する。</p>
@@ -1112,29 +1039,6 @@ print(count)
 </pre></div>
 </div>
 </div>
-</div>
-<div class="toggle docutils container">
-<p><strong>解答例</strong></p>
-<pre style={"white-space": "pre"}>
-dic = {}
-for word in alice:
-    for c in word:
-        c = c.lower() # 大文字は小文字に直しておく
-        if not ('a' <= c and c <= 'z'):  # cがアルファベット以外の場合はスキップする
-            continue
-            
-        if c in dic:
-            dic[c] += 1
-        else:
-            dic[c] = 1
-        
-# 辞書の値に基づいてキーを並び替え、上位10個を取得
-sorted_keys = sorted(dic, key=dic.get, reverse=True)[:10]
-
-# 上位10個のキーを表示
-print(sorted_keys)</pre>
-<p>空の <code class="docutils literal notranslate"><span class="pre">dic</span></code> を使うので練習6と同様の書き方をする。
-これは辞書の典型的な使い方なので、パターンとして覚えておくとよい。</p>
 </div>
 </section>
 </section>
@@ -1164,8 +1068,10 @@ print(sorted_keys)</pre>
 
               
               
-                <footer class="bd-footer-article">
-                  <!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer">
+                  
 <div class="prev-next-area">
     <a class="left-prev"
        href="lecture06.html"
@@ -1193,6 +1099,7 @@ print(sorted_keys)</pre>
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1226,7 +1133,7 @@ print(sorted_keys)</pre>
             
           </div>
           <footer class="bd-footer-content">
-            <div class="bd-footer-content__inner">
+            
 <div class="bd-footer-content__inner container">
   
   <div class="footer-item">
@@ -1239,6 +1146,7 @@ By 大坪 舜 Shun Otsubo
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2023（2023年3月30日公開）.
@@ -1256,7 +1164,7 @@ By 大坪 舜 Shun Otsubo
     
   </div>
   
-</div></div>
+</div>
           </footer>
         
 
@@ -1265,8 +1173,8 @@ By 大坪 舜 Shun Otsubo
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

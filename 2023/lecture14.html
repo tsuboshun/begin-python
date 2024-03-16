@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>第14回 データの読み方 &#8212; プログラミング実習講義１</title>
   
@@ -19,43 +18,41 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
-    <script src="_static/custom.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-VFVQWRM1GN"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -63,15 +60,20 @@
                 gtag('js', new Date());
                 gtag('config', 'G-VFVQWRM1GN');
             </script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-VFVQWRM1GN');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'lecture14';</script>
+    <script src="_static/custom.js?v=7ed3f353"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="第15回 探索的データ分析に挑戦！" href="lecture15.html" />
@@ -85,7 +87,15 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -120,11 +130,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -139,6 +152,7 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="intro.html">
@@ -147,10 +161,22 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+  
     <p class="title logo__title">プログラミング実習講義１</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -282,20 +308,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -342,22 +370,22 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>第14回 データの読み方<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
+<h1>第14回 データの読み方<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <hr class="docutils" />
-<p><a class="reference external" href="https://colab.research.google.com/github/tsuboshun/begin-python/blob/gh-pages/_sources/workbook/lecture14.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+<p><a class="reference external" href="https://colab.research.google.com/github/tsuboshun/begin-python/blob/gh-pages/2023/_sources/workbook/lecture14.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
 <hr class="docutils" />
 <section id="id2">
-<h2>この授業で学ぶこと<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<h2>この授業で学ぶこと<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <p>前回はデータの可視化をテーマに、matplotlibとpandasの使い方について学んだ。
 今回はこれらのライブラリを活用しながら、データ分析の手法・考え方について代表的なものを学ぶ。</p>
 <p>データサイエンスにおいてデータ分析は中心的な役割を持つ。データサイエンスにおいてよくある一連のプロセスは以下の通りである：データ収集、データクリーニング、データ分析、モデル作成、予測と解釈。ここで言うモデルとは世間的にはAIと呼ばれるもので、例えば過去のデータをもとに将来の施策に対する効果を予測するのに用いられる。データ分析はその前段階にあたるプロセスで、データについての理解を深め、データからどのような知見を引き出すことができるか、ひいてはどのような予測モデルを構築できそうか当たりをつけるために行う。決められた手順があるわけではないので、<strong>探索的データ分析</strong>（exploratory data analysis, EDA）などと言うこともある。</p>
 <p>今回はデータ分析の手法・考え方について学びながら、データ分析の雰囲気を体験してもらおうと思っている。最終回の次回は、分析内容も自分で考えながら、実際に手を動かしてデータ分析を行ってもらう。</p>
 </section>
 <section id="id3">
-<h2>データの種類<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<h2>データの種類<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
 <p>データ分析を行うにあたって、どのような種類のデータを扱っているかを認識することが重要である。
 この節では、データの大まかな分類について説明する。</p>
 <p>まず、データは大まかに質的変数と量的変数に分けられる。
@@ -403,9 +431,9 @@ document.write(`
 <p>比例尺度の例として、金額が挙げられる。金額は順番・間隔・比率に意味がある。例えば、100円玉を5枚集めると500円になるので、500円は100円の5倍という主張は正しい。</p>
 </section>
 <section id="id4">
-<h2>データの分布と代表値<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
+<h2>データの分布と代表値<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
 <section id="id5">
-<h3>分布の可視化<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<h3>分布の可視化<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
 <p>データの<strong>分布</strong>とは、データの値が全体にどのように散らばっているか、または集中しているかを示すものである。データの分布を確認すると、データの全体的な構造や傾向を理解することができる。そのためデータ分析の最初の一歩として、データの分布を確認することが多い。この節ではデータの分布を調べ、そこから有用な情報を得るための方法をいくつか学ぶ。</p>
 <p>この節で利用するライブラリのimportを行う。前回も利用した <code class="docutils literal notranslate"><span class="pre">'diamonds'</span></code> というテーブルデータを利用する。</p>
 <div class="cell docutils container">
@@ -508,7 +536,7 @@ Name: cut, dtype: int64
 <p>Axesの <code class="docutils literal notranslate"><span class="pre">hist()</span></code> メソッドに1次元配列を渡すことで、ヒストグラムを作成できる。キーワード引数で <code class="docutils literal notranslate"><span class="pre">bins</span></code> を指定すると、横軸の分割数を指定できる（<strong>ビン数</strong>という）。ビン数を大きくすると、より細かい粒度で分布の形を確認できる。上のヒストグラムからは、例えば価格の低いダイヤモンドにデータ数が偏っていることが確認できる。</p>
 </section>
 <section id="id6">
-<h3>代表値<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
+<h3>代表値<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
 <p>データの分布を確認する代わりに、分布を要約するような統計量を調べることもよく行われる。
 このような統計量のことを<strong>代表値</strong>という。
 代表値の例としては、平均値（または平均）、標準偏差、中央値などがある。</p>
@@ -577,7 +605,7 @@ Name: cut, dtype: int64
 <p>このように代表値を使うときにも、データの分布や外れ値の存在を把握して、適切な統計量を選択することが重要である。</p>
 </section>
 <section id="id7">
-<h3>変数変換<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
+<h3>変数変換<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
 <p>価格のような比例尺度は、対数をとると分布の形が綺麗になることが多い。</p>
 <p>その理由は、価格の場合、差は比率で考える方が社会的な慣習としてより自然なためである。
 例えば、10ドルの商品を11ドルに値上げするのと、1000ドルの商品を1001ドルに値上げするのとでは、前者の方が大きな値上げに感じると思う。
@@ -611,7 +639,7 @@ Name: cut, dtype: int64
 <p>適切な変数変換を行うと、変換前には見えなかった特徴を見つけられることがある。この例ではピークが2つあるように見える。</p>
 </section>
 <section id="id8">
-<h3>層別分析<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
+<h3>層別分析<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">diamonds</span></code> データセットのように複数の要素からなるデータに対しては、とある基準でデータをグループ分けしたあとで、グループごとに分析すると有効なことが多い。このような分析を<strong>層別分析</strong>という。</p>
 <p>例として、カラットについて <span class="math notranslate nohighlight">\((0, 0.5], (0.5, 1], (1, 1.5], (1.5, 2], (2, 6]\)</span> の5つの範囲でグループ分けして、それぞれのグループで価格の分布を調べてみよう。ここで <span class="math notranslate nohighlight">\((a, b]\)</span> という記号は <span class="math notranslate nohighlight">\(a &lt; x \leq b\)</span> という不等式で表される区間を表す。</p>
 <p><code class="docutils literal notranslate"><span class="pre">pd.cut()</span></code> メソッドにシリーズと数値の配列を渡すと、シリーズの値を配列の数値で区切ってグループ分けした結果をシリーズとして返してくれる。
@@ -784,7 +812,7 @@ Categories (5, interval[float64, right]): [(0.0, 0.5] &lt; (0.5, 1.0] &lt; (1.0,
 </section>
 </section>
 <section id="id9">
-<h2>相関と因果<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h2>
+<h2>相関と因果<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
 <p>データ分析の主な目標として、複数の要素の間の関係を明らかにするという点が挙げられる。
 ここでは2つの要素の関係を表す概念である相関と因果について解説する。</p>
 <p><strong>相関</strong>とは「データの見かけ上、一方の値が増えるときにもう一方の値が増える（または減る）」という関係のことをいう。一方の値が増えるときに、もう一方の値が増えるとき正の相関があるといい、もう一方の値が減るとき負の相関があるという。もう一方の値が増えるとも減るとも言えないとき、無相関であるという。</p>
@@ -888,13 +916,13 @@ Categories (5, interval[float64, right]): [(0.0, 0.5] &lt; (0.5, 1.0] &lt; (1.0,
 <figure class="align-default" id="dag">
 <a class="reference internal image-reference" href="_images/DAG.png"><img alt="_images/DAG.png" src="_images/DAG.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 28 </span><span class="caption-text">因果グラフ</span><a class="headerlink" href="#dag" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 28 </span><span class="caption-text">因果グラフ</span><a class="headerlink" href="#dag" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>この節の要点をまとめると、データをもとに2つの要素の関係を調べるときには相関を見ることになるが、そこから何か結論を得る際には「相関は必ずしも因果を意味しない」ということに留意して、慎重な姿勢で分析することが重要である。</p>
 </section>
 <section id="id10">
-<h2>演習<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h2>
+<h2>演習<a class="headerlink" href="#id10" title="Link to this heading">#</a></h2>
 <p><strong>課題1</strong><br />
 カラットについて、対数関数により値を変換した上でヒストグラムを作成しなさい。ビン数や軸ラベルなどの細かい設定は、各自の判断で決めてよい。</p>
 <div class="cell docutils container">
@@ -919,22 +947,6 @@ Categories (5, interval[float64, right]): [(0.0, 0.5] &lt; (0.5, 1.0] &lt; (1.0,
 </div>
 </div>
 <p>追記：よくわからないエラーが出る場合は、ノートブック最初の3つのコードセル（<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">japanize_matplotlib</span></code> から <code class="docutils literal notranslate"><span class="pre">df</span> <span class="pre">=</span> <span class="pre">sns.load_dataset('diamonds')</span></code> まで）を再度実行してから取り組んでみてください。</p>
-<div class="toggle docutils container">
-<p><strong>解答例</strong></p>
-<pre style={"white-space": "pre"}>
-fig, ax = plt.subplots(figsize=(5, 4))
-
-x = np.log(df["carat"].values)
-ax.hist(x, bins=10)  # bins=40とすると細かい構造も見えて面白い
-
-ax.set_xlabel("カラット")
-ax.set_ylabel("カウント")
-
-# ファイルとして保存
-plt.tight_layout()
-plt.savefig("課題1.png") 
-</pre>
-</div>
 <p><strong>課題2</strong><br />
 以下の2つの例のほかに、擬似相関の現れる例を1つ答えなさい。検索して調べてもよい。</p>
 <table class="table">
@@ -986,8 +998,10 @@ plt.savefig("課題1.png")
 
               
               
-                <footer class="bd-footer-article">
-                  <!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer">
+                  
 <div class="prev-next-area">
     <a class="left-prev"
        href="lecture13.html"
@@ -1016,6 +1030,7 @@ plt.savefig("課題1.png")
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
@@ -1041,7 +1056,7 @@ plt.savefig("課題1.png")
             
           </div>
           <footer class="bd-footer-content">
-            <div class="bd-footer-content__inner">
+            
 <div class="bd-footer-content__inner container">
   
   <div class="footer-item">
@@ -1054,6 +1069,7 @@ By 大坪 舜 Shun Otsubo
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2023（2023年3月30日公開）.
@@ -1071,7 +1087,7 @@ By 大坪 舜 Shun Otsubo
     
   </div>
   
-</div></div>
+</div>
           </footer>
         
 
@@ -1080,8 +1096,8 @@ By 大坪 舜 Shun Otsubo
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

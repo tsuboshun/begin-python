@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>第2回 ITを支えるコンピュータのしくみ &#8212; プログラミング実習講義１</title>
   
@@ -19,43 +18,41 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
-    <script src="_static/custom.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-VFVQWRM1GN"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -63,15 +60,20 @@
                 gtag('js', new Date());
                 gtag('config', 'G-VFVQWRM1GN');
             </script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-VFVQWRM1GN');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'lecture02';</script>
+    <script src="_static/custom.js?v=7ed3f353"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="第3回 はじめてのPython" href="lecture03.html" />
@@ -85,7 +87,15 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -120,11 +130,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -139,6 +152,7 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="intro.html">
@@ -147,10 +161,22 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+  
     <p class="title logo__title">プログラミング実習講義１</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -282,20 +308,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -339,16 +367,16 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="it">
-<h1>第2回 ITを支えるコンピュータのしくみ<a class="headerlink" href="#it" title="Permalink to this heading">#</a></h1>
+<h1>第2回 ITを支えるコンピュータのしくみ<a class="headerlink" href="#it" title="Link to this heading">#</a></h1>
 <section id="id1">
-<h2>この授業で学ぶこと<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<h2>この授業で学ぶこと<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <p>この授業では、プログラミングを学ぶ前に知っておきたいコンピュータの背景知識について解説する。</p>
 </section>
 <section id="google-colab">
-<h2>Google Colabとクラウド<a class="headerlink" href="#google-colab" title="Permalink to this heading">#</a></h2>
+<h2>Google Colabとクラウド<a class="headerlink" href="#google-colab" title="Link to this heading">#</a></h2>
 <p>まずは、Google Colabを例に、現在の私たちとコンピュータの関係の一端を紹介しよう。</p>
 <p>初回の授業でGoogle Colab上のプログラムを実行したとき、最初のセットアップの時間を除けば一瞬で答えが返ってきたと思う。
 ところで、この計算を行った実体は何であるかご存知だろうか。
@@ -395,7 +423,7 @@ countryにはアメリカ、regionにはネバダ、cityにはラスベガスと
 <p>このようにどこかの国のどこかのデータセンターの中のコンピュータを、日常的に意識することなく利用しているというのが、現在の私たちとコンピュータの関係の一例である。</p>
 </section>
 <section id="id2">
-<h2>コンピュータの性能の進化<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<h2>コンピュータの性能の進化<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <p>ここまで見てきたようなコンピュータの利用方法というのは、コンピュータを含む各種デバイスの性能の向上により可能になったものである。
 ここでは発展のスピード感を知ってもらうため、<strong>ムーアの法則</strong>について紹介する。</p>
 <p>まず、前提知識を簡単に紹介する（どこかで見聞きした単語が多いのではないだろうか）。
@@ -415,7 +443,7 @@ countryにはアメリカ、regionにはネバダ、cityにはラスベガスと
 <figure class="align-default" id="transistor">
 <a class="reference internal image-reference" href="_images/Transistor-Count-over-time.png"><img alt="_images/Transistor-Count-over-time.png" src="_images/Transistor-Count-over-time.png" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 1 </span><span class="caption-text">トランジスタ数の移り変わり</span><a class="headerlink" href="#transistor" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">トランジスタ数の移り変わり</span><a class="headerlink" href="#transistor" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>横軸は発売日、縦軸はトランジスタ数、1つ1つの点はこれまでに発売されたプロセッサ名を表す。
@@ -429,11 +457,11 @@ countryにはアメリカ、regionにはネバダ、cityにはラスベガスと
 近年のAIを含むIT技術の進展は、実はこのようなデバイスの飛躍的な進化を原動力としている。</p>
 </section>
 <section id="id4">
-<h2>変わらないコンピュータのしくみ<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
+<h2>変わらないコンピュータのしくみ<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
 <p>このようにコンピュータの物理的な性能は、日進月歩で進化している。
 しかし、コンピュータの論理的なしくみに着目すると、基本的なところは昔から変わっていない。</p>
 <section id="id5">
-<h3>2進数による情報の表現<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<h3>2進数による情報の表現<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
 <p>まずコンピュータ上のすべての情報・処理は、細かい要素に分解していけば、必ず0または1の数字の並び・操作にまで還元することができる。
 例えば、私たちが普段スマホやパソコンで目にする画像や音楽、動画、文字、数字もすべて、大量の1/0の並びとして表現されている。</p>
 <p>その基本となるのが数字の1/0での表現である。
@@ -515,7 +543,7 @@ countryにはアメリカ、regionにはネバダ、cityにはラスベガスと
 どのような計算が行えるかという意味では、コンピュータはすべて（今も昔も、またスマホもパソコンも）同じなのである。</p>
 </section>
 <section id="id6">
-<h3>ソフトウェアのしくみ<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
+<h3>ソフトウェアのしくみ<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
 <p>プログラムやデータを総称して<strong>ソフトウェア</strong>という。これは、コンピュータの物理的な構成要素を表す<strong>ハードウェア</strong>に対比される言葉である。
 最後にソフトウェアのしくみについて、今後の講義に関係する部分に絞って簡単に解説する。</p>
 <p>まず、改めての説明になるが、コンピュータに行わせたい処理の命令のことを<strong>プログラム</strong>と呼ぶ。
@@ -541,9 +569,11 @@ Pythonを実行すると、まずソースコードは<strong>バイトコード
 <p>ここではソフトウェアのしくみについてその一部分を簡単に解説した。ソフトウェアは様々な側面で抽象化が行われ、特に物理的な詳細をユーザーから隠すように作られている。
 抽象化された論理的なしくみはあまり変わらないからこそ、私たちは知識のアップデートに追われることなくコンピュータの物理的な性能向上の恩恵を受けられるのである。</p>
 <hr class="footnotes docutils" />
-<aside class="footnote brackets" id="f1" role="note">
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="f1" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">1</a><span class="fn-bracket">]</span></span>
 <p>出典: Max Roser, Hannah Ritchie and Edouard Mathieu (2013) - “Technological Change”. Published online at <a class="reference external" href="http://OurWorldInData.org">OurWorldInData.org</a>. Retrieved from: <a class="reference external" href="https://ourworldindata.org/technological-change">Online Resource</a></p>
+</aside>
 </aside>
 </section>
 </section>
@@ -574,8 +604,10 @@ Pythonを実行すると、まずソースコードは<strong>バイトコード
 
               
               
-                <footer class="bd-footer-article">
-                  <!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer">
+                  
 <div class="prev-next-area">
     <a class="left-prev"
        href="lecture01.html"
@@ -604,6 +636,7 @@ Pythonを実行すると、まずソースコードは<strong>バイトコード
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
@@ -626,7 +659,7 @@ Pythonを実行すると、まずソースコードは<strong>バイトコード
             
           </div>
           <footer class="bd-footer-content">
-            <div class="bd-footer-content__inner">
+            
 <div class="bd-footer-content__inner container">
   
   <div class="footer-item">
@@ -639,6 +672,7 @@ By 大坪 舜 Shun Otsubo
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2023（2023年3月30日公開）.
@@ -656,7 +690,7 @@ By 大坪 舜 Shun Otsubo
     
   </div>
   
-</div></div>
+</div>
           </footer>
         
 
@@ -665,8 +699,8 @@ By 大坪 舜 Shun Otsubo
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

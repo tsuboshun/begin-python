@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>第10回 アルゴリズム入門：問題の複雑さ &#8212; プログラミング実習講義１</title>
   
@@ -19,43 +18,41 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
-    <script src="_static/custom.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-VFVQWRM1GN"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -63,15 +60,20 @@
                 gtag('js', new Date());
                 gtag('config', 'G-VFVQWRM1GN');
             </script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-VFVQWRM1GN');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'lecture10';</script>
+    <script src="_static/custom.js?v=7ed3f353"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="第11回 アルゴリズム入門：データの探索" href="lecture11.html" />
@@ -85,7 +87,15 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -120,11 +130,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -139,6 +152,7 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="intro.html">
@@ -147,10 +161,22 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+  
     <p class="title logo__title">プログラミング実習講義１</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -282,20 +308,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -339,19 +367,19 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>第10回 アルゴリズム入門：問題の複雑さ<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
+<h1>第10回 アルゴリズム入門：問題の複雑さ<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <hr class="docutils" />
-<p><a class="reference external" href="https://colab.research.google.com/github/tsuboshun/begin-python/blob/gh-pages/_sources/workbook/lecture10.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+<p><a class="reference external" href="https://colab.research.google.com/github/tsuboshun/begin-python/blob/gh-pages/2023/_sources/workbook/lecture10.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
 <hr class="docutils" />
 <section id="id2">
-<h2>この授業で学ぶこと<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<h2>この授業で学ぶこと<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <p>前回の授業で挿入ソートとクイックソートを紹介し、それらの実行速度に差があることを見た。特にデータ数を増やしたときの実行時間の増え方に大きな差があることを見た。今回は、アルゴリズムの実行時間を見積もるための考え方である計算量について学び、前回の結果について理解を深める。</p>
 </section>
 <section id="id3">
-<h2>計算量とは<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<h2>計算量とは<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
 <p><strong>計算量</strong>（computational complexity）とは、問題サイズ <span class="math notranslate nohighlight">\(N\)</span> （例えば入力データの大きさなど）に対して計算ステップ数がどのように増えるかを表す指標である。
 計算量はアルゴリズムの実行時間を見積もるために使われる。</p>
 <p>例として、次の2つのプログラムの実行時間を考える。</p>
@@ -446,7 +474,7 @@ func(10**2)  # これはsingle_loop(10**2)と同じ！</pre>
 <p><code class="docutils literal notranslate"><span class="pre">exec_time()</span></code> では引数 <code class="docutils literal notranslate"><span class="pre">func</span></code> で関数を受け取り、<code class="docutils literal notranslate"><span class="pre">exec_time()</span></code> の内部で <code class="docutils literal notranslate"><span class="pre">func(N)</span></code> と実行している。このようなことが可能なのも、関数がオブジェクトとして作られているからである。</p>
 </div>
 <section id="id4">
-<h3>オーダー記法について<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<h3>オーダー記法について<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
 <p>計算量のオーダー記法について次の2点を補足する。</p>
 <ol class="arabic simple">
 <li><p>オーダー記法では定数倍の寄与は考えない</p></li>
@@ -461,7 +489,7 @@ func(10**2)  # これはsingle_loop(10**2)と同じ！</pre>
 </section>
 </section>
 <section id="id5">
-<h2>計算量の比較<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
+<h2>計算量の比較<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
 <p>この節では、計算量でよく出てくる関数についてまとめて説明し、それらの増加速度の比較を行う。</p>
 <p>まず対数関数 <span class="math notranslate nohighlight">\(\log\)</span> について復習しておこう。
 <span class="math notranslate nohighlight">\(\log_b x\)</span> は <span class="math notranslate nohighlight">\(x\)</span> を <span class="math notranslate nohighlight">\(b^z\)</span> と表したときの <span class="math notranslate nohighlight">\(z\)</span> の値と定義されるのであった。
@@ -771,7 +799,7 @@ func(10**2)  # これはsingle_loop(10**2)と同じ！</pre>
 </div>
 </section>
 <section id="id7">
-<h2>ソートアルゴリズムの計算量<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h2>
+<h2>ソートアルゴリズムの計算量<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
 <p>それでは、先週学んだ挿入ソートとクイックソートについて計算量を確認してみよう。これらのアルゴリズムでは、<code class="docutils literal notranslate"><span class="pre">single_loop()</span></code> や <code class="docutils literal notranslate"><span class="pre">double_loop()</span></code> と違って、入力データの並び順によって計算ステップ数が大きく変わりうる。そこで最悪なケースにおける計算量を <strong>最悪計算量</strong>、平均的なケースにおける計算量を <strong>平均計算量</strong> として区別して考える。</p>
 <p>挿入ソートとクイックソートの計算量は以下の通りである。</p>
 <table class="table">
@@ -813,7 +841,7 @@ func(10**2)  # これはsingle_loop(10**2)と同じ！</pre>
 よって、全体の平均計算量は <span class="math notranslate nohighlight">\(O(N\log N)\)</span> となる。</p>
 </section>
 <section id="id9">
-<h2>演習<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h2>
+<h2>演習<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
 <p>以下は、第8回までの内容の復習問題である。</p>
 <p><strong>課題1</strong><br />
 名前をキー、年齢を値とする辞書型のデータ <code class="docutils literal notranslate"><span class="pre">ages</span></code> と、名前 <code class="docutils literal notranslate"><span class="pre">name</span></code> が与えられる。このとき <code class="docutils literal notranslate"><span class="pre">name</span></code> で指定された人物の年齢を出力しなさい。
@@ -831,12 +859,6 @@ func(10**2)  # これはsingle_loop(10**2)と同じ！</pre>
 </pre></div>
 </div>
 </div>
-</div>
-<div class="toggle docutils container">
-<p><strong>解答例</strong></p>
-<pre style={"white-space": "pre"}>
-print(ages[name])
-</pre>
 </div>
 <p><strong>課題2</strong><br />
 名前をキー、年齢を値とする辞書型のデータ <code class="docutils literal notranslate"><span class="pre">ages</span></code> と名前 <code class="docutils literal notranslate"><span class="pre">name</span></code> を引数として受け取り、その人物の年齢を戻り値として返す関数 <code class="docutils literal notranslate"><span class="pre">get_age()</span></code> を作成しなさい。ただし、もしその人物の情報が辞書に存在しない場合は、<code class="docutils literal notranslate"><span class="pre">&quot;情報がありません&quot;</span></code> という文字列を返すようにしなさい。</p>
@@ -867,16 +889,6 @@ print(ages[name])
 </pre></div>
 </div>
 </div>
-</div>
-<div class="toggle docutils container">
-<p><strong>解答例</strong></p>
-<pre style={"white-space": "pre"}>
-def get_age(ages, name):
-    if name in ages:
-        return ages[name]
-    else:
-        return "情報がありません"
-</pre>
 </div>
 <p><strong>課題3</strong><br />
 名前をキー、年齢を値とする辞書型のデータ <code class="docutils literal notranslate"><span class="pre">ages</span></code> を引数として受け取り、<code class="docutils literal notranslate"><span class="pre">ages</span></code> の中の最高齢の人物名を返す関数 <code class="docutils literal notranslate"><span class="pre">get_oldest()</span></code> を作成しなさい。ただし <code class="docutils literal notranslate"><span class="pre">ages</span></code> には一人以上登録されているとしてよい。</p>
@@ -912,27 +924,16 @@ def get_age(ages, name):
 </div>
 </div>
 </div>
-<div class="toggle docutils container">
-<p><strong>解答例</strong></p>
-<pre style={"white-space": "pre"}>
-def get_oldest(ages):
-    max_age = -1
-    ret = None
-    for name in ages:
-        if ages[name] > max_age:
-            max_age = ages[name]
-            ret = name    
-    return ret
-</pre>
-</div>
 <hr class="footnotes docutils" />
-<aside class="footnote brackets" id="f1" role="note">
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="f1" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">1</a><span class="fn-bracket">]</span></span>
 <p>これら2種類の問題を数学的にきちんと区別するために、P・NPといった分類が定義されている。本当はこの分類の話を授業のメインにしようと考えて、シラバス作成時に「問題の複雑さ」というタイトルをつけたが、計算量の話だけでも十分なボリュームになったのでこれ以上踏み込まないことにする。より詳しく学びたい人には<a class="reference external" href="https://qiita.com/drken/items/5187e49082f7437349c2">こちら</a>の解説記事がお勧めである。</p>
 </aside>
-<aside class="footnote brackets" id="f2" role="note">
+<aside class="footnote brackets" id="f2" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id8">2</a><span class="fn-bracket">]</span></span>
 <p><code class="docutils literal notranslate"><span class="pre">single_loop()</span></code> や <code class="docutils literal notranslate"><span class="pre">double_loop()</span></code> のときとは異なり、ここではループ1回を1ステップとして計算ステップ数を求めている。代入などの演算単位で数えたとしても定数倍の違いでしかないので、計算量を求める上ではこれで問題ない。</p>
+</aside>
 </aside>
 </section>
 </section>
@@ -962,8 +963,10 @@ def get_oldest(ages):
 
               
               
-                <footer class="bd-footer-article">
-                  <!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer">
+                  
 <div class="prev-next-area">
     <a class="left-prev"
        href="lecture09.html"
@@ -992,6 +995,7 @@ def get_oldest(ages):
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
@@ -1014,7 +1018,7 @@ def get_oldest(ages):
             
           </div>
           <footer class="bd-footer-content">
-            <div class="bd-footer-content__inner">
+            
 <div class="bd-footer-content__inner container">
   
   <div class="footer-item">
@@ -1027,6 +1031,7 @@ By 大坪 舜 Shun Otsubo
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2023（2023年3月30日公開）.
@@ -1044,7 +1049,7 @@ By 大坪 舜 Shun Otsubo
     
   </div>
   
-</div></div>
+</div>
           </footer>
         
 
@@ -1053,8 +1058,8 @@ By 大坪 舜 Shun Otsubo
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

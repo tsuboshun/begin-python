@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>第5回 条件分岐 &#8212; プログラミング実習講義１</title>
   
@@ -19,43 +18,41 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
-    <script src="_static/custom.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-VFVQWRM1GN"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -63,15 +60,20 @@
                 gtag('js', new Date());
                 gtag('config', 'G-VFVQWRM1GN');
             </script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-VFVQWRM1GN');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'lecture05';</script>
+    <script src="_static/custom.js?v=7ed3f353"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="第6回 繰り返し" href="lecture06.html" />
@@ -85,7 +87,15 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -120,11 +130,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -139,6 +152,7 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="intro.html">
@@ -147,10 +161,22 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+  
     <p class="title logo__title">プログラミング実習講義１</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -282,20 +308,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -338,15 +366,15 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>第5回 条件分岐<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
+<h1>第5回 条件分岐<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <hr class="docutils" />
-<p><a class="reference external" href="https://colab.research.google.com/github/tsuboshun/begin-python/blob/gh-pages/_sources/workbook/lecture05.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+<p><a class="reference external" href="https://colab.research.google.com/github/tsuboshun/begin-python/blob/gh-pages/2023/_sources/workbook/lecture05.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
 <hr class="docutils" />
 <section id="id2">
-<h2>この授業で学ぶこと<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<h2>この授業で学ぶこと<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <p>この授業では、条件に応じて処理内容を変える方法について学ぶ。
 また、Pythonファイルから関数やクラスを読み込む方法についても学ぶ。</p>
 <p>真偽値（<code class="docutils literal notranslate"><span class="pre">True</span></code>、<code class="docutils literal notranslate"><span class="pre">False</span></code>）をよく使うため、ブール型や比較演算子について<a class="reference internal" href="lecture04.html#label-bool"><span class="std std-ref">復習</span></a>しておこう（<code class="docutils literal notranslate"><span class="pre">=</span></code> と <code class="docutils literal notranslate"><span class="pre">==</span></code> の違いについて覚えているだろうか？）。</p>
@@ -358,7 +386,7 @@ document.write(`
 </div>
 </section>
 <section id="if">
-<h2>if文<a class="headerlink" href="#if" title="Permalink to this heading">#</a></h2>
+<h2>if文<a class="headerlink" href="#if" title="Link to this heading">#</a></h2>
 <p>BMI指数を計算して、その値に応じてメッセージを出力するプログラムを作成してみよう。BMIとは、身長と体重の関係から算出される肥満度を表す指数である。
 身長を <span class="math notranslate nohighlight">\(a\)</span> cm、体重を <span class="math notranslate nohighlight">\(b\)</span> kgとすると、BMIは <span class="math notranslate nohighlight">\(10000 b / a^2\)</span> と定義される。</p>
 <div class="cell docutils container">
@@ -408,7 +436,7 @@ document.write(`
 <figure class="align-default" id="id3">
 <a class="reference internal image-reference" href="_images/if.png"><img alt="_images/if.png" src="_images/if.png" style="width: 300px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 6 </span><span class="caption-text">if文の書き方</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">if文の書き方</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>条件を表す式のことを<strong>条件式</strong>と言う。if文では、条件式が真（<code class="docutils literal notranslate"><span class="pre">True</span></code>）か偽（<code class="docutils literal notranslate"><span class="pre">False</span></code>）かに基づいて、それに続く<strong>ブロック</strong>を実行するかどうかを決定する。
@@ -426,7 +454,7 @@ BMIが25以上のとき <code class="docutils literal notranslate"><span class="
 <figure class="align-default" id="flow">
 <a class="reference internal image-reference" href="_images/flow.png"><img alt="_images/flow.png" src="_images/flow.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 7 </span><span class="caption-text">条件分岐の流れ</span><a class="headerlink" href="#flow" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text">条件分岐の流れ</span><a class="headerlink" href="#flow" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>いくつか補足する。まず、if文だけの条件分岐を行うこともよくある。その場合はif文に続くブロックを実行するかどうかを、条件式により決定する。
@@ -472,36 +500,6 @@ elif文は好きなだけ追加できるが、else文は1つまでである。</
 </div>
 </div>
 </div>
-<div class="toggle docutils container">
-<p><strong>解答例</strong></p>
-<pre style={"white-space": "pre"}>
-if x > 0:
-    print("正の値")</pre>
-<p>例えば、以下のように動作する。</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">-1</span></code> のとき、何も出力しない</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">0</span></code> のとき、何も出力しない</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">1</span></code> のとき、<code class="docutils literal notranslate"><span class="pre">&quot;正の値&quot;</span></code> と出力する</p></li>
-</ul>
-<p><strong>誤答例</strong></p>
-<pre style={"white-space": "pre"}>
-if x > 0:
-    ans = "正の値"
-print(ans)</pre>
-<p>上の例は、<code class="docutils literal notranslate"><span class="pre">x</span></code> の値によってはエラーとなるため正しくない（明示的に説明していなかったので、採点上は正解とした）。例えば <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">-1</span></code> のとき、if文のブロックは実行されずにいきなり <code class="docutils literal notranslate"><span class="pre">print(ans)</span></code> が実行される。このとき <code class="docutils literal notranslate"><span class="pre">ans</span></code> という変数は未定義なので、エラーが発生する。</p>
-<p>次のように書けば問題ない。</p>
-<pre style={"white-space": "pre"}>
-if x > 0:
-    ans = "正の値"
-    print(ans)</pre>
-<p>また次のようなコードを書いた人もいた。今回は甘めに採点して正解としたが、問題の指示通りではないので本来は誤答である。また、<code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">0</span></code> のとき <code class="docutils literal notranslate"><span class="pre">&quot;負の値&quot;</span></code> と出力されてしまうので、その意味でも正しくない。</p>
-<pre style={"white-space": "pre"}>
-if x > 0:
-    print("正の値")
-else:
-    print("負の値")</pre>
-<p>まとめると、<strong>問題に書かれていない処理を追加してはいけない。またどのようなケースでもエラーにならないコードを書くこと。</strong></p>
-</div>
 <p>(2) 数値データ <code class="docutils literal notranslate"><span class="pre">x</span></code> が与えられる。 <code class="docutils literal notranslate"><span class="pre">x</span></code> が正の値のとき <code class="docutils literal notranslate"><span class="pre">&quot;正の値&quot;</span></code> 、そうでないとき <code class="docutils literal notranslate"><span class="pre">&quot;0以下の値&quot;</span></code> と出力するプログラムを書きなさい。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -510,20 +508,6 @@ else:
 </pre></div>
 </div>
 </div>
-</div>
-<div class="toggle docutils container">
-<p><strong>解答例</strong></p>
-<pre style={"white-space": "pre"}>
-if x > 0:
-    print("正の値")
-else:
-    print("0以下の値")</pre>
-<p>例えば、以下のように動作する。</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">-1</span></code> のとき、<code class="docutils literal notranslate"><span class="pre">&quot;0以下の値&quot;</span></code> と出力する</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">0</span></code> のとき、<code class="docutils literal notranslate"><span class="pre">&quot;0以下の値&quot;</span></code> と出力する</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">1</span></code> のとき、<code class="docutils literal notranslate"><span class="pre">&quot;正の値&quot;</span></code> と出力する</p></li>
-</ul>
 </div>
 <p><strong>練習2</strong><br />
 2つの数値 <code class="docutils literal notranslate"><span class="pre">a</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span></code> の最大値を求めて出力するプログラムを、if文を使って作成しなさい。</p>
@@ -535,22 +519,6 @@ else:
 </pre></div>
 </div>
 </div>
-</div>
-<div class="toggle docutils container">
-<p><strong>解答例</strong></p>
-<pre style={"white-space": "pre"}>
-if a > b:
-    m = a
-else:
-    m = b
-    
-print(m)
-</pre>
-<p>例えば、以下のように動作する。</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">3</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">=</span> <span class="pre">7</span></code>のとき、<code class="docutils literal notranslate"><span class="pre">7</span></code> と出力する</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">8</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">=</span> <span class="pre">7</span></code>のとき、<code class="docutils literal notranslate"><span class="pre">8</span></code> と出力する</p></li>
-</ul>
 </div>
 <p><strong>練習3</strong><br />
 3つの数値 <code class="docutils literal notranslate"><span class="pre">a</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span></code>、<code class="docutils literal notranslate"><span class="pre">c</span></code> の最大値を求めて出力するプログラムを、if文を使って作成しなさい。</p>
@@ -564,25 +532,6 @@ print(m)
 </div>
 </div>
 </div>
-<div class="toggle docutils container">
-<p><strong>解答例</strong></p>
-<pre style={"white-space": "pre"}>
-if a > b:
-    m = a
-else:
-    m = b
-    
-if m < c:
-    m = c
-
-print(m)</pre>
-<p>例えば、以下のように動作する。</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">3</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">=</span> <span class="pre">7</span></code>、 <code class="docutils literal notranslate"><span class="pre">c</span> <span class="pre">=</span> <span class="pre">2</span></code> のとき、<code class="docutils literal notranslate"><span class="pre">7</span></code> と出力する</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">8</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">=</span> <span class="pre">7</span></code>、 <code class="docutils literal notranslate"><span class="pre">c</span> <span class="pre">=</span> <span class="pre">2</span></code> のとき、<code class="docutils literal notranslate"><span class="pre">8</span></code> と出力する</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">3</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">=</span> <span class="pre">7</span></code>、 <code class="docutils literal notranslate"><span class="pre">c</span> <span class="pre">=</span> <span class="pre">10</span></code> のとき、<code class="docutils literal notranslate"><span class="pre">10</span></code> と出力する</p></li>
-</ul>
-</div>
 <div class="note admonition">
 <p class="admonition-title">式と文</p>
 <p>Pythonプログラムは主に式と文で構成される。
@@ -590,7 +539,7 @@ print(m)</pre>
 一方で文（statement）は、プログラムの実行を制御する構成要素であり、変数への代入や制御構造（if文やfor文など）がそれに当たる。</p>
 </div>
 <section id="id5">
-<h3>論理演算子<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<h3>論理演算子<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
 <p>複数の条件をもとに条件分岐を行いたい場合がある。
 そんなときに用いられるのが<strong>論理演算子</strong>である。
 論理演算子には <code class="docutils literal notranslate"><span class="pre">and</span></code>、<code class="docutils literal notranslate"><span class="pre">or</span></code>、<code class="docutils literal notranslate"><span class="pre">not</span></code> の3種類がある。
@@ -710,16 +659,6 @@ print(m)</pre>
 </div>
 </div>
 </div>
-<div class="toggle docutils container">
-<p><strong>解答例</strong></p>
-<pre style={"white-space": "pre"}>
-if weather == "晴れ" and temp >= 25:
-    print("暑い日ですね")
-elif weather == "晴れ" and temp < 25:
-    print("快適な日ですね")
-elif weather == "雨":
-    print("傘を持っていきましょう")
-</div>
 <p><strong>練習5</strong><br />
 文字列 <code class="docutils literal notranslate"><span class="pre">fruit</span></code> と リスト <code class="docutils literal notranslate"><span class="pre">basket</span></code> が与えられるとき、以下の条件にもとづいて適切なメッセージを出力するプログラムを作成しなさい。</p>
 <ul class="simple">
@@ -735,21 +674,10 @@ elif weather == "雨":
 </div>
 </div>
 </div>
-<div class="toggle docutils container">
-<p><strong>解答例</strong></p>
-<pre style={"white-space": "pre"}>
-if not fruit in basket:
-    print("カゴにありません")</pre>
-<p>例えば、以下のように動作する。</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">fruit</span> <span class="pre">=</span> <span class="pre">&quot;みかん&quot;</span></code>、<code class="docutils literal notranslate"><span class="pre">basket</span> <span class="pre">=</span> <span class="pre">[&quot;りんご&quot;,</span> <span class="pre">&quot;キウイ&quot;,</span> <span class="pre">&quot;バナナ&quot;]</span></code> のとき、<code class="docutils literal notranslate"><span class="pre">&quot;カゴにありません&quot;</span></code> と出力する</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">fruit</span> <span class="pre">=</span> <span class="pre">&quot;バナナ&quot;</span></code>、<code class="docutils literal notranslate"><span class="pre">basket</span> <span class="pre">=</span> <span class="pre">[&quot;りんご&quot;,</span> <span class="pre">&quot;キウイ&quot;,</span> <span class="pre">&quot;バナナ&quot;]</span></code> のとき、何も出力しない</p></li>
-</ul>
-</div>
 </section>
 </section>
 <section id="import">
-<h2>モジュールとimport<a class="headerlink" href="#import" title="Permalink to this heading">#</a></h2>
+<h2>モジュールとimport<a class="headerlink" href="#import" title="Link to this heading">#</a></h2>
 <p>if文から話題を変えて、ここでは新しい関数やクラスをPythonに取り入れるための<strong>import文</strong>について学ぶ。
 これまで利用してきた関数やデータ型は、<strong>組み込み関数</strong>、<strong>組み込み型</strong>と呼ばれ、Pythonに最初から用意されていたものである。
 組み込み以外の関数やクラスは、import文により<strong>モジュール</strong>からインポートする（読み込む）ことで利用できるようになる。</p>
@@ -787,7 +715,7 @@ Pythonには世界中の開発者により豊富なライブラリが用意さ�
 </div>
 </section>
 <section id="id6">
-<h2>演習<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
+<h2>演習<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
 <p><strong>課題1</strong><br />
 じゃんけんの勝敗を判定したい。
 自分の手 <code class="docutils literal notranslate"><span class="pre">my_choice</span></code>、相手の手 <code class="docutils literal notranslate"><span class="pre">opp_choice</span></code> が与えられるとき、引き分けかどうかを判定して、引き分けのとき <code class="docutils literal notranslate"><span class="pre">&quot;引き分け&quot;</span></code> と出力するプログラムを作成しなさい。
@@ -807,28 +735,6 @@ Pythonには世界中の開発者により豊富なライブラリが用意さ�
 </div>
 </div>
 </div>
-<div class="toggle docutils container">
-<p><strong>解答例</strong></p>
-<pre style={"white-space": "pre"}>
-if my_choice == opp_choice:
-    print("引き分け")
-</pre>
-<p><strong>別解</strong><br />
-次のようなコードを書いた人もいた。</p>
-<pre style={"white-space": "pre"}>
-if my_choice == "グー" and opp_choice == "グー":
-    print("引き分け")
-elif my_choice == "チョキ" and opp_choice == "チョキ":
-    print("引き分け")
-elif my_choice == "パー" and opp_choice == "パー":
-    print("引き分け")
-</pre>
-<p>これも正しいプログラムである。ただし、最初の解答例の方が次の2点でより良い。</p>
-<ul class="simple">
-<li><p>簡潔で読みやすい</p></li>
-<li><p>評価する条件式が少ないため、実行時間も短い</p></li>
-</ul>
-</div>
 <p><strong>課題2</strong><br />
 自分の手 <code class="docutils literal notranslate"><span class="pre">my_choice</span></code>、相手の手 <code class="docutils literal notranslate"><span class="pre">opp_choice</span></code> が与えられるとき、自分の勝ちかどうかを判定して、勝ちであれば <code class="docutils literal notranslate"><span class="pre">&quot;勝ち&quot;</span></code> と出力するプログラムを作成しなさい。それ以外のときは何も出力しなくてよい。</p>
 <div class="cell docutils container">
@@ -840,42 +746,6 @@ elif my_choice == "パー" and opp_choice == "パー":
 </div>
 </div>
 </div>
-<div class="toggle docutils container">
-<p><strong>解答例</strong></p>
-<pre style={"white-space": "pre"}>
-if (my_choice == "グー" and opp_choice == "チョキ") or (my_choice == "チョキ" and opp_choice == "パー") or (my_choice == "パー" and opp_choice == "グー"):
-    print("勝ち")
-</pre>
-<p>コードとしては同じであるが、1行が長くなるときは次のように折り返して書いたほうがよい。
-<code class="docutils literal notranslate"><span class="pre">\</span></code> （Windowsでは <code class="docutils literal notranslate"><span class="pre">¥</span></code>）については第3回の講義ノート参照。</p>
-<pre style={"white-space": "pre"}>
-if (my_choice == "グー" and opp_choice == "チョキ") or \
-   (my_choice == "チョキ" and opp_choice == "パー") or \
-   (my_choice == "パー" and opp_choice == "グー"):
-    print("勝ち")
-</pre>
-<p><strong>別解1</strong></p>
-<pre style={"white-space": "pre"}>
-if my_choice == "グー" and opp_choice == "チョキ":
-    print("勝ち")
-elif my_choice == "チョキ" and opp_choice == "パー":
-    print("勝ち")
-elif my_choice == "パー" and opp_choice == "グー":
-    print("勝ち")
-</pre>
-<p>（授業中）このように書いている人もいた。これも見やすくて良いコードである。</p>
-<p><strong>別解2</strong></p>
-<pre style={"white-space": "pre"}>
-if [my_choice, opp_choice] in [["グー", "チョキ"], ["チョキ", "パー"], ["パー", "グー"]]:
-    print("勝ち")
-</pre>
-<p>リストとin演算子を使うと、このように簡潔に書くこともできる。</p>
-<p>ほぼ同じコードであるが、第7回で習うタプルを使って次のように書くこともできる。</p>
-<pre style={"white-space": "pre"}>
-if (my_choice, opp_choice) in [("グー", "チョキ"), ("チョキ", "パー"), ("パー", "グー")]:
-    print("勝ち")
-</pre>
-</div>
 <p><strong>課題3</strong><br />
 自分の手 <code class="docutils literal notranslate"><span class="pre">my_choice</span></code>、相手の手 <code class="docutils literal notranslate"><span class="pre">opp_choice</span></code> が与えられるとき、if文、elif文、else文を使って、勝敗に応じて <code class="docutils literal notranslate"><span class="pre">&quot;勝ち&quot;</span></code>、<code class="docutils literal notranslate"><span class="pre">&quot;負け&quot;</span></code>、<code class="docutils literal notranslate"><span class="pre">&quot;引き分け&quot;</span></code> と出力するプログラムを作成しなさい。</p>
 <div class="cell docutils container">
@@ -886,19 +756,6 @@ if (my_choice, opp_choice) in [("グー", "チョキ"), ("チョキ", "パー"),
 </pre></div>
 </div>
 </div>
-</div>
-<div class="toggle docutils container">
-<p><strong>解答例</strong></p>
-<pre style={"white-space": "pre"}>
-if my_choice == opp_choice:
-    print("引き分け")
-elif (my_choice == "グー" and opp_choice == "チョキ") or \
-   (my_choice == "チョキ" and opp_choice == "パー") or \
-   (my_choice == "パー" and opp_choice == "グー"):
-    print("勝ち")
-else:
-    print("負け")
-</pre>
 </div>
 <p><strong>おまけ</strong><br />
 課題3まで出来た人は、作成したプログラムを次のプログラムの末尾にコピー&amp;ペースとして動かしてみよう。
@@ -922,9 +779,11 @@ else:
 <p><code class="docutils literal notranslate"><span class="pre">raise</span> <span class="pre">ValueError()</span></code> は故意に<strong>例外</strong>（= エラー）を発生させるための文で<strong>raise文</strong>と言う。<code class="docutils literal notranslate"><span class="pre">ValueError()</span></code> は先頭が大文字になっているが、これは関数ではなく、ValueErrorクラスのインスタンスを作成する式である。今回は値が有効ではないことを意味する <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> を発生させているが、状況ごとに適切な例外のクラスは異なる。はじめのうちは使える必要はないが、このように自分でエラーを発生させる方法もあることは知っておこう。</p>
 </div>
 <hr class="footnotes docutils" />
-<aside class="footnote brackets" id="f1" role="note">
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="f1" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">1</a><span class="fn-bracket">]</span></span>
 <p><a class="reference external" href="https://pep8-ja.readthedocs.io/ja/latest/">PEP8</a>という綺麗なコードを書くための公式のガイドラインに定められている。</p>
+</aside>
 </aside>
 </section>
 </section>
@@ -954,8 +813,10 @@ else:
 
               
               
-                <footer class="bd-footer-article">
-                  <!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer">
+                  
 <div class="prev-next-area">
     <a class="left-prev"
        href="lecture04.html"
@@ -984,6 +845,7 @@ else:
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
@@ -1005,7 +867,7 @@ else:
             
           </div>
           <footer class="bd-footer-content">
-            <div class="bd-footer-content__inner">
+            
 <div class="bd-footer-content__inner container">
   
   <div class="footer-item">
@@ -1018,6 +880,7 @@ By 大坪 舜 Shun Otsubo
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2023（2023年3月30日公開）.
@@ -1035,7 +898,7 @@ By 大坪 舜 Shun Otsubo
     
   </div>
   
-</div></div>
+</div>
           </footer>
         
 
@@ -1044,8 +907,8 @@ By 大坪 舜 Shun Otsubo
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

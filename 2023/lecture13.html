@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>第13回 データの可視化 &#8212; プログラミング実習講義１</title>
   
@@ -19,43 +18,41 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
-    <script src="_static/custom.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-VFVQWRM1GN"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -63,15 +60,20 @@
                 gtag('js', new Date());
                 gtag('config', 'G-VFVQWRM1GN');
             </script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-VFVQWRM1GN');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'lecture13';</script>
+    <script src="_static/custom.js?v=7ed3f353"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="第14回 データの読み方" href="lecture14.html" />
@@ -85,7 +87,15 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -120,11 +130,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -139,6 +152,7 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="intro.html">
@@ -147,10 +161,22 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+  
     <p class="title logo__title">プログラミング実習講義１</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -282,20 +308,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -350,15 +378,15 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>第13回 データの可視化<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
+<h1>第13回 データの可視化<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <hr class="docutils" />
-<p><a class="reference external" href="https://colab.research.google.com/github/tsuboshun/begin-python/blob/gh-pages/_sources/workbook/lecture13.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+<p><a class="reference external" href="https://colab.research.google.com/github/tsuboshun/begin-python/blob/gh-pages/2023/_sources/workbook/lecture13.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
 <hr class="docutils" />
 <section id="id2">
-<h2>この授業で学ぶこと<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<h2>この授業で学ぶこと<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <p>今回から第15回にかけてデータサイエンスの入門講義を行う。
 今回はデータの可視化をテーマに、matplotlibというライブラリの使い方を一通り解説する。またテーブルデータを扱うためのライブラリであるpandasについても解説する。</p>
 <p>今回の授業で紹介するコードは何も見ないで書けるようになる必要はなく、これらを雛形にして使えるようになればよい。
@@ -367,7 +395,7 @@ matplotlibを使うと綺麗なグラフを作成できるようになるので�
 これまでヒントをもらうことでなんとかコードを書いていた人も多いと思うが、そのような人でもChatGPTを先生代わりにすることで、一人でコードを書けるようになると期待する。もちろん自力でコードを書いた方が力になるので、まずは自力で課題に取り組むこと。またChatGPTを使う場合でも、出力を鵜呑みにするのではなく、その正しさを自分で判断し、出力を適宜修正しながら利用することが重要である。</p>
 </section>
 <section id="matplotlib">
-<h2>matplotlib入門<a class="headerlink" href="#matplotlib" title="Permalink to this heading">#</a></h2>
+<h2>matplotlib入門<a class="headerlink" href="#matplotlib" title="Link to this heading">#</a></h2>
 <p>Pythonでグラフを描画するのに<strong>matplotlib</strong>というライブラリがよく用いられる。この節ではmatplotlibの使い方の基本を説明する。</p>
 <p>matplotlibを使うには、その中のpyplotというモジュールをimportする。
 またグラフのラベルに日本語を使えるようにするためにjapanize_matplotlibというモジュールをimportする。japanize_matplotlibはpipによるインストールが必要である<a class="footnote-reference brackets" href="#f1" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>。</p>
@@ -470,7 +498,7 @@ matplotlibを使うと綺麗なグラフを作成できるようになるので�
 <p>ここで生成した <code class="docutils literal notranslate"><span class="pre">sample_x</span></code> と <code class="docutils literal notranslate"><span class="pre">sample_y</span></code> は <span class="math notranslate nohighlight">\(\varepsilon\)</span> をノイズとして <span class="math notranslate nohighlight">\(y = 2x + \varepsilon\)</span> の関係を満たす2次元データ <span class="math notranslate nohighlight">\((x, y)\)</span> を100個生成したものと見ることができる。
 1つ1つのデータは(<code class="docutils literal notranslate"><span class="pre">sample_x[0]</span></code>, <code class="docutils literal notranslate"><span class="pre">sample_y[0]</span></code>), (<code class="docutils literal notranslate"><span class="pre">sample_x[1]</span></code>, <code class="docutils literal notranslate"><span class="pre">sample_y[1]</span></code>), …, (<code class="docutils literal notranslate"><span class="pre">sample_x[99]</span></code>, <code class="docutils literal notranslate"><span class="pre">sample_y[99]</span></code>)である。</p>
 <section id="id4">
-<h3>散布図<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<h3>散布図<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
 <p>サンプルデータを<strong>散布図</strong>として可視化してみよう。横軸に <span class="math notranslate nohighlight">\(x\)</span>、縦軸に <span class="math notranslate nohighlight">\(y\)</span> の値をとって各データを点として打って描画する。このことをデータを散布図として<strong>プロット</strong>するという。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -494,7 +522,7 @@ matplotlibを使うと綺麗なグラフを作成できるようになるので�
 <figure class="align-default" id="fig-map">
 <a class="reference internal image-reference" href="_images/fig_map.png"><img alt="_images/fig_map.png" src="_images/fig_map.png" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 27 </span><span class="caption-text">グラフの構成要素</span><a class="headerlink" href="#fig-map" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 27 </span><span class="caption-text">グラフの構成要素</span><a class="headerlink" href="#fig-map" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p><code class="docutils literal notranslate"><span class="pre">plt.subplots()</span></code> 関数は <code class="docutils literal notranslate"><span class="pre">plt.subplots(n,</span> <span class="pre">m,</span> <span class="pre">figsize=(w,</span> <span class="pre">h))</span></code> と呼び出すと、横幅 <code class="docutils literal notranslate"><span class="pre">w</span></code>、高さ <code class="docutils literal notranslate"><span class="pre">h</span></code> （単位はインチ）のFigureオブジェクトと、その中に <code class="docutils literal notranslate"><span class="pre">n</span></code> 行 <code class="docutils literal notranslate"><span class="pre">m</span></code> 列の<code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">*</span> <span class="pre">m</span></code> 個のAxesオブジェクトを作成する。グラフを1枚だけ描画したい場合は、<code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">m</span> <span class="pre">=</span> <span class="pre">1</span></code> と指定する。もしくは引数で何も指定しなければ、デフォルト引数により <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">m</span> <span class="pre">=</span> <span class="pre">1</span></code> が設定される。このときAxesオブジェクトが1つだけ作成され、戻り値の <code class="docutils literal notranslate"><span class="pre">ax</span></code> はAxesオブジェクトそのものになる。複数のグラフを同時に描画したい場合は、<code class="docutils literal notranslate"><span class="pre">n</span></code> または <code class="docutils literal notranslate"><span class="pre">m</span></code> または両方に2以上の整数を指定する。このときAxesオブジェクトが複数作成され、戻り値はAxesオブジェクトの配列となる。</p>
@@ -502,7 +530,7 @@ matplotlibを使うと綺麗なグラフを作成できるようになるので�
 最後に <code class="docutils literal notranslate"><span class="pre">plt.show()</span></code> 関数を呼び出すことで、グラフが表示される。</p>
 </section>
 <section id="id7">
-<h3>グラフの調整<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
+<h3>グラフの調整<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
 <p>次にグラフの見た目を細かく調整してみよう。</p>
 <p>まずは1枚のグラフに複数の散布図をプロットする。
 先ほどのプロットに <span class="math notranslate nohighlight">\(y = 3x + \varepsilon\)</span> の関係を満たすデータの散布図を追加する。</p>
@@ -558,7 +586,7 @@ matplotlibを使うと綺麗なグラフを作成できるようになるので�
 <p>軸ラベルは <code class="docutils literal notranslate"><span class="pre">ax.set_xlabel()</span></code>、<code class="docutils literal notranslate"><span class="pre">ax.set_ylabel()</span></code> により設定する。同様にタイトルは <code class="docutils literal notranslate"><span class="pre">ax.set_title()</span></code> により設定する。</p>
 </section>
 <section id="id8">
-<h3>折れ線グラフ<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
+<h3>折れ線グラフ<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
 <p>散布図と並んでよく使われるのが<strong>折れ線グラフ</strong>である。折れ線グラフでは、基本的にデータの順番は <span class="math notranslate nohighlight">\(x\)</span> の値について昇順または降順であることを仮定する。
 このとき横軸に <span class="math notranslate nohighlight">\(x\)</span>、縦軸に <span class="math notranslate nohighlight">\(y\)</span> の値をとって各データを点として打つところは散布図と同じであるが、折れ線グラフではこれらの点を線で結ぶ。これにより <span class="math notranslate nohighlight">\(x\)</span> の値が増えたときの、<span class="math notranslate nohighlight">\(y\)</span> の値の連続的な変化を表現できる。</p>
 <p>折れ線グラフのプロット例を以下に示す。
@@ -620,27 +648,10 @@ matplotlibを使うと綺麗なグラフを作成できるようになるので�
 </div>
 </div>
 </div>
-<div class="toggle docutils container">
-<p><strong>解答例</strong></p>
-<pre style={"white-space": "pre"}>
-# プロットの入れ物の用意
-fig, ax = plt.subplots(figsize=(5, 4))
-
-# ここに適切なコードを書く
-ax.plot(x, y_sin, label="sin関数")
-ax.plot(x, y_cos, label="cos関数")
-
-plt.legend() # 凡例の表示
-
-# ファイルとして保存
-plt.tight_layout()
-plt.savefig("練習1.png") 
-</pre>
-</div>
 </section>
 </section>
 <section id="pandas">
-<h2>pandas入門<a class="headerlink" href="#pandas" title="Permalink to this heading">#</a></h2>
+<h2>pandas入門<a class="headerlink" href="#pandas" title="Link to this heading">#</a></h2>
 <p>Pythonで表形式のデータ（テーブルデータ）を扱うのに<strong>pandas</strong>というライブラリがよく用いられる。この節ではpandasについて、今後の授業で使いうる機能に限定して説明する。</p>
 <p>pandasを使うには、pandasモジュールをimportする。
 ここでは説明のため、seabornというライブラリにサンプルとして用意されている <code class="docutils literal notranslate"><span class="pre">'diamonds'</span></code> というテーブルデータを使用する（データの説明は<a class="reference external" href="https://ggplot2.tidyverse.org/reference/diamonds.html">こちら</a>）。<code class="docutils literal notranslate"><span class="pre">load_dataset()</span></code> 関数によりサンプルのテーブルデータを取得できる。このようなデータの集まりのことを<strong>データセット</strong>ともいう。</p>
@@ -654,7 +665,7 @@ plt.savefig("練習1.png")
 </div>
 </div>
 <section id="id9">
-<h3>データフレーム<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h3>
+<h3>データフレーム<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
 <p>pandasにおいてテーブルデータのことを<strong>データフレーム</strong>（<strong>DataFrame</strong>）という。
 データフレームの持つ <code class="docutils literal notranslate"><span class="pre">head()</span></code> メソッドにより、先頭から5件のデータを表示することができる。
 <code class="docutils literal notranslate"><span class="pre">head(10)</span></code> のように引数に整数を渡すことで、その件数だけデータを表示することもできる。</p>
@@ -1018,7 +1029,7 @@ plt.savefig("練習1.png")
 </div>
 </section>
 <section id="id10">
-<h3>シリーズ<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h3>
+<h3>シリーズ<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
 <p>データフレームは2次元配列に行ラベル・列ラベルをつけたものであった。
 pandasには、1次元配列に行ラベルをつけたデータ型も用意されており、<strong>シリーズ</strong>（<strong>Series</strong>）という。</p>
 <p>データフレームに対してcolumnsの値を <code class="docutils literal notranslate"><span class="pre">[]</span></code> で指定すると、その列のデータをシリーズとして取得できる。</p>
@@ -1088,10 +1099,10 @@ dtype: float64
 </div>
 </section>
 <section id="id11">
-<h3>テーブル操作<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h3>
+<h3>テーブル操作<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
 <p>データフレームを使うと、テーブルデータでよく行われる操作を簡単に実現することができる。データフレーム上でテーブルデータを加工し、加工したテーブルデータの値を配列として取得して、matplotlibなど他のライブラリに渡すというのがよくある使い方である。以下にいくつかの操作を紹介する。</p>
 <section id="id12">
-<h4>ソート<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h4>
+<h4>ソート<a class="headerlink" href="#id12" title="Link to this heading">#</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">sort_values()</span></code> メソッドにより、引数に渡した列を基準にソートすることができる。デフォルトでは昇順にソートする。ソートした結果のデータフレームが戻り値として返されるので、以下のコードではそれを変数 <code class="docutils literal notranslate"><span class="pre">df</span></code> に再代入している。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1312,7 +1323,7 @@ dtype: float64
 </div>
 </section>
 <section id="id13">
-<h4>フィルタリング<a class="headerlink" href="#id13" title="Permalink to this heading">#</a></h4>
+<h4>フィルタリング<a class="headerlink" href="#id13" title="Link to this heading">#</a></h4>
 <p>テーブルデータの中から特定の条件を満たす行を抽出することを<strong>フィルタリング</strong>という。</p>
 <p>フィルタリングを行うには、どのindexの行を抽出するかをブール型で表したシリーズを <code class="docutils literal notranslate"><span class="pre">loc</span></code> で指定する。
 例えば、<code class="docutils literal notranslate"><span class="pre">cut</span></code> の種類が <code class="docutils literal notranslate"><span class="pre">Premium</span></code> の行を抽出したいとしよう。
@@ -1451,7 +1462,7 @@ Name: cut, Length: 53940, dtype: bool
 </div>
 </section>
 <section id="id14">
-<h4>列の演算<a class="headerlink" href="#id14" title="Permalink to this heading">#</a></h4>
+<h4>列の演算<a class="headerlink" href="#id14" title="Link to this heading">#</a></h4>
 <p>シリーズは、配列と同様に各種演算を行うことができる。またデータフレームの列の追加や更新は代入文により行うことができる。
 例えば、<code class="docutils literal notranslate"><span class="pre">x</span></code>、<code class="docutils literal notranslate"><span class="pre">y</span></code>、<code class="docutils literal notranslate"><span class="pre">z</span></code> の総和を求めて、その結果を <code class="docutils literal notranslate"><span class="pre">sum</span></code> という列として保持するには、以下のように書く。</p>
 <div class="cell docutils container">
@@ -1692,29 +1703,13 @@ Name: cut, Length: 53940, dtype: bool
 </div>
 <p><strong>練習2</strong><br />
 <code class="docutils literal notranslate"><span class="pre">diamonds</span></code> データセットにおいて全データの価格の平均は <code class="docutils literal notranslate"><span class="pre">np.mean(df[&quot;price&quot;].values)</span></code> 、カラットの平均は <code class="docutils literal notranslate"><span class="pre">np.mean(df[&quot;carat&quot;].values)</span></code> により求めることができる。フィルタリングを行うことにより、カット <code class="docutils literal notranslate"><span class="pre">&quot;cut&quot;</span></code> の種類が <code class="docutils literal notranslate"><span class="pre">&quot;Ideal&quot;</span></code> のデータにおける価格の平均、カラットの平均を求めなさい。<code class="docutils literal notranslate"><span class="pre">&quot;Ideal&quot;</span></code> はカットの種類の中では一番良いカテゴリだが、価格の平均が全データでの平均より小さくなるのはなぜだろうか。</p>
-<div class="toggle docutils container">
-<p><strong>解答例</strong></p>
-<pre style={"white-space": "pre"}>
-df_ideal = df.loc[df["cut"] == "Ideal"]
-print(np.mean(df_ideal["price"].values))
-print(np.mean(df_ideal["carat"].values))
-</pre>
-</div>
 <p><strong>練習3</strong><br />
 <code class="docutils literal notranslate"><span class="pre">diamonds</span></code> データセットにおいて価格上位5件、下位5件のデータを表示しなさい。</p>
-<div class="toggle docutils container">
-<p><strong>解答例</strong></p>
-<pre style={"white-space": "pre"}>
-df.sort_values("price", ascending=False).head()  # 上位5件
-
-df.sort_values("price").head()  # 下位5件（上とは別のセルで実行する）
-</pre>
-</div>
 </section>
 </section>
 </section>
 <section id="id15">
-<h2>演習<a class="headerlink" href="#id15" title="Permalink to this heading">#</a></h2>
+<h2>演習<a class="headerlink" href="#id15" title="Link to this heading">#</a></h2>
 <p><strong>課題</strong><br />
 <code class="docutils literal notranslate"><span class="pre">diamonds</span></code> データセットにおいて <code class="docutils literal notranslate"><span class="pre">&quot;carat&quot;</span></code> と <code class="docutils literal notranslate"><span class="pre">&quot;price&quot;</span></code> の関係を散布図として可視化しなさい。<code class="docutils literal notranslate"><span class="pre">&quot;carat&quot;</span></code> の値を横軸、<code class="docutils literal notranslate"><span class="pre">&quot;price&quot;</span></code> の値を縦軸にとり、横軸には <code class="docutils literal notranslate"><span class="pre">&quot;カラット&quot;</span></code>、縦軸には <code class="docutils literal notranslate"><span class="pre">&quot;価格&quot;</span></code> という軸ラベルをつけなさい。</p>
 <div class="cell docutils container">
@@ -1750,39 +1745,20 @@ df.sort_values("price").head()  # 下位5件（上とは別のセルで実行す
 <li><p>最初から一通りのセルを実行していないと、上のコードを実行する準備が整わないことがあるので気を付ける。よくわからないエラーが出る場合は、ノートブック最初の2つのセル、pandas入門という節の最初のセルを改めて実行してから取り組むこと。</p></li>
 <li><p>ファイルとして保存する場合は、<code class="docutils literal notranslate"><span class="pre">plt.show()</span></code> は実行しない。これを実行してしまうと白紙の画像ファイルがダウンロードされる。</p></li>
 </ul>
-<div class="toggle docutils container">
-<p><strong>解答例</strong></p>
-<pre style={"white-space": "pre"}>
-# プロットの入れ物の用意
-fig, ax = plt.subplots(figsize=(5, 4))
-
-# データの用意
-x = df["carat"].values
-y = df["price"].values
-
-# ここに適切なコードを書く
-ax.scatter(x, y)
-
-ax.set_xlabel("カラット")
-ax.set_ylabel("価格")
-
-# ファイルとして保存
-plt.tight_layout()
-plt.savefig("課題1.png") 
-</pre>
-</div>
 <hr class="footnotes docutils" />
-<aside class="footnote brackets" id="f1" role="note">
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="f1" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">1</a><span class="fn-bracket">]</span></span>
 <p>matplotlibも標準ライブラリではないため本来はpipによるインストールが必要であるが、Google Colabの環境では初めからインストールされている。</p>
 </aside>
-<aside class="footnote brackets" id="f2" role="note">
+<aside class="footnote brackets" id="f2" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">2</a><span class="fn-bracket">]</span></span>
 <p>一見すると戻り値が2つあるように見えるが、<code class="docutils literal notranslate"><span class="pre">plt.subplots()</span></code> はFigureオブジェクトとAxesオブジェクトのタプルを返しており（つまり戻り値は1つ）、タプルの各要素を <code class="docutils literal notranslate"><span class="pre">fig</span></code> と <code class="docutils literal notranslate"><span class="pre">ax</span></code> に割り当てている。戻り値のタプルを <code class="docutils literal notranslate"><span class="pre">,</span></code> 区切りの変数で受け取ることを<strong>アンパック</strong>という。</p>
 </aside>
-<aside class="footnote brackets" id="f3" role="note">
+<aside class="footnote brackets" id="f3" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">3</a><span class="fn-bracket">]</span></span>
 <p>matplotlibの描画方法にはexplicit（明示的）な方法とimplicit（非明示的）な方法の2種類があるが、このテキストではexplicitな方法を説明する。implicitな方法というのは、<code class="docutils literal notranslate"><span class="pre">fig</span></code> や <code class="docutils literal notranslate"><span class="pre">ax</span></code> を用意することなく、いきなり <code class="docutils literal notranslate"><span class="pre">plt.plot()</span></code> などとプロットする方法のことである。implicitな方法は手軽にプロットできるというメリットがあるが、グラフの細かい調整ができないというデメリットもある。そのため、はじめからexplicitな方法を覚えるのがお勧めである。</p>
+</aside>
 </aside>
 </section>
 </section>
@@ -1812,8 +1788,10 @@ plt.savefig("課題1.png")
 
               
               
-                <footer class="bd-footer-article">
-                  <!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer">
+                  
 <div class="prev-next-area">
     <a class="left-prev"
        href="lecture12.html"
@@ -1841,6 +1819,7 @@ plt.savefig("課題1.png")
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1875,7 +1854,7 @@ plt.savefig("課題1.png")
             
           </div>
           <footer class="bd-footer-content">
-            <div class="bd-footer-content__inner">
+            
 <div class="bd-footer-content__inner container">
   
   <div class="footer-item">
@@ -1888,6 +1867,7 @@ By 大坪 舜 Shun Otsubo
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2023（2023年3月30日公開）.
@@ -1905,7 +1885,7 @@ By 大坪 舜 Shun Otsubo
     
   </div>
   
-</div></div>
+</div>
           </footer>
         
 
@@ -1914,8 +1894,8 @@ By 大坪 舜 Shun Otsubo
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

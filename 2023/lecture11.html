@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>第11回 アルゴリズム入門：データの探索 &#8212; プログラミング実習講義１</title>
   
@@ -19,43 +18,41 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
-    <script src="_static/custom.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-VFVQWRM1GN"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -63,15 +60,20 @@
                 gtag('js', new Date());
                 gtag('config', 'G-VFVQWRM1GN');
             </script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-VFVQWRM1GN');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'lecture11';</script>
+    <script src="_static/custom.js?v=7ed3f353"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="第12回 新しいデータ型を作る" href="lecture12.html" />
@@ -85,7 +87,15 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -120,11 +130,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -139,6 +152,7 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="intro.html">
@@ -147,10 +161,22 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+  
     <p class="title logo__title">プログラミング実習講義１</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -282,20 +308,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -342,19 +370,19 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>第11回 アルゴリズム入門：データの探索<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
+<h1>第11回 アルゴリズム入門：データの探索<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <hr class="docutils" />
-<p><a class="reference external" href="https://colab.research.google.com/github/tsuboshun/begin-python/blob/gh-pages/_sources/workbook/lecture11.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+<p><a class="reference external" href="https://colab.research.google.com/github/tsuboshun/begin-python/blob/gh-pages/2023/_sources/workbook/lecture11.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
 <hr class="docutils" />
 <section id="id2">
-<h2>この授業で学ぶこと<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<h2>この授業で学ぶこと<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <p>アルゴリズム入門の最後の話題として、探索アルゴリズムについて学ぶ。またファイルの読み書きの方法についても学ぶ。</p>
 </section>
 <section id="id3">
-<h2>探索とは<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<h2>探索とは<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
 <p>複数のデータの中から、特定の条件に適合するデータを見つけることを<strong>探索</strong>という。
 このテキストでは、次の問題設定に限定して考える： 数値のリストと数値のキーが与えられるとき、リストの中にキーと一致する要素が存在するかを判定し、存在するときはそのインデックスを1つ求める。</p>
 <p>このアルゴリズムを関数として実装しよう。
@@ -399,7 +427,7 @@ key = 4
 </div>
 </section>
 <section id="id4">
-<h2>線形探索<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
+<h2>線形探索<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
 <p>線形探索は、前から順に探すという単純なアルゴリズムである。
 実装としては、for文により前から要素を1つずつ調べていき、キーに一致する要素を見つけたところでそのインデックスをreturn文で返す。
 最後までキーに一致する要素が見つからなかった場合は、<code class="docutils literal notranslate"><span class="pre">None</span></code> をreturn文で返す。</p>
@@ -431,16 +459,6 @@ key = 4
 </div>
 </div>
 </div>
-<div class="toggle docutils container">
-<p><strong>解答例</strong></p>
-<pre style={"white-space": "pre"}>
-def linear_search(data, key):
-    for i in range(len(data)):
-        if data[i] == key:
-            return i
-    return None
-</pre>
-</div>
 <p>線形探索の計算量は、リストの要素数を <span class="math notranslate nohighlight">\(N\)</span> として最悪も平均も <span class="math notranslate nohighlight">\(O(N)\)</span> である。
 最悪の場合は、キーと一致する要素がリストの最後にあるか、存在しない場合である。
 このときfor文の処理を <span class="math notranslate nohighlight">\(N\)</span> 回繰り返すことになるので、最悪計算量は <span class="math notranslate nohighlight">\(O(N)\)</span> となる。
@@ -450,7 +468,7 @@ def linear_search(data, key):
 ちなみに、リストの <code class="docutils literal notranslate"><span class="pre">index()</span></code> メソッドも線形探索を実装したものとなっている。</p>
 </section>
 <section id="id5">
-<h2>二分探索<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
+<h2>二分探索<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
 <p>二分探索は、リストがソートされているという前提のもとで、より効率的な探索を実現するアルゴリズムである。</p>
 <p>リストがソートされているとき、要素とキーの大小関係を調べることにより、キーがあるとしたら要素より右か左かが判明する。
 二分探索ではこの性質を利用し、さらに大小関係を調べる要素を探索範囲の中央から選ぶことで、なるべく少ないステップで探索範囲を絞り込んでいく。</p>
@@ -458,7 +476,7 @@ def linear_search(data, key):
 <figure class="align-default" id="binary-search">
 <a class="reference internal image-reference" href="_images/binary_search.png"><img alt="_images/binary_search.png" src="_images/binary_search.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 22 </span><span class="caption-text">キーが7のときの二分探索の様子</span><a class="headerlink" href="#binary-search" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 22 </span><span class="caption-text">キーが7のときの二分探索の様子</span><a class="headerlink" href="#binary-search" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>両端の灰矢印が、探索範囲を表している。これらの中央の青矢印が、大小関係を調べる要素である。
@@ -500,23 +518,6 @@ def linear_search(data, key):
 </div>
 </div>
 </div>
-<div class="toggle docutils container">
-<p><strong>解答例</strong></p>
-<pre style={"white-space": "pre"}>
-def binary_search(data, key):
-    left = 0
-    right = len(data) - 1
-    while left <= right:
-        mid = (left + right) // 2
-        if data[mid] == key:
-            return mid
-        elif data[mid] > key:
-            right = mid - 1
-        else:
-            left = mid + 1
-    return None
-</pre>
-</div>
 <p>二分探索の計算量は、リストの要素数を <span class="math notranslate nohighlight">\(N\)</span> として最悪も平均も <span class="math notranslate nohighlight">\(O(\log N)\)</span> である。
 二分探索ではキーと要素を比較するたびに探索範囲が約半分になる。
 例えば、上図の例では探索範囲は<span class="math notranslate nohighlight">\(11\rightarrow 5\rightarrow 2\)</span>と移り変わっている。
@@ -552,18 +553,18 @@ def binary_search(data, key):
 </div>
 </section>
 <section id="id6">
-<h2>ファイルの入出力<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
+<h2>ファイルの入出力<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
 <p>探索アルゴリズムから話題を変えて、この節ではファイルの入出力について学ぶ。
 これまではPythonプログラムの中で閉じた話がほとんどであったが、ファイルの入出力を学ぶことで、パソコン上のファイルに対して自由な処理を行えるようになったり、プログラムの実行結果を永続的に保存できるようになったりするなど出来ることの幅がぐんと広がる。</p>
 <section id="google">
-<h3>Googleドライブのマウント<a class="headerlink" href="#google" title="Permalink to this heading">#</a></h3>
+<h3>Googleドライブのマウント<a class="headerlink" href="#google" title="Link to this heading">#</a></h3>
 <p>Google Colab上でファイルを扱うために、最初にGoogleドライブに接続する必要がある（<strong>マウント</strong>という）。
 ここではマウントの手順を説明する。</p>
 <p>サイドメニューから以下の順番でアイコンをクリックする。</p>
 <figure class="align-default" id="drive1">
 <a class="reference internal image-reference" href="_images/drive1.png"><img alt="_images/drive1.png" src="_images/drive1.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 23 </span><span class="caption-text">Googleドライブのマウント</span><a class="headerlink" href="#drive1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 23 </span><span class="caption-text">Googleドライブのマウント</span><a class="headerlink" href="#drive1" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>そうすると以下のようなコードがノートブック上に現れるので、これを実行する。
@@ -571,19 +572,19 @@ def binary_search(data, key):
 <figure class="align-default" id="drive2">
 <a class="reference internal image-reference" href="_images/drive2.png"><img alt="_images/drive2.png" src="_images/drive2.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 24 </span><span class="caption-text">Googleドライブのマウント</span><a class="headerlink" href="#drive2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 24 </span><span class="caption-text">Googleドライブのマウント</span><a class="headerlink" href="#drive2" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>マウントしたあと左のウィンドウ上で <code class="docutils literal notranslate"><span class="pre">/content/drive/MyDrive</span></code> を見に行くと、Googleドライブ上のファイル・フォルダが確認できるはずである。</p>
 <figure class="align-default" id="drive3">
 <a class="reference internal image-reference" href="_images/drive3.png"><img alt="_images/drive3.png" src="_images/drive3.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 25 </span><span class="caption-text">Googleドライブのマウント</span><a class="headerlink" href="#drive3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 25 </span><span class="caption-text">Googleドライブのマウント</span><a class="headerlink" href="#drive3" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="id7">
-<h3>ファイルの読み込み<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
+<h3>ファイルの読み込み<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
 <p>練習用のファイルとして次のデータが書かれたsample.txtを用意し（ToyoNet-ACEでも配布する予定）、Googleドライブのマイドライブ直下に置く。それ以外の場所に置いた場合は以降のコードの <code class="docutils literal notranslate"><span class="pre">path</span></code> を適宜変更する。</p>
 <pre>8 7 9 6 9
 4 5 8 7 6
@@ -672,7 +673,7 @@ line.strip().split(' ')
 </div>
 </section>
 <section id="id8">
-<h3>ファイルの書き込み<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
+<h3>ファイルの書き込み<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
 <p>読み込んだデータをもとに各生徒の平均スコアを求めて、ファイルに出力してみよう。</p>
 <p>まず出力用のパスを入力とは別に設定する。
 <code class="docutils literal notranslate"><span class="pre">open()</span></code> 関数を書き込みモード（<code class="docutils literal notranslate"><span class="pre">'w'</span></code>） で呼び出し、書き込み用のファイルオブジェクト <code class="docutils literal notranslate"><span class="pre">f</span></code> を取得する。
@@ -703,7 +704,7 @@ line.strip().split(' ')
 </section>
 </section>
 <section id="id9">
-<h2>演習<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h2>
+<h2>演習<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
 <p><strong>課題</strong><br />
 上の節では、各学生の平均スコアを求めてファイルに出力した。これを参考に、平均スコアの代わりにスコアの標準偏差を求めてファイルに出力し、作成したファイルを提出しなさい。ファイル名は <code class="docutils literal notranslate"><span class="pre">sample_std.txt</span></code> とすること。これは必須ではないが、可能なら小数は第3位を四捨五入して第2位までを求めなさい（<a class="reference internal" href="lecture03.html#label-round"><span class="std std-ref">参考</span></a>）。</p>
 <p>ヒント1:  第6回で紹介したNumPyを利用すると、標準偏差は簡単に求められる。<code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">numpy</span> <span class="pre">as</span> <span class="pre">np</span></code> によりNumPyを読み込んだあと、<code class="docutils literal notranslate"><span class="pre">np.std()</span></code> 関数を使って、<code class="docutils literal notranslate"><span class="pre">np.std(lst)</span></code> によりリスト <code class="docutils literal notranslate"><span class="pre">lst</span></code> の標準偏差を求めることができる。<br />
@@ -726,22 +727,6 @@ line.strip().split(' ')
 </pre></div>
 </div>
 </div>
-</div>
-<div class="toggle docutils container">
-<p><strong>解答例</strong></p>
-<pre style={"white-space": "pre"}>
-import numpy as np # NumPyの読み込み
-
-output_path = "/content/drive/MyDrive/sample_std.txt"
-f = open(output_path, mode='w')
-
-for lst in data:
-    std = np.std(lst)
-    f.write(f"{std:.2f}\n")
-
-f.flush()
-f.close()
-</pre>
 </div>
 </section>
 </section>
@@ -771,8 +756,10 @@ f.close()
 
               
               
-                <footer class="bd-footer-article">
-                  <!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer">
+                  
 <div class="prev-next-area">
     <a class="left-prev"
        href="lecture10.html"
@@ -801,6 +788,7 @@ f.close()
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
@@ -826,7 +814,7 @@ f.close()
             
           </div>
           <footer class="bd-footer-content">
-            <div class="bd-footer-content__inner">
+            
 <div class="bd-footer-content__inner container">
   
   <div class="footer-item">
@@ -839,6 +827,7 @@ By 大坪 舜 Shun Otsubo
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2023（2023年3月30日公開）.
@@ -856,7 +845,7 @@ By 大坪 舜 Shun Otsubo
     
   </div>
   
-</div></div>
+</div>
           </footer>
         
 
@@ -865,8 +854,8 @@ By 大坪 舜 Shun Otsubo
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

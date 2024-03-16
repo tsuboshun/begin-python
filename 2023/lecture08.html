@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>第8回 関数と再帰 &#8212; プログラミング実習講義１</title>
   
@@ -19,43 +18,41 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
-    <script src="_static/custom.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-VFVQWRM1GN"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -63,13 +60,18 @@
                 gtag('js', new Date());
                 gtag('config', 'G-VFVQWRM1GN');
             </script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-VFVQWRM1GN');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'lecture08';</script>
+    <script src="_static/custom.js?v=7ed3f353"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="第9回 アルゴリズム入門：データの整列" href="lecture09.html" />
@@ -83,7 +85,15 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -118,11 +128,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -137,6 +150,7 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="intro.html">
@@ -145,10 +159,22 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+  
     <p class="title logo__title">プログラミング実習講義１</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -280,20 +306,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -339,22 +367,22 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>第8回 関数と再帰<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
+<h1>第8回 関数と再帰<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <hr class="docutils" />
-<p><a class="reference external" href="https://colab.research.google.com/github/tsuboshun/begin-python/blob/gh-pages/_sources/workbook/lecture08.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+<p><a class="reference external" href="https://colab.research.google.com/github/tsuboshun/begin-python/blob/gh-pages/2023/_sources/workbook/lecture08.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
 <hr class="docutils" />
 <section id="id2">
-<h2>この授業で学ぶこと<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<h2>この授業で学ぶこと<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <p>これまでPythonに既に用意された関数を利用してきたが、今回は新しく関数を定義する方法を学ぶ。
 また関数を反復的に呼び出すことで、繰り返し処理を行う手法である再帰について学ぶ。</p>
 </section>
 <section id="id3">
-<h2>関数<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<h2>関数<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
 <section id="id4">
-<h3>関数の定義<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<h3>関数の定義<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
 <p>第5回で作成したBMIの計算プログラムを例に、関数を作成してみよう。関数は<strong>def文</strong>により作成することができる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -380,7 +408,7 @@ document.write(`
 <figure class="align-default" id="def">
 <a class="reference internal image-reference" href="_images/def.png"><img alt="_images/def.png" src="_images/def.png" style="width: 350px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 16 </span><span class="caption-text">def文の書き方</span><a class="headerlink" href="#def" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 16 </span><span class="caption-text">def文の書き方</span><a class="headerlink" href="#def" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p><code class="docutils literal notranslate"><span class="pre">def</span></code> と書いたあとに空白を開けて関数名を書き、<code class="docutils literal notranslate"><span class="pre">()</span></code> の中に引数を表す変数名を書く。引数が複数ある場合は <code class="docutils literal notranslate"><span class="pre">,</span></code> で区切って並べる。
@@ -484,7 +512,7 @@ return文がない場合は、ブロックの最後まで実行してからブ�
 </div>
 </section>
 <section id="id5">
-<h3>スコープ<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<h3>スコープ<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
 <p>次のプログラムを結果を予想しながら実行してみよう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -610,7 +638,7 @@ return文がない場合は、ブロックの最後まで実行してからブ�
 </section>
 </section>
 <section id="turtle">
-<h2>turtleによるグラフィック描画<a class="headerlink" href="#turtle" title="Permalink to this heading">#</a></h2>
+<h2>turtleによるグラフィック描画<a class="headerlink" href="#turtle" title="Link to this heading">#</a></h2>
 <p>ここからはturtleというプログラミング学習用のグラフィックライブラリを用いて、関数作成の練習をしてみよう。
 このライブラリではペン先を表すカメを操作することで、線を描画する。
 turtleモジュールは外部ライブラリなので、最初にpipによるインストールとimportが必要である。
@@ -740,17 +768,6 @@ turtleモジュールは外部ライブラリなので、最初にpipによる�
 </div>
 </div>
 </div>
-<div class="toggle docutils container">
-<p><strong>解答例</strong></p>
-<pre style={"white-space": "pre"}>
-def draw_square(size):
-    turtle.pendown()
-    for i in range(4):
-        turtle.forward(size)
-        turtle.right(90)    
-    turtle.penup()
-</pre>
-</div>
 <p><strong>練習2</strong><br />
 1辺の長さ <code class="docutils literal notranslate"><span class="pre">size</span></code> を引数とし、正三角形を描画する関数 <code class="docutils literal notranslate"><span class="pre">draw_triangle()</span></code> を作成しなさい。
 ただし <code class="docutils literal notranslate"><span class="pre">turtle.pendown()</span></code> から始め、<code class="docutils literal notranslate"><span class="pre">turtle.penup()</span></code> で終わること。</p>
@@ -771,17 +788,6 @@ def draw_square(size):
 </div>
 </div>
 </div>
-<div class="toggle docutils container">
-<p><strong>解答例</strong></p>
-<pre style={"white-space": "pre"}>
-def draw_triangle(size):
-    turtle.pendown()
-    for i in range(3):
-        turtle.forward(size)
-        turtle.right(120)    
-    turtle.penup()
-</pre>
-</div>
 <p><strong>練習3</strong><br />
 整数 <code class="docutils literal notranslate"><span class="pre">n</span></code> および1辺の長さ <code class="docutils literal notranslate"><span class="pre">size</span></code> を引数とし、正 <code class="docutils literal notranslate"><span class="pre">n</span></code> 角形を描画する関数 <code class="docutils literal notranslate"><span class="pre">draw_polygon()</span></code> を作成しなさい。ただし <code class="docutils literal notranslate"><span class="pre">turtle.pendown()</span></code> から始め、<code class="docutils literal notranslate"><span class="pre">turtle.penup()</span></code> で終わること。</p>
 <div class="cell docutils container">
@@ -801,20 +807,9 @@ def draw_triangle(size):
 </div>
 </div>
 </div>
-<div class="toggle docutils container">
-<p><strong>解答例</strong></p>
-<pre style={"white-space": "pre"}>
-def draw_polygon(n, size):
-    turtle.pendown()
-    for i in range(n):
-        turtle.forward(size)
-        turtle.right(360/n)    
-    turtle.penup()
-</pre>
-</div>
 </section>
 <section id="id6">
-<h2>再帰<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
+<h2>再帰<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
 <p>以下のコードを実行すると木の枝のような模様が描かれる。どのような処理が行われているか理解できるだろうか。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -858,7 +853,7 @@ def draw_polygon(n, size):
 <figure class="align-default" id="tree">
 <a class="reference internal image-reference" href="_images/tree.png"><img alt="_images/tree.png" src="_images/tree.png" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 17 </span><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">draw_branc()</span></code> の再帰呼び出し</span><a class="headerlink" href="#tree" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 17 </span><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">draw_branc()</span></code> の再帰呼び出し</span><a class="headerlink" href="#tree" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>カメはステップ①で木の枝を描き、ステップ③、⑤で再帰的に木を描く。
@@ -873,14 +868,14 @@ def draw_polygon(n, size):
 そして <code class="docutils literal notranslate"><span class="pre">depth</span> <span class="pre">==</span> <span class="pre">0</span></code> となったときに再帰呼び出しを行わず、枝を１本描くだけでreturnしている。</p>
 </section>
 <section id="id7">
-<h2>演習<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h2>
+<h2>演習<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
 <p><strong>課題1</strong><br />
 1辺（例えば線分AB）の長さ <code class="docutils literal notranslate"><span class="pre">size</span></code> を引数とし、星形を描画する関数 <code class="docutils literal notranslate"><span class="pre">draw_star()</span></code> を作成しなさい。
 ただし <code class="docutils literal notranslate"><span class="pre">turtle.pendown()</span></code> から始め、<code class="docutils literal notranslate"><span class="pre">turtle.penup()</span></code> で終わること。星形は図の状態から傾いていてもよい。</p>
 <figure class="align-default" id="star">
 <a class="reference internal image-reference" href="_images/star.png"><img alt="_images/star.png" src="_images/star.png" style="width: 200px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 18 </span><span class="caption-text">星形</span><a class="headerlink" href="#star" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 18 </span><span class="caption-text">星形</span><a class="headerlink" href="#star" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="cell docutils container">
@@ -903,17 +898,6 @@ def draw_polygon(n, size):
 </pre></div>
 </div>
 </div>
-</div>
-<div class="toggle docutils container">
-<p><strong>解答例</strong></p>
-<pre style={"white-space": "pre"}>
-def draw_star(size):
-    turtle.pendown()
-    for i in range(5):
-        turtle.forward(size)
-        turtle.right(144)    
-    turtle.penup()
-</pre>
 </div>
 <p><strong>課題2</strong><br />
 現在の <code class="docutils literal notranslate"><span class="pre">draw_branch()</span></code> 関数では、木の根元から先端までの分岐の間隔が一定であり、結果として描かれる木は不自然な形状をしている。
@@ -948,27 +932,9 @@ def draw_star(size):
 </div>
 </div>
 </div>
-<div class="toggle docutils container">
-<p><strong>解答例</strong></p>
-<pre style={"white-space": "pre"}>
-def draw_branch(length, depth):
-    turtle.pendown()
-    if depth == 0:
-        turtle.forward(length)
-    else:
-        turtle.forward(length)
-        turtle.left(20)
-        draw_branch(length*0.8, depth-1)
-        turtle.right(40)
-        draw_branch(length*0.8, depth-1)
-        turtle.left(20)
-    turtle.backward(length)
-    turtle.penup()
-</pre>
-</div>
 </section>
 <section id="id8">
-<h2>余談: ジェネラティブ・アート<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h2>
+<h2>余談: ジェネラティブ・アート<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
 <p>余談として、<strong>ジェネラティブ・アート</strong>について紹介する。
 ジェネラティブ・アートとは、アルゴリズム<a class="footnote-reference brackets" href="#f1" id="id9" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>やルール、自動化されたプロセスを用いて作品を生成するアートの一形態である。
 コンピュータやプログラミング言語を使って、これらのアルゴリズムやプロセスを実行し、視覚的または音響的な要素を生み出す。
@@ -1025,13 +991,15 @@ def draw_branch(length, depth):
     </div></div>
 </div>
 <hr class="footnotes docutils" />
-<aside class="footnote brackets" id="f1" role="note">
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="f1" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id9">1</a><span class="fn-bracket">]</span></span>
 <p>アルゴリズムとは問題を解決するための手順のことである。次回詳しく説明する。</p>
 </aside>
-<aside class="footnote brackets" id="f2" role="note">
+<aside class="footnote brackets" id="f2" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id10">2</a><span class="fn-bracket">]</span></span>
 <p>こちらの<a class="reference external" href="http://www.artsnova.com/Nees_Schotter_Tutorial.html">サイト</a>に掲載されているProcessingプログラムをPythonに書き換え作成した。</p>
+</aside>
 </aside>
 </section>
 </section>
@@ -1061,8 +1029,10 @@ def draw_branch(length, depth):
 
               
               
-                <footer class="bd-footer-article">
-                  <!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer">
+                  
 <div class="prev-next-area">
     <a class="left-prev"
        href="lecture07.html"
@@ -1091,6 +1061,7 @@ def draw_branch(length, depth):
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
@@ -1115,7 +1086,7 @@ def draw_branch(length, depth):
             
           </div>
           <footer class="bd-footer-content">
-            <div class="bd-footer-content__inner">
+            
 <div class="bd-footer-content__inner container">
   
   <div class="footer-item">
@@ -1128,6 +1099,7 @@ By 大坪 舜 Shun Otsubo
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2023（2023年3月30日公開）.
@@ -1145,7 +1117,7 @@ By 大坪 舜 Shun Otsubo
     
   </div>
   
-</div></div>
+</div>
           </footer>
         
 
@@ -1154,8 +1126,8 @@ By 大坪 舜 Shun Otsubo
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>
