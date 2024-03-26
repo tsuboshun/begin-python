@@ -8,6 +8,8 @@
 - 講師：大坪舜（[linkedin](https://www.linkedin.com/in/shun-otsubo)）
 ```
 
+※ このページは2023年度のものです。最新のページは[こちら](https://tsuboshun.github.io/begin-python/intro.html)
+
 ## はじめに
 
 本サイトは、東洋大学経営学部の専門科目「プログラミング実習講義１」の授業用テキストです。
