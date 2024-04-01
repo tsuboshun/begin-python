@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
@@ -74,6 +74,7 @@
     <script src="_static/custom.js?v=7ed3f353"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="第5回 条件分岐" href="lecture05.html" />
     <link rel="prev" title="第3回 はじめてのPython" href="lecture03.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -188,6 +189,7 @@
 <li class="toctree-l1"><a class="reference internal" href="lecture02.html">第2回 ITを支えるコンピュータのしくみ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture03.html">第3回 はじめてのPython</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">第4回 プログラムの材料と道具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture05.html">第5回 条件分岐</a></li>
 </ul>
 
     </div>
@@ -447,6 +449,12 @@ document.write(`
 <p>ノートブック環境ではセルの最終行を評価した値が自動的に表示されるが、<code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">type(&quot;text&quot;)</span></code> のような代入文については評価しても出力されるものはない。
 一方で、<code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">=</span> <span class="pre">print(&quot;text&quot;)</span></code> を実行したときに <code class="docutils literal notranslate"><span class="pre">text</span></code> と表示されたのはノートブックの機能によるものではなく <code class="docutils literal notranslate"><span class="pre">print()</span></code> 関数の処理によるものである。
 また変数 <code class="docutils literal notranslate"><span class="pre">a</span></code> には <code class="docutils literal notranslate"><span class="pre">type()</span></code> 関数の戻り値 <code class="docutils literal notranslate"><span class="pre">str</span></code> が代入され、変数 <code class="docutils literal notranslate"><span class="pre">b</span></code> には値がないことがわかる。</p>
+<div class="tip admonition">
+<p class="admonition-title">printに関してよく見かけるエラー</p>
+<p>授業中、誤って <code class="docutils literal notranslate"><span class="pre">print</span> <span class="pre">=</span> </code> という代入文を実行してしまうケースをよく見かける。
+そうすると <code class="docutils literal notranslate"><span class="pre">print</span></code> は本来の意味ではなくなってしまうので、その先 <code class="docutils literal notranslate"><span class="pre">print()</span></code> を使用するたびにエラーが発生する。
+これを直すには、ノートブック上方のメニューバーから「ランタイム」 &gt; 「ランタイムを再起動」を選択して、設定を初期化する必要がある。</p>
+</div>
 <section id="id4">
 <h3>整数型と浮動小数点数型<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
 <p>それでは先ほど紹介したデータ型を順に見ていこう（ブール型については次回学ぶ）。
@@ -698,7 +706,7 @@ Pythonに出てくるほとんど全ての要素はオブジェクトとして�
 <span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
 <span class="n">v</span> <span class="o">=</span> <span class="mi">2</span> 
 
-<span class="c1"># 以下を埋めて、ここの部分のみ提出する</span>
+<span class="c1"># 以下にコードを書いて、以下の部分のみ提出する</span>
 </pre></div>
 </div>
 </div>
@@ -714,7 +722,7 @@ Pythonに出てくるほとんど全ての要素はオブジェクトとして�
 <span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
 <span class="n">v</span> <span class="o">=</span> <span class="mi">2</span> 
 
-<span class="c1"># 以下を埋めて、ここの部分のみ提出する</span>
+<span class="c1"># 以下にコードを書いて、以下の部分のみ提出する</span>
 </pre></div>
 </div>
 </div>
@@ -760,6 +768,15 @@ Pythonに出てくるほとんど全ての要素はオブジェクトとして�
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title">第3回 はじめてのPython</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="lecture05.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">第5回 条件分岐</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
