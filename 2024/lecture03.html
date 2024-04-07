@@ -192,6 +192,8 @@
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">第3回 はじめてのPython</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture04.html">第4回 プログラムの材料と道具</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture05.html">第5回 条件分岐</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture06.html">第6回 繰り返し</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture07.html">第7回 これまでの復習と応用</a></li>
 </ul>
 
     </div>
@@ -370,7 +372,7 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="python">
 <h1>第3回 はじめてのPython<a class="headerlink" href="#python" title="Link to this heading">#</a></h1>
 <hr class="docutils" />
-<p><a class="reference external" href="https://colab.research.google.com/github/tsuboshun/begin-python/blob/gh-pages/2024/_sources/workbook/lecture03.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+<p><a class="reference external" href="https://colab.research.google.com/github/tsuboshun/begin-python/blob/gh-pages/2024/workbook/lecture03.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
 <hr class="docutils" />
 <section id="id1">
 <h2>この授業で学ぶこと<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
@@ -558,7 +560,7 @@ document.write(`
 </pre>
 <p>左辺の名前のことを<strong>変数</strong>という。右辺はあえてデータではなく式と表現した。式の場合はそれを評価した結果の値に名前がつく。
 このことを変数に値を<strong>代入</strong>するという。</p>
-<p>変数はデータに対する付箋のようなものだと理解するとよい。変数はデータを参照するが、変数とデータは実体としては別のものである。</p>
+<p>変数はデータに対する付箋のようなものだと理解するとよい。<u>あとで再利用したい値には、変数による付箋をつけておく必要がある。</u></p>
 <figure class="align-default" id="variable">
 <a class="reference internal image-reference" href="_images/variable.png"><img alt="_images/variable.png" src="_images/variable.png" style="width: 200px;" /></a>
 <figcaption>
@@ -583,6 +585,7 @@ document.write(`
 </div>
 </div>
 </div>
+<p>複数行からなるコードの場合は、上から順に1行ずつ実行される。このコードでは、まず <code class="docutils literal notranslate"><span class="pre">apple</span> <span class="pre">=</span> <span class="pre">80</span></code> と <code class="docutils literal notranslate"><span class="pre">orange</span> <span class="pre">=</span> <span class="pre">120</span></code> により <code class="docutils literal notranslate"><span class="pre">apple</span></code> 変数と <code class="docutils literal notranslate"><span class="pre">orange</span></code> 変数が定義される。次に <code class="docutils literal notranslate"><span class="pre">apple</span> <span class="pre">*</span> <span class="pre">6</span> <span class="pre">+</span> <span class="pre">orange</span> <span class="pre">*</span> <span class="pre">9</span></code> を実行すると、<code class="docutils literal notranslate"><span class="pre">80</span> <span class="pre">*</span> <span class="pre">6</span> <span class="pre">+</span> <span class="pre">120</span> <span class="pre">*</span> <span class="pre">9</span></code> という式に読み替えられ、計算が行われる。</p>
 <p>先ほどと比べると、式の意味が読み取りやすくなっている。一度変数を定義すれば、他のセルからもその変数を使うことができる。
 また変数の値は上書きすることもできる。</p>
 <div class="cell docutils container">

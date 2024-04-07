@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
@@ -76,6 +76,7 @@
     <script src="_static/custom.js?v=7ed3f353"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="第6回 繰り返し" href="lecture06.html" />
     <link rel="prev" title="第4回 プログラムの材料と道具" href="lecture04.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -191,6 +192,8 @@
 <li class="toctree-l1"><a class="reference internal" href="lecture03.html">第3回 はじめてのPython</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture04.html">第4回 プログラムの材料と道具</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">第5回 条件分岐</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture06.html">第6回 繰り返し</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture07.html">第7回 これまでの復習と応用</a></li>
 </ul>
 
     </div>
@@ -360,7 +363,7 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1>第5回 条件分岐<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <hr class="docutils" />
-<p><a class="reference external" href="https://colab.research.google.com/github/tsuboshun/begin-python/blob/gh-pages/2024/_sources/workbook/lecture05.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+<p><a class="reference external" href="https://colab.research.google.com/github/tsuboshun/begin-python/blob/gh-pages/2024/workbook/lecture05.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
 <hr class="docutils" />
 <section id="id2">
 <h2>この授業で学ぶこと<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
@@ -485,7 +488,7 @@ document.write(`
 </figure>
 <p>if文はヘッダーとブロックの2つから成る。ヘッダーに <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">条件式:</span></code> と書くと「条件式が真のとき以下のブロックを実行する」という意味になる。ifと条件式の間には空白文字を1つ以上入れることと、最後にコロン <code class="docutils literal notranslate"><span class="pre">:</span></code> を入力することに注意する。</p>
 <p>ヘッダーに続くブロックは、<strong>インデント</strong>という空白文字による字下げをすることで表現する。空白文字の数はいくつでもよいが、ブロック中はインデントの大きさを揃える必要がある。この授業ではTab文字（Tabキーを1回押す）で入力することを推奨する<a class="footnote-reference brackets" href="#f1" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>。Google Colabなどのエディターでは、コロン <code class="docutils literal notranslate"><span class="pre">:</span></code> のあと改行すると自動でインデントが入力されるので、それを利用すればよい。</p>
-<p>例えば、整数 <code class="docutils literal notranslate"><span class="pre">x</span></code> が正のときのみ <code class="docutils literal notranslate"><span class="pre">&quot;正の値&quot;</span></code> と出力するプログラムは以下のように書ける。</p>
+<p>例えば、数値 <code class="docutils literal notranslate"><span class="pre">x</span></code> が正のときのみ <code class="docutils literal notranslate"><span class="pre">&quot;正の値&quot;</span></code> と出力するプログラムは以下のように書ける。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">3</span>
@@ -496,7 +499,7 @@ document.write(`
 </div>
 </div>
 <p><strong>練習1</strong><br />
-整数 <code class="docutils literal notranslate"><span class="pre">x</span></code> が与えられるとき、<code class="docutils literal notranslate"><span class="pre">x</span></code> が負のときのみ <code class="docutils literal notranslate"><span class="pre">&quot;負の値&quot;</span></code> と <code class="docutils literal notranslate"><span class="pre">print</span></code> するコードを作成しなさい。
+数値 <code class="docutils literal notranslate"><span class="pre">x</span></code> が与えられるとき、<code class="docutils literal notranslate"><span class="pre">x</span></code> が負のときのみ <code class="docutils literal notranslate"><span class="pre">&quot;負の値&quot;</span></code> と <code class="docutils literal notranslate"><span class="pre">print</span></code> するコードを作成しなさい。
 <a href="https://toyo-judge-system.vercel.app/?&id=5-1" target="_blank">
 <img src="./_images/launch.svg" style="width: 20px; height: 20px;">
 </a></p>
@@ -553,7 +556,7 @@ document.write(`
 BMIが18.5以上25未満のとき次の <code class="docutils literal notranslate"><span class="pre">bmi</span> <span class="pre">&lt;</span> <span class="pre">25</span></code> で初めて真となるため、elif文以下の <code class="docutils literal notranslate"><span class="pre">print(&quot;普通&quot;)</span></code> が実行される。
 BMIが25以上のとき <code class="docutils literal notranslate"><span class="pre">bmi</span> <span class="pre">&lt;</span> <span class="pre">18.5</span></code> と <code class="docutils literal notranslate"><span class="pre">bmi</span> <span class="pre">&lt;</span> <span class="pre">25</span></code> のどちらも偽となるため、else文以下の <code class="docutils literal notranslate"><span class="pre">print(&quot;肥満&quot;)</span></code> が実行される。</p>
 <p><strong>練習2</strong><br />
-整数 <code class="docutils literal notranslate"><span class="pre">x</span></code> が与えられる。<code class="docutils literal notranslate"><span class="pre">x</span></code> が正の値のとき <code class="docutils literal notranslate"><span class="pre">&quot;正の値&quot;</span></code> 、そうでないとき <code class="docutils literal notranslate"><span class="pre">&quot;0以下の値&quot;</span></code> と <code class="docutils literal notranslate"><span class="pre">print</span></code> するコードを作成しなさい。
+数値 <code class="docutils literal notranslate"><span class="pre">x</span></code> が与えられる。<code class="docutils literal notranslate"><span class="pre">x</span></code> が正の値のとき <code class="docutils literal notranslate"><span class="pre">&quot;正の値&quot;</span></code> 、そうでないとき <code class="docutils literal notranslate"><span class="pre">&quot;0以下の値&quot;</span></code> と <code class="docutils literal notranslate"><span class="pre">print</span></code> するコードを作成しなさい。
 <a href="https://toyo-judge-system.vercel.app/?&id=5-2" target="_blank">
 <img src="./_images/launch.svg" style="width: 20px; height: 20px;">
 </a></p>
@@ -734,6 +737,15 @@ BMIが25以上のとき <code class="docutils literal notranslate"><span class="
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title">第4回 プログラムの材料と道具</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="lecture06.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">第6回 繰り返し</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>

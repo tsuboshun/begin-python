@@ -12,7 +12,7 @@
       
 (how-to-use)=
 ## テキストの使い方
-1. 第3回以降のテキストには、ページ上部に [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/tsuboshun/begin-python/blob/gh-pages/2024/_sources/workbook/sample.ipynb) というボタンがついているので、それを別のタブもしくはウインドウで開く。開いたページは**ノートブック**と呼ばれる。
+1. 第3回以降のテキストには、ページ上部に [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/tsuboshun/begin-python/blob/gh-pages/2024/workbook/sample.ipynb) というボタンがついているので、それを別のタブもしくはウインドウで開く。開いたページは**ノートブック**と呼ばれる。
 2. 最初に接続を行う必要がある（これの意味するところは第2回に解説する）。Googleアカウントにログインした後、右上の{ref}`接続ボタン <guidance-connect>`から「ホストされているランタイムに接続」をクリックする。
 3. ノートブックの文字を入力できる部分を**セル**という。セルにはコードセルとテキストセルの2種類がある。左端に `[]` マークのあるセルがコードセルであり、ここにコードを入力する。コードを実行するには、`[]` マークにカーソルを合わせると現れる実行ボタンを押すか、セルを選択した状態で Shift を押しながら Enter と入力する。1回目の実行時に警告が表示されると思うが、「このまま実行」を選択する。
 ```{figure} ./pic/guidance-connect.png
