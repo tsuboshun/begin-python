@@ -422,7 +422,7 @@ document.write(`
 <p><span class="caption-number">Fig. 10 </span><span class="caption-text">ブロックを抜けるタイミング</span><a class="headerlink" href="#block" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>上の図は、処理がブロックを抜けるタイミングを表したものである。空行（空白文字も含め何も入力されてない行）の後、ヘッダーと左端を揃えて何かしらの処理（空行でもよい）を書くと、そのタイミングでブロックを抜けたと判定される。いくつか例を見てみよう。</p>
+<p>上の図は、処理がブロックを抜けるタイミングを表したものである。ヘッダーと左端を揃えて何かしらの処理を書くと、そのタイミングでブロックを抜けたと判定される。いくつか例を見てみよう。</p>
 <p><strong>例1</strong><br />
 前回のBMIの例ではブロックの中で <code class="docutils literal notranslate"><span class="pre">print</span></code> を実行していたが、代わりにブロックの中でメッセージを変数に代入し、その変数を使ってブロックの外で <code class="docutils literal notranslate"><span class="pre">print</span></code> することもできる。<code class="docutils literal notranslate"><span class="pre">print(message)</span></code> はブロックの外にあるため、<code class="docutils literal notranslate"><span class="pre">bmi</span></code> の値によらず必ず実行される。</p>
 <div class="cell docutils container">
@@ -434,7 +434,6 @@ document.write(`
     <span class="n">message</span> <span class="o">=</span> <span class="s2">&quot;普通体重&quot;</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="n">message</span> <span class="o">=</span> <span class="s2">&quot;肥満&quot;</span>
-
 <span class="nb">print</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -448,7 +447,6 @@ document.write(`
 <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
     <span class="n">total</span> <span class="o">+=</span> <span class="n">v</span>
-    
 <span class="n">mean</span> <span class="o">=</span> <span class="n">total</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">mean</span><span class="p">)</span>
 </pre></div>
@@ -462,7 +460,6 @@ document.write(`
 <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)):</span>
     <span class="n">total</span> <span class="o">+=</span> <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-    
 <span class="n">mean</span> <span class="o">=</span> <span class="n">total</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">mean</span><span class="p">)</span>
 </pre></div>
@@ -491,8 +488,8 @@ document.write(`
 <p>例として、<code class="docutils literal notranslate"><span class="pre">0</span></code> から <code class="docutils literal notranslate"><span class="pre">n-1</span></code> までの数字を順に出力するプログラムは、while文を使うと以下のように書ける。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">n</span> <span class="o">=</span> <span class="mi">5</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
     <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
@@ -511,7 +508,6 @@ document.write(`
 <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
     <span class="n">total</span> <span class="o">+=</span> <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
     <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
-    
 <span class="n">mean</span> <span class="o">=</span> <span class="n">total</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">mean</span><span class="p">)</span>
 </pre></div>

@@ -340,6 +340,14 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">この授業で学ぶこと</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">変数を使いこなす</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">文のネスト</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#break">break文</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fizzbuzz">FizzBuzz</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">二重ループ</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import">モジュールとimport</a></li>
 </ul>
             </nav>
         </div>
@@ -358,6 +366,81 @@ document.write(`
 <hr class="docutils" />
 <section id="id2">
 <h2>この授業で学ぶこと<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>第4回までで、プログラムにおける材料と道具にあたるデータ型と関数・メソッドについて学び、第5回・第6回で処理の流れを制御する方法について学んだ。実はここまで学んだ文法だけで、プログラミングで登場する大体の処理を実現することができる。ただし、これまでに学んだ文法1つ1つと実用的な処理の間には隔たりがあり、複数の要素を適切に組み合わせることが必要になる。また定番の処理は、世界中の開発者によりライブラリという形にまとめて公開されており、それらを利用することで効率的にプログラムを作成できる。</p>
+<p>今回はいくつかの例をもとに、これまでに学んだ文法を組み合わせてより高度な処理を実現する方法について学ぶ。またライブラリから関数などを読み込んで利用する方法を学ぶ。</p>
+</section>
+<section id="id3">
+<h2>変数を使いこなす<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<p>まずはif文の復習も兼ねて以下の問題に取り組んでみよう。</p>
+<p><strong>練習1</strong><br />
+2つの数値 <code class="docutils literal notranslate"><span class="pre">a</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span></code> が与えられるとき、<code class="docutils literal notranslate"><span class="pre">a</span></code> と <code class="docutils literal notranslate"><span class="pre">b</span></code> のうち大きい方の値を <code class="docutils literal notranslate"><span class="pre">print</span></code> するコードを作成しなさい。</p>
+<p>この応用として、次の問題を考える。</p>
+<p><strong>例題</strong><br />
+3つの数値 <code class="docutils literal notranslate"><span class="pre">a</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span></code>、<code class="docutils literal notranslate"><span class="pre">c</span></code> が与えられるとき、これらの最大値を <code class="docutils literal notranslate"><span class="pre">print</span></code> するコードを作成しなさい。</p>
+<p>このコードを1つのif文だけで実現することもできる。そのためには <code class="docutils literal notranslate"><span class="pre">a</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span></code>、<code class="docutils literal notranslate"><span class="pre">c</span></code> のあり得る6通りの大小関係についてif-elif-else文で条件分岐して、それぞれのケースで最大になる変数を <code class="docutils literal notranslate"><span class="pre">print</span></code> すれば良い（例えば、<code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">&gt;</span> <span class="pre">b</span> <span class="pre">and</span> <span class="pre">b</span> <span class="pre">&gt;</span> <span class="pre">c</span></code> のとき <code class="docutils literal notranslate"><span class="pre">print(a)</span></code> とする）。ただしこの方法は条件式が複雑であるし、3変数ならまだ良いが、変数の数が増えたときにコード量が膨大になる。</p>
+<p>よりスマートには次のように考える。まず <code class="docutils literal notranslate"><span class="pre">a</span></code> と <code class="docutils literal notranslate"><span class="pre">b</span></code> の大小関係を比較し、大きい方の値を変数 <code class="docutils literal notranslate"><span class="pre">tmp</span></code> に代入する（この変数名はなんでも良いが、これはtemporary、つまり一時的に保存するという意味合いを込めている）。次に <code class="docutils literal notranslate"><span class="pre">tmp</span></code> と <code class="docutils literal notranslate"><span class="pre">c</span></code> の大小関係を比較し、大きい方の値を <code class="docutils literal notranslate"><span class="pre">print</span></code> する。</p>
+<p>具体的には以下のコードを書けばよい。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># a, b, c の一例</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">c</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="k">if</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">:</span>
+    <span class="n">tmp</span> <span class="o">=</span> <span class="n">a</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">tmp</span> <span class="o">=</span> <span class="n">b</span>
+
+<span class="k">if</span> <span class="n">tmp</span> <span class="o">&gt;</span> <span class="n">c</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>このように1つの問題をより細かい処理に分解し、それぞれの処理の結果を変数に保存して次の処理に引き継ぐという方法は、プログラミングにおいてよく行われる。</p>
+<p><strong>練習2</strong><br />
+3つの数値 <code class="docutils literal notranslate"><span class="pre">a</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span></code>、<code class="docutils literal notranslate"><span class="pre">c</span></code> が与えられるとき、これらの最小値を <code class="docutils literal notranslate"><span class="pre">print</span></code> するコードを作成しなさい。</p>
+<p><strong>練習3</strong><br />
+2つの変数 <code class="docutils literal notranslate"><span class="pre">a</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span></code> が与えられるとき、それぞれの変数の値を交換するコードを作成しなさい。つまり、例えば <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">&quot;犬&quot;</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">=</span> <span class="pre">&quot;猫&quot;</span></code> という変数を与えられた場合、<code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">&quot;猫&quot;</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">=</span> <span class="pre">&quot;犬&quot;</span></code> という状態にしなさい（交換したあと <code class="docutils literal notranslate"><span class="pre">print</span></code> する必要はない）。</p>
+</section>
+<section id="id4">
+<h2>文のネスト<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<p>これまでに学んだif文、for文、while文は、それぞれ内側のブロックに入れ子的に使用することもできる。このような入れ子構造のことを<strong>ネスト</strong>という。</p>
+<figure class="align-default" id="nest">
+<a class="reference internal image-reference" href="_images/nest.png"><img alt="_images/nest.png" src="_images/nest.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 12 </span><span class="caption-text">文のネスト</span><a class="headerlink" href="#nest" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>入れ子構造を作るには、ブロックの中にさらにヘッダーとブロックを作る。したがって、内側のブロックはTab文字2つ分インデントすることになる。</p>
+<p>ブロックの抜け方はこれまでと同様、インデントの大きさをもとに戻せばよい。上の図のようにインデントをTab文字1つ分に戻せば、もとのブロックの処理の続きを書くことができるし、インデントをゼロにすればブロック外の処理の続きを書くことができる。</p>
+<p>以下でいくつか例を見てみよう。</p>
+<section id="break">
+<h3>break文<a class="headerlink" href="#break" title="Link to this heading">#</a></h3>
+<p>for文とif文を組み合わせる例として、break文を使ったものを紹介する。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="k">break</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="fizzbuzz">
+<h3>FizzBuzz<a class="headerlink" href="#fizzbuzz" title="Link to this heading">#</a></h3>
+</section>
+<section id="id5">
+<h3>二重ループ<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+</section>
+</section>
+<section id="import">
+<h2>モジュールとimport<a class="headerlink" href="#import" title="Link to this heading">#</a></h2>
 </section>
 </section>
 
@@ -417,6 +500,14 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">この授業で学ぶこと</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">変数を使いこなす</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">文のネスト</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#break">break文</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fizzbuzz">FizzBuzz</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">二重ループ</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import">モジュールとimport</a></li>
 </ul>
   </nav></div>
 
