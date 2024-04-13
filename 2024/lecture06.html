@@ -422,7 +422,7 @@ document.write(`
 <p><span class="caption-number">Fig. 10 </span><span class="caption-text">ブロックを抜けるタイミング</span><a class="headerlink" href="#block" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>上の図は、処理がブロックを抜けるタイミングを表したものである。ヘッダーと左端を揃えて何かしらの処理を書くと、そのタイミングでブロックを抜けたと判定される。いくつか例を見てみよう。</p>
+<p>上の図は、処理がブロックを抜ける（終了する）タイミングを表したものである。ヘッダーと左端を揃えて何かしらの処理を書くと、そのタイミングでブロックを抜けたと判定される<a class="footnote-reference brackets" href="#f1" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>。いくつか例を見てみよう。</p>
 <p><strong>例1</strong><br />
 前回のBMIの例ではブロックの中で <code class="docutils literal notranslate"><span class="pre">print</span></code> を実行していたが、代わりにブロックの中でメッセージを変数に代入し、その変数を使ってブロックの外で <code class="docutils literal notranslate"><span class="pre">print</span></code> することもできる。<code class="docutils literal notranslate"><span class="pre">print(message)</span></code> はブロックの外にあるため、<code class="docutils literal notranslate"><span class="pre">bmi</span></code> の値によらず必ず実行される。</p>
 <div class="cell docutils container">
@@ -440,15 +440,14 @@ document.write(`
 </div>
 </div>
 <p><strong>例2</strong><br />
-数値からなるリストの要素の平均値を求めるコードは次のように書ける。このコードではまず <code class="docutils literal notranslate"><span class="pre">total</span> <span class="pre">=</span> <span class="pre">0</span></code> により総和を求めるための変数を用意している（これを書かないと4行目で <code class="docutils literal notranslate"><span class="pre">total</span></code> 変数が定義されていないというエラーになる）。その後 <code class="docutils literal notranslate"><span class="pre">total</span></code> に <code class="docutils literal notranslate"><span class="pre">data</span></code> の各要素を足して総和を求めたあと、要素数 <code class="docutils literal notranslate"><span class="pre">len(data)</span></code> で割って平均値を求めている。<code class="docutils literal notranslate"><span class="pre">len</span></code> はリストの要素数を返す関数であったことを思い出そう。</p>
+数値からなるリストの要素の合計を求めるコードは次のように書ける。このコードではまず <code class="docutils literal notranslate"><span class="pre">total</span> <span class="pre">=</span> <span class="pre">0</span></code> により合計を求めるための変数を用意している（これを書かないと4行目で <code class="docutils literal notranslate"><span class="pre">total</span></code> 変数が定義されていないというエラーになる）。その後 <code class="docutils literal notranslate"><span class="pre">total</span></code> に <code class="docutils literal notranslate"><span class="pre">data</span></code> の各要素を足して合計を求めている。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
 <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
     <span class="n">total</span> <span class="o">+=</span> <span class="n">v</span>
-<span class="n">mean</span> <span class="o">=</span> <span class="n">total</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">mean</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">total</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -460,14 +459,13 @@ document.write(`
 <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)):</span>
     <span class="n">total</span> <span class="o">+=</span> <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-<span class="n">mean</span> <span class="o">=</span> <span class="n">total</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">mean</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">total</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <p><strong>練習2</strong><br />
-数値からなるリスト <code class="docutils literal notranslate"><span class="pre">data</span></code> が与えられるとき、リストの要素の総和を求めて <code class="docutils literal notranslate"><span class="pre">print</span></code> するコードを作成しなさい。余裕のある人は、上の例2を参考に2通りの方法でコードを作成してみなさい（ただし片方のみ提出しなさい）。
+数値からなるリスト <code class="docutils literal notranslate"><span class="pre">data</span></code> が与えられるとき、リストの要素の平均値を求めて <code class="docutils literal notranslate"><span class="pre">print</span></code> するコードを作成しなさい。余裕のある人は、上の例2を参考に2通りの方法でコードを作成してみなさい（ただし片方のみ提出しなさい）。
 <a href="https://toyo-judge-system.vercel.app/?&id=6-2" target="_blank">
 <img src="./_images/launch.svg" style="width: 20px; height: 20px;">
 </a></p>
@@ -476,10 +474,10 @@ document.write(`
 <section id="while">
 <h2>while文<a class="headerlink" href="#while" title="Link to this heading">#</a></h2>
 <p>for文の他に<strong>while文</strong>も繰り返し処理を行うための構文である。</p>
-<figure class="align-default" id="id5">
+<figure class="align-default" id="id6">
 <a class="reference internal image-reference" href="_images/while.png"><img alt="_images/while.png" src="_images/while.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 11 </span><span class="caption-text">while文の書き方</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 11 </span><span class="caption-text">while文の書き方</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>while文では、条件式が真であるかを判定し、真であればブロックを実行するという処理を、条件式が初めて偽になるまで繰り返し行う。
@@ -497,7 +495,7 @@ document.write(`
 </div>
 </div>
 </div>
-<p>リストの平均値を求めるプログラムは、while文を使って次のように書くこともできる。
+<p>リストの要素の合計を求めるプログラムは、while文を使って次のように書くこともできる。
 この例では、繰り返しの度にインデックスを表す変数 <code class="docutils literal notranslate"><span class="pre">i</span></code> の値を1つずつ増やし、<code class="docutils literal notranslate"><span class="pre">i</span></code> がリストのインデックスの範囲を超えたところで条件式が偽となるように設定している。
 これにより変数 <code class="docutils literal notranslate"><span class="pre">i</span></code> に <code class="docutils literal notranslate"><span class="pre">0</span></code> から <code class="docutils literal notranslate"><span class="pre">len(data)-1</span></code> までの整数が順に代入され、<code class="docutils literal notranslate"><span class="pre">data[i]</span></code> とすることで <code class="docutils literal notranslate"><span class="pre">data</span></code> の全ての要素にアクセスしている。</p>
 <div class="cell docutils container">
@@ -508,7 +506,6 @@ document.write(`
 <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
     <span class="n">total</span> <span class="o">+=</span> <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
     <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
-<span class="n">mean</span> <span class="o">=</span> <span class="n">total</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">mean</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -536,6 +533,13 @@ document.write(`
 <p class="admonition-title">pass</p>
 <p><code class="docutils literal notranslate"><span class="pre">pass</span></code> は何もしないという意味の文である。構文上何か書かないとエラーになるが、コードの作成は後回しにしたい箇所に書く。テキストでも何度か登場するが、コードを書くときに消してしまって問題ない。</p>
 </div>
+<hr class="footnotes docutils" />
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="f1" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">1</a><span class="fn-bracket">]</span></span>
+<p>細かい補足になるが、対話型インタプリタでPythonを実行しているときは特殊で、空行を1行入れてからインデントをなくす必要がある。</p>
+</aside>
+</aside>
 </section>
 </section>
 

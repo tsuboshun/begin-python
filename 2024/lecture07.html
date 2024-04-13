@@ -377,8 +377,8 @@ document.write(`
 <p>この応用として、次の問題を考える。</p>
 <p><strong>例題</strong><br />
 3つの数値 <code class="docutils literal notranslate"><span class="pre">a</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span></code>、<code class="docutils literal notranslate"><span class="pre">c</span></code> が与えられるとき、これらの最大値を <code class="docutils literal notranslate"><span class="pre">print</span></code> するコードを作成しなさい。</p>
-<p>このコードを1つのif文だけで実現することもできる。そのためには <code class="docutils literal notranslate"><span class="pre">a</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span></code>、<code class="docutils literal notranslate"><span class="pre">c</span></code> のあり得る6通りの大小関係についてif-elif-else文で条件分岐して、それぞれのケースで最大になる変数を <code class="docutils literal notranslate"><span class="pre">print</span></code> すれば良い（例えば、<code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">&gt;</span> <span class="pre">b</span> <span class="pre">and</span> <span class="pre">b</span> <span class="pre">&gt;</span> <span class="pre">c</span></code> のとき <code class="docutils literal notranslate"><span class="pre">print(a)</span></code> とする）。ただしこの方法は条件式が複雑であるし、3変数ならまだ良いが、変数の数が増えたときにコード量が膨大になる。</p>
-<p>よりスマートには次のように考える。まず <code class="docutils literal notranslate"><span class="pre">a</span></code> と <code class="docutils literal notranslate"><span class="pre">b</span></code> の大小関係を比較し、大きい方の値を変数 <code class="docutils literal notranslate"><span class="pre">tmp</span></code> に代入する（この変数名はなんでも良いが、これはtemporary、つまり一時的に保存するという意味合いを込めている）。次に <code class="docutils literal notranslate"><span class="pre">tmp</span></code> と <code class="docutils literal notranslate"><span class="pre">c</span></code> の大小関係を比較し、大きい方の値を <code class="docutils literal notranslate"><span class="pre">print</span></code> する。</p>
+<p>このコードを1つのif文だけで実現することもできる。そのためには <code class="docutils literal notranslate"><span class="pre">a</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span></code>、<code class="docutils literal notranslate"><span class="pre">c</span></code> のあり得る6通りの大小関係についてif、elif、elseで条件分岐して、それぞれのケースで最大になる変数を <code class="docutils literal notranslate"><span class="pre">print</span></code> すれば良い（例えば、<code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">&gt;</span> <span class="pre">b</span> <span class="pre">and</span> <span class="pre">b</span> <span class="pre">&gt;</span> <span class="pre">c</span></code> のとき <code class="docutils literal notranslate"><span class="pre">print(a)</span></code> とする）。ただしこの方法は条件式が複雑であるし、3変数ならまだ良いが、変数の数が増えたときにコード量が膨大になる。</p>
+<p>よりスマートには次のように考える。まず <code class="docutils literal notranslate"><span class="pre">a</span></code> と <code class="docutils literal notranslate"><span class="pre">b</span></code> の大小関係を比較し、大きい方の値を変数 <code class="docutils literal notranslate"><span class="pre">tmp</span></code> に代入する（この変数名はなんでも良いが、これはtemporary、つまり一時的に保存するという意味合いを込めている）。次に <code class="docutils literal notranslate"><span class="pre">tmp</span></code> と <code class="docutils literal notranslate"><span class="pre">c</span></code> の大小関係を比較し、大きい方の値を <code class="docutils literal notranslate"><span class="pre">print</span></code> する。要するに、トーナメント方式で最大値を求める。</p>
 <p>具体的には以下のコードを書けばよい。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -400,7 +400,7 @@ document.write(`
 </div>
 </div>
 </div>
-<p>このように1つの問題をより細かい処理に分解し、それぞれの処理の結果を変数に保存して次の処理に引き継ぐという方法は、プログラミングにおいてよく行われる。</p>
+<p>このように1つの問題をより細かい処理に分解し、前の処理の結果を変数に保存しながら処理をリレーするという方法は、プログラミングにおいてよく行われる。</p>
 <p><strong>練習2</strong><br />
 3つの数値 <code class="docutils literal notranslate"><span class="pre">a</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span></code>、<code class="docutils literal notranslate"><span class="pre">c</span></code> が与えられるとき、これらの最小値を <code class="docutils literal notranslate"><span class="pre">print</span></code> するコードを作成しなさい。</p>
 <p><strong>練習3</strong><br />
@@ -416,7 +416,7 @@ document.write(`
 </figcaption>
 </figure>
 <p>入れ子構造を作るには、ブロックの中にさらにヘッダーとブロックを作る。したがって、内側のブロックはTab文字2つ分インデントすることになる。</p>
-<p>ブロックの抜け方はこれまでと同様、インデントの大きさをもとに戻せばよい。上の図のようにインデントをTab文字1つ分に戻せば、もとのブロックの処理の続きを書くことができるし、インデントをゼロにすればブロック外の処理の続きを書くことができる。</p>
+<p>ブロックの抜け方はこれまでと同様、インデントの大きさをもとに戻せばよい。上の図のようにインデントをTab文字1つ分に戻せば、もとのブロックの処理の続きを書くことができるし、インデントをなくせばブロック外の処理の続きを書くことができる。</p>
 <p>以下でいくつか例を見てみよう。</p>
 <section id="break">
 <h3>break文<a class="headerlink" href="#break" title="Link to this heading">#</a></h3>
