@@ -366,7 +366,7 @@ document.write(`
 <section id="id2">
 <h2>この授業で学ぶこと<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <p>第4回までで、プログラミングにおける材料と道具にあたるデータ型と関数・メソッドについて学び、第5回・第6回で処理の流れを制御する方法について学んだ。実はこれまでに学んだ文法だけで、プログラミングで遭遇するほとんどの処理を実現することができる。ただし、学んだ各文法と実用的な処理の間には隔たりがあり、複数の要素を適切に組み合わせる必要がある。また定番の処理は、世界中の開発者によりライブラリという形にまとめて公開されており、それらを利用することで効率的にプログラムを作成できる。</p>
-<p>今回は、これまでに学んだ文法を組み合わせてより高度な処理を実現する方法と、ライブラリから関数等を読み込んで利用する方法について、具体的な例を交えて学ぶ。</p>
+<p>今回は、これまでに学んだ文法を組み合わせてより高度な処理を実現する方法と、ライブラリから関数等を読み込んで利用する方法について、具体的な例を交えながら学ぶ。</p>
 </section>
 <section id="id3">
 <h2>変数を使いこなす<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
@@ -377,7 +377,7 @@ document.write(`
 <p><strong>例題</strong><br />
 3つの数値 <code class="docutils literal notranslate"><span class="pre">a</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span></code>、<code class="docutils literal notranslate"><span class="pre">c</span></code> が与えられるとき、これらの最大値を <code class="docutils literal notranslate"><span class="pre">print</span></code> するコードを作成しなさい。</p>
 <p>このコードを1つのif文だけで実現することもできる。そのためには <code class="docutils literal notranslate"><span class="pre">a</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span></code>、<code class="docutils literal notranslate"><span class="pre">c</span></code> のあり得る6通りの大小関係についてif、elif、elseで条件分岐して、それぞれのケースで最大になる変数を <code class="docutils literal notranslate"><span class="pre">print</span></code> すれば良い（例えば、<code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">&gt;</span> <span class="pre">b</span> <span class="pre">and</span> <span class="pre">b</span> <span class="pre">&gt;</span> <span class="pre">c</span></code> のとき <code class="docutils literal notranslate"><span class="pre">print(a)</span></code> とする）。ただし、この方法では条件式が複雑になりがちで、変数の数が増えるとコード量も膨大になる。</p>
-<p>より効率的には次のように考える。まず <code class="docutils literal notranslate"><span class="pre">a</span></code> と <code class="docutils literal notranslate"><span class="pre">b</span></code> の大小関係を比較し、大きい方の値を変数 <code class="docutils literal notranslate"><span class="pre">tmp</span></code> に代入する（この変数名はなんでも良いが、これはtemporary、つまり一時的に保存するという意味合いを込めている）。次に <code class="docutils literal notranslate"><span class="pre">tmp</span></code> と <code class="docutils literal notranslate"><span class="pre">c</span></code> の大小関係を比較し、大きい方の値を <code class="docutils literal notranslate"><span class="pre">print</span></code> する。要するに、トーナメント方式で最大値を求める。</p>
+<p>より効率的には次のように考える。まず <code class="docutils literal notranslate"><span class="pre">a</span></code> と <code class="docutils literal notranslate"><span class="pre">b</span></code> の大小関係を比較し、大きい方の値を変数 <code class="docutils literal notranslate"><span class="pre">tmp</span></code> に代入する（この変数名はなんでも良いが、これはtemporary、つまり一時的に保存するという意味合いを込めている）。次に <code class="docutils literal notranslate"><span class="pre">tmp</span></code> と <code class="docutils literal notranslate"><span class="pre">c</span></code> の大小関係を比較し、大きい方の値を <code class="docutils literal notranslate"><span class="pre">print</span></code> する。</p>
 <p>具体的には以下のコードを書けばよい。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -404,7 +404,7 @@ document.write(`
 3つの数値 <code class="docutils literal notranslate"><span class="pre">a</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span></code>、<code class="docutils literal notranslate"><span class="pre">c</span></code> が与えられるとき、これらの最小値を <code class="docutils literal notranslate"><span class="pre">print</span></code> するコードを作成しなさい。</p>
 <p><strong>練習3</strong><br />
 2つの変数 <code class="docutils literal notranslate"><span class="pre">a</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span></code> が与えられるとき、それぞれの変数の値を交換するコードを作成しなさい。つまり、例えば <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">&quot;犬&quot;</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">=</span> <span class="pre">&quot;猫&quot;</span></code> という変数を与えられた場合、<code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">&quot;猫&quot;</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">=</span> <span class="pre">&quot;犬&quot;</span></code> という状態にしなさい（交換したあと <code class="docutils literal notranslate"><span class="pre">print</span></code> する必要はない）。
-<font color=cornflowerblue>ヒント: 単純に a = b などとすると b に代入する前に a の値が失われてしまうので、もう一つ変数を用意して一時的に保存する必要がある</font></p>
+<font color=cornflowerblue>ヒント: 単純に a = b などとすると b に代入する前に a の値が失われてしまうので、もう一つ変数を用意してaの値を一時的に保存する必要がある</font></p>
 </section>
 <section id="id4">
 <h2>文のネスト<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
@@ -421,7 +421,7 @@ document.write(`
 <section id="forif">
 <h3>for文とif文の組み合わせ<a class="headerlink" href="#forif" title="Link to this heading">#</a></h3>
 <p><strong>例1</strong><br />
-for文とif文を組み合わせる最初の例として、<strong>break文</strong>を使ったものを紹介する。</p>
+for文とif文を組み合わせる簡単な例として、<strong>break文</strong>を使ったものを紹介する。</p>
 <p>まず、<code class="docutils literal notranslate"><span class="pre">0</span></code> から <code class="docutils literal notranslate"><span class="pre">9</span></code> までの数字を順に出力するプログラムは次のように書けるのであった。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -470,7 +470,7 @@ for文とif文を組み合わせる最初の例として、<strong>break文</str
 <h3>二重ループ<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
 <p>for文にfor文をネストさせたものを<strong>二重ループ</strong>という。</p>
 <p><strong>例1</strong><br />
-二重ループの最初の例として、九九を表示するコードを作成してみよう（全部表示すると長いので以下では一部のみ）。</p>
+二重ループの簡単な例として、九九を表示するコードを作成してみよう（全部表示すると長いので以下では一部のみ）。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">):</span>
@@ -482,7 +482,7 @@ for文とif文を組み合わせる最初の例として、<strong>break文</str
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">range</span></code> 関数に引数を2つ渡しているが、<code class="docutils literal notranslate"><span class="pre">range(a,</span> <span class="pre">b)</span></code> により生成されるイテラブルオブジェクトは、<code class="docutils literal notranslate"><span class="pre">a</span></code> から <code class="docutils literal notranslate"><span class="pre">b-1</span></code> までの整数を順に生成する。上の例では、変数 <code class="docutils literal notranslate"><span class="pre">i</span></code> に <code class="docutils literal notranslate"><span class="pre">1</span></code> から <code class="docutils literal notranslate"><span class="pre">4</span></code> までの整数が順に代入され、それぞれの場合に変数 <code class="docutils literal notranslate"><span class="pre">j</span></code> に <code class="docutils literal notranslate"><span class="pre">1</span></code> から <code class="docutils literal notranslate"><span class="pre">3</span></code> までの整数が順に代入される。したがって、合わせて12回 <code class="docutils literal notranslate"><span class="pre">print</span></code> 関数が実行される。</p>
 <p><strong>例2</strong><br />
-次に<strong>二次元リスト</strong>を使った例を紹介する。ここで二次元リストとは、<code class="docutils literal notranslate"><span class="pre">[[1,</span> <span class="pre">2],</span> <span class="pre">[3,</span> <span class="pre">4]]</span></code> のようにリストの各要素がさらにリストであるものを指す（この例では <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">2]</span></code> と <code class="docutils literal notranslate"><span class="pre">[3,</span> <span class="pre">4]</span></code> が要素）。より正確には、すべての要素が非リスト型（整数、文字列など）のリストを一次元リストといい、すべての要素が一次元リストであるリストのことを二次元リストという。 この授業で二次元リストと言ったときは、すべての一次元リストの要素数が同一であることを前提とする（つまり <code class="docutils literal notranslate"><span class="pre">[[1,</span> <span class="pre">2],</span> <span class="pre">[3,</span> <span class="pre">4,</span> <span class="pre">5]]</span></code> のような例は扱わない）。</p>
+<strong>二次元リスト</strong>を使った例を紹介する。ここで二次元リストとは、<code class="docutils literal notranslate"><span class="pre">[[1,</span> <span class="pre">2],</span> <span class="pre">[3,</span> <span class="pre">4]]</span></code> のようにリストの各要素がさらにリストであるものを指す（この例では <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">2]</span></code> と <code class="docutils literal notranslate"><span class="pre">[3,</span> <span class="pre">4]</span></code> が要素）。より正確には、すべての要素が非リスト型（整数、文字列など）のリストを一次元リストといい、すべての要素が一次元リストであるリストのことを二次元リストという。 この授業で二次元リストと言ったときは、すべての一次元リストの要素数が同一であることを前提とする（つまり <code class="docutils literal notranslate"><span class="pre">[[1,</span> <span class="pre">2],</span> <span class="pre">[3,</span> <span class="pre">4,</span> <span class="pre">5]]</span></code> のような例は扱わない）。</p>
 <p>二次元リストの要素が一次元リストであるから、一番内側の要素にアクセスするにはインデックスを2つ指定する必要がある。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -538,7 +538,7 @@ for文とif文を組み合わせる最初の例として、<strong>break文</str
 <section id="import">
 <h2>モジュールとimport<a class="headerlink" href="#import" title="Link to this heading">#</a></h2>
 <p>ここでは新しい関数やクラスをPythonに取り入れるための<strong>import文</strong>について学ぶ。 これまで利用してきた関数やデータ型は、<strong>組み込み関数</strong>、<strong>組み込み型</strong>と呼ばれ、Pythonに最初から用意されていたものである。 組み込み以外の関数やクラスは、import文により<strong>モジュール</strong>からインポートする（読み込む）ことで利用できるようになる。</p>
-<p>まずモジュールとは何かについて説明する。 Pythonのモジュールとは、関数やクラス、変数などをまとめたPythonファイル（拡張子は <code class="docutils literal notranslate"><span class="pre">.py</span></code>）のことを指す。 モジュールは他のPythonプログラムから簡単にインポートして使用することができる。 これにより、コードの再利用性が向上し、プログラムの構造化が可能になっている。 また特定の機能やタスクを実行するために作成されたモジュールの集まりを<strong>ライブラリ</strong>という。 Pythonには世界中の開発者により豊富なライブラリが用意されており、Pythonが人気な理由の一つになっている。</p>
+<p>まずモジュールとは何かについて説明する。 Pythonのモジュールとは、関数やクラス、変数などをまとめた単一のPythonファイル（拡張子は <code class="docutils literal notranslate"><span class="pre">.py</span></code>）のことを指す。 モジュールは他のPythonプログラムから簡単にインポートして使用することができる。 これにより、コードの再利用性が向上し、プログラムの構造化が可能になっている。 また特定の機能やタスクを実行するために作成されたモジュールの集まりを<strong>ライブラリ</strong>という。 Pythonには世界中の開発者により豊富なライブラリが用意されており、Pythonが人気な理由の一つになっている。</p>
 <p>さて、モジュールから関数やクラス、変数などを読み込む際に使われるのがimport文である。 基本的な構文は、<code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">モジュール名</span></code> である。 例として、randomモジュールをインポートしてみよう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
