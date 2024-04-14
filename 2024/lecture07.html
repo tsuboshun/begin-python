@@ -372,7 +372,21 @@ document.write(`
 <h2>変数を使いこなす<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
 <p>まずはif文の復習も兼ねて以下の問題に取り組んでみよう。</p>
 <p><strong>練習1</strong><br />
-2つの数値 <code class="docutils literal notranslate"><span class="pre">a</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span></code> が与えられるとき、<code class="docutils literal notranslate"><span class="pre">a</span></code> と <code class="docutils literal notranslate"><span class="pre">b</span></code> のうち大きい方の値を <code class="docutils literal notranslate"><span class="pre">print</span></code> するコードを作成しなさい。</p>
+2つの数値 <code class="docutils literal notranslate"><span class="pre">a</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span></code> が与えられるとき、<code class="docutils literal notranslate"><span class="pre">a</span></code> と <code class="docutils literal notranslate"><span class="pre">b</span></code> のうち大きい方の値を <code class="docutils literal notranslate"><span class="pre">print</span></code> するコードを作成しなさい。
+<a href="https://toyo-judge-system.vercel.app/?&id=7-1" target="_blank">
+<img src="./_images/launch.svg" style="width: 20px; height: 20px;">
+</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># a、b の一例</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="c1"># 以下にコードを作成し、以下の部分のみ提出する</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p>この応用として、次の問題を考える。</p>
 <p><strong>例題</strong><br />
 3つの数値 <code class="docutils literal notranslate"><span class="pre">a</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span></code>、<code class="docutils literal notranslate"><span class="pre">c</span></code> が与えられるとき、これらの最大値を <code class="docutils literal notranslate"><span class="pre">print</span></code> するコードを作成しなさい。</p>
@@ -401,10 +415,39 @@ document.write(`
 </div>
 <p>このように1つの問題をより細かい処理に分解し、前の処理の結果を変数に保存しながら次の処理に進む方法は、プログラミングで一般的に用いられる。</p>
 <p><strong>練習2</strong><br />
-3つの数値 <code class="docutils literal notranslate"><span class="pre">a</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span></code>、<code class="docutils literal notranslate"><span class="pre">c</span></code> が与えられるとき、これらの最小値を <code class="docutils literal notranslate"><span class="pre">print</span></code> するコードを作成しなさい。</p>
+3つの数値 <code class="docutils literal notranslate"><span class="pre">a</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span></code>、<code class="docutils literal notranslate"><span class="pre">c</span></code> が与えられるとき、これらの最小値を <code class="docutils literal notranslate"><span class="pre">print</span></code> するコードを作成しなさい。
+<a href="https://toyo-judge-system.vercel.app/?&id=7-2" target="_blank">
+<img src="./_images/launch.svg" style="width: 20px; height: 20px;">
+</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># a、b、c の一例</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">c</span> <span class="o">=</span> <span class="mi">3</span>
+
+<span class="c1"># 以下にコードを作成し、以下の部分のみ提出する</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p><strong>練習3</strong><br />
 2つの変数 <code class="docutils literal notranslate"><span class="pre">a</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span></code> が与えられるとき、それぞれの変数の値を交換するコードを作成しなさい。つまり、例えば <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">&quot;犬&quot;</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">=</span> <span class="pre">&quot;猫&quot;</span></code> という変数を与えられた場合、<code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">&quot;猫&quot;</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">=</span> <span class="pre">&quot;犬&quot;</span></code> という状態にしなさい（交換したあと <code class="docutils literal notranslate"><span class="pre">print</span></code> する必要はない）。
+<a href="https://toyo-judge-system.vercel.app/?&id=7-3" target="_blank">
+<img src="./_images/launch.svg" style="width: 20px; height: 20px;">
+</a><br />
 <font color=cornflowerblue>ヒント: 単純に a = b などとすると b に代入する前に a の値が失われてしまうので、もう一つ変数を用意してaの値を一時的に保存する必要がある</font></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># a、b の一例</span>
+<span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;犬&quot;</span>
+<span class="n">b</span> <span class="o">=</span> <span class="s2">&quot;猫&quot;</span>
+
+<span class="c1"># 以下にコードを作成し、以下の部分のみ提出する</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="id4">
 <h2>文のネスト<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
@@ -464,7 +507,20 @@ for文とif文を組み合わせる簡単な例として、<strong>break文</str
 </div>
 <p>まず最大値を求めるための変数 <code class="docutils literal notranslate"><span class="pre">tmp</span></code> を用意し、<code class="docutils literal notranslate"><span class="pre">data[0]</span></code> で初期化しておく。そしてfor文で <code class="docutils literal notranslate"><span class="pre">data</span></code> の要素を前から順に見ていき、<code class="docutils literal notranslate"><span class="pre">tmp</span></code> より大きい要素があれば <code class="docutils literal notranslate"><span class="pre">tmp</span></code> をその値に更新する。そうすれば最終的に <code class="docutils literal notranslate"><span class="pre">tmp</span></code> には最大値が設定された状態になる。</p>
 <p><strong>練習4</strong><br />
-数値からなるリスト <code class="docutils literal notranslate"><span class="pre">data</span></code> が与えられるとき、<code class="docutils literal notranslate"><span class="pre">data</span></code> の要素の最小値を <code class="docutils literal notranslate"><span class="pre">print</span></code> するコードを作成しなさい。</p>
+数値からなるリスト <code class="docutils literal notranslate"><span class="pre">data</span></code> が与えられるとき、<code class="docutils literal notranslate"><span class="pre">data</span></code> の要素の最小値を <code class="docutils literal notranslate"><span class="pre">print</span></code> するコードを作成しなさい。
+<a href="https://toyo-judge-system.vercel.app/?&id=7-4" target="_blank">
+<img src="./_images/launch.svg" style="width: 20px; height: 20px;">
+</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># dataの一例 （この例では 1 と出力するのが正しい）</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+
+<span class="c1"># 以下にコードを作成し、以下の部分のみ提出する</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="id5">
 <h3>二重ループ<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
@@ -522,13 +578,16 @@ for文とif文を組み合わせる簡単な例として、<strong>break文</str
 </div>
 </div>
 <p><strong>練習5</strong><br />
-数値からなる二次元リスト <code class="docutils literal notranslate"><span class="pre">data</span></code> が与えられるとき、一番内側の要素の合計値を求めて <code class="docutils literal notranslate"><span class="pre">print</span></code> するコードを作成しなさい。</p>
+数値からなる二次元リスト <code class="docutils literal notranslate"><span class="pre">data</span></code> が与えられるとき、一番内側の要素の合計値を求めて <code class="docutils literal notranslate"><span class="pre">print</span></code> するコードを作成しなさい。
+<a href="https://toyo-judge-system.vercel.app/?&id=7-5" target="_blank">
+<img src="./_images/launch.svg" style="width: 20px; height: 20px;">
+</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># dataの一例 （この例では10と出力するのが正しい）</span>
 <span class="n">data</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]</span>
 
-<span class="c1"># 以下にコードを書いて、以下の部分のみ提出する</span>
+<span class="c1"># 以下にコードを作成し、以下の部分のみ提出する</span>
 </pre></div>
 </div>
 </div>
