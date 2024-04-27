@@ -28,7 +28,7 @@ width: 400px
 name: guidance-typing
 ---
 ```
-5. 練習問題の中には <a href="https://toyo-judge-system.vercel.app/?&id=test" target="_blank"><img src="./_images/launch.svg" style="width: 20px; height: 20px;"></a> マークのついているものがある。このマークをクリックするとリンク先のサイトでプログラムを自動採点できる。最初にサインインを求められるので、東洋大学のGoogleアカウントでサインインしてから利用する。
+5. 練習問題の中には <a href="https://code-judge-system.vercel.app/?&id=test" target="_blank"><img src="./_images/launch.svg" style="width: 20px; height: 20px;"></a> マークのついているものがある。このマークをクリックするとリンク先のサイトでプログラムを自動採点できる。最初にサインインを求められるので、東洋大学のGoogleアカウントでサインインしてから利用する。
 6. 一通り学習したらノートブックを保存する。左上のメニューバーから「ファイル > ドライブにコピーを保存」をクリックする。Google DriveにColab Notebooksというフォルダが作成され、その下にノートブックが保存されるはずである。
 
 
