@@ -480,24 +480,11 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="_images/053d2c91836887af06411de0aa93cf71d0188eca2052ee57d6f061ae2970ab79.png" src="_images/053d2c91836887af06411de0aa93cf71d0188eca2052ee57d6f061ae2970ab79.png" />
-</div>
 </div>
 <p>ここでシリーズの <code class="docutils literal notranslate"><span class="pre">value_counts()</span></code> メソッドにより、カテゴリをラベル、そのデータ数を要素とするシリーズを作成している。Axesの <code class="docutils literal notranslate"><span class="pre">bar()</span></code> メソッドに、インデックスと値を渡すことで棒グラフをプロットすることができる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cut_counts</span>  <span class="c1"># カテゴリをラベル、データ数を要素とするシリーズ</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ideal        21551
-Premium      13791
-Very Good    12082
-Good          4906
-Fair          1610
-Name: cut, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -524,9 +511,6 @@ Name: cut, dtype: int64
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/adbfe9e8bd6bbe471a863649dd6e8bab8214d50236b316781c26f52c46f9dd9f.png" src="_images/adbfe9e8bd6bbe471a863649dd6e8bab8214d50236b316781c26f52c46f9dd9f.png" />
 </div>
 </div>
 <p>Axesの <code class="docutils literal notranslate"><span class="pre">hist()</span></code> メソッドに1次元配列を渡すことで、ヒストグラムを作成できる。キーワード引数で <code class="docutils literal notranslate"><span class="pre">bins</span></code> を指定すると、横軸の分割数を指定できる（<strong>ビン数</strong>という）。ビン数を大きくすると、より細かい粒度で分布の形を確認できる。上のヒストグラムからは、例えば価格の低いダイヤモンドにデータ数が偏っていることが確認できる。</p>
@@ -560,9 +544,6 @@ Name: cut, dtype: int64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="_images/0f02f8a104d4d84b25669e8584567c47d8dcbb34db002c859e287321690091e8.png" src="_images/0f02f8a104d4d84b25669e8584567c47d8dcbb34db002c859e287321690091e8.png" />
-</div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">sample_data</span></code> から求まる平均を <span class="math notranslate nohighlight">\(\hat{\mu}\)</span>、標準偏差を <span class="math notranslate nohighlight">\(\hat{\sigma}\)</span> と書くとき、<span class="math notranslate nohighlight">\(\hat{\mu}-\hat{\sigma}\)</span>、<span class="math notranslate nohighlight">\(\hat{\mu}\)</span>、<span class="math notranslate nohighlight">\(\hat{\mu}+\hat{\sigma}\)</span> の位置を <code class="docutils literal notranslate"><span class="pre">axvline()</span></code> メソッドによりそれぞれ縦の点線として表示している。
 データが正規分布にしたがうとき、平均は分布のちょうど真ん中あたりに来る。また <span class="math notranslate nohighlight">\(\hat{\sigma}\)</span> の大きさが、データの平均周りのバラつきの目安となる大きさであることも確認できる。</p>
@@ -591,9 +572,6 @@ Name: cut, dtype: int64
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/2f85e8ba0e3f1c3160927640a63a0c44bd06de238e757b7405e7d0d223fc6226.png" src="_images/2f85e8ba0e3f1c3160927640a63a0c44bd06de238e757b7405e7d0d223fc6226.png" />
 </div>
 </div>
 <p>データ数のピークが左の方にある中で、赤の点線の位置を普通と捉えるのは疑問である。この例のように分布の裾が長く、歪んだ形をしているとき、平均値はあまり良い代表値とは言えなくなる。また例えば、このテーブルデータにたった1個1億ドルのダイヤモンドのデータを追加するだけで、平均値は右に1850ドル近くシフトする。このような<strong>外れ値</strong>に引っ張られるというのも、平均値の欠点の1つである。</p>
@@ -628,9 +606,6 @@ Name: cut, dtype: int64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="_images/18d105cb361da4ae5cfda0b7d1bbc8ceac0e27b0a03057fa4c82b3ac9e03950e.png" src="_images/18d105cb361da4ae5cfda0b7d1bbc8ceac0e27b0a03057fa4c82b3ac9e03950e.png" />
-</div>
 </div>
 <p>適切な変数変換を行うと、変換前には見えなかった特徴を見つけられることがある。この例ではピークが2つあるように見える。</p>
 </section>
@@ -654,123 +629,11 @@ Name: cut, dtype: int64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>carat</th>
-      <th>cut</th>
-      <th>color</th>
-      <th>clarity</th>
-      <th>depth</th>
-      <th>table</th>
-      <th>price</th>
-      <th>x</th>
-      <th>y</th>
-      <th>z</th>
-      <th>carat_bin</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>0.23</td>
-      <td>Ideal</td>
-      <td>E</td>
-      <td>SI2</td>
-      <td>61.5</td>
-      <td>55.0</td>
-      <td>326</td>
-      <td>3.95</td>
-      <td>3.98</td>
-      <td>2.43</td>
-      <td>(0.0, 0.5]</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>0.21</td>
-      <td>Premium</td>
-      <td>E</td>
-      <td>SI1</td>
-      <td>59.8</td>
-      <td>61.0</td>
-      <td>326</td>
-      <td>3.89</td>
-      <td>3.84</td>
-      <td>2.31</td>
-      <td>(0.0, 0.5]</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>0.23</td>
-      <td>Good</td>
-      <td>E</td>
-      <td>VS1</td>
-      <td>56.9</td>
-      <td>65.0</td>
-      <td>327</td>
-      <td>4.05</td>
-      <td>4.07</td>
-      <td>2.31</td>
-      <td>(0.0, 0.5]</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>0.29</td>
-      <td>Premium</td>
-      <td>I</td>
-      <td>VS2</td>
-      <td>62.4</td>
-      <td>58.0</td>
-      <td>334</td>
-      <td>4.20</td>
-      <td>4.23</td>
-      <td>2.63</td>
-      <td>(0.0, 0.5]</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>0.31</td>
-      <td>Good</td>
-      <td>J</td>
-      <td>SI2</td>
-      <td>63.3</td>
-      <td>58.0</td>
-      <td>335</td>
-      <td>4.34</td>
-      <td>4.35</td>
-      <td>2.75</td>
-      <td>(0.0, 0.5]</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">&quot;carat_bin&quot;</span></code> の全てのカテゴリは、<code class="docutils literal notranslate"><span class="pre">df[&quot;carat_bin&quot;].unique()</span></code> により取得できる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;carat_bin&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(0.0, 0.5], (0.5, 1.0], (1.0, 1.5], (1.5, 2.0], (2.0, 6.0]]
-Categories (5, interval[float64, right]): [(0.0, 0.5] &lt; (0.5, 1.0] &lt; (1.0, 1.5] &lt; (1.5, 2.0] &lt; (2.0, 6.0]]
 </pre></div>
 </div>
 </div>
@@ -799,9 +662,6 @@ Categories (5, interval[float64, right]): [(0.0, 0.5] &lt; (0.5, 1.0] &lt; (1.0,
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/97dc2b6a07e6bcf5d89a3be59e61b14250fa785c943485d3c4f39c3c26e242a6.png" src="_images/97dc2b6a07e6bcf5d89a3be59e61b14250fa785c943485d3c4f39c3c26e242a6.png" />
 </div>
 </div>
 <p>層別分析を行う前に価格のヒストグラムをプロットしたときには、ピークが2つ見えていた。一方で上のプロットを見ると、カラットでグループ分けした後ではピークが1つの綺麗な釣鐘型をしている。これから例えば、カラットの大きさで価格が大体決まること、そしてカラットの分布にピークが複数あるために、価格の分布にピークが複数できているのではないかという仮説を立てることができる。</p>
@@ -835,9 +695,6 @@ Categories (5, interval[float64, right]): [(0.0, 0.5] &lt; (0.5, 1.0] &lt; (1.0,
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="_images/1bf175842b69790bb8f9d81c190c1fa722b022c94dc1f44c3d16b9dd2465b54e.png" src="_images/1bf175842b69790bb8f9d81c190c1fa722b022c94dc1f44c3d16b9dd2465b54e.png" />
-</div>
 </div>
 <p>これを見ると、対数をとった後では、カラットと価格の間に直線に近い綺麗な正の相関があることが確かめられる。</p>
 <p>上の例では量的変数の間の相関をみたが、質的変数と量的変数の間、質的変数と質的変数の間にも相関を考えることができる。
@@ -863,9 +720,6 @@ Categories (5, interval[float64, right]): [(0.0, 0.5] &lt; (0.5, 1.0] &lt; (1.0,
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/daf634afd4e025058c5e73757a285e6c25f3f1d89ba643459672f772d045a5a0.png" src="_images/daf634afd4e025058c5e73757a285e6c25f3f1d89ba643459672f772d045a5a0.png" />
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">df.groupby('cut')['price'].mean()</span></code> を実行すると、カットをインデックスとし、カットごとの価格の平均を値とするシリーズを取得できる。このコードは複雑に見えるかもしれないが、今はおまじないとして理解しておけばよい。また <code class="docutils literal notranslate"><span class="pre">mean_price</span> <span class="pre">=</span> <span class="pre">mean_price.loc[order]</span></code> によりシリーズのインデックスの順を <code class="docutils literal notranslate"><span class="pre">order</span></code> の順に設定することで、棒グラフの横軸の値がカットの質の低い順となるようにしている。そして <code class="docutils literal notranslate"><span class="pre">mean_price</span></code> のインデックスと値を、<code class="docutils literal notranslate"><span class="pre">ax.bar()</span></code> メソッドに渡すことにより棒グラフをプロットしている。</p>
@@ -896,9 +750,6 @@ Categories (5, interval[float64, right]): [(0.0, 0.5] &lt; (0.5, 1.0] &lt; (1.0,
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/d797a207f3fe9d061dc1a040853301e45884eba82cb10e16c3d04dc05013387f.png" src="_images/d797a207f3fe9d061dc1a040853301e45884eba82cb10e16c3d04dc05013387f.png" />
 </div>
 </div>
 <p>これを見ると、カットとカラットの間には大まかに負の相関があることがわかる。この相関が、実際の因果関係を反映したものか考えてみよう。カラットがカットに合わせて変わるということはあり得ないので、因果としてあり得るとしたらカットがカラットに合わせて変わるということである。これはあり得る話である。例えばカラットの小さいダイヤモンドを売るために、より質の高いカットを行う必要があるのかもしれない。一方で、カラットの大きいダイヤモンドは、カットの質によらず商品として成立するために、質の低いカットを採用することも多々あるのかもしれない。</p>
