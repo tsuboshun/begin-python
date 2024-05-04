@@ -3,7 +3,7 @@
 
 title: 'プログラミング実習講義１'
 author: 大坪 舜 Shun Otsubo
-copyright: '2023（2023年3月30日公開）'
+copyright: '2023-2024（2023年3月30日公開）'
 
 exclude_patterns: [_build, .DS_Store, "**.ipynb_checkpoints", "README.md"]
 

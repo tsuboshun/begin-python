@@ -4,3 +4,4 @@
 .doctrees
 _build/.doctrees
 _build/jupyter_execute
+_build/public

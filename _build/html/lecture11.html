@@ -1,15 +1,14 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>第11回 アルゴリズム入門：データの探索 &#8212; プログラミング実習講義１</title>
+    <title>第11回 データの可視化 &#8212; プログラミング実習講義１</title>
   
   
   
@@ -19,43 +18,41 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
-    <script src="_static/custom.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-VFVQWRM1GN"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -63,19 +60,24 @@
                 gtag('js', new Date());
                 gtag('config', 'G-VFVQWRM1GN');
             </script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-VFVQWRM1GN');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'lecture11';</script>
+    <script src="_static/custom.js?v=7ed3f353"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="第12回 新しいデータ型を作る" href="lecture12.html" />
-    <link rel="prev" title="第10回 アルゴリズム入門：問題の複雑さ" href="lecture10.html" />
+    <link rel="next" title="第12回 表データの処理" href="lecture12.html" />
+    <link rel="prev" title="第10回 クラス" href="lecture10.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -85,7 +87,15 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -120,11 +130,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -139,6 +152,7 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="intro.html">
@@ -147,10 +161,22 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+  
     <p class="title logo__title">プログラミング実習講義１</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -167,15 +193,13 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="lecture04.html">第4回 プログラムの材料と道具</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture05.html">第5回 条件分岐</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture06.html">第6回 繰り返し</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lecture07.html">第7回 データの入れ物</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lecture08.html">第8回 関数と再帰</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lecture09.html">第9回 アルゴリズム入門：データの整列</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lecture10.html">第10回 アルゴリズム入門：問題の複雑さ</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">第11回 アルゴリズム入門：データの探索</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lecture12.html">第12回 新しいデータ型を作る</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lecture13.html">第13回 データの可視化</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lecture14.html">第14回 データの読み方</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lecture15.html">第15回 探索的データ分析に挑戦！</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture07.html">第7回 これまでの復習と応用</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture08.html">第8回 データの入れ物</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture09.html">第9回 関数と再帰</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture10.html">第10回 クラス</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">第11回 データの可視化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture12.html">第12回 表データの処理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture13.html">第13回 データの読み方</a></li>
 </ul>
 
     </div>
@@ -282,20 +306,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -312,7 +338,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>第11回 アルゴリズム入門：データの探索</h1>
+    <h1>第11回 データの可視化</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -323,16 +349,18 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">この授業で学ぶこと</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">探索とは</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">線形探索</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">二分探索</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">ファイルの入出力</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#google">Googleドライブのマウント</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">ファイルの読み込み</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">ファイルの書き込み</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy">NumPy入門</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">配列</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">要素のアクセス</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">演算</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">演習</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matplotlib">Matplotlib入門</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">散布図</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">グラフの調整</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">折れ線グラフ</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -342,407 +370,491 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>第11回 アルゴリズム入門：データの探索<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
+<h1>第11回 データの可視化<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <hr class="docutils" />
-<p><a class="reference external" href="https://colab.research.google.com/github/tsuboshun/begin-python/blob/gh-pages/_sources/workbook/lecture11.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+<p><a class="reference external" href="https://colab.research.google.com/github/tsuboshun/begin-python/blob/gh-pages/2024/workbook/lecture11.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
 <hr class="docutils" />
 <section id="id2">
-<h2>この授業で学ぶこと<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
-<p>アルゴリズム入門の最後の話題として、探索アルゴリズムについて学ぶ。またファイルの読み書きの方法についても学ぶ。</p>
+<h2>この授業で学ぶこと<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>今回から第13回にかけてデータサイエンスの入門講義を行う。今回はデータの可視化をテーマに、Matplotlibというグラフ描画ライブラリの使い方を学ぶ。またMatplotlibで利用されているNumPyという数値計算ライブラリについて学ぶ。</p>
+<p>今後の授業で紹介するコードは何も見ないで書けるようになる必要はなく、これらを雛形にして使えるようになればよい。
+Matplotlibを使うと綺麗なグラフを作成できるようになるので、ぜひ他の授業のレポートなどでも活用してみてほしい。</p>
 </section>
-<section id="id3">
-<h2>探索とは<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
-<p>複数のデータの中から、特定の条件に適合するデータを見つけることを<strong>探索</strong>という。
-このテキストでは、次の問題設定に限定して考える： 数値のリストと数値のキーが与えられるとき、リストの中にキーと一致する要素が存在するかを判定し、存在するときはそのインデックスを1つ求める。</p>
-<p>このアルゴリズムを関数として実装しよう。
-リストとキーを引数として受け取り、リストの中にキーが存在すればそのインデックスを返し、存在しなければ <code class="docutils literal notranslate"><span class="pre">None</span></code> を返す関数を作成する。</p>
-<p>例えば、次のリストとキーのペアに対しては、インデックスの3を返す。</p>
-<pre>
-data = [5, 1, 3, 7, 2]
-key = 7
-</pre>
-<p>次のリストとキーのペアに対しては、<code class="docutils literal notranslate"><span class="pre">None</span></code> を返す。</p>
-<pre>
-data = [5, 1, 3, 7, 2]
-key = 4
-</pre>
-<p>探索は使用頻度の高い基本的な操作なので、数多くのアルゴリズムが考案されている。
-今回はその中から代表的な<strong>線形探索</strong>と<strong>二分探索</strong>を紹介する。</p>
-<p>なお、探索プログラムはリストの <code class="docutils literal notranslate"><span class="pre">index()</span></code> メソッドを使えば、次のように実装することができる。
-ここではアルゴリズムの学習のため、<code class="docutils literal notranslate"><span class="pre">index()</span></code> メソッドには頼らずに1からプログラムを作成することを考える。</p>
+<section id="numpy">
+<h2>NumPy入門<a class="headerlink" href="#numpy" title="Link to this heading">#</a></h2>
+<p><strong>NumPy</strong>は、数値計算を効率的に行うためのライブラリである。これから学ぶMatplotlibやPandasといったライブラリにおいて数値データを扱うのに用いられる。</p>
+<p>NumPyは <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">numpy</span></code> によりインポートできる。ただし <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">numpy</span> <span class="pre">as</span> <span class="pre">np</span></code> として <code class="docutils literal notranslate"><span class="pre">np</span></code> という省略名をつけながらインポートするのが慣例となっている。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">search</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="kc">None</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="id3">
+<h3>配列<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<p>NumPyでは基本的に <code class="docutils literal notranslate"><span class="pre">ndarray</span></code> というデータ型を用いる。<code class="docutils literal notranslate"><span class="pre">ndarray</span></code> は N-dimensional array の略であり、日本語では<strong>配列</strong>という。配列はリストによく似たデータ型であるが、数値計算を効率的に行うための機能が備わっている。</p>
+<p>配列は <code class="docutils literal notranslate"><span class="pre">np.array()</span></code> 関数にリストを渡すことで、生成することができる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
-<span class="n">key</span> <span class="o">=</span> <span class="mi">7</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">search</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">key</span><span class="p">))</span>
-
-<span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
-<span class="n">key</span> <span class="o">=</span> <span class="mi">4</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">search</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">key</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>この例では一次元配列、二次元配列を生成している。</p>
+<p>配列は <code class="docutils literal notranslate"><span class="pre">shape</span></code>、<code class="docutils literal notranslate"><span class="pre">ndim</span></code>、<code class="docutils literal notranslate"><span class="pre">size</span></code> という属性をもち、それぞれ配列の形、次元、要素数を表す。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">.</span><span class="n">ndim</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span><span class="o">.</span><span class="n">ndim</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">.</span><span class="n">size</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span><span class="o">.</span><span class="n">size</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">dtype</span></code> という属性は、配列の要素のデータ型を表す。NumPyの <code class="docutils literal notranslate"><span class="pre">float64</span></code> は組み込み型の <code class="docutils literal notranslate"><span class="pre">float</span></code> に、<code class="docutils literal notranslate"><span class="pre">int64</span></code> は <code class="docutils literal notranslate"><span class="pre">int</span></code> に対応するデータ型である。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">.</span><span class="n">dtype</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span><span class="o">.</span><span class="n">dtype</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>配列の生成方法はリストと <code class="docutils literal notranslate"><span class="pre">np.array()</span></code> 関数を使った方法の他にも、以下のようなものがある。<code class="docutils literal notranslate"><span class="pre">np.zeros()</span></code>、<code class="docutils literal notranslate"><span class="pre">np.ones()</span></code> 関数は、第一引数で指定した形で、それぞれ要素がすべて <code class="docutils literal notranslate"><span class="pre">0</span></code>、<code class="docutils literal notranslate"><span class="pre">1</span></code> の配列を生成する。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">np.arange()</span></code> 関数は、<code class="docutils literal notranslate"><span class="pre">np.arange(start,</span> <span class="pre">stop,</span> <span class="pre">step)</span></code> と呼び出すと <code class="docutils literal notranslate"><span class="pre">start</span></code> から <code class="docutils literal notranslate"><span class="pre">stop</span></code> までの <code class="docutils literal notranslate"><span class="pre">step</span></code> 刻みの一次元配列を生成する。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">np.random.normal()</span></code> 関数は下のように呼び出すと、平均が0で標準偏差が1の正規分布に従う乱数の一次元配列を生成する。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="id4">
-<h2>線形探索<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
-<p>線形探索は、前から順に探すという単純なアルゴリズムである。
-実装としては、for文により前から要素を1つずつ調べていき、キーに一致する要素を見つけたところでそのインデックスをreturn文で返す。
-最後までキーに一致する要素が見つからなかった場合は、<code class="docutils literal notranslate"><span class="pre">None</span></code> をreturn文で返す。</p>
-<p>以下に、未完成の <code class="docutils literal notranslate"><span class="pre">linear_search()</span></code> 関数を用意した。練習として、プログラムを完成させてみてほしい。</p>
+<h3>要素のアクセス<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<p>要素のアクセス方法はリストと似ているが、二次元以上のときに記法が異なる。二次元リストでは <code class="docutils literal notranslate"><span class="pre">data[i][j]</span></code> というように <code class="docutils literal notranslate"><span class="pre">[]</span></code> を重ねて要素を指定したが、二次元配列では <code class="docutils literal notranslate"><span class="pre">data[i,</span> <span class="pre">j]</span></code> のように <code class="docutils literal notranslate"><span class="pre">,</span></code> 区切りで要素を指定する。二次元配列の場合、<code class="docutils literal notranslate"><span class="pre">data[i,</span> <span class="pre">j]</span></code> と指定するときの <code class="docutils literal notranslate"><span class="pre">i</span></code> の次元を<strong>行</strong>、<code class="docutils literal notranslate"><span class="pre">j</span></code> の次元を<strong>列</strong>という。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### （出席課題）関数全体を提出する。</span>
-
-<span class="k">def</span> <span class="nf">linear_search</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)):</span>
-        <span class="k">pass</span>   <span class="c1"># ここを書き換える</span>
-    <span class="k">return</span> <span class="kc">None</span>
-
-<span class="c1">###</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 </div>
+<p>スライスによって複数の要素にアクセスすることもできる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
-<span class="n">key</span> <span class="o">=</span> <span class="mi">7</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">linear_search</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">key</span><span class="p">))</span> <span class="c1"># 3</span>
-
-<span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
-<span class="n">key</span> <span class="o">=</span> <span class="mi">4</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">linear_search</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">key</span><span class="p">))</span> <span class="c1"># None</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">z</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">z</span><span class="p">[</span><span class="mi">1</span><span class="p">:,</span> <span class="mi">1</span><span class="p">:])</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="toggle docutils container">
-<p><strong>解答例</strong></p>
-<pre style={"white-space": "pre"}>
-def linear_search(data, key):
-    for i in range(len(data)):
-        if data[i] == key:
-            return i
-    return None
-</pre>
+<p>要素の変更は代入文により行う。リストとの違いとして、スライスで指定した複数の要素を一括で変更することもできる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">z</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+<span class="n">z</span><span class="p">[</span><span class="mi">1</span><span class="p">:,</span> <span class="mi">1</span><span class="p">:]</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+</pre></div>
 </div>
-<p>線形探索の計算量は、リストの要素数を <span class="math notranslate nohighlight">\(N\)</span> として最悪も平均も <span class="math notranslate nohighlight">\(O(N)\)</span> である。
-最悪の場合は、キーと一致する要素がリストの最後にあるか、存在しない場合である。
-このときfor文の処理を <span class="math notranslate nohighlight">\(N\)</span> 回繰り返すことになるので、最悪計算量は <span class="math notranslate nohighlight">\(O(N)\)</span> となる。
-平均的な場合は、for文の処理を <span class="math notranslate nohighlight">\(N/2\)</span> 回繰り返すことになる。
-計算量を表す際には、定数は無視されるため、平均計算量も <span class="math notranslate nohighlight">\(O(N)\)</span> となる。</p>
-<p><span class="math notranslate nohighlight">\(O(N)\)</span> は計算量として十分小さいので、実用上はこれで十分なことが多い。
-ちなみに、リストの <code class="docutils literal notranslate"><span class="pre">index()</span></code> メソッドも線形探索を実装したものとなっている。</p>
+</div>
+</div>
 </section>
 <section id="id5">
-<h2>二分探索<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
-<p>二分探索は、リストがソートされているという前提のもとで、より効率的な探索を実現するアルゴリズムである。</p>
-<p>リストがソートされているとき、要素とキーの大小関係を調べることにより、キーがあるとしたら要素より右か左かが判明する。
-二分探索ではこの性質を利用し、さらに大小関係を調べる要素を探索範囲の中央から選ぶことで、なるべく少ないステップで探索範囲を絞り込んでいく。</p>
-<p>例としてキーが7のとき、二分探索が探索範囲を絞り込んでいく様子を次の図に示す。</p>
-<figure class="align-default" id="binary-search">
-<a class="reference internal image-reference" href="_images/binary_search.png"><img alt="_images/binary_search.png" src="_images/binary_search.png" style="width: 700px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 22 </span><span class="caption-text">キーが7のときの二分探索の様子</span><a class="headerlink" href="#binary-search" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<p>両端の灰矢印が、探索範囲を表している。これらの中央の青矢印が、大小関係を調べる要素である。
-1行目の比較では、青矢印の13よりキーの7の方が小さいので、キーがあるとしたらこれより左側にあると判断できる。
-したがって、右の灰矢印を青矢印の1つ左に移動させて、次の行に移る。</p>
-<p>2行目も同様にして、青矢印の5とキーの7を比較する。今度はキーの方が大きいので、左の灰矢印を青矢印の1つ右に移動させる。3行目までくると、探索範囲は2つ（7と11）に絞り込めている。このように探索範囲のサイズが偶数のときは、ちょうど中央の位置に要素はないので、中央の左隣か右隣の要素を比較対象に選ぶ（ここでは左隣を選択している）。このとき青矢印の要素はキーと一致するので、青矢印のインデックスを返して探索を終了する。</p>
-<p>キーに一致する要素がない場合は、上記操作をくり返すと、いずれ灰矢印の位置が逆転する。このとき <code class="docutils literal notranslate"><span class="pre">None</span></code> を返して探索を終了する。</p>
-<p>以下に、未完成の <code class="docutils literal notranslate"><span class="pre">binary_search()</span></code> 関数を用意した。
-左の灰矢印に相当するのが <code class="docutils literal notranslate"><span class="pre">left</span></code>、右の灰矢印に相当するのが <code class="docutils literal notranslate"><span class="pre">right</span></code>、真ん中の青矢印に相当するのが <code class="docutils literal notranslate"><span class="pre">mid</span></code> である。
-上の説明を参考に、プログラムを完成させてみてほしい。</p>
+<h3>演算<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<p>配列には各種演算が定義されており、配列同士の演算を行うことができる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">binary_search</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
-    <span class="n">left</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="n">right</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
-    <span class="k">while</span> <span class="n">left</span> <span class="o">&lt;=</span> <span class="n">right</span><span class="p">:</span>
-        <span class="n">mid</span> <span class="o">=</span> <span class="p">(</span><span class="n">left</span> <span class="o">+</span> <span class="n">right</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
-        <span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="n">mid</span><span class="p">]</span> <span class="o">==</span> <span class="n">key</span><span class="p">:</span>
-            <span class="k">pass</span> <span class="c1"># ここを書き換える</span>
-        <span class="k">elif</span> <span class="n">data</span><span class="p">[</span><span class="n">mid</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">key</span><span class="p">:</span>
-            <span class="k">pass</span> <span class="c1"># ここを書き換える</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">pass</span> <span class="c1"># ここを書き換える</span>
-    <span class="k">return</span> <span class="kc">None</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
-<span class="n">key</span> <span class="o">=</span> <span class="mi">7</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">binary_search</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">key</span><span class="p">))</span> <span class="c1"># 3</span>
-
-<span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
-<span class="n">key</span> <span class="o">=</span> <span class="mi">4</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">binary_search</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">key</span><span class="p">))</span> <span class="c1"># None</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="toggle docutils container">
-<p><strong>解答例</strong></p>
-<pre style={"white-space": "pre"}>
-def binary_search(data, key):
-    left = 0
-    right = len(data) - 1
-    while left <= right:
-        mid = (left + right) // 2
-        if data[mid] == key:
-            return mid
-        elif data[mid] > key:
-            right = mid - 1
-        else:
-            left = mid + 1
-    return None
-</pre>
-</div>
-<p>二分探索の計算量は、リストの要素数を <span class="math notranslate nohighlight">\(N\)</span> として最悪も平均も <span class="math notranslate nohighlight">\(O(\log N)\)</span> である。
-二分探索ではキーと要素を比較するたびに探索範囲が約半分になる。
-例えば、上図の例では探索範囲は<span class="math notranslate nohighlight">\(11\rightarrow 5\rightarrow 2\)</span>と移り変わっている。
-最悪の場合は、探索範囲が1となるまでキーと一致する要素が見つからない場合であるが、この場合でも約 <span class="math notranslate nohighlight">\(\log N\)</span> のステップ数で処理を終えることができる（前回のテキストから引き続き対数の底は2とする）。よって、最悪計算量は <span class="math notranslate nohighlight">\(O(\log N)\)</span> になる。
-平均的な場合においても、毎回のステップで探索範囲が約半分になるという性質は変わらないため、<span class="math notranslate nohighlight">\(O(\log N)\)</span> であることを示すことができる。</p>
-<p>ここまでに紹介した3つの探索方法について、実際に計算時間を比較してみよう。
-ここでは自明な例ではあるが、<span class="math notranslate nohighlight">\(0\)</span> から <span class="math notranslate nohighlight">\(N-1\)</span> まで整数が順に並んだリスト <code class="docutils literal notranslate"><span class="pre">data</span></code> を <code class="docutils literal notranslate"><span class="pre">list(range(N))</span></code> により作成し、それに対して探索を実行している。</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
-
-<span class="k">def</span> <span class="nf">exec_time</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
-    <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-    <span class="n">func</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
-    <span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-    <span class="k">return</span> <span class="n">end</span> <span class="o">-</span> <span class="n">start</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="mi">7</span>
-<span class="n">data</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">))</span>
-<span class="n">key</span> <span class="o">=</span> <span class="n">N</span> <span class="o">//</span> <span class="mi">3</span>  <span class="c1"># 適当な要素</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">-</span> <span class="n">y</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">*</span> <span class="n">y</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">/</span> <span class="n">y</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">*</span></code> は要素ごとの積を計算するが、行列積を計算するには <code class="docutils literal notranslate"><span class="pre">dot()</span></code> メソッドまたは <code class="docutils literal notranslate"><span class="pre">np.dot()</span></code> 関数を用いる（数学で行列を習ったことのない学生は気にしないでよい）。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>四則演算は基本的に2つの配列の形が揃っていないとエラーになるが、以下のように計算可能なケースもある。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="n">x</span> <span class="o">+</span> <span class="n">z</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">*</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>上の例では、足し算を実行する前に <code class="docutils literal notranslate"><span class="pre">z</span></code> の形を <code class="docutils literal notranslate"><span class="pre">x</span></code> の形に揃えて <code class="docutils literal notranslate"><span class="pre">np.array([[1,</span> <span class="pre">2],</span> <span class="pre">[1,</span> <span class="pre">2]])</span></code> と読み替えてから計算が行われる。下の例では、<code class="docutils literal notranslate"><span class="pre">2</span></code> を <code class="docutils literal notranslate"><span class="pre">x</span></code> の形に揃えて <code class="docutils literal notranslate"><span class="pre">np.array([[2,</span> <span class="pre">2],</span> <span class="pre">[2,</span> <span class="pre">2]])</span></code> と読み替えてから計算が行われる。このような機能を<strong>ブロードキャスト</strong>という。</p>
+<p><strong>練習1</strong><br />
+正の整数 <code class="docutils literal notranslate"><span class="pre">n</span></code>、<code class="docutils literal notranslate"><span class="pre">m</span></code> が与えられるとき、形が <code class="docutils literal notranslate"><span class="pre">(n,</span> <span class="pre">m)</span></code> で要素がすべて <code class="docutils literal notranslate"><span class="pre">0</span></code> の二次元配列 <code class="docutils literal notranslate"><span class="pre">data</span></code> を作成しなさい。
+<a href="https://code-judge-system.vercel.app/?&id=11-1" target="_blank">
+<img src="./_images/launch.svg" style="width: 20px; height: 20px;">
+</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># n, mの一例</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">m</span> <span class="o">=</span> <span class="mi">2</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">exec_time</span><span class="p">(</span><span class="n">search</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">key</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">exec_time</span><span class="p">(</span><span class="n">linear_search</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">key</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">exec_time</span><span class="p">(</span><span class="n">binary_search</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">key</span><span class="p">))</span>
+<span class="c1"># 以下にコードを作成し、以下の部分のみ提出する</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>練習2</strong><br />
+正の整数からなる配列 <code class="docutils literal notranslate"><span class="pre">x</span></code> が与えられるとき、<code class="docutils literal notranslate"><span class="pre">x</span></code> の各要素を <code class="docutils literal notranslate"><span class="pre">x</span></code> の要素の総和で割って得られる配列 <code class="docutils literal notranslate"><span class="pre">p</span></code> を作成しなさい。
+<font color=cornflowerblue>ヒント：配列の要素の総和は <code class="docutils literal notranslate"><span class="pre">np.sum()</span></code> 関数によって求められる。</font>
+<a href="https://code-judge-system.vercel.app/?&id=11-2" target="_blank">
+<img src="./_images/launch.svg" style="width: 20px; height: 20px;">
+</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># xの一例</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+
+<span class="c1"># 以下にコードを作成し、以下の部分のみ提出する</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="id6">
-<h2>ファイルの入出力<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
-<p>探索アルゴリズムから話題を変えて、この節ではファイルの入出力について学ぶ。
-これまではPythonプログラムの中で閉じた話がほとんどであったが、ファイルの入出力を学ぶことで、パソコン上のファイルに対して自由な処理を行えるようになったり、プログラムの実行結果を永続的に保存できるようになったりするなど出来ることの幅がぐんと広がる。</p>
-<section id="google">
-<h3>Googleドライブのマウント<a class="headerlink" href="#google" title="Permalink to this heading">#</a></h3>
-<p>Google Colab上でファイルを扱うために、最初にGoogleドライブに接続する必要がある（<strong>マウント</strong>という）。
-ここではマウントの手順を説明する。</p>
-<p>サイドメニューから以下の順番でアイコンをクリックする。</p>
-<figure class="align-default" id="drive1">
-<a class="reference internal image-reference" href="_images/drive1.png"><img alt="_images/drive1.png" src="_images/drive1.png" style="width: 500px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 23 </span><span class="caption-text">Googleドライブのマウント</span><a class="headerlink" href="#drive1" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<p>そうすると以下のようなコードがノートブック上に現れるので、これを実行する。
-実行するとアカウントのログイン画面が表示され、その後Googleドライブのマウントを許可するか聞かれるので、許可するを選択する。</p>
-<figure class="align-default" id="drive2">
-<a class="reference internal image-reference" href="_images/drive2.png"><img alt="_images/drive2.png" src="_images/drive2.png" style="width: 500px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 24 </span><span class="caption-text">Googleドライブのマウント</span><a class="headerlink" href="#drive2" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<p>マウントしたあと左のウィンドウ上で <code class="docutils literal notranslate"><span class="pre">/content/drive/MyDrive</span></code> を見に行くと、Googleドライブ上のファイル・フォルダが確認できるはずである。</p>
-<figure class="align-default" id="drive3">
-<a class="reference internal image-reference" href="_images/drive3.png"><img alt="_images/drive3.png" src="_images/drive3.png" style="width: 500px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 25 </span><span class="caption-text">Googleドライブのマウント</span><a class="headerlink" href="#drive3" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
 </section>
+<section id="matplotlib">
+<h2>Matplotlib入門<a class="headerlink" href="#matplotlib" title="Link to this heading">#</a></h2>
+<p>Pythonでグラフを描画するのに<strong>Matplotlib</strong>というライブラリがよく用いられる。</p>
+<p>Matplotlibを使うには、その中のpyplotというモジュールをimportする。<code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">matplotlib.pyplot</span> <span class="pre">as</span> <span class="pre">plt</span></code> として <code class="docutils literal notranslate"><span class="pre">plt</span></code> という省略名をつけながらインポートするのが慣例となっている。</p>
+<p>またグラフのラベルに日本語を使えるようにするためにjapanize_matplotlibというモジュールをimportする。japanize_matplotlibはpipによるインストールが必要である<a class="footnote-reference brackets" href="#f1" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">japanize_matplotlib</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">japanize_matplotlib</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;font.size&#39;</span><span class="p">:</span> <span class="mi">14</span><span class="p">})</span>  <span class="c1"># 文字サイズを14pxとする</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>まずは描画用のサンプルデータを用意しよう。Matplotlibではリストまたは配列を主に扱う。ここでは配列のデータを用意する。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 0から10までの0.1刻みの配列</span>
+<span class="n">sample_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+
+<span class="c1"># y = 2x + eps　（epsはノイズ）</span>
+<span class="n">eps</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">sample_x</span><span class="p">))</span>
+<span class="n">sample_y</span> <span class="o">=</span> <span class="n">sample_x</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">eps</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">np.arange(0,</span> <span class="pre">10,</span> <span class="pre">0.1)</span></code> は、<code class="docutils literal notranslate"><span class="pre">0</span></code> から <code class="docutils literal notranslate"><span class="pre">10</span></code> までの <code class="docutils literal notranslate"><span class="pre">0.1</span></code> 刻みの配列を生成する。したがって、<code class="docutils literal notranslate"><span class="pre">sample_x</span></code> は要素数100の一次元配列となっている。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">sample_x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">np.random.normal(loc=0,</span> <span class="pre">scale=1,</span> <span class="pre">size=len(sample_x))</span></code> は、平均が0で標準偏差が1の正規分布に従う乱数の配列を生成する。代入先の <code class="docutils literal notranslate"><span class="pre">eps</span></code> はデータに加えるノイズとして使用する。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eps</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>配列は要素ごとの演算を一括で行うことができる。<code class="docutils literal notranslate"><span class="pre">sample_x</span> <span class="pre">*</span> <span class="pre">2</span> <span class="pre">+</span> <span class="pre">eps</span></code> により、インデックスごとに <code class="docutils literal notranslate"><span class="pre">sample_x</span></code> の要素を2倍し、<code class="docutils literal notranslate"><span class="pre">eps</span></code> の要素を足している。</p>
+<p>ここで生成した <code class="docutils literal notranslate"><span class="pre">sample_x</span></code> と <code class="docutils literal notranslate"><span class="pre">sample_y</span></code> は <span class="math notranslate nohighlight">\(\varepsilon\)</span> をノイズとして <span class="math notranslate nohighlight">\(y = 2x + \varepsilon\)</span> の関係を満たす2次元データ <span class="math notranslate nohighlight">\((x, y)\)</span> を100個生成したものと見ることができる。
+1つ1つのデータは(<code class="docutils literal notranslate"><span class="pre">sample_x[0]</span></code>, <code class="docutils literal notranslate"><span class="pre">sample_y[0]</span></code>), (<code class="docutils literal notranslate"><span class="pre">sample_x[1]</span></code>, <code class="docutils literal notranslate"><span class="pre">sample_y[1]</span></code>), …, (<code class="docutils literal notranslate"><span class="pre">sample_x[99]</span></code>, <code class="docutils literal notranslate"><span class="pre">sample_y[99]</span></code>)である。</p>
+<div class="tip admonition">
+<p class="admonition-title">ライブラリに関してよく見かけるエラー</p>
+<p>今回のノートブックのコードはNumPyやMatplotlibなど複数のライブラリに依存しているため、それぞれのimport文を含むセルを実行していないとエラーになる。
+もし <code class="docutils literal notranslate"><span class="pre">NameError:</span> <span class="pre">name</span> <span class="pre">'np'</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">defined</span></code> などのエラーを見かけたら、import文を一通り実行したか確認しよう。</p>
+</div>
 <section id="id7">
-<h3>ファイルの読み込み<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
-<p>練習用のファイルとして次のデータが書かれたsample.txtを用意し（ToyoNet-ACEでも配布する予定）、Googleドライブのマイドライブ直下に置く。それ以外の場所に置いた場合は以降のコードの <code class="docutils literal notranslate"><span class="pre">path</span></code> を適宜変更する。</p>
-<pre>8 7 9 6 9
-4 5 8 7 6
-9 9 9 8 9
-6 7 9 7 8</pre>
-<p>このファイルの中身は組み込み関数の <code class="docutils literal notranslate"><span class="pre">open()</span></code> を使って、次のように読み込むことができる。</p>
+<h3>散布図<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<p>サンプルデータを<strong>散布図</strong>として可視化してみよう。横軸に <span class="math notranslate nohighlight">\(x\)</span>、縦軸に <span class="math notranslate nohighlight">\(y\)</span> の値をとって各データを点として打って描画する。このことをデータを散布図として<strong>プロット</strong>するという。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;/content/drive/MyDrive/sample.txt&quot;</span>
-<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># プロットの入れ物の用意</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 
-<span class="n">content</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+<span class="c1"># 散布図のプロット</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">sample_x</span><span class="p">,</span> <span class="n">sample_y</span><span class="p">)</span>
 
-<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="c1"># 表示</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">open()</span></code> 関数は、第一引数にファイルの存在する場所（<strong>パス</strong>という）、第二引数にモードを渡す。
-パスは文字列で表し、フォルダを1つ下るごとに <code class="docutils literal notranslate"><span class="pre">/</span></code> で区切って <code class="docutils literal notranslate"><span class="pre">content</span></code> フォルダからの位置関係を表現する。
-第二引数に渡している <code class="docutils literal notranslate"><span class="pre">'r'</span></code> は読み込みモードを表す。</p>
-<p><code class="docutils literal notranslate"><span class="pre">open()</span></code> 関数の返すファイルオブジェクト <code class="docutils literal notranslate"><span class="pre">f</span></code> に対して、<code class="docutils literal notranslate"><span class="pre">read()</span></code> メソッドを呼び出すと、ファイルの中身を文字列として取得できる。
-最後に、開いたファイルオブジェクトを <code class="docutils literal notranslate"><span class="pre">f.close()</span></code> により閉じている。</p>
-<p><code class="docutils literal notranslate"><span class="pre">read()</span></code> メソッドはファイル全体を文字列として読み込むが、for文により一行ずつ読み込むこともできる。</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
-
-<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
-
-<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>さて <code class="docutils literal notranslate"><span class="pre">sample.txt</span></code> の中身は各行が一人一人の学生、各列が何かしらのスコアを表していたとしよう（つまり学生4人・スコア5つ）。このときデータを2次元リストとして読み込めると、分析の際に便利である。次のコードにより、ファイルの中身を2次元リストとして読み込むことができる。</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
-
-<span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
-    <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-
-<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>ここで各行の文字列 <code class="docutils literal notranslate"><span class="pre">line</span></code> について、まず <code class="docutils literal notranslate"><span class="pre">strip()</span></code> メソッドにより改行文字 <code class="docutils literal notranslate"><span class="pre">\n</span></code> を取り除き、次に <code class="docutils literal notranslate"><span class="pre">split('</span> <span class="pre">')</span></code> メソッドにより空白文字で区切ってリストに変換している。例として、<code class="docutils literal notranslate"><span class="pre">line</span></code> にファイルの1行目 <code class="docutils literal notranslate"><span class="pre">&quot;8</span> <span class="pre">7</span> <span class="pre">9</span> <span class="pre">6</span> <span class="pre">9\n&quot;</span></code> が代入されたときの処理の流れを、以下に示す。</p>
-<pre>
-line.strip().split(' ')
-</pre>
-<p>↓ <code class="docutils literal notranslate"><span class="pre">line</span></code> の指す値に置き換え</p>
-<pre>
-"8 7 9 6 9\n".strip().split(' ')
-</pre>
-<p>↓ <code class="docutils literal notranslate"><span class="pre">strip()</span></code> メソッドの適用</p>
-<pre>
-"8 7 9 6 9".split(' ')
-</pre>
-<p>↓ <code class="docutils literal notranslate"><span class="pre">split()</span></code> メソッドの適用</p>
-<pre>
-['8', '7', '9', '6', '9']
-</pre>
-<p>よって、<code class="docutils literal notranslate"><span class="pre">data.append(line.strip().split('</span> <span class="pre">'))</span></code> は <code class="docutils literal notranslate"><span class="pre">data.append(['8',</span> <span class="pre">'7',</span> <span class="pre">'9',</span> <span class="pre">'6',</span> <span class="pre">'9'])</span></code> と同じことであり、これにより2次元リスト <code class="docutils literal notranslate"><span class="pre">data</span></code> の末尾に1次元リスト <code class="docutils literal notranslate"><span class="pre">['8',</span> <span class="pre">'7',</span> <span class="pre">'9',</span> <span class="pre">'6',</span> <span class="pre">'9']</span></code> が追加される。</p>
-<p>注意点として、この時点では <code class="docutils literal notranslate"><span class="pre">data</span></code> の各要素は文字列型となっている。そこで分析前に整数型または浮動小数点数型に変換しておく。</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)):</span>
-    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">])):</span>
-        <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">])</span>  <span class="c1"># 小数を含むならfloat()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span>
-</pre></div>
-</div>
-</div>
-</div>
+<p>1行目では <code class="docutils literal notranslate"><span class="pre">plt.subplots()</span></code> 関数によりFigureオブジェクトとAxesオブジェクトを生成して、変数 <code class="docutils literal notranslate"><span class="pre">fig</span></code> と <code class="docutils literal notranslate"><span class="pre">ax</span></code> に代入している<a class="footnote-reference brackets" href="#f2" id="id8" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a><a class="footnote-reference brackets" href="#f3" id="id9" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>。</p>
+<p>Matplotlibによる描画はFigureオブジェクトとAxesオブジェクト、Axisオブジェクトの3つの要素で構成される。Axisオブジェクトは1つの軸を管理し、Axesオブジェクトは1つのグラフを管理し、Figureオブジェクトは描画全体を管理する。それぞれの関係を次の図に示す。</p>
+<figure class="align-default" id="fig-map">
+<a class="reference internal image-reference" href="_images/fig_map.png"><img alt="_images/fig_map.png" src="_images/fig_map.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 19 </span><span class="caption-text">グラフの構成要素</span><a class="headerlink" href="#fig-map" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p><code class="docutils literal notranslate"><span class="pre">plt.subplots()</span></code> 関数は <code class="docutils literal notranslate"><span class="pre">plt.subplots(n,</span> <span class="pre">m,</span> <span class="pre">figsize=(w,</span> <span class="pre">h))</span></code> と呼び出すと、横幅 <code class="docutils literal notranslate"><span class="pre">w</span></code>、高さ <code class="docutils literal notranslate"><span class="pre">h</span></code> （単位はインチ）のFigureオブジェクトと、その中に <code class="docutils literal notranslate"><span class="pre">n</span></code> 行 <code class="docutils literal notranslate"><span class="pre">m</span></code> 列の<code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">*</span> <span class="pre">m</span></code> 個のAxesオブジェクトを作成する。グラフを1枚だけ描画したい場合は、<code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">m</span> <span class="pre">=</span> <span class="pre">1</span></code> と指定する。もしくは引数で何も指定しなければ、デフォルト引数により <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">m</span> <span class="pre">=</span> <span class="pre">1</span></code> が指定される。このときAxesオブジェクトが1つだけ作成され、戻り値の <code class="docutils literal notranslate"><span class="pre">ax</span></code> はAxesオブジェクトそのものになる。複数のグラフを同時に描画したい場合は、<code class="docutils literal notranslate"><span class="pre">n</span></code> または <code class="docutils literal notranslate"><span class="pre">m</span></code> に2以上の整数を指定する。このときAxesオブジェクトが複数作成され、戻り値はAxesオブジェクトの配列となる。</p>
+<p>散布図のプロットは <code class="docutils literal notranslate"><span class="pre">ax.scatter()</span></code> メソッドにより行う。第一引数に横軸の値の配列、第二引数に縦軸の値の配列を指定する。
+最後に <code class="docutils literal notranslate"><span class="pre">plt.show()</span></code> 関数を呼び出すことで、グラフが表示される。</p>
 </section>
-<section id="id8">
-<h3>ファイルの書き込み<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
-<p>読み込んだデータをもとに各生徒の平均スコアを求めて、ファイルに出力してみよう。</p>
-<p>まず出力用のパスを入力とは別に設定する。
-<code class="docutils literal notranslate"><span class="pre">open()</span></code> 関数を書き込みモード（<code class="docutils literal notranslate"><span class="pre">'w'</span></code>） で呼び出し、書き込み用のファイルオブジェクト <code class="docutils literal notranslate"><span class="pre">f</span></code> を取得する。
-平均値の計算は、ここでは簡単に総和を求める <code class="docutils literal notranslate"><span class="pre">sum()</span></code> 関数と <code class="docutils literal notranslate"><span class="pre">len()</span></code> 関数を使用して行っている。
-そして結果を <code class="docutils literal notranslate"><span class="pre">f.write()</span></code> によりファイルに書き込んでいる。
-入力と同じように1行1学生となるように、最後に改行 <code class="docutils literal notranslate"><span class="pre">\n</span></code> を入れている。</p>
-<p>ファイルへの書き込みを終えたら、<code class="docutils literal notranslate"><span class="pre">f.flush()</span></code>、<code class="docutils literal notranslate"><span class="pre">f.close()</span></code> を順に呼び出してファイルを閉じる。
-実は <code class="docutils literal notranslate"><span class="pre">f.write()</span></code> を呼び出した時点では、ファイルへの書き込みを予約した状態に過ぎず、OSの状態によっては実際の書き込みは後回しにされてしまう。
-<code class="docutils literal notranslate"><span class="pre">f.flush()</span></code> は、ファイルへの書き込みを確実に完了させる働きを持つ。</p>
+<section id="id10">
+<h3>グラフの調整<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
+<p>次にグラフの見た目を細かく調整してみよう。</p>
+<p>まずは1枚のグラフに複数の散布図をプロットする。
+先ほどのプロットに <span class="math notranslate nohighlight">\(y = 3x + \varepsilon\)</span> の関係を満たすデータの散布図を追加する。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">output_path</span> <span class="o">=</span> <span class="s2">&quot;/content/drive/MyDrive/sample_mean.txt&quot;</span>
-<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">output_path</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># プロットの入れ物の用意</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 
-<span class="k">for</span> <span class="n">lst</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
-    <span class="n">mean</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">lst</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">lst</span><span class="p">)</span>
-    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">mean</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="c1"># データの用意</span>
+<span class="n">sample_y2</span> <span class="o">=</span> <span class="n">sample_x</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">sample_x</span><span class="p">))</span>
 
-<span class="n">f</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
-<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="c1"># 散布図のプロット</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">sample_x</span><span class="p">,</span> <span class="n">sample_y</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">sample_x</span><span class="p">,</span> <span class="n">sample_y2</span><span class="p">)</span>
+
+<span class="c1"># 表示</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>ここで紹介した書き込み方法では、毎回ファイルの内容が上書きされる。
-そうではなく、ファイルの末尾に追記したい場合には追記モード（<code class="docutils literal notranslate"><span class="pre">'a'</span></code>） を指定する。
-ファイルオブジェクトの使い方は書き込みモード（<code class="docutils literal notranslate"><span class="pre">'w'</span></code>）の場合と全く同じである。</p>
-</section>
-</section>
-<section id="id9">
-<h2>演習<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h2>
-<p><strong>課題</strong><br />
-上の節では、各学生の平均スコアを求めてファイルに出力した。これを参考に、平均スコアの代わりにスコアの標準偏差を求めてファイルに出力し、作成したファイルを提出しなさい。ファイル名は <code class="docutils literal notranslate"><span class="pre">sample_std.txt</span></code> とすること。これは必須ではないが、可能なら小数は第3位を四捨五入して第2位までを求めなさい（<a class="reference internal" href="lecture03.html#label-round"><span class="std std-ref">参考</span></a>）。</p>
-<p>ヒント1:  第6回で紹介したNumPyを利用すると、標準偏差は簡単に求められる。<code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">numpy</span> <span class="pre">as</span> <span class="pre">np</span></code> によりNumPyを読み込んだあと、<code class="docutils literal notranslate"><span class="pre">np.std()</span></code> 関数を使って、<code class="docutils literal notranslate"><span class="pre">np.std(lst)</span></code> によりリスト <code class="docutils literal notranslate"><span class="pre">lst</span></code> の標準偏差を求めることができる。<br />
-ヒント2:  学生は4人いるので、標準偏差も4つ求まることになる。<code class="docutils literal notranslate"><span class="pre">sample_std.txt</span></code> は次のような見た目になる。ヒントとして1行目のみ答えを示す。つまり、<code class="docutils literal notranslate"><span class="pre">data</span></code> の1行目 <code class="docutils literal notranslate"><span class="pre">[8,</span> <span class="pre">7,</span> <span class="pre">9,</span> <span class="pre">6,</span> <span class="pre">9]</span></code> の標準偏差を求めて小数第3位を四捨五入すると <code class="docutils literal notranslate"><span class="pre">1.17</span></code> になる（四捨五入せずに1.16619…という解答でも正解とする）。</p>
-<pre>1.17
-*
-*
-*</pre><div class="cell docutils container">
+<p>このように同一のAxesオブジェクトの <code class="docutils literal notranslate"><span class="pre">scatter()</span></code> メソッドを複数回呼び出すことで、1つのグラフに複数の散布図をプロットすることができる。</p>
+<p>プロットの色は自動的に設定されるが、自分で指定することもできる。
+凡例や軸ラベル、タイトル、マーカーの種類の設定方法とともに紹介する。</p>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span> <span class="c1"># NumPyの読み込み</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># プロットの入れ物の用意</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 
-<span class="n">output_path</span> <span class="o">=</span> <span class="s2">&quot;/content/drive/MyDrive/sample_std.txt&quot;</span>
-<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">output_path</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
+<span class="c1"># 散布図のプロット</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">sample_x</span><span class="p">,</span> <span class="n">sample_y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;royalblue&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;v&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;y=2x+e&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">sample_x</span><span class="p">,</span> <span class="n">sample_y2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;forestgreen&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;y=3x+e&quot;</span><span class="p">)</span>
 
-<span class="k">for</span> <span class="n">lst</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
-    <span class="k">pass</span> <span class="c1"># ここに適切なコードを書く</span>
+<span class="c1"># 軸ラベル・タイトルの設定</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;xとyの関係&quot;</span><span class="p">)</span>
 
-<span class="n">f</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
-<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="c1"># 表示</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span> <span class="c1"># 凡例の表示</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="toggle docutils container">
-<p><strong>解答例</strong></p>
-<pre style={"white-space": "pre"}>
-import numpy as np # NumPyの読み込み
+<p><code class="docutils literal notranslate"><span class="pre">ax.scatter()</span></code> メソッドのキーワード引数を使って、<code class="docutils literal notranslate"><span class="pre">color</span></code> を設定すると色を変更できる（<code class="docutils literal notranslate"><span class="pre">color</span></code> で指定できる色の名前の一覧は<a class="reference external" href="https://matplotlib.org/stable/gallery/color/named_colors.html">こちら</a>）。<code class="docutils literal notranslate"><span class="pre">marker</span></code> を設定するとマーカーの種類を変更できる（<code class="docutils literal notranslate"><span class="pre">marker</span></code> で指定できる値の一覧は<a class="reference external" href="https://matplotlib.org/stable/api/markers_api.html">こちら</a>）。<code class="docutils literal notranslate"><span class="pre">label</span></code> を設定すると凡例の表示を設定できる。凡例を表示するには、最後に <code class="docutils literal notranslate"><span class="pre">plt.legend()</span></code> を呼び出す。</p>
+<p>軸ラベルは <code class="docutils literal notranslate"><span class="pre">ax.set_xlabel()</span></code>、<code class="docutils literal notranslate"><span class="pre">ax.set_ylabel()</span></code> により設定する。同様にタイトルは <code class="docutils literal notranslate"><span class="pre">ax.set_title()</span></code> により設定する。</p>
+</section>
+<section id="id11">
+<h3>折れ線グラフ<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
+<p>散布図と並んでよく使われるのが<strong>折れ線グラフ</strong>である。折れ線グラフでは、基本的にデータの順番は <span class="math notranslate nohighlight">\(x\)</span> の値について昇順または降順であることを仮定する。
+このとき横軸に <span class="math notranslate nohighlight">\(x\)</span>、縦軸に <span class="math notranslate nohighlight">\(y\)</span> の値をとって各データを点として打つところは散布図と同じであるが、折れ線グラフではこれらの点を線で結ぶ。これにより <span class="math notranslate nohighlight">\(x\)</span> の値が増えたときの、<span class="math notranslate nohighlight">\(y\)</span> の値の連続的な変化を表現できる。</p>
+<p>折れ線グラフのプロット例を以下に示す。
+ノイズのない <span class="math notranslate nohighlight">\(y = 2x\)</span> の関係を表す2次元データ <span class="math notranslate nohighlight">\((x, y)\)</span> を <code class="docutils literal notranslate"><span class="pre">sample_x</span></code>、<code class="docutils literal notranslate"><span class="pre">sample_y3</span></code> に用意し、その折れ線グラフを最初の散布図に重ねてプロットしている。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># プロットの入れ物の用意</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 
-output_path = "/content/drive/MyDrive/sample_std.txt"
-f = open(output_path, mode='w')
+<span class="n">sample_y3</span> <span class="o">=</span> <span class="n">sample_x</span> <span class="o">*</span> <span class="mi">2</span>
 
-for lst in data:
-    std = np.std(lst)
-    f.write(f"{std:.2f}\n")
+<span class="c1"># 散布図、折れ線グラフのプロット</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">sample_x</span><span class="p">,</span> <span class="n">sample_y</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sample_x</span><span class="p">,</span> <span class="n">sample_y3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;orange&quot;</span><span class="p">)</span>
 
-f.flush()
-f.close()
-</pre>
+<span class="c1"># 表示</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
 </div>
+</div>
+</div>
+<p><strong>練習3</strong><br />
+以下のコードにより、0から10までの0.1刻みの配列が <code class="docutils literal notranslate"><span class="pre">x</span></code> に、<code class="docutils literal notranslate"><span class="pre">x</span></code> のそれぞれの要素に対してsin関数の値を計算した配列が <code class="docutils literal notranslate"><span class="pre">y_sin</span></code> に、cos関数の値を計算した配列が <code class="docutils literal notranslate"><span class="pre">y_cos</span></code> に代入される。このとき <code class="docutils literal notranslate"><span class="pre">x</span></code> と <code class="docutils literal notranslate"><span class="pre">y_sin</span></code>、<code class="docutils literal notranslate"><span class="pre">x</span></code> と <code class="docutils literal notranslate"><span class="pre">y_cos</span></code> それぞれのペアについて折れ線グラフを作成することで、sin関数、cos関数を可視化しなさい。またそれぞれのプロットの区別がつくように <code class="docutils literal notranslate"><span class="pre">&quot;sin関数&quot;</span></code>、<code class="docutils literal notranslate"><span class="pre">&quot;cos関数&quot;</span></code> という凡例をつけなさい。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+<span class="n">y_sin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">y_cos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># プロットの入れ物の用意</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="c1"># ここに適切なコードを書く</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span> <span class="c1"># 凡例の表示</span>
+
+<span class="c1"># ファイルとして保存</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;練習3.png&quot;</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<p>プロットしたら以下のコードを実行することにより、画像をダウンロードできる。これを提出しなさい。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">files</span>
+<span class="n">files</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s2">&quot;練習3.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>注意として、ファイルとして保存する場合は <code class="docutils literal notranslate"><span class="pre">plt.show()</span></code> を実行してはいけない。これを実行してしまうと白紙の画像ファイルがダウンロードされる。</p>
+<hr class="footnotes docutils" />
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="f1" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">1</a><span class="fn-bracket">]</span></span>
+<p>Matplotlibも標準ライブラリではないため本来はpipによるインストールが必要であるが、Google Colabの環境では初めからインストールされている。</p>
+</aside>
+<aside class="footnote brackets" id="f2" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id8">2</a><span class="fn-bracket">]</span></span>
+<p>一見すると戻り値が2つあるように見えるが、<code class="docutils literal notranslate"><span class="pre">plt.subplots()</span></code> はFigureオブジェクトとAxesオブジェクトのタプルを返しており（つまり戻り値は1つ）、タプルの各要素を <code class="docutils literal notranslate"><span class="pre">fig</span></code> と <code class="docutils literal notranslate"><span class="pre">ax</span></code> に割り当てている。戻り値のタプルを <code class="docutils literal notranslate"><span class="pre">,</span></code> 区切りの変数で受け取ることを<strong>アンパック</strong>という。</p>
+</aside>
+<aside class="footnote brackets" id="f3" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id9">3</a><span class="fn-bracket">]</span></span>
+<p>matplotlibの描画方法にはexplicit（明示的）な方法とimplicit（非明示的）な方法の2種類があるが、このテキストではexplicitな方法を説明する。implicitな方法というのは、<code class="docutils literal notranslate"><span class="pre">fig</span></code> や <code class="docutils literal notranslate"><span class="pre">ax</span></code> を用意することなく、いきなり <code class="docutils literal notranslate"><span class="pre">plt.plot()</span></code> などとプロットする方法のことである。implicitな方法は手軽にプロットできるというメリットがあるが、グラフの細かい調整ができないというデメリットもある。そのため、はじめからexplicitな方法を覚えるのがお勧めである。</p>
+</aside>
+</aside>
+</section>
 </section>
 </section>
 
@@ -771,8 +883,10 @@ f.close()
 
               
               
-                <footer class="bd-footer-article">
-                  <!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer">
+                  
 <div class="prev-next-area">
     <a class="left-prev"
        href="lecture10.html"
@@ -780,7 +894,7 @@ f.close()
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">第10回 アルゴリズム入門：問題の複雑さ</p>
+        <p class="prev-next-title">第10回 クラス</p>
       </div>
     </a>
     <a class="right-next"
@@ -788,7 +902,7 @@ f.close()
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">第12回 新しいデータ型を作る</p>
+        <p class="prev-next-title">第12回 表データの処理</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -801,6 +915,7 @@ f.close()
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
@@ -808,16 +923,18 @@ f.close()
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">この授業で学ぶこと</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">探索とは</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">線形探索</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">二分探索</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">ファイルの入出力</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#google">Googleドライブのマウント</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">ファイルの読み込み</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">ファイルの書き込み</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy">NumPy入門</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">配列</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">要素のアクセス</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">演算</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">演習</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matplotlib">Matplotlib入門</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">散布図</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">グラフの調整</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">折れ線グラフ</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
@@ -826,7 +943,7 @@ f.close()
             
           </div>
           <footer class="bd-footer-content">
-            <div class="bd-footer-content__inner">
+            
 <div class="bd-footer-content__inner container">
   
   <div class="footer-item">
@@ -839,9 +956,10 @@ By 大坪 舜 Shun Otsubo
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
-      © Copyright 2023（2023年3月30日公開）.
+      © Copyright 2023-2024（2023年3月30日公開）.
       <br/>
     
   </p>
@@ -856,7 +974,7 @@ By 大坪 舜 Shun Otsubo
     
   </div>
   
-</div></div>
+</div>
           </footer>
         
 
@@ -865,8 +983,8 @@ By 大坪 舜 Shun Otsubo
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

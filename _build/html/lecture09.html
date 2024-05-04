@@ -1,15 +1,14 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>第9回 アルゴリズム入門：データの整列 &#8212; プログラミング実習講義１</title>
+    <title>第9回 関数と再帰 &#8212; プログラミング実習講義１</title>
   
   
   
@@ -19,43 +18,41 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
-    <script src="_static/custom.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-VFVQWRM1GN"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -63,17 +60,22 @@
                 gtag('js', new Date());
                 gtag('config', 'G-VFVQWRM1GN');
             </script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-VFVQWRM1GN');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'lecture09';</script>
+    <script src="_static/custom.js?v=7ed3f353"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="第10回 アルゴリズム入門：問題の複雑さ" href="lecture10.html" />
-    <link rel="prev" title="第8回 関数と再帰" href="lecture08.html" />
+    <link rel="next" title="第10回 クラス" href="lecture10.html" />
+    <link rel="prev" title="第8回 データの入れ物" href="lecture08.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -83,7 +85,15 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -118,11 +128,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -137,6 +150,7 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="intro.html">
@@ -145,10 +159,22 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+  
     <p class="title logo__title">プログラミング実習講義１</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -165,15 +191,13 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="lecture04.html">第4回 プログラムの材料と道具</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture05.html">第5回 条件分岐</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture06.html">第6回 繰り返し</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lecture07.html">第7回 データの入れ物</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lecture08.html">第8回 関数と再帰</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">第9回 アルゴリズム入門：データの整列</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lecture10.html">第10回 アルゴリズム入門：問題の複雑さ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lecture11.html">第11回 アルゴリズム入門：データの探索</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lecture12.html">第12回 新しいデータ型を作る</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lecture13.html">第13回 データの可視化</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lecture14.html">第14回 データの読み方</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lecture15.html">第15回 探索的データ分析に挑戦！</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture07.html">第7回 これまでの復習と応用</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture08.html">第8回 データの入れ物</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">第9回 関数と再帰</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture10.html">第10回 クラス</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture11.html">第11回 データの可視化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture12.html">第12回 表データの処理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture13.html">第13回 データの読み方</a></li>
 </ul>
 
     </div>
@@ -280,20 +304,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -310,7 +336,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>第9回 アルゴリズム入門：データの整列</h1>
+    <h1>第9回 関数と再帰</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -321,11 +347,13 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">この授業で学ぶこと</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">ソートとは</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">挿入ソート</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">クイックソート</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">実行時間の比較</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">演習</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">関数</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">スコープ</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turtle">turtleによるグラフィック描画</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">再帰</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">余談: ジェネラティブ・アート</a></li>
 </ul>
             </nav>
         </div>
@@ -335,389 +363,470 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>第9回 アルゴリズム入門：データの整列<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
+<h1>第9回 関数と再帰<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <hr class="docutils" />
-<p><a class="reference external" href="https://colab.research.google.com/github/tsuboshun/begin-python/blob/gh-pages/_sources/workbook/lecture09.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+<p><a class="reference external" href="https://colab.research.google.com/github/tsuboshun/begin-python/blob/gh-pages/2024/workbook/lecture09.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
 <hr class="docutils" />
 <section id="id2">
-<h2>この授業で学ぶこと<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
-<p>今回から第11回にかけて、アルゴリズムの基礎について学ぶ。
-アルゴリズムとは、問題を解決するための手順のことを言う。アルゴリズムの主な目的は、問題を正確かつ効率的に解くことである。</p>
-<p>実はこれまでのテキストでも、練習問題や課題を通じて、アルゴリズムと言えるような手順をプログラムに起こす経験を積んできている。
-特に、どのような入力に対しても正しい答えを出力するようなプログラムを多く書いたと思うが、これがまさに問題を正確に解くということである。</p>
-<p>一方で、問題を効率的に解くことについては、これまであまり考えてこなかった。
-今回の授業では、データの整列を題材にいくつかのアルゴリズムを紹介し、それらの実行速度に差があることを見る。</p>
+<h2>この授業で学ぶこと<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>これまでPythonに既に用意されている関数を利用してきたが、今回は自分で関数を定義する方法について学ぶ。関数を定義することによって、繰り返し行われる処理を一箇所に集約し、コードの再利用性を高めるとともに、コードを理解しやすくすることができる。
+さらに、関数内で自分自身を呼び出す再帰という手法についても学ぶ。</p>
 </section>
 <section id="id3">
-<h2>ソートとは<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
-<p>データをとある規則にもとづいて順番に並び替えることを<strong>ソート</strong>（整列）という。
-例えば、整数のリスト</p>
-<pre>[8, 4, 5, 1, 2]</pre>
-<p>について、これを小さい順（<strong>昇順</strong>）にソートすると</p>
-<pre>[1, 2, 4, 5, 8]</pre>
-<p>となる。また大きい順（<strong>降順</strong>）にソートすると</p>
-<pre>[8, 5, 4, 2, 1]</pre>
-<p>となる。</p>
-<p>文字列を辞書順にソートする操作もよく行われる。
-例えば、文字列のリスト</p>
-<pre>["carrot", "onion", "eggplant", "beet", "cabbage"]</pre>
-<p>を辞書順にソートすると</p>
-<pre>["beet", "cabbage", "carrot", "eggplant", "onion"]</pre>
-<p>となる。</p>
-<p>今回は簡単のためリストデータのみを考え、さらに数値については昇順、文字列については辞書順に並べることに限定して考える。</p>
-<p>ソートは使用頻度の高い基本的な操作なので、数多くのアルゴリズムが考案されている。
-今回はその中から代表的な<strong>挿入ソート</strong>と<strong>クイックソート</strong>を紹介する。</p>
-<p>なお、実用上はリストの <code class="docutils literal notranslate"><span class="pre">sort()</span></code> メソッドや、組み込み関数の <code class="docutils literal notranslate"><span class="pre">sorted()</span></code> を使うことで簡単にソートすることができる。
-ここではアルゴリズムの学習のため、これらのメソッド・関数には頼らずに1からプログラムを作成することを考える。</p>
-<div class="note admonition">
-<p class="admonition-title">リストの要素の交換</p>
-<p>ソートアルゴリズムの実装では、リストの要素の交換をよく行う。
-例えば、<code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">[2,</span> <span class="pre">3]</span></code> というリストがあったとして、これの1番目と2番目の要素を入れ替えたいとする。</p>
-<p>次のコードは意図した結果にならない。</p>
-<pre>x[0] = x[1]  # この時点で x = [3, 3] になる
-x[1] = x[0]  # x = [3, 3]</pre>
-<p>上記の方法では上手くいかないので、変数の値を一時的に保存する <code class="docutils literal notranslate"><span class="pre">tmp</span></code> 変数を用意して次のように書くのが一般的な方法である。</p>
-<pre>tmp = x[0]
-x[0] = x[1]
-x[1] = tmp</pre>
-<p>Pythonでは、次のように簡潔な記法でも値を交換することができる。特に理由がなければ、以下の方法を使おう。</p>
-<pre>x[0], x[1] = x[1], x[0]
-</pre>
-</div>
-</section>
-<section id="id4">
-<h2>挿入ソート<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
-<p>挿入ソートは、簡単に言えば左から順に整列する方法である。
-挿入ソートが数字を昇順に並び替える様子を、次の図に示す。</p>
-<figure class="align-default" id="insert-sort">
-<a class="reference internal image-reference" href="_images/insert_sort.png"><img alt="_images/insert_sort.png" src="_images/insert_sort.png" style="width: 300px;" /></a>
+<h2>関数<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<p>関数は<strong>def文</strong>により定義する。</p>
+<figure class="align-default" id="def">
+<a class="reference internal image-reference" href="_images/def.png"><img alt="_images/def.png" src="_images/def.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 19 </span><span class="caption-text">挿入ソート：ループごとの整列の様子</span><a class="headerlink" href="#insert-sort" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 15 </span><span class="caption-text">def文の書き方</span><a class="headerlink" href="#def" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>あとで挿入ソートを <code class="docutils literal notranslate"><span class="pre">insert_sort()</span></code> 関数として実装するが、その内部でfor文を使用している。
-上図では、上から順にループ1回あたりの操作を示している。</p>
-<p>要素数が7のとき全部で6回のループ処理が行われるが、各ループで行っていることを言葉にすると次の通りである。</p>
-<ul class="simple">
-<li><p>1回目のループでは、左から2番目までの要素を昇順に並んだ状態にする。</p></li>
-<li><p>2回目のループでは、左から3番目までの要素を昇順に並んだ状態にする。<br />
-…</p></li>
-<li><p>6回目のループでは、左から7番目までの要素を昇順に並んだ状態にする。</p></li>
-</ul>
-<p>トランプなどのカードゲームにおいて、カードを並び替えるときに挿入ソートに近い方法を取る人は多いのではないだろうか。それくらい直感的でわかりやすい方法である。</p>
-<p>それでは、挿入ソートを実装してみよう。
-以下に未完成の <code class="docutils literal notranslate"><span class="pre">insert_sort()</span></code> 関数を用意した。
-<code class="docutils literal notranslate"><span class="pre">#ここに何か書く</span></code> とある位置に1行のコードを追加することで、プログラムを完成させてみてほしい。</p>
-<p>なお <code class="docutils literal notranslate"><span class="pre">verbose</span></code> というデフォルト引数により、オプションとして途中経過を出力できるようにしている。
-デフォルト値は <code class="docutils literal notranslate"><span class="pre">False</span></code> なので、単に <code class="docutils literal notranslate"><span class="pre">insert_sort(x)</span></code> と呼び出せば何も出力されない。
-一方で、<code class="docutils literal notranslate"><span class="pre">insert_sort(x,</span> <span class="pre">True)</span></code> や <code class="docutils literal notranslate"><span class="pre">insert_sort(x,</span> <span class="pre">verbose=True)</span></code> と呼び出すと途中経過を確認することができる。
-また関数に戻り値はなく、引数に渡した <code class="docutils literal notranslate"><span class="pre">x</span></code> を直接書き換えるコードとなっていることに注意する。</p>
+<p>関数定義はヘッダーとブロックから構成され、ヘッダーには <code class="docutils literal notranslate"><span class="pre">def</span></code> に続いて関数名と、カッコ内に引数を記述する。引数は任意で、引数がない場合には <code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">関数名():</span></code> と書き、引数が複数ある場合には上図のように <code class="docutils literal notranslate"><span class="pre">,</span></code> で区切って書く。ブロック内には関数の処理を書く。</p>
+<p><strong>return文</strong>は関数から値を返し、関数の実行を終了するための構文である。この文は任意であり、<code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">戻り値</span></code> という形式で記述する。return文に到達すると、指定された戻り値を返して関数の実行を終了する。return文が省略された場合には、関数の処理がブロックの最後まで実行された後に自動的に <code class="docutils literal notranslate"><span class="pre">None</span></code> という値を返す。</p>
+<p>第5回で作成したBMIの計算プログラムを例に、関数を作成してみよう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">insert_sort</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>  <span class="c1"># verboseは詳細の意味</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)):</span>
-        <span class="n">key</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>  <span class="c1"># 矢印の要素</span>
-        <span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span>
-        <span class="k">while</span> <span class="n">j</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">key</span><span class="p">:</span>
-            <span class="c1"># ここに何か書く</span>
-            <span class="n">j</span> <span class="o">-=</span> <span class="mi">1</span>
-            
-        <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">回目のループ終了時： </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="k">return</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">bmi</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>   <span class="c1"># aは身長[cm], bは体重[kg]</span>
+    <span class="k">return</span> <span class="mi">10000</span> <span class="o">*</span> <span class="n">b</span> <span class="o">/</span> <span class="n">a</span> <span class="o">**</span> <span class="mi">2</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="toggle docutils container">
-<p><strong>解答例</strong></p>
-<pre style={"white-space": "pre"}>
-def insert_sort(x, verbose=False):  # verboseは詳細の意味
-    for i in range(1, len(x)):
-        key = x[i]  # 矢印の要素
-        j = i - 1
-        while j >= 0 and x[j] > key:
-            x[j], x[j+1] = x[j+1], x[j]
-            j -= 1
-            
-        if verbose:
-            print(f"{i}回目のループ終了時： {x}")
-    return
-</pre>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bmi</span><span class="p">(</span><span class="mi">193</span><span class="p">,</span> <span class="mi">95</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
-<span class="n">insert_sort</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">bmi</span><span class="p">(</span><span class="mi">193</span><span class="p">,</span> <span class="mi">95</span><span class="p">)</span>  <span class="c1"># 下のgreetingとの比較のため、変数に代入する例も示す</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>return文を書かないと <code class="docutils literal notranslate"><span class="pre">None</span></code> が返される。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">greeting</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hi&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">greeting</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>基本的に、引数は関数で定義した順番通りに渡す必要がある。
+例えば上の例で <code class="docutils literal notranslate"><span class="pre">bmi(193,</span> <span class="pre">95)</span></code> と呼び出すと、引数に <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">193</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">=</span> <span class="pre">95</span></code> が代入されてブロックの処理が行われる。
+したがって、<code class="docutils literal notranslate"><span class="pre">10000</span> <span class="pre">*</span> <span class="pre">95</span> <span class="pre">/</span> <span class="pre">193</span> <span class="pre">**</span> <span class="pre">2</span></code> を計算した結果が戻り値として返される。</p>
+<p>そうではない場合として、<strong>キーワード引数</strong>や<strong>デフォルト引数</strong>を使用した場合がある。
+キーワード引数を使用すると、関数呼び出し時に引数の順番を自由に指定できる。
+キーワード引数は、関数の使用時に次のように <code class="docutils literal notranslate"><span class="pre">引数名</span> <span class="pre">=</span> <span class="pre">値</span></code> という形式で記述する。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bmi</span><span class="p">(</span><span class="n">b</span> <span class="o">=</span> <span class="mi">95</span><span class="p">,</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">193</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>また、デフォルト引数を設定すると、関数呼び出し時に特定の引数を省略可能となる。デフォルト引数は、関数の定義時に次のように <code class="docutils literal notranslate"><span class="pre">引数名</span> <span class="pre">=</span> <span class="pre">デフォルト値</span></code> という形式で記述する。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">bmi</span><span class="p">(</span><span class="n">a</span> <span class="o">=</span> <span class="mi">157</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">50</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">10000</span> <span class="o">*</span> <span class="n">b</span> <span class="o">/</span> <span class="n">a</span> <span class="o">**</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bmi</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bmi</span><span class="p">(</span><span class="mi">193</span><span class="p">,</span> <span class="mi">95</span><span class="p">)</span>  <span class="c1"># 引数に値を渡したら、デフォルト値よりこちらが優先される。</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="id4">
+<h3>スコープ<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<p><strong>スコープ</strong>とは、変数や関数などの名前がプログラム内で参照可能な範囲を指す。</p>
+<p>スコープには主に<strong>グローバルスコープ</strong>（またはモジュールスコープ）と<strong>ローカルスコープ</strong>の2種類がある。ノートブックを起動するとグローバルスコープが始まる。ノートブックのセル上で変数を定義すると、他のセルからも参照できるのは、これらが同じグローバルスコープに属するためである。ただし関数内だけは別で、関数内はローカルスコープという独自のスコープを持つ。</p>
+<p>グローバルスコープに属する変数を<strong>グローバル変数</strong>、ローカルスコープに属する変数を<strong>ローカル変数</strong>という。</p>
+<p>以下のコードをもとに、スコープの違いを理解しよう。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># グローバル変数</span>
+<span class="k">def</span> <span class="nf">func</span><span class="p">():</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># ローカル変数</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+        
+<span class="n">func</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>1行目の変数 <code class="docutils literal notranslate"><span class="pre">a</span></code> はグローバルスコープに属するグローバル変数である。一方で3行目の変数 <code class="docutils literal notranslate"><span class="pre">a</span></code> はローカルスコープに属するローカル変数であり、1行目の変数とは別物とみなされる。したがって、<code class="docutils literal notranslate"><span class="pre">func()</span></code> 関数を実行してもグローバル変数の値は変更されず、最後の <code class="docutils literal notranslate"><span class="pre">print(a)</span></code> の出力は1となる。</p>
+<p>重要な規則として、ローカルスコープからグローバル変数を参照することはできるが、グローバルスコープからローカル変数を参照することはできないというものがある。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># グローバル変数</span>
+<span class="k">def</span> <span class="nf">func</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>  <span class="c1"># ローカルスコープからグローバル変数 b を参照</span>
+    
+<span class="n">func</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">func</span><span class="p">():</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># ローカル変数</span>
+    
+<span class="n">func</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>  <span class="c1"># グローバルスコープからローカル変数 c は参照できない</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>スコープは初学者にとって少し難しい概念であるので、エラーが起きたり変数の値が予期せず変わったりしたときに、この概念を思い出して確認すると良いだろう。</p>
+</section>
+</section>
+<section id="turtle">
+<h2>turtleによるグラフィック描画<a class="headerlink" href="#turtle" title="Link to this heading">#</a></h2>
+<p>ここからはturtleというプログラミング学習用のグラフィック描画ライブラリを用いて、関数作成の練習をしてみよう。このライブラリではペン先を表すカメを操作することで、線を描画する。turtleモジュールは外部ライブラリなので、最初にpipによるインストールとimportが必要である。以下のコードを実行することで、turtleモジュールが使用可能な状態になる。</p>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">ColabTurtle</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">ColabTurtle.Turtle</span> <span class="k">as</span> <span class="nn">turtle</span>  <span class="c1"># Google Colab用のturtleライブラリ</span>
+
+<span class="n">turtle</span><span class="o">.</span><span class="n">DEFAULT_PEN_COLOR</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span>
+<span class="n">turtle</span><span class="o">.</span><span class="n">DEFAULT_BACKGROUND_COLOR</span> <span class="o">=</span> <span class="s1">&#39;white&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>turtleモジュールの主な関数は以下の通りである。</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">turtle.penup()</span></code></p>
+<ul>
+<li><p>ペン先を紙から離す。以降は、カメが移動しても線は引かれない。</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">turtle.pendown()</span></code></p>
+<ul>
+<li><p>ペン先を紙につける。以降は、カメが移動する度に線が引かれる。</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">turtle.forward(d)</span></code></p>
+<ul>
+<li><p>前方に距離 d だけ進む。</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">turtle.backward(d)</span></code></p>
+<ul>
+<li><p>後方に距離 d だけ進む。</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">turtle.goto(x,</span> <span class="pre">y)</span></code></p>
+<ul>
+<li><p>座標(x, y)に移動する。</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">turtle.position()</span></code></p>
+<ul>
+<li><p>現在の位置を返す。</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">turtle.right(a)</span></code></p>
+<ul>
+<li><p>右方向に a 度回転する。</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">turtle.left(a)</span></code></p>
+<ul>
+<li><p>左方向に a 度回転する。</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">turtle.setheading(a)</span></code></p>
+<ul>
+<li><p>右方向を0度、下方向を90度とする回転座標で a 度の方向を向く。</p></li>
+</ul>
+</li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">turtle.initializeTurtle()</span></code> を実行すると、初期化により画面が用意される。まずは、画面上の座標について確認してみよう。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">turtle</span><span class="o">.</span><span class="n">initializeTurtle</span><span class="p">(</span><span class="n">initial_window_size</span><span class="o">=</span><span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="mi">400</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;現在の座標: </span><span class="si">{</span><span class="n">turtle</span><span class="o">.</span><span class="n">position</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">turtle</span><span class="o">.</span><span class="n">setheading</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">turtle</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;現在の座標: </span><span class="si">{</span><span class="n">turtle</span><span class="o">.</span><span class="n">position</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">turtle</span><span class="o">.</span><span class="n">right</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
+<span class="n">turtle</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;現在の座標: </span><span class="si">{</span><span class="n">turtle</span><span class="o">.</span><span class="n">position</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>画面の大きさは<code class="docutils literal notranslate"><span class="pre">turtle.initializeTurtle()</span></code> 関数の引数 <code class="docutils literal notranslate"><span class="pre">initial_window_size</span></code> でタプルを使って指定しており、400 * 400である。
+座標は左上を原点(0, 0)とし、x軸は右方向に、y軸は下方向に伸びている。
+カメの初期位置は中央の(200, 200)である。
+上のプログラムでは、カメはx軸方向に100進んだあと、y軸方向に100進んでいる。</p>
+<p>それでは練習問題を通じて、描画用の関数を作ってみよう。</p>
+<p><strong>練習1</strong><br />
+1辺の長さ <code class="docutils literal notranslate"><span class="pre">size</span></code> を引数とし、正方形を描画する関数 <code class="docutils literal notranslate"><span class="pre">draw_square()</span></code> を作成しなさい。
+ただし <code class="docutils literal notranslate"><span class="pre">turtle.pendown()</span></code> から始め、<code class="docutils literal notranslate"><span class="pre">turtle.penup()</span></code> で終わること。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">draw_square</span><span class="p">(</span><span class="n">size</span><span class="p">):</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 作成したら描画してみる</span>
+<span class="n">turtle</span><span class="o">.</span><span class="n">initializeTurtle</span><span class="p">(</span><span class="n">initial_window_size</span><span class="o">=</span><span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="mi">400</span><span class="p">))</span>
+<span class="n">draw_square</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>練習2</strong><br />
+1辺の長さ <code class="docutils literal notranslate"><span class="pre">size</span></code> を引数とし、正三角形を描画する関数 <code class="docutils literal notranslate"><span class="pre">draw_triangle()</span></code> を作成しなさい。
+ただし <code class="docutils literal notranslate"><span class="pre">turtle.pendown()</span></code> から始め、<code class="docutils literal notranslate"><span class="pre">turtle.penup()</span></code> で終わること。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">draw_triangle</span><span class="p">(</span><span class="n">size</span><span class="p">):</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 作成したら描画してみる</span>
+<span class="n">turtle</span><span class="o">.</span><span class="n">initializeTurtle</span><span class="p">(</span><span class="n">initial_window_size</span><span class="o">=</span><span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="mi">400</span><span class="p">))</span>
+<span class="n">draw_triangle</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>練習3</strong><br />
+3以上の整数 <code class="docutils literal notranslate"><span class="pre">n</span></code> および1辺の長さ <code class="docutils literal notranslate"><span class="pre">size</span></code> を引数とし、正 <code class="docutils literal notranslate"><span class="pre">n</span></code> 角形を描画する関数 <code class="docutils literal notranslate"><span class="pre">draw_polygon()</span></code> を作成しなさい。ただし <code class="docutils literal notranslate"><span class="pre">turtle.pendown()</span></code> から始め、<code class="docutils literal notranslate"><span class="pre">turtle.penup()</span></code> で終わること。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">draw_polygon</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">size</span><span class="p">):</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 作成したら描画してみる</span>
+<span class="n">turtle</span><span class="o">.</span><span class="n">initializeTurtle</span><span class="p">(</span><span class="n">initial_window_size</span><span class="o">=</span><span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="mi">400</span><span class="p">))</span>
+<span class="n">draw_polygon</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>練習4</strong><br />
+1辺（例えば線分AB）の長さ <code class="docutils literal notranslate"><span class="pre">size</span></code> を引数とし、星形を描画する関数 <code class="docutils literal notranslate"><span class="pre">draw_star()</span></code> を作成しなさい。
+ただし <code class="docutils literal notranslate"><span class="pre">turtle.pendown()</span></code> から始め、<code class="docutils literal notranslate"><span class="pre">turtle.penup()</span></code> で終わること。星形は図の状態から傾いていてもよい。</p>
+<figure class="align-default" id="star">
+<a class="reference internal image-reference" href="_images/star.png"><img alt="_images/star.png" src="_images/star.png" style="width: 200px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 16 </span><span class="caption-text">星形</span><a class="headerlink" href="#star" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">draw_star</span><span class="p">(</span><span class="n">size</span><span class="p">):</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 作成したら描画してみる</span>
+<span class="n">turtle</span><span class="o">.</span><span class="n">initializeTurtle</span><span class="p">(</span><span class="n">initial_window_size</span><span class="o">=</span><span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="mi">400</span><span class="p">))</span>
+<span class="n">draw_star</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="id5">
-<h2>クイックソート<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
-<p>クイックソートは、リストを部分に分割し、それぞれに対して再帰的に整列を行うことで全体を整列する方法である。
-クイックソートが数字を昇順に並べる様子を、次の図に示す。</p>
-<figure class="align-default" id="quick-sort1">
-<a class="reference internal image-reference" href="_images/quick_sort1.png"><img alt="_images/quick_sort1.png" src="_images/quick_sort1.png" style="width: 300px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 20 </span><span class="caption-text">クイックソート：再帰呼び出しごとの整列の様子</span><a class="headerlink" href="#quick-sort1" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<p>あとでクイックソートを <code class="docutils literal notranslate"><span class="pre">quick_sort()</span></code> 関数として実装するが、その内部で再帰呼び出しを行っている。
-上図では、上から順に再帰呼び出しごとの操作を表しており、青の領域ごとに <code class="docutils literal notranslate"><span class="pre">quick_sort()</span></code> 関数を適用していることを表している。</p>
-<p>それぞれの段で行っていることを言葉にすると次の通りである。</p>
-<ul class="simple">
-<li><p>1段目ではリスト全体に対して <code class="docutils literal notranslate"><span class="pre">quick_sort()</span></code> を適用する。右端の要素を<strong>ピボット</strong>とし、ピボットより小さい要素を左に寄せ、ピボット以上の要素を右に寄せ、それらの間にピボットを置く。</p></li>
-<li><p>2段目では（1段目の）ピボットの両側について、それぞれに <code class="docutils literal notranslate"><span class="pre">quick_sort()</span></code> を適用する。それぞれのリストの右端の要素をピボットとし、それぞれのリスト内で先ほどと同様の処理を行う。</p></li>
-<li><p>3段目では（2段目の）各ピボットの両側について、それぞれに <code class="docutils literal notranslate"><span class="pre">quick_sort()</span></code> を適用する。今回はどれも要素数1なので、並び替えは行われない。</p></li>
-</ul>
-<p>1段目の操作の詳細を図示したものが、次の図である。</p>
-<figure class="align-default" id="quick-sort2">
-<a class="reference internal image-reference" href="_images/quick_sort2.png"><img alt="_images/quick_sort2.png" src="_images/quick_sort2.png" style="width: 300px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 21 </span><span class="caption-text">クイックソート： <code class="xref std std-numref docutils literal notranslate"><span class="pre">quick_sort1</span></code> 1段目の操作の詳細</span><a class="headerlink" href="#quick-sort2" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<p>左端から順にピボットより小さい要素を埋めていく。左に位置する青矢印は次に埋めるべき位置を表している。
-青矢印と灰矢印を次のように動かしていく。</p>
-<ol class="arabic simple">
-<li><p>青矢印と灰矢印を1番目の要素からスタートさせる</p></li>
-<li><p>灰矢印を1つずつ右へ進めていってピボットより小さい要素を探す</p></li>
-<li><p>ピボットより小さい要素が見つかったら、両矢印の要素を交換し、青矢印を右へ1つ進めて2に戻る</p></li>
-</ol>
-<ul class="simple">
-<li><p>（青矢印と灰矢印が同じ位置の場合は、交換しても何も起こらない）</p></li>
-</ul>
-<ol class="arabic simple" start="4">
-<li><p>ピボットより小さい要素が見つからなかったら、そこで処理を終了し、最後に青矢印の要素とピボットを交換する。</p></li>
-</ol>
-<p>上記手順を終えると、[ピボットより小さい要素] [ピボット] [ピボット以上の要素] の順に要素が並んだ状態になる。
-あとはピボットの両側の要素に対して再帰的に <code class="docutils literal notranslate"><span class="pre">quick_sort()</span></code> 関数を適用すれば、全体が整列した状態にすることができる。</p>
-<p>挿入ソートに比べるとあまり直感的な方法ではないと感じるかもしれないが、実はプログラミングの世界では典型的と言えるような問題の解き方をしている。
-このように問題を部分に分割して再帰的に解き、それらを合わせて全体の問題を解く方法を<strong>分割統治法</strong>（divide-and-conquer）という。</p>
-<p>それでは、クイックソートを実装してみよう。
-以下に未完成の <code class="docutils literal notranslate"><span class="pre">quick_sort()</span></code> 関数を用意した。
-<code class="docutils literal notranslate"><span class="pre">#ここに何か書く</span></code> とある位置に1行のコードを、<code class="docutils literal notranslate"><span class="pre">return</span></code> の手前に2行のコードを追加することで、プログラムを完成させてみてほしい。</p>
-<p>なお <code class="docutils literal notranslate"><span class="pre">insert_sort()</span></code> 関数とは異なり、<code class="docutils literal notranslate"><span class="pre">quick_sort()</span></code> 関数はソートする範囲を <code class="docutils literal notranslate"><span class="pre">left</span></code> と <code class="docutils literal notranslate"><span class="pre">right</span></code> という引数で指定できるようにしている。
-<code class="docutils literal notranslate"><span class="pre">left</span></code> は左端のインデックス、<code class="docutils literal notranslate"><span class="pre">right</span></code> は右端のインデックスを表す。これらの引数は、リストの一部分を再帰的にソートする際に必要になる。</p>
+<h2>再帰<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<p>以下のコードを実行すると木の枝のような模様が描かれる。どのような処理が行われているか理解できるだろうか。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">quick_sort</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">right</span> <span class="o">-</span> <span class="n">left</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">return</span>
-    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;quick_sort(x, </span><span class="si">{</span><span class="n">left</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">right</span><span class="si">}</span><span class="s2">) 呼び出し時: </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-    
-    <span class="n">pivot</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">right</span><span class="p">]</span> <span class="c1"># 右端をpivotとする</span>
-    
-    <span class="n">i</span> <span class="o">=</span> <span class="n">left</span> <span class="c1"># i: 青矢印</span>
-    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">):</span> <span class="c1"># j: 灰矢印</span>
-        <span class="k">if</span> <span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">pivot</span><span class="p">:</span>
-            <span class="c1"># ここに何か書く</span>
-            <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
-            
-    <span class="c1"># pivotの値をi番目と交換することで、 xの中身は[pivot未満のデータ], pivot, [pivot以上のデータ] という順になる</span>
-    <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="n">right</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">right</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-    
-    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;再帰呼び出し前： </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">draw_branch</span><span class="p">(</span><span class="n">length</span><span class="p">,</span> <span class="n">depth</span><span class="p">):</span>
+    <span class="n">turtle</span><span class="o">.</span><span class="n">pendown</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">depth</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">turtle</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">length</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">turtle</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">length</span><span class="p">)</span>
+        <span class="n">turtle</span><span class="o">.</span><span class="n">left</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+        <span class="n">draw_branch</span><span class="p">(</span><span class="n">length</span><span class="p">,</span> <span class="n">depth</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># 再帰呼び出し</span>
+        <span class="n">turtle</span><span class="o">.</span><span class="n">right</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span>
+        <span class="n">draw_branch</span><span class="p">(</span><span class="n">length</span><span class="p">,</span> <span class="n">depth</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># 再帰呼び出し</span>
+        <span class="n">turtle</span><span class="o">.</span><span class="n">left</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+    <span class="n">turtle</span><span class="o">.</span><span class="n">backward</span><span class="p">(</span><span class="n">length</span><span class="p">)</span>
+    <span class="n">turtle</span><span class="o">.</span><span class="n">penup</span><span class="p">()</span>
         
-    <span class="c1"># ここに再帰呼び出しのコードを書く</span>
-    <span class="k">return</span>
+<span class="n">turtle</span><span class="o">.</span><span class="n">initializeTurtle</span><span class="p">(</span><span class="n">initial_window_size</span><span class="o">=</span><span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="mi">400</span><span class="p">),</span> <span class="n">initial_speed</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>  <span class="c1"># 描画のスピードを1~13の間で指定できる</span>
+<span class="n">turtle</span><span class="o">.</span><span class="n">penup</span><span class="p">()</span>
+<span class="n">turtle</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">350</span><span class="p">)</span>
+
+<span class="c1"># 木を描画</span>
+<span class="n">draw_branch</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="toggle docutils container">
-<p><strong>解答例</strong></p>
-<pre style={"white-space": "pre"}>
-def quick_sort(x, left, right, verbose=False):
-    if right - left <= 0:
-        return
-    if verbose:
-        print(f"quick_sort(x, {left}, {right}) 呼び出し時: {x}")
-    
-    pivot = x[right] # 右端をpivotとする
-    
-    i = left # i: 青矢印
-    for j in range(left, right): # j: 灰矢印
-        if x[j] < pivot:
-            x[i], x[j] = x[j], x[i]
-            i += 1
-            
-    # pivotの値をi番目と交換することで、 xの中身は[pivot未満のデータ], pivot, [pivot以上のデータ] という順になる
-    x[i], x[right] = x[right], x[i]
-    
-    if verbose:
-        print(f"再帰呼び出し前： {x}\n")
-        
-    # ここに再帰呼び出しのコードを書く
-    quick_sort(x, left, i-1, verbose)
-    quick_sort(x, i+1, right, verbose)
-    return
-</pre>
+<p><code class="docutils literal notranslate"><span class="pre">draw_branch()</span></code> 関数の中身を読むと、<code class="docutils literal notranslate"><span class="pre">draw_branch()</span></code> 関数自身が呼び出されている箇所がある。
+このように関数が自分自身を呼び出すことを<strong>再帰</strong>呼び出しといい、またそのような定義は再帰的であるという。</p>
+<p>このコードを図解すると次のようになる。</p>
+<figure class="align-default" id="tree">
+<a class="reference internal image-reference" href="_images/tree.png"><img alt="_images/tree.png" src="_images/tree.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 17 </span><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">draw_branc()</span></code> の再帰呼び出し</span><a class="headerlink" href="#tree" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>カメはステップ①で木の枝を描き、ステップ③、⑤で再帰的に木を描く。
+それ以外は向きの調整と、始点に戻る操作を行っているだけである。
+ステップ③、⑤それぞれにおいて、<code class="docutils literal notranslate"><span class="pre">draw_branch()</span></code> 関数のステップ①〜⑦が繰り返される。
+<code class="docutils literal notranslate"><span class="pre">draw_branch()</span></code> 関数において線を描いているのはステップ①のみであるが、このように繰り返し処理を行うことで、徐々に木の形が出来上がる。</p>
+<p>ステップ⑦の始点に戻る操作は、忘れやすい部分ではあるが重要である。
+というのもステップ④、⑤は、ステップ③の終了時にカメがちょうど上図の位置にまで戻ってくることを前提としているからである。</p>
+<p>再帰を使用することで、for文などのループ構文を用いずに反復的な問題を解くことができる。
+ただし、適切に終了条件を設定することが必要であり、これがないと無限ループに陥る可能性がある。
+木の例では、枝の深さに制限をつけるため <code class="docutils literal notranslate"><span class="pre">depth</span></code> という引数を使用し、再帰呼び出しの度に1ずつ減らしている。
+そして <code class="docutils literal notranslate"><span class="pre">depth</span> <span class="pre">==</span> <span class="pre">0</span></code> となったときに再帰呼び出しを行わず、枝を１本描くだけでreturnしている。</p>
+<p><strong>練習5</strong><br />
+現在の <code class="docutils literal notranslate"><span class="pre">draw_branch()</span></code> 関数では、木の根元から先端までの分岐の間隔が一定であり、結果として描かれる木は不自然な形状をしている。
+より自然な木の形状を再現するために、再帰呼び出しの度に、枝の長さが0.8倍になるように <code class="docutils literal notranslate"><span class="pre">draw_branch()</span></code> を修正しなさい。
+<a href="https://code-judge-system.vercel.app/?&id=9-5" target="_blank">
+<img src="./_images/launch.svg" style="width: 20px; height: 20px;">
+</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">draw_branch</span><span class="p">(</span><span class="n">length</span><span class="p">,</span> <span class="n">depth</span><span class="p">):</span>
+    <span class="n">turtle</span><span class="o">.</span><span class="n">pendown</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">depth</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">turtle</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">length</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">turtle</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">length</span><span class="p">)</span>
+        <span class="n">turtle</span><span class="o">.</span><span class="n">left</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+        <span class="n">draw_branch</span><span class="p">(</span><span class="n">length</span><span class="p">,</span> <span class="n">depth</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">turtle</span><span class="o">.</span><span class="n">right</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span>
+        <span class="n">draw_branch</span><span class="p">(</span><span class="n">length</span><span class="p">,</span> <span class="n">depth</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">turtle</span><span class="o">.</span><span class="n">left</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+    <span class="n">turtle</span><span class="o">.</span><span class="n">backward</span><span class="p">(</span><span class="n">length</span><span class="p">)</span>
+    <span class="n">turtle</span><span class="o">.</span><span class="n">penup</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
-<span class="n">quick_sort</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 作成したら描画してみる</span>
+<span class="n">turtle</span><span class="o">.</span><span class="n">initializeTurtle</span><span class="p">(</span><span class="n">initial_window_size</span><span class="o">=</span><span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="mi">400</span><span class="p">),</span> <span class="n">initial_speed</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">turtle</span><span class="o">.</span><span class="n">penup</span><span class="p">()</span>
+<span class="n">turtle</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">350</span><span class="p">)</span>
+<span class="n">draw_branch</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="id6">
-<h2>実行時間の比較<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
-<p>挿入ソートとクイックソートの大きな違いとして、データ数が増えたときの実行時間の増え方が挙げられる。
-実験して確かめてみよう。</p>
-<p>まず実行時間の測定方法について説明する。<br />
-<code class="docutils literal notranslate"><span class="pre">exec_time()</span></code> 関数は、<code class="docutils literal notranslate"><span class="pre">algo</span></code> で指定したソートの実行時間を測定し戻り値として返す。
-timeモジュールの <code class="docutils literal notranslate"><span class="pre">time.time()</span></code> 関数を利用しているが、これはUNIX時間（1970年1月1日午前0時0分0秒からの経過秒数）を返す関数である。
-<code class="docutils literal notranslate"><span class="pre">exec_time()</span></code> では、ソートの実行前後のUNIX時間の差から、ソートの実行時間を求めている。</p>
+<h2>余談: ジェネラティブ・アート<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
+<p>余談として、<strong>ジェネラティブ・アート</strong>について紹介する。
+ジェネラティブ・アートとは、アルゴリズム<a class="footnote-reference brackets" href="#f1" id="id7" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>やルール、自動化されたプロセスを用いて作品を生成するアートの一形態である。
+コンピュータやプログラミング言語を使って、これらのアルゴリズムやプロセスを実行し、視覚的または音響的な要素を生み出す。
+自然界の複雑さや美しさからインスピレーションを得た作品を、それとは対極の論理的で機械的なコンピュータを使って表現するところが、このアート形態の面白いところである。
+したがって、多くの場合に乱数の要素が作品に取り入れられており、実行するごとに毎回異なるパターンを楽しむことができる。</p>
+<p>Georg Neesが1968年に発表した <em>Schotter</em> は、最初のジェネラティブ・アート作品だと言われている。
+以下のプログラムは、<em>Schotter</em>  を模倣したコード<a class="footnote-reference brackets" href="#f2" id="id8" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>である。
+12個の正方形が規則的に並べられた行から始まり、下に行くにつれて徐々に秩序が失われる様子が描かれる。</p>
+<p>プログラムを実行して鑑賞してみよう。
+余力のある人は、どのようなアルゴリズムが使われているか、コードの読解に挑戦してみてほしい。
+<code class="docutils literal notranslate"><span class="pre">random.uniform()</span></code> 関数が初めて使われているが、これは引数を <code class="docutils literal notranslate"><span class="pre">a</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span></code>とするとき、<code class="docutils literal notranslate"><span class="pre">a</span></code> と <code class="docutils literal notranslate"><span class="pre">b</span></code> の間の小数を一様な確率で返す関数である。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># パラメータ</span>
+<span class="n">columns</span> <span class="o">=</span> <span class="mi">12</span>   <span class="c1"># 横方向の数</span>
+<span class="n">rows</span> <span class="o">=</span> <span class="mi">22</span>    <span class="c1"># 縦方向の数</span>
+<span class="n">size</span> <span class="o">=</span> <span class="mi">28</span>    <span class="c1"># 正方形の一辺の長さ</span>
+<span class="n">padding</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">size</span>   <span class="c1"># 余白の大きさ</span>
 
-<span class="k">def</span> <span class="nf">exec_time</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">algo</span><span class="p">):</span>
-    <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-    <span class="k">if</span> <span class="n">algo</span> <span class="o">==</span> <span class="s2">&quot;insert&quot;</span><span class="p">:</span>
-        <span class="n">insert_sort</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">quick_sort</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-    <span class="k">return</span> <span class="n">end</span> <span class="o">-</span> <span class="n">start</span>
+<span class="c1"># 画面の用意</span>
+<span class="n">width</span> <span class="o">=</span> <span class="n">columns</span> <span class="o">*</span> <span class="n">size</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">padding</span>  <span class="c1"># 左右の余白の分 2 * padding を足している</span>
+<span class="n">height</span> <span class="o">=</span> <span class="n">rows</span> <span class="o">*</span> <span class="n">size</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">padding</span>  <span class="c1"># 上下の...</span>
+<span class="n">turtle</span><span class="o">.</span><span class="n">initializeTurtle</span><span class="p">(</span><span class="n">initial_speed</span><span class="o">=</span><span class="mi">13</span><span class="p">,</span> <span class="n">initial_window_size</span><span class="o">=</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">))</span>
+<span class="n">turtle</span><span class="o">.</span><span class="n">hideturtle</span><span class="p">()</span>  <span class="c1"># カメは描画しない</span>
+
+<span class="c1"># 模様の描画</span>
+<span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">rows</span><span class="p">):</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="n">y</span> <span class="o">*</span> <span class="p">(</span><span class="n">y</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.11</span>  <span class="c1"># yが大きくなるにつれ、乱数を大きくする</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">columns</span><span class="p">):</span>
+        <span class="n">rand</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="n">v</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>  <span class="c1"># 乱数の生成</span>
+        <span class="n">turtle</span><span class="o">.</span><span class="n">penup</span><span class="p">()</span>
+        <span class="n">turtle</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span>
+            <span class="n">padding</span> <span class="o">+</span> <span class="n">x</span> <span class="o">*</span> <span class="n">size</span> <span class="o">+</span> <span class="n">rand</span> <span class="o">*</span> <span class="mf">0.45</span><span class="p">,</span>  <span class="c1"># 乱数に0.45を掛けた分だけ位置をずらす</span>
+            <span class="n">padding</span> <span class="o">+</span> <span class="n">y</span> <span class="o">*</span> <span class="n">size</span> <span class="o">+</span> <span class="n">rand</span> <span class="o">*</span> <span class="mf">0.45</span>
+        <span class="p">)</span>
+        <span class="n">turtle</span><span class="o">.</span><span class="n">pendown</span><span class="p">()</span>
+        <span class="n">turtle</span><span class="o">.</span><span class="n">setheading</span><span class="p">(</span><span class="n">rand</span><span class="p">)</span>  <span class="c1"># 乱数の分だけ傾ける </span>
+        <span class="c1"># 正方形の描画</span>
+        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+            <span class="n">turtle</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">size</span><span class="p">)</span>
+            <span class="n">turtle</span><span class="o">.</span><span class="n">right</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>以下の <code class="docutils literal notranslate"><span class="pre">generate_data()</span></code> 関数は、ランダムな0以上1未満の小数を要素とするサイズ <code class="docutils literal notranslate"><span class="pre">N</span></code> のリストを生成する。
-生成されたリストを使って、ソートにかかる時間を測定してみよう。
-<code class="docutils literal notranslate"><span class="pre">N</span> <span class="pre">=</span> <span class="pre">10**2</span></code> くらいまでは挿入ソートとクイックソートの間に大きな差はないが、<code class="docutils literal notranslate"><span class="pre">N</span> <span class="pre">=</span> <span class="pre">10**4</span></code> くらいになるとクイックソートの方が明らかに速いことが確かめられる。</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
-
-<span class="k">def</span> <span class="nf">generate_data</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
-    <span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
-        <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">())</span>  <span class="c1"># random.random()は0以上1未満の小数を返す</span>
-    <span class="k">return</span> <span class="n">data</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">**</span> <span class="mi">2</span>
-<span class="n">x1</span> <span class="o">=</span> <span class="n">generate_data</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
-<span class="n">x2</span> <span class="o">=</span> <span class="n">x1</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>  <span class="c1"># 同じデータを使用するためにコピーする</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;挿入ソートの実行時間: </span><span class="si">{</span><span class="n">exec_time</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;insert&#39;</span><span class="p">)</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;クイックソートの実行時間: </span><span class="si">{</span><span class="n">exec_time</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;quick&#39;</span><span class="p">)</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="id7">
-<h2>演習<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h2>
-<p>以下は、第8回までの内容の復習問題である。</p>
-<p><strong>課題1</strong><br />
-整数 <code class="docutils literal notranslate"><span class="pre">x</span></code> が与えられる。 <code class="docutils literal notranslate"><span class="pre">x</span></code> が偶数のとき <code class="docutils literal notranslate"><span class="pre">&quot;偶数&quot;</span></code>、そうでないとき <code class="docutils literal notranslate"><span class="pre">&quot;奇数&quot;</span></code> と出力するプログラムを書きなさい。</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># x の一例 </span>
-<span class="n">x</span> <span class="o">=</span> <span class="mi">2</span>
-
-<span class="c1">### （出席課題）以下を埋めて、ここの部分のみ提出する。出力にはprint()関数を使うこと。</span>
-
-
-<span class="c1">###</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="toggle docutils container">
-<p><strong>解答例</strong></p>
-<pre style={"white-space": "pre"}>
-if x % 2 == 0:
-    print("偶数")
-else:
-    print("奇数")
-</pre>
-<p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">%</span> <span class="pre">2</span></code> を評価すると、<code class="docutils literal notranslate"><span class="pre">x</span></code> を2で割った余りが求まる。
-よって、<code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">%</span> <span class="pre">2</span> <span class="pre">==</span> <span class="pre">0</span></code> により偶数かどうかを判定することができる。</p>
-</div>
-<p><strong>課題2</strong><br />
-引数として整数 <code class="docutils literal notranslate"><span class="pre">x</span></code> を受け取り、<code class="docutils literal notranslate"><span class="pre">x</span></code> が偶数のとき <code class="docutils literal notranslate"><span class="pre">True</span></code>、そうでないとき <code class="docutils literal notranslate"><span class="pre">False</span></code> を戻り値として返す関数 <code class="docutils literal notranslate"><span class="pre">is_even()</span></code>を作成しなさい。</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### （出席課題）コード全体を提出する。</span>
-
-<span class="k">def</span> <span class="nf">is_even</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="k">pass</span>  <span class="c1"># ここに適切なコードを書く</span>
-
-<span class="c1">###</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="toggle docutils container">
-<p><strong>解答例</strong></p>
-<pre style={"white-space": "pre"}>
-def is_even(x):
-    if x % 2 == 0:
-        return True
-    else:
-        return False
-</pre>
-<p>上のように書くのが発想としては自然だが、次のように書くこともできる。</p>
-<p><strong>別解例</strong></p>
-<pre style={"white-space": "pre"}>
-def is_even(x):
-    return x % 2 == 0
-</pre>
-<p><strong>コメント</strong></p>
-<p><code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">(True)</span></code> と書いている人が一定数いたが、returnは関数ではないので <code class="docutils literal notranslate"><span class="pre">()</span></code> は必要ない。ただし <code class="docutils literal notranslate"><span class="pre">()</span></code> をつけても、演算順序を決める <code class="docutils literal notranslate"><span class="pre">()</span></code> と解釈されて <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">True</span></code> と同じになるので動作上は問題ない。</p>
-<p>コードの一部または全体で、インデントを忘れている人も一定数いた。<code class="docutils literal notranslate"><span class="pre">:</span></code> を書いたときは、次の行はインデントを1つ深くする必要があるので、改めて気をつけてほしい。</p>
-</div>
-<p><strong>課題3</strong><br />
-整数からなるリスト <code class="docutils literal notranslate"><span class="pre">data</span></code> が与えられる。リストの要素について偶数の要素の数を求めて出力するプログラムを作成しなさい。</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># dataの一例 （この例では3と出力するのが正しい）</span>
-<span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
-
-<span class="c1">### （出席課題） 以下を埋めて、ここの部分のみ提出する。出力にはprint()関数を使うこと。</span>
-
-<span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
-    <span class="k">pass</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
-
-<span class="c1">### </span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="toggle docutils container">
-<p><strong>解答例</strong></p>
-<pre style={"white-space": "pre"}>
-count = 0
-for v in data:
-    if v % 2 == 0:
-        count += 1
-        
-print(count)
-</pre>
-</div>
+<hr class="footnotes docutils" />
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="f1" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id7">1</a><span class="fn-bracket">]</span></span>
+<p>アルゴリズムとは問題を解決するための手順のことである。</p>
+</aside>
+<aside class="footnote brackets" id="f2" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id8">2</a><span class="fn-bracket">]</span></span>
+<p>こちらの<a class="reference external" href="http://www.artsnova.com/Nees_Schotter_Tutorial.html">サイト</a>に掲載されているProcessingプログラムをPythonに書き換え作成した。</p>
+</aside>
+</aside>
 </section>
 </section>
 
@@ -746,8 +855,10 @@ print(count)
 
               
               
-                <footer class="bd-footer-article">
-                  <!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer">
+                  
 <div class="prev-next-area">
     <a class="left-prev"
        href="lecture08.html"
@@ -755,7 +866,7 @@ print(count)
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">第8回 関数と再帰</p>
+        <p class="prev-next-title">第8回 データの入れ物</p>
       </div>
     </a>
     <a class="right-next"
@@ -763,7 +874,7 @@ print(count)
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">第10回 アルゴリズム入門：問題の複雑さ</p>
+        <p class="prev-next-title">第10回 クラス</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -776,6 +887,7 @@ print(count)
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
@@ -783,11 +895,13 @@ print(count)
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">この授業で学ぶこと</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">ソートとは</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">挿入ソート</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">クイックソート</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">実行時間の比較</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">演習</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">関数</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">スコープ</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turtle">turtleによるグラフィック描画</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">再帰</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">余談: ジェネラティブ・アート</a></li>
 </ul>
   </nav></div>
 
@@ -796,7 +910,7 @@ print(count)
             
           </div>
           <footer class="bd-footer-content">
-            <div class="bd-footer-content__inner">
+            
 <div class="bd-footer-content__inner container">
   
   <div class="footer-item">
@@ -809,9 +923,10 @@ By 大坪 舜 Shun Otsubo
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
-      © Copyright 2023（2023年3月30日公開）.
+      © Copyright 2023-2024（2023年3月30日公開）.
       <br/>
     
   </p>
@@ -826,7 +941,7 @@ By 大坪 舜 Shun Otsubo
     
   </div>
   
-</div></div>
+</div>
           </footer>
         
 
@@ -835,8 +950,8 @@ By 大坪 舜 Shun Otsubo
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>
