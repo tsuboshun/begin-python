@@ -1,0 +1,1085 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>第13回 データの読み方 &#8212; プログラミング実習講義１</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-VFVQWRM1GN"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-VFVQWRM1GN');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-VFVQWRM1GN');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lecture13';</script>
+    <script src="_static/custom.js?v=7ed3f353"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="第12回 表データの処理" href="lecture12.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">プログラミング実習講義１</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    プログラミング実習講義１のページ
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="lecture01.html">第1回 ガイダンス</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture02.html">第2回 ITを支えるコンピュータのしくみ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture03.html">第3回 はじめてのPython</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture04.html">第4回 プログラムの材料と道具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture05.html">第5回 条件分岐</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture06.html">第6回 繰り返し</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture07.html">第7回 これまでの復習と応用</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture08.html">第8回 データの入れ物</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture09.html">第9回 関数と再帰</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture10.html">第10回 クラス</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture11.html">第11回 データの可視化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture12.html">第12回 表データの処理</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">第13回 データの読み方</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/lecture13.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>第13回 データの読み方</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">この授業で学ぶこと</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">データの種類</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">データの分布と代表値</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">分布の可視化</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">代表値</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">変数変換</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">層別分析</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">相関と因果</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>第13回 データの読み方<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<hr class="docutils" />
+<p><a class="reference external" href="https://colab.research.google.com/github/tsuboshun/begin-python/blob/gh-pages/2024/workbook/lecture13.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+<hr class="docutils" />
+<section id="id2">
+<h2>この授業で学ぶこと<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>第11回と第12回で、matplotlibとpandasの使い方について学んだ。
+今回はこれらのライブラリを活用しながら、データ分析の手法・考え方について代表的なものを学ぶ。</p>
+<p>データサイエンスにおいてデータ分析は中心的な役割を持つ。データサイエンスにおいてよくある一連のプロセスは以下の通りである：データ収集、データクリーニング、データ分析、モデル作成、予測と解釈。ここで言うモデルとは世間的にはAIと呼ばれるもので、例えば過去のデータをもとに将来の施策に対する効果を予測するのに用いられる。データ分析はその前段階にあたるプロセスで、データについての理解を深め、データからどのような知見を引き出すことができるか、ひいてはどのような予測モデルを構築できそうか当たりをつけるために行う。決められた手順があるわけではないので、<strong>探索的データ分析</strong>（exploratory data analysis, EDA）などと言うこともある。</p>
+<p>今回はデータ分析の手法・考え方について学びながら、データ分析の雰囲気を体験してもらう。</p>
+</section>
+<section id="id3">
+<h2>データの種類<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<p>データ分析を行うにあたって、どのような種類のデータを扱っているかを認識することが重要である。
+この節では、データの大まかな分類について説明する。</p>
+<p>まず、データは大まかに質的変数と量的変数に分けられる。
+質的変数はさらに名義尺度と順序尺度に分類され、量的変数はさらに間隔尺度と比例尺度に分類される。</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>種類</p></th>
+<th class="head"><p>尺度</p></th>
+<th class="head"><p>概要</p></th>
+<th class="head"><p>例</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>質的変数</p></td>
+<td><p>名義尺度</p></td>
+<td><p>分類のための尺度。順番にも間隔にも意味がない。</p></td>
+<td><p>性別、血液型</p></td>
+</tr>
+<tr class="row-odd"><td><p>質的変数</p></td>
+<td><p>順序尺度</p></td>
+<td><p>分類のための尺度。順番に意味があるが、間隔に意味がない。</p></td>
+<td><p>5段階評価</p></td>
+</tr>
+<tr class="row-even"><td><p>量的変数</p></td>
+<td><p>間隔尺度</p></td>
+<td><p>量を表す尺度。順番にも間隔にも意味があるが、比率に意味がない。</p></td>
+<td><p>温度、西暦</p></td>
+</tr>
+<tr class="row-odd"><td><p>量的変数</p></td>
+<td><p>比例尺度</p></td>
+<td><p>量を表す尺度。順番・間隔・比率に意味がある。</p></td>
+<td><p>金額、重さ</p></td>
+</tr>
+</tbody>
+</table>
+<p>それぞれの尺度の概要は、上の表の通りである。例をもとに具体的に説明しよう。</p>
+<p>名義尺度の例として、性別が挙げられる。性別は人間に男性または女性というラベルを割り当てたものであって、これらのラベルの順番に意味はないし、間隔というものを考えることもできない。</p>
+<p>順序尺度の例として、5段階評価が挙げられる。
+例えば顧客の満足度を1から5の整数で表してデータを集計したとして、これらの数値の順番には意味があるが、間隔には意味がない。
+評価5は大満足、評価4は満足を表すのであって、評価5と評価4の差が、評価2と評価1の差と同じ程度のものかはわからない。</p>
+<p>間隔尺度の例として、温度（℃）が挙げられる。
+温度は順番にも間隔にも意味がある。しかし、0℃は人間が適当に決めた基準であって、それ以下がないという意味の絶対的な0度ではない。したがって、30℃は15℃の2倍という主張にあまり意味がない。実際、華氏（℉）に直すと30℃は86℉、15℃は59℉であり、0度の基準が異なれば、先ほどの主張が成立しなくなる。</p>
+<p>比例尺度の例として、金額が挙げられる。金額は順番・間隔・比率に意味がある。例えば、100円玉を5枚集めると500円になるので、500円は100円の5倍という主張は正しい。</p>
+</section>
+<section id="id4">
+<h2>データの分布と代表値<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<section id="id5">
+<h3>分布の可視化<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<p>データの<strong>分布</strong>とは、データの値が全体にどのように散らばっているか、または集中しているかを示すものである。データの分布を確認すると、データの全体的な構造や傾向を理解することができる。そのためデータ分析の最初の一歩として、データの分布を確認することが多い。この節ではデータの分布を調べ、そこから有用な情報を得るための方法をいくつか学ぶ。</p>
+<p>この節で利用するライブラリのimportを行う。前回も利用した <code class="docutils literal notranslate"><span class="pre">'diamonds'</span></code> というテーブルデータを利用する。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">japanize_matplotlib</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">japanize_matplotlib</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;font.size&#39;</span><span class="p">:</span> <span class="mi">14</span><span class="p">})</span>  <span class="c1"># 文字サイズを14pxとする</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s1">&#39;diamonds&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>データの分布を確認するための可視化手法に<strong>棒グラフ</strong>と<strong>ヒストグラム</strong>がある。</p>
+<p>質的変数などの取りうる値の種類が少ないデータに対しては、棒グラフを描くことが有効である。質的変数の取る値の種類を<strong>カテゴリ</strong>というが、カテゴリごとのデータ数を集計して棒グラフとしてプロットする例を以下に示す。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># プロットの入れ物の用意</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="c1"># データの用意</span>
+<span class="n">cut_counts</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;cut&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+
+<span class="c1"># 棒グラフのプロット</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">cut_counts</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">cut_counts</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+
+<span class="c1"># 軸ラベルの設定</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;カット&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;カウント&quot;</span><span class="p">)</span>
+
+<span class="c1"># 表示</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/053d2c91836887af06411de0aa93cf71d0188eca2052ee57d6f061ae2970ab79.png" src="_images/053d2c91836887af06411de0aa93cf71d0188eca2052ee57d6f061ae2970ab79.png" />
+</div>
+</div>
+<p>ここでシリーズの <code class="docutils literal notranslate"><span class="pre">value_counts()</span></code> メソッドにより、カテゴリをラベル、そのデータ数を要素とするシリーズを作成している。Axesの <code class="docutils literal notranslate"><span class="pre">bar()</span></code> メソッドに、インデックスと値を渡すことで棒グラフをプロットすることができる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cut_counts</span>  <span class="c1"># カテゴリをラベル、データ数を要素とするシリーズ</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ideal        21551
+Premium      13791
+Very Good    12082
+Good          4906
+Fair          1610
+Name: cut, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>量的変数などの取りうる値の種類が多いデータに対しては、ヒストグラムが有効である。</p>
+<p>ヒストグラムはデータの値をいくつかの階級に分割し、階級ごとのデータ数を集計して可視化する。
+ヒストグラムのプロット例を以下に示す。<code class="docutils literal notranslate"><span class="pre">diamonds</span></code> データセットにおける <code class="docutils literal notranslate"><span class="pre">&quot;price&quot;</span></code> の値を1次元配列として取得し、そのヒストグラムをプロットしている。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># プロットの入れ物の用意</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="c1"># データの用意</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;price&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+
+<span class="c1"># ヒストグラムのプロット</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># 軸ラベルの設定</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;価格&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;カウント&quot;</span><span class="p">)</span>
+
+<span class="c1"># 表示</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/adbfe9e8bd6bbe471a863649dd6e8bab8214d50236b316781c26f52c46f9dd9f.png" src="_images/adbfe9e8bd6bbe471a863649dd6e8bab8214d50236b316781c26f52c46f9dd9f.png" />
+</div>
+</div>
+<p>Axesの <code class="docutils literal notranslate"><span class="pre">hist()</span></code> メソッドに1次元配列を渡すことで、ヒストグラムを作成できる。キーワード引数で <code class="docutils literal notranslate"><span class="pre">bins</span></code> を指定すると、横軸の分割数を指定できる（<strong>ビン数</strong>という）。ビン数を大きくすると、より細かい粒度で分布の形を確認できる。上のヒストグラムからは、例えば価格の低いダイヤモンドにデータ数が偏っていることが確認できる。</p>
+</section>
+<section id="id6">
+<h3>代表値<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<p>データの分布を確認する代わりに、分布を要約するような統計量を調べることもよく行われる。
+このような統計量のことを<strong>代表値</strong>という。
+代表値の例としては、平均値（または平均）、標準偏差、中央値などがある。</p>
+<p>データが正規分布にしたがうときは、平均と標準偏差だけで分布を再現することができるので、これらは分布についての十分な情報を持つ。正規分布にしたがうデータについて、平均と標準偏差を求めて分布と照らし合わせてみよう。以下では、<code class="docutils literal notranslate"><span class="pre">np.random.normal()</span></code> 関数により平均10、標準偏差2の正規分布にしたがうデータを1000個生成し、そのヒストグラムを作成している。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># プロットの入れ物の用意</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="c1"># データの用意</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+
+<span class="c1"># ヒストグラムのプロット</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
+
+<span class="c1"># 平均、標準偏差の可視化</span>
+<span class="n">mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">std</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">mean</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">mean</span><span class="o">-</span><span class="n">std</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">mean</span><span class="o">+</span><span class="n">std</span> <span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+
+<span class="c1"># 表示</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/0f02f8a104d4d84b25669e8584567c47d8dcbb34db002c859e287321690091e8.png" src="_images/0f02f8a104d4d84b25669e8584567c47d8dcbb34db002c859e287321690091e8.png" />
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">sample_data</span></code> から求まる平均を <span class="math notranslate nohighlight">\(\hat{\mu}\)</span>、標準偏差を <span class="math notranslate nohighlight">\(\hat{\sigma}\)</span> と書くとき、<span class="math notranslate nohighlight">\(\hat{\mu}-\hat{\sigma}\)</span>、<span class="math notranslate nohighlight">\(\hat{\mu}\)</span>、<span class="math notranslate nohighlight">\(\hat{\mu}+\hat{\sigma}\)</span> の位置を <code class="docutils literal notranslate"><span class="pre">axvline()</span></code> メソッドによりそれぞれ縦の点線として表示している。
+データが正規分布にしたがうとき、平均は分布のちょうど真ん中あたりに来る。また <span class="math notranslate nohighlight">\(\hat{\sigma}\)</span> の大きさが、データの平均周りのバラつきの目安となる大きさであることも確認できる。</p>
+<p>平均と標準偏差の記号にハットをつけたのは、これらはデータを生成するのに指定した平均と標準偏差から一般にズレた値になるからである。
+後者を母平均、母標準偏差といい、これらの値を <span class="math notranslate nohighlight">\(\mu\)</span>、<span class="math notranslate nohighlight">\(\sigma\)</span> で表す（ここでは <span class="math notranslate nohighlight">\(\mu = 10\)</span>、<span class="math notranslate nohighlight">\(\sigma = 2\)</span>）。</p>
+<p>注意したいのが「<strong>平均は必ずしも普通を表さない</strong>」ということである。例えば、先ほどのダイヤモンドの価格の例で、平均の位置を縦の点線で表示すると次のようになる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># プロットの入れ物の用意</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="c1"># データの用意</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;price&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+
+<span class="c1"># ヒストグラムのプロット</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># 平均の可視化</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+
+<span class="c1"># 軸ラベルの設定</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;価格&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;カウント&quot;</span><span class="p">)</span>
+
+<span class="c1"># 表示</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/2f85e8ba0e3f1c3160927640a63a0c44bd06de238e757b7405e7d0d223fc6226.png" src="_images/2f85e8ba0e3f1c3160927640a63a0c44bd06de238e757b7405e7d0d223fc6226.png" />
+</div>
+</div>
+<p>データ数のピークが左の方にある中で、赤の点線の位置を普通と捉えるのは疑問である。この例のように分布の裾が長く、歪んだ形をしているとき、平均値はあまり良い代表値とは言えなくなる。また例えば、このテーブルデータにたった1個1億ドルのダイヤモンドのデータを追加するだけで、平均値は右に1850ドル近くシフトする。このような<strong>外れ値</strong>に引っ張られるというのも、平均値の欠点の1つである。</p>
+<p>また「中央値も必ずしも普通を表さない」。例えば同じサイズの釣鐘型の分布を2つ並べたような分布を考えると、中央値はちょうどそれらの中間に来るが、このとき中央値はどちらのピークも適切に表現しない。一方で、中央値は外れ値の影響を受けにくいという平均値にない長所を持つ。したがって、外れ値の多いデータにおいては平均値よりも中央値の方が代表値として適切な場合がある。</p>
+<p>このように代表値を使うときにも、データの分布や外れ値の存在を把握して、適切な統計量を選択することが重要である。</p>
+</section>
+<section id="id7">
+<h3>変数変換<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<p>価格のような比例尺度は、対数をとると分布の形が綺麗になることが多い。</p>
+<p>その理由は、価格の場合、差は比率で考える方が社会的な慣習としてより自然なためである。
+例えば、10ドルの商品を11ドルに値上げするのと、1000ドルの商品を1001ドルに値上げするのとでは、前者の方が大きな値上げに感じると思う。
+これは私たちが価格の差を比率で捉えることに慣れていることに起因する。</p>
+<p>価格についてそのままヒストグラムを作成すると、例えばビンの幅を1ドルとして、10ドル 〜 11ドルのデータ数を1000ドル 〜 1001ドルのデータ数と比較することになる。しかし、高価格帯における1ドルの重みは低価格帯と比べて低いので、このような分割を行うと高価格帯ほどデータ数の少ない裾の長い分布が得られやすい。一方で、価格について対数をとってからヒストグラムを作成すると、例えば10ドル 〜 11ドルのデータ数は1000ドル 〜 1100ドルのデータ数と比較されることになる。これは <span class="math notranslate nohighlight">\(\log a - \log b = \log\frac{a}{b}\)</span> より <span class="math notranslate nohighlight">\(\log\)</span> のスケールで一定間隔をとることは、元のスケールで一定比率でビンを作るのと等しいためである。そして、価格においては対数をとることでデータの分布は釣鐘型に近くなることが多い。</p>
+<p>価格について対数をとってから、ヒストグラムを作成する例を以下に示す。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># プロットの入れ物の用意</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="c1"># データの用意</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;price&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+
+<span class="c1"># ヒストグラムのプロット</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># 軸ラベルの設定</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;価格&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;カウント&quot;</span><span class="p">)</span>
+
+<span class="c1"># 表示</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/18d105cb361da4ae5cfda0b7d1bbc8ceac0e27b0a03057fa4c82b3ac9e03950e.png" src="_images/18d105cb361da4ae5cfda0b7d1bbc8ceac0e27b0a03057fa4c82b3ac9e03950e.png" />
+</div>
+</div>
+<p>適切な変数変換を行うと、変換前には見えなかった特徴を見つけられることがある。この例ではピークが2つあるように見える。</p>
+</section>
+<section id="id8">
+<h3>層別分析<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">diamonds</span></code> データセットのように複数の要素からなるデータに対しては、とある基準でデータをグループ分けしたあとで、グループごとに分析すると有効なことが多い。このような分析を<strong>層別分析</strong>という。</p>
+<p>例として、カラットについて <span class="math notranslate nohighlight">\((0, 0.5], (0.5, 1], (1, 1.5], (1.5, 2], (2, 6]\)</span> の5つの範囲でグループ分けして、それぞれのグループで価格の分布を調べてみよう。ここで <span class="math notranslate nohighlight">\((a, b]\)</span> という記号は <span class="math notranslate nohighlight">\(a &lt; x \leq b\)</span> という不等式で表される区間を表す。</p>
+<p><code class="docutils literal notranslate"><span class="pre">pd.cut()</span></code> メソッドにシリーズと数値の配列を渡すと、シリーズの値を配列の数値で区切ってグループ分けした結果をシリーズとして返してくれる。
+以下のコードでは、<code class="docutils literal notranslate"><span class="pre">pd.cut()</span></code> メソッドを使ってグループ分けを行い、その結果を <code class="docutils literal notranslate"><span class="pre">&quot;carat_bin&quot;</span></code> という新しい列に代入している。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;carat_bin&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;carat&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>carat</th>
+      <th>cut</th>
+      <th>color</th>
+      <th>clarity</th>
+      <th>depth</th>
+      <th>table</th>
+      <th>price</th>
+      <th>x</th>
+      <th>y</th>
+      <th>z</th>
+      <th>carat_bin</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.23</td>
+      <td>Ideal</td>
+      <td>E</td>
+      <td>SI2</td>
+      <td>61.5</td>
+      <td>55.0</td>
+      <td>326</td>
+      <td>3.95</td>
+      <td>3.98</td>
+      <td>2.43</td>
+      <td>(0.0, 0.5]</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.21</td>
+      <td>Premium</td>
+      <td>E</td>
+      <td>SI1</td>
+      <td>59.8</td>
+      <td>61.0</td>
+      <td>326</td>
+      <td>3.89</td>
+      <td>3.84</td>
+      <td>2.31</td>
+      <td>(0.0, 0.5]</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.23</td>
+      <td>Good</td>
+      <td>E</td>
+      <td>VS1</td>
+      <td>56.9</td>
+      <td>65.0</td>
+      <td>327</td>
+      <td>4.05</td>
+      <td>4.07</td>
+      <td>2.31</td>
+      <td>(0.0, 0.5]</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.29</td>
+      <td>Premium</td>
+      <td>I</td>
+      <td>VS2</td>
+      <td>62.4</td>
+      <td>58.0</td>
+      <td>334</td>
+      <td>4.20</td>
+      <td>4.23</td>
+      <td>2.63</td>
+      <td>(0.0, 0.5]</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.31</td>
+      <td>Good</td>
+      <td>J</td>
+      <td>SI2</td>
+      <td>63.3</td>
+      <td>58.0</td>
+      <td>335</td>
+      <td>4.34</td>
+      <td>4.35</td>
+      <td>2.75</td>
+      <td>(0.0, 0.5]</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">&quot;carat_bin&quot;</span></code> の全てのカテゴリは、<code class="docutils literal notranslate"><span class="pre">df[&quot;carat_bin&quot;].unique()</span></code> により取得できる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;carat_bin&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(0.0, 0.5], (0.5, 1.0], (1.0, 1.5], (1.5, 2.0], (2.0, 6.0]]
+Categories (5, interval[float64, right]): [(0.0, 0.5] &lt; (0.5, 1.0] &lt; (1.0, 1.5] &lt; (1.5, 2.0] &lt; (2.0, 6.0]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>それではカテゴリごとに、価格の分布をヒストグラムとしてプロットしてみよう。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># プロットの入れ物の用意</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="c1"># ヒストグラムのプロット</span>
+<span class="k">for</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;carat_bin&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">():</span>
+    <span class="n">df_subset</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;carat_bin&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">group</span><span class="p">]</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">df_subset</span><span class="p">[</span><span class="s2">&quot;price&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">group</span><span class="p">))</span>   <span class="c1"># alphaは透明度を表す</span>
+    
+<span class="c1"># 軸の範囲を設定</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+
+<span class="c1"># 軸ラベルの設定</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;価格&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;カウント&quot;</span><span class="p">)</span>
+    
+<span class="c1"># 表示</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/97dc2b6a07e6bcf5d89a3be59e61b14250fa785c943485d3c4f39c3c26e242a6.png" src="_images/97dc2b6a07e6bcf5d89a3be59e61b14250fa785c943485d3c4f39c3c26e242a6.png" />
+</div>
+</div>
+<p>層別分析を行う前に価格のヒストグラムをプロットしたときには、ピークが2つ見えていた。一方で上のプロットを見ると、カラットでグループ分けした後ではピークが1つの綺麗な釣鐘型をしている。これから例えば、カラットの大きさで価格が大体決まること、そしてカラットの分布にピークが複数あるために、価格の分布にピークが複数できているのではないかという仮説を立てることができる。</p>
+</section>
+</section>
+<section id="id9">
+<h2>相関と因果<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
+<p>データ分析の主な目標として、複数の要素の間の関係を明らかにするという点が挙げられる。
+ここでは2つの要素の関係を表す概念である相関と因果について解説する。</p>
+<p>まず、<strong>相関</strong>とは「データの見かけ上、一方の値が増えるときにもう一方の値が増える（または減る）」という関係のことをいう。一方の値が増えるときに、もう一方の値が増えるとき正の相関があるといい、もう一方の値が減るとき負の相関があるという。もう一方の値が増えるとも減るとも言えないとき、無相関であるという。</p>
+<p>相関を調べるには、散布図をプロットするのが有効である。
+例として、カラットと価格の間の関係を散布図により可視化してみよう。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># プロットの入れ物の用意</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="c1"># データの用意</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;carat&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;price&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+
+<span class="c1"># 散布図</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
+
+<span class="c1"># 軸ラベルの設定</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;カラット&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;価格&quot;</span><span class="p">)</span>
+
+<span class="c1"># 表示</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/1bf175842b69790bb8f9d81c190c1fa722b022c94dc1f44c3d16b9dd2465b54e.png" src="_images/1bf175842b69790bb8f9d81c190c1fa722b022c94dc1f44c3d16b9dd2465b54e.png" />
+</div>
+</div>
+<p>これを見ると、対数をとった後では、カラットと価格の間に直線に近い綺麗な正の相関があることが確かめられる。</p>
+<p>上の例では量的変数の間の相関をみたが、質的変数と量的変数の間、質的変数と質的変数の間にも相関を考えることができる。
+例として、カットと価格の相関を棒グラフにより可視化してみよう。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># プロットの入れ物の用意</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="c1"># データの用意</span>
+<span class="n">mean_price</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;cut&#39;</span><span class="p">)[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">order</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Fair&quot;</span><span class="p">,</span> <span class="s2">&quot;Good&quot;</span><span class="p">,</span> <span class="s2">&quot;Very Good&quot;</span><span class="p">,</span> <span class="s2">&quot;Premium&quot;</span><span class="p">,</span> <span class="s2">&quot;Ideal&quot;</span><span class="p">]</span>
+<span class="n">mean_price</span> <span class="o">=</span> <span class="n">mean_price</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">order</span><span class="p">]</span>  <span class="c1"># シリーズの並び順をorderの順に変更</span>
+
+<span class="c1"># 棒グラフのプロット</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">mean_price</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">mean_price</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+
+<span class="c1"># 軸ラベルの設定</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;カット&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;平均価格&quot;</span><span class="p">)</span>
+
+<span class="c1"># 表示</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/daf634afd4e025058c5e73757a285e6c25f3f1d89ba643459672f772d045a5a0.png" src="_images/daf634afd4e025058c5e73757a285e6c25f3f1d89ba643459672f772d045a5a0.png" />
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">df.groupby('cut')['price'].mean()</span></code> を実行すると、カットをインデックスとし、カットごとの価格の平均を値とするシリーズを取得できる。このコードは複雑に見えるかもしれないが、今はおまじないとして理解しておけばよい。また <code class="docutils literal notranslate"><span class="pre">mean_price</span> <span class="pre">=</span> <span class="pre">mean_price.loc[order]</span></code> によりシリーズのインデックスの順を <code class="docutils literal notranslate"><span class="pre">order</span></code> の順に設定することで、棒グラフの横軸の値がカットの質の低い順となるようにしている。そして <code class="docutils literal notranslate"><span class="pre">mean_price</span></code> のインデックスと値を、<code class="docutils literal notranslate"><span class="pre">ax.bar()</span></code> メソッドに渡すことにより棒グラフをプロットしている。</p>
+<p>プロットを見ると、Premiumは例外的だが、大まかにはカットの質が上がるほど平均価格が下がるという負の相関があるように見える。
+しかし、これは常識的に考えておかしな関係である。</p>
+<p>この分析結果を理解するためには、「<strong>相関は必ずしも因果を意味しない</strong>」という点を理解することが重要である。ここで、<strong>因果</strong>とは「一方の値を操作して変化させたときにもう一方の値が変化する」という関係のことをいう。要するに原因と結果の関係である。</p>
+<p>例えば、先ほどのカラットと価格の間の正の相関は、実際の因果関係を反映したものであると推測することができる。なぜなら常識的に考えて、他の条件を固定してカラットを大きくすれば、原価の分、価格も合わせて高くなるはずだからである。一方で、カットと価格の間の負の相関は、実際の因果関係を表していないと考えられる。なぜなら常識的に考えて、他の条件を固定してカットの質を上げれば、手間隙のかかる分、価格も高くなるはずだからである。</p>
+<p>後者のように実際の因果関係とは異なる見かけ上の相関のことを<strong>擬似相関</strong>という。擬似相関は多くの場合、2つの要素のほかに<strong>交絡因子</strong>という第三の要素が存在することにより起こる。カットと価格の間の負の相関は、カラットを交絡因子として以下のように理解できる。</p>
+<p>まず、カットとカラットの間の相関を棒グラフにより可視化してみる。以下のコードでは、カットごとの平均カラットの値を棒グラフとしてプロットしている。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># プロットの入れ物の用意</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="c1"># データの用意</span>
+<span class="n">mean_price</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;cut&#39;</span><span class="p">)[</span><span class="s1">&#39;carat&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">order</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Fair&quot;</span><span class="p">,</span> <span class="s2">&quot;Good&quot;</span><span class="p">,</span> <span class="s2">&quot;Very Good&quot;</span><span class="p">,</span> <span class="s2">&quot;Premium&quot;</span><span class="p">,</span> <span class="s2">&quot;Ideal&quot;</span><span class="p">]</span>
+<span class="n">mean_price</span> <span class="o">=</span> <span class="n">mean_price</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">order</span><span class="p">]</span>  <span class="c1"># シリーズの並び順をorderの順に変更</span>
+
+<span class="c1"># 棒グラフのプロット</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">mean_price</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">mean_price</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+
+<span class="c1"># 軸ラベルの設定</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;カット&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;平均カラット&quot;</span><span class="p">)</span>
+
+<span class="c1"># 表示</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/d797a207f3fe9d061dc1a040853301e45884eba82cb10e16c3d04dc05013387f.png" src="_images/d797a207f3fe9d061dc1a040853301e45884eba82cb10e16c3d04dc05013387f.png" />
+</div>
+</div>
+<p>これを見ると、カットとカラットの間には大まかに負の相関があることがわかる。この相関が、実際の因果関係を反映したものか考えてみよう。カラットがカットに合わせて変わるということはあり得ないので、因果としてあり得るとしたらカットがカラットに合わせて変わるということである。これはあり得る話である。例えばカラットの小さいダイヤモンドを売るために、より質の高いカットを行う必要があるのかもしれない。一方で、カラットの大きいダイヤモンドは、カットの質によらず商品として成立するために、質の低いカットを採用することも多々あるのかもしれない。</p>
+<p>以上の考察により、小さいカラットほど質の高いカットが採用されやすいという因果関係があるという仮説を立てることができる。
+一方で、カラットと価格の間には、これもまた因果関係と解釈できる正の相関があるのであった。
+これらを踏まえると、カットと価格の間の負の相関は、カラットという交絡因子の影響を強く受けた結果、擬似相関が見えているのではないかという仮説を立てることができる。つまり、カットと価格の間の負の相関はデータの見かけ上の話であって、実際にカットの質を上げたときに価格が下がるわけではないと考えられる。</p>
+<p>相関と因果の違いについて、もう一つ有名な例を挙げて説明しよう。各日のアイスクリームの売上と水難事故の件数をデータとして取得し、散布図をプロットすると、両者に明確な正の相関があることが知られている。しかし、これは明らかに擬似相関であって因果関係ではない。例えば、アイスクリームの販売をやめたところで水難事故の件数が減るわけではないし、逆も然りである。この例では気温を交絡因子として次のように理解できる。気温が上がるとアイスクリームの売上が上がり、気温が上がると水難事故の件数が上がるという因果関係がある。このときアイスクリームの売上と、水難事故の件数は気温に合わせて変動するため、両者の間に擬似相関が発生する。</p>
+<p>2つの例における因果関係を原因から結果の方向に矢印をつけた<strong>因果グラフ</strong>で表現すると、次の図のようになる。
+左の例ではカットから価格に矢印が伸びているが、カラットの影響により、相関の正負が実際の因果関係と反対になるという擬似相関が発生している。一方で右の例では、そもそも因果関係のない2つの要素の間に擬似相関が発生している。</p>
+<figure class="align-default" id="dag">
+<a class="reference internal image-reference" href="_images/DAG.png"><img alt="_images/DAG.png" src="_images/DAG.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 23 </span><span class="caption-text">因果グラフ</span><a class="headerlink" href="#dag" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>この節の要点をまとめると、データをもとに2つの要素の関係を調べるときには基本的に相関を見ることになるが、そこから何か結論を得るときには「相関は必ずしも因果を意味しない」ということに気をつけて、慎重な姿勢で分析することが重要である。</p>
+<p><strong>練習1</strong><br />
+カラットを横軸、価格を縦軸の値とした散布図を作成しなさい。ただし、ここでは対数変換をしないでそのままの値でプロットすること。また横軸に <code class="docutils literal notranslate"><span class="pre">&quot;カラット&quot;</span></code>、縦軸に <code class="docutils literal notranslate"><span class="pre">&quot;価格&quot;</span></code> という軸ラベルをつけなさい。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ここに適切なコードを書く</span>
+
+<span class="c1"># ファイルとして保存</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;練習1.png&quot;</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<p>プロットしたら以下のコードを実行することにより、画像をダウンロードできる。これを提出しなさい。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">files</span>
+<span class="n">files</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s2">&quot;練習1.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>注意として、ファイルとして保存する場合は <code class="docutils literal notranslate"><span class="pre">plt.show()</span></code> を実行してはいけない。これを実行してしまうと白紙の画像ファイルがダウンロードされる。</p>
+<p><strong>練習2</strong><br />
+カラットについて、対数関数により値を変換した上でヒストグラムを作成しなさい。ビン数や軸ラベルなどの細かい設定は、各自の判断で決めてよい。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ここに適切なコードを書く</span>
+
+<span class="c1"># ファイルとして保存</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;練習2.png&quot;</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<p>プロットしたら以下のコードを実行することにより、画像をダウンロードできる。これを提出しなさい。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">files</span>
+<span class="n">files</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s2">&quot;練習2.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="lecture12.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">第12回 表データの処理</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">この授業で学ぶこと</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">データの種類</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">データの分布と代表値</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">分布の可視化</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">代表値</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">変数変換</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">層別分析</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">相関と因果</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By 大坪 舜 Shun Otsubo
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023-2024（2023年3月30日公開）.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

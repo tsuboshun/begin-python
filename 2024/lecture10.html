@@ -1,0 +1,802 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>第10回 クラス &#8212; プログラミング実習講義１</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-VFVQWRM1GN"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-VFVQWRM1GN');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-VFVQWRM1GN');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lecture10';</script>
+    <script src="_static/custom.js?v=7ed3f353"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="第11回 データの可視化" href="lecture11.html" />
+    <link rel="prev" title="第9回 関数と再帰" href="lecture09.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">プログラミング実習講義１</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    プログラミング実習講義１のページ
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="lecture01.html">第1回 ガイダンス</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture02.html">第2回 ITを支えるコンピュータのしくみ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture03.html">第3回 はじめてのPython</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture04.html">第4回 プログラムの材料と道具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture05.html">第5回 条件分岐</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture06.html">第6回 繰り返し</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture07.html">第7回 これまでの復習と応用</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture08.html">第8回 データの入れ物</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture09.html">第9回 関数と再帰</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">第10回 クラス</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture11.html">第11回 データの可視化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture12.html">第12回 表データの処理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture13.html">第13回 データの読み方</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/lecture10.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>第10回 クラス</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">この授業で学ぶこと</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">クラス</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">初期化メソッド</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">メソッド</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">オブジェクト指向プログラミング</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">演習</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>第10回 クラス<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<hr class="docutils" />
+<p><a class="reference external" href="https://colab.research.google.com/github/tsuboshun/begin-python/blob/gh-pages/2024/workbook/lecture10.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+<hr class="docutils" />
+<section id="id2">
+<h2>この授業で学ぶこと<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>前回は新しい関数を定義する方法について学んだ。今回はさらに進んで、新しいデータ型を定義するための方法であるクラスについて学ぶ。クラスを利用することで、データとそれを操作するメソッドを一つのまとまりとして扱えるため、関数と同様にコードの再利用性を高め、より直感的で理解しやすいコードを書くことができるようになる。</p>
+</section>
+<section id="id3">
+<h2>クラス<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<p>第4回で学んだメソッドやオブジェクト、クラス、インスタンスといった概念について、簡単に復習しておこう。まず、特定のデータ型に属する関数のことをメソッドと言う。そして、データとメソッドを合わせてオブジェクトと言い、オブジェクトの設計図をクラス、クラスに基づいて作られる具体的なオブジェクトのことをインスタンスと言うのであった。ここでデータ型という言葉は、オブジェクトの種類を表すために用いられる。つまり、クラスはデータ型の設計図とも言える。</p>
+<p>新しいデータ型（オブジェクト）は、クラスを定義することで作ることができる。クラスは次の図のように定義する。</p>
+<figure class="align-default" id="class">
+<a class="reference internal image-reference" href="_images/class.png"><img alt="_images/class.png" src="_images/class.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 18 </span><span class="caption-text">classの書き方</span><a class="headerlink" href="#class" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>クラス定義はヘッダーとブロックから構成され、ヘッダーには <code class="docutils literal notranslate"><span class="pre">class</span></code> に続いてクラス名を書く。そして、ブロックにメソッドを定義していく。メソッドの定義の書き方は普通の関数とほぼ同じであるが、第一引数は必ず <code class="docutils literal notranslate"><span class="pre">self</span></code> にするという決まりがある。これはインスタンス自身を渡すための変数である。</p>
+<p>まずは最も簡単なクラスを定義してみよう。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Apple</span><span class="p">:</span>
+    <span class="k">pass</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<p>クラス名は自由に設定することができるが、1文字目のみを大文字にするという慣例がある。一方でメソッド名は全て小文字で書くのが慣例となっている。</p>
+<p>このクラスのインスタンスは次のようにして作成する。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">Apple</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>このインスタンスにデータを持たせよう。例えば、栄養を表す <code class="docutils literal notranslate"><span class="pre">nutrition</span></code> というデータを次のように付与することができる。
+このデータのことを<strong>属性</strong>（<strong>アトリビュート</strong>）という。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">.</span><span class="n">nutrition</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">nutrition</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>この属性は <code class="docutils literal notranslate"><span class="pre">a</span></code> というインスタンスに固有のものである。クラスが同じであっても、各インスタンスの持つ属性は別々に管理される。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="n">Apple</span><span class="p">()</span>
+<span class="n">b</span><span class="o">.</span><span class="n">nutrition</span> <span class="c1"># こちらのインスタンスには属性は定義されていない</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="id4">
+<h3>初期化メソッド<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<p>インスタンス１つ１つに属性を設定していくのは大変なので、インスタンスの生成時に最初から属性を持たせたくなる。これを実現するのが<strong>初期化メソッド</strong>である。初期化メソッドは、classのブロック中に <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> という名前のメソッドとして定義する。先ほど述べたとおり、第一引数に <code class="docutils literal notranslate"><span class="pre">self</span></code> という変数を設定する必要があり、これにインスタンス自身が渡される。そして初期化メソッド内では、<code class="docutils literal notranslate"><span class="pre">self.属性名</span> <span class="pre">=</span> <span class="pre">値</span></code> という代入文で、属性名とその値を設定する。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Apple</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nutrition</span> <span class="o">=</span> <span class="mi">10</span>
+        
+<span class="n">a</span> <span class="o">=</span> <span class="n">Apple</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">nutrition</span><span class="p">)</span>  <span class="c1"># 初期化の時点で10という値が設定されている。</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>初期化メソッドに引数を追加することで、<code class="docutils literal notranslate"><span class="pre">nutrition</span></code> の値を外から設定できるようにすることもできる。
+このとき <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> に設定した第二引数以降が、<code class="docutils literal notranslate"><span class="pre">クラス名()</span></code> と呼び出すときの引数に対応する。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Apple</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nutrition</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nutrition</span> <span class="o">=</span> <span class="n">nutrition</span>
+        
+<span class="n">a</span> <span class="o">=</span> <span class="n">Apple</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">nutrition</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>初期化メソッドのようにメソッド名の両端にアンダースコア2つ <code class="docutils literal notranslate"><span class="pre">__</span></code> をつけたメソッドのことを <strong>特殊メソッド</strong> という。
+特殊メソッドは次に説明する普通のメソッドとは異なり、その用途に応じてメソッド名が決められている。
+また普通のメソッドのように <code class="docutils literal notranslate"><span class="pre">データ.メソッド名()</span></code> という呼び出し方をしない。</p>
+</section>
+<section id="id5">
+<h3>メソッド<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<p>普通のメソッドの定義の仕方は、初期化メソッドと同様である。
+ここでは日にちを1日経過させるメソッドとして <code class="docutils literal notranslate"><span class="pre">step()</span></code> を定義してみよう。
+まずは初期化メソッドの中で、日にちを管理する属性として <code class="docutils literal notranslate"><span class="pre">day</span></code> を定義しておく。
+次にclassブロック中に <code class="docutils literal notranslate"><span class="pre">step()</span></code> という関数を追加する。
+ここでもやはり、第一引数に <code class="docutils literal notranslate"><span class="pre">self</span></code> を設定することに注意する。</p>
+<p><code class="docutils literal notranslate"><span class="pre">step()</span></code> 関数の中で <code class="docutils literal notranslate"><span class="pre">self.属性名</span></code> と書くことで、そのメソッドを呼び出したインスタンスの属性値にアクセスすることができる。
+<code class="docutils literal notranslate"><span class="pre">step()</span></code> では日にちを1日経過させ、それに合わせて栄養価を変化させてみよう。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Apple</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nutrition</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">day</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nutrition</span> <span class="o">=</span> <span class="n">nutrition</span>
+        
+    <span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">day</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">day</span> <span class="o">&lt;</span> <span class="mi">14</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nutrition</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nutrition</span> <span class="o">-=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">Apple</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">nutrition</span><span class="p">)</span>
+
+<span class="n">a</span><span class="o">.</span><span class="n">step</span><span class="p">()</span> <span class="c1"># 1日経過</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">nutrition</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>練習1</strong><br />
+<code class="docutils literal notranslate"><span class="pre">Apple</span></code> クラスを真似して <code class="docutils literal notranslate"><span class="pre">Banana</span></code> クラスを作成しなさい。<code class="docutils literal notranslate"><span class="pre">Banana</span></code> の <code class="docutils literal notranslate"><span class="pre">step()</span></code> の内容は、経過日数が7日未満のとき栄養価が1上がり、7日以上のとき栄養価が1下がるとすること。
+<a href="https://code-judge-system.vercel.app/?&id=10-1" target="_blank">
+<img src="./_images/launch.svg" style="width: 20px; height: 20px;">
+</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 以下にコードを作成し、以下の部分のみ提出する</span>
+
+<span class="k">class</span> <span class="nc">Banana</span><span class="p">:</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 完成したら以下でテストする</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">Banana</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">nutrition</span><span class="p">)</span> <span class="c1"># 10</span>
+
+<span class="n">a</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">nutrition</span><span class="p">)</span> <span class="c1"># 11</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">):</span>
+    <span class="n">a</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+    
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">nutrition</span><span class="p">)</span> <span class="c1"># 14</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id6">
+<h3>オブジェクト指向プログラミング<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<p>作成した <code class="docutils literal notranslate"><span class="pre">Apple</span></code> と <code class="docutils literal notranslate"><span class="pre">Banana</span></code> を用いて、栄養価のシミュレーションを行ってみよう。
+手元にりんごが2つ、バナナが2つあり、それぞれの栄養価の初期値は10であったとする。
+このとき例えば経過日数ごとの栄養価の合計は次のように求められる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">basket</span> <span class="o">=</span> <span class="p">[</span><span class="n">Apple</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="n">Apple</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="n">Banana</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="n">Banana</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
+
+<span class="k">for</span> <span class="n">day</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">21</span><span class="p">):</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">fruit</span> <span class="ow">in</span> <span class="n">basket</span><span class="p">:</span>
+        <span class="n">fruit</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+        <span class="n">total</span> <span class="o">+=</span> <span class="n">fruit</span><span class="o">.</span><span class="n">nutrition</span>
+        
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">day</span><span class="si">}</span><span class="s2">日目: </span><span class="si">{</span><span class="n">total</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>このプログラムは、処理としてはそれなりに複雑なことをしているが、コードとしてはとてもシンプルである。
+特に一度 <code class="docutils literal notranslate"><span class="pre">Apple</span></code> と <code class="docutils literal notranslate"><span class="pre">Banana</span></code> を定義したあとでは、それぞれの栄養価の変化のルールを忘れて、単に <code class="docutils literal notranslate"><span class="pre">step()</span></code> メソッドを呼び出すだけでよくなっている。
+これと同じようなプログラムをクラスを使わずに実現しようとすると、<code class="docutils literal notranslate"><span class="pre">day</span></code> の値と <code class="docutils literal notranslate"><span class="pre">fruit</span></code> の種類ごとに栄養価を変化させる処理をfor文の中で書くことになり、コードが複雑化する。</p>
+<p>このようにクラスを利用して、データとそれに付随する操作をオブジェクトにまとめて隠してしまうことで、コードの見通しと再利用性を向上させることができる。オブジェクトを利用したプログラミングスタイルのことを<strong>オブジェクト指向</strong>という。オブジェクト指向は、規模の大きいプログラムを書く際に重宝する。</p>
+</section>
+</section>
+<section id="id7">
+<h2>演習<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
+<p>第4回の授業で、浮動小数点数は小数を完璧な精度で表現しないという話をした。
+ここでは分数を表すクラスを作成し、それにより <code class="docutils literal notranslate"><span class="pre">0.1</span> <span class="pre">*</span> <span class="pre">3</span></code> のような計算を正確に行えるようにしよう。</p>
+<p>雛形のクラスを以下に用意した。
+クラス名は <code class="docutils literal notranslate"><span class="pre">Fraction</span></code> とし、初期化メソッドで分子（numeratorを略して <code class="docutils literal notranslate"><span class="pre">n</span></code>）と分母（denominatorを略して <code class="docutils literal notranslate"><span class="pre">d</span></code>）を設定できるようにしている。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Fraction</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">d</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">=</span> <span class="n">n</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">d</span> <span class="o">=</span> <span class="n">d</span>
+        
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">d</span><span class="si">}</span><span class="s1">&#39;</span>
+    
+    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">*</span> <span class="n">other</span><span class="o">.</span><span class="n">d</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">n</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">d</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">d</span> <span class="o">*</span> <span class="n">other</span><span class="o">.</span><span class="n">d</span>
+        <span class="k">return</span> <span class="n">Fraction</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">__str__()</span></code> は <code class="docutils literal notranslate"><span class="pre">print()</span></code> 関数に渡されたときの表示を定める特殊メソッドである。
+上のように定義すると、以下のように動作する。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">Fraction</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">add()</span></code> は分数の足し算を行うメソッドである。<code class="docutils literal notranslate"><span class="pre">Apple</span></code> クラスにおける <code class="docutils literal notranslate"><span class="pre">step()</span></code> メソッドとは異なり、<code class="docutils literal notranslate"><span class="pre">add()</span></code> メソッドは戻り値を持ち、計算結果の <code class="docutils literal notranslate"><span class="pre">Fraction</span></code> インスタンスを返していることに気をつけよう。</p>
+<p>例えば以下のように動作する。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">Fraction</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">Fraction</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>練習2</strong><br />
+足し算の定義を真似して、掛け算を行うメソッド <code class="docutils literal notranslate"><span class="pre">mul()</span></code> を定義しなさい。
+<a href="https://code-judge-system.vercel.app/?&id=10-2" target="_blank">
+<img src="./_images/launch.svg" style="width: 20px; height: 20px;">
+</a></p>
+<p><strong>練習3</strong><br />
+<code class="docutils literal notranslate"><span class="pre">Fraction</span></code> クラスのインスタンスが必ず既約分数（分母と分子に1以外の公約数がなくて、それ以上に約分できない分数のこと）を表すように <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> の処理を変更しなさい。そのためには引数に渡される <code class="docutils literal notranslate"><span class="pre">n</span></code> と <code class="docutils literal notranslate"><span class="pre">d</span></code> を最大公約数で割ったものを、<code class="docutils literal notranslate"><span class="pre">self.n</span></code> と <code class="docutils literal notranslate"><span class="pre">self.d</span></code> に設定すればよい。<code class="docutils literal notranslate"><span class="pre">self.n</span></code> と <code class="docutils literal notranslate"><span class="pre">self.d</span></code> は <code class="docutils literal notranslate"><span class="pre">int</span></code> 型としたいので、割り算の結果が <code class="docutils literal notranslate"><span class="pre">int</span></code> 型となるように割り算には <code class="docutils literal notranslate"><span class="pre">/</span></code> ではなく <code class="docutils literal notranslate"><span class="pre">//</span></code> を使うこと。また最大公約数は <code class="docutils literal notranslate"><span class="pre">math</span></code> モジュールの <code class="docutils literal notranslate"><span class="pre">math.gcd()</span></code> 関数で求めることができる。
+<a href="https://code-judge-system.vercel.app/?&id=10-3" target="_blank">
+<img src="./_images/launch.svg" style="width: 20px; height: 20px;">
+</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">gcd</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>  <span class="c1"># math.gcdの使い方（12と8の最大公約数を求めている）</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">gcd</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>  <span class="c1"># math.gcdの使い方（4と3の最大公約数を求めている）</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 以下にコードを作成し、以下の部分のみ提出する</span>
+
+<span class="k">class</span> <span class="nc">Fraction</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">d</span><span class="p">):</span> <span class="c1"># 練習3: 以下を書き換える</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">=</span> <span class="n">n</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">d</span> <span class="o">=</span> <span class="n">d</span>
+        
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">d</span><span class="si">}</span><span class="s1">&#39;</span>
+    
+    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">*</span> <span class="n">other</span><span class="o">.</span><span class="n">d</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">n</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">d</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">d</span> <span class="o">*</span> <span class="n">other</span><span class="o">.</span><span class="n">d</span>
+        <span class="k">return</span> <span class="n">Fraction</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+    
+    <span class="k">def</span> <span class="nf">mul</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">pass</span> <span class="c1"># 練習2: ここに適切なコードを書く</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>コードが完成したら以下を実行してみよう。正しく実装できていれば <code class="docutils literal notranslate"><span class="pre">3/10</span></code>、<code class="docutils literal notranslate"><span class="pre">2/5</span></code> と表示されるはずである。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span>  <span class="n">Fraction</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">Fraction</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">Fraction</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">Fraction</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>おまけ</strong><br />
+特殊メソッドの <code class="docutils literal notranslate"><span class="pre">__add__()</span></code> と <code class="docutils literal notranslate"><span class="pre">__mul__()</span></code> を使うと、それぞれ <code class="docutils literal notranslate"><span class="pre">+</span></code> 演算子、<code class="docutils literal notranslate"><span class="pre">*</span></code> 演算子を使用したときの動作を定義することができる。
+上で作成した <code class="docutils literal notranslate"><span class="pre">Fraction</span></code> クラスの <code class="docutils literal notranslate"><span class="pre">add</span></code> と <code class="docutils literal notranslate"><span class="pre">mul</span></code> の名前を <code class="docutils literal notranslate"><span class="pre">__add__</span></code> と <code class="docutils literal notranslate"><span class="pre">__mul__</span></code> に変更して、クラス定義のコードを実行した上で、次のコードを実行してみよう。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">Fraction</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">+</span> <span class="n">Fraction</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">Fraction</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="n">Fraction</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="lecture09.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">第9回 関数と再帰</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="lecture11.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">第11回 データの可視化</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">この授業で学ぶこと</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">クラス</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">初期化メソッド</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">メソッド</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">オブジェクト指向プログラミング</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">演習</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By 大坪 舜 Shun Otsubo
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023-2024（2023年3月30日公開）.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

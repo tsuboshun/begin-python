@@ -74,6 +74,7 @@
     <script src="_static/custom.js?v=7ed3f353"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="第10回 クラス" href="lecture10.html" />
     <link rel="prev" title="第8回 データの入れ物" href="lecture08.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -193,6 +194,10 @@
 <li class="toctree-l1"><a class="reference internal" href="lecture07.html">第7回 これまでの復習と応用</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture08.html">第8回 データの入れ物</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">第9回 関数と再帰</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture10.html">第10回 クラス</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture11.html">第11回 データの可視化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture12.html">第12回 表データの処理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture13.html">第13回 データの読み方</a></li>
 </ul>
 
     </div>
@@ -506,7 +511,7 @@ document.write(`
 </section>
 <section id="turtle">
 <h2>turtleによるグラフィック描画<a class="headerlink" href="#turtle" title="Link to this heading">#</a></h2>
-<p>ここからはturtleというプログラミング学習用のグラフィックライブラリを用いて、関数作成の練習をしてみよう。このライブラリではペン先を表すカメを操作することで、線を描画する。turtleモジュールは外部ライブラリなので、最初にpipによるインストールとimportが必要である。以下のコードを実行することで、turtleモジュールが使用可能な状態になる。</p>
+<p>ここからはturtleというプログラミング学習用のグラフィック描画ライブラリを用いて、関数作成の練習をしてみよう。このライブラリではペン先を表すカメを操作することで、線を描画する。turtleモジュールは外部ライブラリなので、最初にpipによるインストールとimportが必要である。以下のコードを実行することで、turtleモジュールが使用可能な状態になる。</p>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">ColabTurtle</span>
@@ -729,7 +734,10 @@ document.write(`
 そして <code class="docutils literal notranslate"><span class="pre">depth</span> <span class="pre">==</span> <span class="pre">0</span></code> となったときに再帰呼び出しを行わず、枝を１本描くだけでreturnしている。</p>
 <p><strong>練習5</strong><br />
 現在の <code class="docutils literal notranslate"><span class="pre">draw_branch()</span></code> 関数では、木の根元から先端までの分岐の間隔が一定であり、結果として描かれる木は不自然な形状をしている。
-より自然な木の形状を再現するために、再帰呼び出しの度に、枝の長さが0.8倍になるように <code class="docutils literal notranslate"><span class="pre">draw_branch()</span></code> を修正しなさい。</p>
+より自然な木の形状を再現するために、再帰呼び出しの度に、枝の長さが0.8倍になるように <code class="docutils literal notranslate"><span class="pre">draw_branch()</span></code> を修正しなさい。
+<a href="https://code-judge-system.vercel.app/?&id=9-5" target="_blank">
+<img src="./_images/launch.svg" style="width: 20px; height: 20px;">
+</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">draw_branch</span><span class="p">(</span><span class="n">length</span><span class="p">,</span> <span class="n">depth</span><span class="p">):</span>
@@ -860,6 +868,15 @@ document.write(`
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title">第8回 データの入れ物</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="lecture10.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">第10回 クラス</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>

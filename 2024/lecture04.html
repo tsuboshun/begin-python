@@ -194,6 +194,10 @@
 <li class="toctree-l1"><a class="reference internal" href="lecture07.html">第7回 これまでの復習と応用</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture08.html">第8回 データの入れ物</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture09.html">第9回 関数と再帰</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture10.html">第10回 クラス</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture11.html">第11回 データの可視化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture12.html">第12回 表データの処理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture13.html">第13回 データの読み方</a></li>
 </ul>
 
     </div>
@@ -699,9 +703,9 @@ document.write(`
 <p>さて、データとそれの持つメソッドをまとめたものを<strong>オブジェクト</strong>という。
 オブジェクトは日本語では物という意味である。
 Pythonに出てくるほとんど全ての要素はオブジェクトとして作られており、これまで学んできたデータも全てオブジェクトである。
-オブジェクトの種類を<strong>クラス</strong>と呼び、クラスに基づいて作られる具体的なオブジェクトを<strong>インスタンス</strong>と呼ぶ。
+オブジェクトの設計図を<strong>クラス</strong>と呼び、クラスに基づいて作られる具体的なオブジェクトを<strong>インスタンス</strong>と呼ぶ。
 オブジェクトとインスタンスは似ているが、前者はより一般的な概念で、後者は特定のクラスを具体化したものを指す。
-またデータ型もクラスの一つである。</p>
+また、授業の最初にデータ型はデータの種類を表すと説明したが、データ型はクラスにより定められる。</p>
 <p>ここまでに出てきた概念について、理解を深めるために工作の例え話で説明してみよう。 例えば、木材を加工する状況を考える。 一言に木材といっても、重さや手触りなど１つ１つの木材には個性がある。 今、手にしている木材は、木材という概念を具体化したものであり、木材という概念がクラス、具体化したものがインスタンスにあたる。</p>
 <p>木材を加工するときには、例えば木材用のノコギリを使って切ることになるだろう。このノコギリを使って切るという行為は、木材ならば個性に関係なく適用することができるため、メソッドと捉えることができる。 これは木材に特化したメソッドであり、ガラスなど他の物質に適用することはできない。</p>
 <p>文字列型について、今の例え話に沿って説明してみよう。文字列 <code class="docutils literal notranslate"><span class="pre">&quot;mikan&quot;</span></code> および <code class="docutils literal notranslate"><span class="pre">&quot;banana&quot;</span></code> は異なる値（個性）を持ち、それぞれ文字列クラスのインスタンスである。どちらも文字列に専属の <code class="docutils literal notranslate"><span class="pre">split()</span></code> メソッドを適用できるが、その結果は値に応じて異なる。</p>
