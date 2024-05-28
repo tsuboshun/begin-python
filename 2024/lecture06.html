@@ -429,6 +429,12 @@ document.write(`
 </div>
 </div>
 </div>
+<div class="toggle docutils container">
+<pre>
+for i in range(n):
+    print(i+1)
+</pre>
+</div>
 <section id="id4">
 <h3>ブロックの抜け方<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
 <p>ここで、if文やfor文などブロックを形成する全ての構文に共通する話として、ブロックの抜け方について説明する。</p>
@@ -495,6 +501,21 @@ document.write(`
 </div>
 </div>
 </div>
+<div class="toggle docutils container">
+<pre>
+total = 0
+for v in data:
+    total += v
+print(total/len(data))
+</pre>
+<p><strong>別解</strong></p>
+<pre>
+total = 0
+for i in range(len(data)):
+    total += data[i]
+print(total/len(data))
+</pre>
+</div>
 </section>
 </section>
 <section id="while">
@@ -552,6 +573,21 @@ document.write(`
 </div>
 </div>
 </div>
+<div class="toggle docutils container">
+<pre>
+i = 1
+while i <= n:
+    print(i)
+    i += 1
+</pre>
+<p><strong>別解</strong></p>
+<pre>
+i = 0
+while i < n:
+    print(i+1)
+    i += 1
+</pre>
+</div>
 <p><strong>練習4</strong><br />
 正の整数 <code class="docutils literal notranslate"><span class="pre">n</span></code> が与えられるとき、<code class="docutils literal notranslate"><span class="pre">1</span></code> から <code class="docutils literal notranslate"><span class="pre">n</span></code> までの数字を <code class="docutils literal notranslate"><span class="pre">n</span></code> から始めて<u>逆順</u>で <code class="docutils literal notranslate"><span class="pre">print</span></code> するコードを作成しなさい。
 <a href="https://code-judge-system.vercel.app/?&id=6-4" target="_blank">
@@ -569,6 +605,14 @@ document.write(`
 </pre></div>
 </div>
 </div>
+</div>
+<div class="toggle docutils container">
+<pre>
+i = n
+while i > 0:
+    print(i)
+    i -= 1
+</pre>
 </div>
 <div class="note admonition">
 <p class="admonition-title">pass</p>
@@ -588,6 +632,14 @@ document.write(`
 </pre></div>
 </div>
 </div>
+</div>
+<div class="toggle docutils container">
+<pre>
+i = len(data)-1
+while i >= 0:
+    print(data[i])
+    i -= 1
+</pre>
 </div>
 <hr class="footnotes docutils" />
 <aside class="footnote-list brackets">
