@@ -618,6 +618,16 @@ document.write(`
 </div>
 </div>
 </div>
+<div class="toggle docutils container">
+<pre>
+def draw_square(size):
+    turtle.pendown()
+    for i in range(4):
+        turtle.forward(size)
+        turtle.right(90)
+    turtle.penup()
+</pre>
+</div>
 <p><strong>練習2</strong><br />
 1辺の長さ <code class="docutils literal notranslate"><span class="pre">size</span></code> を引数とし、正三角形を描画する関数 <code class="docutils literal notranslate"><span class="pre">draw_triangle()</span></code> を作成しなさい。
 ただし <code class="docutils literal notranslate"><span class="pre">turtle.pendown()</span></code> から始め、<code class="docutils literal notranslate"><span class="pre">turtle.penup()</span></code> で終わること。</p>
@@ -638,6 +648,16 @@ document.write(`
 </div>
 </div>
 </div>
+<div class="toggle docutils container">
+<pre>
+def draw_triangle(size):
+    turtle.pendown()
+    for i in range(3):
+        turtle.forward(size)
+        turtle.right(120)
+    turtle.penup()
+</pre>
+</div>
 <p><strong>練習3</strong><br />
 3以上の整数 <code class="docutils literal notranslate"><span class="pre">n</span></code> および1辺の長さ <code class="docutils literal notranslate"><span class="pre">size</span></code> を引数とし、正 <code class="docutils literal notranslate"><span class="pre">n</span></code> 角形を描画する関数 <code class="docutils literal notranslate"><span class="pre">draw_polygon()</span></code> を作成しなさい。ただし <code class="docutils literal notranslate"><span class="pre">turtle.pendown()</span></code> から始め、<code class="docutils literal notranslate"><span class="pre">turtle.penup()</span></code> で終わること。</p>
 <div class="cell docutils container">
@@ -656,6 +676,16 @@ document.write(`
 </pre></div>
 </div>
 </div>
+</div>
+<div class="toggle docutils container">
+<pre>
+def draw_polygon(n, size):
+    turtle.pendown()
+    for i in range(n):
+        turtle.forward(size)
+        turtle.right(360/n)
+    turtle.penup()
+</pre>
 </div>
 <p><strong>練習4</strong><br />
 1辺（例えば線分AB）の長さ <code class="docutils literal notranslate"><span class="pre">size</span></code> を引数とし、星形を描画する関数 <code class="docutils literal notranslate"><span class="pre">draw_star()</span></code> を作成しなさい。
@@ -682,6 +712,16 @@ document.write(`
 </pre></div>
 </div>
 </div>
+</div>
+<div class="toggle docutils container">
+<pre>
+def draw_star(size):
+    turtle.pendown()
+    for i in range(5):
+        turtle.forward(size)
+        turtle.right(144)
+    turtle.penup()
+</pre>
 </div>
 </section>
 <section id="id5">
@@ -767,6 +807,23 @@ document.write(`
 </pre></div>
 </div>
 </div>
+</div>
+<div class="toggle docutils container">
+<pre>
+def draw_branch(length, depth):
+    turtle.pendown()
+    if depth == 0:
+        turtle.forward(length)
+    else:
+        turtle.forward(length)
+        turtle.left(20)
+        draw_branch(length*0.8, depth-1)
+        turtle.right(40)
+        draw_branch(length*0.8, depth-1)
+        turtle.left(20)
+    turtle.backward(length)
+    turtle.penup()
+</pre>
 </div>
 </section>
 <section id="id6">
