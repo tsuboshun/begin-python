@@ -72,7 +72,7 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'tmp';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lecture14';</script>
     <script src="_static/custom.js?v=7ed3f353"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -254,7 +254,7 @@
       
       
       
-      <li><a href="_sources/tmp.ipynb" target="_blank"
+      <li><a href="_sources/lecture14.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -389,7 +389,7 @@ document.write(`
 <p>といったことが生成AIでできるようになってきている。</p>
 <p>最近ではChatGPTという、まるで人間と話しているかのように自然な文章を生成するAIが登場し、世界中で大きな話題となっている。</p>
 <p>生成AIは日々進化を続けており、次々と新しい技術やサービスが登場している。しかし、その基本的な仕組みは当初から大きく変わっていない。生成AIを上手に活用したり、今後の技術的な進展を予想したりするためにも、基本的な仕組みを理解しておくことはとても重要である。</p>
-<p>今回は、生成AIの基本的な仕組みの概要を理解し、さらにPythonプログラムから生成AIを使えるようになることを目標に授業する。なるべく話を簡単にするため、<strong>言語モデル</strong>と呼ばれる、文章を入力して文章を出力するタイプの生成AIを主に扱う。</p>
+<p>今回は、生成AIの基本的な仕組みの概要を理解し、さらにPythonプログラムから生成AIを使えるようになることを目標に授業する。なるべく話を簡単にするため、<strong>言語モデル</strong>と呼ばれる、文章を入力して文章を出力するタイプの生成AIを主に扱う。また話したい内容は多岐に渡るが、その中でも授業などのまとまった時間でないと学ぶ機会があまりないと思われる、技術的に込み入った点に重きを置いて解説する。</p>
 </section>
 <section id="id2">
 <h2>生成モデル<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
@@ -444,7 +444,7 @@ document.write(`
 </section>
 <section id="id5">
 <h3>言語モデル<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
-<p>さて、入出力が文章の生成モデルである言語モデルについて、生成方法を詳しく見てみよう。なお、言語モデルの中でも膨大な数のパラメータを持ち、膨大なデータを使って学習されるモデルのことを、<strong>大規模言語モデル</strong> （<strong>Large Language Model, LLM</strong>）という。例えば、ChatGPTの内部では<strong>GPT</strong>（<strong>Generative Pre-trained Transformer</strong>）という大規模言語モデルが使われている。最新のモデルであるGPT-4oの詳細は公開されていないが、一世代前のGPT-3については詳細が公開されているので、適宜GPT-3の仕様を紹介しながら言語モデルについて解説する。</p>
+<p>さて、入出力が文章の生成モデルである言語モデルについて、生成方法を詳しく見てみよう。なお、言語モデルの中でも膨大な数のパラメータを持ち、膨大なデータを使って学習されるモデルのことを、<strong>大規模言語モデル</strong> （<strong>Large Language Model, LLM</strong>）という。例えば、ChatGPTの内部では<strong>GPT</strong>（<strong>Generative Pre-trained Transformer</strong>）という大規模言語モデルが使われている。最新のモデルであるGPT-4oの詳細は公開されていないが、一世代前のGPT-3については詳細が公開されているので、適宜GPT-3の仕様を紹介しながら言語モデルについて解説する。またこの講義ノートで言語モデルと言ったときには、基本的に大規模言語モデルのことを指す。</p>
 <p>言語モデルは文章全体を一度に生成するのではなく、<strong>トークン</strong>と呼ばれる単位で逐次的に生成する。おおよそ英語の場合には単語、日本語の場合には文字の単位をトークンとしている<a class="footnote-reference brackets" href="#f1" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>。</p>
 <p>したがって、言語モデルは文章 <span class="math notranslate nohighlight">\(x\)</span> を入力として、次のトークン <span class="math notranslate nohighlight">\(w\)</span> を出力するモデル <span class="math notranslate nohighlight">\(p(w | x;\theta)\)</span> と表現できる。なお、文章 <span class="math notranslate nohighlight">\(x\)</span> も入力時にトークンに分割して、トークンを並べたものとして入力される。そして、条件付き確率分布にしたがってトークン <span class="math notranslate nohighlight">\(w_1\)</span> を出力したら、<span class="math notranslate nohighlight">\(x\)</span> と <span class="math notranslate nohighlight">\(w_1\)</span> を連結した <span class="math notranslate nohighlight">\(xw_1\)</span> を再度入力して次のトークン <span class="math notranslate nohighlight">\(w_2\)</span> を出力する。
 <span class="math notranslate nohighlight">\(xw_1w_2\)</span> を再度入力して <span class="math notranslate nohighlight">\(w_3\)</span> を出力し…という操作を、終端を表すトークンが出力されるまで繰り返すことで、任意の長さの文章を生成することができる。
@@ -617,19 +617,37 @@ document.write(`
 </div>
 <p>学習によって求めたいのは、モデル <span class="math notranslate nohighlight">\(y = ax + b\)</span> がデータによく当てはまるような <span class="math notranslate nohighlight">\(a\)</span> と <span class="math notranslate nohighlight">\(b\)</span> の値である。</p>
 <p>そのために、モデルのデータに対する当てはまりの悪さを定量する関数である<strong>誤差関数</strong>を用意する<a class="footnote-reference brackets" href="#f4" id="id11" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a>。誤差関数はモデルのパラメータを引数にとり、モデルの予測誤差を評価した値を返す関数と捉えられる。ここでは<strong>平均二乗誤差</strong>（<strong>Mean Squared Error, MSE</strong>）を誤差関数として採用する。MSEは以下のように定義される：</p>
-<p><span class="math notranslate nohighlight">\({\rm{MSE}}(a, b) := \frac{1}{N}\sum_i^N (y_i - (ax_i + b))^2\)</span></p>
+<p><span class="math notranslate nohighlight">\({\rm{MSE}}(a, b) = \frac{1}{N}\sum_i^N (y_i - (ax_i + b))^2\)</span></p>
 <p>上図の右に <span class="math notranslate nohighlight">\(a\)</span> と <span class="math notranslate nohighlight">\(b\)</span> の値ごとの誤差関数の値の<strong>等高線図</strong>と、最初に設定した <span class="math notranslate nohighlight">\(a\)</span> と <span class="math notranslate nohighlight">\(b\)</span> のパラメータ値をプロットしている。等高線図は、誤差関数の値が等しい点を結んだ線であり、地形図の等高線のように考えることができる。</p>
 <p>誤差関数を設定した後では、学習の目的は「誤差関数をなるべく小さくするようなパラメータを見つけること」と表現できる。勾配法はそのための手法であり、一言で言えば「パラメータを、現在の値から少しずらして誤差関数が最も小さくなる方向に、少しずつ更新する手法」である。関数の増加速度が最も大きいパラメータの変化方向を<strong>勾配</strong>という。したがって勾配法は「パラメータを誤差関数の勾配の逆方向に少しずつ更新する手法」と言うことができる。</p>
-<p>証明は省略するが、数値的には <span class="math notranslate nohighlight">\({\rm{d}}a\)</span>、<span class="math notranslate nohighlight">\({\rm{d}}b\)</span> を十分小さい値とし、<span class="math notranslate nohighlight">\(a\)</span> 方向を <font color="#527DB7"><span class="math notranslate nohighlight">\(\left({\rm{MSE}}(a + {\rm{d}}a, b) - {\rm{MSE}}(a, b)\right)/{\rm{d}}a\)</span></font>、<span class="math notranslate nohighlight">\(b\)</span> 方向を <font color="#527DB7"><span class="math notranslate nohighlight">\(\left({\rm{MSE}}(a, b + {\rm{d}}b) - {\rm{MSE}}(a, b)\right)/{\rm{d}}b\)</span></font> としたベクトルが勾配になる。勾配法では、これらを用いて各パラメータを以下のように更新する。</p>
-<p><span class="math notranslate nohighlight">\(a \leftarrow a - \alpha \left({\rm{MSE}}(a + {\rm{d}}a, b) - {\rm{MSE}}(a, b)\right)/{\rm{d}}a\)</span>
-<span class="math notranslate nohighlight">\(b \leftarrow b - \alpha \left({\rm{MSE}}(a, b + {\rm{d}}b) - {\rm{MSE}}(a, b)\right)/{\rm{d}}b\)</span></p>
+<p>証明は省略するが、数値的には <span class="math notranslate nohighlight">\({\rm{d}}a\)</span>、<span class="math notranslate nohighlight">\({\rm{d}}b\)</span> を十分小さい値とし、<span class="math notranslate nohighlight">\(a\)</span> 方向を <font color="#527DB7"><span class="math notranslate nohighlight">\(\left({\rm{MSE}}(a + {\rm{d}}a, b) - {\rm{MSE}}(a, b)\right)/{\rm{d}}a\)</span></font>、<span class="math notranslate nohighlight">\(b\)</span> 方向を <font color="#b26145"><span class="math notranslate nohighlight">\(\left({\rm{MSE}}(a, b + {\rm{d}}b) - {\rm{MSE}}(a, b)\right)/{\rm{d}}b\)</span></font> としたベクトルが勾配になる。勾配法では、これらを用いて各パラメータを以下のように更新する。</p>
+<p><span class="math notranslate nohighlight">\(a \leftarrow a - \alpha\)</span> <font color="#527DB7"><span class="math notranslate nohighlight">\(\left({\rm{MSE}}(a + {\rm{d}}a, b) - {\rm{MSE}}(a, b)\right)/{\rm{d}}a\)</span></font><br />
+<span class="math notranslate nohighlight">\(b \leftarrow b - \alpha\)</span> <font color="#b26145"><span class="math notranslate nohighlight">\(\left({\rm{MSE}}(a, b + {\rm{d}}b) - {\rm{MSE}}(a, b)\right)/{\rm{d}}b\)</span></font></p>
 <p>ここで <span class="math notranslate nohighlight">\(\alpha\)</span> は更新の大きさを決める定数で、<strong>学習率</strong>と呼ばれる。上記の更新を繰り返すと、パラメータは誤差関数を小さくする方向に少しずつ更新される。</p>
 <p>Google Colabのノートブック上では、単回帰モデルについて勾配法をインタラクティブに実行できるようにした。「勾配法」と「プロット」を交互に押して、単回帰モデルの予測が改善する様子を確認してみてほしい。</p>
 <p>ここでは単回帰モデルを例に、勾配法について解説した。かなり簡単化した説明ではあるが、言語モデルなどの深層学習モデルも原理的にはこれと同じように学習している。</p>
 </section>
 <section id="id12">
 <h3>言語モデルの学習<a class="headerlink" href="#id12" title="Link to this heading">#</a></h3>
-<p>それでは言語モデルの学習について詳しく見てみよう。</p>
+<p>それでは言語モデルの学習方法について見てみよう。言語モデルの学習は大きく<strong>事前学習</strong>（<strong>Pre-training</strong>）と<strong>事後学習</strong>（<strong>Post-training</strong>）に分けられる。</p>
+<p>事前学習では、主にインターネットから集めた大量の文章をデータセットとして、これらの文章をモデルが真似するように <span class="math notranslate nohighlight">\(p(w | x;\theta)\)</span> のパラメータ <span class="math notranslate nohighlight">\(\theta\)</span> を学習する。例えば、データセットの中に「She reads books in the library.」という文章があったとしよう。このとき言語モデルに文章の途中までを入力したときの次の単語の生成確率と、実際の単語を比較するということを繰り返す。具体的には、この文章から以下の6パターンの比較を行うことができる。</p>
+<ul class="simple">
+<li><p>「She」を入力したときの次のトークンの生成確率 <span class="math notranslate nohighlight">\(\leftrightarrow\)</span> 「reads」</p></li>
+<li><p>「She reads」を入力したときの次のトークンの生成確率 <span class="math notranslate nohighlight">\(\leftrightarrow\)</span> 「books」</p></li>
+<li><p>「She reads books」を入力したときの次のトークンの生成確率 <span class="math notranslate nohighlight">\(\leftrightarrow\)</span> 「in」</p></li>
+<li><p>「She reads books in」を入力したときの次のトークンの生成確率 <span class="math notranslate nohighlight">\(\leftrightarrow\)</span> 「the」</p></li>
+<li><p>「She reads books in the」を入力したときの次のトークンの生成確率 <span class="math notranslate nohighlight">\(\leftrightarrow\)</span> 「library」</p></li>
+<li><p>「She reads books in the library」を入力したときの次のトークンの生成確率 <span class="math notranslate nohighlight">\(\leftrightarrow\)</span> 「.」</p></li>
+</ul>
+<p>例えば、「She」を入力したときの次のトークンの生成確率はGPT-3なら50257次元のベクトルとなるが、これと「reads」を表すone-hotベクトルの距離を<strong>交差エントロピー</strong>という式により定量化する。言語モデルの学習では、データセットの中からサンプルした文章に対して上で行ったような比較、すなわち交差エントロピーの計算を行い、それらを足したものを誤差関数として学習を行う。これにより言語モデルは、データセットの文章を真似てそれらしい文章を生成できるようになる。</p>
+<p>ここで少し立ち止まって事前学習の意味合いについて考えてみよう。事前学習により言語モデルは、大量の文章をただ丸暗記することになるのだろうか。実はそうではなく、言語モデルは事前学習を通じて、言語や世界に関する法則を会得し始めていると考えられている。これは、学習時に含まれていなかったであろう文章を入力として与えても、その内容をよく理解した出力を返すところからも、そう推測できる。なぜこのような現象が起こるかと言えば、文章の次の単語を予測するためには、その文章の内容や背景知識をよく理解する必要があるからである。</p>
+<p>事前学習に関して、今後の言語モデルの進化を予測する上で重要な法則に<strong>スケーリング則</strong>がある（下図<a class="footnote-reference brackets" href="#f5" id="id13" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a>）。これは「学習時計算量」「データセットサイズ」「モデルパラメータ数」を大きくしていくと、言語モデルの性能が向上し、誤差関数の値が予測可能な形で減少するという法則である。これらの要素と誤差関数値の関係は、<span class="math notranslate nohighlight">\(y = ax^k\)</span> という<strong>べき乗則</strong>で近似できる。</p>
+<figure class="align-default" id="scaling-law">
+<a class="reference internal image-reference" href="_images/scaling-law.png"><img alt="_images/scaling-law.png" src="_images/scaling-law.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-text">スケーリング則</span><a class="headerlink" href="#scaling-law" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 <hr class="footnotes docutils" />
 <aside class="footnote-list brackets">
 <aside class="footnote brackets" id="f1" role="doc-footnote">
@@ -646,7 +664,11 @@ document.write(`
 </aside>
 <aside class="footnote brackets" id="f4" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id11">4</a><span class="fn-bracket">]</span></span>
-<p><strong>損失関数</strong>ともいう。また誤差関数・損失関数は最小化したい関数であるが、それとは逆に最大化したい関数のことを<strong>目的関数</strong>という。例えば、誤差関数にマイナスをつけたものを目的関数と捉えることができる。これらの用語もついでに知っておくと良いだろう。</p>
+<p><strong>損失関数</strong>ともいう。また誤差関数・損失関数は最小化したい関数であるが、それとは逆に最大化したい関数のことを<strong>目的関数</strong>という。例えば、誤差関数にマイナスをつけたものを目的関数と考えることができる。これらの用語も知っておくと良いだろう。</p>
+</aside>
+<aside class="footnote brackets" id="f5" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id13">5</a><span class="fn-bracket">]</span></span>
+<p>出典: J. Kaplan et al., Scaling Laws for Neural Language Models, arXiv:2001.08361 (2020).</p>
 </aside>
 </aside>
 </section>
