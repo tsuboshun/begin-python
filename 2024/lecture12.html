@@ -363,7 +363,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#google">Googleドライブのマウント</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">ファイルの読み込み</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">ファイルの書き込み</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numpypandas">NumPyやPandasを使った方法</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numpypandas">補足：NumPyやPandasを使った方法</a></li>
 </ul>
 </li>
 </ul>
@@ -384,7 +384,7 @@ document.write(`
 <hr class="docutils" />
 <section id="id2">
 <h2>この授業で学ぶこと<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-<p>今回は表データの処理をテーマに、Pandasという表データ解析ライブラリの使い方を学ぶ。またファイルの入出力について学ぶ。これまではPythonプログラムの中で閉じた話がほとんどであったが、ファイルの入出力を学ぶことで、パソコン上のファイルに対して自由な処理を行えるようになったり、プログラムの実行結果を永続的に保存できるようになったりするなど出来ることの幅がぐんと広がる。</p>
+<p>今回は表データの処理をテーマに、Pandasという表データ解析ライブラリの使い方を学ぶ。またファイルの入出力について学ぶ。これまではPythonプログラムの中で閉じた話がほとんどであったが、ファイルの入出力を学ぶことで、パソコン上のファイルに対して自由な処理を行えたり、プログラムの実行結果を永続的に保存できたりするなど出来ることの幅がぐんと広がる。</p>
 </section>
 <section id="pandas">
 <h2>Pandas入門<a class="headerlink" href="#pandas" title="Link to this heading">#</a></h2>
@@ -445,7 +445,7 @@ document.write(`
 </div>
 </div>
 </div>
-<p>2次元配列からデータフレームを作成するには次のように書く。</p>
+<p>逆に2次元配列からデータフレームを作成するには次のように書く。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
@@ -484,7 +484,7 @@ Pandasには、1次元配列に行ラベルをつけたデータ型も用意さ�
 </div>
 </div>
 </div>
-<p>インデックスの値を指定して、要素にアクセスするには <code class="docutils literal notranslate"><span class="pre">loc</span></code> または <code class="docutils literal notranslate"><span class="pre">iloc</span></code> を使って次のように書く。</p>
+<p>要素にアクセスするには <code class="docutils literal notranslate"><span class="pre">loc</span></code> または <code class="docutils literal notranslate"><span class="pre">iloc</span></code> を使う。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -508,7 +508,7 @@ Pandasには、1次元配列に行ラベルをつけたデータ型も用意さ�
 </div>
 </div>
 </div>
-<p>1次元配列からシリーズを作成するには次のように書く。</p>
+<p>逆に1次元配列からシリーズを作成するには次のように書く。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
@@ -600,7 +600,7 @@ Pandasには、1次元配列に行ラベルをつけたデータ型も用意さ�
 <section id="id9">
 <h4>欠損値<a class="headerlink" href="#id9" title="Link to this heading">#</a></h4>
 <p>テーブルデータを調べていると <code class="docutils literal notranslate"><span class="pre">NaN</span></code> という値を見かけることがある。これは Not a Number の略で<strong>欠損値</strong>と呼ばれる。</p>
-<p>例として <code class="docutils literal notranslate"><span class="pre">(0,</span> <span class="pre">0)</span></code> 要素に <code class="docutils literal notranslate"><span class="pre">None</span></code> を代入して、あえて <code class="docutils literal notranslate"><span class="pre">NaN</span></code> を含むデータを作成してみよう。pandasでは <code class="docutils literal notranslate"><span class="pre">None</span></code> のほか <code class="docutils literal notranslate"><span class="pre">float('nan')</span></code>、<code class="docutils literal notranslate"><span class="pre">np.nan</span></code> なども欠損値と見なされる。以下では、もとのデータフレームは上書きしないように <code class="docutils literal notranslate"><span class="pre">copy()</span></code> メソッドによりコピーしたデータフレームを使った例を示す。</p>
+<p>例として <code class="docutils literal notranslate"><span class="pre">(0,</span> <span class="pre">0)</span></code> 要素に <code class="docutils literal notranslate"><span class="pre">None</span></code> を代入して、あえて <code class="docutils literal notranslate"><span class="pre">NaN</span></code> を含むデータを作成してみよう。pandasでは <code class="docutils literal notranslate"><span class="pre">None</span></code> のほか <code class="docutils literal notranslate"><span class="pre">float('nan')</span></code>、<code class="docutils literal notranslate"><span class="pre">np.nan</span></code> なども欠損値と見なされる。以下では、もとのデータフレームは上書きしないように <code class="docutils literal notranslate"><span class="pre">copy()</span></code> メソッドによりコピーしたデータフレームを使って説明する。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_tmp</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
@@ -647,8 +647,8 @@ Pandasには、1次元配列に行ラベルをつけたデータ型も用意さ�
 </div>
 </div>
 <p><strong>練習1</strong><br />
-<code class="docutils literal notranslate"><span class="pre">diamonds</span></code> データセットにおいて、カット <code class="docutils literal notranslate"><span class="pre">&quot;cut&quot;</span></code> の種類が <code class="docutils literal notranslate"><span class="pre">&quot;Ideal&quot;</span></code> のデータにおける価格の平均、カラットの平均を求めなさい。
-<font color=cornflowerblue>ヒント：平均値は <code class="docutils literal notranslate"><span class="pre">シリーズ.mean()</span></code> でも求められるし、一旦配列に変換してから <code class="docutils literal notranslate"><span class="pre">np.mean()</span></code> 関数を使って求めてもよい。</font></p>
+<code class="docutils literal notranslate"><span class="pre">diamonds</span></code> データセットにおいて、カット <code class="docutils literal notranslate"><span class="pre">&quot;cut&quot;</span></code> の種類が <code class="docutils literal notranslate"><span class="pre">&quot;Ideal&quot;</span></code> のデータのみを抽出して、価格の平均、カラットの平均を求めなさい。
+<font color=cornflowerblue>ヒント：平均値は <code class="docutils literal notranslate"><span class="pre">シリーズ.mean()</span></code> でも求められるし、<code class="docutils literal notranslate"><span class="pre">np.mean()</span></code> 関数を使って求めてもよい。</font></p>
 <p><strong>練習2</strong><br />
 <code class="docutils literal notranslate"><span class="pre">diamonds</span></code> データセットにおいて価格上位5件、下位5件のデータを表示しなさい。</p>
 </section>
@@ -709,7 +709,7 @@ Pandasには、1次元配列に行ラベルをつけたデータ型も用意さ�
 第二引数に渡している <code class="docutils literal notranslate"><span class="pre">'r'</span></code> は読み込みモードを表す。</p>
 <p><code class="docutils literal notranslate"><span class="pre">open()</span></code> 関数の返すファイルオブジェクト <code class="docutils literal notranslate"><span class="pre">f</span></code> に対して、<code class="docutils literal notranslate"><span class="pre">read()</span></code> メソッドを呼び出すと、ファイルの中身を文字列として取得できる。
 最後に、開いたファイルオブジェクトを <code class="docutils literal notranslate"><span class="pre">f.close()</span></code> により閉じている。</p>
-<p><code class="docutils literal notranslate"><span class="pre">read()</span></code> メソッドはファイル全体を文字列として読み込むが、for文により一行ずつ読み込むこともできる。</p>
+<p><code class="docutils literal notranslate"><span class="pre">read()</span></code> メソッドの代わりに、for文により一行ずつ読み込むこともできる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
@@ -737,7 +737,7 @@ Pandasには、1次元配列に行ラベルをつけたデータ型も用意さ�
 </div>
 </div>
 </div>
-<p>ここで各行の文字列 <code class="docutils literal notranslate"><span class="pre">line</span></code> について、まず <code class="docutils literal notranslate"><span class="pre">strip()</span></code> メソッドにより改行文字 <code class="docutils literal notranslate"><span class="pre">\n</span></code> を取り除き、次に <code class="docutils literal notranslate"><span class="pre">split(',')</span></code> メソッドによりカンマで区切ってリストに変換している。例として、<code class="docutils literal notranslate"><span class="pre">line</span></code> にファイルの1行目 <code class="docutils literal notranslate"><span class="pre">&quot;8,7,9,6,9\n&quot;</span></code> が代入されたときの処理の流れを、以下に示す。</p>
+<p>ここで各行の文字列 <code class="docutils literal notranslate"><span class="pre">line</span></code> について、まず <code class="docutils literal notranslate"><span class="pre">strip()</span></code> メソッドにより改行文字 <code class="docutils literal notranslate"><span class="pre">\n</span></code> （下のコラム参照）を取り除き、次に <code class="docutils literal notranslate"><span class="pre">split(',')</span></code> メソッドによりカンマで区切ってリストに変換している。例として、<code class="docutils literal notranslate"><span class="pre">line</span></code> にファイルの1行目 <code class="docutils literal notranslate"><span class="pre">&quot;8,7,9,6,9\n&quot;</span></code> が代入されたときの処理の流れを、以下に示す。</p>
 <pre>
 line.strip().split(',')
 </pre>
@@ -770,6 +770,11 @@ line.strip().split(',')
 </pre></div>
 </div>
 </div>
+</div>
+<div class="note admonition">
+<p class="admonition-title">エスケープシーケンス</p>
+<p>先ほど登場した <code class="docutils literal notranslate"><span class="pre">\n</span></code> は改行を表す特殊な文字列で、<strong>エスケープシーケンス</strong>の一つである。エスケープシーケンスの例として、他にはタブ入力を表す <code class="docutils literal notranslate"><span class="pre">\t</span></code> などがある。
+ただし、Windows環境ではバックスラッシュ（<code class="docutils literal notranslate"><span class="pre">\</span></code>）が円記号（<code class="docutils literal notranslate"><span class="pre">¥</span></code>）として表示されることがあり、その場合、<code class="docutils literal notranslate"><span class="pre">¥n</span></code>、<code class="docutils literal notranslate"><span class="pre">¥t</span></code> などと入力する。</p>
 </div>
 </section>
 <section id="id12">
@@ -806,7 +811,7 @@ line.strip().split(',')
 </div>
 </section>
 <section id="numpypandas">
-<h3>NumPyやPandasを使った方法<a class="headerlink" href="#numpypandas" title="Link to this heading">#</a></h3>
+<h3>補足：NumPyやPandasを使った方法<a class="headerlink" href="#numpypandas" title="Link to this heading">#</a></h3>
 <p>ファイルの中身を直接、配列やデータフレームとして読み込めると便利なため、NumPy、Pandasにそれ用の関数が用意されている。</p>
 <p>ファイルの中身を配列として読み込むには <code class="docutils literal notranslate"><span class="pre">np.loadtxt()</span></code> 関数を使う。第一引数にファイルパスを指定し、キーワード引数 <code class="docutils literal notranslate"><span class="pre">delimiter</span></code> で区切り文字を指定する。</p>
 <div class="cell docutils container">
@@ -926,7 +931,7 @@ line.strip().split(',')
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#google">Googleドライブのマウント</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">ファイルの読み込み</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">ファイルの書き込み</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numpypandas">NumPyやPandasを使った方法</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numpypandas">補足：NumPyやPandasを使った方法</a></li>
 </ul>
 </li>
 </ul>
