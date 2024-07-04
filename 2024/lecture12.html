@@ -660,7 +660,7 @@ Pandasには、1次元配列に行ラベルをつけたデータ型も用意さ�
 <p>Pandasから話題を変えて、この節ではファイルの入出力について学ぶ。</p>
 <section id="google">
 <h3>Googleドライブのマウント<a class="headerlink" href="#google" title="Link to this heading">#</a></h3>
-<p><font color="gray">※ 7/4追記：以下の手順で上手くできなかった人は、このページの最後を読んでください。</font></p>
+<p><font color="gray">7/4追記：以下の手順で上手くできなかった人は、このページの最後を読んでください。</font></p>
 <p>Google Colab上でファイルを扱うために、最初にGoogleドライブに接続する必要がある（<strong>マウント</strong>という）。 ここではマウントの手順を説明する。</p>
 <p>サイドメニューから以下の順番でアイコンをクリックする。</p>
 <figure class="align-default" id="drive1">
@@ -851,18 +851,17 @@ line.strip().split(',')
 </section>
 <section id="id13">
 <h3>追記：Googleドライブを使わない方法<a class="headerlink" href="#id13" title="Link to this heading">#</a></h3>
-<p><font color="gray">※ 7/4追記：上記の方法では自力で上手くできない人も多そうなので、以下追記します（こちらの方法の方が簡単であったと今は思います）。</font></p>
-<p>ここではGoogleドライブを経由せずに、Google Colabに直接ファイルをアップロードする方法について解説する。</p>
-<p>まず、<code class="docutils literal notranslate"><span class="pre">sample.csv</span></code> をToyoNet-ACEの授業ページからダウンロードして手元に用意する。
-どこにダウンロードされたかわからない人も多かったので追加の説明をすると、デスクトップにある「エクスプローラー」をクリックして「ダウンロード」という項目をクリックすると見つかると思われる。</p>
+<p><font color="gray">7/4追記：上記の方法では自力でできない人も多そうなので、以下追記します（こちらの方法の方が簡単だったかもしれません）。</font></p>
+<p>ここではGoogleドライブを経由せずに、Google Colabに直接ファイルをアップロードして作業する方法について解説する。</p>
+<p>まず、<code class="docutils literal notranslate"><span class="pre">sample.csv</span></code> をToyoNet-ACEの授業ページからダウンロードして手元に用意する。どこにダウンロードされたかわからない人も多かったので補足すると、デスクトップにある「エクスプローラー」をクリックして「ダウンロード」という項目をクリックすると見つかると思われる。</p>
 <p>次にGoogle Colabのサイドメニューのフォルダマークをクリックし、サイドメニュー上に <code class="docutils literal notranslate"><span class="pre">sample.csv</span></code> ファイルをドラッグ&amp;ドロップする。人によっては写真よりフォルダがたくさん表示されているかもしれないが、その場合は <code class="docutils literal notranslate"><span class="pre">content</span></code> フォルダ以下にアップロードする。</p>
-<figure class="align-default" id="non-drive">
-<a class="reference internal image-reference" href="_images/non-drive.png"><img alt="_images/non-drive.png" src="_images/non-drive.png" style="width: 700px;" /></a>
+<figure class="align-default" id="upload-file">
+<a class="reference internal image-reference" href="_images/upload-file.png"><img alt="_images/upload-file.png" src="_images/upload-file.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 23 </span><span class="caption-text">Google Colabへのアップロード方法</span><a class="headerlink" href="#non-drive" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 23 </span><span class="caption-text">Google Colabへのアップロード方法</span><a class="headerlink" href="#upload-file" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>これでファイルがアップロードされた状態になる。あとはテキストのコードの、<code class="docutils literal notranslate"><span class="pre">path</span></code> と <code class="docutils literal notranslate"><span class="pre">output_path</span></code> の値をそれぞれ <code class="docutils literal notranslate"><span class="pre">path</span> <span class="pre">=</span> <span class="pre">&quot;/content/sample.csv&quot;</span></code>、<code class="docutils literal notranslate"><span class="pre">output_path</span> <span class="pre">=</span> <span class="pre">&quot;/content/sample_mean.txt&quot;</span></code> に変更すればそのまま動くはずである。</p>
+<p>これでファイルがアップロードされた状態になる。あとはテキストの <code class="docutils literal notranslate"><span class="pre">path</span></code> と <code class="docutils literal notranslate"><span class="pre">output_path</span></code> の値をそれぞれ <code class="docutils literal notranslate"><span class="pre">path</span> <span class="pre">=</span> <span class="pre">&quot;/content/sample.csv&quot;</span></code>、<code class="docutils literal notranslate"><span class="pre">output_path</span> <span class="pre">=</span> <span class="pre">&quot;/content/sample_mean.txt&quot;</span></code> に変更すればそのまま動くはずである。</p>
 <p>出力ファイルも <code class="docutils literal notranslate"><span class="pre">content</span></code> フォルダ以下に配置される。もしコードを実行しても変化のない場合には、サイドメニューの更新ボタンを押す。</p>
 </section>
 </section>
