@@ -355,11 +355,12 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">言語モデル</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">学習</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">学習のしくみ</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">勾配法</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">言語モデルの学習</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python">Pythonから使ってみる</a></li>
 </ul>
             </nav>
         </div>
@@ -467,7 +468,7 @@ document.write(`
 </section>
 </section>
 <section id="id8">
-<h2>学習<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
+<h2>学習のしくみ<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
 <p>モデルの出力が望ましいものになるように、データをもとにモデルのパラメータを求める過程を<strong>学習</strong>という。言語モデルを含む近年のほとんどの<strong>深層学習モデル</strong>（膨大な数のパラメータを持つモデル）の学習には、<strong>勾配法</strong>という手法が用いられている。ここでは、勾配法の最もシンプルな場合について単回帰モデルを使って解説し、その後、言語モデルの学習方法を解説する。</p>
 <section id="id9">
 <h3>勾配法<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
@@ -599,17 +600,12 @@ document.write(`
 </div>
 </div>
 </details>
-<div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "f02026eddfcb43a282759b95f678db01", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_graph</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/e3fb8ba67e394e8c234d604c707c546ce83f7bcb9bbeaa40c5d254a5f5750ae6.png" src="_images/e3fb8ba67e394e8c234d604c707c546ce83f7bcb9bbeaa40c5d254a5f5750ae6.png" />
 </div>
 </div>
 <p>学習によって求めたいのは、モデル <span class="math notranslate nohighlight">\(y = ax + b\)</span> がデータによく当てはまるような <span class="math notranslate nohighlight">\(a\)</span> と <span class="math notranslate nohighlight">\(b\)</span> の値である。</p>
@@ -639,10 +635,110 @@ MSEの値が最小となるのは、モデルの予測値がデータの値と�
 <li><p>「She reads books in the library」を入力したときの次のトークンの生成確率 <span class="math notranslate nohighlight">\(\leftrightarrow\)</span> 「.」</p></li>
 </ul>
 <p>例えば、「She」を入力したときの次のトークンの生成確率はGPT-3なら50257次元のベクトルとなるが、これと「reads」を表すone-hotベクトルの距離を<strong>交差エントロピー</strong>という式により定量化する。
-ここでは交差エントロピーの詳細に触れないが、やはり二乗誤差のときと同じように、次のトークンの生成確率が実際のトークンのone-hotベクトルと完全一致するときに最小となる関数になっている。</p>
-<p>言語モデルの学習では、データセットの中からサンプルした文章に対してトークンごとに上で行ったような比較、すなわち交差エントロピーの計算を行い、それらを足したものを誤差関数として学習、すなわちパラメータの更新を行う。これにより言語モデルは、データセットの文章を真似てそれらしい文章を生成できるようになる。</p>
-<p>ここで少し立ち止まって事前学習の意味合いについて考えてみよう。事前学習により言語モデルは、大量の文章をただ丸暗記することになるのだろうか。実はそうではなく、言語モデルは事前学習を通じて、文法や一般常識、専門知識、さらに論理的思考力までも身につけると考えられている。例えば、一文一文について次のトークン予測をするためには自然なトークンの並び、すなわち文法を知るのが（丸暗記するより）近道であるし、長文について次のトークン予測をするには過去の文脈を正確に理解することが近道である。また例えばEinstein（アインシュタイン）を様々に表現した文章について、「Einstein」というトークンをそこまでの文章をもとに予測するためには、Einsteinは何者なのかという一般常識を身につけることが近道である。これらの結果として、言語モデルは丸暗記ではなく、これらの能力を自然と身につけるのだと理解できる。</p>
-<p>さて、事前学習のあとに行われるのが事後学習である。これは、事前学習によりさまざまな能力を身につけた言語モデルに、その能力の適切な使い方を学習させる工程である。事後学習については、各社様々な工夫をしていて公開されていない部分も多く、技術的な移り変わりも早いと考えられるので、授業中に口頭で紹介するのに止める。</p>
+ここでは交差エントロピーの詳細は省略するが、やはり二乗誤差のときと同じように、次のトークンの生成確率が実際のトークンのone-hotベクトルと完全一致するときに最小となるような関数になっている。</p>
+<p>言語モデルの学習では、データセットの中からサンプルした文章に対してトークンごとに上で行ったような比較、すなわち交差エントロピーの計算を行い、それらを足したものを誤差関数として学習する。これにより言語モデルのパラメータが適切な値に更新されていき、言語モデルはデータセットの文章を真似てそれらしい文章を生成できるようになる。</p>
+<p>ここで事前学習の意味合いについて考えてみよう。事前学習により言語モデルは、大量の文章をただ丸暗記することになるのだろうか。実はそうではなく、言語モデルは事前学習を通じて、文法や一般常識、専門知識、さらに論理的思考力までも身につけると考えられている。例えば、一文一文について次のトークン予測をするためには自然なトークンの並び、すなわち文法を知るのが（丸暗記するより）近道であるし、長文について次のトークン予測をするには過去の文脈を正確に理解することが近道である。また例えばEinstein（アインシュタイン）を様々に表現した文章について、「Einstein」というトークンをそれまでの文章をもとに予測するためには、Einsteinは何者なのかという一般常識を身につけることが近道である。これらの結果として、言語モデルは丸暗記ではなく、これらの能力を自然と身につけるのだと理解できる。</p>
+<p>事前学習のあとには事後学習という追加の学習が行われる。これは、事前学習によりさまざまな能力を身につけた言語モデルに、その能力の適切な使い方を学習させる工程である。事後学習については公開されていない部分も多く、技術的な移り変わりも早いと考えられるので、授業中に口頭で紹介するのに止める。</p>
+</section>
+</section>
+<section id="python">
+<h2>Pythonから使ってみる<a class="headerlink" href="#python" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">openai</span> <span class="n">Pillow</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">base64</span>
+<span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">BytesIO</span>
+
+<span class="kn">from</span> <span class="nn">openai</span> <span class="kn">import</span> <span class="n">OpenAI</span>
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="n">OpenAI</span><span class="p">()</span>
+
+<span class="n">completion</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+  <span class="n">model</span><span class="o">=</span><span class="s2">&quot;gpt-4o&quot;</span><span class="p">,</span>
+  <span class="n">messages</span><span class="o">=</span><span class="p">[</span>
+    <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;system&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;You are a helpful assistant.&quot;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;Hello!&quot;</span><span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">completion</span><span class="o">.</span><span class="n">choices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">message</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">encode_image</span><span class="p">(</span><span class="n">image_path</span><span class="p">):</span>
+    <span class="c1"># 画像を開く</span>
+    <span class="k">with</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">image_path</span><span class="p">)</span> <span class="k">as</span> <span class="n">img</span><span class="p">:</span>
+        <span class="c1"># 横幅が200pxを超える場合、200pxにリサイズ</span>
+        <span class="k">if</span> <span class="n">img</span><span class="o">.</span><span class="n">width</span> <span class="o">&gt;</span> <span class="mi">200</span><span class="p">:</span>
+            <span class="n">ratio</span> <span class="o">=</span> <span class="mi">200</span> <span class="o">/</span> <span class="n">img</span><span class="o">.</span><span class="n">width</span>
+            <span class="n">new_size</span> <span class="o">=</span> <span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">img</span><span class="o">.</span><span class="n">height</span> <span class="o">*</span> <span class="n">ratio</span><span class="p">))</span>
+            <span class="n">img</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">new_size</span><span class="p">)</span>
+        
+        <span class="c1"># 画像をバイトストリームに変換</span>
+        <span class="n">buffered</span> <span class="o">=</span> <span class="n">BytesIO</span><span class="p">()</span>
+        <span class="n">img</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">buffered</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;PNG&quot;</span><span class="p">)</span>
+        <span class="n">img_bytes</span> <span class="o">=</span> <span class="n">buffered</span><span class="o">.</span><span class="n">getvalue</span><span class="p">()</span>
+        
+        <span class="c1"># base64エンコード</span>
+        <span class="k">return</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="n">img_bytes</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">image_path</span> <span class="o">=</span> <span class="s2">&quot;/content/drive/MyDrive/sample.png&quot;</span>
+<span class="n">base64_image</span> <span class="o">=</span> <span class="n">encode_image</span><span class="p">(</span><span class="n">image_path</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">im</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">image_path</span><span class="p">)</span>
+<span class="n">im</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">base64_image</span> <span class="o">=</span> <span class="n">encode_image</span><span class="p">(</span><span class="n">image_path</span><span class="p">)</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+    <span class="n">model</span><span class="o">=</span><span class="s2">&quot;gpt-4o&quot;</span><span class="p">,</span>
+    <span class="n">messages</span><span class="o">=</span><span class="p">[</span>
+        <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;system&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;You are a helpful assistant.&quot;</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;text&quot;</span><span class="p">,</span> <span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="s2">&quot;この写真の料理に写っている食材を全て答えてください。&quot;</span><span class="p">},</span>
+            <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;image_url&quot;</span><span class="p">,</span> <span class="s2">&quot;image_url&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;data:image/png;base64,</span><span class="si">{</span><span class="n">base64_image</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">]}</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">choices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 <hr class="footnotes docutils" />
 <aside class="footnote-list brackets">
 <aside class="footnote brackets" id="f1" role="doc-footnote">
@@ -662,7 +758,6 @@ MSEの値が最小となるのは、モデルの予測値がデータの値と�
 <p><strong>損失関数</strong>ともいう。また誤差関数・損失関数は最小化したい関数であるが、それとは逆に最大化したい関数のことを<strong>目的関数</strong>という。例えば、誤差関数にマイナスをつけたものを目的関数と考えることができる。これらの用語も知っておくと良いだろう。</p>
 </aside>
 </aside>
-</section>
 </section>
 </section>
 
@@ -719,11 +814,12 @@ MSEの値が最小となるのは、モデルの予測値がデータの値と�
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">言語モデル</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">学習</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">学習のしくみ</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">勾配法</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">言語モデルの学習</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python">Pythonから使ってみる</a></li>
 </ul>
   </nav></div>
 
