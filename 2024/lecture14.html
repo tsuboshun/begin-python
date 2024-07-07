@@ -360,7 +360,11 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">言語モデルの学習</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python">Pythonから使ってみる</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python">Pythonから使ってみる</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#web-api">Web API</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">マルチモーダル</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -379,6 +383,7 @@ document.write(`
 <hr class="docutils" />
 <section id="id1">
 <h2>この授業で学ぶこと<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<p>今回は、データサイエンスの世界でも日に日に存在感を増している生成AIについて学ぶ。</p>
 <p><strong>生成AI</strong>とは、文章、画像、動画、音声といった様々なデータから学習し、それらの新しいデータを生み出すことができるAIのことを言う。</p>
 <p>例えば、</p>
 <ul class="simple">
@@ -401,20 +406,20 @@ document.write(`
 <p>生成モデルの仕組みを理解するために、条件付き確率という考え方が重要になる。例えば、とある小売店のとある日におけるアイスクリームの売上個数の確率を考えたいとしよう。
 アイスクリームの売上個数の確率分布は、その日の気温に応じて変化すると考えられる。
 このような条件に応じた確率分布を表現するのが<strong>条件付き確率分布</strong>で、次のような書き方をする。</p>
-<p><span class="math notranslate nohighlight">\(p(アイスクリームの売上個数 | 気温)\)</span></p>
-<p>これは「気温」と「アイスクリームの売上個数」のところに数値を入れると、確率を表す数値が返ってくるような関数となっている。例えば、このお店ではアイスクリームを3個しか仕入れていないとして、気温が27度という条件のもとでの確率の例をこの形式で表すと、以下のようになる（代入との違いが見やすいように、ここでは <span class="math notranslate nohighlight">\(\rightarrow\)</span> で戻り値を表す）。</p>
+<p><span class="math notranslate nohighlight">\(p(売上個数 | 気温)\)</span></p>
+<p>これは「気温」と「売上個数」のところに数値を入れると、確率を表す数値が返ってくるような関数となっている。例えば、このお店ではアイスクリームを3個しか仕入れていないとして、気温が27度という条件のもとでの確率の例をこの形式で表すと、以下のようになる（代入との違いが見やすいように、ここでは <span class="math notranslate nohighlight">\(\rightarrow\)</span> で戻り値を表す）。</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(p(アイスクリームの売上個数 = 0| 気温 = 27) \rightarrow 0.1\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(p(アイスクリームの売上個数 = 1| 気温 = 27) \rightarrow 0.2\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(p(アイスクリームの売上個数 = 2| 気温 = 27) \rightarrow 0.6\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(p(アイスクリームの売上個数 = 3| 気温 = 27) \rightarrow 0.1\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(p(売上個数 = 0| 気温 = 27) \rightarrow 0.1\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(p(売上個数 = 1| 気温 = 27) \rightarrow 0.2\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(p(売上個数 = 2| 気温 = 27) \rightarrow 0.6\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(p(売上個数 = 3| 気温 = 27) \rightarrow 0.1\)</span></p></li>
 </ul>
 <p>気温が10度という条件のもとでの確率は、例えば以下のようになるだろう。</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(p(アイスクリームの売上個数 = 0| 気温 = 10) \rightarrow 0.8\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(p(アイスクリームの売上個数 = 1| 気温 = 10) \rightarrow 0.2\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(p(アイスクリームの売上個数 = 2| 気温 = 10) \rightarrow 0\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(p(アイスクリームの売上個数 = 3| 気温 = 10) \rightarrow 0\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(p(売上個数 = 0| 気温 = 10) \rightarrow 0.8\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(p(売上個数 = 1| 気温 = 10) \rightarrow 0.2\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(p(売上個数 = 2| 気温 = 10) \rightarrow 0\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(p(売上個数 = 3| 気温 = 10) \rightarrow 0\)</span></p></li>
 </ul>
 <p>生成モデルも、これと同じように条件付き確率分布で表現することができる。</p>
 <p><span class="math notranslate nohighlight">\(p( y | x )\)</span></p>
@@ -637,12 +642,93 @@ MSEの値が最小となるのは、モデルの予測値がデータの値と�
 <p>例えば、「She」を入力したときの次のトークンの生成確率はGPT-3なら50257次元のベクトルとなるが、これと「reads」を表すone-hotベクトルの距離を<strong>交差エントロピー</strong>という式により定量化する。
 ここでは交差エントロピーの詳細は省略するが、やはり二乗誤差のときと同じように、次のトークンの生成確率が実際のトークンのone-hotベクトルと完全一致するときに最小となるような関数になっている。</p>
 <p>言語モデルの学習では、データセットの中からサンプルした文章に対してトークンごとに上で行ったような比較、すなわち交差エントロピーの計算を行い、それらを足したものを誤差関数として学習する。これにより言語モデルのパラメータが適切な値に更新されていき、言語モデルはデータセットの文章を真似てそれらしい文章を生成できるようになる。</p>
-<p>ここで事前学習の意味合いについて考えてみよう。事前学習により言語モデルは、大量の文章をただ丸暗記することになるのだろうか。実はそうではなく、言語モデルは事前学習を通じて、文法や一般常識、専門知識、さらに論理的思考力までも身につけると考えられている。例えば、一文一文について次のトークン予測をするためには自然なトークンの並び、すなわち文法を知るのが（丸暗記するより）近道であるし、長文について次のトークン予測をするには過去の文脈を正確に理解することが近道である。また例えばEinstein（アインシュタイン）を様々に表現した文章について、「Einstein」というトークンをそれまでの文章をもとに予測するためには、Einsteinは何者なのかという一般常識を身につけることが近道である。これらの結果として、言語モデルは丸暗記ではなく、これらの能力を自然と身につけるのだと理解できる。</p>
-<p>事前学習のあとには事後学習という追加の学習が行われる。これは、事前学習によりさまざまな能力を身につけた言語モデルに、その能力の適切な使い方を学習させる工程である。事後学習については公開されていない部分も多く、技術的な移り変わりも早いと考えられるので、授業中に口頭で紹介するのに止める。</p>
+<p>ここで事前学習の意味合いについて考えてみよう。事前学習により言語モデルは、大量の文章をただ丸暗記することになるのだろうか。実はそうではなく、言語モデルは事前学習を通じて、文法や一般常識、専門知識、さらに論理的思考力までも身につけると考えられている。例えば、一文一文について次のトークン予測をするためには自然なトークンの並び、すなわち文法を知るのが（丸暗記するより）近道であるし、長文について次のトークン予測をするには過去の文脈を正確に理解することが近道である。また例えばEinstein（アインシュタイン）を様々に表現した文章について、「Einstein」というトークンをそれまでの文章をもとに予測するためには、Einsteinは何者なのかという一般常識を身につけることが近道である。これらの結果として、言語モデルは丸暗記ではなく、これらの能力を自然と身につけると考えられている。実際、ChatGPTなどのサービスで言語モデルに、明らかに世の中に存在しないであろう文章を入力しても論理的な出力が返ってくるが、これは文章の丸暗記では実現できない。</p>
+<p>さて、事前学習のあとには事後学習という追加の学習が行われる。これは、事前学習によりさまざまな能力を身につけた言語モデルに、その能力の適切な使い方を学習させる工程である。事後学習については公開されていない部分も多く、技術的な移り変わりも早いと考えられるので、ここでは省略する。</p>
+<p>以上が、言語モデルの仕組みの概要である。言語モデルは文章を入力として次のトークンを確率的に出力するパラメータ付きの関数であること、そしてそれらパラメータは「次のトークンの予測誤差」を誤差関数として勾配法により設定されることを学んだ。これらに関する大まかなイメージを持っておくことで、普段目にする生成AIに関するニュースへの解像度も変わってくるのではないかと思う。</p>
 </section>
 </section>
 <section id="python">
 <h2>Pythonから使ってみる<a class="headerlink" href="#python" title="Link to this heading">#</a></h2>
+<p>最後にPythonから言語モデルを使用する方法について解説する。</p>
+<section id="web-api">
+<h3>Web API<a class="headerlink" href="#web-api" title="Link to this heading">#</a></h3>
+<p>言語モデルは<strong>Web API</strong>という形式で公開されている。Web APIでは以下の流れで計算が行われる。まず、言語モデルのインストールされたサーバーに、<strong>HTTP</strong>というプロトコル（通信規則）にしたがって依頼を送る。するとサーバー側では依頼の内容をもとに、言語モデルを使った計算を行い、計算結果を依頼元のPCへと返信する。</p>
+<p>Web APIを利用するには、<strong>APIキー</strong>というユーザーを認証するための暗号を先に発行する必要がある。APIキーの発行方法はここでは説明しないが、検索すると解説ページがたくさん見つかる。</p>
+<p>APIを使用すると支払いが発生するため、APIキーの取り扱いには注意が必要である。とくにAPIキーをインターネット上に公開するなど、他人に教える行為は厳禁である。最悪の場合、見知らぬ他人にAPIを何回も使用され多額の請求が発生し得る。</p>
+<p>今回は安全のため、先生の方で授業時間限定のAPIキーを発行し、それを使って実習を行う。<strong>授業に出席しなかった人は以下の実習は行わなくてよい</strong>（行わなくても成績評価で満点がとれるように課題を設定している &amp; 第15回でもAPIキーを発行する予定なので次回出席してほしい）。</p>
+<p>APIキーを取得したら、以下の手順でGoogle Colabに登録する。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">userdata</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>最初の例として、PythonからGPT3.5-turboモデルを使用してみよう。<code class="docutils literal notranslate"><span class="pre">openai</span></code> というモジュールの <code class="docutils literal notranslate"><span class="pre">OpenAI</span></code> クラスのインスタンスを通じてWeb APIを使用する。以下のコードを実行すると、内部でHTTPを使った通信が行われ言語モデルの出力を取得することができる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">openai</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">openai</span> <span class="kn">import</span> <span class="n">OpenAI</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">call_llm</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">messages</span><span class="p">):</span>
+    <span class="n">client</span> <span class="o">=</span> <span class="n">OpenAI</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="n">userdata</span><span class="p">[</span><span class="s2">&quot;API_KEY&quot;</span><span class="p">])</span>
+
+    <span class="n">completion</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+      <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span>
+      <span class="n">messages</span><span class="o">=</span><span class="n">messages</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">completion</span><span class="o">.</span><span class="n">choices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">message</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">messages</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;system&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;You are a helpful assistant.&quot;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;Hello!&quot;</span><span class="p">}</span>
+<span class="p">]</span>
+
+<span class="n">call_llm</span><span class="p">(</span><span class="s2">&quot;gpt-3.5-turbo-0125&quot;</span><span class="p">,</span> <span class="n">messages</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>ここで <code class="docutils literal notranslate"><span class="pre">messages</span></code> 変数に、言語モデルに入力するテキストを設定している。これらのテキストを<strong>プロンプト</strong>という。言語モデルはプロンプトに書かれた指示にしたがって出力を生成する。</p>
+<p>OpenAI社の言語モデルの場合、<code class="docutils literal notranslate"><span class="pre">&quot;role&quot;</span></code> と <code class="docutils literal notranslate"><span class="pre">&quot;content&quot;</span></code> をキーとする辞書のリストとしてプロンプトを作成する。roleにはsystem、user、assistantの3種類がある。systemのcontentには、言語モデルにどのような振る舞いを期待しているかを記述する。userのcontentには、利用者からの指示文を記述する。assistantのcontentには言語モデルの出力を記述する。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">messages</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;system&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;You are a helpful assistant.&quot;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;Hello!&quot;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;assistant&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;Hello! How can I assist you today?&quot;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;何かジョークを1つ言って&quot;</span><span class="p">}</span>
+<span class="p">]</span>
+
+<span class="n">call_llm</span><span class="p">(</span><span class="n">messages</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>言語モデルと2往復以上の会話をする場合は、このように過去のやり取りも含めてプロンプトを作成する。これはWeb APIが<strong>ステートレス</strong>、つまりサーバーが過去のやり取りを全く覚えない作りになっているからである。</p>
+</section>
+<section id="id13">
+<h3>マルチモーダル<a class="headerlink" href="#id13" title="Link to this heading">#</a></h3>
+<p>最新のモデルであるGPT4oはテキストだけでなく画像も入力として受け取ることができる（<strong>マルチモーダル</strong>という）。</p>
+<p>例として、料理の画像を見せて、写真に写っている食材を正しく答えられるか実験してみよう。
+まず料理の画像を用意して、Google Colabにアップロードする（第12回の最後を参照）。その際、<code class="docutils literal notranslate"><span class="pre">sample.png</span></code> 以外の名前の画像をアップロードする場合は、以下のCHECKと書かれた2箇所を適宜修正する（とくにJPEG形式の画像を使用する場合には、<code class="docutils literal notranslate"><span class="pre">format=&quot;JPEG&quot;</span></code> とする）。</p>
+<p>そしたら以下のコードを一通り実行してみよう。かなりの正確さで料理に含まれる食材を列挙してくれるはずである。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">openai</span> <span class="n">Pillow</span> 
@@ -652,29 +738,9 @@ MSEの値が最小となるのは、モデルの予測値がデータの値と�
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">base64</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">base64</span>
 <span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">BytesIO</span>
-
-<span class="kn">from</span> <span class="nn">openai</span> <span class="kn">import</span> <span class="n">OpenAI</span>
 <span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="n">OpenAI</span><span class="p">()</span>
-
-<span class="n">completion</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
-  <span class="n">model</span><span class="o">=</span><span class="s2">&quot;gpt-4o&quot;</span><span class="p">,</span>
-  <span class="n">messages</span><span class="o">=</span><span class="p">[</span>
-    <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;system&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;You are a helpful assistant.&quot;</span><span class="p">},</span>
-    <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;Hello!&quot;</span><span class="p">}</span>
-  <span class="p">]</span>
-<span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">completion</span><span class="o">.</span><span class="n">choices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">message</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -684,15 +750,15 @@ MSEの値が最小となるのは、モデルの予測値がデータの値と�
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">encode_image</span><span class="p">(</span><span class="n">image_path</span><span class="p">):</span>
     <span class="c1"># 画像を開く</span>
     <span class="k">with</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">image_path</span><span class="p">)</span> <span class="k">as</span> <span class="n">img</span><span class="p">:</span>
-        <span class="c1"># 横幅が200pxを超える場合、200pxにリサイズ</span>
+        <span class="c1"># 横幅が200pxを超えたら、200pxに縮小</span>
         <span class="k">if</span> <span class="n">img</span><span class="o">.</span><span class="n">width</span> <span class="o">&gt;</span> <span class="mi">200</span><span class="p">:</span>
             <span class="n">ratio</span> <span class="o">=</span> <span class="mi">200</span> <span class="o">/</span> <span class="n">img</span><span class="o">.</span><span class="n">width</span>
             <span class="n">new_size</span> <span class="o">=</span> <span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">img</span><span class="o">.</span><span class="n">height</span> <span class="o">*</span> <span class="n">ratio</span><span class="p">))</span>
             <span class="n">img</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">new_size</span><span class="p">)</span>
         
-        <span class="c1"># 画像をバイトストリームに変換</span>
+        <span class="c1"># 画像をバイト列に変換</span>
         <span class="n">buffered</span> <span class="o">=</span> <span class="n">BytesIO</span><span class="p">()</span>
-        <span class="n">img</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">buffered</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;PNG&quot;</span><span class="p">)</span>
+        <span class="n">img</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">buffered</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;PNG&quot;</span><span class="p">)</span>  <span class="c1"># CHECK</span>
         <span class="n">img_bytes</span> <span class="o">=</span> <span class="n">buffered</span><span class="o">.</span><span class="n">getvalue</span><span class="p">()</span>
         
         <span class="c1"># base64エンコード</span>
@@ -703,38 +769,19 @@ MSEの値が最小となるのは、モデルの予測値がデータの値と�
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">image_path</span> <span class="o">=</span> <span class="s2">&quot;/content/drive/MyDrive/sample.png&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">image_path</span> <span class="o">=</span> <span class="s2">&quot;/content/sample.png&quot;</span>  <span class="c1"># CHECK</span>
 <span class="n">base64_image</span> <span class="o">=</span> <span class="n">encode_image</span><span class="p">(</span><span class="n">image_path</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">im</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">image_path</span><span class="p">)</span>
-<span class="n">im</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">base64_image</span> <span class="o">=</span> <span class="n">encode_image</span><span class="p">(</span><span class="n">image_path</span><span class="p">)</span>
+<span class="n">messages</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;system&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;You are a helpful assistant.&quot;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;text&quot;</span><span class="p">,</span> <span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="s2">&quot;この写真の料理に写っている食材を全て答えてください。&quot;</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;image_url&quot;</span><span class="p">,</span> <span class="s2">&quot;image_url&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;data:image/png;base64,</span><span class="si">{</span><span class="n">base64_image</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">]}</span>
+<span class="p">]</span>
 
-<span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
-    <span class="n">model</span><span class="o">=</span><span class="s2">&quot;gpt-4o&quot;</span><span class="p">,</span>
-    <span class="n">messages</span><span class="o">=</span><span class="p">[</span>
-        <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;system&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;You are a helpful assistant.&quot;</span><span class="p">},</span>
-        <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;text&quot;</span><span class="p">,</span> <span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="s2">&quot;この写真の料理に写っている食材を全て答えてください。&quot;</span><span class="p">},</span>
-            <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;image_url&quot;</span><span class="p">,</span> <span class="s2">&quot;image_url&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;data:image/png;base64,</span><span class="si">{</span><span class="n">base64_image</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">}</span>
-            <span class="p">}</span>
-        <span class="p">]}</span>
-    <span class="p">]</span>
-<span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">choices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+<span class="n">call_llm</span><span class="p">(</span><span class="s2">&quot;GPT4o&quot;</span><span class="p">,</span> <span class="n">messages</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -758,6 +805,7 @@ MSEの値が最小となるのは、モデルの予測値がデータの値と�
 <p><strong>損失関数</strong>ともいう。また誤差関数・損失関数は最小化したい関数であるが、それとは逆に最大化したい関数のことを<strong>目的関数</strong>という。例えば、誤差関数にマイナスをつけたものを目的関数と考えることができる。これらの用語も知っておくと良いだろう。</p>
 </aside>
 </aside>
+</section>
 </section>
 </section>
 
@@ -819,7 +867,11 @@ MSEの値が最小となるのは、モデルの予測値がデータの値と�
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">言語モデルの学習</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python">Pythonから使ってみる</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python">Pythonから使ってみる</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#web-api">Web API</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">マルチモーダル</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
