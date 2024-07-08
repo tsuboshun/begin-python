@@ -383,7 +383,7 @@ document.write(`
 <hr class="docutils" />
 <section id="id1">
 <h2>この授業で学ぶこと<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
-<p>今回は、データサイエンスの世界でも日に日に存在感を増している生成AIについて学ぶ。</p>
+<p>今回は、データサイエンスの中でも最新の話題である生成AIについて学ぶ。</p>
 <p><strong>生成AI</strong>とは、文章、画像、動画、音声といった様々なデータから学習し、それらの新しいデータを生み出すことができるAIのことを言う。</p>
 <p>例えば、</p>
 <ul class="simple">
@@ -395,7 +395,7 @@ document.write(`
 <p>といったことが生成AIでできるようになってきている。</p>
 <p>最近ではChatGPTという、まるで人間と話しているかのように自然な文章を生成するAIが登場し、世界中で大きな話題となっている。</p>
 <p>生成AIは日々進化を続けており、次々と新しい技術やサービスが登場している。しかし、その基本的な仕組みは当初から大きく変わっていないし、また今後しばらく変わらないと見られている。生成AIを上手に活用したり、今後の技術的な進展を予想したりするためにも、基本的な仕組みを理解しておくことはとても重要である。</p>
-<p>今回は、生成AIの仕組みの概要を理解し、さらにPythonプログラムから生成AIを使えるようになることを目標に授業する。なるべく話を簡単にするため、<strong>言語モデル</strong>と呼ばれる、文章を入力して文章を出力するタイプの生成AIを主に扱う。</p>
+<p>今回は、生成AIの仕組みの概要を理解し、さらにPythonプログラムから生成AIを使えるようになることを目標に授業する。なるべく話を簡単にするため、<strong>言語モデル</strong>と呼ばれる、文章を入力して文章を出力するタイプの生成AIを主に扱う。また生成AIサービスには、OpenAI社のChatGPTのほか、Google社のGemini、Anthropic社のClaudeなど様々あるが、この授業ではChatGPTを中心に取り上げる（基本的な仕組みはどれも同じである）。</p>
 </section>
 <section id="id2">
 <h2>生成モデル<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
@@ -742,7 +742,7 @@ MSEの値が最小となるのは、モデルの予測値がデータの値と�
 <h3>マルチモーダル<a class="headerlink" href="#id13" title="Link to this heading">#</a></h3>
 <p>最新のモデルであるGPT4oはテキストだけでなく画像も入力として受け取ることができる（<strong>マルチモーダル</strong>という）。</p>
 <p>例として、料理の画像を見せて、写真に写っている食材を正しく答えられるか実験してみよう。
-まず料理の画像を用意して、Google Colabにアップロードする（第12回の最後を参照）。その際、<code class="docutils literal notranslate"><span class="pre">sample.png</span></code> 以外の名前の画像をアップロードする場合は、以下のCHECKと書かれた2箇所を適宜修正する（とくにJPEG形式の画像を使用する場合には、<code class="docutils literal notranslate"><span class="pre">format=&quot;jpeg&quot;</span></code> とする）。</p>
+まず料理の画像を用意して、Google Colabにアップロードする（第12回の<a class="reference internal" href="lecture12.html#label-file-upload"><span class="std std-ref">最後</span></a>を参照）。その際、<code class="docutils literal notranslate"><span class="pre">sample.png</span></code> 以外の名前の画像をアップロードする場合は、以下の <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">CHECK</span></code> と書かれた２箇所を適宜修正する（とくにJPEG形式の画像を使用する場合には、<code class="docutils literal notranslate"><span class="pre">format=&quot;jpeg&quot;</span></code> とする）。</p>
 <p>そしたら以下のコードを一通り実行してみよう。かなりの正確さで料理に含まれる食材を列挙してくれるはずである。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
