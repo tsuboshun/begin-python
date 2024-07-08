@@ -652,8 +652,21 @@ Pandasには、1次元配列に行ラベルをつけたデータ型も用意さ�
 <p><strong>練習1</strong><br />
 <code class="docutils literal notranslate"><span class="pre">diamonds</span></code> データセットにおいて、カット <code class="docutils literal notranslate"><span class="pre">&quot;cut&quot;</span></code> の種類が <code class="docutils literal notranslate"><span class="pre">&quot;Ideal&quot;</span></code> のデータのみを抽出して、価格の平均、カラットの平均を求めなさい。
 <font color=cornflowerblue>ヒント：平均値は <code class="docutils literal notranslate"><span class="pre">シリーズ.mean()</span></code> でも求められるし、<code class="docutils literal notranslate"><span class="pre">np.mean()</span></code> 関数を使って求めてもよい。</font></p>
+<div class="toggle docutils container">
+<pre>
+df_ideal = df.loc[df["cut"] == "Ideal"]
+print(df_ideal["price"].mean())
+print(df_ideal["carat"].mean())
+</pre>
+</div>
 <p><strong>練習2</strong><br />
 <code class="docutils literal notranslate"><span class="pre">diamonds</span></code> データセットにおいて価格上位5件、下位5件のデータを表示しなさい。</p>
+<div class="toggle docutils container">
+<pre>
+df.sort_values("price", ascending=False).head()
+df.sort_values("price", ascending=True).head()  # 別のセルで実行する
+</pre>
+</div>
 </section>
 </section>
 </section>
@@ -812,6 +825,19 @@ line.strip().split(',')
 <span class="o">*</span>
 <span class="o">*</span>
 </pre></div>
+</div>
+<div class="toggle docutils container">
+<pre>
+output_path = "/content/drive/MyDrive/sample_std.txt"
+f = open(output_path, mode='w')
+
+for lst in data:
+    std = np.std(lst)
+    f.write(f"{std:.2f}\n")
+
+f.flush()
+f.close()
+</pre>
 </div>
 </section>
 <section id="numpypandas">
