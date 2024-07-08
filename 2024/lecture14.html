@@ -76,6 +76,8 @@
     <script src="_static/custom.js?v=7ed3f353"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="第15回 総合演習" href="lecture15.html" />
+    <link rel="prev" title="第13回 データの読み方" href="lecture13.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -137,8 +139,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -186,7 +186,7 @@
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="lecture01.html">第1回 ガイダンス</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture02.html">第2回 ITを支えるコンピュータのしくみ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture03.html">第3回 はじめてのPython</a></li>
@@ -200,6 +200,8 @@
 <li class="toctree-l1"><a class="reference internal" href="lecture11.html">第11回 データの可視化</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture12.html">第12回 表データの処理</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture13.html">第13回 データの読み方</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">第14回 生成AI入門</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture15.html">第15回 総合演習</a></li>
 </ul>
 
     </div>
@@ -461,7 +463,7 @@ document.write(`
 <figure class="align-default" id="language-model">
 <a class="reference internal image-reference" href="_images/language-model.png"><img alt="_images/language-model.png" src="_images/language-model.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-text">言語モデルの生成過程</span><a class="headerlink" href="#language-model" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 25 </span><span class="caption-text">言語モデルの生成過程</span><a class="headerlink" href="#language-model" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>まず、文章はトークンに分割されてから言語モデルに入力される。ここで各トークンは、GPT-3の場合、長さ50257の数値からなる配列（数学的には50257次元のベクトルという）として表現される。各インデックスが1つのトークンと一対一で対応しており、各トークンは自身を表すインデックスの要素のみ 1 でそれ以外の要素が全て 0 という<strong>one-hotベクトル</strong>（つまり <span class="math notranslate nohighlight">\([0, ..., 0, 1, 0, ..., 0]\)</span> という配列）として表現される。</p>
@@ -619,7 +621,7 @@ document.write(`
 </div>
 </div>
 <p>学習によって求めたいのは、モデル <span class="math notranslate nohighlight">\(y = ax + b\)</span> がデータによく当てはまるような <span class="math notranslate nohighlight">\(a\)</span> と <span class="math notranslate nohighlight">\(b\)</span> の値である。</p>
-<p>そのために、モデルのデータに対する当てはまりの悪さを定量する関数である<strong>誤差関数</strong>を用意する<a class="footnote-reference brackets" href="#f4" id="id11" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a>。誤差関数はモデルのパラメータを引数にとり、モデルの予測誤差を評価した値を返す関数と捉えられる。ここでは<strong>平均二乗誤差</strong>（<strong>Mean Squared Error, MSE</strong>）を誤差関数として採用する。MSEは以下のように定義される：</p>
+<p>そのために、モデルのデータに対する当てはまりの悪さを定量する関数である<strong>誤差関数</strong>を用意する<a class="footnote-reference brackets" href="#f4" id="id11" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a>。誤差関数はモデルのパラメータを引数にとり、モデルの予測誤差を評価した値を返す関数と捉えられる。ここでは<strong>平均二乗誤差</strong>（<strong>Mean Squared Error, MSE</strong>）を誤差関数として採用する。MSEは以下のように定義される（今回は <span class="math notranslate nohighlight">\(N = 100\)</span>）：</p>
 <p><span class="math notranslate nohighlight">\({\rm{MSE}}(a, b) = \frac{1}{N}\sum_i^N (y_i - (ax_i + b))^2\)</span></p>
 <p><span class="math notranslate nohighlight">\(x = x_i\)</span> における単回帰モデルの予測値が <span class="math notranslate nohighlight">\(ax_i + b\)</span> であるから、実際のデータの値 <span class="math notranslate nohighlight">\(y_i\)</span> との差をとって二乗したものを誤差として、それを全てのデータについて足した式となっている。
 MSEの値が最小となるのは、モデルの予測値がデータの値と完全一致するときで、そのときMSEの値は0となる。</p>
@@ -665,7 +667,7 @@ MSEの値が最小となるのは、モデルの予測値がデータの値と�
 <figure class="align-default" id="api-key">
 <a class="reference internal image-reference" href="_images/api-key.png"><img alt="_images/api-key.png" src="_images/api-key.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-text">APIキーの登録</span><a class="headerlink" href="#api-key" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 26 </span><span class="caption-text">APIキーの登録</span><a class="headerlink" href="#api-key" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>そしたら以下のコードによりAPIキーが利用可能な状態になる。具体的には <code class="docutils literal notranslate"><span class="pre">userdata.get(&quot;API_KEY&quot;)</span></code> によりAPIキーにアクセスする。</p>
@@ -740,9 +742,8 @@ MSEの値が最小となるのは、モデルの予測値がデータの値と�
 </section>
 <section id="id13">
 <h3>マルチモーダル<a class="headerlink" href="#id13" title="Link to this heading">#</a></h3>
-<p>最新のモデルであるGPT4oはテキストだけでなく画像も入力として受け取ることができる（<strong>マルチモーダル</strong>という）。</p>
-<p>例として、料理の画像を見せて、写真に写っている食材を正しく答えられるか実験してみよう。
-まず料理の画像を用意して、Google Colabにアップロードする（第12回の<a class="reference internal" href="lecture12.html#label-file-upload"><span class="std std-ref">最後</span></a>を参照）。その際、<code class="docutils literal notranslate"><span class="pre">sample.png</span></code> 以外の名前の画像をアップロードする場合は、以下の <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">CHECK</span></code> と書かれた２箇所を適宜修正する（とくにJPEG形式の画像を使用する場合には、<code class="docutils literal notranslate"><span class="pre">format=&quot;jpeg&quot;</span></code> とする）。</p>
+<p>最新のモデルであるGPT4oはテキストだけでなく画像も入力として受け取ることができる（<strong>マルチモーダル</strong>という）。画像もテキストと同様のトークンの列として表すことができ、言語モデルにテキストと合わせて入力される。以降の処理はテキストだけの場合と同様である。</p>
+<p>例として、料理の画像を見せて、写真に写っている食材を正しく答えられるか実験してみよう。まず料理の画像を用意して、Google Colabにアップロードする（第12回の<a class="reference internal" href="lecture12.html#label-file-upload"><span class="std std-ref">最後</span></a>を参照）。<code class="docutils literal notranslate"><span class="pre">sample.png</span></code> 以外の名前の画像をアップロードする場合は、以下の <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">CHECK</span></code> と書かれた２箇所を適宜修正する（例えばJPEG形式の画像の場合には、<code class="docutils literal notranslate"><span class="pre">format=&quot;jpeg&quot;</span></code> とする）。</p>
 <p>そしたら以下のコードを一通り実行してみよう。かなりの正確さで料理に含まれる食材を列挙してくれるはずである。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -848,6 +849,24 @@ MSEの値が最小となるのは、モデルの予測値がデータの値と�
                 <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="lecture13.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">第13回 データの読み方</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="lecture15.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">第15回 総合演習</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
