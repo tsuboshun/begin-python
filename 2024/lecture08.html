@@ -502,14 +502,6 @@ del文は <code class="docutils literal notranslate"><span class="pre">del</span
 </div>
 </div>
 </div>
-<div class="toggle docutils container">
-<pre>
-y = []
-for i in range(n):
-    y.append(i+1)
-print(y)
-</pre>
-</div>
 <p><strong>練習2</strong><br />
 整数を要素とするリスト <code class="docutils literal notranslate"><span class="pre">x</span></code> が与えられたとき、<code class="docutils literal notranslate"><span class="pre">x</span></code> 中の偶数のみを含む新しいリスト <code class="docutils literal notranslate"><span class="pre">y</span></code> を作成し、そのリスト <code class="docutils literal notranslate"><span class="pre">y</span></code> を <code class="docutils literal notranslate"><span class="pre">print</span></code> するプログラムを作成しなさい。ただし、リスト <code class="docutils literal notranslate"><span class="pre">y</span></code> の要素の順番は、<code class="docutils literal notranslate"><span class="pre">x</span></code> での順番を保持すること。
 <a href="https://code-judge-system.vercel.app/?&id=8-2" target="_blank">
@@ -527,15 +519,6 @@ print(y)
 </pre></div>
 </div>
 </div>
-</div>
-<div class="toggle docutils container">
-<pre>
-y = []
-for v in x:
-    if v % 2 == 0:
-        y.append(v)
-print(y)
-</pre>
 </div>
 </section>
 <section id="id6">
@@ -577,11 +560,6 @@ print(y)
 </pre></div>
 </div>
 </div>
-</div>
-<div class="toggle docutils container">
-<pre>
-print(x[1:-1])
-</pre>
 </div>
 </section>
 </section>
@@ -722,14 +700,6 @@ print(y)  # [2, 1]が出力される</pre>
 </div>
 </div>
 </div>
-<div class="toggle docutils container">
-<pre>
-total = 0
-for key in x:
-    total += x[key]
-print(total)
-</pre>
-</div>
 <p><strong>練習5</strong><br />
 <code class="docutils literal notranslate"><span class="pre">'a'</span></code>、<code class="docutils literal notranslate"><span class="pre">'b'</span></code>、<code class="docutils literal notranslate"><span class="pre">'c'</span></code> から成るリスト <code class="docutils literal notranslate"><span class="pre">data</span></code> が与えられる。<code class="docutils literal notranslate"><span class="pre">'a'</span></code>、<code class="docutils literal notranslate"><span class="pre">'b'</span></code>、<code class="docutils literal notranslate"><span class="pre">'c'</span></code> をキー、それぞれの出現回数を値とする辞書 <code class="docutils literal notranslate"><span class="pre">count</span></code> を作成しなさい。ただし採点の都合上、<code class="docutils literal notranslate"><span class="pre">print</span></code> してはいけない。
 <a href="https://code-judge-system.vercel.app/?&id=8-5" target="_blank">
@@ -747,13 +717,6 @@ print(total)
 </pre></div>
 </div>
 </div>
-</div>
-<div class="toggle docutils container">
-<pre>
-count = {'a': 0, 'b': 0, 'c': 0}
-for c in data:
-    count[c] += 1
-</pre>
 </div>
 </section>
 </section>

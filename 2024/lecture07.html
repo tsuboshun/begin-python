@@ -396,14 +396,6 @@ document.write(`
 </div>
 </div>
 </div>
-<div class="toggle docutils container">
-<pre>
-if a > b:
-    print(a)
-else:
-    print(b)
-</pre>
-</div>
 <p>この応用として、次の問題を考える。</p>
 <p><strong>例題</strong><br />
 3つの数値 <code class="docutils literal notranslate"><span class="pre">a</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span></code>、<code class="docutils literal notranslate"><span class="pre">c</span></code> が与えられるとき、これらの最大値を <code class="docutils literal notranslate"><span class="pre">print</span></code> するコードを作成しなさい。</p>
@@ -446,17 +438,6 @@ else:
 </div>
 </div>
 </div>
-<div class="toggle docutils container">
-<pre>
-tmp = a
-if tmp > b:
-    tmp = b
-    
-if tmp > c:
-    tmp = c
-print(tmp)
-</pre>
-</div>
 <p><strong>練習3</strong><br />
 2つの変数 <code class="docutils literal notranslate"><span class="pre">a</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span></code> が与えられるとき、それぞれの変数の値を交換するコードを作成しなさい。つまり、例えば <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">&quot;犬&quot;</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">=</span> <span class="pre">&quot;猫&quot;</span></code> という変数を与えられた場合、<code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">&quot;猫&quot;</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">=</span> <span class="pre">&quot;犬&quot;</span></code> という状態にしなさい。ただし採点の都合上、<code class="docutils literal notranslate"><span class="pre">print</span></code> してはいけない。
 <a href="https://code-judge-system.vercel.app/?&id=7-3" target="_blank">
@@ -473,17 +454,6 @@ print(tmp)
 </pre></div>
 </div>
 </div>
-</div>
-<div class="toggle docutils container">
-<pre>
-tmp = a
-a = b
-b = tmp
-</pre>
-<p>上が模範解であるが、Pythonでは以下のように簡潔に書くこともできる。</p>
-<pre>
-a, b = b, a
-</pre>
 </div>
 </section>
 <section id="id4">
@@ -558,15 +528,6 @@ for文とif文を組み合わせる簡単な例として、<strong>break文</str
 </div>
 </div>
 </div>
-<div class="toggle docutils container">
-<pre>
-tmp = data[0]
-for v in data:
-    if tmp > v:
-        tmp = v
-print(tmp)
-</pre>
-</div>
 </section>
 <section id="id5">
 <h3>二重ループ<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
@@ -637,15 +598,6 @@ print(tmp)
 </pre></div>
 </div>
 </div>
-</div>
-<div class="toggle docutils container">
-<pre>
-total = 0
-for l in data:
-    for v in l:
-        total += v
-print(total)
-</pre>
 </div>
 </section>
 </section>
