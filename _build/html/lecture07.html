@@ -198,6 +198,8 @@
 <li class="toctree-l1"><a class="reference internal" href="lecture11.html">第11回 データの可視化</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture12.html">第12回 表データの処理</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture13.html">第13回 データの読み方</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture14.html">第14回 生成AI入門</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture15.html">第15回 総合演習</a></li>
 </ul>
 
     </div>
@@ -372,7 +374,7 @@ document.write(`
 <hr class="docutils" />
 <section id="id2">
 <h2>この授業で学ぶこと<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-<p>第4回までで、プログラミングにおける材料と道具にあたるデータ型と関数・メソッドについて学び、第5回・第6回で処理の流れを制御する方法について学んだ。実はこれまでに学んだ文法だけで、プログラミングで必要なほとんどの処理を実現することができる。ただし、学んだ各文法と実用的な処理の間には隔たりがあり、複数の要素を適切に組み合わせる必要がある。また定番の処理は、世界中の開発者によりライブラリという形にまとめて公開されており、それらを利用することで効率的にプログラムを作成できる。</p>
+<p>第4回までで、プログラミングにおける材料と道具にあたるデータ型と関数・メソッドについて学び、第5回・第6回で処理の流れを制御する方法について学んだ。実はこれまでに学んだ文法だけで、プログラミングで必要なほとんどの処理を実現することができる。ただし、各文法と実用的な処理の間には隔たりがあり、複数の要素を適切に組み合わせる必要がある。また定番の処理は、世界中の開発者によりライブラリという形にまとめて公開されており、それらを利用することで効率的にプログラムを作成できる。</p>
 <p>今回は、これまでに学んだ文法を組み合わせてより高度な処理を実現する方法と、ライブラリから関数等を読み込んで利用する方法について、具体的な例を交えながら学ぶ。</p>
 </section>
 <section id="id3">
@@ -398,7 +400,7 @@ document.write(`
 <p><strong>例題</strong><br />
 3つの数値 <code class="docutils literal notranslate"><span class="pre">a</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span></code>、<code class="docutils literal notranslate"><span class="pre">c</span></code> が与えられるとき、これらの最大値を <code class="docutils literal notranslate"><span class="pre">print</span></code> するコードを作成しなさい。</p>
 <p>このコードを1つのif文だけで実現することもできる。そのためには <code class="docutils literal notranslate"><span class="pre">a</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span></code>、<code class="docutils literal notranslate"><span class="pre">c</span></code> のあり得る6通りの大小関係についてif、elif、elseで条件分岐して、それぞれのケースで最大になる変数を <code class="docutils literal notranslate"><span class="pre">print</span></code> すれば良い（例えば、<code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">&gt;</span> <span class="pre">b</span> <span class="pre">and</span> <span class="pre">b</span> <span class="pre">&gt;</span> <span class="pre">c</span></code> のとき <code class="docutils literal notranslate"><span class="pre">print(a)</span></code> とする）。ただし、この方法では条件式が複雑になりがちで、変数の数が増えるとコード量も膨大になる。</p>
-<p>より効率的には次のように考える。まず <code class="docutils literal notranslate"><span class="pre">a</span></code> と <code class="docutils literal notranslate"><span class="pre">b</span></code> の大小関係を比較し、大きい方の値を変数 <code class="docutils literal notranslate"><span class="pre">tmp</span></code> に代入する（この変数名はなんでも良いが、これはtemporary、つまり一時的に保存するという意味合いを込めている）。次に <code class="docutils literal notranslate"><span class="pre">tmp</span></code> と <code class="docutils literal notranslate"><span class="pre">c</span></code> の大小関係を比較し、大きい方の値を <code class="docutils literal notranslate"><span class="pre">print</span></code> する。</p>
+<p>より効率的には次のように考える。まず <code class="docutils literal notranslate"><span class="pre">a</span></code> を変数 <code class="docutils literal notranslate"><span class="pre">tmp</span></code> に代入する（この変数名はなんでも良いが、ここではtemporary、つまり一時的に保存するという意味合いを込めている）。次に <code class="docutils literal notranslate"><span class="pre">tmp</span></code> と <code class="docutils literal notranslate"><span class="pre">b</span></code> の大小関係を比較し、<code class="docutils literal notranslate"><span class="pre">tmp</span></code> より <code class="docutils literal notranslate"><span class="pre">b</span></code> の方が大きければ <code class="docutils literal notranslate"><span class="pre">tmp</span></code> の値を <code class="docutils literal notranslate"><span class="pre">b</span></code> に更新する。同様に <code class="docutils literal notranslate"><span class="pre">tmp</span></code> と <code class="docutils literal notranslate"><span class="pre">c</span></code> の大小関係を比較し、<code class="docutils literal notranslate"><span class="pre">tmp</span></code> より <code class="docutils literal notranslate"><span class="pre">c</span></code> の方が大きければ <code class="docutils literal notranslate"><span class="pre">tmp</span></code> の値を <code class="docutils literal notranslate"><span class="pre">c</span></code> に更新する。すると最終的に <code class="docutils literal notranslate"><span class="pre">tmp</span></code> には <code class="docutils literal notranslate"><span class="pre">a</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span></code>、<code class="docutils literal notranslate"><span class="pre">c</span></code> の最大値が代入された状態になるので、これを <code class="docutils literal notranslate"><span class="pre">print</span></code> する。</p>
 <p>具体的には以下のコードを書けばよい。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -407,15 +409,13 @@ document.write(`
 <span class="n">b</span> <span class="o">=</span> <span class="mi">3</span>
 <span class="n">c</span> <span class="o">=</span> <span class="mi">2</span>
 
-<span class="k">if</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">:</span>
-    <span class="n">tmp</span> <span class="o">=</span> <span class="n">a</span>
-<span class="k">else</span><span class="p">:</span>
+<span class="n">tmp</span> <span class="o">=</span> <span class="n">a</span>
+<span class="k">if</span> <span class="n">tmp</span> <span class="o">&lt;</span> <span class="n">b</span><span class="p">:</span>
     <span class="n">tmp</span> <span class="o">=</span> <span class="n">b</span>
-
-<span class="k">if</span> <span class="n">tmp</span> <span class="o">&gt;</span> <span class="n">c</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+    
+<span class="k">if</span> <span class="n">tmp</span> <span class="o">&lt;</span> <span class="n">c</span><span class="p">:</span>
+    <span class="n">tmp</span> <span class="o">=</span> <span class="n">c</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -545,7 +545,7 @@ for文とif文を組み合わせる簡単な例として、<strong>break文</str
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">range</span></code> 関数に引数を2つ渡しているが、<code class="docutils literal notranslate"><span class="pre">range(a,</span> <span class="pre">b)</span></code> により生成されるイテラブルオブジェクトは、<code class="docutils literal notranslate"><span class="pre">a</span></code> から <code class="docutils literal notranslate"><span class="pre">b-1</span></code> までの整数を順に生成する。上の例では、変数 <code class="docutils literal notranslate"><span class="pre">i</span></code> に <code class="docutils literal notranslate"><span class="pre">1</span></code> から <code class="docutils literal notranslate"><span class="pre">4</span></code> までの整数が順に代入され、それぞれの場合に変数 <code class="docutils literal notranslate"><span class="pre">j</span></code> に <code class="docutils literal notranslate"><span class="pre">1</span></code> から <code class="docutils literal notranslate"><span class="pre">3</span></code> までの整数が順に代入される。したがって、合わせて12回 <code class="docutils literal notranslate"><span class="pre">print</span></code> 関数が実行される。</p>
 <p><strong>例2</strong><br />
-<strong>二次元リスト</strong>を使った例を紹介する。ここで二次元リストとは、<code class="docutils literal notranslate"><span class="pre">[[1,</span> <span class="pre">2],</span> <span class="pre">[3,</span> <span class="pre">4]]</span></code> のようにリストの各要素がさらにリストであるものを指す（この例では <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">2]</span></code> と <code class="docutils literal notranslate"><span class="pre">[3,</span> <span class="pre">4]</span></code> が要素）。より正確には、すべての要素が非リスト型（整数、文字列など）のリストを一次元リストといい、すべての要素が一次元リストであるリストのことを二次元リストという。 この授業で二次元リストと言ったときは、すべての一次元リストの要素数が同一であることを前提とする（つまり <code class="docutils literal notranslate"><span class="pre">[[1,</span> <span class="pre">2],</span> <span class="pre">[3,</span> <span class="pre">4,</span> <span class="pre">5]]</span></code> のような例は扱わない）。</p>
+<strong>二次元リスト</strong>を使った例を紹介する。ここで二次元リストとは、<code class="docutils literal notranslate"><span class="pre">[[1,</span> <span class="pre">2],</span> <span class="pre">[3,</span> <span class="pre">4]]</span></code> のようにリストの各要素がさらにリストであるものを指す（この例では <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">2]</span></code> と <code class="docutils literal notranslate"><span class="pre">[3,</span> <span class="pre">4]</span></code> が要素）。より正確には、すべての要素が非リスト型（整数、文字列など）のリストを一次元リストといい、すべての要素が一次元リストであるリストのことを二次元リストという。</p>
 <p>二次元リストの要素が一次元リストであるから、一番内側の要素にアクセスするにはインデックスを2つ指定する必要がある。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">

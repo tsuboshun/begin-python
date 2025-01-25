@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>第14回 &#8212; プログラミング実習講義１</title>
+    <title>第15回 総合演習 &#8212; プログラミング実習講義１</title>
   
   
   
@@ -70,10 +70,11 @@
                 gtag('config', 'G-VFVQWRM1GN');
             </script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'tmp';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lecture15';</script>
     <script src="_static/custom.js?v=7ed3f353"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="第14回 生成AI入門" href="lecture14.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -135,8 +136,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -184,7 +183,7 @@
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="lecture01.html">第1回 ガイダンス</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture02.html">第2回 ITを支えるコンピュータのしくみ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture03.html">第3回 はじめてのPython</a></li>
@@ -198,6 +197,8 @@
 <li class="toctree-l1"><a class="reference internal" href="lecture11.html">第11回 データの可視化</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture12.html">第12回 表データの処理</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture13.html">第13回 データの読み方</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture14.html">第14回 生成AI入門</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">第15回 総合演習</a></li>
 </ul>
 
     </div>
@@ -252,7 +253,7 @@
       
       
       
-      <li><a href="_sources/tmp.ipynb" target="_blank"
+      <li><a href="_sources/lecture15.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -336,7 +337,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>第14回</h1>
+    <h1>第15回 総合演習</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -346,7 +347,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">この授業で学ぶこと</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">この授業で学ぶこと</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">課題1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">課題2（任意）</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -359,12 +364,43 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>第14回<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<h1>第15回 総合演習<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <hr class="docutils" />
-<p><a class="reference external" href="https://colab.research.google.com/github/tsuboshun/begin-python/blob/gh-pages/2024/workbook/lecture14.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+<p><a class="reference external" href="https://colab.research.google.com/github/tsuboshun/begin-python/blob/gh-pages/2024/workbook/lecture15.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
 <hr class="docutils" />
 <section id="id2">
 <h2>この授業で学ぶこと<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>これまでの総合演習として、分析内容を自分で考えながらデータ分析する経験をしてもらう。</p>
+<section id="id3">
+<h3>課題1<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<p>ToyoNet-ACEの授業ページから <code class="docutils literal notranslate"><span class="pre">data.csv</span></code> と、データの内容を説明した <code class="docutils literal notranslate"><span class="pre">README.txt</span></code> をダウンロードし、自由にデータ分析して得られた知見をまとめなさい。以下の条件を満たした上で丁寧に取り組んでいれば、簡単な内容でも高く評価する。複数人で相談しながら作業してもよいし、ChatGPTなどの生成AIを活用してもよい。</p>
+<p><strong>条件</strong></p>
+<ul class="simple">
+<li><p>プロットを2つ以上描き、それぞれについて軸ラベル、タイトルをつけた上で、テキストセルに簡単な説明も書きなさい。</p>
+<ul>
+<li><p>プロット画像をダウンロードする必要はなく、<code class="docutils literal notranslate"><span class="pre">plt.show()</span></code> によりプロットをノートブック上に表示させた状態にしておけばよい。</p></li>
+</ul>
+</li>
+<li><p>ノートブックをpdf、ipynbの両方の形式でダウンロードして、それぞれ提出しなさい。</p>
+<ul>
+<li><p>pdf形式でダウンロードするには、メニューバーから「ファイル &gt; 印刷」を選択し、印刷ウィンドウの送信先から「PDFに保存」を選択して保存を押す。</p></li>
+<li><p>ipynb形式でダウンロードするには、メニューバーから「ファイル &gt; ダウンロード」を選択し、「.ipynbをダウンロード」を選択する。</p></li>
+</ul>
+</li>
+<li><p>分析の過程をすべて残しておいても良いが、見やすいように体裁を整えてから提出すること。</p></li>
+<li><p>生成AIは、あくまで補助として利用すること。生成AIの出力をそのまま貼り付けたような、本人の理解の伴っていない提出物は大幅に減点する可能性がある。</p></li>
+</ul>
+<p><strong>データの読み込み方</strong></p>
+<ul class="simple">
+<li><p>第12回を参考にしながら、<code class="docutils literal notranslate"><span class="pre">data.csv</span></code> をGoogle Colabにアップロードする。</p></li>
+<li><p>CSVファイルを直接データフレームとして読み込んでくれる <code class="docutils literal notranslate"><span class="pre">pd.read_csv()</span></code> を使うのがおすすめである。ノートブックには既にそのようなコードを用意している。</p></li>
+</ul>
+</section>
+<section id="id4">
+<h3>課題2（任意）<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<p>OpenAI社の言語モデルを使った便利な/面白いプログラムを考え、コードを作成しなさい。またどのようなプログラムを作成したか説明を書きなさい。課題1と同じノートブック上に作成すること。</p>
+<p>課題2に関しては余力のある人のみ取り組めばよい。また取り組む場合にも、1時間で作成できるような簡単なものでよい。課題1だけでも満点を取れるように採点する。</p>
+</section>
 </section>
 </section>
 
@@ -398,6 +434,15 @@ document.write(`
                 <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="lecture14.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">第14回 生成AI入門</p>
+      </div>
+    </a>
 </div>
                 </footer>
               
@@ -414,7 +459,11 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">この授業で学ぶこと</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">この授業で学ぶこと</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">課題1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">課題2（任意）</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

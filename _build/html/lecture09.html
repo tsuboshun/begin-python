@@ -198,6 +198,8 @@
 <li class="toctree-l1"><a class="reference internal" href="lecture11.html">第11回 データの可視化</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture12.html">第12回 表データの処理</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture13.html">第13回 データの読み方</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture14.html">第14回 生成AI入門</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture15.html">第15回 総合演習</a></li>
 </ul>
 
     </div>
@@ -384,8 +386,8 @@ document.write(`
 <p><span class="caption-number">Fig. 15 </span><span class="caption-text">def文の書き方</span><a class="headerlink" href="#def" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>関数定義はヘッダーとブロックから構成され、ヘッダーには <code class="docutils literal notranslate"><span class="pre">def</span></code> に続いて関数名と、カッコ内に引数を記述する。引数は任意で、引数がない場合には <code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">関数名():</span></code> と書き、引数が複数ある場合には上図のように <code class="docutils literal notranslate"><span class="pre">,</span></code> で区切って書く。ブロック内には関数の処理を書く。</p>
-<p><strong>return文</strong>は関数から値を返し、関数の実行を終了するための構文である。この文は任意であり、<code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">戻り値</span></code> という形式で記述する。return文に到達すると、指定された戻り値を返して関数の実行を終了する。return文が省略された場合には、関数の処理がブロックの最後まで実行された後に自動的に <code class="docutils literal notranslate"><span class="pre">None</span></code> という値を返す。</p>
+<p>関数定義はヘッダーとブロックから構成され、ヘッダーには <code class="docutils literal notranslate"><span class="pre">def</span></code> に続けて関数名と、カッコ内に引数を記述する。引数は任意で、引数がない場合には <code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">関数名():</span></code> と書き、引数がある場合には上図のように <code class="docutils literal notranslate"><span class="pre">,</span></code> で区切って書く。ブロック内には関数の処理を書く。</p>
+<p><strong>return文</strong>は関数から値を返し、関数の実行を終了するための構文である。この文は任意であり、<code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">戻り値</span></code> という形式で記述する。return文に到達すると、指定された戻り値を返して関数の実行を終了する。return文が省略された場合には、関数の処理がブロックの最後まで到達した後に自動的に <code class="docutils literal notranslate"><span class="pre">None</span></code> という値を返す。</p>
 <p>第5回で作成したBMIの計算プログラムを例に、関数を作成してみよう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -427,11 +429,11 @@ document.write(`
 </div>
 </div>
 </div>
-<p>基本的に、引数は関数で定義した順番通りに渡す必要がある。
+<p>基本的に、引数は関数で定義された順番通りに渡す必要がある。
 例えば上の例で <code class="docutils literal notranslate"><span class="pre">bmi(193,</span> <span class="pre">95)</span></code> と呼び出すと、引数に <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">193</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">=</span> <span class="pre">95</span></code> が代入されてブロックの処理が行われる。
 したがって、<code class="docutils literal notranslate"><span class="pre">10000</span> <span class="pre">*</span> <span class="pre">95</span> <span class="pre">/</span> <span class="pre">193</span> <span class="pre">**</span> <span class="pre">2</span></code> を計算した結果が戻り値として返される。</p>
 <p>そうではない場合として、<strong>キーワード引数</strong>や<strong>デフォルト引数</strong>を使用した場合がある。
-キーワード引数を使用すると、関数呼び出し時に引数の順番を自由に指定できる。
+キーワード引数を使用すると、関数呼び出し時に自由な順番で引数を設定できる。
 キーワード引数は、関数の使用時に次のように <code class="docutils literal notranslate"><span class="pre">引数名</span> <span class="pre">=</span> <span class="pre">値</span></code> という形式で記述する。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -440,7 +442,7 @@ document.write(`
 </div>
 </div>
 </div>
-<p>また、デフォルト引数を設定すると、関数呼び出し時に特定の引数を省略可能となる。デフォルト引数は、関数の定義時に次のように <code class="docutils literal notranslate"><span class="pre">引数名</span> <span class="pre">=</span> <span class="pre">デフォルト値</span></code> という形式で記述する。</p>
+<p>また、デフォルト引数を設定すると、関数呼び出し時に引数の設定を省略できる。デフォルト引数は、関数の定義時に次のように <code class="docutils literal notranslate"><span class="pre">引数名</span> <span class="pre">=</span> <span class="pre">デフォルト値</span></code> という形式で記述する。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">bmi</span><span class="p">(</span><span class="n">a</span> <span class="o">=</span> <span class="mi">157</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">50</span><span class="p">):</span>
@@ -820,7 +822,7 @@ document.write(`
 <aside class="footnote-list brackets">
 <aside class="footnote brackets" id="f1" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id7">1</a><span class="fn-bracket">]</span></span>
-<p>アルゴリズムとは問題を解決するための手順のことである。</p>
+<p>問題を解決するための手順のことをアルゴリズムという。</p>
 </aside>
 <aside class="footnote brackets" id="f2" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id8">2</a><span class="fn-bracket">]</span></span>
