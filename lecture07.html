@@ -1,0 +1,809 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>第7回 これまでの復習と応用 &#8212; プログラミング実習講義１</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-VFVQWRM1GN"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-VFVQWRM1GN');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-VFVQWRM1GN');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lecture07';</script>
+    <script src="_static/custom.js?v=7ed3f353"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="第8回 データの入れ物" href="lecture08.html" />
+    <link rel="prev" title="第6回 繰り返し" href="lecture06.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">プログラミング実習講義１</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    プログラミング実習講義１のページ
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="lecture01.html">第1回 ガイダンス</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture02.html">第2回 ITを支えるコンピュータのしくみ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture03.html">第3回 はじめてのPython</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture04.html">第4回 プログラムの材料と道具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture05.html">第5回 条件分岐</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture06.html">第6回 繰り返し</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">第7回 これまでの復習と応用</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture08.html">第8回 データの入れ物</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture09.html">第9回 関数と再帰</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture10.html">第10回 クラス</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture14.html">第14回 生成AI入門</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/lecture07.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>第7回 これまでの復習と応用</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">この授業で学ぶこと</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">変数を使いこなす</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">文のネスト</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#forif">for文とif文の組み合わせ</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">二重ループ</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import">モジュールとimport</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>第7回 これまでの復習と応用<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<hr class="docutils" />
+<p><a class="reference external" href="https://colab.research.google.com/github/tsuboshun/begin-python/blob/gh-pages/workbook/lecture07.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+<hr class="docutils" />
+<section id="id2">
+<h2>この授業で学ぶこと<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>第4回までで、プログラミングにおける材料と道具にあたるデータ型と関数・メソッドについて学び、第5回・第6回で処理の流れを制御する方法について学んだ。実はこれまでに学んだ文法だけで、プログラミングで必要なほとんどの処理を実現することができる。ただし、各文法と実用的な処理の間には隔たりがあり、複数の要素を適切に組み合わせる必要がある。また定番の処理は、世界中の開発者によりライブラリという形にまとめて公開されており、それらを利用することで効率的にプログラムを作成できる。</p>
+<p>今回は、これまでに学んだ文法を組み合わせてより高度な処理を実現する方法と、ライブラリから関数等を読み込んで利用する方法について、具体的な例を交えながら学ぶ。</p>
+</section>
+<section id="id3">
+<h2>変数を使いこなす<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<p>まずはif文の復習も兼ねて以下の問題に取り組んでみよう。</p>
+<p><strong>練習1</strong><br />
+2つの数値 <code class="docutils literal notranslate"><span class="pre">a</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span></code> が与えられるとき、<code class="docutils literal notranslate"><span class="pre">a</span></code> と <code class="docutils literal notranslate"><span class="pre">b</span></code> のうち大きい方の値を <code class="docutils literal notranslate"><span class="pre">print</span></code> するコードを作成しなさい。
+<a href="https://code-judge-system.vercel.app/?&id=7-1" target="_blank">
+<img src="./_images/launch.svg" style="width: 20px; height: 20px;">
+</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># a、b の一例</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="c1"># 以下にコードを作成し、以下の部分のみ提出する</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>この応用として、次の問題を考える。</p>
+<p><strong>例題</strong><br />
+3つの数値 <code class="docutils literal notranslate"><span class="pre">a</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span></code>、<code class="docutils literal notranslate"><span class="pre">c</span></code> が与えられるとき、これらの最大値を <code class="docutils literal notranslate"><span class="pre">print</span></code> するコードを作成しなさい。</p>
+<p>このコードを1つのif文だけで実現することもできる。そのためには <code class="docutils literal notranslate"><span class="pre">a</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span></code>、<code class="docutils literal notranslate"><span class="pre">c</span></code> の6通りの大小関係についてif、elif、elseで条件分岐して、それぞれのケースで最大になる変数を <code class="docutils literal notranslate"><span class="pre">print</span></code> すれば良い（例えば、<code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">&gt;</span> <span class="pre">b</span> <span class="pre">and</span> <span class="pre">b</span> <span class="pre">&gt;</span> <span class="pre">c</span></code> のとき <code class="docutils literal notranslate"><span class="pre">print(a)</span></code> とする）。ただし、この方法では条件式が複雑になりがちで、比較する数値が4つ、5つと増えるとコード量も膨大になる。</p>
+<p>最大値を効率的に求めるのに、以下のような方法がある。</p>
+<ul class="simple">
+<li><p>まず、最初の値 <code class="docutils literal notranslate"><span class="pre">a</span></code> を一時的な変数 <code class="docutils literal notranslate"><span class="pre">tmp</span></code> に入れる<a class="footnote-reference brackets" href="#f1" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>。</p></li>
+<li><p>次に、この変数 <code class="docutils literal notranslate"><span class="pre">tmp</span></code> と2番目の値 <code class="docutils literal notranslate"><span class="pre">b</span></code> を比較し、<code class="docutils literal notranslate"><span class="pre">b</span></code> のほうが大きければ <code class="docutils literal notranslate"><span class="pre">tmp</span></code> を <code class="docutils literal notranslate"><span class="pre">b</span></code> に置き換える。</p></li>
+<li><p>最後に、<code class="docutils literal notranslate"><span class="pre">tmp</span></code>と3番目の値 <code class="docutils literal notranslate"><span class="pre">c</span></code> を比較し、<code class="docutils literal notranslate"><span class="pre">c</span></code> のほうが大きければ再び入れ替える。</p></li>
+</ul>
+<p>こうすると、最終的に <code class="docutils literal notranslate"><span class="pre">tmp</span></code> には最大値が残るので、これを出力すればよい。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># a, b, c の一例</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">c</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="n">tmp</span> <span class="o">=</span> <span class="n">a</span>
+<span class="k">if</span> <span class="n">tmp</span> <span class="o">&lt;</span> <span class="n">b</span><span class="p">:</span>
+    <span class="n">tmp</span> <span class="o">=</span> <span class="n">b</span>
+
+<span class="k">if</span> <span class="n">tmp</span> <span class="o">&lt;</span> <span class="n">c</span><span class="p">:</span>
+    <span class="n">tmp</span> <span class="o">=</span> <span class="n">c</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>このように1つの問題をより細かい処理に分解し、前の処理の結果を変数に保存しながら次の処理に進む方法は、プログラミングの定石の一つである。</p>
+<p><strong>練習2</strong><br />
+3つの数値 <code class="docutils literal notranslate"><span class="pre">a</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span></code>、<code class="docutils literal notranslate"><span class="pre">c</span></code> が与えられるとき、これらの最小値を <code class="docutils literal notranslate"><span class="pre">print</span></code> するコードを作成しなさい。
+<a href="https://code-judge-system.vercel.app/?&id=7-2" target="_blank">
+<img src="./_images/launch.svg" style="width: 20px; height: 20px;">
+</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># a、b、c の一例</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">c</span> <span class="o">=</span> <span class="mi">3</span>
+
+<span class="c1"># 以下にコードを作成し、以下の部分のみ提出する</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>練習3</strong><br />
+2つの変数 <code class="docutils literal notranslate"><span class="pre">a</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span></code> が与えられるとき、それぞれの変数の値を交換するコードを作成しなさい。つまり、例えば <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">&quot;犬&quot;</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">=</span> <span class="pre">&quot;猫&quot;</span></code> という変数が与えられた場合、<code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">&quot;猫&quot;</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">=</span> <span class="pre">&quot;犬&quot;</span></code> という状態にしなさい。ただし採点の都合上、<code class="docutils literal notranslate"><span class="pre">print</span></code> してはいけない。
+<a href="https://code-judge-system.vercel.app/?&id=7-3" target="_blank">
+<img src="./_images/launch.svg" style="width: 20px; height: 20px;">
+</a><br />
+<font color=cornflowerblue>ヒント: 単純に a = b などとすると b に代入する前に a の値が失われてしまうので、もう一つの変数 tmp を用意して a の値を一時的に保存する必要がある。</font></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># a、b の一例</span>
+<span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;犬&quot;</span>
+<span class="n">b</span> <span class="o">=</span> <span class="s2">&quot;猫&quot;</span>
+
+<span class="c1"># 以下にコードを作成し、以下の部分のみ提出する</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id5">
+<h2>文のネスト<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<p>これまでに学んだif文、for文、while文は、それぞれ内側のブロックに入れ子的に使用することもできる。このような入れ子構造のことを<strong>ネスト</strong>という。</p>
+<figure class="align-default" id="nest">
+<a class="reference internal image-reference" href="_images/nest.png"><img alt="_images/nest.png" src="_images/nest.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 13 </span><span class="caption-text">文のネスト</span><a class="headerlink" href="#nest" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>入れ子構造を作るには、ブロックの中にさらにヘッダーとブロックを作る。したがって、内側のブロックはTab文字2つ分インデントすることになる。</p>
+<p>ブロックの抜け方はこれまでと同様、インデントの大きさをもとに戻せばよい。上の図のようにインデントをTab文字1つ分に戻せば、もとのブロックの処理の続きを書くことができるし、インデントをなくせばブロック外の処理の続きを書くことができる。</p>
+<p>以下でいくつか例を見てみよう。</p>
+<section id="forif">
+<h3>for文とif文の組み合わせ<a class="headerlink" href="#forif" title="Link to this heading">#</a></h3>
+<p><strong>例1: break文</strong></p>
+<p>for文とif文を組み合わせる簡単な例として、<strong>break文</strong>を使ったものを紹介する。</p>
+<p>まず、<code class="docutils literal notranslate"><span class="pre">0</span></code> から <code class="docutils literal notranslate"><span class="pre">9</span></code> までの数字を順に出力するプログラムは次のように書けるのであった。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>for文のブロックに次のようなif文を追加してみる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="k">break</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>これを実行すると数字の出力は <code class="docutils literal notranslate"><span class="pre">2</span></code> で止まる。これは <code class="docutils literal notranslate"><span class="pre">i</span> <span class="pre">==</span> <span class="pre">3</span></code> のときにif文のブロックに入り <code class="docutils literal notranslate"><span class="pre">break</span></code> が実行されるためである。
+<code class="docutils literal notranslate"><span class="pre">break</span></code> は「繰り返し処理を強制的に終了する」働きをもつ。</p>
+<p><strong>例2: リストの最大値</strong></p>
+<p>最大値を求める問題を再び取り上げる。要素の数が増えてくると、それぞれに変数を設定するのは非効率なので、リスト <code class="docutils literal notranslate"><span class="pre">data</span></code> として与えられるとしよう。ここで次の問題を考える。</p>
+<p><strong>例題</strong><br />
+数値からなるリスト <code class="docutils literal notranslate"><span class="pre">data</span></code> が与えられるとき、<code class="docutils literal notranslate"><span class="pre">data</span></code> の要素の最大値を <code class="docutils literal notranslate"><span class="pre">print</span></code> するコードを作成しなさい。</p>
+<p>この例題も、3変数の場合とほとんど同じ考え方で解くことができる。コード例を以下に示す。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+
+<span class="n">tmp</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">tmp</span> <span class="o">&lt;</span> <span class="n">v</span><span class="p">:</span>
+        <span class="n">tmp</span> <span class="o">=</span> <span class="n">v</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>まず最大値を求めるための変数 <code class="docutils literal notranslate"><span class="pre">tmp</span></code> を用意し、<code class="docutils literal notranslate"><span class="pre">data[0]</span></code> で初期化しておく。そしてfor文で <code class="docutils literal notranslate"><span class="pre">data</span></code> の要素を前から順に見ていき、<code class="docutils literal notranslate"><span class="pre">tmp</span></code> より大きい要素があれば <code class="docutils literal notranslate"><span class="pre">tmp</span></code> をその値に更新する。そうすれば最終的に <code class="docutils literal notranslate"><span class="pre">tmp</span></code> には最大値が残るので、それを出力すれば良い。</p>
+<p><strong>練習4</strong><br />
+数値からなるリスト <code class="docutils literal notranslate"><span class="pre">data</span></code> が与えられるとき、<code class="docutils literal notranslate"><span class="pre">data</span></code> の要素の最小値を <code class="docutils literal notranslate"><span class="pre">print</span></code> するコードを作成しなさい。
+<a href="https://code-judge-system.vercel.app/?&id=7-4" target="_blank">
+<img src="./_images/launch.svg" style="width: 20px; height: 20px;">
+</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># dataの一例 （この例では 1 と出力するのが正しい）</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+
+<span class="c1"># 以下にコードを作成し、以下の部分のみ提出する</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id6">
+<h3>二重ループ<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<p>for文の中にfor文をネストさせたものを<strong>二重ループ</strong>という。
+二重ループを使うと、複数の要素のすべての組み合わせを簡単に処理できる。</p>
+<p><strong>例1: 九九を表示する</strong></p>
+<p>次のコードは、九九の一部を表示する例である。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">):</span>    <span class="c1"># iは1から4まで変化</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">):</span>  <span class="c1"># 各iに対して1から3まで繰り返し</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2"> * </span><span class="si">{</span><span class="n">j</span><span class="si">}</span><span class="s2"> は </span><span class="si">{</span><span class="n">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">j</span><span class="si">}</span><span class="s2"> です。&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">range</span></code> 関数に引数を2つ渡しているが、<code class="docutils literal notranslate"><span class="pre">range(a,</span> <span class="pre">b)</span></code> により生成されるイテラブルオブジェクトは、<code class="docutils literal notranslate"><span class="pre">a</span></code> から <code class="docutils literal notranslate"><span class="pre">b-1</span></code> までの整数を順に生成する。この例では、</p>
+<ul class="simple">
+<li><p>外側のループで <code class="docutils literal notranslate"><span class="pre">i</span></code> は1、2、3、4と順番に変化し、それぞれに対して</p></li>
+<li><p>内側のループで <code class="docutils literal notranslate"><span class="pre">j</span></code> が順に1、2、3と変化する。</p></li>
+</ul>
+<p>よって、合計で12回 <code class="docutils literal notranslate"><span class="pre">print</span></code> 関数が実行されることになる。実行結果を見て <code class="docutils literal notranslate"><span class="pre">i</span></code> と <code class="docutils literal notranslate"><span class="pre">j</span></code> がどのように増えていくか確認しよう。</p>
+<p><strong>例2: 二次元リスト</strong></p>
+<p>二重ループは、<strong>二次元リスト</strong>を処理する際にもよく用いられる。二次元リストとは、要素がリストになっているリストのことである。例えば以下は二次元リストである。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>これに対し、リスト以外（整数や文字列など）を要素とするリストを一次元リストと呼ぶ。上の例で言えば、<code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">2]</span></code> や <code class="docutils literal notranslate"><span class="pre">[3,</span> <span class="pre">4]</span></code> は一次元リストであり、これらを含む <code class="docutils literal notranslate"><span class="pre">data</span></code> は二次元リストということになる。</p>
+<p>二次元リストの要素にアクセスするには、インデックスを2つ使う必要がある。例えば、上記のデータから値 <code class="docutils literal notranslate"><span class="pre">3</span></code> を取り出したい場合は、<code class="docutils literal notranslate"><span class="pre">data[1][0]</span></code> と書く。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>このような二次元リストのすべての要素を処理するには、二重ループを使うのが便利である。具体例として、すべての要素を表示するプログラムを見てみよう。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]</span>
+
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>  <span class="c1"># 外側のループで各一次元リストを取り出す</span>
+    <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">row</span><span class="p">:</span>   <span class="c1"># 内側のループで一次元リスト内の値を順番に取り出す</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>外側のループで、<code class="docutils literal notranslate"><span class="pre">data</span></code> の各要素（ここでは <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">2]</span></code> や <code class="docutils literal notranslate"><span class="pre">[3,</span> <span class="pre">4]</span></code>）が順番に <code class="docutils literal notranslate"><span class="pre">row</span></code> に代入される。</p></li>
+<li><p>内側のループでは、この <code class="docutils literal notranslate"><span class="pre">row</span></code> の中身が順番に変数 <code class="docutils literal notranslate"><span class="pre">value</span></code> に代入され、それが表示される。</p></li>
+</ul>
+<p>また、この処理は以下のように <code class="docutils literal notranslate"><span class="pre">range</span></code> とインデックスを利用して書くことも可能である。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">])):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>どちらの方法もよく用いられるので、慣れておくと良い。</p>
+<p><strong>練習5</strong><br />
+数値からなる二次元リスト <code class="docutils literal notranslate"><span class="pre">data</span></code> が与えられるとき、一番内側の要素の合計値を求めて <code class="docutils literal notranslate"><span class="pre">print</span></code> するコードを作成しなさい。
+<a href="https://code-judge-system.vercel.app/?&id=7-5" target="_blank">
+<img src="./_images/launch.svg" style="width: 20px; height: 20px;">
+</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># dataの一例 （この例では10と出力するのが正しい）</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]</span>
+
+<span class="c1"># 以下にコードを作成し、以下の部分のみ提出する</span>
+
+<span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># 合計値を保存する変数</span>
+<span class="c1"># ここに二重ループを書く</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">total</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="import">
+<h2>モジュールとimport<a class="headerlink" href="#import" title="Link to this heading">#</a></h2>
+<p>これまでに使ってきた関数やデータ型は「組み込み関数」や「組み込み型」と呼ばれ、Pythonがあらかじめ用意しているものである。これに対して、自分で作成した関数や、誰かが作って公開した関数を利用するには、それをPythonに取り込む必要がある。この操作が<strong>import文</strong>である。</p>
+<p>Pythonでは、関連した関数やデータ型をひとまとめにしたファイル（<strong>モジュール</strong>）を、必要に応じて読み込んで使うことができる。モジュールの拡張子は <code class="docutils literal notranslate"><span class="pre">.py</span></code> である。モジュールには、</p>
+<ul class="simple">
+<li><p>他の人が作った便利な関数を簡単に使える</p></li>
+<li><p>同じコードを繰り返し書く必要がなくなり、効率的にプログラムが書ける</p></li>
+<li><p>プログラムの構造が見やすくなる</p></li>
+</ul>
+<p>などの利点がある。</p>
+<p>例えば、乱数を生成する <code class="docutils literal notranslate"><span class="pre">random</span></code> モジュールを使う場合は次のように書く。<code class="docutils literal notranslate"><span class="pre">random</span></code> モジュールの中の <code class="docutils literal notranslate"><span class="pre">choice</span></code> 関数は、インポート後に <code class="docutils literal notranslate"><span class="pre">random.choice()</span></code> とすることで使用することができる。 これはリストを引数として受け取り、その要素をランダムに1つ返す関数である。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+
+<span class="n">cand</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;りんご&quot;</span><span class="p">,</span> <span class="s2">&quot;キウイ&quot;</span><span class="p">,</span> <span class="s2">&quot;バナナ&quot;</span><span class="p">]</span>
+<span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">cand</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>また特定の関数だけをモジュールから読み込む方法もある。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">choice</span>
+
+<span class="n">cand</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;りんご&quot;</span><span class="p">,</span> <span class="s2">&quot;キウイ&quot;</span><span class="p">,</span> <span class="s2">&quot;バナナ&quot;</span><span class="p">]</span>
+<span class="n">choice</span><span class="p">(</span><span class="n">cand</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>この場合、関数名の前にモジュール名を付けずに使える。</p>
+<p>さらに短い名前でモジュールを呼びたい場合は、次のように別名を指定してインポートできる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span> <span class="k">as</span> <span class="nn">r</span>
+
+<span class="n">cand</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;りんご&quot;</span><span class="p">,</span> <span class="s2">&quot;キウイ&quot;</span><span class="p">,</span> <span class="s2">&quot;バナナ&quot;</span><span class="p">]</span>
+<span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">cand</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="note admonition">
+<p class="admonition-title">ライブラリのインストール</p>
+<p>Pythonのライブラリは、<strong>標準ライブラリ</strong>（インストール不要で最初からPythonに含まれている）と<strong>外部ライブラリ</strong>（自分で追加インストールが必要）に分かれている。
+外部ライブラリをインストールするには <code class="docutils literal notranslate"><span class="pre">pip</span></code> コマンドを使う。例えば、<code class="docutils literal notranslate"><span class="pre">pandas</span></code> というライブラリをインストールしたい場合、<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">pandas</span></code> のように書く。
+こうして追加したライブラリも、上記のようにimportして使える。</p>
+</div>
+<hr class="footnotes docutils" />
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="f1" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">1</a><span class="fn-bracket">]</span></span>
+<p><code class="docutils literal notranslate"><span class="pre">tmp</span></code> はtemporaryの略で、一時的な変数の名前によく使われる。</p>
+</aside>
+</aside>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="lecture06.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">第6回 繰り返し</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="lecture08.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">第8回 データの入れ物</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">この授業で学ぶこと</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">変数を使いこなす</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">文のネスト</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#forif">for文とif文の組み合わせ</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">二重ループ</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import">モジュールとimport</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By 大坪 舜 Shun Otsubo
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023-Present（2023年3月30日公開）.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
