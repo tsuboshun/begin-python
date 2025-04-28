@@ -195,7 +195,11 @@
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">第8回 データの入れ物</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture09.html">第9回 関数と再帰</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture10.html">第10回 クラス</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture11.html">第11回 データの可視化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture12.html">第12回 表データの処理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture13.html">第13回 データの読み方</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture14.html">第14回 生成AI入門</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture15.html">第15回 総合演習</a></li>
 </ul>
 
     </div>
@@ -667,6 +671,12 @@ y = x
 x[0] = 2
 print(y)  # [2, 1]が出力される</pre>
 <p>どちらのケースでも、<code class="docutils literal notranslate"><span class="pre">y</span> <span class="pre">=</span> <span class="pre">x</span></code> と書いた直後は変数 <code class="docutils literal notranslate"><span class="pre">x</span></code> と <code class="docutils literal notranslate"><span class="pre">y</span></code> は同じオブジェクトを指している。しかし、ケース1において <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">2</span></code> は新しいオブジェクトを <code class="docutils literal notranslate"><span class="pre">x</span></code> に代入しているので、変数 <code class="docutils literal notranslate"><span class="pre">y</span></code> の値に影響はない。一方、ケース2において <code class="docutils literal notranslate"><span class="pre">x[0]</span> <span class="pre">=</span> <span class="pre">2</span></code> はオブジェクトを変更しているので、変数 <code class="docutils literal notranslate"><span class="pre">y</span></code> の中身も変化してしまう。</p>
+<figure class="align-default" id="mutable">
+<span id="label-mutable"></span><a class="reference internal image-reference" href="_images/mutable.png"><img alt="_images/mutable.png" src="_images/mutable.png" style="width: 300px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 16 </span><span class="caption-text">変数のイメージ</span><a class="headerlink" href="#mutable" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </div>
 <section id="id9">
 <h4>要素の追加と変更<a class="headerlink" href="#id9" title="Link to this heading">#</a></h4>
@@ -740,24 +750,6 @@ print(y)  # [2, 1]が出力される</pre>
 <span class="n">x</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
 
 <span class="c1"># 以下にコードを作成し、以下の部分のみ提出する</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>練習7</strong><br />
-<code class="docutils literal notranslate"><span class="pre">'a'</span></code>、<code class="docutils literal notranslate"><span class="pre">'b'</span></code>、<code class="docutils literal notranslate"><span class="pre">'c'</span></code> から成るリスト <code class="docutils literal notranslate"><span class="pre">data</span></code> が与えられる。<code class="docutils literal notranslate"><span class="pre">'a'</span></code>、<code class="docutils literal notranslate"><span class="pre">'b'</span></code>、<code class="docutils literal notranslate"><span class="pre">'c'</span></code> をキー、それぞれの出現回数を値とする辞書 <code class="docutils literal notranslate"><span class="pre">count</span></code> を作成しなさい。ただし採点の都合上、<code class="docutils literal notranslate"><span class="pre">print</span></code> してはいけない。
-<a href="https://code-judge-system.vercel.app/?&id=8-7" target="_blank">
-<img src="./_images/launch.svg" style="width: 20px; height: 20px;">
-</a></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># dataの一例 （この例では　count == {&#39;a&#39;: 3, &#39;b&#39;: 2, &#39;c&#39;: 1}　となれば正しい）</span>
-<span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">]</span>
-
-<span class="c1"># 以下にコードを作成し、以下の部分のみ提出する</span>
-<span class="n">count</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
-<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
-    <span class="k">pass</span>  <span class="c1"># countについて、xの値を1増やす</span>
 </pre></div>
 </div>
 </div>
