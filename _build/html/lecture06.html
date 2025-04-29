@@ -368,7 +368,7 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1>第6回 繰り返し<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <hr class="docutils" />
-<p><a class="reference external" href="https://colab.research.google.com/github/tsuboshun/begin-python/blob/gh-pages/2024/workbook/lecture06.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+<p><a class="reference external" href="https://colab.research.google.com/github/tsuboshun/begin-python/blob/gh-pages/workbook/lecture06.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
 <hr class="docutils" />
 <section id="id2">
 <h2>この授業で学ぶこと<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
@@ -381,11 +381,10 @@ document.write(`
 <figure class="align-default" id="id3">
 <a class="reference internal image-reference" href="_images/for.png"><img alt="_images/for.png" src="_images/for.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 9 </span><span class="caption-text">for文の書き方</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 11 </span><span class="caption-text">for文の書き方</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>if文と同じく、for文もヘッダーとブロックからなる。ヘッダーに <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">変数名</span> <span class="pre">in</span> <span class="pre">イテラブルオブジェクト:</span></code> と書くと「イテラブルオブジェクトの各要素を変数に代入して、以下のブロックを実行する」という意味になる。ここで、イテラブルオブジェクトとは「繰り返すことが可能なオブジェクト」という意味である。
-この名前は、繰り返す（iterate）ことが可能という意味の形容詞であるiterableに由来する。</p>
+<p>if文と同じく、for文もヘッダーとブロックからなる。ヘッダーに <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">変数名</span> <span class="pre">in</span> <span class="pre">イテラブルオブジェクト:</span></code> と書くと「イテラブルオブジェクトの各要素を順番に取り出して変数に代入し、そのつどブロックを実行する」という意味になる。ここで、<strong>イテラブルオブジェクト</strong>とは「繰り返し処理できるオブジェクト」のことである。例えば、リストや文字列などがこれにあたる。名前の由来は「繰り返す」という意味をもつ英単語 “iterate” から来ている。</p>
 <p>例として、<code class="docutils literal notranslate"><span class="pre">0</span></code> から <code class="docutils literal notranslate"><span class="pre">n-1</span></code> までの数字を順に出力するプログラムを書いてみよう。これはfor文を用いることで次のように実現できる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -417,8 +416,23 @@ document.write(`
 </div>
 <p>for文に用いる変数名は自由に決めてよいが、一般的に短くて分かりやすく、代入されるデータを端的に表すものが好まれる。例えば文字が代入される場合には、慣例として <code class="docutils literal notranslate"><span class="pre">c</span></code> や <code class="docutils literal notranslate"><span class="pre">char</span></code> が使われることが多い。最初はそれほど気にする必要はないが、変数名にも意図があることは知っておくと良いだろう。</p>
 <p><strong>練習1</strong><br />
-正の整数 <code class="docutils literal notranslate"><span class="pre">n</span></code> が与えられるとき、<code class="docutils literal notranslate"><span class="pre">1</span></code> から <code class="docutils literal notranslate"><span class="pre">n</span></code> までの数字を順に <code class="docutils literal notranslate"><span class="pre">print</span></code> するコードを作成しなさい。
+リスト <code class="docutils literal notranslate"><span class="pre">values</span></code> が与えられるとき、リストの要素を前から順に <code class="docutils literal notranslate"><span class="pre">print</span></code> するコードを作成しなさい。
 <a href="https://code-judge-system.vercel.app/?&id=6-1" target="_blank">
+<img src="./_images/launch.svg" style="width: 20px; height: 20px;">
+</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># valuesの一例</span>
+<span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+
+<span class="c1"># 以下にコードを作成し、以下の部分のみ提出する</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>練習2</strong><br />
+正の整数 <code class="docutils literal notranslate"><span class="pre">n</span></code> が与えられるとき、<code class="docutils literal notranslate"><span class="pre">1</span></code> から <code class="docutils literal notranslate"><span class="pre">n</span></code> までの数字を順に <code class="docutils literal notranslate"><span class="pre">print</span></code> するコードを作成しなさい。
+<a href="https://code-judge-system.vercel.app/?&id=6-2" target="_blank">
 <img src="./_images/launch.svg" style="width: 20px; height: 20px;">
 </a></p>
 <div class="cell docutils container">
@@ -437,12 +451,13 @@ document.write(`
 <figure class="align-default" id="block">
 <a class="reference internal image-reference" href="_images/block.png"><img alt="_images/block.png" src="_images/block.png" style="width: 450px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 10 </span><span class="caption-text">ブロックを抜けるタイミング</span><a class="headerlink" href="#block" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 12 </span><span class="caption-text">ブロックを抜けるタイミング</span><a class="headerlink" href="#block" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>上の図は、処理がブロックを抜ける（終了する）タイミングを表したものである。ヘッダーと左端を揃えて何かしらの処理を書くと、そのタイミングでブロックを抜けたと判定される<a class="footnote-reference brackets" href="#f1" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>。いくつか例を見てみよう。</p>
+<p>上の図は、処理がブロックを抜ける（終了する）タイミングを表したものである。
+ヘッダーと左端を揃えて何かしらの処理を書くと、そのタイミングでブロックを抜けたと判断される。いくつか例を見てみよう。</p>
 <p><strong>例1</strong><br />
-前回のBMIの例ではブロックの中で <code class="docutils literal notranslate"><span class="pre">print</span></code> を実行していたが、代わりにブロックの中でメッセージを変数に代入し、その変数を使ってブロックの外で <code class="docutils literal notranslate"><span class="pre">print</span></code> することもできる。<code class="docutils literal notranslate"><span class="pre">print(message)</span></code> はブロックの外にあるため、<code class="docutils literal notranslate"><span class="pre">bmi</span></code> の値によらず必ず実行される。</p>
+前回のBMIの例ではブロックの中で <code class="docutils literal notranslate"><span class="pre">print</span></code> を実行していたが、代わりにブロックの中で変数にメッセージを代入し、ブロックの外で変数を <code class="docutils literal notranslate"><span class="pre">print</span></code> することもできる。<code class="docutils literal notranslate"><span class="pre">print(message)</span></code> はブロックの外にあるため、<code class="docutils literal notranslate"><span class="pre">bmi</span></code> の値によらず必ず実行される。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bmi</span> <span class="o">=</span> <span class="mi">20</span>
@@ -458,7 +473,7 @@ document.write(`
 </div>
 </div>
 <p><strong>例2</strong><br />
-数値からなるリストの要素の合計を求めるコードは次のように書ける。このコードではまず <code class="docutils literal notranslate"><span class="pre">total</span> <span class="pre">=</span> <span class="pre">0</span></code> により合計を求めるための変数を用意している（これを書かないと4行目で <code class="docutils literal notranslate"><span class="pre">total</span></code> 変数が定義されていないというエラーになる）。これを変数 <code class="docutils literal notranslate"><span class="pre">total</span></code> を0で<strong>初期化</strong>するという。その後 <code class="docutils literal notranslate"><span class="pre">total</span></code> に <code class="docutils literal notranslate"><span class="pre">data</span></code> の各要素を足して合計を求めている。</p>
+数値からなるリストの要素の合計を求めるコードは次のように書ける。まず変数 <code class="docutils literal notranslate"><span class="pre">total</span></code> を0で初期化し、for 文の中でリストの要素を順に total に足し込んで合計を計算している。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
@@ -470,7 +485,8 @@ document.write(`
 </div>
 </div>
 </div>
-<p>上と同じプログラムを以下のように書くこともできる。<code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">i</span> <span class="pre">in</span> <span class="pre">range(len(data)):</span></code> と書くと変数 <code class="docutils literal notranslate"><span class="pre">i</span></code> に <code class="docutils literal notranslate"><span class="pre">0</span></code> から <code class="docutils literal notranslate"><span class="pre">len(data)-1</span></code> までの整数が順に代入されるため、これを使って <code class="docutils literal notranslate"><span class="pre">data[i]</span></code> とすれば <code class="docutils literal notranslate"><span class="pre">data</span></code> の全ての要素にアクセスすることができる。<code class="docutils literal notranslate"><span class="pre">len()</span></code> 関数はリストの要素数を返す関数であったことを思い出しておこう。</p>
+<p>上と同じプログラムを以下のように書くこともできる。まず <code class="docutils literal notranslate"><span class="pre">len()</span></code> 関数は、リストの要素数を返す関数である。例えば、<code class="docutils literal notranslate"><span class="pre">data</span> <span class="pre">=</span> <span class="pre">[2,</span> <span class="pre">3,</span> <span class="pre">4,</span> <span class="pre">5]</span></code> の場合、<code class="docutils literal notranslate"><span class="pre">len(data)</span></code> は 4 を返す。
+<code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">i</span> <span class="pre">in</span> <span class="pre">range(len(data)):</span></code> と書くと変数 <code class="docutils literal notranslate"><span class="pre">i</span></code> に <code class="docutils literal notranslate"><span class="pre">0</span></code> から <code class="docutils literal notranslate"><span class="pre">len(data)-1</span></code> までの整数が順に代入されるため、これを使って <code class="docutils literal notranslate"><span class="pre">data[i]</span></code> とすれば <code class="docutils literal notranslate"><span class="pre">data</span></code> の全ての要素にアクセスすることができる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
@@ -482,9 +498,9 @@ document.write(`
 </div>
 </div>
 </div>
-<p><strong>練習2</strong><br />
+<p><strong>練習3</strong><br />
 数値からなるリスト <code class="docutils literal notranslate"><span class="pre">data</span></code> が与えられるとき、リストの要素の平均値を求めて <code class="docutils literal notranslate"><span class="pre">print</span></code> するコードを作成しなさい。余裕のある人は、上の例2を参考に2通りの方法でコードを作成してみなさい（ただし片方のみ提出しなさい）。
-<a href="https://code-judge-system.vercel.app/?&id=6-2" target="_blank">
+<a href="https://code-judge-system.vercel.app/?&id=6-3" target="_blank">
 <img src="./_images/launch.svg" style="width: 20px; height: 20px;">
 </a></p>
 <div class="cell docutils container">
@@ -501,16 +517,14 @@ document.write(`
 </section>
 <section id="while">
 <h2>while文<a class="headerlink" href="#while" title="Link to this heading">#</a></h2>
-<p>for文の他に<strong>while文</strong>も繰り返し処理を行うための構文である。</p>
-<figure class="align-default" id="id6">
+<p>for文と同様に、<strong>while文</strong>も繰り返し処理を行うための構文である。</p>
+<figure class="align-default" id="id5">
 <a class="reference internal image-reference" href="_images/while.png"><img alt="_images/while.png" src="_images/while.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 11 </span><span class="caption-text">while文の書き方</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 13 </span><span class="caption-text">while文の書き方</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>while文では、条件式が真であるかを判定し、真であればブロックを実行するという処理を、条件式が初めて偽になるまで繰り返し行う。
-したがって、適切に条件式を設定しないと無限ループに陥る可能性がある。
-また、初めから条件式が偽の場合は、ブロックは一度も実行されない。</p>
+<p>while文では、条件式が真（<code class="docutils literal notranslate"><span class="pre">True</span></code>）である限り、ブロックの処理を何度でも繰り返す。条件式が初めて偽（<code class="docutils literal notranslate"><span class="pre">False</span></code>）になった瞬間に、繰り返しを終了する。したがって、条件式を適切に設定しないと無限ループに陥る可能性がある。また、初めから条件式が偽の場合は、ブロックは一度も実行されない。</p>
 <p>例として、<code class="docutils literal notranslate"><span class="pre">0</span></code> から <code class="docutils literal notranslate"><span class="pre">n-1</span></code> までの数字を順に出力するプログラムは、while文を使うと以下のように書ける。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -539,9 +553,9 @@ document.write(`
 </div>
 </div>
 </div>
-<p><strong>練習3</strong><br />
+<p><strong>練習4</strong><br />
 正の整数 <code class="docutils literal notranslate"><span class="pre">n</span></code> が与えられるとき、<code class="docutils literal notranslate"><span class="pre">1</span></code> から <code class="docutils literal notranslate"><span class="pre">n</span></code> までの数字を順に <code class="docutils literal notranslate"><span class="pre">print</span></code> するコードを、while文を使って作成しなさい。
-<a href="https://code-judge-system.vercel.app/?&id=6-3" target="_blank">
+<a href="https://code-judge-system.vercel.app/?&id=6-4" target="_blank">
 <img src="./_images/launch.svg" style="width: 20px; height: 20px;">
 </a></p>
 <div class="cell docutils container">
@@ -554,11 +568,12 @@ document.write(`
 </div>
 </div>
 </div>
-<p><strong>練習4</strong><br />
+<p><strong>練習5</strong><br />
 正の整数 <code class="docutils literal notranslate"><span class="pre">n</span></code> が与えられるとき、<code class="docutils literal notranslate"><span class="pre">1</span></code> から <code class="docutils literal notranslate"><span class="pre">n</span></code> までの数字を <code class="docutils literal notranslate"><span class="pre">n</span></code> から始めて<u>逆順</u>で <code class="docutils literal notranslate"><span class="pre">print</span></code> するコードを作成しなさい。
-<a href="https://code-judge-system.vercel.app/?&id=6-4" target="_blank">
+<a href="https://code-judge-system.vercel.app/?&id=6-5" target="_blank">
 <img src="./_images/launch.svg" style="width: 20px; height: 20px;">
-</a></p>
+</a><br />
+<font color=cornflowerblue>ヒント: <code class="docutils literal notranslate"><span class="pre">i</span></code> を <code class="docutils literal notranslate"><span class="pre">n</span></code> から始めて1ずつ減らしていき、<code class="docutils literal notranslate"><span class="pre">i</span></code> が0より大きい間だけ繰り返すようにするとよい。</font></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># n の一例 （この例では 3 2 1 と順に出力するのが正しい）</span>
@@ -567,18 +582,18 @@ document.write(`
 <span class="c1"># 以下にコードを作成し、以下の部分のみ提出する</span>
 <span class="n">i</span> <span class="o">=</span> <span class="n">n</span>
 <span class="k">while</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-    <span class="k">pass</span>  <span class="c1"># ヒント: ここに適切なコードを書く</span>
+    <span class="k">pass</span>  <span class="c1"># ここに適切なコードを書く</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="note admonition">
 <p class="admonition-title">pass</p>
-<p><code class="docutils literal notranslate"><span class="pre">pass</span></code> は何もしないという意味の文である。構文上何か書かないとエラーになるが、コードの作成は後回しにしたい箇所に書く。テキストでも何度か登場するが、コードを書くときに消してしまって問題ない。</p>
+<p><code class="docutils literal notranslate"><span class="pre">pass</span></code> は「何もしない」ことを意味する文である。構文上何か書かないとエラーになるが、コードの作成は後回しにしたい箇所に書く。テキストでも何度か登場するが、コードを書くときに消してしまって問題ない。</p>
 </div>
-<p><strong>練習5</strong><br />
+<p><strong>練習6</strong><br />
 リスト <code class="docutils literal notranslate"><span class="pre">data</span></code> が与えられるとき、リストの要素を後ろから順に <code class="docutils literal notranslate"><span class="pre">print</span></code> するコードを作成しなさい。
-<a href="https://code-judge-system.vercel.app/?&id=6-5" target="_blank">
+<a href="https://code-judge-system.vercel.app/?&id=6-6" target="_blank">
 <img src="./_images/launch.svg" style="width: 20px; height: 20px;">
 </a></p>
 <div class="cell docutils container">
@@ -591,13 +606,6 @@ document.write(`
 </div>
 </div>
 </div>
-<hr class="footnotes docutils" />
-<aside class="footnote-list brackets">
-<aside class="footnote brackets" id="f1" role="doc-footnote">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">1</a><span class="fn-bracket">]</span></span>
-<p>細かい補足になるが、対話型インタプリタでPythonを実行しているときは特殊で、空行を1行入れてからインデントをなくす必要がある。</p>
-</aside>
-</aside>
 </section>
 </section>
 
@@ -695,7 +703,7 @@ By 大坪 舜 Shun Otsubo
 
   <p class="copyright">
     
-      © Copyright 2023-2024（2023年3月30日公開）.
+      © Copyright 2023-Present（2023年3月30日公開）.
       <br/>
     
   </p>

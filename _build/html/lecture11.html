@@ -377,7 +377,7 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1>第11回 データの可視化<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <hr class="docutils" />
-<p><a class="reference external" href="https://colab.research.google.com/github/tsuboshun/begin-python/blob/gh-pages/2024/workbook/lecture11.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+<p><a class="reference external" href="https://colab.research.google.com/github/tsuboshun/begin-python/blob/gh-pages/workbook/lecture11.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
 <hr class="docutils" />
 <section id="id2">
 <h2>この授業で学ぶこと<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
@@ -414,7 +414,7 @@ Matplotlibを使うと綺麗なグラフを作成できるようになるので�
 </div>
 </div>
 </div>
-<p>この例では一次元配列、二次元配列を生成している。</p>
+<p>この例では一次元配列、二次元配列を生成している。リストと異なり、配列では要素のデータ型はすべて同じでないといけない。</p>
 <p>配列は <code class="docutils literal notranslate"><span class="pre">shape</span></code>、<code class="docutils literal notranslate"><span class="pre">ndim</span></code>、<code class="docutils literal notranslate"><span class="pre">size</span></code> という属性をもち、それぞれ配列の形、次元、要素数を表す。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -610,7 +610,7 @@ Matplotlibを使うと綺麗なグラフを作成できるようになるので�
 </div>
 <p>上の例では、足し算を実行する前に <code class="docutils literal notranslate"><span class="pre">z</span></code> の形を <code class="docutils literal notranslate"><span class="pre">x</span></code> の形に揃えて <code class="docutils literal notranslate"><span class="pre">np.array([[1,</span> <span class="pre">2],</span> <span class="pre">[1,</span> <span class="pre">2]])</span></code> と読み替えてから計算が行われる。下の例では、<code class="docutils literal notranslate"><span class="pre">2</span></code> を <code class="docutils literal notranslate"><span class="pre">x</span></code> の形に揃えて <code class="docutils literal notranslate"><span class="pre">np.array([[2,</span> <span class="pre">2],</span> <span class="pre">[2,</span> <span class="pre">2]])</span></code> と読み替えてから計算が行われる。このような機能を<strong>ブロードキャスト</strong>という。</p>
 <p><strong>練習1</strong><br />
-正の整数 <code class="docutils literal notranslate"><span class="pre">n</span></code>、<code class="docutils literal notranslate"><span class="pre">m</span></code> が与えられるとき、形が <code class="docutils literal notranslate"><span class="pre">(n,</span> <span class="pre">m)</span></code> で要素がすべて <code class="docutils literal notranslate"><span class="pre">0</span></code> の二次元配列 <code class="docutils literal notranslate"><span class="pre">data</span></code> を作成するコードを書きなさい。
+正の整数 <code class="docutils literal notranslate"><span class="pre">n</span></code>、<code class="docutils literal notranslate"><span class="pre">m</span></code> が与えられるとき、形が <code class="docutils literal notranslate"><span class="pre">(n,</span> <span class="pre">m)</span></code> で要素がすべて <code class="docutils literal notranslate"><span class="pre">0</span></code> の二次元配列 <code class="docutils literal notranslate"><span class="pre">data</span></code> を作成するコードを書きなさい。ただし採点の都合上、<code class="docutils literal notranslate"><span class="pre">print</span></code> してはいけない。
 <a href="https://code-judge-system.vercel.app/?&id=11-1" target="_blank">
 <img src="./_images/launch.svg" style="width: 20px; height: 20px;">
 </a></p>
@@ -626,7 +626,7 @@ Matplotlibを使うと綺麗なグラフを作成できるようになるので�
 </div>
 </div>
 <p><strong>練習2</strong><br />
-正の整数からなる配列 <code class="docutils literal notranslate"><span class="pre">x</span></code> が与えられるとき、<code class="docutils literal notranslate"><span class="pre">x</span></code> の各要素を <code class="docutils literal notranslate"><span class="pre">x</span></code> の要素の総和で割って得られる配列 <code class="docutils literal notranslate"><span class="pre">p</span></code> を作成するコードを書きなさい。
+正の整数からなる配列 <code class="docutils literal notranslate"><span class="pre">x</span></code> が与えられるとき、<code class="docutils literal notranslate"><span class="pre">x</span></code> の各要素を <code class="docutils literal notranslate"><span class="pre">x</span></code> の要素の総和で割って得られる配列 <code class="docutils literal notranslate"><span class="pre">p</span></code> を作成するコードを書きなさい。ただし採点の都合上、<code class="docutils literal notranslate"><span class="pre">print</span></code> してはいけない。
 <font color=cornflowerblue>ヒント：配列の要素の総和は <code class="docutils literal notranslate"><span class="pre">np.sum()</span></code> 関数によって求められる。</font>
 <a href="https://code-judge-system.vercel.app/?&id=11-2" target="_blank">
 <img src="./_images/launch.svg" style="width: 20px; height: 20px;">
@@ -659,7 +659,7 @@ Matplotlibを使うと綺麗なグラフを作成できるようになるので�
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">japanize_matplotlib</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;font.size&#39;</span><span class="p">:</span> <span class="mi">14</span><span class="p">})</span>  <span class="c1"># 文字サイズを14pxとする</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">&quot;font.size&quot;</span><span class="p">:</span> <span class="mi">14</span><span class="p">})</span>  <span class="c1"># 文字サイズを14pxとする</span>
 </pre></div>
 </div>
 </div>
@@ -688,12 +688,26 @@ Matplotlibを使うと綺麗なグラフを作成できるようになるので�
 <p><code class="docutils literal notranslate"><span class="pre">np.random.normal(loc=0,</span> <span class="pre">scale=1,</span> <span class="pre">size=len(sample_x))</span></code> は、平均が0で標準偏差が1の正規分布に従う乱数の配列を生成する。代入先の <code class="docutils literal notranslate"><span class="pre">eps</span></code> はデータに加えるノイズとして使用する。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eps</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eps</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>  <span class="c1"># 先頭の10個を表示</span>
 </pre></div>
 </div>
 </div>
 </div>
 <p>配列は要素ごとの演算を一括で行うことができる。<code class="docutils literal notranslate"><span class="pre">sample_x</span> <span class="pre">*</span> <span class="pre">2</span> <span class="pre">+</span> <span class="pre">eps</span></code> により、インデックスごとに <code class="docutils literal notranslate"><span class="pre">sample_x</span></code> の要素を2倍し、<code class="docutils literal notranslate"><span class="pre">eps</span></code> の要素を足している。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sample_x</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sample_y</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p>ここで生成した <code class="docutils literal notranslate"><span class="pre">sample_x</span></code> と <code class="docutils literal notranslate"><span class="pre">sample_y</span></code> は <span class="math notranslate nohighlight">\(\varepsilon\)</span> をノイズとして <span class="math notranslate nohighlight">\(y = 2x + \varepsilon\)</span> の関係を満たす2次元データ <span class="math notranslate nohighlight">\((x, y)\)</span> を100個生成したものと見ることができる。
 1つ1つのデータは(<code class="docutils literal notranslate"><span class="pre">sample_x[0]</span></code>, <code class="docutils literal notranslate"><span class="pre">sample_y[0]</span></code>), (<code class="docutils literal notranslate"><span class="pre">sample_x[1]</span></code>, <code class="docutils literal notranslate"><span class="pre">sample_y[1]</span></code>), …, (<code class="docutils literal notranslate"><span class="pre">sample_x[99]</span></code>, <code class="docutils literal notranslate"><span class="pre">sample_y[99]</span></code>)である。</p>
 <div class="tip admonition">
@@ -723,7 +737,7 @@ Matplotlibを使うと綺麗なグラフを作成できるようになるので�
 <figure class="align-default" id="fig-map">
 <a class="reference internal image-reference" href="_images/fig_map.png"><img alt="_images/fig_map.png" src="_images/fig_map.png" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 19 </span><span class="caption-text">グラフの構成要素</span><a class="headerlink" href="#fig-map" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 22 </span><span class="caption-text">グラフの構成要素</span><a class="headerlink" href="#fig-map" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p><code class="docutils literal notranslate"><span class="pre">plt.subplots()</span></code> 関数は <code class="docutils literal notranslate"><span class="pre">plt.subplots(n,</span> <span class="pre">m,</span> <span class="pre">figsize=(w,</span> <span class="pre">h))</span></code> と呼び出すと、横幅 <code class="docutils literal notranslate"><span class="pre">w</span></code>、高さ <code class="docutils literal notranslate"><span class="pre">h</span></code> （単位はインチ）のFigureオブジェクトと、その中に <code class="docutils literal notranslate"><span class="pre">n</span></code> 行 <code class="docutils literal notranslate"><span class="pre">m</span></code> 列の<code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">*</span> <span class="pre">m</span></code> 個のAxesオブジェクトを作成する。グラフを1枚だけ描画したい場合は、<code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">m</span> <span class="pre">=</span> <span class="pre">1</span></code> と指定する。もしくは引数で何も指定しなければ、デフォルト引数により <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">m</span> <span class="pre">=</span> <span class="pre">1</span></code> が指定される。このときAxesオブジェクトが1つだけ作成され、戻り値の <code class="docutils literal notranslate"><span class="pre">ax</span></code> はAxesオブジェクトそのものになる。複数のグラフを同時に描画したい場合は、<code class="docutils literal notranslate"><span class="pre">n</span></code> または <code class="docutils literal notranslate"><span class="pre">m</span></code> に2以上の整数を指定する。このときAxesオブジェクトが複数作成され、戻り値はAxesオブジェクトの配列となる。</p>
@@ -961,7 +975,7 @@ By 大坪 舜 Shun Otsubo
 
   <p class="copyright">
     
-      © Copyright 2023-2024（2023年3月30日公開）.
+      © Copyright 2023-Present（2023年3月30日公開）.
       <br/>
     
   </p>

@@ -377,12 +377,12 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1>第8回 データの入れ物<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <hr class="docutils" />
-<p><a class="reference external" href="https://colab.research.google.com/github/tsuboshun/begin-python/blob/gh-pages/2024/workbook/lecture08.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+<p><a class="reference external" href="https://colab.research.google.com/github/tsuboshun/begin-python/blob/gh-pages/workbook/lecture08.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
 <hr class="docutils" />
 <section id="id2">
 <h2>この授業で学ぶこと<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-<p>第7回の冒頭で触れたように、これまでに学んだ文法だけでもプログラミングで必要なほとんどの処理を実現できる。しかし、これまでの知識だけでは、場面によっては冗長なコードを書かざるを得ないことがある。第8回から第10回にかけて学ぶ内容は、一言で言えば、プログラミングをより効率的かつ簡潔に行うための技術である。</p>
-<p>今回は、複数のデータを効率的に管理するための基本的なデータ型を深掘りする。すでに学んだリスト型はその一例だが、これに加えて他のデータ型を学ぶことで、アイデアをより直接的かつ明瞭にコード化できるようになる。</p>
+<p>第7回の冒頭で説明したように、これまでに学習した文法だけでも、プログラミングで必要なほとんどの処理を実現できる。しかし、これまでの知識だけでは、状況によってはコードが冗長になってしまう場合がある。第8回から第10回にかけては、プログラミングをより効率的かつ簡潔に行うための方法を学ぶ。</p>
+<p>今回は、複数のデータを効率よく管理するための基本的なデータ型を学習する。以前に学んだリスト型もその一例だが、それ以外のデータ型も学ぶことで、よりシンプルで分かりやすいコードを書けるようになる。</p>
 </section>
 <section id="id3">
 <h2>データの入れ物<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
@@ -401,7 +401,8 @@ document.write(`
 <p>インデックスによる要素のアクセス方法を復習しておこう。上の例で <code class="docutils literal notranslate"><span class="pre">&quot;four&quot;</span></code> や <code class="docutils literal notranslate"><span class="pre">5</span></code> を取り出すには、以下のようにインデックスを指定する。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -484,7 +485,7 @@ del文は <code class="docutils literal notranslate"><span class="pre">del</span
 </div>
 </div>
 <p><strong>練習1</strong><br />
-正の整数 <code class="docutils literal notranslate"><span class="pre">n</span></code> が与えられるとき、for文と <code class="docutils literal notranslate"><span class="pre">append()</span></code> メソッドを使って <code class="docutils literal notranslate"><span class="pre">1</span></code> から順に <code class="docutils literal notranslate"><span class="pre">n</span></code> までの整数を含むリストを作成し、それを <code class="docutils literal notranslate"><span class="pre">print</span></code> するコードを作成しなさい。
+正の整数 <code class="docutils literal notranslate"><span class="pre">n</span></code> が与えられるとき、for文と <code class="docutils literal notranslate"><span class="pre">append()</span></code> メソッドを使って <code class="docutils literal notranslate"><span class="pre">0</span></code> から順に <code class="docutils literal notranslate"><span class="pre">n-1</span></code> までの整数を含むリストを作成し、それを <code class="docutils literal notranslate"><span class="pre">print</span></code> するコードを作成しなさい。
 <a href="https://code-judge-system.vercel.app/?&id=8-1" target="_blank">
 <img src="./_images/launch.svg" style="width: 20px; height: 20px;">
 </a></p>
@@ -503,10 +504,26 @@ del文は <code class="docutils literal notranslate"><span class="pre">del</span
 </div>
 </div>
 <p><strong>練習2</strong><br />
-整数を要素とするリスト <code class="docutils literal notranslate"><span class="pre">x</span></code> が与えられたとき、<code class="docutils literal notranslate"><span class="pre">x</span></code> 中の偶数のみを含む新しいリスト <code class="docutils literal notranslate"><span class="pre">y</span></code> を作成し、そのリスト <code class="docutils literal notranslate"><span class="pre">y</span></code> を <code class="docutils literal notranslate"><span class="pre">print</span></code> するプログラムを作成しなさい。ただし、リスト <code class="docutils literal notranslate"><span class="pre">y</span></code> の要素の順番は、<code class="docutils literal notranslate"><span class="pre">x</span></code> での順番を保持すること。
+正の整数 <code class="docutils literal notranslate"><span class="pre">n</span></code> が与えられるとき、for文と <code class="docutils literal notranslate"><span class="pre">append()</span></code> メソッドを使って <code class="docutils literal notranslate"><span class="pre">1</span></code> から順に <code class="docutils literal notranslate"><span class="pre">n</span></code> までの整数を含むリストを作成し、それを <code class="docutils literal notranslate"><span class="pre">print</span></code> するコードを作成しなさい。
 <a href="https://code-judge-system.vercel.app/?&id=8-2" target="_blank">
 <img src="./_images/launch.svg" style="width: 20px; height: 20px;">
 </a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># nの一例 （この例では [1, 2, 3, 4] と出力するのが正しい）</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">4</span>
+
+<span class="c1"># 以下にコードを作成し、以下の部分のみ提出する</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>練習3</strong><br />
+整数を要素とするリスト <code class="docutils literal notranslate"><span class="pre">x</span></code> が与えられたとき、<code class="docutils literal notranslate"><span class="pre">x</span></code> 中の偶数のみを含む新しいリスト <code class="docutils literal notranslate"><span class="pre">y</span></code> を作成し、そのリスト <code class="docutils literal notranslate"><span class="pre">y</span></code> を <code class="docutils literal notranslate"><span class="pre">print</span></code> するプログラムを作成しなさい。ただし、リスト <code class="docutils literal notranslate"><span class="pre">y</span></code> の要素の順番は、<code class="docutils literal notranslate"><span class="pre">x</span></code> での順番を保持すること。
+<a href="https://code-judge-system.vercel.app/?&id=8-3" target="_blank">
+<img src="./_images/launch.svg" style="width: 20px; height: 20px;">
+</a><br />
+<font color=cornflowerblue>ヒント: リスト x の要素のうち、偶数という条件を満たすものだけ y に append する。</font></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># xの一例 （この例では [2, 4] と出力するのが正しい）</span>
@@ -523,11 +540,12 @@ del文は <code class="docutils literal notranslate"><span class="pre">del</span
 </section>
 <section id="id6">
 <h4>スライス<a class="headerlink" href="#id6" title="Link to this heading">#</a></h4>
-<p>リストに入っている要素のうち、連続した複数の要素を取り出すために用いられるのが<strong>スライス</strong>である。
-整数 <code class="docutils literal notranslate"><span class="pre">i</span></code>、<code class="docutils literal notranslate"><span class="pre">j</span></code> を用いてリストに対して <code class="docutils literal notranslate"><span class="pre">[i:j]</span></code> と要素を指定すると、インデックスについて <code class="docutils literal notranslate"><span class="pre">i</span></code> から <code class="docutils literal notranslate"><span class="pre">j-1</span></code> までの要素を切り出すことができる。</p>
+<p>リストから連続した複数の要素を取り出すために使われるのが<strong>スライス</strong>である。
+整数 <code class="docutils literal notranslate"><span class="pre">i</span></code>、<code class="docutils literal notranslate"><span class="pre">j</span></code> を用いてリストに対して <code class="docutils literal notranslate"><span class="pre">[i:j]</span></code> と要素を指定すると、インデックスが <code class="docutils literal notranslate"><span class="pre">i</span></code> から <code class="docutils literal notranslate"><span class="pre">j-1</span></code> までの要素を取り出すことができる。</p>
 <p><code class="docutils literal notranslate"><span class="pre">i</span></code> または <code class="docutils literal notranslate"><span class="pre">j</span></code> を省略することもできる。
-<code class="docutils literal notranslate"><span class="pre">[:j]</span></code> は、インデックスについて最初から <code class="docutils literal notranslate"><span class="pre">j-1</span></code> までの要素を切り出す。
-<code class="docutils literal notranslate"><span class="pre">[i:]</span></code> は、インデックスについて<code class="docutils literal notranslate"><span class="pre">i</span></code> から最後までの要素を切り出す。</p>
+<code class="docutils literal notranslate"><span class="pre">[:j]</span></code> は、インデックスについて最初から <code class="docutils literal notranslate"><span class="pre">j-1</span></code> までの要素を取り出す。
+<code class="docutils literal notranslate"><span class="pre">[i:]</span></code> は、インデックスについて <code class="docutils literal notranslate"><span class="pre">i</span></code> から最後までの要素を取り出す。</p>
+<p>また <code class="docutils literal notranslate"><span class="pre">i</span></code>、<code class="docutils literal notranslate"><span class="pre">j</span></code> には負のインデックスを指定することもできる。例えば、<code class="docutils literal notranslate"><span class="pre">x[:-1]</span></code> はリストの末尾の要素だけを除いたすべての要素を取り出す。</p>
 <p>以下にサンプルコードと図を示す。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -543,12 +561,12 @@ del文は <code class="docutils literal notranslate"><span class="pre">del</span
 <figure class="align-default" id="index">
 <a class="reference internal image-reference" href="_images/slice.png"><img alt="_images/slice.png" src="_images/slice.png" style="width: 650px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 13 </span><span class="caption-text">スライスとインデックスの関係</span><a class="headerlink" href="#index" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 15 </span><span class="caption-text">スライスとインデックスの関係</span><a class="headerlink" href="#index" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p><strong>練習3</strong><br />
+<p><strong>練習4</strong><br />
 要素数が2以上のリスト <code class="docutils literal notranslate"><span class="pre">x</span></code> が与えられるとき、先頭と末尾の要素を除いたリストを作り、<code class="docutils literal notranslate"><span class="pre">print</span></code> するコードを作成しなさい。
-<a href="https://code-judge-system.vercel.app/?&id=8-3" target="_blank">
+<a href="https://code-judge-system.vercel.app/?&id=8-4" target="_blank">
 <img src="./_images/launch.svg" style="width: 20px; height: 20px;">
 </a></p>
 <div class="cell docutils container">
@@ -571,7 +589,7 @@ del文は <code class="docutils literal notranslate"><span class="pre">del</span
 <figure class="align-default" id="id8">
 <a class="reference internal image-reference" href="_images/dict.png"><img alt="_images/dict.png" src="_images/dict.png" style="width: 450px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 14 </span><span class="caption-text">辞書型</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 16 </span><span class="caption-text">辞書型</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>辞書は、<code class="docutils literal notranslate"><span class="pre">:</span></code> を使ってキーと値のペアを指定し、各ペアを <code class="docutils literal notranslate"><span class="pre">,</span></code> で区切って、両端を <code class="docutils literal notranslate"><span class="pre">{}</span></code> で囲うことで作成できる。</p>
@@ -608,29 +626,34 @@ del文は <code class="docutils literal notranslate"><span class="pre">del</span
 これはキーが途中で変わらないことを保証するためである。</p>
 <div class="note admonition">
 <p class="admonition-title">発展的な話題： ミュータブルとイミュータブル</p>
-<p>値を変更可能なデータ型を<strong>ミュータブル</strong>、変更不可能なデータ型を<strong>イミュータブル</strong>という。</p>
+<p>データ型には、作成したあとでも中身を変更できるものと、変更できないものがある。
+要素の変更・追加・削除ができるものを<strong>ミュータブル（mutable）</strong>、変更できないものを<strong>イミュータブル（immutable）</strong> という。</p>
 <table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>分類</p></th>
 <th class="head"><p>データ型</p></th>
+<th class="head"><p>特徴</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p>ミュータブル</p></td>
 <td><p>リスト、辞書</p></td>
+<td><p>要素を変更・追加・削除できる</p></td>
 </tr>
 <tr class="row-odd"><td><p>イミュータブル</p></td>
 <td><p>整数、浮動小数点数、文字列、真偽値、タプル</p></td>
+<td><p>作成後の変更はできない</p></td>
 </tr>
 </tbody>
 </table>
 <p>リストや辞書はミュータブルなデータ型である。
 実際、どちらも <code class="docutils literal notranslate"><span class="pre">[]</span></code> を使った代入文により要素を変更することができる。</p>
-<p>一方で整数、浮動小数点数、文字列、真偽値はイミュータブルなデータ型である。
+<p>一方で整数、浮動小数点数、文字列、真偽値、タプルはイミュータブルなデータ型である。
 例えば、次のようなコードを実行したとする。</p>
 <pre>
 x = 1
-x = 2</pre>
+x = 2  # 新たな整数オブジェクト2を作成し、xに再代入（元の1は変化しない）
+</pre>
 <p>このとき <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">2</span></code> は、新しいオブジェクト <code class="docutils literal notranslate"><span class="pre">2</span></code> を作成して変数 <code class="docutils literal notranslate"><span class="pre">x</span></code> に代入しているのであって、元のオブジェクト <code class="docutils literal notranslate"><span class="pre">1</span></code> の値を変更しているわけではない。</p>
 <p>これらの区別は、次のような例で重要になる。</p>
 <pre>
@@ -647,9 +670,13 @@ y = x
 
 x[0] = 2
 print(y)  # [2, 1]が出力される</pre>
-<p>どちらのケースでも、<code class="docutils literal notranslate"><span class="pre">y</span> <span class="pre">=</span> <span class="pre">x</span></code> というコードを実行した時点では <code class="docutils literal notranslate"><span class="pre">x</span></code> と <code class="docutils literal notranslate"><span class="pre">y</span></code> は同じオブジェクトを参照している。<br />
-しかし、ケース1において <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">2</span></code> は新しいオブジェクトを <code class="docutils literal notranslate"><span class="pre">x</span></code> に代入しているので、変数 <code class="docutils literal notranslate"><span class="pre">y</span></code> の値に影響はない。
-一方、ケース2において <code class="docutils literal notranslate"><span class="pre">x[0]</span> <span class="pre">=</span> <span class="pre">2</span></code> はオブジェクトを変更しているので、変数 <code class="docutils literal notranslate"><span class="pre">y</span></code> の値も変更される！</p>
+<p>どちらのケースでも、<code class="docutils literal notranslate"><span class="pre">y</span> <span class="pre">=</span> <span class="pre">x</span></code> と書いた直後は変数 <code class="docutils literal notranslate"><span class="pre">x</span></code> と <code class="docutils literal notranslate"><span class="pre">y</span></code> は同じオブジェクトを指している。しかし、ケース1において <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">2</span></code> は新しいオブジェクトを <code class="docutils literal notranslate"><span class="pre">x</span></code> に代入しているので、変数 <code class="docutils literal notranslate"><span class="pre">y</span></code> の値に影響はない。一方、ケース2において <code class="docutils literal notranslate"><span class="pre">x[0]</span> <span class="pre">=</span> <span class="pre">2</span></code> はオブジェクトを変更しているので、変数 <code class="docutils literal notranslate"><span class="pre">y</span></code> の中身も変化してしまう。</p>
+<figure class="align-default" id="mutable">
+<span id="label-mutable"></span><a class="reference internal image-reference" href="_images/mutable.png"><img alt="_images/mutable.png" src="_images/mutable.png" style="width: 300px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 17 </span><span class="caption-text">変数のイメージ</span><a class="headerlink" href="#mutable" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </div>
 <section id="id9">
 <h4>要素の追加と変更<a class="headerlink" href="#id9" title="Link to this heading">#</a></h4>
@@ -680,14 +707,41 @@ print(y)  # [2, 1]が出力される</pre>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>  <span class="c1"># keyにはキーが順に代入される</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">key</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p><strong>練習4</strong><br />
+<p>辞書の要素をループで処理するときは、キーと値を両方取得できる <code class="docutils literal notranslate"><span class="pre">items()</span></code> メソッドを利用する方法もある。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">x</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>この方法はキーと値を同時に処理したい場合に便利である。</p>
+<p><strong>練習5</strong><br />
+辞書 <code class="docutils literal notranslate"><span class="pre">x</span></code> が与えられるとき、値を順に <code class="docutils literal notranslate"><span class="pre">print</span></code> するコードを作成しなさい。
+<a href="https://code-judge-system.vercel.app/?&id=8-5" target="_blank">
+<img src="./_images/launch.svg" style="width: 20px; height: 20px;">
+</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># xの一例 （この例では &quot;りんご&quot;、&quot;ぶどう&quot;、&quot;もも&quot; と順に出力するのが正しい）</span>
+<span class="n">x</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;apple&quot;</span><span class="p">:</span> <span class="s2">&quot;りんご&quot;</span><span class="p">,</span> <span class="s2">&quot;grape&quot;</span><span class="p">:</span> <span class="s2">&quot;ぶどう&quot;</span><span class="p">,</span> <span class="s2">&quot;peach&quot;</span><span class="p">:</span> <span class="s2">&quot;もも&quot;</span><span class="p">}</span>
+
+<span class="c1"># 以下にコードを作成し、以下の部分のみ提出する</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>練習6</strong><br />
 値が数値である辞書 <code class="docutils literal notranslate"><span class="pre">x</span></code> が与えられるとき、全ての値の合計を求めて <code class="docutils literal notranslate"><span class="pre">print</span></code> するコードを作成しなさい。
-<a href="https://code-judge-system.vercel.app/?&id=8-4" target="_blank">
+<a href="https://code-judge-system.vercel.app/?&id=8-6" target="_blank">
 <img src="./_images/launch.svg" style="width: 20px; height: 20px;">
 </a></p>
 <div class="cell docutils container">
@@ -696,24 +750,6 @@ print(y)  # [2, 1]が出力される</pre>
 <span class="n">x</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
 
 <span class="c1"># 以下にコードを作成し、以下の部分のみ提出する</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>練習5</strong><br />
-<code class="docutils literal notranslate"><span class="pre">'a'</span></code>、<code class="docutils literal notranslate"><span class="pre">'b'</span></code>、<code class="docutils literal notranslate"><span class="pre">'c'</span></code> から成るリスト <code class="docutils literal notranslate"><span class="pre">data</span></code> が与えられる。<code class="docutils literal notranslate"><span class="pre">'a'</span></code>、<code class="docutils literal notranslate"><span class="pre">'b'</span></code>、<code class="docutils literal notranslate"><span class="pre">'c'</span></code> をキー、それぞれの出現回数を値とする辞書 <code class="docutils literal notranslate"><span class="pre">count</span></code> を作成しなさい。ただし採点の都合上、<code class="docutils literal notranslate"><span class="pre">print</span></code> してはいけない。
-<a href="https://code-judge-system.vercel.app/?&id=8-5" target="_blank">
-<img src="./_images/launch.svg" style="width: 20px; height: 20px;">
-</a></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># dataの一例 （この例では　count == {&#39;a&#39;: 3, &#39;b&#39;: 2, &#39;c&#39;: 1}　となれば正しい）</span>
-<span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">]</span>
-
-<span class="c1"># 以下にコードを作成し、以下の部分のみ提出する</span>
-<span class="n">count</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
-<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
-    <span class="k">pass</span>
 </pre></div>
 </div>
 </div>
@@ -735,7 +771,7 @@ print(y)  # [2, 1]が出力される</pre>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="c1">#これは2と同じ</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># これは整数の2</span>
 <span class="nb">type</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> 
 </pre></div>
 </div>
@@ -889,7 +925,7 @@ By 大坪 舜 Shun Otsubo
 
   <p class="copyright">
     
-      © Copyright 2023-2024（2023年3月30日公開）.
+      © Copyright 2023-Present（2023年3月30日公開）.
       <br/>
     
   </p>

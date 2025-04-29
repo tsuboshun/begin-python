@@ -380,7 +380,7 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="python">
 <h1>第3回 はじめてのPython<a class="headerlink" href="#python" title="Link to this heading">#</a></h1>
 <hr class="docutils" />
-<p><a class="reference external" href="https://colab.research.google.com/github/tsuboshun/begin-python/blob/gh-pages/2024/workbook/lecture03.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+<p><a class="reference external" href="https://colab.research.google.com/github/tsuboshun/begin-python/blob/gh-pages/workbook/lecture03.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
 <hr class="docutils" />
 <section id="id1">
 <h2>この授業で学ぶこと<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
@@ -443,7 +443,7 @@ document.write(`
 </table>
 <p>足し算 <code class="docutils literal notranslate"><span class="pre">+</span></code>、引き算 <code class="docutils literal notranslate"><span class="pre">-</span></code> および割り算 <code class="docutils literal notranslate"><span class="pre">/</span></code> については馴染みのある記号だろう。
 かけ算は × ではなく <code class="docutils literal notranslate"><span class="pre">*</span></code> という記号を用いる。</p>
-<p><code class="docutils literal notranslate"><span class="pre">//</span></code> および <code class="docutils literal notranslate"><span class="pre">%</span></code> は、小数の出てこない余りつき割り算を行うのに用いられる。例えば5割る3の答えは、商が1余りが2となるが、商は <code class="docutils literal notranslate"><span class="pre">5//3</span></code>、余りは <code class="docutils literal notranslate"><span class="pre">5%3</span></code> によって求めることができる。</p>
+<p><code class="docutils literal notranslate"><span class="pre">//</span></code> および <code class="docutils literal notranslate"><span class="pre">%</span></code> は、小数の出てこない余りつき割り算を行うのに用いられる。例えば5割る3の答えは、商が1で余りが2となるが、商は <code class="docutils literal notranslate"><span class="pre">5//3</span></code>、余りは <code class="docutils literal notranslate"><span class="pre">5%3</span></code> によって求めることができる。</p>
 <p>累乗は <code class="docutils literal notranslate"><span class="pre">**</span></code> で表される。例えば3の5乗（つまり <code class="docutils literal notranslate"><span class="pre">3*3*3*3*3</span></code>）は、<code class="docutils literal notranslate"><span class="pre">3**5</span></code> で求めることができる。</p>
 <p>以下のコードを、結果を予想しながら実行してみよう。なお、ノートブック環境では <code class="docutils literal notranslate"><span class="pre">print()</span></code> と書かなくても、セルの最終行を評価した値が自動的に表示される。</p>
 <div class="cell docutils container">
@@ -496,8 +496,8 @@ document.write(`
 <p>（1） 365を12で割った商と余りを求めよ。<br />
 （2） 2023の2023乗の1の位の数字は何か。 <font color=cornflowerblue>ヒント: 1の位の数字は10で割った余りである。</font></p>
 <p><strong>練習3</strong></p>
-<p>（1） 10万円を年利率5％で運用したとき、10年後の金額を求めよ。また20年後にはいくらになるか。<br />
-（2） 3の平方根の値を小数で求めよ。 <font color=cornflowerblue>ヒント: 平方根は0.5乗で計算できる。</font></p>
+<p>（1） 10万円を年利率5％で運用すると1年後には <code class="docutils literal notranslate"><span class="pre">10</span> <span class="pre">*</span> <span class="pre">1.05</span></code> 円になる。では、10年後、20年後はいくらになるか。<br />
+（2） 3の平方根（<span class="math notranslate nohighlight">\(\sqrt{3}\)</span>）の値を小数で求めよ。 <font color=cornflowerblue>ヒント: 平方根は0.5乗で計算できる。</font></p>
 <section id="id4">
 <h3>計算の順番<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
 <p>次のコードの実行結果を予想してみよう。</p>
@@ -509,7 +509,7 @@ document.write(`
 </div>
 </div>
 <p>予想は当たっただろうか。ここでは計算の順番に関するルールを学ぶ。</p>
-<p>まず、演算子には優先順位があり、累乗 <code class="docutils literal notranslate"><span class="pre">**</span></code>、掛け算・割り算 <code class="docutils literal notranslate"><span class="pre">*</span></code>, <code class="docutils literal notranslate"><span class="pre">/</span></code>, <code class="docutils literal notranslate"><span class="pre">//</span></code>, <code class="docutils literal notranslate"><span class="pre">%</span></code>、足し算・引き算 <code class="docutils literal notranslate"><span class="pre">+</span></code>, <code class="docutils literal notranslate"><span class="pre">-</span></code> の順に優先される。また、同じ優先順位の演算子は、前から順に実行される。ただし、普通の数学と同じく <code class="docutils literal notranslate"><span class="pre">()</span></code> を付ければ、その中身の計算が最優先される。</p>
+<p>まず、演算子には優先順位があり、累乗 <code class="docutils literal notranslate"><span class="pre">**</span></code>、掛け算・割り算 <code class="docutils literal notranslate"><span class="pre">*</span></code>, <code class="docutils literal notranslate"><span class="pre">/</span></code>, <code class="docutils literal notranslate"><span class="pre">//</span></code>, <code class="docutils literal notranslate"><span class="pre">%</span></code>、足し算・引き算 <code class="docutils literal notranslate"><span class="pre">+</span></code>, <code class="docutils literal notranslate"><span class="pre">-</span></code> の順に優先される。また、同じ優先順位の演算子は、前から順に実行される。ただし、通常の数学（算数）と同じく <code class="docutils literal notranslate"><span class="pre">()</span></code> を付ければ、その中身の計算が最優先される。</p>
 <p>このルールにしたがうと、上の数式は次のように計算される。<br />
 まず、足し算・引き算より掛け算・割り算・累乗が優先されるので、真ん中の項が先に計算される。<code class="docutils literal notranslate"><span class="pre">()</span></code> を使って明示的に書けば、次の式と同じということである。</p>
 <div class="cell docutils container">
@@ -572,7 +572,7 @@ document.write(`
 <figure class="align-default" id="variable">
 <a class="reference internal image-reference" href="_images/variable.png"><img alt="_images/variable.png" src="_images/variable.png" style="width: 200px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 2 </span><span class="caption-text">変数のイメージ</span><a class="headerlink" href="#variable" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">変数のイメージ</span><a class="headerlink" href="#variable" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>変数を使うと、練習1の答えは次のように求めることができる。</p>
@@ -624,13 +624,23 @@ document.write(`
 </div>
 </div>
 <p>この実行結果の理由は次のとおりである。<code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">x</span> <span class="pre">+</span> <span class="pre">1</span></code> のコードにおいて、まず右辺の式が評価される。<code class="docutils literal notranslate"><span class="pre">x</span></code> の指す値は <code class="docutils literal notranslate"><span class="pre">2</span></code> であるから、<code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">+</span> <span class="pre">1</span></code> の値は <code class="docutils literal notranslate"><span class="pre">3</span></code> である。
-したがって、<code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">x</span> <span class="pre">+</span> <span class="pre">1</span></code> のコードは <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">3</span></code> のコードに読み替えられる。その結果として、<code class="docutils literal notranslate"><span class="pre">x</span></code> は新しい値 <code class="docutils literal notranslate"><span class="pre">3</span></code> の名前として上書きされる。数学とは違い <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">x</span> <span class="pre">+</span> <span class="pre">1</span></code> は方程式ではないので注意しよう。</p>
+したがって、<code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">x</span> <span class="pre">+</span> <span class="pre">1</span></code> のコードは <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">3</span></code> のコードに読み替えられる。その結果として、<code class="docutils literal notranslate"><span class="pre">x</span></code> は新しい値 <code class="docutils literal notranslate"><span class="pre">3</span></code> の名前として上書きされる。
+数学では「x = x + 1」は矛盾するが、プログラミングでは右辺を先に計算し、それを左辺の変数に「代入」するため矛盾しない。</p>
 <p>プログラミングでは、このような計算式がよく出てくるので省略記法もある。具体的には、<code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">x</span> <span class="pre">+</span> <span class="pre">1</span></code> は <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">+=</span> <span class="pre">1</span></code> と書くことができる。</p>
 <p>以下のコードを、結果を予想しながら実行してみよう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
 <span class="n">x</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">x</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">x</span> <span class="o">+=</span> <span class="mi">1</span>
 <span class="n">x</span>
 </pre></div>
 </div>
@@ -655,9 +665,9 @@ document.write(`
 </ol>
 <p>例えば、<code class="docutils literal notranslate"><span class="pre">price_apple</span></code> は変数名にできるが、<code class="docutils literal notranslate"><span class="pre">price-apple</span></code> はエラーになる。<code class="docutils literal notranslate"><span class="pre">a1</span></code> は変数名にできるが、<code class="docutils literal notranslate"><span class="pre">1a</span></code> はエラーになる。
 また、<code class="docutils literal notranslate"><span class="pre">if</span></code> は使えないが、<code class="docutils literal notranslate"><span class="pre">value_if_a</span></code> は変数名にできる。</p>
-<p>変数名はなるべく英語で表現するのが理想的だが、難しければ日本語のローマ字で表現してもよい。
+<p>変数名はなるべく英語で表現するとよいが、難しければ日本語のローマ字で表現してもよい。
 例えば、みかんは英語で書くと <code class="docutils literal notranslate"><span class="pre">mandarin</span></code> であるが、日本人にとっては <code class="docutils literal notranslate"><span class="pre">mikan</span></code> の方がわかりやすいだろう。</p>
-<p>下のセルを使って、上のルールを確かめてみよう。例えば <code class="docutils literal notranslate"><span class="pre">1a</span> <span class="pre">=</span> <span class="pre">2</span></code> などと入力してみよう。</p>
+<p>下のセルを使って、上のルールを確かめてみよう。例えば <code class="docutils literal notranslate"><span class="pre">1a</span> <span class="pre">=</span> <span class="pre">2</span></code> などと入力して、エラーが出ることを確かめよう。</p>
 </section>
 </section>
 <section id="id7">
@@ -984,7 +994,7 @@ By 大坪 舜 Shun Otsubo
 
   <p class="copyright">
     
-      © Copyright 2023-2024（2023年3月30日公開）.
+      © Copyright 2023-Present（2023年3月30日公開）.
       <br/>
     
   </p>

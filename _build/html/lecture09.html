@@ -370,7 +370,7 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1>第9回 関数と再帰<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <hr class="docutils" />
-<p><a class="reference external" href="https://colab.research.google.com/github/tsuboshun/begin-python/blob/gh-pages/2024/workbook/lecture09.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+<p><a class="reference external" href="https://colab.research.google.com/github/tsuboshun/begin-python/blob/gh-pages/workbook/lecture09.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
 <hr class="docutils" />
 <section id="id2">
 <h2>この授業で学ぶこと<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
@@ -383,11 +383,22 @@ document.write(`
 <figure class="align-default" id="def">
 <a class="reference internal image-reference" href="_images/def.png"><img alt="_images/def.png" src="_images/def.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 15 </span><span class="caption-text">def文の書き方</span><a class="headerlink" href="#def" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 18 </span><span class="caption-text">def文の書き方</span><a class="headerlink" href="#def" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>関数定義はヘッダーとブロックから構成され、ヘッダーには <code class="docutils literal notranslate"><span class="pre">def</span></code> に続けて関数名と、カッコ内に引数を記述する。引数は任意で、引数がない場合には <code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">関数名():</span></code> と書き、引数がある場合には上図のように <code class="docutils literal notranslate"><span class="pre">,</span></code> で区切って書く。ブロック内には関数の処理を書く。</p>
-<p><strong>return文</strong>は関数から値を返し、関数の実行を終了するための構文である。この文は任意であり、<code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">戻り値</span></code> という形式で記述する。return文に到達すると、指定された戻り値を返して関数の実行を終了する。return文が省略された場合には、関数の処理がブロックの最後まで到達した後に自動的に <code class="docutils literal notranslate"><span class="pre">None</span></code> という値を返す。</p>
+<p>関数の定義はヘッダーとブロックから構成される。</p>
+<ul class="simple">
+<li><p>ヘッダーには <code class="docutils literal notranslate"><span class="pre">def</span></code> の後に関数名を書き、その後のカッコ内に引数を指定する。</p>
+<ul>
+<li><p>引数がある場合は、複数の引数をカンマ（<code class="docutils literal notranslate"><span class="pre">,</span></code>）で区切って記述する。</p></li>
+<li><p>引数がない場合は、<code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">関数名():</span></code> のようにカッコ内を空欄にする。</p></li>
+</ul>
+</li>
+<li><p>ブロックには、その関数が実行する処理を記述する。</p></li>
+</ul>
+<p><strong>return文</strong>は、関数から値を返し、同時にその関数の実行を終了するための構文である。
+return文は <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">戻り値</span></code> のように書く。return文が実行されると、指定した戻り値を返して即座に関数の処理を終了する。</p>
+<p>return文は省略可能である。return文を省略した場合、関数の処理が最後まで実行された後、自動的に <code class="docutils literal notranslate"><span class="pre">None</span></code> という値が返される。</p>
 <p>第5回で作成したBMIの計算プログラムを例に、関数を作成してみよう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -399,53 +410,45 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bmi</span><span class="p">(</span><span class="mi">193</span><span class="p">,</span> <span class="mi">95</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">bmi</span><span class="p">(</span><span class="mi">193</span><span class="p">,</span> <span class="mi">95</span><span class="p">)</span>  <span class="c1"># 下のgreetingとの比較のため、変数に代入する例も示す</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">bmi</span><span class="p">(</span><span class="mi">193</span><span class="p">,</span> <span class="mi">95</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>return文を書かないと <code class="docutils literal notranslate"><span class="pre">None</span></code> が返される。</p>
+<p>関数はreturn文で戻り値を返す。return文がない場合、自動的に <code class="docutils literal notranslate"><span class="pre">None</span></code> が返される。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">greeting</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hi&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">useless_func</span><span class="p">():</span>
+    <span class="k">pass</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">greeting</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">useless_func</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>基本的に、引数は関数で定義された順番通りに渡す必要がある。
-例えば上の例で <code class="docutils literal notranslate"><span class="pre">bmi(193,</span> <span class="pre">95)</span></code> と呼び出すと、引数に <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">193</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">=</span> <span class="pre">95</span></code> が代入されてブロックの処理が行われる。
-したがって、<code class="docutils literal notranslate"><span class="pre">10000</span> <span class="pre">*</span> <span class="pre">95</span> <span class="pre">/</span> <span class="pre">193</span> <span class="pre">**</span> <span class="pre">2</span></code> を計算した結果が戻り値として返される。</p>
-<p>そうではない場合として、<strong>キーワード引数</strong>や<strong>デフォルト引数</strong>を使用した場合がある。
-キーワード引数を使用すると、関数呼び出し時に自由な順番で引数を設定できる。
-キーワード引数は、関数の使用時に次のように <code class="docutils literal notranslate"><span class="pre">引数名</span> <span class="pre">=</span> <span class="pre">値</span></code> という形式で記述する。</p>
+<p>基本的に、引数は関数定義の順序どおりに渡される。
+例えば <code class="docutils literal notranslate"><span class="pre">bmi(193,</span> <span class="pre">95)</span></code> と呼び出すと、引数は <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">193</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">=</span> <span class="pre">95</span></code> となるため、関数内部では <code class="docutils literal notranslate"><span class="pre">10000</span> <span class="pre">*</span> <span class="pre">95</span> <span class="pre">/</span> <span class="pre">193</span> <span class="pre">**</span> <span class="pre">2</span></code> という計算が行われる。</p>
+<p>引数を渡す順序を変えたい場合や、引数の一部を省略したい場合には、<strong>キーワード引数</strong>や<strong>デフォルト引数</strong>という機能が使える。</p>
+<p>キーワード引数を使えば、引数を自由な順序で指定できる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bmi</span><span class="p">(</span><span class="n">b</span> <span class="o">=</span> <span class="mi">95</span><span class="p">,</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">193</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bmi</span><span class="p">(</span><span class="n">b</span><span class="o">=</span><span class="mi">95</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mi">193</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>また、デフォルト引数を設定すると、関数呼び出し時に引数の設定を省略できる。デフォルト引数は、関数の定義時に次のように <code class="docutils literal notranslate"><span class="pre">引数名</span> <span class="pre">=</span> <span class="pre">デフォルト値</span></code> という形式で記述する。</p>
+<p>デフォルト引数を設定すれば、関数呼び出し時に引数の指定を省略できる。
+デフォルト引数は、関数の定義時に次のように <code class="docutils literal notranslate"><span class="pre">引数名=デフォルト値</span></code> という形式で記述する。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">bmi</span><span class="p">(</span><span class="n">a</span> <span class="o">=</span> <span class="mi">157</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">50</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">bmi</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">157</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">50</span><span class="p">):</span>
     <span class="k">return</span> <span class="mi">10000</span> <span class="o">*</span> <span class="n">b</span> <span class="o">/</span> <span class="n">a</span> <span class="o">**</span> <span class="mi">2</span>
 </pre></div>
 </div>
@@ -453,7 +456,7 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bmi</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bmi</span><span class="p">()</span>  <span class="c1"># a=157, b=50 として計算される</span>
 </pre></div>
 </div>
 </div>
@@ -467,8 +470,13 @@ document.write(`
 </div>
 <section id="id4">
 <h3>スコープ<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
-<p><strong>スコープ</strong>とは、変数や関数などの名前がプログラム内で参照可能な範囲を指す。</p>
-<p>スコープには主に<strong>グローバルスコープ</strong>（またはモジュールスコープ）と<strong>ローカルスコープ</strong>の2種類がある。ノートブックを起動するとグローバルスコープが始まる。ノートブックのセル上で変数を定義すると、他のセルからも参照できるのは、これらが同じグローバルスコープに属するためである。ただし関数内だけは別で、関数内はローカルスコープという独自のスコープを持つ。</p>
+<p><strong>スコープ</strong>とは、変数や関数の名前をプログラム内で参照できる範囲のことである。</p>
+<p>主に2つのスコープがある。</p>
+<ul class="simple">
+<li><p><strong>グローバルスコープ</strong>（モジュールスコープ）</p></li>
+<li><p><strong>ローカルスコープ</strong></p></li>
+</ul>
+<p>ノートブックを起動するとグローバルスコープが作られる。ノートブックのセル上で変数を定義すると、他のセルからも参照できるのは、これらが同じグローバルスコープに属するためである。ただし関数内はローカルスコープとして独立した範囲になる。</p>
 <p>グローバルスコープに属する変数を<strong>グローバル変数</strong>、ローカルスコープに属する変数を<strong>ローカル変数</strong>という。</p>
 <p>以下のコードをもとに、スコープの違いを理解しよう。</p>
 <div class="cell docutils container">
@@ -478,13 +486,13 @@ document.write(`
     <span class="n">a</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># ローカル変数</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
         
-<span class="n">func</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="n">func</span><span class="p">()</span>    <span class="c1"># 出力は 2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>  <span class="c1"># 出力は 1</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>1行目の変数 <code class="docutils literal notranslate"><span class="pre">a</span></code> はグローバルスコープに属するグローバル変数である。一方で3行目の変数 <code class="docutils literal notranslate"><span class="pre">a</span></code> はローカルスコープに属するローカル変数であり、1行目の変数とは別物とみなされる。したがって、<code class="docutils literal notranslate"><span class="pre">func()</span></code> 関数を実行してもグローバル変数の値は変更されず、最後の <code class="docutils literal notranslate"><span class="pre">print(a)</span></code> の出力は1となる。</p>
+<p>上の例で、グローバル変数 <code class="docutils literal notranslate"><span class="pre">a</span></code> とローカル変数 <code class="docutils literal notranslate"><span class="pre">a</span></code> は別物である。関数 <code class="docutils literal notranslate"><span class="pre">func()</span></code> の中で <code class="docutils literal notranslate"><span class="pre">a</span></code> の値を変更しても、グローバル変数の値には影響しない。</p>
 <p>重要な規則として、ローカルスコープからグローバル変数を参照することはできるが、グローバルスコープからローカル変数を参照することはできないというものがある。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -492,7 +500,7 @@ document.write(`
 <span class="k">def</span> <span class="nf">func</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>  <span class="c1"># ローカルスコープからグローバル変数 b を参照</span>
     
-<span class="n">func</span><span class="p">()</span>
+<span class="n">func</span><span class="p">()</span>  <span class="c1"># 出力は 1</span>
 </pre></div>
 </div>
 </div>
@@ -503,12 +511,12 @@ document.write(`
     <span class="n">c</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># ローカル変数</span>
     
 <span class="n">func</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>  <span class="c1"># グローバルスコープからローカル変数 c は参照できない</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>  <span class="c1"># グローバルスコープからローカル変数 c は参照できないためエラー</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>スコープは初学者にとって少し難しい概念であるので、エラーが起きたり変数の値が予期せず変わったりしたときに、この概念を思い出して確認すると良いだろう。</p>
+<p>スコープは初心者が混乱しやすい概念である。エラーや予期せぬ変数の変化が起きたら、このスコープの規則を思い出して確認するとよい。</p>
 </section>
 </section>
 <section id="turtle">
@@ -665,7 +673,7 @@ document.write(`
 <figure class="align-default" id="star">
 <a class="reference internal image-reference" href="_images/star.png"><img alt="_images/star.png" src="_images/star.png" style="width: 200px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 16 </span><span class="caption-text">星形</span><a class="headerlink" href="#star" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 19 </span><span class="caption-text">星形</span><a class="headerlink" href="#star" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="cell docutils container">
@@ -721,7 +729,7 @@ document.write(`
 <figure class="align-default" id="tree">
 <a class="reference internal image-reference" href="_images/tree.png"><img alt="_images/tree.png" src="_images/tree.png" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 17 </span><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">draw_branc()</span></code> の再帰呼び出し</span><a class="headerlink" href="#tree" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 20 </span><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">draw_branc()</span></code> の再帰呼び出し</span><a class="headerlink" href="#tree" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>カメはステップ①で木の枝を描き、ステップ③、⑤で再帰的に木を描く。
@@ -730,7 +738,7 @@ document.write(`
 <code class="docutils literal notranslate"><span class="pre">draw_branch()</span></code> 関数において線を描いているのはステップ①のみであるが、このように繰り返し処理を行うことで、徐々に木の形が出来上がる。</p>
 <p>ステップ⑦の始点に戻る操作は、忘れやすい部分ではあるが重要である。
 というのもステップ④、⑤は、ステップ③の終了時にカメがちょうど上図の位置にまで戻ってくることを前提としているからである。</p>
-<p>再帰を使用することで、for文などのループ構文を用いずに反復的な問題を解くことができる。
+<p>再帰を使用することで、for文などの繰り返し構文を用いずに反復的な問題を解くことができる。
 ただし、適切に終了条件を設定することが必要であり、これがないと無限ループに陥る可能性がある。
 木の例では、枝の深さに制限をつけるため <code class="docutils literal notranslate"><span class="pre">depth</span></code> という引数を使用し、再帰呼び出しの度に1ずつ減らしている。
 そして <code class="docutils literal notranslate"><span class="pre">depth</span> <span class="pre">==</span> <span class="pre">0</span></code> となったときに再帰呼び出しを行わず、枝を１本描くだけでreturnしている。</p>
@@ -928,7 +936,7 @@ By 大坪 舜 Shun Otsubo
 
   <p class="copyright">
     
-      © Copyright 2023-2024（2023年3月30日公開）.
+      © Copyright 2023-Present（2023年3月30日公開）.
       <br/>
     
   </p>

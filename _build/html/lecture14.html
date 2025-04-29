@@ -353,18 +353,18 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">この授業で学ぶこと</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">生成モデル</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">条件付き確率</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">パラメータ</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">言語モデル</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">生成モデルと条件付き確率</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">言語モデル</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">学習のしくみ</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">勾配法</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">言語モデルの学習</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">言語モデルの学習</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python">Pythonから使ってみる</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#web-api">Web API</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">マルチモーダル</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">マルチモーダル</a></li>
 </ul>
 </li>
 </ul>
@@ -381,108 +381,118 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="ai">
 <h1>第14回 生成AI入門<a class="headerlink" href="#ai" title="Link to this heading">#</a></h1>
 <hr class="docutils" />
-<p><a class="reference external" href="https://colab.research.google.com/github/tsuboshun/begin-python/blob/gh-pages/2024/workbook/lecture14.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+<p><a class="reference external" href="https://colab.research.google.com/github/tsuboshun/begin-python/blob/gh-pages/workbook/lecture14.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
 <hr class="docutils" />
 <section id="id1">
 <h2>この授業で学ぶこと<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <p>今回は、データサイエンスの中でも最新の話題である生成AIについて学ぶ。</p>
-<p><strong>生成AI</strong>とは、文章、画像、動画、音声といった様々なデータから学習し、それらの新しいデータを生み出すことができるAIのことを言う。</p>
-<p>例えば、</p>
+<p><strong>生成AI</strong>とは、テキスト、画像、動画、音声など、さまざまなデータから学習し、そこから新しいデータを生み出すことができる人工知能（AI）のことである。</p>
+<p>例えば次のようなことが可能になっている：</p>
 <ul class="simple">
-<li><p>「夕日に染まる海辺でたたずむ猫」という文章から、写真のようなリアルな画像を生成したり</p></li>
-<li><p>数小節のメロディーを入力するだけで、続きの曲を自動で作曲したり</p></li>
-<li><p>自分の代わりに、メールの文章を作成したり</p></li>
-<li><p>会議の内容を要約して、議事録を作成したり</p></li>
+<li><p>文章を入力して、それを添削したり翻訳したりする</p></li>
+<li><p>説明文を入力して、それに忠実な画像や動画を出力する</p></li>
+<li><p>会議の音声データを入力して、議事録を出力する</p></li>
+<li><p>数学の問題を入力して、長考の後、答えと解説を出力する</p></li>
 </ul>
-<p>といったことが生成AIでできるようになってきている。</p>
-<p>最近ではChatGPTという、まるで人間と話しているかのように自然な文章を生成するAIが登場し、世界中で大きな話題となっている。</p>
-<p>生成AIは日々進化を続けており、次々と新しい技術やサービスが登場している。しかし、その基本的な仕組みは当初から大きく変わっていないし、また今後しばらく変わらないと見られている。生成AIを上手に活用したり、今後の技術的な進展を予想したりするためにも、基本的な仕組みを理解しておくことはとても重要である。</p>
-<p>今回は、生成AIの仕組みの概要を理解し、さらにPythonプログラムから生成AIを使えるようになることを目標に授業する。なるべく話を簡単にするため、<strong>言語モデル</strong>と呼ばれる、文章を入力して文章を出力するタイプの生成AIを主に扱う。また生成AIサービスには、OpenAI社のChatGPTのほか、Google社のGemini、Anthropic社のClaudeなど様々あるが、この授業ではChatGPTを中心に取り上げる（基本的な仕組みはどれも同じである）。</p>
+<p>最近話題のChatGPTは、まるで人間と対話しているかのように自然な文章を生成できることで世界中から注目されている。</p>
+<p>生成AIは現在も進化中で、新しいサービスが次々と登場しているが、基本的な仕組みはしばらく大きく変わらないと考えられる。生成AIを有効に活用したり将来の動向を予測したりするためには、その仕組みを理解することが非常に重要となる。</p>
+<p>今回の授業では、生成AIの基本的な仕組みを理解し、さらにPythonプログラムを通して生成AIを利用できるようになることを目指す。わかりやすさを重視して、「文章を入力して文章を生成するタイプの生成AI（言語モデル）」を中心に取り扱う。また、生成AIサービスとしてはChatGPT（OpenAI）を主に用いるが、GoogleのGeminiやAnthropicのClaudeなど他の生成AIも同様の仕組みで動いている。</p>
 </section>
 <section id="id2">
 <h2>生成モデル<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-<p>生成AIは、<strong>生成モデル</strong>と呼ばれる技術により実現されている。
-生成モデルは魔法の箱のようなもので、入力を与えるとそれに応じて人間にとって望ましい出力を、確率的かつ直接的に出力することができる。</p>
+<p>生成AIは、<strong>生成モデル</strong>という技術が元になっている。
+生成モデルとは、既存のデータの特徴やパターンを学習し、それをもとに新しいデータを確率的に作り出す関数である。</p>
 <section id="id3">
 <h3>条件付き確率<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
-<p>生成モデルの仕組みを理解するために、条件付き確率という考え方が重要になる。例えば、とある小売店のとある日におけるアイスクリームの売上個数の確率を考えたいとしよう。
-アイスクリームの売上個数の確率分布は、その日の気温に応じて変化すると考えられる。
-このような条件に応じた確率分布を表現するのが<strong>条件付き確率分布</strong>で、次のような書き方をする。</p>
+<p>例えば、あるお店でのアイスクリームの売り上げを考えてみよう。
+アイスクリームの売り上げは、その日の気温によって変化する。
+このように、ある条件に応じて変わる確率を<strong>条件付き確率</strong>という。</p>
+<p>条件付き確率は、次のように書かれる：</p>
 <p><span class="math notranslate nohighlight">\(p(売上個数 | 気温)\)</span></p>
-<p>これは「気温」と「売上個数」のところに数値を入れると、確率を表す数値が返ってくるような関数となっている。例えば、このお店ではアイスクリームを3個しか仕入れていないとして、気温が27度という条件のもとでの確率の例をこの形式で表すと、以下のようになる（代入との違いが見やすいように、ここでは <span class="math notranslate nohighlight">\(\rightarrow\)</span> で戻り値を表す）。</p>
+<p>これは「気温」と「売上個数」のところに数値を入れると、確率を表す数値が返ってくるような関数となっている。</p>
+<p>例えば、このお店でアイスクリームを3個だけ仕入れた場合、気温が27度のときは次のようになる。</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(p(売上個数 = 0| 気温 = 27) \rightarrow 0.1\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(p(売上個数 = 1| 気温 = 27) \rightarrow 0.2\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(p(売上個数 = 2| 気温 = 27) \rightarrow 0.6\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(p(売上個数 = 3| 気温 = 27) \rightarrow 0.1\)</span></p></li>
 </ul>
-<p>気温が10度という条件のもとでの確率は、例えば以下のようになるだろう。</p>
+<p>これらは確率なので、すべてを足すと1になることに注目しよう。</p>
+<p>また、気温が10度のときは以下のようになる。</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(p(売上個数 = 0| 気温 = 10) \rightarrow 0.8\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(p(売上個数 = 1| 気温 = 10) \rightarrow 0.2\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(p(売上個数 = 2| 気温 = 10) \rightarrow 0\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(p(売上個数 = 3| 気温 = 10) \rightarrow 0\)</span></p></li>
 </ul>
-<p>生成モデルも、これと同じように条件付き確率分布で表現することができる。</p>
-<p><span class="math notranslate nohighlight">\(p( y | x )\)</span></p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(y\)</span>: 生成モデルが出力するデータ</p></li>
-<li><p><span class="math notranslate nohighlight">\(x\)</span>: 生成モデルに入力するデータ</p></li>
-</ul>
-<p>これは「入力データ <span class="math notranslate nohighlight">\(x\)</span>」が与えられたという条件のもとで、「出力データ <span class="math notranslate nohighlight">\(y\)</span>」が生成される確率を表している。
-生成モデルは、この確率分布にしたがって出力データを確率的に生成する。
-この確率分布が人間にとって便利な形になっていることが、生成モデルが便利なツールとなっている所以である。</p>
+<p>このように、条件が変われば確率の値も変わる。</p>
 </section>
 <section id="id4">
-<h3>パラメータ<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
-<p>生成モデルは、<strong>パラメータ</strong>と呼ばれる値により、出力結果を調整できるように設計されている。
-例えば、先ほどのアイスの例で考えると「アイスの値段」や「湿度」といった要素も、売上個数の確率に影響を与えるかもしれない。
-これらのパラメータを <span class="math notranslate nohighlight">\(\bf\theta\)</span> と表して、生成モデルの式に明示的に含めることにすれば、先ほどの式は以下のように書き直すことができる。</p>
-<p><span class="math notranslate nohighlight">\(p(y | x;\theta)\)</span></p>
+<h3>生成モデルと条件付き確率<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<p>生成モデルも、これと同じように条件付き確率で表現できる。</p>
+<p><span class="math notranslate nohighlight">\(p( y | x; \theta )\)</span></p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\bf\theta\)</span>: 生成モデルのパラメータ</p></li>
+<li><p><span class="math notranslate nohighlight">\(x\)</span>: 入力データ（例えば、文章や画像の説明文）</p></li>
+<li><p><span class="math notranslate nohighlight">\(y\)</span>: 出力データ（例えば、生成される文章や画像）</p></li>
+<li><p><span class="math notranslate nohighlight">\(\theta\)</span>: パラメータ（モデルの性質を決める要素）</p></li>
 </ul>
-<p>この式は <span class="math notranslate nohighlight">\(x\)</span> だけではなく <span class="math notranslate nohighlight">\(\theta\)</span> の値にも依存して、<span class="math notranslate nohighlight">\(y\)</span> の確率分布が変わることを意味している。</p>
-<p>パラメータを含むモデルの簡単な例として、<strong>単回帰モデル</strong>がある。単回帰モデルは以下のように2つのパラメータ <span class="math notranslate nohighlight">\(a\)</span>、<span class="math notranslate nohighlight">\(b\)</span> を持つ関数として表される。</p>
-<p><span class="math notranslate nohighlight">\(y = ax + b\)</span></p>
+<p>生成モデルは、この条件付き確率を使い、入力データに合った出力データを生成している。</p>
+<p>ここで <span class="math notranslate nohighlight">\(\theta\)</span> は<strong>パラメータ</strong>と呼ばれ、生成モデルがどのようなデータを生成するかを調整する役割を持つ。
+先ほどのアイスクリームの例で言えば、パラメータとは「アイスクリームの値段」のようなものだ。
+お店側が値段を変えることで、売れる個数を調整できるように、生成モデルもパラメータを変えることで出力結果を調整することができる。</p>
+<p>生成モデルが適切な出力を行うためには、このパラメータ <span class="math notranslate nohighlight">\(\theta\)</span> をデータから決定する必要がある。このパラメータを決定するプロセスを<strong>学習</strong>と呼ぶ。
+あとで詳しく見るように、データをもとに勾配法という手法を使うことで学習を行う。</p>
+<div class="admonition- admonition">
+<p class="admonition-title">単回帰モデル</p>
+<p>パラメータについて具体的なイメージを持ってもらうため、簡単なモデルとして<strong>単回帰モデル</strong>を紹介する<a class="footnote-reference brackets" href="#f1" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>。
+単回帰モデルは以下のように2つのパラメータ <span class="math notranslate nohighlight">\(a\)</span>、<span class="math notranslate nohighlight">\(b\)</span> を持つ関数として表される。</p>
+<p><span class="math notranslate nohighlight">\(y = ax + b + \varepsilon\)</span></p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(y\)</span>: 出力</p></li>
 <li><p><span class="math notranslate nohighlight">\(x\)</span>: 入力</p></li>
+<li><p><span class="math notranslate nohighlight">\(y\)</span>: 出力</p></li>
 <li><p><span class="math notranslate nohighlight">\(a, b\)</span>: パラメータ</p></li>
+<li><p><span class="math notranslate nohighlight">\(\varepsilon\)</span>: ノイズ</p></li>
 </ul>
-<p>この式は確率的ではなく、入力 <span class="math notranslate nohighlight">\(x\)</span> に対して一つの出力 <span class="math notranslate nohighlight">\(y\)</span> を定める決定的な式である。そのため、単回帰モデルは通常、生成モデルとは言わない。
-しかし、<span class="math notranslate nohighlight">\(y\)</span> について <span class="math notranslate nohighlight">\(ax + b\)</span> に確率 <span class="math notranslate nohighlight">\(1\)</span> を割り当て、それ以外の値に確率 <span class="math notranslate nohighlight">\(0\)</span> を割り当てていると考えれば、生成モデルの一例と見なすこともできる。</p>
+<p>単回帰モデルにおける <span class="math notranslate nohighlight">\(x\)</span> と <span class="math notranslate nohighlight">\(y\)</span> の関係は、パラメータ <span class="math notranslate nohighlight">\(a\)</span>、<span class="math notranslate nohighlight">\(b\)</span> に依存して変わる。
+生成モデルとパラメータの関係もこれと同じようなものと想像すればよい。</p>
+</div>
 </section>
-<section id="id5">
-<h3>言語モデル<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
-<p>さて、生成モデルの一つである言語モデルについて、生成方法を詳しく見てみよう。なお、言語モデルの中でも膨大な数のパラメータを持ち、膨大なデータを使って学習されるものを<strong>大規模言語モデル</strong> （<strong>Large Language Model, LLM</strong>）という。例えば、ChatGPTの内部では<strong>GPT</strong>（<strong>Generative Pre-trained Transformer</strong>）という大規模言語モデルが使われている。最新のモデルであるGPT-4oの詳細は公開されていないが、一世代前のGPT-3については詳細が公開されているので、適宜GPT-3の仕様を紹介しながら言語モデルについて解説する。以降では、基本的に大規模言語モデルを指して、言語モデルという言葉を使う。</p>
-<p>言語モデルは文章全体を一度に生成するのではなく、<strong>トークン</strong>と呼ばれる単位で順番に生成する。おおよそ英語の場合には単語、日本語の場合には文字の単位をトークンとしている<a class="footnote-reference brackets" href="#f1" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>。</p>
-<p>したがって、言語モデルは文章 <span class="math notranslate nohighlight">\(x\)</span> を入力として、次のトークン <span class="math notranslate nohighlight">\(w\)</span> を出力するモデル <span class="math notranslate nohighlight">\(p(w | x;\theta)\)</span> と表現できる。なお、文章 <span class="math notranslate nohighlight">\(x\)</span> も入力時にトークンに分割して、トークンを並べたものとして入力される。そして、条件付き確率分布にしたがってトークン <span class="math notranslate nohighlight">\(w_1\)</span> を出力したら、<span class="math notranslate nohighlight">\(x\)</span> と <span class="math notranslate nohighlight">\(w_1\)</span> を連結した <span class="math notranslate nohighlight">\(xw_1\)</span> を再度入力して次のトークン <span class="math notranslate nohighlight">\(w_2\)</span> を出力する。
-<span class="math notranslate nohighlight">\(xw_1w_2\)</span> を再度入力して <span class="math notranslate nohighlight">\(w_3\)</span> を出力し…という操作を、終端を表すトークンが出力されるまで繰り返すことで、任意の長さの文章 <span class="math notranslate nohighlight">\(y = w_1w_2\cdots w_n\)</span> を生成することができる。</p>
+<section id="id6">
+<h3>言語モデル<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<p>それでは、生成モデルの一つである言語モデルについて、詳しく見てみよう。
+言語モデルの中でも膨大な数のパラメータを持ち、膨大なデータを使って学習されるものを<strong>大規模言語モデル</strong>（<strong>Large Language Model, LLM</strong>） という。
+例えば、ChatGPTの内部では<strong>GPT</strong>（<strong>Generative Pre-trained Transformer</strong>）という大規模言語モデルが使われている。
+ChatGPTの最新版の詳しい仕組みは非公開だが、GPT-3などの過去のモデルの情報を参考に、その動作原理を理解することができる。</p>
+<p>言語モデルは文章全体を一度に生成するのではなく、<strong>トークン</strong>と呼ばれる単位で順番に生成する。日本語では主に「文字」、英語では主に「単語」をトークンとする。生成されたトークンを改めて入力として、次のトークンを生成するということを繰り返すため、言語モデルは<strong>自己回帰モデル</strong>とも呼ばれる。</p>
 <p>例えば、言語モデルに「以下を英訳して：私の名前は春子です。」という文章を入力した場合を考えてみよう。ChatGPTなどでこの文章を入力すると、例えば「My name is Haruko.」と返ってくる。このとき内部では以下のような手順で文章が生成される。</p>
 <figure class="align-default" id="language-model">
-<a class="reference internal image-reference" href="_images/language-model.png"><img alt="_images/language-model.png" src="_images/language-model.png" style="width: 800px;" /></a>
+<a class="reference internal image-reference" href="_images/language-model.png"><img alt="_images/language-model.png" src="_images/language-model.png" style="width: 700px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 25 </span><span class="caption-text">言語モデルの生成過程</span><a class="headerlink" href="#language-model" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>まず、文章はトークンに分割されてから言語モデルに入力される。ここで各トークンは、GPT-3の場合、長さ50257の数値からなる配列（数学的には50257次元のベクトルという）として表現される。各インデックスが1つのトークンと一対一で対応しており、各トークンは自身を表すインデックスの要素のみ 1 でそれ以外の要素が全て 0 という<strong>one-hotベクトル</strong>（つまり <span class="math notranslate nohighlight">\([0, ..., 0, 1, 0, ..., 0]\)</span> という配列）として表現される。</p>
-<p>そして言語モデルにこの配列の並び（つまり2次元配列）を入力すると、GPT-3の場合は長さ50257の配列が出力される。これはトークン上の確率分布を表しており、この確率分布にしたがって出力トークンが決定される。この例では「I」または「My」に対応する値が大きくなっており、それを反映して「My」と出力されている。確率的なので必ずしも最大値に対応するトークンが出力されるわけではないことに注意しよう。</p>
-<p>次に言語モデルに「以下を英訳して：私の名前は春子です。My」が入力され、同様に長さ50257の配列が出力される。今回は「name」に対応する値が大きくなっており、それを反映して「name」と出力されている。これを繰り返すことで文章を生成することができる。</p>
-<p>ここまでの説明から示唆されるように、言語モデルはプログラムとしては「数値の配列を入力して数値の配列を出力するパラメータ付きの関数」になっている。
-この関数として、最近の言語モデルでは主に<strong>Transformer</strong>モデルが使われている<a class="footnote-reference brackets" href="#f2" id="id7" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>。Transformerのパラメータ数は膨大であり、例えばGPT-3の総パラメータ数は約1750億個となっている。</p>
-<p>言語モデルの性能は、これら膨大な数のパラメータの値によって決まる。例えば、ランダムな値をパラメータとして設定すれば、ランダムなトークンを生成するだろう。したがって、言語モデルが便利なツールとなるように、パラメータの値をどのように設定するかが問題になる。</p>
+<p>まず、言語モデルは文章をトークンに分割して処理する。
+トークンはモデルが理解できるように数値で表現される。GPT-3の場合、使用されるトークンの数は全部で50257個あり、それぞれのトークンは50257次元のベクトル（数値の並び）として表される。
+このベクトル表現を具体的には<strong>one-hotベクトル</strong>という。これは、各トークンを、1つの要素だけ1で、それ以外の要素がすべて0のベクトルで表現する方法である。例えば、あるトークンがインデックスの3に対応している場合、そのトークンは <span class="math notranslate nohighlight">\([0, 0, 0, 1, 0, ..., 0]\)</span> という形で表される。</p>
+<p>このようなトークンのベクトル列を言語モデルに入力すると、同じ50257次元のベクトルが出力される。この出力は「次に来る可能性のあるトークンの確率分布」を表している。モデルは、この確率分布に基づいて次のトークンを選択する。例えば、出力されたベクトルの中で「I」や「My」に対応する要素が大きければ、それらが選ばれる可能性が高くなる。ただし、最大値を取るトークンが常に選ばれるわけではなく、確率的に選ばれることに注意しよう。</p>
+<p>次に言語モデルに「以下を英訳して：私の名前は春子です。My」が入力され、同様に50257次元のベクトルが出力される。
+今回は「name」に対応する値が大きくなっており、それを反映して「name」と出力されている。このプロセスを繰り返すことで文章を生成することができる。</p>
+<p>ここまでの説明から示唆されるように、言語モデルは「数値の配列を入力として受け取り、数値の配列を出力する、パラメータで調整された関数」になっている。
+この関数として、最近の言語モデルでは主に<strong>Transformer</strong>というモデルが使われている<a class="footnote-reference brackets" href="#f2" id="id7" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>。Transformerのパラメータ数は非常に多く、例えばGPT-3ではその数が約1750億個にもなる。</p>
+<p>これらのパラメータの値が、言語モデルの性能を決定する。
+例えば、パラメータがランダムに設定されると、意味のないトークンがランダムに生成されてしまう。そのため、言語モデルを役に立つツールとして使うためには、適切なパラメータを設定（学習）することが非常に重要になるのである。</p>
 </section>
 </section>
 <section id="id8">
 <h2>学習のしくみ<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
-<p>モデルの出力が望ましいものになるように、データをもとにモデルのパラメータを求める過程を<strong>学習</strong>という。言語モデルを含む近年のほとんどの<strong>深層学習モデル</strong>（膨大な数のパラメータを持つモデル）の学習には、<strong>勾配法</strong>という手法が用いられている。ここでは、勾配法の最もシンプルな場合について単回帰モデルを使って解説し、その後、言語モデルの学習方法を解説する。</p>
+<p>データをもとにモデルのパラメータを調整し、モデルの出力を望ましいものに近づける過程を<strong>学習</strong>という。言語モデルを含む近年のほとんどの<strong>深層学習モデル</strong>（膨大な数のパラメータを持つモデル）の学習には、<strong>勾配法</strong>という手法が用いられている。以下では、勾配法の基本的な考え方を単回帰モデルを用いて説明し、その後で言語モデルへの応用を解説する。</p>
 <section id="id9">
 <h3>勾配法<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
-<p>第11回でも扱った <span class="math notranslate nohighlight">\(y = 2x + \varepsilon\)</span> の関係を満たす2次元データ <span class="math notranslate nohighlight">\((x, y)\)</span> 100個が手元にあったとする。
-ここで <span class="math notranslate nohighlight">\(\varepsilon\)</span> は平均 <span class="math notranslate nohighlight">\(0\)</span>、標準偏差 <span class="math notranslate nohighlight">\(1\)</span> の正規分布に従うノイズとする。
-これらの <span class="math notranslate nohighlight">\(x\)</span> と <span class="math notranslate nohighlight">\(y\)</span> の関係を予測する単回帰モデル <span class="math notranslate nohighlight">\(y = ax + b\)</span> のパラメータ <span class="math notranslate nohighlight">\(a\)</span>、<span class="math notranslate nohighlight">\(b\)</span> を勾配法によって求めてみよう<a class="footnote-reference brackets" href="#f3" id="id10" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>。</p>
-<p>はじめに <span class="math notranslate nohighlight">\(a\)</span> と <span class="math notranslate nohighlight">\(b\)</span> にはランダムな値が設定されていたとする。このときのデータと <span class="math notranslate nohighlight">\(y = ax + b\)</span> の関係を下図の左にプロットする。</p>
+<p>第11回でも扱った関係式 <span class="math notranslate nohighlight">\(y = 2x + \varepsilon\)</span> を満たす2次元データ <span class="math notranslate nohighlight">\((x, y)\)</span> が100個あるとする。
+ここで <span class="math notranslate nohighlight">\(\varepsilon\)</span> は平均 <span class="math notranslate nohighlight">\(0\)</span>、標準偏差 <span class="math notranslate nohighlight">\(1\)</span> の正規分布に従うノイズである。
+このデータについて、（生成式を知らなかったとして）<span class="math notranslate nohighlight">\(x\)</span> と <span class="math notranslate nohighlight">\(y\)</span> の関係を予測するために、以下のような単回帰モデルを考える。</p>
+<p><span class="math notranslate nohighlight">\(y = ax + b\)</span></p>
+<p>モデルのパラメータ <span class="math notranslate nohighlight">\(a\)</span> と <span class="math notranslate nohighlight">\(b\)</span> を求める際に勾配法を利用することを考える<a class="footnote-reference brackets" href="#f3" id="id10" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>。最初に <span class="math notranslate nohighlight">\(a\)</span> と <span class="math notranslate nohighlight">\(b\)</span> はランダムな値で設定される。初期状態におけるデータと予測モデルの関係は下図の左側に示されている。</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -497,7 +507,7 @@ document.write(`
 
 <span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="n">Button</span><span class="p">,</span> <span class="n">VBox</span><span class="p">,</span> <span class="n">Layout</span><span class="p">,</span> <span class="n">Output</span>
 <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;font.size&#39;</span><span class="p">:</span> <span class="mi">14</span><span class="p">})</span>  <span class="c1"># 文字サイズを14pxとする</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">&quot;font.size&quot;</span><span class="p">:</span> <span class="mi">14</span><span class="p">})</span>  <span class="c1"># 文字サイズを14pxとする</span>
 
 <span class="c1"># 0から10までの0.1刻みの配列</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
@@ -590,13 +600,13 @@ document.write(`
 <span class="c1"># ボタンを作成</span>
 <span class="n">button_grad</span> <span class="o">=</span> <span class="n">Button</span><span class="p">(</span>
     <span class="n">description</span><span class="o">=</span><span class="s2">&quot;勾配法&quot;</span><span class="p">,</span>
-    <span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;150px&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="s1">&#39;40px&#39;</span><span class="p">)</span>
+    <span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s2">&quot;150px&quot;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="s2">&quot;40px&quot;</span><span class="p">)</span>
 <span class="p">)</span>
 <span class="n">button_grad</span><span class="o">.</span><span class="n">on_click</span><span class="p">(</span><span class="n">update_param</span><span class="p">)</span>
 
 <span class="n">button_plot</span> <span class="o">=</span> <span class="n">Button</span><span class="p">(</span>
     <span class="n">description</span><span class="o">=</span><span class="s2">&quot;プロット&quot;</span><span class="p">,</span>
-    <span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;150px&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="s1">&#39;40px&#39;</span><span class="p">)</span>
+    <span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s2">&quot;150px&quot;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="s2">&quot;40px&quot;</span><span class="p">)</span>
 <span class="p">)</span>
 <span class="n">button_plot</span><span class="o">.</span><span class="n">on_click</span><span class="p">(</span><span class="n">plot_graph_output</span><span class="p">)</span>
 
@@ -620,38 +630,45 @@ document.write(`
 <img alt="_images/5afbe24cc58b1b111743d2d7c6601e6541ff3df27e88e4a9cb15f010ed174f7b.png" src="_images/5afbe24cc58b1b111743d2d7c6601e6541ff3df27e88e4a9cb15f010ed174f7b.png" />
 </div>
 </div>
-<p>学習によって求めたいのは、モデル <span class="math notranslate nohighlight">\(y = ax + b\)</span> がデータによく当てはまるような <span class="math notranslate nohighlight">\(a\)</span> と <span class="math notranslate nohighlight">\(b\)</span> の値である。</p>
-<p>そのために、モデルのデータに対する当てはまりの悪さを定量する関数である<strong>誤差関数</strong>を用意する<a class="footnote-reference brackets" href="#f4" id="id11" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a>。誤差関数はモデルのパラメータを引数にとり、モデルの予測誤差を評価した値を返す関数と捉えられる。ここでは<strong>平均二乗誤差</strong>（<strong>Mean Squared Error, MSE</strong>）を誤差関数として採用する。MSEは以下のように定義される（今回は <span class="math notranslate nohighlight">\(N = 100\)</span>）：</p>
+<p>学習の目的は、モデル <span class="math notranslate nohighlight">\(y = ax + b\)</span> がデータによく当てはまるようにパラメータ <span class="math notranslate nohighlight">\(a\)</span> と <span class="math notranslate nohighlight">\(b\)</span> を設定することである。そのためには、モデルの予測がデータとどの程度ずれているかを測る<strong>誤差関数</strong>を定義する必要がある。ここでは一般的に利用される<strong>平均二乗誤差</strong>（<strong>Mean Squared Error, MSE</strong>）を採用する。MSEは次の式で定義される（<span class="math notranslate nohighlight">\(N = 100\)</span>）。</p>
 <p><span class="math notranslate nohighlight">\({\rm{MSE}}(a, b) = \frac{1}{N}\sum_i^N (y_i - (ax_i + b))^2\)</span></p>
-<p><span class="math notranslate nohighlight">\(x = x_i\)</span> における単回帰モデルの予測値が <span class="math notranslate nohighlight">\(ax_i + b\)</span> であるから、実際のデータの値 <span class="math notranslate nohighlight">\(y_i\)</span> との差をとって二乗したものを誤差として、それを全てのデータについて足した式となっている。
-MSEの値が最小となるのは、モデルの予測値がデータの値と完全一致するときで、そのときMSEの値は0となる。</p>
-<p>上図の右に <span class="math notranslate nohighlight">\(a\)</span> と <span class="math notranslate nohighlight">\(b\)</span> の値ごとの誤差関数の値の<strong>等高線図</strong>と、最初に設定した <span class="math notranslate nohighlight">\(a\)</span> と <span class="math notranslate nohighlight">\(b\)</span> のパラメータ値をプロットしている。等高線図は、誤差関数の値が等しい点を結んだ線であり、地形図の等高線のように考えることができる。</p>
-<p>誤差関数を設定した後では、学習の目的は「誤差関数をなるべく小さくするようなパラメータを見つけること」と表現できる。勾配法はそのための手法であり、一言で言えば「パラメータを、現在の値から少しずらして誤差関数が最も小さくなる方向に、少しずつ更新する手法」である。ここで、関数の増加速度が最も大きいパラメータの変化方向を<strong>勾配</strong>という。したがって勾配法は「パラメータを誤差関数の勾配の逆方向に少しずつ更新する手法」と言うことができる。</p>
-<p>証明は省略するが、数値的には <span class="math notranslate nohighlight">\({\rm{d}}a\)</span>、<span class="math notranslate nohighlight">\({\rm{d}}b\)</span> を十分小さい値とし、<span class="math notranslate nohighlight">\(a\)</span> 方向を <font color="#527DB7"><span class="math notranslate nohighlight">\(\left({\rm{MSE}}(a + {\rm{d}}a, b) - {\rm{MSE}}(a, b)\right)/{\rm{d}}a\)</span></font>、<span class="math notranslate nohighlight">\(b\)</span> 方向を <font color="#b26145"><span class="math notranslate nohighlight">\(\left({\rm{MSE}}(a, b + {\rm{d}}b) - {\rm{MSE}}(a, b)\right)/{\rm{d}}b\)</span></font> としたベクトルが勾配になる。勾配法では、これらを用いて各パラメータを以下のように更新する。</p>
-<p><span class="math notranslate nohighlight">\(a \leftarrow a - \alpha\)</span> <font color="#527DB7"><span class="math notranslate nohighlight">\(\left({\rm{MSE}}(a + {\rm{d}}a, b) - {\rm{MSE}}(a, b)\right)/{\rm{d}}a\)</span></font><br />
-<span class="math notranslate nohighlight">\(b \leftarrow b - \alpha\)</span> <font color="#b26145"><span class="math notranslate nohighlight">\(\left({\rm{MSE}}(a, b + {\rm{d}}b) - {\rm{MSE}}(a, b)\right)/{\rm{d}}b\)</span></font></p>
-<p>ここで <span class="math notranslate nohighlight">\(\alpha\)</span> は更新の大きさを決める定数で、<strong>学習率</strong>と呼ばれる。上記の更新を繰り返すと、パラメータは誤差関数を小さくする方向に少しずつ更新される。</p>
-<p>Google Colabのノートブック上では、単回帰モデルについて勾配法をインタラクティブに実行できるようにした。「勾配法」と「プロット」を交互に押して、単回帰モデルの予測が改善する様子を確認してみてほしい。</p>
-<p>ここでは単回帰モデルを例に、勾配法について解説した。かなり簡単化した説明ではあるが、言語モデルなどの深層学習モデルも原理的にはこれと同じように学習する。</p>
-</section>
-<section id="id12">
-<h3>言語モデルの学習<a class="headerlink" href="#id12" title="Link to this heading">#</a></h3>
-<p>それでは言語モデルの学習方法について見てみよう。言語モデルの学習は大きく<strong>事前学習</strong>（<strong>Pre-training</strong>）と<strong>事後学習</strong>（<strong>Post-training</strong>）に分けられる。</p>
-<p>事前学習では、主にインターネットから集めた大量の文章をデータセットとして、これらの文章をモデルが真似するように <span class="math notranslate nohighlight">\(p(w | x;\theta)\)</span> のパラメータ <span class="math notranslate nohighlight">\(\theta\)</span> を学習する。例えば、データセットの中に「She reads books in the library.」という文章があったとしよう。このとき言語モデルに文章の途中までを入力したときの次のトークンの生成確率と、実際のトークンを比較するということを繰り返す。具体的には、この文章から以下の6パターンの比較を行う。</p>
+<p>これは「各データの実測値 <span class="math notranslate nohighlight">\(y_i\)</span> とモデルの予測値 <span class="math notranslate nohighlight">\(ax_i + b\)</span> の差を二乗した値」を、すべてのデータについて平均したものを表している。モデルの予測が完全にデータと一致すれば、MSEの値は0になる。</p>
+<p>上図の右側には、パラメータ <span class="math notranslate nohighlight">\(a\)</span> と <span class="math notranslate nohighlight">\(b\)</span> の値ごとの誤差関数の値を示した等高線図を示している。等高線図は、誤差関数の値が等しい点を結んだもので、地図の標高を示す等高線と同じように考えられる。</p>
+<p>勾配法の基本的な考え方は「パラメータを誤差関数の値が小さくなる方向へ少しずつ更新していくこと」である。このとき、誤差関数の増加速度が最も大きくなる方向を<strong>勾配</strong>と呼ぶ。勾配法はこの勾配の逆方向（誤差関数が減少する方向）にパラメータを更新していく方法である。</p>
+<p>具体的には、<span class="math notranslate nohighlight">\({\rm{d}}a\)</span>、<span class="math notranslate nohighlight">\({\rm{d}}b\)</span> を十分小さい値として、それぞれのパラメータを以下のように更新する。</p>
 <ul class="simple">
-<li><p>「She」を入力したときの次のトークンの生成確率 <span class="math notranslate nohighlight">\(\leftrightarrow\)</span> 「reads」</p></li>
-<li><p>「She reads」を入力したときの次のトークンの生成確率 <span class="math notranslate nohighlight">\(\leftrightarrow\)</span> 「books」</p></li>
-<li><p>「She reads books」を入力したときの次のトークンの生成確率 <span class="math notranslate nohighlight">\(\leftrightarrow\)</span> 「in」</p></li>
-<li><p>「She reads books in」を入力したときの次のトークンの生成確率 <span class="math notranslate nohighlight">\(\leftrightarrow\)</span> 「the」</p></li>
-<li><p>「She reads books in the」を入力したときの次のトークンの生成確率 <span class="math notranslate nohighlight">\(\leftrightarrow\)</span> 「library」</p></li>
-<li><p>「She reads books in the library」を入力したときの次のトークンの生成確率 <span class="math notranslate nohighlight">\(\leftrightarrow\)</span> 「.」</p></li>
+<li><p><span class="math notranslate nohighlight">\(a\)</span> の更新</p></li>
 </ul>
-<p>例えば、「She」を入力したときの次のトークンの生成確率はGPT-3なら50257次元のベクトルとなるが、これと「reads」を表すone-hotベクトルの距離を<strong>交差エントロピー</strong>という式により定量化する。
-ここでは交差エントロピーの詳細は省略するが、やはり二乗誤差のときと同じように、次のトークンの生成確率が実際のトークンのone-hotベクトルと完全一致するときに最小となるような関数になっている。</p>
-<p>言語モデルの学習では、データセットの中からサンプルした文章に対してトークンごとに上で行ったような比較、すなわち交差エントロピーの計算を行い、それらを足したものを誤差関数として学習する。これにより言語モデルのパラメータが適切な値に更新されていき、言語モデルはデータセットの文章を真似てそれらしい文章を生成できるようになる。</p>
-<p>ここで事前学習の意味合いについて考えてみよう。事前学習により言語モデルは、大量の文章をただ丸暗記することになるのだろうか。実はそうではなく、言語モデルは事前学習を通じて、文法や一般常識、専門知識、さらに論理的思考力までも身につけると考えられている。例えば、一文一文について次のトークン予測をするためには自然なトークンの並び、すなわち文法を知るのが（丸暗記するより）近道であるし、長文について次のトークン予測をするには過去の文脈を正確に理解することが近道である。また例えばEinstein（アインシュタイン）を様々に表現した文章について、「Einstein」というトークンをそれまでの文章をもとに予測するためには、Einsteinは何者なのかという一般常識を身につけることが近道である。これらの結果として、言語モデルは丸暗記ではなく、これらの能力を自然と身につけると考えられている。実際、ChatGPTなどのサービスで言語モデルに、明らかに世の中に存在しないであろう文章を入力しても論理的な出力が返ってくるが、これは文章の丸暗記では実現できない。</p>
-<p>さて、事前学習のあとには事後学習という追加の学習が行われる。これは、事前学習によりさまざまな能力を身につけた言語モデルに、その能力の適切な使い方を学習させる工程である。事後学習については公開されていない部分も多く、技術的な移り変わりも早いと考えられるので、ここでは省略する。</p>
-<p>以上が、言語モデルの仕組みの概要である。言語モデルは文章を入力として次のトークンを確率的に出力するパラメータ付きの関数であること、そしてそれらパラメータは「次のトークンの予測誤差」を誤差関数として勾配法により設定されることを学んだ。これらに関する大まかなイメージを持っておくことで、普段目にする生成AIに関するニュースへの解像度も変わってくるのではないかと思う。</p>
+<p><big><span class="math notranslate nohighlight">\(a \leftarrow a - \alpha\frac{{\rm{MSE}}(a + {\rm{d}}a, ~b) - {\rm{MSE}}(a, ~b)}{{\rm{d}}a}\)</span></big></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(b\)</span> の更新</p></li>
+</ul>
+<p><big><span class="math notranslate nohighlight">\(b \leftarrow b - \alpha\frac{{\rm{MSE}}(a, ~b + {\rm{d}}b) - {\rm{MSE}}(a, ~b)}{{\rm{d}}b}\)</span></big></p>
+<p>これらの式の分数部分が「誤差関数の傾き（勾配）」を表している。この勾配は関数の「最も急に上昇する方向」を示すため、勾配法ではその逆向き、つまり「最も急に下降する方向」へパラメータを更新することで、効率的に誤差を小さくすることができる。
+<span class="math notranslate nohighlight">\(\alpha\)</span> はパラメータの更新幅を決める定数で、<strong>学習率</strong>と呼ばれる。</p>
+<p>微積分になじみのない人にとっては少し難しいかもしれないが、勾配とは「坂道の傾き」のようなものであり、「下り坂を少しずつ降りていくイメージ」を持つと理解しやすい。上記の更新を繰り返すことで、徐々にモデルのパラメータが改善され、予測精度が向上していくことになる。</p>
+<p>Google Colabのノートブックでは、この単回帰モデルの勾配法による学習を実際に試すことができる。「勾配法」と「プロット」を交互にクリックすることで、パラメータが改善され、予測精度が高まっていく様子を視覚的に確認してみよう。</p>
+<p>ここでは単回帰モデルを通して、勾配法の基本的な考え方を学んだ。
+より複雑な言語モデルなどの深層学習モデルも、原理的にはこれと同じように学習する。</p>
+</section>
+<section id="id11">
+<h3>言語モデルの学習<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
+<p>それでは言語モデルの学習方法について詳しく見ていこう。言語モデルの学習は大きく分けて<strong>事前学習</strong>（<strong>Pre-training</strong>）と<strong>事後学習</strong>（<strong>Post-training</strong>）からなる。</p>
+<p><strong>事前学習</strong>では、主にインターネットから収集した大量の文章を用いて、モデルがそれらの文章を真似るように学習を進める。</p>
+<p>具体例を挙げてみよう。学習データセットに「She reads books in the library.」という文章があるとする。モデルはこの文章を以下のように細かく区切り、それぞれの段階で次に続くトークンの生成確率を予測する。そして、その予測と実際のトークンを比較するということを繰り返す。具体的には、この文章から以下の6パターンの比較を行う。</p>
+<ul class="simple">
+<li><p>「She」の次のトークンの生成確率 <span class="math notranslate nohighlight">\(\leftrightarrow\)</span> 「reads」</p></li>
+<li><p>「She reads」の次のトークンの生成確率 <span class="math notranslate nohighlight">\(\leftrightarrow\)</span> 「books」</p></li>
+<li><p>「She reads books」の次のトークンの生成確率 <span class="math notranslate nohighlight">\(\leftrightarrow\)</span> 「in」</p></li>
+<li><p>「She reads books in」の次のトークンの生成確率 <span class="math notranslate nohighlight">\(\leftrightarrow\)</span> 「the」</p></li>
+<li><p>「She reads books in the」の次のトークンの生成確率 <span class="math notranslate nohighlight">\(\leftrightarrow\)</span> 「library」</p></li>
+<li><p>「She reads books in the library」の次のトークンの生成確率 <span class="math notranslate nohighlight">\(\leftrightarrow\)</span> 「.」</p></li>
+</ul>
+<p>例えば、「She」と入力された場合の次のトークンの生成確率は、GPT-3であれば50257次元のベクトルになる。この予測ベクトルと実際のトークン「reads」を示すone-hotベクトルとの差を、<strong>交差エントロピー</strong>という式で定量化する。交差エントロピーの詳細は省略するが、二乗誤差のときと同じように、次のトークン予測がone-hotベクトルと完全に一致するときに最小になる性質を持つ。</p>
+<p>言語モデルの学習では、データセットの中からサンプルした文章に対してトークンごとに上で行ったような比較、すなわち交差エントロピーの計算を行い、それらを足したものを誤差関数として用いる。この誤差を小さくするようにモデルのパラメータが更新され、最終的にモデルは自然な文章生成が可能となる。</p>
+<p>ここで、事前学習の意味を考えてみよう。<strong>事前学習は単に文章を丸暗記するものではない</strong>。次に来るトークンを効率的に予測するには、文法規則、一般常識、専門知識、さらには論理的推論能力を自然と身につける方が、全ての文章を丸暗記するより合理的だからである。例えば、自然な文章の流れを予測するには文法規則を理解するのが早道であり、長文の次のトークンを予測するには文脈理解が必要となる。また、Einstein（アインシュタイン）に関する文章で「Einstein」というトークンを予測するには、一般常識として彼が何者かを知ることが近道になる。そのため、事前学習を通じてモデルはこれらの能力を自動的に身につける。実際、ChatGPTのような言語モデルが架空の文章にも論理的に整合性のある回答を返せるのは、単なる丸暗記では説明できない。</p>
+<p><strong>事後学習</strong>は、事前学習で得られた多様な能力を具体的な用途に合わせて調整するプロセスである。例えば、特定のタスクや分野に合わせた文章を追加で学習させることでモデルの専門性を高めたり、数学の問題を解かせて正解に至った場合に正のフィードバックを与える<strong>強化学習</strong>の手法を用いたりする。これにより、モデルは特定の用途に特化した性能を発揮できるようになる。ただし事後学習の詳細については公開されていない情報も多く、技術の進歩も速いため、ここでは説明を割愛する。</p>
+<p>以上が言語モデルの仕組みの概要である。言語モデルは文章を入力として次のトークンを確率的に出力するパラメータ付きの関数であり、モデルのパラメータは「トークン予測の誤差」を勾配法で最小化することで決定される。このような理解を持つことで、生成AIに関するニュースや情報をより深く捉えることができるだろう。</p>
 </section>
 </section>
 <section id="python">
@@ -659,10 +676,11 @@ MSEの値が最小となるのは、モデルの予測値がデータの値と�
 <p>最後にPythonから言語モデルを使用する方法について解説する。</p>
 <section id="web-api">
 <h3>Web API<a class="headerlink" href="#web-api" title="Link to this heading">#</a></h3>
-<p>言語モデルは<strong>Web API</strong>という形式で公開されている。Web APIでは以下の流れで計算が行われる。まず、言語モデルのインストールされたサーバーに、<strong>HTTP</strong>というプロトコル（通信規則）にしたがって依頼を送る。するとサーバー側では依頼の内容をもとに、言語モデルを使った計算を行い、計算結果を依頼元のPCへと返信する。</p>
-<p>Web APIを利用するには、<strong>APIキー</strong>というユーザーを認証するための暗号を先に発行する必要がある。APIキーの発行方法はここでは説明しないが、検索すると解説ページがたくさん見つかる。</p>
-<p>APIを使用すると支払いが発生するため、APIキーの取り扱いには注意が必要である。とくにAPIキーをインターネット上に公開するなど、他人に教える行為は厳禁である。最悪の場合、見知らぬ他人にAPIを何回も使用され多額の請求が発生し得る。</p>
-<p>今回は安全のため、先生の方で授業時間限定のAPIキーを発行し、それを使って実習を行う。<strong>授業に出席しなかった人は以下の実習は行わなくてよい</strong>（行わなくても成績評価で満点がとれるように課題を設定している &amp; 第15回でもAPIキーを発行する予定なので次回出席してほしい）。</p>
+<p>言語モデルは通常、<strong>Web API</strong>という形式で提供される。Web APIを利用するときは、以下のような流れで処理が進む。</p>
+<p>まず、言語モデルのインストールされているサーバーに対して、<strong>HTTP</strong>という通信プロトコル（通信規則）を用いてリクエスト（依頼）を送信する。サーバーは受け取ったリクエストの内容に基づいて言語モデルを動作させ、その計算結果をリクエスト元のPCに返信する仕組みとなっている。</p>
+<p>Web APIを使用するには、あらかじめ<strong>APIキー</strong>というユーザーを識別・認証するための文字列を取得する必要がある。APIキーの取得方法については、検索するとわかりやすい解説ページが多数見つかるので、そちらを参照してほしい。</p>
+<p>APIを使用すると利用料が発生するため、APIキーの取り扱いには注意が必要である。特に、APIキーをインターネット上に公開するなど他人に知られる行為は絶対に避けること。万が一APIキーが第三者に知られてしまうと、不正にAPIを大量に使用され、高額料金を請求される恐れがある。</p>
+<p>今回は安全のため、教員側で授業時間限定のAPIキーを発行し、それを用いて実習を行う。<strong>授業に出席できなかった学生は以下の実習を行う必要はない</strong>（実習を行わなくても成績評価において不利益はない）。</p>
 <p>APIキーを取得したら、以下の手順でGoogle Colabに登録する。ステップ3では名前を <code class="docutils literal notranslate"><span class="pre">API_KEY</span></code> とし、値にAPIキーを入力することに注意しよう。</p>
 <figure class="align-default" id="api-key">
 <a class="reference internal image-reference" href="_images/api-key.png"><img alt="_images/api-key.png" src="_images/api-key.png" style="width: 500px;" /></a>
@@ -670,7 +688,7 @@ MSEの値が最小となるのは、モデルの予測値がデータの値と�
 <p><span class="caption-number">Fig. 26 </span><span class="caption-text">APIキーの登録</span><a class="headerlink" href="#api-key" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>そしたら以下のコードによりAPIキーが利用可能な状態になる。具体的には <code class="docutils literal notranslate"><span class="pre">userdata.get(&quot;API_KEY&quot;)</span></code> によりAPIキーにアクセスする。</p>
+<p>以下のコードによりAPIキーが利用可能な状態になる。具体的には <code class="docutils literal notranslate"><span class="pre">userdata.get(&quot;API_KEY&quot;)</span></code> によりAPIキーにアクセスする。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">userdata</span>
@@ -678,7 +696,7 @@ MSEの値が最小となるのは、モデルの予測値がデータの値と�
 </div>
 </div>
 </div>
-<p>最初の例として、PythonからGPT3.5-turboモデルを使用してみよう。<code class="docutils literal notranslate"><span class="pre">openai</span></code> というモジュールの <code class="docutils literal notranslate"><span class="pre">OpenAI</span></code> クラスのインスタンスを通じてWeb APIを使用する。以下のコードを実行すると、内部でHTTPを使った通信が行われ言語モデルの出力を取得することができる。</p>
+<p>最初の例として、PythonからGPT-3.5 Turboモデルを使用してみよう。<code class="docutils literal notranslate"><span class="pre">openai</span></code> というモジュールの <code class="docutils literal notranslate"><span class="pre">OpenAI</span></code> クラスのインスタンスを通じてWeb APIを使用する。以下のコードを実行すると、内部でHTTPを使った通信が行われ言語モデルの出力を取得することができる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">openai</span>
@@ -722,7 +740,7 @@ MSEの値が最小となるのは、モデルの予測値がデータの値と�
 </div>
 </div>
 <p>ここで <code class="docutils literal notranslate"><span class="pre">messages</span></code> 変数に、言語モデルに入力するテキストを設定している。これらのテキストを<strong>プロンプト</strong>という。言語モデルはプロンプトに書かれた指示にしたがって出力を生成する。</p>
-<p>OpenAI社の言語モデルの場合、<code class="docutils literal notranslate"><span class="pre">&quot;role&quot;</span></code> と <code class="docutils literal notranslate"><span class="pre">&quot;content&quot;</span></code> をキーとする辞書のリストとしてプロンプトを作成する。roleにはsystem、user、assistantの3種類がある。systemのcontentには、言語モデルにどのような振る舞いを期待しているかを記述する。userのcontentには、利用者からの指示文を記述する。assistantのcontentには言語モデルの出力を記述する。</p>
+<p>OpenAI社の言語モデルの場合、<code class="docutils literal notranslate"><span class="pre">&quot;role&quot;</span></code> と <code class="docutils literal notranslate"><span class="pre">&quot;content&quot;</span></code> をキーとする辞書のリストとしてプロンプトを作成する。<code class="docutils literal notranslate"><span class="pre">&quot;role&quot;</span></code> には <code class="docutils literal notranslate"><span class="pre">&quot;system&quot;</span></code>、<code class="docutils literal notranslate"><span class="pre">&quot;user&quot;</span></code>、<code class="docutils literal notranslate"><span class="pre">&quot;assistant&quot;</span></code> の3種類がある。<code class="docutils literal notranslate"><span class="pre">&quot;system&quot;</span></code> の <code class="docutils literal notranslate"><span class="pre">&quot;content&quot;</span></code> には、言語モデルにどのような振る舞いを期待しているかを記述する。<code class="docutils literal notranslate"><span class="pre">&quot;user&quot;</span></code> の <code class="docutils literal notranslate"><span class="pre">&quot;content&quot;</span></code> には、利用者からの指示文を記述する。<code class="docutils literal notranslate"><span class="pre">&quot;assistant&quot;</span></code> の <code class="docutils literal notranslate"><span class="pre">&quot;content&quot;</span></code> には言語モデルの出力を記述する。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">messages</span> <span class="o">=</span> <span class="p">[</span>
@@ -740,11 +758,11 @@ MSEの値が最小となるのは、モデルの予測値がデータの値と�
 </div>
 <p>言語モデルと2往復以上の会話をする場合は、このように過去のやり取りも含めてプロンプトを作成する。これはWeb APIが<strong>ステートレス</strong>、つまりサーバーが過去のやり取りを全く覚えない作りになっているからである。</p>
 </section>
-<section id="id13">
-<h3>マルチモーダル<a class="headerlink" href="#id13" title="Link to this heading">#</a></h3>
-<p>最新のモデルであるGPT4oはテキストだけでなく画像も入力として受け取ることができる（<strong>マルチモーダル</strong>という）。画像もテキストと同様のトークンの列として表すことができ、言語モデルにテキストと合わせて入力される。以降の処理はテキストだけの場合と同様である。</p>
-<p>例として、料理の画像を見せて、写真に写っている食材を正しく答えられるか実験してみよう。まず料理の画像を用意して、Google Colabにアップロードする（第12回の<a class="reference internal" href="lecture12.html#label-file-upload"><span class="std std-ref">最後</span></a>を参照）。<code class="docutils literal notranslate"><span class="pre">sample.png</span></code> 以外の名前の画像をアップロードする場合は、以下の <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">CHECK</span></code> と書かれた２箇所を適宜修正する（例えばJPEG形式の画像の場合には、<code class="docutils literal notranslate"><span class="pre">format=&quot;jpeg&quot;</span></code> とする）。</p>
-<p>そしたら以下のコードを一通り実行してみよう。かなりの正確さで料理に含まれる食材を列挙してくれるはずである。</p>
+<section id="id12">
+<h3>マルチモーダル<a class="headerlink" href="#id12" title="Link to this heading">#</a></h3>
+<p>最新のモデルであるGPT-4oはテキストだけでなく画像も入力として受け取ることができる（<strong>マルチモーダル</strong>という）。画像もテキストと同様のトークンの列として表すことができ、言語モデルにテキストと合わせて入力される。</p>
+<p>例として、料理の画像を見せて、写真に写っている食材を正しく答えられるか実験してみよう。まず料理の画像を用意して、Google Colabにアップロードする（<a class="reference internal" href="lecture12.html#label-file-upload"><span class="std std-ref">第12回の解説</span></a>を参照）。<code class="docutils literal notranslate"><span class="pre">sample.png</span></code> 以外の名前の画像をアップロードする場合は、以下の <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">CHECK</span></code> と書かれた２箇所を修正する（例えば、JPEG形式の画像の場合には、<code class="docutils literal notranslate"><span class="pre">format=&quot;jpeg&quot;</span></code> とする）。</p>
+<p>以下のコードを一通り実行してみよう。かなりの正確さで料理に含まれる食材を列挙してくれるはずである。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">base64</span>
@@ -799,8 +817,8 @@ MSEの値が最小となるのは、モデルの予測値がデータの値と�
 <hr class="footnotes docutils" />
 <aside class="footnote-list brackets">
 <aside class="footnote brackets" id="f1" role="doc-footnote">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">1</a><span class="fn-bracket">]</span></span>
-<p>実際には英語で単語の一部分からなるトークンがあったり、日本語で複数の文字の組み合わせからなるトークンがあったりするが、理解を簡単にするためにこのように説明している。</p>
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">1</a><span class="fn-bracket">]</span></span>
+<p>単回帰モデルは、「新しいデータを作り出す」ためというより「既存データの関係性を説明する」ために用いられる。したがって、普通は生成モデルとは言わない。ここではパラメータつきのモデルを説明する目的で紹介している。</p>
 </aside>
 <aside class="footnote brackets" id="f2" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id7">2</a><span class="fn-bracket">]</span></span>
@@ -808,11 +826,7 @@ MSEの値が最小となるのは、モデルの予測値がデータの値と�
 </aside>
 <aside class="footnote brackets" id="f3" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id10">3</a><span class="fn-bracket">]</span></span>
-<p>もちろん私たちは生成式を知っているので、およそ <span class="math notranslate nohighlight">\(a = 2\)</span>、<span class="math notranslate nohighlight">\(b = 0\)</span> が正解と予想できるが、ここでは生成式を知らなかったという体で話をしている。また単回帰モデルは簡単なモデルなので、<span class="math notranslate nohighlight">\(a\)</span> と <span class="math notranslate nohighlight">\(b\)</span> の解析解（データから直接求める計算式）が存在するが、ここでは説明のためあえて勾配法を使っている。</p>
-</aside>
-<aside class="footnote brackets" id="f4" role="doc-footnote">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id11">4</a><span class="fn-bracket">]</span></span>
-<p><strong>損失関数</strong>ともいう。また誤差関数・損失関数は最小化したい関数であるが、それとは逆に最大化したい関数のことを<strong>目的関数</strong>という。例えば、誤差関数にマイナスをつけたものを目的関数と考えることができる。これらの用語も知っておくと良いだろう。</p>
+<p>もちろん私たちは生成式を知っているので、およそ <span class="math notranslate nohighlight">\(a = 2\)</span>、<span class="math notranslate nohighlight">\(b = 0\)</span> が正解と予想できるが、ここでは生成式を知らなかったという体で話をしている。また単回帰モデルは簡単なモデルなので、<span class="math notranslate nohighlight">\(a\)</span> と <span class="math notranslate nohighlight">\(b\)</span> の解析解（データから直接求める計算式）が存在するが、ここでは説明のためにあえて勾配法を使う。</p>
 </aside>
 </aside>
 </section>
@@ -886,18 +900,18 @@ MSEの値が最小となるのは、モデルの予測値がデータの値と�
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">この授業で学ぶこと</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">生成モデル</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">条件付き確率</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">パラメータ</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">言語モデル</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">生成モデルと条件付き確率</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">言語モデル</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">学習のしくみ</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">勾配法</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">言語モデルの学習</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">言語モデルの学習</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python">Pythonから使ってみる</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#web-api">Web API</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">マルチモーダル</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">マルチモーダル</a></li>
 </ul>
 </li>
 </ul>
@@ -924,7 +938,7 @@ By 大坪 舜 Shun Otsubo
 
   <p class="copyright">
     
-      © Copyright 2023-2024（2023年3月30日公開）.
+      © Copyright 2023-Present（2023年3月30日公開）.
       <br/>
     
   </p>

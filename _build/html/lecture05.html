@@ -371,17 +371,17 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1>第5回 条件分岐<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <hr class="docutils" />
-<p><a class="reference external" href="https://colab.research.google.com/github/tsuboshun/begin-python/blob/gh-pages/2024/workbook/lecture05.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+<p><a class="reference external" href="https://colab.research.google.com/github/tsuboshun/begin-python/blob/gh-pages/workbook/lecture05.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
 <hr class="docutils" />
 <section id="id2">
 <h2>この授業で学ぶこと<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-<p>第4回までで、プログラムにおける材料と道具にあたるデータ型と関数・メソッドについて学んだ。ここまでの知識で、与えられたデータに対して毎回同じ処理を行うプログラムを作成することができる。</p>
+<p>第4回までで、プログラミングの材料と道具にあたるデータと関数・メソッドについて学んだ。ここまでの知識で、与えられたデータに対して毎回同じ処理を行うプログラムを作成することができる。</p>
 <p>しかし、より実用的なプログラムを作るには、データに合わせて処理を変えることが必要不可欠である。そのためにプログラミングではデータに対する条件式をたて、それが成立するかしないかをもとに処理を二分させる方法をとる。</p>
 <p>この授業では、まず条件式の成立・不成立を表すデータ型であるブール型について学ぶ。そしてブール値をもとに処理を分岐させる構文であるif文について学ぶ。</p>
 </section>
 <section id="id3">
 <h2>ブール型<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
-<p>ブール型（bool）は <code class="docutils literal notranslate"><span class="pre">True</span></code> もしくは <code class="docutils literal notranslate"><span class="pre">False</span></code> の2種類の<strong>真偽値</strong>（ブール値）をとり、それぞれ真か偽かを表すデータ型である。</p>
+<p>ブール型（bool）は <code class="docutils literal notranslate"><span class="pre">True</span></code> もしくは <code class="docutils literal notranslate"><span class="pre">False</span></code> の2種類の<strong>真偽値</strong>（ブール値）をとり、それぞれ真か偽かを表す。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
@@ -465,7 +465,7 @@ document.write(`
 </div>
 </div>
 </div>
-<p>ブール型の現れる他の例として、<strong>in演算子</strong>がある。これは集合を表すデータ型の要素に、とあるデータが含まれるかどうかを判定する。
+<p>ブール型の現れる他の例として、<strong>in演算子</strong>がある。これはリストや文字列の中に特定の要素が存在するかを調べる演算子である。
 例えば、<code class="docutils literal notranslate"><span class="pre">B</span></code> をリストとして <code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">in</span> <span class="pre">B</span></code> と書くとき、データ <code class="docutils literal notranslate"><span class="pre">A</span></code> が <code class="docutils literal notranslate"><span class="pre">B</span></code> に含まれるかどうかを判定して、真偽値を返す。
 使用例を以下に示す。</p>
 <div class="cell docutils container">
@@ -491,7 +491,7 @@ document.write(`
 <figure class="align-default" id="id4">
 <a class="reference internal image-reference" href="_images/if.png"><img alt="_images/if.png" src="_images/if.png" style="width: 650px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 6 </span><span class="caption-text">if文の書き方</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 8 </span><span class="caption-text">if文の書き方</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>if文はヘッダーとブロックの2つから成る。ヘッダーに <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">条件式:</span></code> と書くと「条件式が真のとき以下のブロックを実行する」という意味になる。ifと条件式の間には空白文字を1つ以上入れることと、最後にコロン <code class="docutils literal notranslate"><span class="pre">:</span></code> を入力することに注意する。</p>
@@ -521,23 +521,54 @@ document.write(`
 </div>
 </div>
 </div>
+<p><strong>練習2</strong><br />
+整数 <code class="docutils literal notranslate"><span class="pre">x</span></code> が与えられるとき、<code class="docutils literal notranslate"><span class="pre">x</span></code> が0のときのみ <code class="docutils literal notranslate"><span class="pre">&quot;zero&quot;</span></code> と <code class="docutils literal notranslate"><span class="pre">print</span></code> するコードを作成しなさい。
+<a href="https://code-judge-system.vercel.app/?&id=5-2" target="_blank">
+<img src="./_images/launch.svg" style="width: 20px; height: 20px;">
+</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># xの一例</span>
+<span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+
+<span class="c1"># 以下にコードを作成し、以下の部分のみ提出する</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>練習3</strong><br />
+整数 <code class="docutils literal notranslate"><span class="pre">x</span></code> が与えられるとき、<code class="docutils literal notranslate"><span class="pre">x</span></code> が偶数のときのみ <code class="docutils literal notranslate"><span class="pre">&quot;偶数&quot;</span></code> と <code class="docutils literal notranslate"><span class="pre">print</span></code> するコードを作成しなさい。
+<a href="https://code-judge-system.vercel.app/?&id=5-3" target="_blank">
+<img src="./_images/launch.svg" style="width: 20px; height: 20px;">
+</a><br />
+<font color=cornflowerblue>ヒント: 2で割った余りが0かどうかで判定できる。</font></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># xの一例</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="c1"># 以下にコードを作成し、以下の部分のみ提出する</span>
+</pre></div>
+</div>
+</div>
+</div>
 <section id="elifelse">
 <h3>elif節・else節<a class="headerlink" href="#elifelse" title="Link to this heading">#</a></h3>
-<p>ここまで条件式が真のときのみ特定の処理を行う方法を解説したが、条件式が真でないとき（すなわち偽のとき）にも特定の処理を行わせたい場合がある。また処理の分岐を3つ以上に増やしたい場合もある。このようなときに<strong>elif節</strong>や<strong>else節</strong>を使う。</p>
+<p>条件式が真のときに特定の処理を行う方法を解説したが、条件式が真でないとき（すなわち偽のとき）にも特定の処理を行わせたい場合がある。また処理の分岐を3つ以上に増やしたい場合もある。このようなときに<strong>elif節</strong>や<strong>else節</strong>を使う。</p>
 <figure class="align-default" id="if-elif-else">
-<a class="reference internal image-reference" href="_images/if-elif-else.png"><img alt="_images/if-elif-else.png" src="_images/if-elif-else.png" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="_images/if-elif-else.png"><img alt="_images/if-elif-else.png" src="_images/if-elif-else.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 7 </span><span class="caption-text">if文の書き方</span><a class="headerlink" href="#if-elif-else" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 9 </span><span class="caption-text">if文の書き方</span><a class="headerlink" href="#if-elif-else" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p><code class="docutils literal notranslate"><span class="pre">elif</span> <span class="pre">条件式:</span></code> と書くと処理の分岐を増やすことができ、「もしここまでのブロックを実行しておらず、条件式が真ならば」という意味になる。<code class="docutils literal notranslate"><span class="pre">else:</span></code> は「もしここまでのブロックを実行していないならば」という意味である。<code class="docutils literal notranslate"><span class="pre">elif</span> <span class="pre">条件式:</span></code>、<code class="docutils literal notranslate"><span class="pre">else:</span></code> の行もヘッダーと呼ばれ、最初のif文のヘッダーと左端をそろえる必要がある。</p>
+<p><code class="docutils literal notranslate"><span class="pre">elif</span> <span class="pre">条件式:</span></code> と書くと処理の分岐を増やすことができ、「もしここまでのブロックを実行しておらず、条件式が真ならば」という意味になる。<code class="docutils literal notranslate"><span class="pre">else:</span></code> は「もしここまでのブロックを実行していないならば」という意味になる。<code class="docutils literal notranslate"><span class="pre">elif</span> <span class="pre">条件式:</span></code>、<code class="docutils literal notranslate"><span class="pre">else:</span></code> の行もヘッダーと呼ばれ、最初のif文のヘッダーと左端をそろえる必要がある。</p>
 <p>elif節とelse節は必要に応じて追加し、必ずif、elif、elseの順番にする。 elif節は好きなだけ追加できるが、else節は1つまでである。
 この授業ではif文という言葉を、if、elif、else を含む条件分岐の総称として用いることにする。</p>
 <p>上図のelif節とelse節が1つずつの場合の条件分岐の流れを<strong>フローチャート</strong>で表現すると次のようになる。</p>
 <figure class="align-default" id="flow">
 <a class="reference internal image-reference" href="_images/flow.png"><img alt="_images/flow.png" src="_images/flow.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 8 </span><span class="caption-text">条件分岐の流れ</span><a class="headerlink" href="#flow" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 10 </span><span class="caption-text">条件分岐の流れ</span><a class="headerlink" href="#flow" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>例として、BMI指数を計算して、その値に応じてメッセージを出力するプログラムを作成してみよう。BMIとは、身長と体重の関係から算出される肥満度を表す指数である。
@@ -574,14 +605,14 @@ document.write(`
 <p>BMIが18.5未満のとき最初の <code class="docutils literal notranslate"><span class="pre">bmi</span> <span class="pre">&lt;</span> <span class="pre">18.5</span></code> が真となるため、if文以下の <code class="docutils literal notranslate"><span class="pre">print(&quot;低体重&quot;)</span></code> が実行される。
 BMIが18.5以上25未満のとき次の <code class="docutils literal notranslate"><span class="pre">bmi</span> <span class="pre">&lt;</span> <span class="pre">25</span></code> で初めて真となるため、elif文以下の <code class="docutils literal notranslate"><span class="pre">print(&quot;普通&quot;)</span></code> が実行される。
 BMIが25以上のとき <code class="docutils literal notranslate"><span class="pre">bmi</span> <span class="pre">&lt;</span> <span class="pre">18.5</span></code> と <code class="docutils literal notranslate"><span class="pre">bmi</span> <span class="pre">&lt;</span> <span class="pre">25</span></code> のどちらも偽となるため、else文以下の <code class="docutils literal notranslate"><span class="pre">print(&quot;肥満&quot;)</span></code> が実行される。</p>
-<p><strong>練習2</strong><br />
+<p><strong>練習4</strong><br />
 数値 <code class="docutils literal notranslate"><span class="pre">x</span></code> が与えられる。<code class="docutils literal notranslate"><span class="pre">x</span></code> が正の値のとき <code class="docutils literal notranslate"><span class="pre">&quot;正の値&quot;</span></code> 、そうでないとき <code class="docutils literal notranslate"><span class="pre">&quot;0以下の値&quot;</span></code> と <code class="docutils literal notranslate"><span class="pre">print</span></code> するコードを作成しなさい。
-<a href="https://code-judge-system.vercel.app/?&id=5-2" target="_blank">
+<a href="https://code-judge-system.vercel.app/?&id=5-4" target="_blank">
 <img src="./_images/launch.svg" style="width: 20px; height: 20px;">
 </a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># xの一例 （この例では &quot;0以下の値&quot; と出力するのが正しい）</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># xの一例</span>
 <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
 
 <span class="c1"># 以下にコードを作成し、以下の部分のみ提出する</span>
@@ -589,14 +620,14 @@ BMIが25以上のとき <code class="docutils literal notranslate"><span class="
 </div>
 </div>
 </div>
-<p><strong>練習3</strong><br />
+<p><strong>練習5</strong><br />
 正の整数 <code class="docutils literal notranslate"><span class="pre">x</span></code> が与えられる。<code class="docutils literal notranslate"><span class="pre">x</span></code> が1桁の整数（つまり1〜9）のとき <code class="docutils literal notranslate"><span class="pre">&quot;1桁&quot;</span></code>、2桁の整数（つまり10〜99）のとき <code class="docutils literal notranslate"><span class="pre">&quot;2桁&quot;</span></code>、3桁以上の整数（つまり100〜）のとき <code class="docutils literal notranslate"><span class="pre">&quot;3桁以上&quot;</span></code> と <code class="docutils literal notranslate"><span class="pre">print</span></code> するコードを作成しなさい。
-<a href="https://code-judge-system.vercel.app/?&id=5-3" target="_blank">
+<a href="https://code-judge-system.vercel.app/?&id=5-5" target="_blank">
 <img src="./_images/launch.svg" style="width: 20px; height: 20px;">
 </a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># xの一例 （この例では &quot;2桁&quot; と出力するのが正しい）</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># xの一例</span>
 <span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
 
 <span class="c1"># 以下にコードを作成し、以下の部分のみ提出する</span>
@@ -606,9 +637,11 @@ BMIが25以上のとき <code class="docutils literal notranslate"><span class="
 </div>
 <div class="note admonition">
 <p class="admonition-title">式と文</p>
-<p>Pythonプログラムは主に式と文で構成される。
-式（expression）は、値を生成する構成要素であり、計算や関数の呼び出しがそれに当たる。
-一方で文（statement）は、プログラムの実行を制御する構成要素であり、変数への代入や制御構造（if文やfor文など）がそれに当たる。</p>
+<p>Pythonプログラムは主に<strong>式</strong>と<strong>文</strong>の二つの要素から構成される。</p>
+<ul class="simple">
+<li><p>式とは、値を生み出す要素である。例えば <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">+</span> <span class="pre">2</span></code> のような計算や <code class="docutils literal notranslate"><span class="pre">print(&quot;hello&quot;)</span></code> のような関数の呼び出しがこれに当たる。</p></li>
+<li><p>文とは、プログラムの動きを制御する要素である。例えば、変数への代入 <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">5</span></code> や、条件分岐や繰り返しを行う「if文」や「for文」などがこれに当たる。</p></li>
+</ul>
 </div>
 </section>
 <section id="id6">
@@ -692,10 +725,10 @@ BMIが25以上のとき <code class="docutils literal notranslate"><span class="
 例として、雨が降っているかどうか、傘を持っているかどうかの組み合わせに対して、雨に濡れるかどうかを判定するプログラムを次に示す。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rain</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="n">umbrella</span> <span class="o">=</span> <span class="kc">True</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">is_rainy</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">has_umbrella</span> <span class="o">=</span> <span class="kc">True</span>
 
-<span class="k">if</span> <span class="ow">not</span> <span class="n">rain</span> <span class="ow">or</span> <span class="n">umbrella</span><span class="p">:</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">is_rainy</span> <span class="ow">or</span> <span class="n">has_umbrella</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;雨に濡れません&quot;</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;雨に濡れます&quot;</span><span class="p">)</span>
@@ -703,12 +736,10 @@ BMIが25以上のとき <code class="docutils literal notranslate"><span class="
 </div>
 </div>
 </div>
-<p>条件式の <code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">rain</span> <span class="pre">or</span> <span class="pre">umbrella</span></code> は <code class="docutils literal notranslate"><span class="pre">(not</span> <span class="pre">rain)</span> <span class="pre">or</span> <span class="pre">umbrella</span></code> と <code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">(rain</span> <span class="pre">or</span> <span class="pre">umbrella)</span></code> のどちらの意味だろうか。
-上の実行結果をもとに考えてみよう。
-このように論理演算子の実行順序がわかりにくい場合には、<code class="docutils literal notranslate"><span class="pre">()</span></code>をつけてわかりやすい記述を心がけた方がよい。</p>
-<p><strong>練習4</strong><br />
-文字列 <code class="docutils literal notranslate"><span class="pre">weather</span></code> と 整数 <code class="docutils literal notranslate"><span class="pre">temp</span></code> が与えられるとき、以下の条件にもとづいて適切なメッセージを <code class="docutils literal notranslate"><span class="pre">print</span></code> するコードを作成しなさい。
-<a href="https://code-judge-system.vercel.app/?&id=5-4" target="_blank">
+<p>条件式の <code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">is_rainy</span> <span class="pre">or</span> <span class="pre">has_umbrella</span></code> は <code class="docutils literal notranslate"><span class="pre">(not</span> <span class="pre">is_rainy)</span> <span class="pre">or</span> <span class="pre">has_umbrella</span></code> と <code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">(is_rainy</span> <span class="pre">or</span> <span class="pre">has_umbrella)</span></code> のどちらの意味だろうか。上の実行結果をもとに考えてみよう。このように論理演算子の実行順序がわかりにくい場合には、<code class="docutils literal notranslate"><span class="pre">()</span></code> をつけてわかりやすい記述を心がけた方がよい。</p>
+<p><strong>練習6</strong><br />
+天気を表す文字列 <code class="docutils literal notranslate"><span class="pre">weather</span></code> と気温を表す整数 <code class="docutils literal notranslate"><span class="pre">temp</span></code> が与えられるとき、以下の条件にもとづいて適切なメッセージを <code class="docutils literal notranslate"><span class="pre">print</span></code> するコードを作成しなさい。
+<a href="https://code-judge-system.vercel.app/?&id=5-6" target="_blank">
 <img src="./_images/launch.svg" style="width: 20px; height: 20px;">
 </a></p>
 <ul class="simple">
@@ -732,7 +763,7 @@ BMIが25以上のとき <code class="docutils literal notranslate"><span class="
 <aside class="footnote-list brackets">
 <aside class="footnote brackets" id="f1" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">1</a><span class="fn-bracket">]</span></span>
-<p><a class="reference external" href="https://pep8-ja.readthedocs.io/ja/latest/">PEP8</a>という綺麗なコードを書くための公式のガイドラインでは、インデントを空白文字4つで入力することが推奨されている。ただし毎回スペースキーを4回叩くのは大変なので、Tab文字が空白文字4つとなるようにエディターを設定して、Tabキーで入力するということがよく行われる。</p>
+<p><a class="reference external" href="https://pep8-ja.readthedocs.io/ja/latest/">PEP8</a>という綺麗なコードを書くための公式のガイドラインでは、インデントを空白文字4つで入力することが推奨されている。ただし毎回スペースキーを4回叩くのは大変なので、Tab文字が空白文字4つとなるようにエディタを設定して、Tabキーで入力するということがよく行われる。Google Colabでは上部のメニューから「ツール &gt; 設定 &gt; エディタ」の順に選択して、「インデント幅（スペース）」という項目を4にして保存することで設定できる。</p>
 </aside>
 </aside>
 </section>
@@ -834,7 +865,7 @@ By 大坪 舜 Shun Otsubo
 
   <p class="copyright">
     
-      © Copyright 2023-2024（2023年3月30日公開）.
+      © Copyright 2023-Present（2023年3月30日公開）.
       <br/>
     
   </p>

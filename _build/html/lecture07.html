@@ -350,9 +350,9 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">この授業で学ぶこと</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">変数を使いこなす</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">文のネスト</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">文のネスト</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#forif">for文とif文の組み合わせ</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">二重ループ</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">二重ループ</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import">モジュールとimport</a></li>
@@ -370,7 +370,7 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1>第7回 これまでの復習と応用<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <hr class="docutils" />
-<p><a class="reference external" href="https://colab.research.google.com/github/tsuboshun/begin-python/blob/gh-pages/2024/workbook/lecture07.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+<p><a class="reference external" href="https://colab.research.google.com/github/tsuboshun/begin-python/blob/gh-pages/workbook/lecture07.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
 <hr class="docutils" />
 <section id="id2">
 <h2>この授業で学ぶこと<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
@@ -399,9 +399,14 @@ document.write(`
 <p>この応用として、次の問題を考える。</p>
 <p><strong>例題</strong><br />
 3つの数値 <code class="docutils literal notranslate"><span class="pre">a</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span></code>、<code class="docutils literal notranslate"><span class="pre">c</span></code> が与えられるとき、これらの最大値を <code class="docutils literal notranslate"><span class="pre">print</span></code> するコードを作成しなさい。</p>
-<p>このコードを1つのif文だけで実現することもできる。そのためには <code class="docutils literal notranslate"><span class="pre">a</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span></code>、<code class="docutils literal notranslate"><span class="pre">c</span></code> のあり得る6通りの大小関係についてif、elif、elseで条件分岐して、それぞれのケースで最大になる変数を <code class="docutils literal notranslate"><span class="pre">print</span></code> すれば良い（例えば、<code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">&gt;</span> <span class="pre">b</span> <span class="pre">and</span> <span class="pre">b</span> <span class="pre">&gt;</span> <span class="pre">c</span></code> のとき <code class="docutils literal notranslate"><span class="pre">print(a)</span></code> とする）。ただし、この方法では条件式が複雑になりがちで、変数の数が増えるとコード量も膨大になる。</p>
-<p>より効率的には次のように考える。まず <code class="docutils literal notranslate"><span class="pre">a</span></code> を変数 <code class="docutils literal notranslate"><span class="pre">tmp</span></code> に代入する（この変数名はなんでも良いが、ここではtemporary、つまり一時的に保存するという意味合いを込めている）。次に <code class="docutils literal notranslate"><span class="pre">tmp</span></code> と <code class="docutils literal notranslate"><span class="pre">b</span></code> の大小関係を比較し、<code class="docutils literal notranslate"><span class="pre">tmp</span></code> より <code class="docutils literal notranslate"><span class="pre">b</span></code> の方が大きければ <code class="docutils literal notranslate"><span class="pre">tmp</span></code> の値を <code class="docutils literal notranslate"><span class="pre">b</span></code> に更新する。同様に <code class="docutils literal notranslate"><span class="pre">tmp</span></code> と <code class="docutils literal notranslate"><span class="pre">c</span></code> の大小関係を比較し、<code class="docutils literal notranslate"><span class="pre">tmp</span></code> より <code class="docutils literal notranslate"><span class="pre">c</span></code> の方が大きければ <code class="docutils literal notranslate"><span class="pre">tmp</span></code> の値を <code class="docutils literal notranslate"><span class="pre">c</span></code> に更新する。すると最終的に <code class="docutils literal notranslate"><span class="pre">tmp</span></code> には <code class="docutils literal notranslate"><span class="pre">a</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span></code>、<code class="docutils literal notranslate"><span class="pre">c</span></code> の最大値が代入された状態になるので、これを <code class="docutils literal notranslate"><span class="pre">print</span></code> する。</p>
-<p>具体的には以下のコードを書けばよい。</p>
+<p>このコードを1つのif文だけで実現することもできる。そのためには <code class="docutils literal notranslate"><span class="pre">a</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span></code>、<code class="docutils literal notranslate"><span class="pre">c</span></code> の6通りの大小関係についてif、elif、elseで条件分岐して、それぞれのケースで最大になる変数を <code class="docutils literal notranslate"><span class="pre">print</span></code> すれば良い（例えば、<code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">&gt;</span> <span class="pre">b</span> <span class="pre">and</span> <span class="pre">b</span> <span class="pre">&gt;</span> <span class="pre">c</span></code> のとき <code class="docutils literal notranslate"><span class="pre">print(a)</span></code> とする）。ただし、この方法では条件式が複雑になりがちで、比較する数値が4つ、5つと増えるとコード量も膨大になる。</p>
+<p>最大値を効率的に求めるのに、以下のような方法がある。</p>
+<ul class="simple">
+<li><p>まず、最初の値 <code class="docutils literal notranslate"><span class="pre">a</span></code> を一時的な変数 <code class="docutils literal notranslate"><span class="pre">tmp</span></code> に入れる<a class="footnote-reference brackets" href="#f1" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>。</p></li>
+<li><p>次に、この変数 <code class="docutils literal notranslate"><span class="pre">tmp</span></code> と2番目の値 <code class="docutils literal notranslate"><span class="pre">b</span></code> を比較し、<code class="docutils literal notranslate"><span class="pre">b</span></code> のほうが大きければ <code class="docutils literal notranslate"><span class="pre">tmp</span></code> を <code class="docutils literal notranslate"><span class="pre">b</span></code> に置き換える。</p></li>
+<li><p>最後に、<code class="docutils literal notranslate"><span class="pre">tmp</span></code>と3番目の値 <code class="docutils literal notranslate"><span class="pre">c</span></code> を比較し、<code class="docutils literal notranslate"><span class="pre">c</span></code> のほうが大きければ再び入れ替える。</p></li>
+</ul>
+<p>こうすると、最終的に <code class="docutils literal notranslate"><span class="pre">tmp</span></code> には最大値が残るので、これを出力すればよい。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># a, b, c の一例</span>
@@ -412,7 +417,7 @@ document.write(`
 <span class="n">tmp</span> <span class="o">=</span> <span class="n">a</span>
 <span class="k">if</span> <span class="n">tmp</span> <span class="o">&lt;</span> <span class="n">b</span><span class="p">:</span>
     <span class="n">tmp</span> <span class="o">=</span> <span class="n">b</span>
-    
+
 <span class="k">if</span> <span class="n">tmp</span> <span class="o">&lt;</span> <span class="n">c</span><span class="p">:</span>
     <span class="n">tmp</span> <span class="o">=</span> <span class="n">c</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span>
@@ -420,7 +425,7 @@ document.write(`
 </div>
 </div>
 </div>
-<p>このように1つの問題をより細かい処理に分解し、前の処理の結果を変数に保存しながら次の処理に進む方法は、プログラミングで一般的に用いられる。</p>
+<p>このように1つの問題をより細かい処理に分解し、前の処理の結果を変数に保存しながら次の処理に進む方法は、プログラミングの定石の一つである。</p>
 <p><strong>練習2</strong><br />
 3つの数値 <code class="docutils literal notranslate"><span class="pre">a</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span></code>、<code class="docutils literal notranslate"><span class="pre">c</span></code> が与えられるとき、これらの最小値を <code class="docutils literal notranslate"><span class="pre">print</span></code> するコードを作成しなさい。
 <a href="https://code-judge-system.vercel.app/?&id=7-2" target="_blank">
@@ -439,11 +444,11 @@ document.write(`
 </div>
 </div>
 <p><strong>練習3</strong><br />
-2つの変数 <code class="docutils literal notranslate"><span class="pre">a</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span></code> が与えられるとき、それぞれの変数の値を交換するコードを作成しなさい。つまり、例えば <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">&quot;犬&quot;</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">=</span> <span class="pre">&quot;猫&quot;</span></code> という変数を与えられた場合、<code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">&quot;猫&quot;</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">=</span> <span class="pre">&quot;犬&quot;</span></code> という状態にしなさい。ただし採点の都合上、<code class="docutils literal notranslate"><span class="pre">print</span></code> してはいけない。
+2つの変数 <code class="docutils literal notranslate"><span class="pre">a</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span></code> が与えられるとき、それぞれの変数の値を交換するコードを作成しなさい。つまり、例えば <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">&quot;犬&quot;</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">=</span> <span class="pre">&quot;猫&quot;</span></code> という変数が与えられた場合、<code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">&quot;猫&quot;</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">=</span> <span class="pre">&quot;犬&quot;</span></code> という状態にしなさい。ただし採点の都合上、<code class="docutils literal notranslate"><span class="pre">print</span></code> してはいけない。
 <a href="https://code-judge-system.vercel.app/?&id=7-3" target="_blank">
 <img src="./_images/launch.svg" style="width: 20px; height: 20px;">
 </a><br />
-<font color=cornflowerblue>ヒント: 単純に a = b などとすると b に代入する前に a の値が失われてしまうので、もう一つ変数を用意してaの値を一時的に保存する必要がある</font></p>
+<font color=cornflowerblue>ヒント: 単純に a = b などとすると b に代入する前に a の値が失われてしまうので、もう一つの変数 tmp を用意して a の値を一時的に保存する必要がある。</font></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># a、b の一例</span>
@@ -456,13 +461,13 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="id4">
-<h2>文のネスト<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<section id="id5">
+<h2>文のネスト<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
 <p>これまでに学んだif文、for文、while文は、それぞれ内側のブロックに入れ子的に使用することもできる。このような入れ子構造のことを<strong>ネスト</strong>という。</p>
 <figure class="align-default" id="nest">
 <a class="reference internal image-reference" href="_images/nest.png"><img alt="_images/nest.png" src="_images/nest.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 12 </span><span class="caption-text">文のネスト</span><a class="headerlink" href="#nest" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 14 </span><span class="caption-text">文のネスト</span><a class="headerlink" href="#nest" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>入れ子構造を作るには、ブロックの中にさらにヘッダーとブロックを作る。したがって、内側のブロックはTab文字2つ分インデントすることになる。</p>
@@ -470,8 +475,8 @@ document.write(`
 <p>以下でいくつか例を見てみよう。</p>
 <section id="forif">
 <h3>for文とif文の組み合わせ<a class="headerlink" href="#forif" title="Link to this heading">#</a></h3>
-<p><strong>例1</strong><br />
-for文とif文を組み合わせる簡単な例として、<strong>break文</strong>を使ったものを紹介する。</p>
+<p><strong>例1: break文</strong></p>
+<p>for文とif文を組み合わせる簡単な例として、<strong>break文</strong>を使ったものを紹介する。</p>
 <p>まず、<code class="docutils literal notranslate"><span class="pre">0</span></code> から <code class="docutils literal notranslate"><span class="pre">9</span></code> までの数字を順に出力するプログラムは次のように書けるのであった。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -494,8 +499,8 @@ for文とif文を組み合わせる簡単な例として、<strong>break文</str
 </div>
 <p>これを実行すると数字の出力は <code class="docutils literal notranslate"><span class="pre">2</span></code> で止まる。これは <code class="docutils literal notranslate"><span class="pre">i</span> <span class="pre">==</span> <span class="pre">3</span></code> のときにif文のブロックに入り <code class="docutils literal notranslate"><span class="pre">break</span></code> が実行されるためである。
 <code class="docutils literal notranslate"><span class="pre">break</span></code> は「繰り返し処理を強制的に終了する」働きをもつ。</p>
-<p><strong>例2</strong><br />
-最大値を求める問題を再び取り上げる。要素の数が増えてくると、それぞれに変数を設定するのは非効率なので、リスト <code class="docutils literal notranslate"><span class="pre">data</span></code> として与えられるとしよう。ここで次の問題を考える。</p>
+<p><strong>例2: リストの最大値</strong></p>
+<p>最大値を求める問題を再び取り上げる。要素の数が増えてくると、それぞれに変数を設定するのは非効率なので、リスト <code class="docutils literal notranslate"><span class="pre">data</span></code> として与えられるとしよう。ここで次の問題を考える。</p>
 <p><strong>例題</strong><br />
 数値からなるリスト <code class="docutils literal notranslate"><span class="pre">data</span></code> が与えられるとき、<code class="docutils literal notranslate"><span class="pre">data</span></code> の要素の最大値を <code class="docutils literal notranslate"><span class="pre">print</span></code> するコードを作成しなさい。</p>
 <p>この例題も、3変数の場合とほとんど同じ考え方で解くことができる。コード例を以下に示す。</p>
@@ -512,7 +517,7 @@ for文とif文を組み合わせる簡単な例として、<strong>break文</str
 </div>
 </div>
 </div>
-<p>まず最大値を求めるための変数 <code class="docutils literal notranslate"><span class="pre">tmp</span></code> を用意し、<code class="docutils literal notranslate"><span class="pre">data[0]</span></code> で初期化しておく。そしてfor文で <code class="docutils literal notranslate"><span class="pre">data</span></code> の要素を前から順に見ていき、<code class="docutils literal notranslate"><span class="pre">tmp</span></code> より大きい要素があれば <code class="docutils literal notranslate"><span class="pre">tmp</span></code> をその値に更新する。そうすれば最終的に <code class="docutils literal notranslate"><span class="pre">tmp</span></code> には最大値が設定された状態になる。</p>
+<p>まず最大値を求めるための変数 <code class="docutils literal notranslate"><span class="pre">tmp</span></code> を用意し、<code class="docutils literal notranslate"><span class="pre">data[0]</span></code> で初期化しておく。そしてfor文で <code class="docutils literal notranslate"><span class="pre">data</span></code> の要素を前から順に見ていき、<code class="docutils literal notranslate"><span class="pre">tmp</span></code> より大きい要素があれば <code class="docutils literal notranslate"><span class="pre">tmp</span></code> をその値に更新する。そうすれば最終的に <code class="docutils literal notranslate"><span class="pre">tmp</span></code> には最大値が残るので、それを出力すれば良い。</p>
 <p><strong>練習4</strong><br />
 数値からなるリスト <code class="docutils literal notranslate"><span class="pre">data</span></code> が与えられるとき、<code class="docutils literal notranslate"><span class="pre">data</span></code> の要素の最小値を <code class="docutils literal notranslate"><span class="pre">print</span></code> するコードを作成しなさい。
 <a href="https://code-judge-system.vercel.app/?&id=7-4" target="_blank">
@@ -529,53 +534,65 @@ for文とif文を組み合わせる簡単な例として、<strong>break文</str
 </div>
 </div>
 </section>
-<section id="id5">
-<h3>二重ループ<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
-<p>for文にfor文をネストさせたものを<strong>二重ループ</strong>という。</p>
-<p><strong>例1</strong><br />
-二重ループの簡単な例として、九九を表示するコードを作成してみよう（全部表示すると長いので以下では一部のみ）。</p>
+<section id="id6">
+<h3>二重ループ<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<p>for文の中にfor文をネストさせたものを<strong>二重ループ</strong>という。
+二重ループを使うと、複数の要素のすべての組み合わせを簡単に処理できる。</p>
+<p><strong>例1: 九九を表示する</strong></p>
+<p>次のコードは、九九の一部を表示する例である。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">):</span>
-    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">):</span>    <span class="c1"># iは1から4まで変化</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">):</span>  <span class="c1"># 各iに対して1から3まで繰り返し</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2"> * </span><span class="si">{</span><span class="n">j</span><span class="si">}</span><span class="s2"> は </span><span class="si">{</span><span class="n">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">j</span><span class="si">}</span><span class="s2"> です。&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">range</span></code> 関数に引数を2つ渡しているが、<code class="docutils literal notranslate"><span class="pre">range(a,</span> <span class="pre">b)</span></code> により生成されるイテラブルオブジェクトは、<code class="docutils literal notranslate"><span class="pre">a</span></code> から <code class="docutils literal notranslate"><span class="pre">b-1</span></code> までの整数を順に生成する。上の例では、変数 <code class="docutils literal notranslate"><span class="pre">i</span></code> に <code class="docutils literal notranslate"><span class="pre">1</span></code> から <code class="docutils literal notranslate"><span class="pre">4</span></code> までの整数が順に代入され、それぞれの場合に変数 <code class="docutils literal notranslate"><span class="pre">j</span></code> に <code class="docutils literal notranslate"><span class="pre">1</span></code> から <code class="docutils literal notranslate"><span class="pre">3</span></code> までの整数が順に代入される。したがって、合わせて12回 <code class="docutils literal notranslate"><span class="pre">print</span></code> 関数が実行される。</p>
-<p><strong>例2</strong><br />
-<strong>二次元リスト</strong>を使った例を紹介する。ここで二次元リストとは、<code class="docutils literal notranslate"><span class="pre">[[1,</span> <span class="pre">2],</span> <span class="pre">[3,</span> <span class="pre">4]]</span></code> のようにリストの各要素がさらにリストであるものを指す（この例では <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">2]</span></code> と <code class="docutils literal notranslate"><span class="pre">[3,</span> <span class="pre">4]</span></code> が要素）。より正確には、すべての要素が非リスト型（整数、文字列など）のリストを一次元リストといい、すべての要素が一次元リストであるリストのことを二次元リストという。</p>
-<p>二次元リストの要素が一次元リストであるから、一番内側の要素にアクセスするにはインデックスを2つ指定する必要がある。</p>
+<p><code class="docutils literal notranslate"><span class="pre">range</span></code> 関数に引数を2つ渡しているが、<code class="docutils literal notranslate"><span class="pre">range(a,</span> <span class="pre">b)</span></code> により生成されるイテラブルオブジェクトは、<code class="docutils literal notranslate"><span class="pre">a</span></code> から <code class="docutils literal notranslate"><span class="pre">b-1</span></code> までの整数を順に生成する。この例では、</p>
+<ul class="simple">
+<li><p>外側のループで <code class="docutils literal notranslate"><span class="pre">i</span></code> は1、2、3、4と順番に変化し、それぞれに対して</p></li>
+<li><p>内側のループで <code class="docutils literal notranslate"><span class="pre">j</span></code> が順に1、2、3と変化する。</p></li>
+</ul>
+<p>よって、合計で12回 <code class="docutils literal notranslate"><span class="pre">print</span></code> 関数が実行されることになる。実行結果を見て <code class="docutils literal notranslate"><span class="pre">i</span></code> と <code class="docutils literal notranslate"><span class="pre">j</span></code> がどのように増えていくか確認しよう。</p>
+<p><strong>例2: 二次元リスト</strong></p>
+<p>二重ループは、<strong>二次元リスト</strong>を処理する際にもよく用いられる。二次元リストとは、要素がリストになっているリストのことである。例えば以下は二次元リストである。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># インデックスと要素の関係</span>
-<span class="n">data</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>さて、二次元リストに対しては、二重ループを使うことでその全ての要素にアクセスすることができる。例として、すべての要素を <code class="docutils literal notranslate"><span class="pre">print</span></code> するコード例を次に示す。</p>
+<p>これに対し、リスト以外（整数や文字列など）を要素とするリストを一次元リストと呼ぶ。上の例で言えば、<code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">2]</span></code> や <code class="docutils literal notranslate"><span class="pre">[3,</span> <span class="pre">4]</span></code> は一次元リストであり、これらを含む <code class="docutils literal notranslate"><span class="pre">data</span></code> は二次元リストということになる。</p>
+<p>二次元リストの要素にアクセスするには、インデックスを2つ使う必要がある。例えば、上記のデータから値 <code class="docutils literal notranslate"><span class="pre">3</span></code> を取り出したい場合は、<code class="docutils literal notranslate"><span class="pre">data[1][0]</span></code> と書く。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>このような二次元リストのすべての要素を処理するには、二重ループを使うのが便利である。具体例として、すべての要素を表示するプログラムを見てみよう。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]</span>
 
-<span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
-    <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">l</span><span class="p">:</span>
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>  <span class="c1"># 外側のループで各一次元リストを取り出す</span>
+    <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">row</span><span class="p">:</span>   <span class="c1"># 内側のループで一次元リスト内の値を順番に取り出す</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">l</span> <span class="pre">in</span> <span class="pre">data:</span></code> により <code class="docutils literal notranslate"><span class="pre">data</span></code> の各要素 <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">2]</span></code>、<code class="docutils literal notranslate"><span class="pre">[3,</span> <span class="pre">4]</span></code>、<code class="docutils literal notranslate"><span class="pre">[5,</span> <span class="pre">6]</span></code> が順に変数 <code class="docutils literal notranslate"><span class="pre">l</span></code> に代入される。その変数 <code class="docutils literal notranslate"><span class="pre">l</span></code> に対して <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">v</span> <span class="pre">in</span> <span class="pre">l:</span></code> により、一次元リストの各要素が順に変数 <code class="docutils literal notranslate"><span class="pre">v</span></code> に代入される。</p>
-<p>同じことを <code class="docutils literal notranslate"><span class="pre">range</span></code> 関数を使って、次のように書くこともできる。</p>
+<ul class="simple">
+<li><p>外側のループで、<code class="docutils literal notranslate"><span class="pre">data</span></code> の各要素（ここでは <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">2]</span></code> や <code class="docutils literal notranslate"><span class="pre">[3,</span> <span class="pre">4]</span></code>）が順番に <code class="docutils literal notranslate"><span class="pre">row</span></code> に代入される。</p></li>
+<li><p>内側のループでは、この <code class="docutils literal notranslate"><span class="pre">row</span></code> の中身が順番に変数 <code class="docutils literal notranslate"><span class="pre">v</span></code> に代入され、それが表示される。</p></li>
+</ul>
+<p>また、この処理は以下のように <code class="docutils literal notranslate"><span class="pre">range</span></code> とインデックスを利用して書くことも可能である。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]</span>
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)):</span>
     <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">])):</span>
@@ -584,6 +601,7 @@ for文とif文を組み合わせる簡単な例として、<strong>break文</str
 </div>
 </div>
 </div>
+<p>どちらの方法もよく用いられるので、慣れておくと良い。</p>
 <p><strong>練習5</strong><br />
 数値からなる二次元リスト <code class="docutils literal notranslate"><span class="pre">data</span></code> が与えられるとき、一番内側の要素の合計値を求めて <code class="docutils literal notranslate"><span class="pre">print</span></code> するコードを作成しなさい。
 <a href="https://code-judge-system.vercel.app/?&id=7-5" target="_blank">
@@ -595,6 +613,11 @@ for文とif文を組み合わせる簡単な例として、<strong>break文</str
 <span class="n">data</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]</span>
 
 <span class="c1"># 以下にコードを作成し、以下の部分のみ提出する</span>
+
+<span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># 合計値を保存する変数</span>
+<span class="c1"># ここに二重ループを書く</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">total</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -603,26 +626,38 @@ for文とif文を組み合わせる簡単な例として、<strong>break文</str
 </section>
 <section id="import">
 <h2>モジュールとimport<a class="headerlink" href="#import" title="Link to this heading">#</a></h2>
-<p>ここでは新しい関数やクラスをPythonに取り入れるための<strong>import文</strong>について学ぶ。 これまで利用してきた関数やデータ型は、<strong>組み込み関数</strong>、<strong>組み込み型</strong>と呼ばれ、Pythonに最初から用意されていたものである。 組み込み以外の関数やクラスは、import文により<strong>モジュール</strong>からインポートする（読み込む）ことで利用できるようになる。</p>
-<p>まずモジュールとは何かについて説明する。 Pythonのモジュールとは、関数やクラス、変数などをまとめた単一のPythonファイル（拡張子は <code class="docutils literal notranslate"><span class="pre">.py</span></code>）のことを指す。 モジュールは他のPythonプログラムから簡単にインポートして使用することができる。 これにより、コードの再利用性が向上し、プログラムの構造化が可能になっている。 また特定の機能やタスクを実行するために作成されたモジュールの集まりを<strong>ライブラリ</strong>という。 Pythonには世界中の開発者により豊富なライブラリが用意されており、Pythonが人気な理由の一つになっている。</p>
-<p>さて、モジュールから関数やクラス、変数などを読み込む際に使われるのがimport文である。 基本的な構文は、<code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">モジュール名</span></code> である。 例として、randomモジュールをインポートしてみよう。</p>
+<p>これまでに使ってきた関数やデータ型は「組み込み関数」や「組み込み型」と呼ばれ、Pythonがあらかじめ用意しているものである。これに対して、自分で作成した関数や、誰かが作って公開した関数を利用するには、それをPythonに取り込む必要がある。この操作が<strong>import文</strong>である。</p>
+<p>Pythonでは、関連した関数やデータ型をひとまとめにしたファイル（<strong>モジュール</strong>）を、必要に応じて読み込んで使うことができる。モジュールの拡張子は <code class="docutils literal notranslate"><span class="pre">.py</span></code> である。モジュールには、</p>
+<ul class="simple">
+<li><p>他の人が作った便利な関数を簡単に使える</p></li>
+<li><p>同じコードを繰り返し書く必要がなくなり、効率的にプログラムが書ける</p></li>
+<li><p>プログラムの構造が見やすくなる</p></li>
+</ul>
+<p>などの利点がある。</p>
+<p>例えば、乱数を生成する <code class="docutils literal notranslate"><span class="pre">random</span></code> モジュールを使う場合は次のように書く。<code class="docutils literal notranslate"><span class="pre">random</span></code> モジュールの中の <code class="docutils literal notranslate"><span class="pre">choice</span></code> 関数は、インポート後に <code class="docutils literal notranslate"><span class="pre">random.choice()</span></code> とすることで使用することができる。 これはリストを引数として受け取り、その要素をランダムに1つ返す関数である。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>randomモジュールの中の <code class="docutils literal notranslate"><span class="pre">choice</span></code> 関数は、インポート後に <code class="docutils literal notranslate"><span class="pre">random.choice()</span></code> とすることで使用することができる。 これはリストを引数として受け取り、その要素をランダムに1つ返す関数である。</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cand</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;りんご&quot;</span><span class="p">,</span> <span class="s2">&quot;キウイ&quot;</span><span class="p">,</span> <span class="s2">&quot;バナナ&quot;</span><span class="p">]</span>
+
+<span class="n">cand</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;りんご&quot;</span><span class="p">,</span> <span class="s2">&quot;キウイ&quot;</span><span class="p">,</span> <span class="s2">&quot;バナナ&quot;</span><span class="p">]</span>
 <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">cand</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>インポートの構文には他にも <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">モジュール名</span> <span class="pre">import</span> <span class="pre">関数名</span></code> のように特定の要素のみインポートする方法（その場合、使用時に <code class="docutils literal notranslate"><span class="pre">モジュール名.</span></code> は不要になる）や、<code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">モジュール名</span> <span class="pre">as</span> <span class="pre">名前</span></code> のようにモジュールの呼び名を自由に設定しながらインポートする方法（その場合 <code class="docutils literal notranslate"><span class="pre">名前.関数名</span></code> のような使い方になる）などがある。</p>
+<p>また特定の関数だけをモジュールから読み込む方法もある。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">choice</span>
+
+<span class="n">cand</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;りんご&quot;</span><span class="p">,</span> <span class="s2">&quot;キウイ&quot;</span><span class="p">,</span> <span class="s2">&quot;バナナ&quot;</span><span class="p">]</span>
+<span class="n">choice</span><span class="p">(</span><span class="n">cand</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>この場合、関数名の前にモジュール名を付けずに使える。</p>
+<p>さらに短い名前でモジュールを呼びたい場合は、次のように別名を指定してインポートできる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span> <span class="k">as</span> <span class="nn">r</span>
@@ -635,8 +670,17 @@ for文とif文を組み合わせる簡単な例として、<strong>break文</str
 </div>
 <div class="note admonition">
 <p class="admonition-title">ライブラリのインストール</p>
-<p>ライブラリは大きく標準ライブラリと外部ライブラリに分けられる。randomモジュールは標準ライブラリの一つである。外部ライブラリの場合にはインポートする前に、そもそもライブラリのファイル群をコンピュータに<strong>インストール</strong>（ダウンロードし使用可能な状態にすること）する必要がある。よく使われるのは<strong>pip</strong>というパッケージ管理システムである。pipでライブラリをインストールするには、<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">ライブラリ名</span></code> を実行する。</p>
+<p>Pythonのライブラリは、<strong>標準ライブラリ</strong>（インストール不要で最初からPythonに含まれている）と<strong>外部ライブラリ</strong>（自分で追加インストールが必要）に分かれている。
+外部ライブラリをインストールするには <code class="docutils literal notranslate"><span class="pre">pip</span></code> コマンドを使う。例えば、<code class="docutils literal notranslate"><span class="pre">pandas</span></code> というライブラリをインストールしたい場合、<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">pandas</span></code> のように書く。
+こうして追加したライブラリも、上記のようにimportして使える。</p>
 </div>
+<hr class="footnotes docutils" />
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="f1" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">1</a><span class="fn-bracket">]</span></span>
+<p><code class="docutils literal notranslate"><span class="pre">tmp</span></code> はtemporaryの略で、一時的な変数の名前によく使われる。</p>
+</aside>
+</aside>
 </section>
 </section>
 
@@ -706,9 +750,9 @@ for文とif文を組み合わせる簡単な例として、<strong>break文</str
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">この授業で学ぶこと</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">変数を使いこなす</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">文のネスト</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">文のネスト</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#forif">for文とif文の組み合わせ</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">二重ループ</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">二重ループ</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import">モジュールとimport</a></li>
@@ -736,7 +780,7 @@ By 大坪 舜 Shun Otsubo
 
   <p class="copyright">
     
-      © Copyright 2023-2024（2023年3月30日公開）.
+      © Copyright 2023-Present（2023年3月30日公開）.
       <br/>
     
   </p>

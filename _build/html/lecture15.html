@@ -348,8 +348,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">この授業で学ぶこと</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">課題1</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">課題2（任意）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">課題</a></li>
 </ul>
 </li>
 </ul>
@@ -366,14 +365,14 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1>第15回 総合演習<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <hr class="docutils" />
-<p><a class="reference external" href="https://colab.research.google.com/github/tsuboshun/begin-python/blob/gh-pages/2024/workbook/lecture15.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+<p><a class="reference external" href="https://colab.research.google.com/github/tsuboshun/begin-python/blob/gh-pages/workbook/lecture15.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
 <hr class="docutils" />
 <section id="id2">
 <h2>この授業で学ぶこと<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-<p>これまでの総合演習として、分析内容を自分で考えながらデータ分析する経験をしてもらう。</p>
+<p>これまで学んだ内容の総合演習として、分析内容を自分で考えながら、自由にデータ分析する経験をしてもらう。</p>
 <section id="id3">
-<h3>課題1<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
-<p>ToyoNet-ACEの授業ページから <code class="docutils literal notranslate"><span class="pre">data.csv</span></code> と、データの内容を説明した <code class="docutils literal notranslate"><span class="pre">README.txt</span></code> をダウンロードし、自由にデータ分析して得られた知見をまとめなさい。以下の条件を満たした上で丁寧に取り組んでいれば、簡単な内容でも高く評価する。複数人で相談しながら作業してもよいし、ChatGPTなどの生成AIを活用してもよい。</p>
+<h3>課題<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<p>ToyoNet-ACEの授業ページから <code class="docutils literal notranslate"><span class="pre">data.csv</span></code> と、データの内容を説明した <code class="docutils literal notranslate"><span class="pre">README.txt</span></code> をダウンロードし、自由にデータ分析して得られた知見をまとめなさい。以下の条件を満たした上で丁寧に取り組んでいれば、簡単な内容でも高く評価する。</p>
 <p><strong>条件</strong></p>
 <ul class="simple">
 <li><p>プロットを2つ以上描き、それぞれについて軸ラベル、タイトルをつけた上で、テキストセルに簡単な説明も書きなさい。</p>
@@ -381,25 +380,20 @@ document.write(`
 <li><p>プロット画像をダウンロードする必要はなく、<code class="docutils literal notranslate"><span class="pre">plt.show()</span></code> によりプロットをノートブック上に表示させた状態にしておけばよい。</p></li>
 </ul>
 </li>
-<li><p>ノートブックをpdf、ipynbの両方の形式でダウンロードして、それぞれ提出しなさい。</p>
+<li><p>ノートブックをPDF、ipynbの両方の形式でダウンロードして、それぞれ提出しなさい。</p>
 <ul>
-<li><p>pdf形式でダウンロードするには、メニューバーから「ファイル &gt; 印刷」を選択し、印刷ウィンドウの送信先から「PDFに保存」を選択して保存を押す。</p></li>
+<li><p>PDF形式でダウンロードするには、メニューバーから「ファイル &gt; 印刷」を選択し、印刷ウィンドウの送信先から「PDFに保存」を選択して保存を押す。</p></li>
 <li><p>ipynb形式でダウンロードするには、メニューバーから「ファイル &gt; ダウンロード」を選択し、「.ipynbをダウンロード」を選択する。</p></li>
 </ul>
 </li>
-<li><p>分析の過程をすべて残しておいても良いが、見やすいように体裁を整えてから提出すること。</p></li>
-<li><p>生成AIは、あくまで補助として利用すること。生成AIの出力をそのまま貼り付けたような、本人の理解の伴っていない提出物は大幅に減点する可能性がある。</p></li>
+<li><p>分析の過程や途中経過も残しておいて良いが、見やすいように体裁を整えてから提出すること。</p></li>
+<li><p>生成AIの出力のコピーや他人の提出物のコピーを提出した場合は、大幅に減点する可能性がある。</p></li>
 </ul>
 <p><strong>データの読み込み方</strong></p>
 <ul class="simple">
 <li><p>第12回を参考にしながら、<code class="docutils literal notranslate"><span class="pre">data.csv</span></code> をGoogle Colabにアップロードする。</p></li>
-<li><p>CSVファイルを直接データフレームとして読み込んでくれる <code class="docutils literal notranslate"><span class="pre">pd.read_csv()</span></code> を使うのがおすすめである。ノートブックには既にそのようなコードを用意している。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pd.read_csv()</span></code> によりCSVをデータフレームとして読み込む。ノートブックには既にそのようなコードを用意している。</p></li>
 </ul>
-</section>
-<section id="id4">
-<h3>課題2（任意）<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
-<p>OpenAI社の言語モデルを使った便利な/面白いプログラムを考え、コードを作成しなさい。またどのようなプログラムを作成したか説明を書きなさい。課題1と同じノートブック上に作成すること。</p>
-<p>課題2に関しては余力のある人のみ取り組めばよい。また取り組む場合にも、1時間で作成できるような簡単なものでよい。課題1だけでも満点を取れるように採点する。</p>
 </section>
 </section>
 </section>
@@ -460,8 +454,7 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">この授業で学ぶこと</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">課題1</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">課題2（任意）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">課題</a></li>
 </ul>
 </li>
 </ul>
@@ -488,7 +481,7 @@ By 大坪 舜 Shun Otsubo
 
   <p class="copyright">
     
-      © Copyright 2023-2024（2023年3月30日公開）.
+      © Copyright 2023-Present（2023年3月30日公開）.
       <br/>
     
   </p>
