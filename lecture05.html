@@ -73,7 +73,7 @@
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'lecture05';</script>
-    <script src="_static/custom.js?v=7ed3f353"></script>
+    <script src="_static/custom.js?v=43fa7a27"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="第6回 繰り返し" href="lecture06.html" />
@@ -521,6 +521,12 @@ document.write(`
 </div>
 </div>
 </div>
+<div class="toggle docutils container">
+<pre>
+if x < 0:
+    print("負の値")
+</pre>
+</div>
 <p><strong>練習2</strong><br />
 整数 <code class="docutils literal notranslate"><span class="pre">x</span></code> が与えられるとき、<code class="docutils literal notranslate"><span class="pre">x</span></code> が0のときのみ <code class="docutils literal notranslate"><span class="pre">&quot;zero&quot;</span></code> と <code class="docutils literal notranslate"><span class="pre">print</span></code> するコードを作成しなさい。
 <a href="https://code-judge-system.vercel.app/?&id=5-2" target="_blank">
@@ -535,6 +541,12 @@ document.write(`
 </pre></div>
 </div>
 </div>
+</div>
+<div class="toggle docutils container">
+<pre>
+if x == 0:
+    print("zero")
+</pre>
 </div>
 <p><strong>練習3</strong><br />
 整数 <code class="docutils literal notranslate"><span class="pre">x</span></code> が与えられるとき、<code class="docutils literal notranslate"><span class="pre">x</span></code> が偶数のときのみ <code class="docutils literal notranslate"><span class="pre">&quot;偶数&quot;</span></code> と <code class="docutils literal notranslate"><span class="pre">print</span></code> するコードを作成しなさい。
@@ -551,6 +563,12 @@ document.write(`
 </pre></div>
 </div>
 </div>
+</div>
+<div class="toggle docutils container">
+<pre>
+if x % 2 == 0:
+    print("偶数")
+</pre>
 </div>
 <section id="elifelse">
 <h3>elif節・else節<a class="headerlink" href="#elifelse" title="Link to this heading">#</a></h3>
@@ -620,6 +638,14 @@ BMIが25以上のとき <code class="docutils literal notranslate"><span class="
 </div>
 </div>
 </div>
+<div class="toggle docutils container">
+<pre>
+if x > 0:
+    print("正の値")
+else:
+    print("0以下の値")
+</pre>
+</div>
 <p><strong>練習5</strong><br />
 正の整数 <code class="docutils literal notranslate"><span class="pre">x</span></code> が与えられる。<code class="docutils literal notranslate"><span class="pre">x</span></code> が1桁の整数（つまり1〜9）のとき <code class="docutils literal notranslate"><span class="pre">&quot;1桁&quot;</span></code>、2桁の整数（つまり10〜99）のとき <code class="docutils literal notranslate"><span class="pre">&quot;2桁&quot;</span></code>、3桁以上の整数（つまり100〜）のとき <code class="docutils literal notranslate"><span class="pre">&quot;3桁以上&quot;</span></code> と <code class="docutils literal notranslate"><span class="pre">print</span></code> するコードを作成しなさい。
 <a href="https://code-judge-system.vercel.app/?&id=5-5" target="_blank">
@@ -634,6 +660,16 @@ BMIが25以上のとき <code class="docutils literal notranslate"><span class="
 </pre></div>
 </div>
 </div>
+</div>
+<div class="toggle docutils container">
+<pre>
+if x < 10:
+    print("1桁")
+elif x < 100:
+    print("2桁")
+else:
+    print("3桁以上")
+</pre>
 </div>
 <div class="note admonition">
 <p class="admonition-title">式と文</p>
@@ -758,6 +794,16 @@ BMIが25以上のとき <code class="docutils literal notranslate"><span class="
 </pre></div>
 </div>
 </div>
+</div>
+<div class="toggle docutils container">
+<pre>
+if weather == "晴れ" and temp >= 25:
+    print("暑い日ですね")
+elif weather == "晴れ" and temp < 25:
+    print("快適な日ですね")
+elif weather == "雨":
+    print("傘を持っていきましょう")
+</pre>
 </div>
 <hr class="footnotes docutils" />
 <aside class="footnote-list brackets">

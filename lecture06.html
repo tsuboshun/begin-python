@@ -71,7 +71,7 @@
             </script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'lecture06';</script>
-    <script src="_static/custom.js?v=7ed3f353"></script>
+    <script src="_static/custom.js?v=43fa7a27"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="第7回 これまでの復習と応用" href="lecture07.html" />
@@ -430,6 +430,12 @@ document.write(`
 </div>
 </div>
 </div>
+<div class="toggle docutils container">
+<pre>
+for v in values:
+    print(v)
+</pre>
+</div>
 <p><strong>練習2</strong><br />
 正の整数 <code class="docutils literal notranslate"><span class="pre">n</span></code> が与えられるとき、<code class="docutils literal notranslate"><span class="pre">1</span></code> から <code class="docutils literal notranslate"><span class="pre">n</span></code> までの数字を順に <code class="docutils literal notranslate"><span class="pre">print</span></code> するコードを作成しなさい。
 <a href="https://code-judge-system.vercel.app/?&id=6-2" target="_blank">
@@ -444,6 +450,12 @@ document.write(`
 </pre></div>
 </div>
 </div>
+</div>
+<div class="toggle docutils container">
+<pre>
+for i in range(n):
+    print(i+1)
+</pre>
 </div>
 <section id="id4">
 <h3>ブロックの抜け方<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
@@ -514,6 +526,14 @@ document.write(`
 </div>
 </div>
 </div>
+<div class="toggle docutils container">
+<pre>
+total = 0
+for v in data:
+    total += v
+print(total / len(data))
+</pre>
+</div>
 </section>
 </section>
 <section id="while">
@@ -569,6 +589,14 @@ document.write(`
 </div>
 </div>
 </div>
+<div class="toggle docutils container">
+<pre>
+i = 1
+while i <= n:
+    print(i)
+    i += 1
+</pre>
+</div>
 <p><strong>練習5</strong><br />
 正の整数 <code class="docutils literal notranslate"><span class="pre">n</span></code> が与えられるとき、<code class="docutils literal notranslate"><span class="pre">1</span></code> から <code class="docutils literal notranslate"><span class="pre">n</span></code> までの数字を <code class="docutils literal notranslate"><span class="pre">n</span></code> から始めて<u>逆順</u>で <code class="docutils literal notranslate"><span class="pre">print</span></code> するコードを作成しなさい。
 <a href="https://code-judge-system.vercel.app/?&id=6-5" target="_blank">
@@ -588,6 +616,14 @@ document.write(`
 </div>
 </div>
 </div>
+<div class="toggle docutils container">
+<pre>
+i = n
+while i > 0:
+    print(i)
+    i -= 1
+</pre>
+</div>
 <div class="note admonition">
 <p class="admonition-title">pass</p>
 <p><code class="docutils literal notranslate"><span class="pre">pass</span></code> は「何もしない」ことを意味する文である。構文上何か書かないとエラーになるが、コードの作成は後回しにしたい箇所に書く。テキストでも何度か登場するが、コードを書くときに消してしまって問題ない。</p>
@@ -606,6 +642,14 @@ document.write(`
 </pre></div>
 </div>
 </div>
+</div>
+<div class="toggle docutils container">
+<pre>
+i = len(data) - 1
+while i >= 0:
+    print(data[i])
+    i -= 1
+</pre>
 </div>
 </section>
 </section>
