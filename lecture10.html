@@ -388,16 +388,71 @@ document.write(`
 </figure>
 <p>クラス定義はヘッダーとブロックから構成され、ヘッダーには <code class="docutils literal notranslate"><span class="pre">class</span></code> に続いてクラス名を書く。そして、ブロックにメソッドを定義していく。メソッドの定義の書き方は普通の関数とほぼ同じであるが、第一引数は必ず <code class="docutils literal notranslate"><span class="pre">self</span></code> にするという決まりがある。これはインスタンス自身を渡すための変数である。</p>
 <p>まずは最も簡単なクラスを定義してみよう。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Apple</span><span class="p">:</span>
+    <span class="k">pass</span> 
+</pre></div>
+</div>
+</div>
+</div>
 <p>クラス名は自由に設定することができるが、1文字目のみを大文字にするという慣例がある。一方でメソッド名は全て小文字で書くのが慣例となっている。</p>
 <p>このクラスのインスタンスは次のようにして作成する。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">Apple</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p>このインスタンスにデータを持たせよう。例えば、栄養を表す <code class="docutils literal notranslate"><span class="pre">nutrition</span></code> というデータを次のように付与することができる。
 このデータのことを<strong>属性</strong>（<strong>アトリビュート</strong>）という。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">.</span><span class="n">nutrition</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">nutrition</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p>この属性は <code class="docutils literal notranslate"><span class="pre">a</span></code> というインスタンスに固有のものである。クラスが同じであっても、各インスタンスの持つ属性は別々に管理される。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="n">Apple</span><span class="p">()</span>
+<span class="n">b</span><span class="o">.</span><span class="n">nutrition</span> <span class="c1"># こちらのインスタンスには属性は定義されていない</span>
+</pre></div>
+</div>
+</div>
+</div>
 <section id="id4">
 <h3>初期化メソッド<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
 <p>インスタンス１つ１つに属性を設定していくのは大変なので、インスタンスの生成時に最初から属性を持たせたくなる。これを実現するのが<strong>初期化メソッド</strong>である。初期化メソッドは、classのブロック中に <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> という名前のメソッドとして定義する。先ほど述べたとおり、第一引数に <code class="docutils literal notranslate"><span class="pre">self</span></code> という変数を設定する必要があり、これにインスタンス自身が渡される。そして初期化メソッド内では、<code class="docutils literal notranslate"><span class="pre">self.属性名</span> <span class="pre">=</span> <span class="pre">値</span></code> という代入文で、属性名とその値を設定する。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Apple</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nutrition</span> <span class="o">=</span> <span class="mi">10</span>
+        
+<span class="n">a</span> <span class="o">=</span> <span class="n">Apple</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">nutrition</span><span class="p">)</span>  <span class="c1"># 初期化の時点で10という値が設定されている。</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p>初期化メソッドに引数を追加することで、<code class="docutils literal notranslate"><span class="pre">nutrition</span></code> の値を外から設定できるようにすることもできる。
 このとき <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> に設定した第二引数以降が、<code class="docutils literal notranslate"><span class="pre">クラス名()</span></code> と呼び出すときの引数に対応する。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Apple</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nutrition</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nutrition</span> <span class="o">=</span> <span class="n">nutrition</span>
+        
+<span class="n">a</span> <span class="o">=</span> <span class="n">Apple</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">nutrition</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p>初期化メソッドのようにメソッド名の両端にアンダースコア2つ <code class="docutils literal notranslate"><span class="pre">__</span></code> をつけたメソッドのことを<strong>特殊メソッド</strong>という。
 特殊メソッドは次に説明する普通のメソッドとは異なり、その用途に応じてメソッド名が決められている。
 また普通のメソッドのように <code class="docutils literal notranslate"><span class="pre">データ.メソッド名()</span></code> という呼び出し方をしない。</p>
@@ -417,6 +472,13 @@ document.write(`
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nutrition</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">day</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">nutrition</span> <span class="o">=</span> <span class="n">nutrition</span>
+        
+    <span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">day</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">day</span> <span class="o">&lt;</span> <span class="mi">14</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nutrition</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nutrition</span> <span class="o">-=</span> <span class="mi">1</span>
 </pre></div>
 </div>
 </div>
@@ -477,6 +539,9 @@ document.write(`
 
 <span class="k">for</span> <span class="n">day</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">21</span><span class="p">):</span>
     <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">fruit</span> <span class="ow">in</span> <span class="n">basket</span><span class="p">:</span>
+        <span class="n">fruit</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+        <span class="n">total</span> <span class="o">+=</span> <span class="n">fruit</span><span class="o">.</span><span class="n">nutrition</span>
         
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">day</span><span class="si">}</span><span class="s2">日目: </span><span class="si">{</span><span class="n">total</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
