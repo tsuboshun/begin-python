@@ -384,6 +384,11 @@ document.write(`
 <p>今回から第13回にかけてデータサイエンスの入門講義を行う。今回はデータの可視化をテーマに、Matplotlibというグラフ描画ライブラリの使い方を学ぶ。またMatplotlibで利用されているNumPyという数値計算ライブラリについて学ぶ。</p>
 <p>今後の授業で紹介するコードは何も見ないで書けるようになる必要はなく、これらを雛形にして使えるようになればよい。
 Matplotlibを使うと綺麗なグラフを作成できるようになるので、ぜひ他の授業のレポートなどでも活用してみてほしい。</p>
+<div class="tip admonition">
+<p class="admonition-title">上から順にすべてのセルを実行しましょう</p>
+<p>今回以降のノートブックのコードはNumPyやMatplotlibなど複数のライブラリに依存しているため、それぞれのimport文を含むセルを実行していないとエラーになる。
+もし <code class="docutils literal notranslate"><span class="pre">NameError:</span> <span class="pre">name</span> <span class="pre">'np'</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">defined</span></code> などのエラーを見かけたら、それより上のセルで実行し忘れているものはないか、とくにimport文を含むものを一通り実行したか確認しよう。</p>
+</div>
 </section>
 <section id="numpy">
 <h2>NumPy入門<a class="headerlink" href="#numpy" title="Link to this heading">#</a></h2>
@@ -695,11 +700,6 @@ Matplotlibを使うと綺麗なグラフを作成できるようになるので�
 </div>
 <p>ここで生成した <code class="docutils literal notranslate"><span class="pre">sample_x</span></code> と <code class="docutils literal notranslate"><span class="pre">sample_y</span></code> は <span class="math notranslate nohighlight">\(\varepsilon\)</span> をノイズとして <span class="math notranslate nohighlight">\(y = 2x + \varepsilon\)</span> の関係を満たす2次元データ <span class="math notranslate nohighlight">\((x, y)\)</span> を100個生成したものと見ることができる。
 1つ1つのデータは(<code class="docutils literal notranslate"><span class="pre">sample_x[0]</span></code>, <code class="docutils literal notranslate"><span class="pre">sample_y[0]</span></code>), (<code class="docutils literal notranslate"><span class="pre">sample_x[1]</span></code>, <code class="docutils literal notranslate"><span class="pre">sample_y[1]</span></code>), …, (<code class="docutils literal notranslate"><span class="pre">sample_x[99]</span></code>, <code class="docutils literal notranslate"><span class="pre">sample_y[99]</span></code>)である。</p>
-<div class="tip admonition">
-<p class="admonition-title">ライブラリに関してよく見かけるエラー</p>
-<p>今回のノートブックのコードはNumPyやMatplotlibなど複数のライブラリに依存しているため、それぞれのimport文を含むセルを実行していないとエラーになる。
-もし <code class="docutils literal notranslate"><span class="pre">NameError:</span> <span class="pre">name</span> <span class="pre">'np'</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">defined</span></code> などのエラーを見かけたら、import文を一通り実行したか確認しよう。</p>
-</div>
 <section id="id7">
 <h3>散布図<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
 <p>サンプルデータを<strong>散布図</strong>として可視化してみよう。横軸に <span class="math notranslate nohighlight">\(x\)</span>、縦軸に <span class="math notranslate nohighlight">\(y\)</span> の値をとって各データを点として打って描画する。このことをデータを散布図として<strong>プロット</strong>するという。</p>
