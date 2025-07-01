@@ -615,6 +615,11 @@ Matplotlibを使うと綺麗なグラフを作成できるようになるので�
 </div>
 </div>
 </div>
+<div class="toggle docutils container">
+<pre>
+data = np.zeros((n, m))
+</pre>
+</div>
 <p><strong>練習2</strong><br />
 正の整数からなる配列 <code class="docutils literal notranslate"><span class="pre">x</span></code> が与えられるとき、<code class="docutils literal notranslate"><span class="pre">x</span></code> の各要素を <code class="docutils literal notranslate"><span class="pre">x</span></code> の要素の総和で割って得られる配列 <code class="docutils literal notranslate"><span class="pre">p</span></code> を作成するコードを書きなさい。ただし採点の都合上、<code class="docutils literal notranslate"><span class="pre">print</span></code> してはいけない。
 <font color=cornflowerblue>ヒント：配列の要素の総和は <code class="docutils literal notranslate"><span class="pre">np.sum()</span></code> 関数によって求められる。</font>
@@ -630,6 +635,11 @@ Matplotlibを使うと綺麗なグラフを作成できるようになるので�
 </pre></div>
 </div>
 </div>
+</div>
+<div class="toggle docutils container">
+<pre>
+p = x / np.sum(x)
+</pre>
 </div>
 </section>
 </section>
@@ -829,6 +839,21 @@ Matplotlibを使うと綺麗なグラフを作成できるようになるので�
 </pre></div>
 </div>
 </div>
+</div>
+<div class="toggle docutils container">
+<pre>
+# プロットの入れ物の用意
+fig, ax = plt.subplots(figsize=(5, 4))
+
+ax.plot(x, y_sin, label="sin関数")
+ax.plot(x, y_cos, label="cos関数")
+
+plt.legend() # 凡例の表示
+
+# ファイルとして保存
+plt.tight_layout()
+plt.savefig("練習3.png") 
+</pre>
 </div>
 <p>プロットしたら以下のコードを実行することにより、画像をダウンロードできる。これを提出しなさい。</p>
 <div class="cell docutils container">
