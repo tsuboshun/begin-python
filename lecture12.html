@@ -602,8 +602,23 @@ Pandasには、1次元配列に行ラベルをつけたデータ型も用意さ�
 <p><strong>練習1</strong><br />
 diamondsデータセットから、カット（<code class="docutils literal notranslate"><span class="pre">&quot;cut&quot;</span></code>）が <code class="docutils literal notranslate"><span class="pre">&quot;Ideal&quot;</span></code> のデータのみを抽出し、そのデータにおける価格の平均、カラットの平均を求めなさい。
 <font color=cornflowerblue>ヒント：平均値は <code class="docutils literal notranslate"><span class="pre">シリーズ.mean()</span></code> でも求められるし、<code class="docutils literal notranslate"><span class="pre">np.mean()</span></code> 関数を使って求めてもよい。</font></p>
+<div class="toggle docutils container">
+<pre>
+mask = (df["cut"] == "Ideal")
+df_ideal = df.loc[mask]
+
+print(df_ideal["price"].mean())
+print(df_ideal["carat"].mean())
+</pre>
+</div>
 <p><strong>練習2</strong><br />
 diamondsデータセットにおいて価格（<code class="docutils literal notranslate"><span class="pre">&quot;price&quot;</span></code>）の最も高い5件と最も低い5件のデータを表示しなさい。</p>
+<div class="toggle docutils container">
+<pre>
+df = df.sort_values("price")  # ascending=Falseをつけると価格の高い5件が見られる
+df.head()
+</pre>
+</div>
 </section>
 <section id="id9">
 <h4>欠損値<a class="headerlink" href="#id9" title="Link to this heading">#</a></h4>
@@ -798,6 +813,19 @@ line.strip().split(",")
 <span class="o">*</span>
 <span class="o">*</span>
 </pre></div>
+</div>
+<div class="toggle docutils container">
+<pre>
+output_path = "/content/sample_std.txt"
+f = open(output_path, mode="w")
+
+for lst in data:
+    std = np.std(lst)
+    f.write(f"{std:.2f}\n")
+
+f.flush()
+f.close()
+</pre>
 </div>
 </section>
 <section id="numpypandas">
