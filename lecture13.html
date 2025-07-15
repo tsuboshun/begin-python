@@ -791,6 +791,27 @@ document.write(`
 </div>
 </div>
 <p>注意として、ファイルとして保存する場合は <code class="docutils literal notranslate"><span class="pre">plt.show()</span></code> を実行してはいけない。これを実行してしまうと白紙の画像ファイルがダウンロードされる。</p>
+<div class="toggle docutils container">
+<pre>
+# プロットの入れ物の用意
+fig, ax = plt.subplots(figsize=(7, 6))
+
+# データの用意
+x = df["carat"].values
+y = df["price"].values
+
+# 散布図
+ax.scatter(x, y, alpha=0.01)
+
+# 軸ラベルの設定
+ax.set_xlabel("カラット")
+ax.set_ylabel("価格")
+
+# ファイルとして保存
+plt.tight_layout()
+plt.savefig("練習1.png") 
+</pre>
+</div>
 <p><strong>練習2</strong><br />
 カラットについて、対数関数により値を変換した上でヒストグラムを作成しなさい。ビン数や軸ラベルなどの細かい設定は、各自の判断で決めてよい。</p>
 <div class="cell docutils container">
@@ -812,6 +833,26 @@ document.write(`
 </pre></div>
 </div>
 </div>
+</div>
+<div class="toggle docutils container">
+<pre>
+# プロットの入れ物の用意
+fig, ax = plt.subplots(figsize=(6, 4))
+
+# データの用意
+x = np.log(df["carat"].values)
+
+# ヒストグラムのプロット
+ax.hist(x, bins=50)
+
+# 軸ラベルの設定
+ax.set_xlabel("カラット")
+ax.set_ylabel("カウント")
+
+# ファイルとして保存
+plt.tight_layout()
+plt.savefig("練習2.png") 
+</pre>
 </div>
 </section>
 </section>
