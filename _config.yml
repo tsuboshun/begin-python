@@ -30,3 +30,6 @@ html:
   use_repository_button: false
   analytics:
     google_analytics_id: G-VFVQWRM1GN
+
+plugins:
+  - jekyll-sitemap

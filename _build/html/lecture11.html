@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
@@ -52,7 +52,7 @@
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-VFVQWRM1GN"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -73,7 +73,7 @@
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'lecture11';</script>
-    <script src="_static/custom.js?v=7ed3f353"></script>
+    <script src="_static/custom.js?v=43fa7a27"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="第12回 表データの処理" href="lecture12.html" />
@@ -384,6 +384,11 @@ document.write(`
 <p>今回から第13回にかけてデータサイエンスの入門講義を行う。今回はデータの可視化をテーマに、Matplotlibというグラフ描画ライブラリの使い方を学ぶ。またMatplotlibで利用されているNumPyという数値計算ライブラリについて学ぶ。</p>
 <p>今後の授業で紹介するコードは何も見ないで書けるようになる必要はなく、これらを雛形にして使えるようになればよい。
 Matplotlibを使うと綺麗なグラフを作成できるようになるので、ぜひ他の授業のレポートなどでも活用してみてほしい。</p>
+<div class="tip admonition">
+<p class="admonition-title">上から順にすべてのセルを実行しましょう</p>
+<p>今回以降、ノートブックのコードはNumPyやMatplotlibなど複数のライブラリに依存するため、それぞれのimport文を含むセルを実行していないとどこかでエラーになる。
+もし <code class="docutils literal notranslate"><span class="pre">NameError:</span> <span class="pre">name</span> <span class="pre">'np'</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">defined</span></code> などのエラーを見かけたら、それより上のセルで実行し忘れているものはないか、とくにimport文を含むものを一通り実行したか確認しよう。</p>
+</div>
 </section>
 <section id="numpy">
 <h2>NumPy入門<a class="headerlink" href="#numpy" title="Link to this heading">#</a></h2>
@@ -577,21 +582,6 @@ Matplotlibを使うと綺麗なグラフを作成できるようになるので�
 </div>
 </div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">*</span></code> は要素ごとの積を計算するが、行列積を計算するには <code class="docutils literal notranslate"><span class="pre">dot()</span></code> メソッドまたは <code class="docutils literal notranslate"><span class="pre">np.dot()</span></code> 関数を用いる（数学で行列を習ったことのない学生は気にしないでよい）。</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
 <p>四則演算は基本的に2つの配列の形が揃っていないとエラーになるが、以下のように計算可能なケースもある。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -625,6 +615,11 @@ Matplotlibを使うと綺麗なグラフを作成できるようになるので�
 </div>
 </div>
 </div>
+<div class="toggle docutils container">
+<pre>
+data = np.zeros((n, m))
+</pre>
+</div>
 <p><strong>練習2</strong><br />
 正の整数からなる配列 <code class="docutils literal notranslate"><span class="pre">x</span></code> が与えられるとき、<code class="docutils literal notranslate"><span class="pre">x</span></code> の各要素を <code class="docutils literal notranslate"><span class="pre">x</span></code> の要素の総和で割って得られる配列 <code class="docutils literal notranslate"><span class="pre">p</span></code> を作成するコードを書きなさい。ただし採点の都合上、<code class="docutils literal notranslate"><span class="pre">print</span></code> してはいけない。
 <font color=cornflowerblue>ヒント：配列の要素の総和は <code class="docutils literal notranslate"><span class="pre">np.sum()</span></code> 関数によって求められる。</font>
@@ -640,6 +635,11 @@ Matplotlibを使うと綺麗なグラフを作成できるようになるので�
 </pre></div>
 </div>
 </div>
+</div>
+<div class="toggle docutils container">
+<pre>
+p = x / np.sum(x)
+</pre>
 </div>
 </section>
 </section>
@@ -710,11 +710,6 @@ Matplotlibを使うと綺麗なグラフを作成できるようになるので�
 </div>
 <p>ここで生成した <code class="docutils literal notranslate"><span class="pre">sample_x</span></code> と <code class="docutils literal notranslate"><span class="pre">sample_y</span></code> は <span class="math notranslate nohighlight">\(\varepsilon\)</span> をノイズとして <span class="math notranslate nohighlight">\(y = 2x + \varepsilon\)</span> の関係を満たす2次元データ <span class="math notranslate nohighlight">\((x, y)\)</span> を100個生成したものと見ることができる。
 1つ1つのデータは(<code class="docutils literal notranslate"><span class="pre">sample_x[0]</span></code>, <code class="docutils literal notranslate"><span class="pre">sample_y[0]</span></code>), (<code class="docutils literal notranslate"><span class="pre">sample_x[1]</span></code>, <code class="docutils literal notranslate"><span class="pre">sample_y[1]</span></code>), …, (<code class="docutils literal notranslate"><span class="pre">sample_x[99]</span></code>, <code class="docutils literal notranslate"><span class="pre">sample_y[99]</span></code>)である。</p>
-<div class="tip admonition">
-<p class="admonition-title">ライブラリに関してよく見かけるエラー</p>
-<p>今回のノートブックのコードはNumPyやMatplotlibなど複数のライブラリに依存しているため、それぞれのimport文を含むセルを実行していないとエラーになる。
-もし <code class="docutils literal notranslate"><span class="pre">NameError:</span> <span class="pre">name</span> <span class="pre">'np'</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">defined</span></code> などのエラーを見かけたら、import文を一通り実行したか確認しよう。</p>
-</div>
 <section id="id7">
 <h3>散布図<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
 <p>サンプルデータを<strong>散布図</strong>として可視化してみよう。横軸に <span class="math notranslate nohighlight">\(x\)</span>、縦軸に <span class="math notranslate nohighlight">\(y\)</span> の値をとって各データを点として打って描画する。このことをデータを散布図として<strong>プロット</strong>するという。</p>
@@ -844,6 +839,21 @@ Matplotlibを使うと綺麗なグラフを作成できるようになるので�
 </pre></div>
 </div>
 </div>
+</div>
+<div class="toggle docutils container">
+<pre>
+# プロットの入れ物の用意
+fig, ax = plt.subplots(figsize=(5, 4))
+
+ax.plot(x, y_sin, label="sin関数")
+ax.plot(x, y_cos, label="cos関数")
+
+plt.legend() # 凡例の表示
+
+# ファイルとして保存
+plt.tight_layout()
+plt.savefig("練習3.png") 
+</pre>
 </div>
 <p>プロットしたら以下のコードを実行することにより、画像をダウンロードできる。これを提出しなさい。</p>
 <div class="cell docutils container">

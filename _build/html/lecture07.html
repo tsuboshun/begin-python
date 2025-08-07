@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
@@ -52,7 +52,7 @@
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-VFVQWRM1GN"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -71,7 +71,7 @@
             </script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'lecture07';</script>
-    <script src="_static/custom.js?v=7ed3f353"></script>
+    <script src="_static/custom.js?v=43fa7a27"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="第8回 データの入れ物" href="lecture08.html" />
@@ -396,10 +396,18 @@ document.write(`
 </div>
 </div>
 </div>
+<div class="toggle docutils container">
+<pre>
+if a > b:
+    print(a)
+else:
+    print(b)
+</pre>
+</div>
 <p>この応用として、次の問題を考える。</p>
 <p><strong>例題</strong><br />
 3つの数値 <code class="docutils literal notranslate"><span class="pre">a</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span></code>、<code class="docutils literal notranslate"><span class="pre">c</span></code> が与えられるとき、これらの最大値を <code class="docutils literal notranslate"><span class="pre">print</span></code> するコードを作成しなさい。</p>
-<p>このコードを1つのif文だけで実現することもできる。そのためには <code class="docutils literal notranslate"><span class="pre">a</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span></code>、<code class="docutils literal notranslate"><span class="pre">c</span></code> の6通りの大小関係についてif、elif、elseで条件分岐して、それぞれのケースで最大になる変数を <code class="docutils literal notranslate"><span class="pre">print</span></code> すれば良い（例えば、<code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">&gt;</span> <span class="pre">b</span> <span class="pre">and</span> <span class="pre">b</span> <span class="pre">&gt;</span> <span class="pre">c</span></code> のとき <code class="docutils literal notranslate"><span class="pre">print(a)</span></code> とする）。ただし、この方法では条件式が複雑になりがちで、比較する数値が4つ、5つと増えるとコード量も膨大になる。</p>
+<p>このコードを1つのif文だけで実現することもできる。そのためには <code class="docutils literal notranslate"><span class="pre">a</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span></code>、<code class="docutils literal notranslate"><span class="pre">c</span></code> の大小関係を条件式で表して、if、elif、elseで条件分岐し、それぞれのケースで最大になる変数を <code class="docutils literal notranslate"><span class="pre">print</span></code> すれば良い（例えば、<code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">&gt;</span> <span class="pre">b</span> <span class="pre">and</span> <span class="pre">b</span> <span class="pre">&gt;</span> <span class="pre">c</span></code> のとき <code class="docutils literal notranslate"><span class="pre">print(a)</span></code> とする）。ただし、この方法では条件式がやや複雑で、比較する数値が4つ、5つと増えるとコード量も膨大になる。</p>
 <p>最大値を効率的に求めるのに、以下のような方法がある。</p>
 <ul class="simple">
 <li><p>まず、最初の値 <code class="docutils literal notranslate"><span class="pre">a</span></code> を一時的な変数 <code class="docutils literal notranslate"><span class="pre">tmp</span></code> に入れる<a class="footnote-reference brackets" href="#f1" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>。</p></li>
@@ -443,6 +451,17 @@ document.write(`
 </div>
 </div>
 </div>
+<div class="toggle docutils container">
+<pre>
+tmp = a
+if tmp > b:
+    tmp = b
+
+if tmp > c:
+    tmp = c
+print(tmp)
+</pre>
+</div>
 <p><strong>練習3</strong><br />
 2つの変数 <code class="docutils literal notranslate"><span class="pre">a</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span></code> が与えられるとき、それぞれの変数の値を交換するコードを作成しなさい。つまり、例えば <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">&quot;犬&quot;</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">=</span> <span class="pre">&quot;猫&quot;</span></code> という変数が与えられた場合、<code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">&quot;猫&quot;</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">=</span> <span class="pre">&quot;犬&quot;</span></code> という状態にしなさい。ただし採点の都合上、<code class="docutils literal notranslate"><span class="pre">print</span></code> してはいけない。
 <a href="https://code-judge-system.vercel.app/?&id=7-3" target="_blank">
@@ -459,6 +478,17 @@ document.write(`
 </pre></div>
 </div>
 </div>
+</div>
+<div class="toggle docutils container">
+<pre>
+tmp = a
+a = b
+b = tmp
+</pre>
+<p>初出の書き方になるが、以下のような方法もある。</p>
+<pre>
+a, b = b, a
+</pre>
 </div>
 </section>
 <section id="id5">
@@ -533,6 +563,15 @@ document.write(`
 </div>
 </div>
 </div>
+<div class="toggle docutils container">
+<pre>
+tmp = data[0]
+for v in data:
+    if tmp > v:
+        tmp = v
+print(tmp)
+</pre>
+</div>
 </section>
 <section id="id6">
 <h3>二重ループ<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
@@ -603,7 +642,7 @@ document.write(`
 </div>
 <p>どちらの方法もよく用いられるので、慣れておくと良い。</p>
 <p><strong>練習5</strong><br />
-数値からなる二次元リスト <code class="docutils literal notranslate"><span class="pre">data</span></code> が与えられるとき、一番内側の要素の合計値を求めて <code class="docutils literal notranslate"><span class="pre">print</span></code> するコードを作成しなさい。
+数値からなる二次元リスト <code class="docutils literal notranslate"><span class="pre">data</span></code> が与えられるとき、要素の合計値を求めて <code class="docutils literal notranslate"><span class="pre">print</span></code> するコードを作成しなさい。
 <a href="https://code-judge-system.vercel.app/?&id=7-5" target="_blank">
 <img src="./_images/launch.svg" style="width: 20px; height: 20px;">
 </a></p>
@@ -621,6 +660,16 @@ document.write(`
 </pre></div>
 </div>
 </div>
+</div>
+<div class="toggle docutils container">
+<pre>
+total = 0
+for row in data:
+    for v in row:
+        total += v
+        
+print(total)
+</pre>
 </div>
 </section>
 </section>

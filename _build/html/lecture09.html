@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
@@ -52,7 +52,7 @@
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-VFVQWRM1GN"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -71,7 +71,7 @@
             </script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'lecture09';</script>
-    <script src="_static/custom.js?v=7ed3f353"></script>
+    <script src="_static/custom.js?v=43fa7a27"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="第10回 クラス" href="lecture10.html" />
@@ -628,6 +628,16 @@ return文は <code class="docutils literal notranslate"><span class="pre">return
 </div>
 </div>
 </div>
+<div class="toggle docutils container">
+<pre>
+def draw_square(size):
+    turtle.pendown()
+    for i in range(4):
+        turtle.forward(size)
+        turtle.right(90)
+    turtle.penup()
+</pre>
+</div>
 <p><strong>練習2</strong><br />
 1辺の長さ <code class="docutils literal notranslate"><span class="pre">size</span></code> を引数とし、正三角形を描画する関数 <code class="docutils literal notranslate"><span class="pre">draw_triangle()</span></code> を作成しなさい。
 ただし <code class="docutils literal notranslate"><span class="pre">turtle.pendown()</span></code> から始め、<code class="docutils literal notranslate"><span class="pre">turtle.penup()</span></code> で終わること。</p>
@@ -648,6 +658,16 @@ return文は <code class="docutils literal notranslate"><span class="pre">return
 </div>
 </div>
 </div>
+<div class="toggle docutils container">
+<pre>
+def draw_triangle(size):
+    turtle.pendown()
+    for i in range(3):
+        turtle.forward(size)
+        turtle.right(120)
+    turtle.penup()
+</pre>
+</div>
 <p><strong>練習3</strong><br />
 3以上の整数 <code class="docutils literal notranslate"><span class="pre">n</span></code> および1辺の長さ <code class="docutils literal notranslate"><span class="pre">size</span></code> を引数とし、正 <code class="docutils literal notranslate"><span class="pre">n</span></code> 角形を描画する関数 <code class="docutils literal notranslate"><span class="pre">draw_polygon()</span></code> を作成しなさい。ただし <code class="docutils literal notranslate"><span class="pre">turtle.pendown()</span></code> から始め、<code class="docutils literal notranslate"><span class="pre">turtle.penup()</span></code> で終わること。</p>
 <div class="cell docutils container">
@@ -666,6 +686,16 @@ return文は <code class="docutils literal notranslate"><span class="pre">return
 </pre></div>
 </div>
 </div>
+</div>
+<div class="toggle docutils container">
+<pre>
+def draw_polygon(n, size):
+    turtle.pendown()
+    for i in range(n):
+        turtle.forward(size)
+        turtle.right(360/n)
+    turtle.penup()
+</pre>
 </div>
 <p><strong>練習4</strong><br />
 1辺（例えば線分AB）の長さ <code class="docutils literal notranslate"><span class="pre">size</span></code> を引数とし、星形を描画する関数 <code class="docutils literal notranslate"><span class="pre">draw_star()</span></code> を作成しなさい。
@@ -692,6 +722,16 @@ return文は <code class="docutils literal notranslate"><span class="pre">return
 </pre></div>
 </div>
 </div>
+</div>
+<div class="toggle docutils container">
+<pre>
+def draw_star(size):
+    turtle.pendown()
+    for i in range(5):
+        turtle.forward(size)
+        turtle.right(144)
+    turtle.penup()
+</pre>
 </div>
 </section>
 <section id="id5">
@@ -777,6 +817,23 @@ return文は <code class="docutils literal notranslate"><span class="pre">return
 </pre></div>
 </div>
 </div>
+</div>
+<div class="toggle docutils container">
+<pre>
+def draw_branch(length, depth):
+    turtle.pendown()
+    if depth == 0:
+        turtle.forward(length)
+    else:
+        turtle.forward(length)
+        turtle.left(20)
+        draw_branch(length * 0.8, depth-1)
+        turtle.right(40)
+        draw_branch(length * 0.8, depth-1)
+        turtle.left(20)
+    turtle.backward(length)
+    turtle.penup()
+</pre>
 </div>
 </section>
 <section id="id6">
